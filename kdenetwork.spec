@@ -1,8 +1,9 @@
-%define		_state		stable
-%define		_ver		3.3.1
+%define		_state		unstable
+%define		_ver		3.3.91
+%define		_snap		%{nil}
 
-%define		_minlibsevr	9:3.3.1
-%define		_minbaseevr	9:3.3.1
+%define		_minlibsevr	9:3.3.91
+%define		_minbaseevr	9:3.3.91
 #
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -10,10 +11,11 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	6
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
+#Source0:	http://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	4b35a9e23ef555b47e9423082856ca80
 # Source0-size:	6970170
@@ -24,7 +26,6 @@ Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
-Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 BuildRequires:	autoconf
@@ -848,19 +849,14 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
+#%setup -q -n %{name}-%{_snap}
 %setup -q
-%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
-
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	kget/kget.desk top
+	kget/kget.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
 	kppp/logview/kppplogview.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
@@ -900,7 +896,8 @@ done
 
 %build
 cp %{_datadir}/automake/config.sub admin
-export UNSERMAKE=%{_datadir}/unsermake/unsermake
+
+#export UNSERMAKE=%{_datadir}/unsermake/unsermake
 
 %{__make} -f admin/Makefile.common cvs
 
@@ -1046,6 +1043,7 @@ fi
 %files kopete -f kopete.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
@@ -1056,17 +1054,21 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
 %{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
+%{_libdir}/kde3/kopete_statistics.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
-%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
+%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
-%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %dir %{_datadir}/apps/kopete
 %{_datadir}/apps/kopete/*rc
@@ -1075,6 +1077,9 @@ fi
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
 %{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/account_offline_overlay.*
+
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/logging.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
 %{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
@@ -1086,14 +1091,16 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/emoticons
+%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
+%{_datadir}/apps/kopete_statistics
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
-#%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
+%{_datadir}/services/kopete_statistics.desktop
 %{_datadir}/servicetypes/kopeteplugin.desktop
 %{_datadir}/servicetypes/kopeteprotocol.desktop
 %{_datadir}/servicetypes/kopeteui.desktop
@@ -1103,6 +1110,7 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
+%{_iconsdir}/crystalsvg/scalable/apps/kopete2.svgz
 %{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
@@ -1116,8 +1124,41 @@ fi
 %{_libdir}/kde3/kopete_latex.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
 %{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+%{_datadir}/config.kcfg/latexconfig.kcfg
 %{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
 %{_datadir}/services/kopete_latex.desktop
+# TODO
+%{_libdir}/kde3/kcm_kopete_addbookmarks.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
+%{_libdir}/kde3/kopete_addbookmarks.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
+%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
+%{_datadir}/services/kopete_addbookmarks.desktop
+
+%{_libdir}/kde3/kcm_kopete_netmeeting.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
+%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
+
+%{_libdir}/kde3/kfile_torrent.la
+%attr(755,root,root) %{_libdir}/kde3/kfile_torrent.so
+%{_datadir}/services/kfile_torrent.desktop
+
+%{_libdir}/kde3/kio_dnssd.la
+%attr(755,root,root) %{_libdir}/kde3/kio_dnssd.so
+%{_libdir}/kde3/kded_dnssdwatcher.la
+%attr(755,root,root) %{_libdir}/kde3/kded_dnssdwatcher.so
+%{_datadir}/apps/dnssd
+%{_datadir}/apps/remoteview/dnssd.desktop
+%{_datadir}/services/dnssd.protocol
+%{_datadir}/services/kded/dnssdwatcher.desktop
+
+%{_libdir}/kde3/kopete_groupwise.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_groupwise.so
+%{_datadir}/services/kopete_groupwise.desktop
+%{_datadir}/apps/kopete_groupwise
+%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/groupwise_*.png
+%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/groupwise_connecting.mng
+%{_datadir}/apps/kopete/icons/crystalsvg/*/apps/groupwise_protocol.png
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1143,7 +1184,7 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
 # moved to kdelibs; used also by sim
-#%{_datadir}/mimelnk/application/x-icq.desktop
+%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -1411,8 +1452,8 @@ fi
 %attr(755,root,root) %{_bindir}/kwifimanager
 %{_libdir}/libkwireless.la
 %attr(755,root,root) %{_libdir}/libkwireless.so
-%{_libdir}/kde3/kcm_kwifimanager.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
+%{_libdir}/kde3/kcm_wifi.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
 %{_datadir}/applications/kde/kcmwifi.desktop
@@ -1430,10 +1471,11 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.so
 %{_libdir}/kde3/kcm_lanbrowser.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.so
+%{_datadir}/apps/lisa
+%{_datadir}/apps/remoteview/lan.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
-%{_datadir}/apps/lisa
-# Messing one !
+# Messing one!
 # %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
