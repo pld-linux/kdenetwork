@@ -148,11 +148,15 @@ Internet.
 
 %package kdnssd
 Summary:	DNS-SD Services Watcher
+Summary(pl):	Nadzorowanie us³ug DNS-SD
 License:	Artistic
 Group:		X11/Applications
 
 %description kdnssd
-DNS-SD Services Watcher
+DNS-SD Services Watcher.
+
+%description kdnssd -l pl
+Nadzorowanie us³ug DNS-SD.
 
 %package kinetd
 Summary:	KDE Internet Daemon
@@ -173,7 +177,7 @@ po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
 Summary:	Meta information plugin for BitTorrent files (*.torrent)
 Summary(pl):	Wtyczka pobieraj±ca metainformacje z plików BitTorrenta (*.torrent)
 Group:		X11/Applications
-Requires:	konqueror >= %{_ver}
+Requires:	konqueror >= %{_minbaseevr}
 
 %description kfile-torrent
 This is a meta information plugin for BitTorrent files (*.torrent).
