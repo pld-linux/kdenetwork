@@ -750,22 +750,6 @@ fi
 %{_libdir}/libkopete_oscar.so
 %{_libdir}/librss.so
 
-%files kwifimanager -f kwifimanager.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kwifimanager
-%{_libdir}/kde3/kcm_kwifimanager.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
-%{_libdir}/libkwireless.*
-%{_datadir}/applications/kde/*.desktop
-%{_datadir}/apps/kicker/applets/kwireless.desktop
-%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
-%{_datadir}/apps/kwifimanager
-%{_datadir}/apps/kwifimanager/locations
-%{_datadir}/apps/kwifimanager/pics
-%{_datadir}/apps/kwifimanager/pics/*
-%{_iconsdir}/locolor/32x32/apps/krfb.png
-#%%{_applnkdir}/KDE-Settings/Network/kcmwifi.desktop
-
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
