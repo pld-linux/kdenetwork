@@ -393,6 +393,10 @@ cd -
 
 #bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
+for i in /usr/X11R6/share/locale/*/LC_MESSAGES/*.mo ; do
+	[ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] && rm -f $f
+done
+
 %find_lang kdict		--with-kde
 #%find_lang kdictapplet 	--with-kde
 #cat kdictapplet.lang >> kdict.lang
