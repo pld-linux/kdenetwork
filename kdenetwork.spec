@@ -1,6 +1,6 @@
 
 %define		_state		stable
-%define		_ver		3.1.4
+%define		_ver		3.1.5
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -8,15 +8,15 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	0.1
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	83d69ab3be7b4b10b898b250eb2d9046
+# Source0-md5:	d202929df2d5d88dca187c3d09f6ab44
 # generated from kde-i18n
-Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/%{version}/kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	b2500672d83d30aeb98dd7d0b9549e8d
+Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+# Source1-md5:	f4bf77c0961492a4ce8ef43563ff70de
 Source2:	lisa.init
 Source3:	lisa.sysconfig
 Source4:	%{name}-lisarc
