@@ -873,7 +873,7 @@ Internationalization and localization files for kinetd.
 %description -l pl kinetd-i18n
 Pliki umiêdzynarodawiaj±ce dla kinetd.
 
-%package kdenetwork-i18n
+%package i18n
 Summary:	Common internationalization and localization files for kdenetwork
 Summary(pl):	Wspó³dzielone pliki umiêdzynarodawiaj±ce dla kdenetwork
 Group:	X11/Applications
@@ -942,10 +942,10 @@ Obsoletes:	kde-i18n-Zulu
 Obsoletes:	kde-i18n-kdelibs
 Obsoletes:	kde-i18n
 
-%description kdenetwork-i18n
+%description i18n
 Internationalization and localization files for kdenetwork.
 
-%description -l pl kdenetwork-i18n
+%description -l pl i18n
 Pliki umiêdzynarodawiaj±ce dla kdenetwork.
 
 
@@ -1945,7 +1945,7 @@ fi
 %files kwifimanager-i18n -f kwifimanager.lang
 %files lanbrowser-i18n -f lisa.lang
 %files kinetd-i18n -f kinetd.lang
-%files kdenetwork-i18n -f desktop_kdenetwork.lang
+%files i18n -f desktop_kdenetwork.lang
 %files rss-i18n -f dcopservice.lang
 
 
