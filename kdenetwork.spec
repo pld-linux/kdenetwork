@@ -9,8 +9,8 @@ Summary(ko):	K 데스크탑 환경 - 네트웍 응용 프로그램
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplica寤es de rede
 Name:		kdenetwork
-Version:	3.0.4
-Release:	10
+Version:	3.0.5a
+Release:	0.1
 Epoch:		8
 License:	GPL
 Group:		X11/Applications
@@ -29,11 +29,9 @@ Patch5:		%{name}-fix-copy-link-location.patch
 Patch6:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
 Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
 Patch8:		%{name}-no_versioned_modules.patch
-# Security fix from 3.0.5
-Patch9:		%{name}-lan.patch
-Patch10:	%{name}-desktop.patch
+Patch9:		%{name}-desktop.patch
 # ported from lisa.spec
-Patch11:	%{name}-lisa_net_auto_conf.patch
+Patch10:	%{name}-lisa_net_auto_conf.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	awk
@@ -331,7 +329,6 @@ do kdenetwork.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
