@@ -103,8 +103,8 @@ Requires:	kdelibs-devel >= 9:%{version}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-librss-devel
-Obsoletes:	%{name}-rss-devel
+Obsoletes:	kdenetwork-librss-devel
+Obsoletes:	kdenetwork-rss-devel
 
 %description devel
 kdenetwork header files.
@@ -138,7 +138,7 @@ Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
 Requires:	kdelibs >= 9:%{version}
-Obsoletes:	%{name}-krfb < 9:3.1-6
+Obsoletes:	kdenetwork-krfb < 9:3.1-6
 
 %description kinetd
 An Internet daemon that starts network services on demand.
@@ -716,19 +716,6 @@ RSS parsers used by different applications.
 %description rss -l pl
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
-%package i18n
-Summary:	Common internationalization and localization files for kdenetwork
-Summary(pl):	Wspó³dzielone pliki umiêdzynarodawiaj±ce dla kdenetwork
-Group:		X11/Applications
-#Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description i18n
-Internationalization and localization files for kdenetwork.
-
-%description i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kdenetwork.
-
 %package kdict-i18n
 Summary:	Internationalization and localization files for kdict
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
@@ -747,6 +734,7 @@ Summary:	Internationalization and localization files for kinetd
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-i18n >= 9:%{version}
 
 %description kinetd-i18n
 Internationalization and localization files for kinetd.
@@ -785,6 +773,7 @@ Summary:	Internationalization and localization files for kopete
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kopete
 Group:		X11/Applications
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-i18n >= 9:%{version}
 
 %description kopete-i18n
 Internationalization and localization files for kopete.
@@ -863,6 +852,7 @@ Summary:	Internationalization and localization files for kwifimanager
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanagera
 Group:		X11/Applications
 Requires:	%{name}-kwifimanager = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-i18n >= 9:%{version}
 
 %description kwifimanager-i18n
 Internationalization and localization files for kwifimanager.
@@ -888,6 +878,7 @@ Summary:	Internationalization and localization files for rss
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
 Group:		X11/Applications
 Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-i18n >= 9:%{version}
 
 %description rss-i18n
 Internationalization and localization files for rss.
