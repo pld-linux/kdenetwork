@@ -2,9 +2,9 @@
 #	--with		kmail_toolbars_patch	aplies patch assigning icons
 #						to some toolbar buttons in kmail
 
-%define		_ver		3.0.1
+%define		_ver		3.0.2
 #define		_sub_ver
-%define		_rel		6
+%define		_rel		0.1
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -26,7 +26,7 @@ Vendor:		The KDE Team
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_ftpdir}/%{version}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
-Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+#Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
@@ -36,6 +36,7 @@ BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
+BuildRequires:	libxml2-progs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -327,7 +328,7 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/kppplogview.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Communications}/ksirc.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE/
 
-bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+#bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict --with-kde
 %find_lang kdictapplet --with-kde
