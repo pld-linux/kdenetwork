@@ -4,7 +4,7 @@ Name:		kdenetwork
 Version:	2.0.1
 Release:	1
 Vendor:		The KDE Team
-Source:		ftp://ftp.kde.org/pub/kde/snapshots/current/%{name}-%{version}.tar.bz2
+Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/src/%{name}-%{version}.tar.bz2
 Group:          X11/Applications
 Copyright:	GPL
 BuildRequires:	qt-devel >= 2.2.2
