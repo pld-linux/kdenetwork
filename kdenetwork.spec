@@ -2,9 +2,9 @@
 #	--with		kmail_toolbars_patch	aplies patch assigning icons
 #						to some toolbar buttons in kmail
 
-%define		_ver		3.0.2
+%define		_ver		3.0.3
 #define		_sub_ver
-%define		_rel		2.1
+%define		_rel		0.1
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
