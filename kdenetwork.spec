@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.1.90
-%define		_snap		030618
+%define		_snap		030623
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -21,7 +21,6 @@ Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-fix-service_h.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -335,7 +334,6 @@ TODO.
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 
