@@ -39,7 +39,7 @@ Pakiet zawiera:
 Summary:     	KDE Mail client
 Summary(pl): 	Program pocztowy KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description kmail
 This is electronic mail client for KDE.
@@ -57,7 +57,7 @@ Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów znaków.
 Summary:     	KDE 'biff' application
 Summary(pl): 	Wska¼nik skrzynki pocztowej dla KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
@@ -69,7 +69,7 @@ Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach pocztowych.
 Summary:     	KDE PPP dialer	
 Summary(pl): 	Program do po³±czeñ modemowych dla KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 Requires:	ppp 
 
 %description kppp
@@ -83,7 +83,7 @@ Posiada ³atwy interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 Summary:     	KDE News Reader	
 Summary(pl): 	Czytnik newsów dla KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
@@ -96,7 +96,7 @@ Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile.
 Summary:     	KDE IRC client
 Summary(pl): 	Klient IRC dla KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description ksirc
 
@@ -106,7 +106,7 @@ Requires:	kdelibs = %{version}
 Summary:     	KDE AOL Instant Messenger
 Summary(pl): 	Klient AOL Instant Messenger dla KDE
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description kit
 
@@ -116,7 +116,7 @@ Requires:	kdelibs = %{version}
 Summary:     	Allows remote access to the desktops of other machines.
 Summary(pl): 	Umo¿liwia zdalny dostêp do biurek (desktop) innych komputerow
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description keystone
 
@@ -125,7 +125,7 @@ Requires:	kdelibs = %{version}
 %package knewsticker
 Summary:     	KDE News Ticker
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description knewsticker
 
@@ -134,7 +134,7 @@ Requires:	kdelibs = %{version}
 %package lanbrowser
 Summary:     	KDE Lan Browser
 Group:       	X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description lanbrowser
 
