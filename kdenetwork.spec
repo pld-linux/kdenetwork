@@ -265,9 +265,10 @@ Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
 
 %description kwifimanager
-Wireless LAN
+Wireless LAN.
+
 %description kwifimanager -l pl
-Bezprzewodowy LAN
+Bezprzewodowy LAN.
 
 %package kxmlrpcd
 Summary:	KDE XmlRpc Daemon
