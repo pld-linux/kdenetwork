@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -27,10 +27,10 @@ Patch3:		%{name}-ggstatus.patch
 Patch4:		%{name}-dcoprss.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	ed
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libgadu-devel >= 1.4
+BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
@@ -39,8 +39,8 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	unsermake
 BuildRequires:	xmms-devel
-BuildRequires:	libidn-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libkopete_oscar.so.1
@@ -51,30 +51,26 @@ KDE network applications. Package includes:
 - KGet - file downloader
 - KIT - AOL Instant Messenger
 - KNewsticker - News Ticker
-
 - KPF - Public fileserver applet
 - KPPP - PPP dialer
-- krdc
+- krdc - remote desktop connection
 - krfb - virtual desktops
 - KSirc - IRC client
 - KTalkd - takt daemon
 - KXmlRpcd - XmlRpc Daemon
-
 - Lanbrowser - LAN Browser
 - KWiFiManager - wireless network manager
 
 %description -l pl
-Aplikacje sieciowe KDE. Pakiet zawiera:
+Aplikacje sieciowe KDE. Pakiet zawiera nastêpuj±ce programy:
 - KDict - klient s³ownika
 - KGet - ¦ciagacz plików
 - KIT - klient AOL Instant Messenger
-- KMail - program pocztowy, z poprawion± obs³ug± zestawów znaków
-- KORN - program pokazuj±cy stan skrzynek pocztowych
+- KNewsticker - aplet wy¶wietlaj±cy nowo¶ci
 - KPF - applet publicznego serwera plików
 - KPPP - program do nawi±zywania po³±czeñ modemowych
-- KNewsticker - News Ticker
-- KNODE - program do czytania newsów
-- KRFB - wirtualne biurka
+- krdc - zdalny pulpit
+- krfb - wirtualne biurka
 - KSirc - klient IRC
 - KTalkd - demon Talk
 - KXmlRpcd - demon XmlRpc
@@ -127,7 +123,12 @@ separate list offers a convenient way to deal with the enormous number
 of matching words that a advanced query can return.
 
 %description kdict -l pl
-Klient s³ownika.
+Graficzny klient dla protoko³u DICT u¿ywanego przez kilka s³owników
+online (jak np. dict.org). Pozwala przeszukiwaæ s³ownikowe bazy danych
+pod k±tem s³ów lub zwrotów, a nastêpnie wy¶wietlaæ pasuj±ce definicje.
+KDict próbuje u³atwiæ podstawowe i zaawansowane zapytania. Oddzielna
+lista oferuje wygodny sposób radzenia sobie z du¿± liczb± pasuj±cych
+s³ów, któr± mo¿e zwróciæ zaawansowane zapytanie.
 
 %description kdict -l pt_BR
 kdict é um utilitário de dicionário que usa servidores dictd da
@@ -144,22 +145,23 @@ Obsoletes:	kdenetwork-krfb < 9:3.1-6
 A KDE daemon that listen on TCP ports and starts programs when a
 client connects. Configurable using DCOP.
 
-
 %description kinetd -l pl
-Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
+Demon KDE nas³uchuj±cy na portach TCP i uruchamiaj±cy programy po
+po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
 
 %package kget
 Summary:	File downloand manager
-Summary(pl):	Mened¿er ¶ci±gania plików
+Summary(pl):	Zarz±dca ¶ci±gania plików
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
 
 %description kget
 A GetRight-like file download manager with resuming support and
-konqueror/mozilla integration.
+Konqueror/Mozilla integration.
 
 %description kget -l pl
-¦ci±gacz plików.
+Zarz±dca ¶ci±gania plików podobny do GetRighta z obs³ug± wznawiania
+oraz integracj± z Konquerorem/Mozill±.
 
 %package knewsticker
 Summary:	KDE News Ticker
@@ -176,7 +178,11 @@ Freshmeat). It can be used with virtually any website that provides
 RSS/RDF feeds.
 
 %description knewsticker -l pl
-News Ticker dla KDE.
+KNewsTicker to aplet dla panelu KDE (znanego tak¿e jako Kicker)
+dostarczaj±cy ³atwy i wygodny sposób dostêpu do nowinek og³aszanych
+przez wiele serwisów z nowo¶ciami (takimi jak Slashdot, Linux Weekly
+News czy Freshmeat). Mo¿e byæ u¿ywany z w³a¶ciwie ka¿d± stron±
+udostêpniaj±c± feedy RSS/RDF.
 
 %description knewsticker -l pt_BR
 Miniaplicativo de exibição de notícias para o painel Kicker.
@@ -555,7 +561,7 @@ Requires:	kdebase-desktop >= 9:%{version}
 
 %description kpf
 kpf provides simple file sharing using HTTP (the Hyper Text Transfer
-Protocol,) which is the same protocol used by web sites to provide
+Protocol), which is the same protocol used by web sites to provide
 data to your web browser. kpf is strictly a public fileserver, which
 means that there are no access restrictions to shared files. Whatever
 you select for sharing is available to anyone.
@@ -571,10 +577,27 @@ people with whom you are chatting online. Rather than send them each
 an email with the file attached (some may not even be interested,) you
 copy the file into your public_html folder and announce to those
 listening that your file is available at
-http://www.mymachine.net:8001/thefile
+http://www.mymachine.net:8001/thefile .
 
 %description kpf -l pl
-Applet publicznego serwera plików.
+kpf umo¿liwia proste uwspólnianie plików przy u¿yciu protoko³u HTTP
+(Hyper Text Transfer Protocol), tego samego, który jest u¿ywany dla
+stron WWW, aby dostarczyæ dane do przegl±darki. ¦ci¶lej mówi±c kpf
+jest publicznym serwerem plików, co oznacza, ¿e nie ma ograniczeñ
+dostêpu do wspó³dzielonych plików. Wszystko co wybierze siê do
+dzielenia, jest dostêpne dla ka¿dego.
+
+kpf jest zaprojektowany w celu dzielenia plików z przyjació³mi, a nie
+dzia³ania jako pe³noprawny serwer WWW, taki jak Apache. kpf by³
+pocz±tkowo rozwijany g³ównie jako prosty sposób wspó³dzielenia plików
+z innymi podczas rozmawiania przez IRC.
+
+Typowy przypadek u¿ycia: kpf jest konfigurowany do serwowania plików z
+podkatalogu public_html w katalogu domowym. Chcemy uczyniæ plik
+dostêpnym dla ludzi, z którymi akurat rozmawiamy. Zamiast wysy³aæ plik
+poczt± jako za³±cznik (niektórzy mog± nawet nie byæ zainteresowani),
+kopiujemy plik do katalogu public_html i og³aszamy, ¿e plik jest
+dostêpny jako http://www.mojkomputer.net:8001/plik .
 
 %package kppp
 Summary:	KDE PPP dialer
@@ -602,8 +625,21 @@ KPPP features elaborate phone cost accounting, which enables you to
 easily track your online costs.
 
 %description kppp -l pl
-Program do nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
-interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
+KPPP to program do nawi±zywania po³±czeñ modemowych i frontend dla
+pppd. Pozwala na interaktywne generowanie skryptów i konfiguracji
+sieci. Automatyzuje proces dzwonienia do swojego ISP umo¿liwiaj±c
+jednocze¶nie wygodne monitorowanie ca³ego procesu.
+
+Po po³±czeniu KPPP udostêpnia bogate statystyki i ¶ledzi czas spêdzony
+online.
+
+Wbudowany terminal i generator skryptów umo¿liwia ³atwe
+skonfigurowanie po³±czenia. Nie trzeba ju¿ dodatkowego programu
+terminalowego, takiego jak seyon czy minicom, do testowania i
+ustawiania po³±czenia.
+
+KPPP ma wypracowane naliczanie kosztów telefonów, pozwalaj±ce ³atwo
+¶ledziæ koszt czasu online.
 
 %description kppp -l pt_BR
 O discador para Internet.
@@ -620,7 +656,8 @@ KSirc is the default KDE IRC client. It supports scripting with Perl
 and has a lot of compatibility with mIrc for general use.
 
 %description ksirc -l pl
-Klient IRC dla KDE.
+KSirc to domy¶lny klient IRC dla KDE. Obs³uguje skrypty perlowe i jest
+w du¿ym stopniu kompatybilny z mIrcem przy ogólnym u¿ywaniu.
 
 %description ksirc -l pt_BR
 Cliente de IRC do KDE.
@@ -641,7 +678,12 @@ Desktop Connection with the KDE VNC server, which is Desktop Sharing
 features of Remote Desktop Connection.
 
 %description krfb -l pl
-Wirtualne biurka.
+Remote Desktop Connection to aplikacja kliencka umo¿liwiaj±ca
+ogl±danie a nawet sterowanie sesj± na innej maszynie z dzia³aj±cym
+kompatybilnym serwerem (VNC). Zwykle u¿ywa siê Remote Desktop
+Connection z u¿yciem serwera KDE VNC, czyli "dzielenia pulpitu"
+(tak¿e dostarczanego przez ten pakiet), jako ¿e najlepiej pasuje do
+specjalnych mo¿liwo¶ci Remote Desktop Connection.
 
 %package ktalkd
 Summary:	Talk daemon
@@ -655,7 +697,8 @@ answering machine plus a possibility to inform you about incoming
 messages.
 
 %description ktalkd -l pl
-Demon talk.
+Zamiennik demona talk. Obs³uguje protokó³ talk i ma automatyczn±
+sekretarkê oraz mo¿liwo¶æ informowania o przychodz±cych wiadomo¶ciach.
 
 %package kwifimanager
 Summary:	Wireless LAN
@@ -674,7 +717,12 @@ KDE is started. KWiFiManager supports every wireless LAN card that
 uses the wireless extensions interface.
 
 %description kwifimanager -l pl
-Bezprzewodowy LAN.
+Oprogramowanie KWiFiManager to zbiór narzêdzi umo¿liwiaj±cych
+zarz±dzanie bezprzewodow± kart± LAN w ¶rodowisku KDE. Dostarcza
+informacje o bie¿±cym po³±czeniu oraz pozwala ustawiæ do czterech
+niezale¿nych konfiguracji, które mog± byæ ³adowane automatycznie przy
+starcie KDE. KWiFiManager obs³uguje wszystkie bezprzewodowe karty LAN
+u¿ywaj±ce interfejsu rozszerzeñ bezprzewodowych.
 
 %package kxmlrpcd
 Summary:	KDE XmlRpc Daemon
@@ -701,7 +749,7 @@ Obsoletes:	lisa
 A browser for Samba shares in your Local Area Network.
 
 %description lanbrowser -l pl
-Przegl±darka LAN-u dla KDE.
+Przegl±darka dla udzia³ów Samby w sieci lokalnej.
 
 %package libkopete
 Summary:	kopete library
@@ -741,21 +789,21 @@ A shared library which adds OSCAR protocol support needed eg. by AIM
 and ICQ.
 
 %description libkopete_oscar -l pl
-Biblioteka dodaj±ca obs³ugê protoko³u OSCAR u¿ywanego miêdzy innymi
+Biblioteka dodaj±ca obs³ugê protoko³u OSCAR, u¿ywanego miêdzy innymi
 przez AIM i ICQ.
 
 %package librss
-Summary:	rss library
-Summary(pl):	Biblioteka rss
+Summary:	RSS library
+Summary(pl):	Biblioteka RSS
 Group:		X11/Libraries
 Requires:	kdelibs >= 9:%{version}
 Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
 
 %description librss
-Libraries for RSS/RDF/XML parsers in KDE.
+Library for RSS/RDF/XML parsers in KDE.
 
 %description librss -l pl
-Biblioteka rss.
+Biblioteka dla parserów RSS/RDF/XML w KDE.
 
 %package rss
 Summary:	RSS parsers used by different applications
@@ -811,9 +859,6 @@ mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
 
 cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
-cd -
-
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
