@@ -34,10 +34,9 @@ BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	openslp-devel
 BuildRequires:	pcre-devel
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRequires:	xmms-devel
-BuildRequires:	wireless-tools
-BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -606,6 +605,7 @@ Summary:	Wireless LAN
 Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
 Requires:	kdelibs >= 9:%{version}
+Requires:	wireless-tools
 
 %description kwifimanager
 Wireless LAN.
@@ -1157,6 +1157,18 @@ fi
 #%{_libdir}/kde3/kcm_xmlrpcd.la
 #%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 #%{_datadir}/services/kxmlrpcd.desktop
+
+%files kwifimanager -f kwifimanager.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kwifimanager
+%{_libdir}/libkwireless.la
+%attr(755,root,root) %{_libdir}/libkwireless.so
+%{_libdir}/kde3/kcm_kwifimanager.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
+%{_datadir}/apps/kicker/applets/kwireless.desktop
+%{_datadir}/apps/kwifimanager
+%{_datadir}/applications/kde/kcmwifi.desktop
+%{_datadir}/applications/kde/kwifilemanager.desktop
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
