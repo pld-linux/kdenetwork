@@ -1798,40 +1798,40 @@ cp /usr/share/automake/config.sub admin
 %{__make}
 
 %install
-#rm -rf $RPM_BUILD_ROOT
-#
-##%{__make} install \
-#	DESTDIR=$RPM_BUILD_ROOT \
-#	kde_htmldir=%{_kdedocdir}
+rm -rf $RPM_BUILD_ROOT
 
-##%if %{with i18n}
-#if [ -f "%{SOURCE1}" ] ; then
-#	bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
-#	for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
-#		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] ; then
-#			rm -f $f
-#		fi
-#	done
-#else
-#	echo "No i18n sources found and building --with i18n. FIXIT!"
-#	exit 1
-#fi
-#
-##%endif
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
 
-#install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-#
-#install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
-#install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
-#install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
+%if %{with i18n}
+if [ -f "%{SOURCE1}" ] ; then
+	bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+	for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
+		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] ; then
+			rm -f $f
+		fi
+	done
+else
+	echo "No i18n sources found and building --with i18n. FIXIT!"
+	exit 1
+fi
 
-#mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
-#   $RPM_BUILD_ROOT%{_desktopdir}/kde
-#
-#cd $RPM_BUILD_ROOT%{_iconsdir}
-#mv {locolor,crystalsvg}/16x16/apps/krfb.png
-#cd -
-#
+%endif
+
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
+
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
+
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
+   $RPM_BUILD_ROOT%{_desktopdir}/kde
+
+cd $RPM_BUILD_ROOT%{_iconsdir}
+mv {locolor,crystalsvg}/16x16/apps/krfb.png
+cd -
+
 
 
 %find_lang kdict		--with-kde
