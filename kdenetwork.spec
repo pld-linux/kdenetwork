@@ -275,8 +275,8 @@ rm -rf $RPM_BUILD_ROOT
 %files karchie -f karchie.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) %{_datadir}/config//karchierc
-#%config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
+%config(missingok) %{_datadir}/config//karchierc
+%config(missingok) {_applnkdir}/Internet/karchie.kdelnk
 
 %attr(755,root,root) %{_bindir}/karchie
 
@@ -290,7 +290,7 @@ rm -rf $RPM_BUILD_ROOT
 %files kbiff -f kbiff.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
+%config(missingok) %{_applnkdir}/Internet/kbiff.kdelnk
 
 %attr(755,root,root) %{_bindir}/kbiff
 
@@ -306,8 +306,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kfinger -f kfinger.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) %{_datadir}/config/kfingerrc
-#%config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
+%config(missingok) %{_datadir}/config/kfingerrc
+%config(missingok) %{_applnkdir}/Internet/kfinger.kdelnk
 
 %attr(755,root,root) %{_bindir}/kfinger
 
@@ -320,7 +320,7 @@ rm -rf $RPM_BUILD_ROOT
 %files kmail -f kmail.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
+%config(missingok) %{_applnkdir}/Internet/KMail.kdelnk
 
 %attr(755,root,root) %{_bindir}/kmail
 
@@ -338,7 +338,7 @@ rm -rf $RPM_BUILD_ROOT
 %files knu -f knu.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
+%config(missingok) %{_applnkdir}/Internet/knu.kdelnk
 
 %attr(755,root,root) %{_bindir}/knu
 
@@ -351,7 +351,7 @@ rm -rf $RPM_BUILD_ROOT
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
+%config(missingok) %{_applnkdir}/Internet/KOrn.kdelnk
 
 %attr(755,root,root) %{_bindir}/korn
 
@@ -365,8 +365,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kppp -f kppp.lang  -f kppplogview.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
-#%config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
+%config(missingok) %{_applnkdir}/Internet/Kppp.kdelnk
+%config(missingok) %{_applnkdir}/Internet/kppplogview.kdelnk
 
 %attr(755, root, root) %{_bindir}/kppplogview
 %attr(2755,root, uucp) %{_bindir}/kppp
@@ -383,7 +383,7 @@ rm -rf $RPM_BUILD_ROOT
 %files krn -f krn.lang
 %defattr(644,root,root,755)
 
-#%config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
+%config(missingok) %{_applnkdir}/Internet/Krn.kdelnk
 
 %attr(755,root,root) %{_bindir}/krn
 %attr(755,root,root) %{_bindir}/kdecode
@@ -403,7 +403,7 @@ rm -rf $RPM_BUILD_ROOT
 %files ksirc -f ksirc.lang -f pws.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/ksirc.kdelnk
+%config(missingok) %{_applnkdir}/Internet/ksirc.kdelnk
 
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
@@ -429,8 +429,8 @@ rm -rf $RPM_BUILD_ROOT
 %files ktalkd -f ktalkd.lang -f kcmktalkd.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/ktalkdrc
-%config(missingok) /etc/X11/kde/applnk/Settings/Network/kcmktalkd.kdelnk
+%config(missingok) %{_datadir}/config/ktalkdrc
+%config(missingok) %{_applnkdir}/Settings/Network/kcmktalkd.kdelnk
 
 %{_bindir}/kcmktalkd
 %{_bindir}/kotalkd
