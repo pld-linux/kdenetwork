@@ -1152,7 +1152,7 @@ fi
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
 %{_datadir}/applications/kde/kcmwifi.desktop
-%{_datadir}/applications/kde/kwifilemanager.desktop
+%{_datadir}/applications/kde/kwifimanager.desktop
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
