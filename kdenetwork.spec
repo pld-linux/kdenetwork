@@ -1000,7 +1000,6 @@ fi
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kde/kdict.desktop
 %{_iconsdir}/*/*/*/kdict*
-%{_kdedocdir}/en/kdict
 
 %files kget -f kget.lang
 %defattr(644,root,root,755)
@@ -1012,7 +1011,6 @@ fi
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kde/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
-%{_kdedocdir}/en/kget
 
 %files kinetd
 %defattr(644,root,root,755)
@@ -1033,7 +1031,6 @@ fi
 %{_datadir}/applnk/.hidden/knewstickerstub.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
-%{_kdedocdir}/en/knewsticker
 
 %files kopete -f kopete.lang
 %defattr(644,root,root,755)
@@ -1331,7 +1328,6 @@ fi
 %{_datadir}/apps/kicker/applets/kpfapplet.desktop
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_iconsdir}/*/*/*/kpf*
-%{_kdedocdir}/en/kpf
 
 %files kppp -f kppp.lang
 %defattr(644,root,root,755)
@@ -1341,7 +1337,6 @@ fi
 %{_desktopdir}/kde/Kppp.desktop
 %{_desktopdir}/kde/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
-%{_kdedocdir}/en/kppp
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
@@ -1361,8 +1356,6 @@ fi
 %{_desktopdir}/kde/krdc.desktop
 %{_iconsdir}/*/*/*/krdc*
 %{_iconsdir}/[!l]*/*/*/krfb*
-%{_kdedocdir}/en/krfb
-%{_kdedocdir}/en/krdc
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -1379,7 +1372,6 @@ fi
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
-%{_kdedocdir}/en/ksirc
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
@@ -1392,8 +1384,6 @@ fi
 %{_datadir}/sounds/ktalkd.wav
 %{_desktopdir}/kde/kcmktalkd.desktop
 %{_iconsdir}/*/*/*/ktalkd.png
-%{_kdedocdir}/en/ktalkd
-%{_kdedocdir}/en/kcontrol/kcmtalkd
 #%files kxmlrpcd -f kxmlrpcd.lang
 #%defattr(644,root,root,755)
 #%attr(755,root,root) %{_bindir}/kxmlrpcd
@@ -1438,8 +1428,6 @@ fi
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
-%{_kdedocdir}/en/lisa
-%{_kdedocdir}/en/kcontrol/lanbrowser
 
 %files libkopete
 %defattr(644,root,root,755)
