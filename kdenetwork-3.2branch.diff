@@ -1,0 +1,2827 @@
+diff -urN -x CVS kdenetwork.orig/dcoprss/rssservice.desktop kdenetwork/dcoprss/rssservice.desktop
+--- kdenetwork.orig/dcoprss/rssservice.desktop	Sat Mar 27 14:13:15 2004
++++ kdenetwork/dcoprss/rssservice.desktop	Sat Apr 17 14:45:23 2004
+@@ -41,6 +41,7 @@
+ Comment[gl]=Servicios RSS de DCOP
+ Comment[he]=שרותי RSS DCOP
+ Comment[hi]=RSS DCOP सेवाएँ
++Comment[hr]=RSS DCOP servisi
+ Comment[hu]=RSS DCOP-szolgáltatás
+ Comment[is]=RSS DCOP þjónustur
+ Comment[it]=Servizi DCOP RSS
+diff -urN -x CVS kdenetwork.orig/kget/kget.desktop kdenetwork/kget/kget.desktop
+--- kdenetwork.orig/kget/kget.desktop	Thu Apr  1 14:34:58 2004
++++ kdenetwork/kget/kget.desktop	Sat Apr 17 14:45:25 2004
+@@ -29,6 +29,7 @@
+ GenericName[ga]=Bainisteoir Thíosluchtaithe
+ GenericName[gl]=Xestor de Descargas
+ GenericName[hi]=डाउनलोड प्रबंधक
++GenericName[hr]=Upravitelj preuzimanja
+ GenericName[hu]=Letöltéskezelő
+ GenericName[is]=Niðurhalsstjóri
+ GenericName[it]=Gestore dei download
+diff -urN -x CVS kdenetwork.orig/kget/kmainwidget.cpp kdenetwork/kget/kmainwidget.cpp
+--- kdenetwork.orig/kget/kmainwidget.cpp	Mon Mar 29 16:48:38 2004
++++ kdenetwork/kget/kmainwidget.cpp	Wed Apr 28 15:45:26 2004
+@@ -2045,7 +2045,7 @@
+     QString tmpstr;
+ 
+     int totalFiles = 0;
+-    int totalSize = 0;
++    KIO::filesize_t totalSize = 0;
+     int totalSpeed = 0;
+     QTime remTime;
+ 
+diff -urN -x CVS kdenetwork.orig/kget/transfer.cpp kdenetwork/kget/transfer.cpp
+--- kdenetwork.orig/kget/transfer.cpp	Wed Mar 17 12:32:31 2004
++++ kdenetwork/kget/transfer.cpp	Wed Apr 28 15:45:26 2004
+@@ -2,7 +2,7 @@
+ *                                transfer.cpp
+ *                             -------------------
+ *
+-*    Revision     : $Id$
++*    Revision     : $Id$
+ *    begin        : Tue Jan 29 2002
+ *    copyright    : (C) 2002 by Patrick Charbonnier
+ *                 : Based On Caitoo v.0.7.3 (c) 1998 - 2000, Matej Koss
+@@ -278,7 +278,7 @@
+     dlgIndividual->setCanResume(canResume);
+ 
+     if (totalSize != 0) {
+-        //logMessage(i18n("Total size is %1 bytes").arg(totalSize));
++        //logMessage(i18n("Total size is %1 bytes").arg((double)totalSize));
+         setText(view->lv_total, KIO::convertSize(totalSize));
+     } else {
+         //logMessage(i18n("Total size is unknown"));
+@@ -566,7 +566,7 @@
+ 
+ 
+ 
+-void Transfer::slotTotalSize(unsigned long bytes)
++void Transfer::slotTotalSize(KIO::filesize_t bytes)
+ {
+ #ifdef _DEBUG
+     sDebugIn<<" totalSize is = "<<totalSize << endl;
+@@ -575,7 +575,7 @@
+     if (totalSize == 0) {
+         totalSize = bytes;
+         if (totalSize != 0) {
+-            logMessage(i18n("Total size is %1 bytes").arg(totalSize));
++            logMessage(i18n("Total size is %1 bytes").arg((double)totalSize,0,'f'));
+             setText(view->lv_total, KIO::convertSize(totalSize));
+             dlgIndividual->setTotalSize(totalSize);
+             dlgIndividual->setPercent(0);
+@@ -600,7 +600,7 @@
+ 
+ 
+ 
+-void Transfer::slotProcessedSize(unsigned long bytes)
++void Transfer::slotProcessedSize(KIO::filesize_t bytes)
+ {
+     //sDebug<< ">>>>Entering"<<endl;
+ 
+diff -urN -x CVS kdenetwork.orig/kget/transfer.h kdenetwork/kget/transfer.h
+--- kdenetwork.orig/kget/transfer.h	Wed Feb 18 14:04:56 2004
++++ kdenetwork/kget/transfer.h	Wed Apr 28 15:45:27 2004
+@@ -2,7 +2,7 @@
+ *                                transfer.h
+ *                             -------------------
+ *
+-*    Revision     : $Id$
++*    Revision     : $Id$
+ *    begin        : Tue Jan 29 2002
+ *    copyright    : (C) 2002 by Patrick Charbonnier
+ *                 : Based On Caitoo v.0.7.3 (c) 1998 - 2000, Matej Koss
+@@ -87,11 +87,11 @@
+         return remainingTime;
+     }
+ 
+-    unsigned long getTotalSize()const
++    KIO::filesize_t getTotalSize()const
+     {
+         return totalSize;
+     }
+-    unsigned long getProcessedSize()const
++    KIO::filesize_t getProcessedSize()const
+     {
+         return processedSize;
+     }
+@@ -178,8 +178,8 @@
+     void slotQueue();
+     void slotFinished();
+ 
+-    void slotTotalSize(unsigned long bytes);
+-    void slotProcessedSize(unsigned long);
++    void slotTotalSize(KIO::filesize_t bytes);
++    void slotProcessedSize(KIO::filesize_t);
+ 
+     void slotStartTime(const QDateTime &);
+ 
+@@ -203,8 +203,8 @@
+     // schedule time
+     QDateTime startTime;
+ 
+-    unsigned long totalSize;
+-    unsigned long processedSize;
++    KIO::filesize_t totalSize;
++    KIO::filesize_t processedSize;
+     int percent;
+ 
+ 
+diff -urN -x CVS kdenetwork.orig/kget/x-kgetlist.desktop kdenetwork/kget/x-kgetlist.desktop
+--- kdenetwork.orig/kget/x-kgetlist.desktop	Thu Mar  4 14:10:34 2004
++++ kdenetwork/kget/x-kgetlist.desktop	Sat Apr 17 14:45:27 2004
+@@ -20,6 +20,7 @@
+ Comment[gl]=Lista de Descargas de KGet
+ Comment[he]=רשימת הורדה של Kget
+ Comment[hi]=के-गेट डाउनलोड सूची
++Comment[hr]=Kget lista za preuzimanje
+ Comment[hu]=KGet letöltési lista
+ Comment[is]=Kget niðurhalslisti
+ Comment[it]=Lista download KGet
+diff -urN -x CVS kdenetwork.orig/knewsticker/common/configaccess.cpp kdenetwork/knewsticker/common/configaccess.cpp
+--- kdenetwork.orig/knewsticker/common/configaccess.cpp	Mon Feb  2 16:02:08 2004
++++ kdenetwork/knewsticker/common/configaccess.cpp	Thu Apr 29 13:00:42 2004
+@@ -277,6 +277,7 @@
+ 		QString::fromLatin1("http://www.tagesschau.de/newsticker.rdf"),
+ 		QString::fromLatin1("http://www.tagesschau.de/favicon.ico"),
+ 		NewsSourceBase::Misc, 10, true, false, QString::fromLatin1("de")),
++/*
+ 		NewsSourceBase::Data(
+ 		QString::fromLatin1("CNN"),
+ 		QString::fromLatin1("http://www.cnn.com/cnn.rss"),
+@@ -287,6 +288,7 @@
+ 		QString::fromLatin1("http://europe.cnn.com/cnn.rss"),
+ 		QString::fromLatin1("http://europe.cnn.com/favicon.ico"),
+ 		NewsSourceBase::Misc, 10, false, false),
++*/
+ 		NewsSourceBase::Data(
+ 		QString::fromLatin1("HotWired"),
+ 		QString::fromLatin1("http://www.hotwired.com/webmonkey/meta/headlines.rdf"),
+diff -urN -x CVS kdenetwork.orig/knewsticker/common/configaccess.h kdenetwork/knewsticker/common/configaccess.h
+--- kdenetwork.orig/knewsticker/common/configaccess.h	Mon Feb  2 16:02:08 2004
++++ kdenetwork/knewsticker/common/configaccess.h	Thu Apr 29 13:00:42 2004
+@@ -21,7 +21,7 @@
+ #include <qpixmap.h>
+ #include <qvaluelist.h>
+ 
+-#define DEFAULT_NEWSSOURCES 60
++#define DEFAULT_NEWSSOURCES 58
+ #define DEFAULT_SUBJECTS 13
+ 
+ class QColor;
+diff -urN -x CVS kdenetwork.orig/knewsticker/eventsrc kdenetwork/knewsticker/eventsrc
+--- kdenetwork.orig/knewsticker/eventsrc	Thu Mar  4 14:10:36 2004
++++ kdenetwork/knewsticker/eventsrc	Sun Apr 25 01:29:54 2004
+@@ -201,7 +201,7 @@
+ Name[ga]=Comhad RDF Neamhbhailí
+ Name[gl]=Fichero RDF inválido
+ Name[he]=קובץ RDF לא תקף
+-Name[hi]=अवैध RDF फाइल
++Name[hi]=अवैध RDF फ़ाइल
+ Name[hr]=Nevažeća RDF datoteka
+ Name[hu]=Érvénytelen RDF fájl
+ Name[id]=Berkas RDF rusak
+@@ -261,7 +261,7 @@
+ Comment[ga]=Ní féidir an comhad RDF thíosluchtaithe a pharsáil
+ Comment[gl]=Non se pode analiza-lo documento RDF descargado
+ Comment[he]=אין אפשרות לפרק את קובץ ה-RDF שהורד
+-Comment[hi]=डाउनलोडेड RDF फाइल पारसे नहीं कर पाया
++Comment[hi]=डाउनलोडेड RDF फ़ाइल पारसे नहीं कर पाया
+ Comment[hr]=Preuzeta RDF datoteka nije mogla biti procesuirana
+ Comment[hu]=A letöltött RDF fájl feldolgozása nem sikerült
+ Comment[is]=Gat ekki lesið RDF skrána sem var sótt
+diff -urN -x CVS kdenetwork.orig/knewsticker/knewstickerstub/knewstickerstub.cpp kdenetwork/knewsticker/knewstickerstub/knewstickerstub.cpp
+--- kdenetwork.orig/knewsticker/knewstickerstub/knewstickerstub.cpp	Wed Jun 25 09:05:02 2003
++++ kdenetwork/knewsticker/knewstickerstub/knewstickerstub.cpp	Mon Apr  5 11:56:43 2004
+@@ -49,7 +49,7 @@
+ 	DCOPClient *dcopClient = app.dcopClient();
+ 	dcopClient->attach();
+ 
+-	KConfig cfg(QString::fromLatin1("knewsticker_appletrc"), false, false);
++	KConfig cfg(QString::fromLatin1("knewsticker_panelappletrc"), false, false);
+ 	ConfigAccess configFrontend(&cfg);
+ 
+ 	if (args->isSet("addrdf")) {
+diff -urN -x CVS kdenetwork.orig/knewsticker/knewstickerstub/knewstickerstub.desktop kdenetwork/knewsticker/knewstickerstub/knewstickerstub.desktop
+--- kdenetwork.orig/knewsticker/knewstickerstub/knewstickerstub.desktop	Thu Mar  4 14:10:38 2004
++++ kdenetwork/knewsticker/knewstickerstub/knewstickerstub.desktop	Sun Apr 25 01:29:56 2004
+@@ -79,7 +79,7 @@
+ Comment[ga]=Comhéadan le haghaidh chumraíocht KNewsTicker
+ Comment[gl]=Unha interfaz para a configuración de KNewsTicker
+ Comment[he]=ממשק לקביעת התצורה של KNewsTicker
+-Comment[hi]=के-न्यूज टिकर कॉन्फिगरेशन हेतु फ्रन्टएण्ड
++Comment[hi]=के-न्यूज टिकर कॉन्फ़िगरेशन हेतु फ्रन्टएण्ड
+ Comment[hr]=Sučelje za podešavanje KNewsTicker-a
+ Comment[hu]=Előtétprogram a KNewsTicker beállításához
+ Comment[is]=Stillingatól fyrir Fréttastrimilinn
+diff -urN -x CVS kdenetwork.orig/knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop kdenetwork/knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop
+--- kdenetwork.orig/knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	Sun Feb 29 16:44:41 2004
++++ kdenetwork/knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	Sun Apr 25 01:29:58 2004
+@@ -20,7 +20,7 @@
+ Name[fr]=Page des propriétés du fichier source de KNewsTicker
+ Name[gl]=Páxina de propiedades dos arquivos fonte de KNewsTicker
+ Name[he]=דף מאפייני קובץ מקור של KNewsTicker
+-Name[hi]=के-न्यूज टिकर सोर्स फाइल गुण पृष्ठ
++Name[hi]=के-न्यूज टिकर सोर्स फ़ाइल गुण पृष्ठ
+ Name[hr]=Stranica sa postavkama KNewsTicker izvorne datoteke
+ Name[hu]=A KNewsTicker forrásfájlok tulajdonságlapja
+ Name[is]=Stillisíða fyrir frumskrár Fréttastrimils
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/chatwindow/chatwindow.desktop kdenetwork/kopete/kopete/chatwindow/chatwindow.desktop
+--- kdenetwork.orig/kopete/kopete/chatwindow/chatwindow.desktop	Wed Mar 31 14:38:53 2004
++++ kdenetwork/kopete/kopete/chatwindow/chatwindow.desktop	Sun Apr 25 01:30:00 2004
+@@ -30,7 +30,8 @@
+ Name[ga]=Fuinneog Chomhrá Kopete
+ Name[gl]=Fiestra de chat de Kopete
+ Name[he]=חלון שיחה של Kopete
+-Name[hi]=के-ऑप्टी चैट विंडो
++Name[hi]=के-ऑप्टी गपशप विंडो
++Name[hr]=Kopeteov prozor za razgovor
+ Name[hu]=Kopete csevegési ablak
+ Name[is]=Spjallgluggi Kopete
+ Name[it]=Finestra di chat di Kopete
+@@ -68,7 +69,8 @@
+ Comment[ga]=Fuinneog chomhrá réamhshocruithe Kopete
+ Comment[gl]=A fiestra por defecto de chat de Kopete
+ Comment[he]=ברירת מחדל עבור חלון השיחב של Kopete
+-Comment[hi]=डिफाल्ट के-ऑप्टी चैट विंडो
++Comment[hi]=डिफ़ॉल्ट के-ऑप्टी गपशप विंडो
++Comment[hr]=Uobičajeni Kopeteov prozor za razgovor
+ Comment[hu]=Az alapértelmezett Kopete csevegési ablak
+ Comment[is]=Sjálfgefni spjallgluggi Kopete
+ Comment[it]=La finestra di chat predefinita di Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/config/accounts/kopete_accountconfig.desktop kdenetwork/kopete/kopete/config/accounts/kopete_accountconfig.desktop
+--- kdenetwork.orig/kopete/kopete/config/accounts/kopete_accountconfig.desktop	Thu Mar  4 14:10:42 2004
++++ kdenetwork/kopete/kopete/config/accounts/kopete_accountconfig.desktop	Sat Apr 17 14:45:31 2004
+@@ -28,6 +28,7 @@
+ Name[gl]=Contas
+ Name[he]=חשבונות
+ Name[hi]=अकाउन्ट्स
++Name[hr]=Korisnički računi
+ Name[hu]=Azonosítók
+ Name[is]=Notandanöfn
+ Name[it]=Account
+@@ -68,6 +69,7 @@
+ Comment[gl]=Aquí podes xestionar todas as túas contas
+ Comment[he]=כאן באפשרותך לנהל את כל חשבונותיך
+ Comment[hi]=यहाँ आप अपने सभी अकाउन्ट्स का प्रबंधन कर सकते हैं
++Comment[hr]=Ovde možete upravljati svim vašim korisničkim računima
+ Comment[hu]=Itt lehet kezelni az azonosítókat
+ Comment[is]=Hér geturðu haldið utan um öll þín notandanöfn
+ Comment[it]=Qui puoi gestire tutti i tuoi account
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/config/appearance/kopete_appearanceconfig.desktop kdenetwork/kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
+--- kdenetwork.orig/kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	Thu Mar  4 14:10:44 2004
++++ kdenetwork/kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	Sun Apr 25 01:30:02 2004
+@@ -67,7 +67,8 @@
+ Comment[fr]=Vous pouvez modifier l'apparence et l'ergonomie de Kopete ici
+ Comment[gl]=Aquí podes modificar o aspecto de Kopete
+ Comment[he]=כאן תוכל לשנות את המראה של Kopete
+-Comment[hi]=यहां आप के-ऑप्टी के रूप और विन्यास को बदल सकते हैं
++Comment[hi]=यहाँ आप के-ऑप्टी के रूप और विन्यास को बदल सकते हैं
++Comment[hr]=Ovde možete promijeniti Kopeteov izgled i način rada
+ Comment[hu]=Itt lehet megváltoztatni a Kopete grafikai megjelenését
+ Comment[is]=Hér er hægt að breyta útliti og viðmóti Kopete
+ Comment[it]=Qui puoi modificare l'aspetto di Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/config/behavior/kopete_behaviorconfig.desktop kdenetwork/kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
+--- kdenetwork.orig/kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	Thu Mar  4 14:10:46 2004
++++ kdenetwork/kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	Sun Apr 25 01:30:04 2004
+@@ -68,7 +68,8 @@
+ Comment[fr]=Vous pouvez personnaliser Kopete ici
+ Comment[gl]=Aquí podes personaliza-lo comportamento de Kopete
+ Comment[he]=כאן ניתן להתאים אישית את Kopete
+-Comment[hi]=यहां आप के-ऑप्टी को पर्सनलाइज कर सकते हैं
++Comment[hi]=यहाँ आप के-ऑप्टी को पर्सनलाइज कर सकते हैं
++Comment[hr]=Ovde možete prilagoditi Kopete
+ Comment[hu]=Itt lehet megváltoztatni a Kopete működési jellemzőit
+ Comment[is]=Hér geturðu átt við Kopete
+ Comment[it]=Qui puoi personalizzare Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopetecontactlistview.cpp kdenetwork/kopete/kopete/contactlist/kopetecontactlistview.cpp
+--- kdenetwork.orig/kopete/kopete/contactlist/kopetecontactlistview.cpp	Sun Mar  7 03:52:39 2004
++++ kdenetwork/kopete/kopete/contactlist/kopetecontactlistview.cpp	Fri Apr  9 22:34:57 2004
+@@ -290,8 +290,12 @@
+ 	// clear the appropriate flags from the viewport - qt docs say we have to mask
+ 	// these flags out of the QListView to make weirdly painted list items work, but
+ 	// that doesn't do the job. this does.
+-	class MyWidget : public QWidget { public: QWidget::clearWFlags; };
+-	static_cast<MyWidget*>( viewport() )->clearWFlags( WStaticContents | WNoAutoErase );
++//	class MyWidget : public QWidget { public: QWidget::clearWFlags; };
++//	static_cast<MyWidget*>( viewport() )->clearWFlags( WStaticContents );
++
++	//The above causes compiler errors with the native TRU64 and IRIX compilers
++	//This should make it compile for both platforms and still seems to work
++	static_cast<KopeteContactListView*>(viewport())->clearWFlags( WStaticContents | WNoAutoErase );
+ }
+ 
+ void KopeteContactListView::initActions( KActionCollection *ac )
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/eventsrc kdenetwork/kopete/kopete/eventsrc
+--- kdenetwork.orig/kopete/kopete/eventsrc	Tue Mar 23 13:59:46 2004
++++ kdenetwork/kopete/kopete/eventsrc	Sat Apr 17 14:45:37 2004
+@@ -47,6 +47,7 @@
+ Name[gl]=Evento
+ Name[he]=ארוע
+ Name[hi]=घटना
++Name[hr]=Događaj
+ Name[hu]=Esemény
+ Name[is]=Atburður
+ Name[it]=Evento
+@@ -132,6 +133,7 @@
+ Name[gl]=Entrante
+ Name[he]=נכנס
+ Name[hi]=आवक
++Name[hr]=Dolazni
+ Name[hu]=Bejövő
+ Name[is]=Kemur inn
+ Name[it]=In entrata
+@@ -173,6 +175,7 @@
+ Comment[gl]=Mensaxes entrantes recibida
+ Comment[he]=מתקבל מסר נכנס
+ Comment[hi]=आवक संदेश आया
++Comment[hr]=Dolazna poruka je stigla
+ Comment[hu]=Üzenet érkezett
+ Comment[is]=Nýtt skeyti kemur
+ Comment[it]=Arrivano messaggi in entrata
+@@ -217,6 +220,7 @@
+ Name[gl]=Saliente
+ Name[he]=יוצא
+ Name[hi]=जावक
++Name[hr]=Izlazno
+ Name[hu]=Kimenő
+ Name[is]=Fer út
+ Name[it]=In uscita
+@@ -258,6 +262,7 @@
+ Comment[gl]=Mensaxe saínte enviada
+ Comment[he]=מסר יוצא נשלח
+ Comment[hi]=जावक संदेश प्रेषित
++Comment[hr]=Odlazna poruka je poslana
+ Comment[hu]=Kimenő üzenet továbbítódott
+ Comment[is]=Skeyti sent
+ Comment[it]=Spediti messaggi in uscita
+@@ -338,6 +343,7 @@
+ Comment[gl]=O usuario conectouse
+ Comment[he]=משתמש מתחבר
+ Comment[hi]=उपयोगकर्ता आनलाइन हुआ
++Comment[hr]=Korisnik uspostavlja vezu
+ Comment[hu]=Felhasználó online elérhetővé vált
+ Comment[is]=Notandi tengist
+ Comment[it]=L'utente va in linea
+@@ -377,6 +383,7 @@
+ Name[gl]=Desconectar
+ Name[he]=מנותק
+ Name[hi]=ऑफलाइन
++Name[hr]=Neumrežen
+ Name[is]=Aftengjast
+ Name[it]=Non in linea
+ Name[ja]=オフライン
+@@ -414,6 +421,7 @@
+ Comment[gl]=O usuario desconectouse
+ Comment[he]=משתמש מתנתק
+ Comment[hi]=उपयोगकर्ता ऑफलाइन हुआ
++Comment[hr]=Korisnik je odspojen
+ Comment[hu]=A felhasználó offline módba vált
+ Comment[is]=Notandi aftengist
+ Comment[it]=L'utente va non in linea
+@@ -457,6 +465,7 @@
+ Name[gl]=Cambio de estado
+ Name[he]=שינוי מצב
+ Name[hi]=स्थिति परिवर्तन
++Name[hr]=Promjena statusa
+ Name[hu]=Állapotváltozás
+ Name[is]=Breyta stöðu
+ Name[it]=Cambio di stato
+@@ -497,6 +506,7 @@
+ Comment[gl]=O usuario cambiou o seu estado de conexión
+ Comment[he]=המשתמש שינה את מצב ההתחברות שלו
+ Comment[hi]=उपयोगकर्ता ने अपनी आनलाइन स्थिति बदली
++Comment[hr]=Korisnik je promijenio svoj mrežni status.
+ Comment[hu]=A felhasználó megváltoztatta online/offline állapotát
+ Comment[is]=Notandi breytir um stöðu
+ Comment[it]=L'utente ha modificato il suo stato in linea.
+@@ -539,6 +549,7 @@
+ Name[gl]=Resaltar
+ Name[he]=מודגש
+ Name[hi]=उभारें
++Name[hr]=Isticanje
+ Name[hu]=Kiemelés
+ Name[is]=Merkja
+ Name[it]=Evidenziazione
+@@ -577,6 +588,7 @@
+ Comment[gl]=Unha mensaxe foi resaltada porque tiña o teu alcume
+ Comment[he]=המסר הודגש כי הוא הכיל את הכינוי שלך
+ Comment[hi]=एक संदेश उभारा गया चूंकि इसमें आपका निकनाम है
++Comment[hr]=Poruka je istaknuta zato jer je sadržavala vaš nadimak
+ Comment[hu]=Egy üzenet ki lett emelve, mert az Ön beceneve szerepel benne
+ Comment[is]=Skeyti var merkt því það innihélt þitt notendanafn
+ Comment[it]=Un messaggio è stato evidenziato perché contiene il tuo nick
+@@ -615,6 +627,7 @@
+ Name[gl]=Correo MSN
+ Name[he]=דואר MSN
+ Name[hi]=एमएसएन मेल
++Name[hr]=MSN pošta
+ Name[hu]=MSN e-mail
+ Name[is]=MSN póstur
+ Name[it]=Posta MSN
+@@ -648,6 +661,7 @@
+ Comment[gl]=Unha nova mensaxe chegou a túa bandexa de entrada de MSN
+ Comment[he]=התקבל עבורך דואר חדש בתיבת MSN 
+ Comment[hi]=आपके एमएसएन इनबॉक्स में नया ई-मेल आया है
++Comment[hr]=Nova poruka je stigla u vaš MSN sandučić
+ Comment[hu]=Új e-mail érkezett az MSN postaládába
+ Comment[is]=Nýr póstur kominn í MSN innhólfið
+ Comment[it]=È arrivata nuova posta nella tua casella MSN
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/kopete.desktop kdenetwork/kopete/kopete/kopete.desktop
+--- kdenetwork.orig/kopete/kopete/kopete.desktop	Wed Mar 31 14:38:55 2004
++++ kdenetwork/kopete/kopete/kopete.desktop	Sat Apr 17 14:45:39 2004
+@@ -14,6 +14,7 @@
+ GenericName[fr]=Messagerie instantanée
+ GenericName[gl]=Mensaxería Instantánea
+ GenericName[hi]=इंसटैंट मैसेंजर
++GenericName[hr]=Instant poruke
+ GenericName[hu]=Internetes csevegő
+ GenericName[it]=Messaggistica istantanea
+ GenericName[ja]=インスタントメッセンジャ
+@@ -43,6 +44,7 @@
+ Comment[gl]=Mensaxería Instantánea
+ Comment[he]=תוכנת מסרים מידיים
+ Comment[hi]=इंस्टैंट मैसेंजर
++Comment[hr]=Instant poruke
+ Comment[hu]=Azonnali üzenetküldő
+ Comment[is]=Samtalsforrit
+ Comment[it]=Messaggistica istantanea
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/kopeteiface.cpp kdenetwork/kopete/kopete/kopeteiface.cpp
+--- kdenetwork.orig/kopete/kopete/kopeteiface.cpp	Sun Oct 19 15:19:08 2003
++++ kdenetwork/kopete/kopete/kopeteiface.cpp	Sat Apr 17 17:17:49 2004
+@@ -27,6 +27,7 @@
+ #include "kopetepluginmanager.h"
+ #include "kopeteprotocol.h"
+ #include "kopeteaway.h"
++#include "kopetegroup.h"
+ #include "kopetecontact.h"
+ 
+ 
+@@ -100,6 +101,7 @@
+ 	if( myAccount )
+ 	{
+ 		QString contactName;
++		QString realGroupName;
+ 
+ 		//If the nickName isn't specified we need to display the userId in the prompt
+ 		if( displayName.isEmpty() || displayName.isNull() )
+@@ -107,13 +109,16 @@
+ 		else
+ 			contactName = displayName;
+ 
++		if ( !groupName.isEmpty() )
++			realGroupName = groupName;
++
+ 		// Confirm with the user before we add the contact
+ 		if( KMessageBox::questionYesNo( 0, i18n( "An external application is attempting to add the "
+ 			" '%1' contact '%2' to your contact list. Do you want to allow this?" )
+ 			.arg( protocolName ).arg( contactName ), i18n( "Allow Contact?" ) ) == 3 ) // Yes == 3
+ 		{
+ 			//User said Yes
+-			myAccount->addContact( contactId, displayName, 0L, KopeteAccount::DontChangeKABC, groupName, false );
++			myAccount->addContact( contactId, contactName, 0L, KopeteAccount::DontChangeKABC, realGroupName, false );
+ 			return true;
+ 		} else {
+ 			//User said No
+@@ -221,6 +226,11 @@
+ 	KopeteAccountManager::manager()->setAwayAll();
+ }
+ 
++void KopeteIface::setAway(const QString &msg)
++{
++	KopeteAccountManager::manager()->setAwayAll(msg);
++}
++
+ void KopeteIface::setAvailable()
+ {
+ 	KopeteAccountManager::manager()->setAvailableAll();
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/kopeteiface.h kdenetwork/kopete/kopete/kopeteiface.h
+--- kdenetwork.orig/kopete/kopete/kopeteiface.h	Wed Sep 17 13:05:29 2003
++++ kdenetwork/kopete/kopete/kopeteiface.h	Sat Apr 17 17:17:49 2004
+@@ -97,6 +97,11 @@
+ 	 */
+ 	void setAway();
+ 	/**
++	 * set all account away using the global away function
++	 * and set an away message.
++	 */
++	void setAway(const QString &msg);
++	/**
+ 	 * set Available all accountes
+ 	 */
+ 	void setAvailable();
+diff -urN -x CVS kdenetwork.orig/kopete/libkopete/compat/kcdialog/kplugininfo.desktop kdenetwork/kopete/libkopete/compat/kcdialog/kplugininfo.desktop
+--- kdenetwork.orig/kopete/libkopete/compat/kcdialog/kplugininfo.desktop	Wed Mar 10 15:00:35 2004
++++ kdenetwork/kopete/libkopete/compat/kcdialog/kplugininfo.desktop	Sat Apr 17 14:45:41 2004
+@@ -21,6 +21,7 @@
+ Name[gl]=Información sobre plugins de KDE
+ Name[he]=מידע תוסף KDE
+ Name[hi]=केडीई प्लगिन जानकारी
++Name[hr]=Informacije o KDE umetku
+ Name[hu]=KDE bővítőmodulok
+ Name[is]=KDE Íforritaupplýsingar
+ Name[it]=Informazioni plugin di KDE
+diff -urN -x CVS kdenetwork.orig/kopete/libkopete/kopeteplugin.desktop kdenetwork/kopete/libkopete/kopeteplugin.desktop
+--- kdenetwork.orig/kopete/libkopete/kopeteplugin.desktop	Thu Mar  4 14:10:52 2004
++++ kdenetwork/kopete/libkopete/kopeteplugin.desktop	Sat Apr 17 14:45:50 2004
+@@ -21,6 +21,7 @@
+ Comment[gl]=Plugin de Kopete
+ Comment[he]=תוסף Kopete
+ Comment[hi]=के-ऑप्टी प्लगइन
++Comment[hr]=Umetak za Kopete
+ Comment[hu]=Kopete bővítőmodul
+ Comment[is]=Kopete íforritið
+ Comment[it]=Plugin di Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/libkopete/kopeteprotocol.desktop kdenetwork/kopete/libkopete/kopeteprotocol.desktop
+--- kdenetwork.orig/kopete/libkopete/kopeteprotocol.desktop	Thu Mar  4 14:10:54 2004
++++ kdenetwork/kopete/libkopete/kopeteprotocol.desktop	Sat Apr 17 14:45:52 2004
+@@ -21,6 +21,7 @@
+ Comment[gl]=Plugin de protocolo para Kopete
+ Comment[he]=תוסף פרוטוקול של Kopete
+ Comment[hi]=के-ऑप्टी प्रोटोकॉल प्लगइन
++Comment[hr]=Umetak za Kopete protokol
+ Comment[hu]=Kopete protokollkezelő bővítőmodul
+ Comment[is]=Íforrit fyrir Kopete samskiptamátann
+ Comment[it]=Plugin del protocollo di Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/libkopete/kopeteui.desktop kdenetwork/kopete/libkopete/kopeteui.desktop
+--- kdenetwork.orig/kopete/libkopete/kopeteui.desktop	Thu Mar  4 14:10:56 2004
++++ kdenetwork/kopete/libkopete/kopeteui.desktop	Sat Apr 17 14:45:54 2004
+@@ -20,6 +20,7 @@
+ Comment[gl]=Un protocolo de interfaz gráfica para Kopete
+ Comment[he]=תוסף ממשק משתמש של Kopete
+ Comment[hi]=एक के-ऑप्टी यूआई प्लगइन
++Comment[hr]=Umetak za Kopeteovo korisničko sučelje
+ Comment[hu]=Kopete bővítőmodul a grafikus felülethez
+ Comment[is]=Viðmótsíforrit fyrir Kopete
+ Comment[it]=Plugin per UI di Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/alias/kopete_alias.desktop kdenetwork/kopete/plugins/alias/kopete_alias.desktop
+--- kdenetwork.orig/kopete/plugins/alias/kopete_alias.desktop	Tue Mar 23 13:59:48 2004
++++ kdenetwork/kopete/plugins/alias/kopete_alias.desktop	Sat Apr 17 14:45:56 2004
+@@ -52,6 +52,7 @@
+ Comment[gl]=Engadir alias persoáis para comandos
+ Comment[he]=הוספת כינוים מותאמים אישית עבור פקודות
+ Comment[hi]=कमांड्स हेतु अनुकूलित अलाएस जोड़े
++Comment[hr]=Dodaje posebne aliase za naredbe
+ Comment[hu]=Egyéni másodlagos (alias) nevek megadása parancsokhoz
+ Comment[is]=Bætir við samheitum á skipanir
+ Comment[it]=Aggiungi alias personalizzati per i comandi
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/alias/kopete_alias_config.desktop kdenetwork/kopete/plugins/alias/kopete_alias_config.desktop
+--- kdenetwork.orig/kopete/plugins/alias/kopete_alias_config.desktop	Tue Mar 23 13:59:50 2004
++++ kdenetwork/kopete/plugins/alias/kopete_alias_config.desktop	Sat Apr 17 14:45:58 2004
+@@ -48,6 +48,7 @@
+ Comment[gl]=Engadir alias persoáis para comandos
+ Comment[he]=הוספת כינוים מותאמים אישית עבור פקודות
+ Comment[hi]=कमांड्स हेतु अनुकूलित अलाएस जोड़े
++Comment[hr]=Dodaje posebne aliase za naredbe
+ Comment[hu]=Egyéni másodlagos (alias) nevek megadása parancsokhoz
+ Comment[is]=Bætir við samheitum á skipanir
+ Comment[it]=Aggiungi alias personalizzati per i comandi
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/autoreplace/kopete_autoreplace.desktop kdenetwork/kopete/plugins/autoreplace/kopete_autoreplace.desktop
+--- kdenetwork.orig/kopete/plugins/autoreplace/kopete_autoreplace.desktop	Sun Feb 29 16:45:10 2004
++++ kdenetwork/kopete/plugins/autoreplace/kopete_autoreplace.desktop	Sat Apr 17 14:46:00 2004
+@@ -31,6 +31,7 @@
+ Name[gl]=Auto-reemplazo
+ Name[he]=החלפה אוטומטית
+ Name[hi]=स्वचालित बदलें
++Name[hr]=Automatska zamijena
+ Name[hu]=Automatikus szövegcsere
+ Name[is]=Skipta sjálfkrafa út
+ Name[it]=Sostituisci automaticamente
+@@ -69,6 +70,7 @@
+ Comment[gl]=Reemplaza automáticamente algún texto que tí podes escoller
+ Comment[he]=מחליף אוטומטית טקסט לבחירתך
+ Comment[hi]=कुछ पाठ जिन्हें आप चुन सकते हैं, स्वचालित बदलें
++Comment[hr]=Automatska zamjena teksta kojeg odaberete
+ Comment[hu]=A beállított szövegeket automatikusan lecseréli
+ Comment[is]=Skiptir sjálfkrafa út þeim texta sem þú velur
+ Comment[it]=Sostituisci automaticamente del testo a scelta
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/autoreplace/kopete_autoreplace_config.desktop kdenetwork/kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
+--- kdenetwork.orig/kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	Mon Mar  1 14:52:33 2004
++++ kdenetwork/kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	Sat Apr 17 14:46:02 2004
+@@ -27,6 +27,7 @@
+ Name[gl]=Auto-reemplazo
+ Name[he]=החלפה אוטומטית
+ Name[hi]=स्वचालित बदलें
++Name[hr]=Automatska zamijena
+ Name[hu]=Automatikus szövegcsere
+ Name[is]=Skipta sjálfkrafa út
+ Name[it]=Sostituisci automaticamente
+@@ -65,6 +66,7 @@
+ Comment[gl]=Reemplaza algún texto que podes escoller
+ Comment[he]=מחליף אוטומטית טקסט לבחירתך
+ Comment[hi]=कुछ पाठ जिन्हें आप चुन सकते हैं, स्वचालित बदलें
++Comment[hr]=Automatska zamjena teksta kojeg odaberete
+ Comment[hu]=A kiválasztott szövegeket automatikusan lecseréli
+ Comment[is]=Skiptir sjálfkrafa út þeim texta sem þú velur
+ Comment[it]=Sostituisci automaticamente del testo a scelta
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/connectionstatus/kopete_connectionstatus.desktop kdenetwork/kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
+--- kdenetwork.orig/kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	Thu Mar  4 14:11:02 2004
++++ kdenetwork/kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	Sat Apr 17 14:46:04 2004
+@@ -30,6 +30,7 @@
+ Name[gl]=Estado da conexión1
+ Name[he]=מצב החיבור
+ Name[hi]=कनेक्शन स्थिति
++Name[hr]=Status veze
+ Name[hu]=A kapcsolat állapota
+ Name[is]=Staða tengingar
+ Name[it]=Stato della connessione
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/contactnotes/kopete_contactnotes.desktop kdenetwork/kopete/plugins/contactnotes/kopete_contactnotes.desktop
+--- kdenetwork.orig/kopete/plugins/contactnotes/kopete_contactnotes.desktop	Mon Mar  1 14:52:37 2004
++++ kdenetwork/kopete/plugins/contactnotes/kopete_contactnotes.desktop	Sat Apr 17 14:46:06 2004
+@@ -30,6 +30,7 @@
+ Name[gl]=Notas de contacto
+ Name[he]=הערות על איש-קשר
+ Name[hi]=कॉन्टेक्ट नोट्स
++Name[hr]=Zabilješke kontakata
+ Name[hu]=Megjegyzés a partnerekhez
+ Name[is]=Skráð um notanda
+ Name[it]=Note contatto
+@@ -66,6 +67,7 @@
+ Comment[gl]=Engadir notas persoáis ós teus contactos
+ Comment[he]=הוספת הערות אישיות לגבי אנשי-הקשר שלך
+ Comment[hi]=आपके कॉन्टेक्ट्स पर व्यक्तिगत टीप जोड़े
++Comment[hr]=Dodaje osobne zabilješke o vašim kontaktima
+ Comment[hu]=Személyes megjegyzések fűzése a partnerek adataihoz
+ Comment[is]=Bæta við upplýsingum um notanda
+ Comment[it]=Aggiungi note personali ai tuoi contatti
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/cryptography/kopete_cryptography.desktop kdenetwork/kopete/plugins/cryptography/kopete_cryptography.desktop
+--- kdenetwork.orig/kopete/plugins/cryptography/kopete_cryptography.desktop	Thu Mar  4 14:11:04 2004
++++ kdenetwork/kopete/plugins/cryptography/kopete_cryptography.desktop	Sat Apr 17 14:46:08 2004
+@@ -32,6 +32,7 @@
+ Name[gl]=Criptografía
+ Name[he]=קריפטוגרפיה
+ Name[hi]=क्रिप्टोग्राफी
++Name[hr]=Kriptografija
+ Name[hu]=Titkosítás
+ Name[is]=Dulritun
+ Name[it]=Crittografia
+@@ -70,6 +71,7 @@
+ Comment[gl]=Encriptar e desencriptar mensaxes con GPG
+ Comment[he]=הצפנה ופענוח של הודעות בעזרת GPG
+ Comment[hi]=जीपीजी के द्वारा संदेश एनक्रिप्ट तथा डिक्रिप्ट करे
++Comment[hr]=Kriptiranje i dekriptiranej poruka GPG-om
+ Comment[hu]=Titkosítás/dekódolás GPG-vel
+ Comment[is]=Dulrita og afkóða skeyti með GPG
+ Comment[it]=Cifra e decifra i messaggi con GPG
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/cryptography/kopete_cryptography_config.desktop kdenetwork/kopete/plugins/cryptography/kopete_cryptography_config.desktop
+--- kdenetwork.orig/kopete/plugins/cryptography/kopete_cryptography_config.desktop	Thu Mar  4 14:11:06 2004
++++ kdenetwork/kopete/plugins/cryptography/kopete_cryptography_config.desktop	Sat Apr 17 14:46:10 2004
+@@ -28,6 +28,7 @@
+ Name[gl]=Criptografía
+ Name[he]=קריפטוגרפיה
+ Name[hi]=क्रिप्टोग्राफी
++Name[hr]=Kriptografija
+ Name[hu]=Titkosítás
+ Name[is]=Dulritun
+ Name[it]=Crittografia
+@@ -66,6 +67,7 @@
+ Comment[gl]=Encripta mensaxes con PGP
+ Comment[he]=מצפין הודעות בעזרת PGP
+ Comment[hi]=जीपीजी के द्वारा संदेश एनक्रिप्ट करे
++Comment[hr]=Kriptiranje i dekriptiranej poruka PGP-om
+ Comment[hu]=Üzenetek titkosítása PGP-vel
+ Comment[is]=Dulritar skeyti með PGP
+ Comment[it]=Cifra i messaggi con PGP
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/highlight/kopete_highlight.desktop kdenetwork/kopete/plugins/highlight/kopete_highlight.desktop
+--- kdenetwork.orig/kopete/plugins/highlight/kopete_highlight.desktop	Thu Mar  4 14:11:08 2004
++++ kdenetwork/kopete/plugins/highlight/kopete_highlight.desktop	Sat Apr 17 14:46:15 2004
+@@ -32,6 +32,7 @@
+ Name[gl]=Resaltar
+ Name[he]=מודגש
+ Name[hi]=उभारें
++Name[hr]=Isticanje
+ Name[hu]=Kiemelés
+ Name[is]=Merkja
+ Name[it]=Evidenziazione
+@@ -71,6 +72,7 @@
+ Comment[gl]=Resaltar mensaxes
+ Comment[he]=הדגשת מסר
+ Comment[hi]=संदेशों को उभारें
++Comment[hr]=Isticanje poruka
+ Comment[hu]=Szövegkiemelés
+ Comment[is]=Merkja skeyti
+ Comment[it]=Evidenzia i messaggi
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/highlight/kopete_highlight_config.desktop kdenetwork/kopete/plugins/highlight/kopete_highlight_config.desktop
+--- kdenetwork.orig/kopete/plugins/highlight/kopete_highlight_config.desktop	Thu Mar  4 14:11:10 2004
++++ kdenetwork/kopete/plugins/highlight/kopete_highlight_config.desktop	Sat Apr 17 14:46:17 2004
+@@ -28,6 +28,7 @@
+ Name[gl]=Resaltar
+ Name[he]=מודגש
+ Name[hi]=उभारें
++Name[hr]=Isticanje
+ Name[hu]=Kiemelés
+ Name[is]=Merkja
+ Name[it]=Evidenziazione
+@@ -66,6 +67,7 @@
+ Comment[gl]=Resalta texto usando filtros
+ Comment[he]=מדגיש מסרים מסויימים לפי מסננים
+ Comment[hi]=फिल्टर आधारित पाठ उभारें
++Comment[hr]=Isticanje poruka na osnovu filtera
+ Comment[hu]=Szövegkiemelés üzenetekben megadott szempontok szerint
+ Comment[is]=Merkir texta með tilliti til síunar
+ Comment[it]=Evidenzia i testi attraverso dei filtri
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/history/kopete_history.desktop kdenetwork/kopete/plugins/history/kopete_history.desktop
+--- kdenetwork.orig/kopete/plugins/history/kopete_history.desktop	Thu Mar  4 14:11:12 2004
++++ kdenetwork/kopete/plugins/history/kopete_history.desktop	Sat Apr 17 14:46:19 2004
+@@ -83,6 +83,7 @@
+ Comment[gl]=Rexitra tódolas mensajex para gardar conversacións
+ Comment[he]=שומר תיעוד מסודר שלך כל שיחותיך
+ Comment[hi]=आपके वार्तालाप की जानकारी बनाए रखने हेतु सभी संदेशों को लाग करें
++Comment[hr]=Upisuje u dnevnik sve poruke kako biste vodili evidenciju o svojim razgovorima
+ Comment[hu]=Az üzenetek archiválása
+ Comment[is]=Halda til haga samskiptaannál
+ Comment[it]=Effettua il log di tutti i messaggi in modo da avere traccia delle tue conversazioni
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/history/kopete_history_config.desktop kdenetwork/kopete/plugins/history/kopete_history_config.desktop
+--- kdenetwork.orig/kopete/plugins/history/kopete_history_config.desktop	Thu Mar  4 14:11:14 2004
++++ kdenetwork/kopete/plugins/history/kopete_history_config.desktop	Sat Apr 17 14:46:21 2004
+@@ -82,6 +82,7 @@
+ Comment[gl]=Plugin de historial
+ Comment[he]=תוסף ההיסטוריה
+ Comment[hi]=इतिहास प्लगइन
++Comment[hr]=Umetak za povijest
+ Comment[hu]=Előzmények bővítőmodul
+ Comment[is]=Söguíforrit
+ Comment[it]=Plugin cronologia
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/motionautoaway/kopete_motionaway.desktop kdenetwork/kopete/plugins/motionautoaway/kopete_motionaway.desktop
+--- kdenetwork.orig/kopete/plugins/motionautoaway/kopete_motionaway.desktop	Tue Mar 23 13:59:52 2004
++++ kdenetwork/kopete/plugins/motionautoaway/kopete_motionaway.desktop	Sat Apr 17 14:46:23 2004
+@@ -27,6 +27,7 @@
+ Name[gl]=Auto-alonxamento
+ Name[he]=שינוי מצב לפי גלאי תזוזה
+ Name[hi]=मोशन आटो अवे
++Name[hr]=Automatska odsutnost u nedostatku pokreta
+ Name[hu]=A távollét érzékelése mozgásdetektálással
+ Name[it]=Automaticamente "assente" se inutilizzato
+ Name[ja]=自動不在時の動作
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/motionautoaway/kopete_motionaway_config.desktop kdenetwork/kopete/plugins/motionautoaway/kopete_motionaway_config.desktop
+--- kdenetwork.orig/kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	Tue Mar 23 13:59:54 2004
++++ kdenetwork/kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	Sat Apr 17 14:46:25 2004
+@@ -23,6 +23,7 @@
+ Name[gl]=Auto-alonxamento
+ Name[he]=שינוי מצב לפי גלאי תזוזה
+ Name[hi]=मोशन आटो अवे
++Name[hr]=Automatska odsutnost u nedostatku pokreta
+ Name[hu]=A távollét érzékelése mozgásdetektálással
+ Name[it]=Automaticamente "assente" se inutilizzato
+ Name[ja]=自動不在時の動作
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/msginfo/kopete_msginfo.desktop kdenetwork/kopete/plugins/msginfo/kopete_msginfo.desktop
+--- kdenetwork.orig/kopete/plugins/msginfo/kopete_msginfo.desktop	Mon Mar  1 14:52:55 2004
++++ kdenetwork/kopete/plugins/msginfo/kopete_msginfo.desktop	Sat Apr 17 14:46:27 2004
+@@ -47,6 +47,7 @@
+ Comment[gl]=Un plugin escrito para o tutorial "Escribindo plugins para Kopete"
+ Comment[he]=תוסף לדוגמה לכתיבת תוספי Kopete
+ Comment[hi]=के-ऑप्टी प्लगइन्स लिखने के बारे में शिक्षण पाठ हेतु लिखा गया प्लगइन
++Comment[hr]=Umetak napisan za priručnik „Pisanje Kopete umetaka“
+ Comment[hu]=Mintaprogram a 'Hogyan írjunk Kopete bővítőmodult?' leíráshoz
+ Comment[is]=Íforrit fyrir 'Hvernig skrifa skal Kopete íforrit' handbókina
+ Comment[it]=Plugin scritto per il tutorial 'Writing Kopete Plugins'
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/netmeeting/kopete_netmeeting.desktop kdenetwork/kopete/plugins/netmeeting/kopete_netmeeting.desktop
+--- kdenetwork.orig/kopete/plugins/netmeeting/kopete_netmeeting.desktop	Thu Mar  4 14:11:16 2004
++++ kdenetwork/kopete/plugins/netmeeting/kopete_netmeeting.desktop	Sat Apr 17 14:46:29 2004
+@@ -40,6 +40,7 @@
+ Comment[gl]=Utiliza GnomeMeeting co MSN Messanger
+ Comment[he]=שימוש ב-GnomeMeeting עם MSN Messenger
+ Comment[hi]=एमएसएन मैसेंजर के साथ गनोम-मीटिंग उपयोग करें
++Comment[hr]=Korištenje GnomeMeetinga sa MSN Messengerom
+ Comment[hu]=A GnomeMeeting használata az MSN Messengerrel
+ Comment[is]=Nota GnomeMeeting fyrir MSN Messenger
+ Comment[it]=Utilizza GnomeMeeting con MSN Messenger
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/nowlistening/kopete_nowlistening.desktop kdenetwork/kopete/plugins/nowlistening/kopete_nowlistening.desktop
+--- kdenetwork.orig/kopete/plugins/nowlistening/kopete_nowlistening.desktop	Tue Mar 23 13:59:56 2004
++++ kdenetwork/kopete/plugins/nowlistening/kopete_nowlistening.desktop	Sat Apr 17 14:46:31 2004
+@@ -32,6 +32,7 @@
+ Name[gl]=Escoitando
+ Name[he]=מאזין עכשיו
+ Name[hi]=नाऊ लिसनिंग
++Name[hr]=Sada slušam
+ Name[hu]=Most figyelek
+ Name[is]=Hlustandi á
+ Name[it]=Adesso sto ascoltando
+@@ -67,6 +68,7 @@
+ Comment[gl]=Dílle ós teus amigos que estás a escoitar
+ Comment[he]=מספר לחבריך לאיזו מוסיקה אתה מאזין כרגע
+ Comment[hi]=आपके बड्डीस को बताता है कि आप क्या सुन रहे हैं
++Comment[hr]=Govori vašim prijateljima što trenutno slušate
+ Comment[hu]=A partnerek értesítése arról, hogy Ön mit hallgat
+ Comment[is]=Segir vinum þínum á hvað þú ert að hlusta
+ Comment[it]=Di' ai tuoi amici stai ascoltando
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/nowlistening/kopete_nowlistening_config.desktop kdenetwork/kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
+--- kdenetwork.orig/kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	Tue Mar 23 13:59:58 2004
++++ kdenetwork/kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	Sat Apr 17 14:46:33 2004
+@@ -28,6 +28,7 @@
+ Name[gl]=Escoitando
+ Name[he]=מאזין עכשיו
+ Name[hi]=नाऊ लिसनिंग
++Name[hr]=Sada slušam
+ Name[hu]=Most figyelek
+ Name[is]=Hlustandi á
+ Name[it]=Adesso sto ascoltando
+@@ -63,6 +64,7 @@
+ Comment[gl]=Dílle ós teus amigos que estás a escoitar
+ Comment[he]=מספר לחבריך לאיזו מוסיקה אתה מאזין כרגע
+ Comment[hi]=आपके बड्डीस को बताता है कि आप क्या सुन रहे हैं
++Comment[hr]=Govori vašim prijateljima što trenutno slušate
+ Comment[hu]=A partnerek értesítése arról, hogy Ön mit hallgat
+ Comment[is]=Segir vinum þínum á hvað þú ert að hlusta
+ Comment[it]=Di' ai tuoi amici stai ascoltando
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/perlscript/addscriptdialog.cpp kdenetwork/kopete/plugins/perlscript/addscriptdialog.cpp
+--- kdenetwork.orig/kopete/plugins/perlscript/addscriptdialog.cpp	Thu Jul 17 14:17:19 2003
++++ kdenetwork/kopete/plugins/perlscript/addscriptdialog.cpp	Wed Apr 14 18:25:05 2004
+@@ -16,8 +16,8 @@
+ #include <qlayout.h>
+ #include <kmessagebox.h>
+ 
+-/* 
+- *  Constructs a AddScriptDialog as a child of 'parent', with the 
++/*
++ *  Constructs a AddScriptDialog as a child of 'parent', with the
+  *  name 'name' and widget flags set to 'f'.
+  *
+  *  The dialog will by default be modeless, unless you set 'modal' to
+@@ -29,18 +29,18 @@
+ {
+     if ( !name )
+ 	setName( "AddScriptDialog" );
+-    AddScriptDialogLayout = new QGridLayout( this, 1, 1, 10, 10, "AddScriptDialogLayout"); 
++    AddScriptDialogLayout = new QGridLayout( this, 1, 1, 10, 10, "AddScriptDialogLayout");
+ 
+-    Layout1 = new QHBoxLayout( 0, 0, 6, "Layout1"); 
++    Layout1 = new QHBoxLayout( 0, 0, 6, "Layout1");
+     QSpacerItem* spacer = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+     Layout1->addItem( spacer );
+ 
+-    buttonOk = new QPushButton( this, "buttonOk" );
++    buttonOk = new KPushButton( this, "buttonOk" );
+     buttonOk->setAutoDefault( TRUE );
+     buttonOk->setDefault( TRUE );
+     Layout1->addWidget( buttonOk );
+ 
+-    buttonCancel = new QPushButton( this, "buttonCancel" );
++    buttonCancel = new KPushButton( this, "buttonCancel" );
+     buttonCancel->setAutoDefault( TRUE );
+     Layout1->addWidget( buttonCancel );
+ 
+@@ -49,17 +49,17 @@
+     textLabel1 = new QLabel( this, "textLabel1" );
+     textLabel1->setAlignment( int( QLabel::AlignBottom ) );
+     AddScriptDialogLayout->addWidget( textLabel1, 0, 0 );
+-    
++
+     kLineEdit1 = new KLineEdit( this, "kLineEdit1" );
+     AddScriptDialogLayout->addWidget( kLineEdit1, 0, 1 );
+-    
++
+     textLabel2 = new QLabel( this, "textLabel2" );
+     textLabel2->setAlignment( int( QLabel::AlignBottom ) );
+     AddScriptDialogLayout->addWidget( textLabel2, 1, 0 );
+-    
++
+     kLineEdit2 = new KLineEdit( this, "kLineEdit2" );
+     AddScriptDialogLayout->addWidget( kLineEdit2, 1, 1 );
+-  
++
+     textLabel3 = new QLabel( this, "textLabel3" );
+     textLabel3->setAlignment( int( QLabel::AlignBottom ) );
+     AddScriptDialogLayout->addWidget( textLabel3, 2, 0 );
+@@ -68,13 +68,13 @@
+     kURLRequester1->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)7, (QSizePolicy::SizeType)0, 0, 0, kURLRequester1->sizePolicy().hasHeightForWidth() ) );
+     kURLRequester1->setFilter( QString::fromLatin1("*.pl|") + i18n("Perl Scripts") + QString::fromLatin1("\n*.*|") + i18n("All Files") );
+     AddScriptDialogLayout->addWidget( kURLRequester1, 2, 1 );
+-    
++
+     QWidget::setTabOrder( kLineEdit1, kLineEdit2 );
+     QWidget::setTabOrder( kLineEdit2, kURLRequester1->lineEdit() );
+-    kLineEdit1->setFocus();    
+-    
++    kLineEdit1->setFocus();
++
+     languageChange();
+-    
++
+     resize( QSize(455, 149).expandedTo(minimumSizeHint()) );
+ 
+     // signals and slots connections
+@@ -110,9 +110,9 @@
+ void AddScriptDialog::languageChange()
+ {
+     setCaption( tr2i18n( "Add Script" ) );
+-    buttonOk->setText( tr2i18n( "&OK" ) );
++    buttonOk->setGuiItem( KStdGuiItem::ok() );
+     buttonOk->setAccel( QKeySequence( QString::null ) );
+-    buttonCancel->setText( tr2i18n( "&Cancel" ) );
++    buttonCancel->setGuiItem( KStdGuiItem::cancel() );
+     buttonCancel->setAccel( QKeySequence( QString::null ) );
+     textLabel1->setText( tr2i18n( "Name:" ) );
+     textLabel2->setText( tr2i18n( "Description:" ) );
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/perlscript/kopete_perlscript.desktop kdenetwork/kopete/plugins/perlscript/kopete_perlscript.desktop
+--- kdenetwork.orig/kopete/plugins/perlscript/kopete_perlscript.desktop	Thu Mar  4 14:11:22 2004
++++ kdenetwork/kopete/plugins/perlscript/kopete_perlscript.desktop	Sat Apr 17 14:46:35 2004
+@@ -31,6 +31,7 @@
+ Name[gl]=Plugin para escribir guións na linguaxe Perl
+ Name[he]=תוסף תסריטי פרל
+ Name[hi]=पर्ल स्क्रिप्टिंग प्लगइन
++Name[hr]=Umetak za Perl skriptiranje
+ Name[hu]=Bővítőmodul Perl szkriptekhez
+ Name[is]=Perlforritaíforrit
+ Name[it]=Plugin per script in perl
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/texteffect/kopete_texteffect.desktop kdenetwork/kopete/plugins/texteffect/kopete_texteffect.desktop
+--- kdenetwork.orig/kopete/plugins/texteffect/kopete_texteffect.desktop	Thu Mar  4 14:11:24 2004
++++ kdenetwork/kopete/plugins/texteffect/kopete_texteffect.desktop	Sat Apr 17 14:46:37 2004
+@@ -31,6 +31,7 @@
+ Name[gl]=Efecto de texto
+ Name[he]=פעלולי טקסט
+ Name[hi]=पाठ प्रभाव
++Name[hr]=Tekstualni efekti
+ Name[hu]=Szövegeffektus
+ Name[is]=Breyta letri
+ Name[it]=Effetto di testo
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/texteffect/kopete_texteffect_config.desktop kdenetwork/kopete/plugins/texteffect/kopete_texteffect_config.desktop
+--- kdenetwork.orig/kopete/plugins/texteffect/kopete_texteffect_config.desktop	Thu Mar  4 14:11:26 2004
++++ kdenetwork/kopete/plugins/texteffect/kopete_texteffect_config.desktop	Sat Apr 17 14:46:39 2004
+@@ -27,6 +27,7 @@
+ Name[gl]=Efecto de texto
+ Name[he]=פעלולי טקסט
+ Name[hi]=पाठ प्रभाव
++Name[hr]=Tekstualni efekti
+ Name[hu]=Szövegeffektus
+ Name[is]=Breyta letri
+ Name[it]=Effetto di testo
+@@ -66,6 +67,7 @@
+ Comment[gl]=Engadir efectos especiáis ó teu texto
+ Comment[he]=הוסף אפקטים מיוחדים להודעותך
+ Comment[hi]=आपके संदेशों में विशिष्ट प्रभाव जोड़े
++Comment[hr]=Dodaje specijalne efekte vašem tekstu
+ Comment[hu]=Speciális effektusok hozzáadása az üzenetek szövegéhez
+ Comment[is]=Bæta skreytingum í skeytin
+ Comment[it]=Aggiunti effetti speciali al tuo testo
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/translator/kopete_translator.desktop kdenetwork/kopete/plugins/translator/kopete_translator.desktop
+--- kdenetwork.orig/kopete/plugins/translator/kopete_translator.desktop	Tue Mar 23 14:00:00 2004
++++ kdenetwork/kopete/plugins/translator/kopete_translator.desktop	Sun Apr 25 01:30:08 2004
+@@ -32,6 +32,7 @@
+ Name[gl]=Traductor
+ Name[he]=מתרגם
+ Name[hi]=अनुवादक
++Name[hr]=Prevoditelj
+ Name[hu]=Tolmács
+ Name[is]=Þýðandi
+ Name[it]=Traduttore
+@@ -71,7 +72,8 @@
+ Comment[fr]=Discutez avec des étrangers dans votre langue natale
+ Comment[gl]=Fala con amigos extranxeiros na túa lingua nativa
+ Comment[he]=שוחח עם חברים מחו"ל בשפת האם שלך
+-Comment[hi]=आपकी मातृ भाषा में विदेशी बड्डीस से चैट करें
++Comment[hi]=आपकी मातृ भाषा में विदेशी बड्डीस से गपशप करें
++Comment[hr]=Razgovo sa stranim prijateljima na vašem materinjem jeziku
+ Comment[hu]=Csevegés más nyelvet beszélőkkel a saját nyelven
+ Comment[is]=rabbaðu við útlenda félaga á þínu máli
+ Comment[it]=Parla con un tuo amico straniero nella tua lingua
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/translator/kopete_translator_config.desktop kdenetwork/kopete/plugins/translator/kopete_translator_config.desktop
+--- kdenetwork.orig/kopete/plugins/translator/kopete_translator_config.desktop	Tue Mar 23 14:00:02 2004
++++ kdenetwork/kopete/plugins/translator/kopete_translator_config.desktop	Sat Apr 17 14:46:43 2004
+@@ -28,6 +28,7 @@
+ Name[gl]=Traductor
+ Name[he]=מתרגם
+ Name[hi]=अनुवादक
++Name[hr]=Prevoditelj
+ Name[hu]=Tolmács
+ Name[is]=Þýðandi
+ Name[it]=Traduttore
+@@ -68,6 +69,7 @@
+ Comment[gl]=Traduce as túas mensaxes da túa lingua nativa a outra
+ Comment[he]=מתרגם את מסריך משפת האם שלך לשפה אחרת
+ Comment[hi]=आपकी मातृ भाषा के संदेशों को अन्य भाषा में अनुवाद करे
++Comment[hr]=Prevodi poruke s vašeg maternjeg jezika na neki drugi
+ Comment[hu]=Az üzenetek lefordítása a saját nyelvről egy idegen nyelvre
+ Comment[is]=Þýðir skeyti úr þinni tungu yfir í annað
+ Comment[it]=Traduci messaggi dalla tua lingua in un'altra
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/webpresence/kopete_webpresence.desktop kdenetwork/kopete/plugins/webpresence/kopete_webpresence.desktop
+--- kdenetwork.orig/kopete/plugins/webpresence/kopete_webpresence.desktop	Wed Mar 31 14:38:58 2004
++++ kdenetwork/kopete/plugins/webpresence/kopete_webpresence.desktop	Sat Apr 17 14:46:45 2004
+@@ -28,6 +28,7 @@
+ Comment[gl]=Mostra o status da túa lista de contactos (ou parte) nunha páxina web
+ Comment[he]=מציא את מצב ההתחברות שלך חברים ברשימת הקשר שלך )או של חלקם( בעמוד WEB.
+ Comment[hi]=वेब पृष्ठ पर आपकी कॉन्टेक्ट सूची की स्थिति (या आंशिक) दिखाए
++Comment[hr]=Prikazivanje statusa (dijelova) vaše liste kontakata na web stranici
+ Comment[hu]=A partnerlista-tagok állapotának megjelenítése weboldalon
+ Comment[is]=Sýnir stöðu (hluta) lista þinna á vefsíðu
+ Comment[it]=Mostra lo stato della (o parte della) tua lista contatti su una pagina web
+@@ -63,6 +64,7 @@
+ Name[gl]=Presencia na web
+ Name[he]=נוכחות רשת
+ Name[hi]=वेब उपस्थिति
++Name[hr]=Prisutnost na webu
+ Name[hu]=Webes jelenlét
+ Name[is]=Á vefnum
+ Name[it]=Presenza web
+diff -urN -x CVS kdenetwork.orig/kopete/plugins/webpresence/kopete_webpresence_config.desktop kdenetwork/kopete/plugins/webpresence/kopete_webpresence_config.desktop
+--- kdenetwork.orig/kopete/plugins/webpresence/kopete_webpresence_config.desktop	Wed Mar 31 14:39:00 2004
++++ kdenetwork/kopete/plugins/webpresence/kopete_webpresence_config.desktop	Sat Apr 17 14:46:47 2004
+@@ -24,6 +24,7 @@
+ Comment[gl]=Mostra o estado da túa lista de contactos (ou parte) nunha páxina web
+ Comment[he]=מציא את מצב ההתחברות שלך חברים ברשימת הקשר שלך )או של חלקם( בעמוד WEB.
+ Comment[hi]=वेब पृष्ठ पर आपकी कॉन्टेक्ट सूची की स्थिति (या आंशिक) दिखाए
++Comment[hr]=Prikazivanje statusa (dijelova) vaše liste kontakata na web stranici
+ Comment[hu]=A partnerek állapotának megjelenítése weboldalon
+ Comment[is]=Sýnir stöðu (hluta) lista þinna á vefsíðu
+ Comment[it]=Mostra lo stato (o una parte) della tua lista contatti su una pagina web
+@@ -59,6 +60,7 @@
+ Name[gl]=Presencia na web
+ Name[he]=נוכחות רשת
+ Name[hi]=वेब उपस्थिति
++Name[hr]=Prisutnost na webu
+ Name[hu]=Webes jelenlét
+ Name[is]=Á vefnum
+ Name[it]=Presenza web
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kopete/protocols/configure.in.in
+--- kdenetwork.orig/kopete/protocols/configure.in.in	Wed Nov  5 23:06:26 2003
++++ kdenetwork/kopete/protocols/configure.in.in	Wed Apr 28 15:10:06 2004
+@@ -24,7 +24,7 @@
+ ac_save_CXXFLAGS="$CXXFLAGS"
+ LIBS="$LIBGG_LIBS -lgadu $LIBPTHREAD"
+ CFLAGS="$CFLAGS $LIBGG_INCLUDES"
+-AC_MSG_CHECKING([libgadu version 1.4rc2 to 1.4 with pthread support])
++AC_MSG_CHECKING([libgadu version 1.4rc2, 1.4, 1.5(rcX) with pthread support])
+ 	AC_TRY_RUN(
+ 	[
+ 	
+@@ -44,14 +44,12 @@
+ 			return 1;
+ 		}
+ 
+-		if ( min > 4 ){
+-			return 1;
++		if ( min == 4 || min == 5 ){
++			return 0;
+ 		}
+ 			     
+-	    return 0;
+-#else
+-	    return 1;
+ #endif
++	    return 1;
+ 	}
+ 	], [
+ 	LIBGG_LIBS="$LIBGG_LIBS -lgadu $LIBPTHREAD"
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/gadu/kopete_gadu.desktop kdenetwork/kopete/protocols/gadu/kopete_gadu.desktop
+--- kdenetwork.orig/kopete/protocols/gadu/kopete_gadu.desktop	Tue Mar 23 14:00:08 2004
++++ kdenetwork/kopete/protocols/gadu/kopete_gadu.desktop	Sat Apr 17 14:46:49 2004
+@@ -36,6 +36,7 @@
+ Comment[gl]=Protocolo para conectarse a Gadu-Gadu
+ Comment[he]=פרוטוקול להתחברות ל- Gadu-Gadu
+ Comment[hi]=गडू-गडू से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na Gadu-Gadu
+ Comment[hu]=Protokoll a Gadu-Gadu használatához
+ Comment[is]=Samskiptamáti til að tengjast Gadu-Gadu
+ Comment[it]=Protocollo per connessione a Gadu-Gadu
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/irc/kopete_irc.desktop kdenetwork/kopete/protocols/irc/kopete_irc.desktop
+--- kdenetwork.orig/kopete/protocols/irc/kopete_irc.desktop	Tue Mar 23 14:00:10 2004
++++ kdenetwork/kopete/protocols/irc/kopete_irc.desktop	Sat Apr 17 14:46:51 2004
+@@ -35,6 +35,7 @@
+ Comment[gl]=Protocolo para conectar a IRC
+ Comment[he]=פרוטוקול התחברות ל- IRC
+ Comment[hi]=आईआरसी से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na IRC
+ Comment[hu]=Protokoll az IRC használatához
+ Comment[is]=Samskiptamáti til að tengjast IRC
+ Comment[it]=Protocollo per connessione a IRC
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/jabber/kopete_jabber.desktop kdenetwork/kopete/protocols/jabber/kopete_jabber.desktop
+--- kdenetwork.orig/kopete/protocols/jabber/kopete_jabber.desktop	Tue Mar 23 14:00:12 2004
++++ kdenetwork/kopete/protocols/jabber/kopete_jabber.desktop	Sat Apr 17 14:46:53 2004
+@@ -36,6 +36,7 @@
+ Comment[gl]=Protocolo para se conectar a Jabber
+ Comment[he]=פרוטוקול התחברות ל- Jabber
+ Comment[hi]=जैबर से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na Jabber
+ Comment[hu]=Protokoll a Jabber használatához
+ Comment[is]=Samskiptamáti til að tengjast Jabber
+ Comment[it]=Protocollo per connessione a Jabber
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/msn/config/kopete_msn_config.desktop kdenetwork/kopete/protocols/msn/config/kopete_msn_config.desktop
+--- kdenetwork.orig/kopete/protocols/msn/config/kopete_msn_config.desktop	Tue Mar 23 14:00:14 2004
++++ kdenetwork/kopete/protocols/msn/config/kopete_msn_config.desktop	Sat Apr 17 14:46:55 2004
+@@ -29,6 +29,7 @@
+ Name[gl]=Plugin para MSN
+ Name[he]=תוסף MSN
+ Name[hi]=एमएसएन प्लगइन
++Name[hr]=MSN umetak
+ Name[hu]=MSN-bővítőmodul
+ Name[is]=MSN íforrit
+ Name[it]=Plugin MSN
+@@ -68,11 +69,13 @@
+ Comment[gl]=Protocolo para a rede de Microsoft
+ Comment[he]=תוסף חיבור לרשת מיקרוסופט
+ Comment[hi]=माइक्रोसॉफ्ट नेटवर्क प्रोटोकॉल
++Comment[hr]=Microsoft mrežni protokol
+ Comment[hu]=Microsoft hálózati protokoll
+ Comment[is]=Microsoft Network Protocol 
+ Comment[it]=Protocollo di rete Microsoft
+ Comment[ja]=Microsoftネットワークプロトコル
+ Comment[nl]=Verbinden met het Microsoft Network
++Comment[nn]=Microsoft Network-protokoll
+ Comment[pl]=Protokół Microsoft Network
+ Comment[pt]=Protocolo da Microsoft Network
+ Comment[pt_BR]=Protocolo de Rede Microsoft
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/msn/kopete_msn.desktop kdenetwork/kopete/protocols/msn/kopete_msn.desktop
+--- kdenetwork.orig/kopete/protocols/msn/kopete_msn.desktop	Tue Mar 23 14:00:16 2004
++++ kdenetwork/kopete/protocols/msn/kopete_msn.desktop	Sat Apr 17 14:46:57 2004
+@@ -45,12 +45,14 @@
+ Comment[gl]=Protocolo para se conectar ó MSN Messanger
+ Comment[he]=פרוטוקול התחברות ל- MSN Messenger
+ Comment[hi]=एमएसएन मैसेंजर से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na MSN Messenger
+ Comment[hu]=Protokoll az MSN Messenger használatához
+ Comment[is]=Samskiptamáti til að tengjast MSN Messenger
+ Comment[it]=Protocollo per connessiona MSN Messenger
+ Comment[ja]=MSNメッセンジャに接続するプロトコル
+ Comment[nb]=Protokoll for å koble til MSN Messenger
+ Comment[nl]=Protocol om met MSN Messenger te verbinden
++Comment[nn]=Protokoll for å kopla til MSN Messenger
+ Comment[pl]=Protokół połączenia z serwerem MSN Messenger
+ Comment[pt]=Um protocolo para ser ligar ao MSN Messenger
+ Comment[pt_BR]=Protocolo para conexão ao MSN Messenger
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/msn/msnaccount.cpp kdenetwork/kopete/protocols/msn/msnaccount.cpp
+--- kdenetwork.orig/kopete/protocols/msn/msnaccount.cpp	Thu Apr  1 22:47:07 2004
++++ kdenetwork/kopete/protocols/msn/msnaccount.cpp	Fri Apr 30 05:29:33 2004
+@@ -219,11 +219,7 @@
+ 
+ void MSNAccount::slotGoOnline()
+ {
+-	// m_connectstatus = NLN;
+ 	m_awayReason = QString::null;
+-	if ( !isConnected() )
+-		connect();
+-	else
+ 		setOnlineStatus( MSNProtocol::protocol()->NLN );
+ }
+ 
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/msn/msnmessagemanager.cpp kdenetwork/kopete/protocols/msn/msnmessagemanager.cpp
+--- kdenetwork.orig/kopete/protocols/msn/msnmessagemanager.cpp	Thu Apr  1 22:47:07 2004
++++ kdenetwork/kopete/protocols/msn/msnmessagemanager.cpp	Fri Apr 30 21:11:50 2004
+@@ -20,6 +20,7 @@
+ #include <qlabel.h>
+ #include <qimage.h>
+ #include <qtooltip.h>
++#include <qfile.h>
+ 
+ #include <kconfig.h>
+ #include <kdebug.h>
+@@ -491,7 +492,8 @@
+ 	const MSNContact *c = static_cast<const MSNContact *>( members().getFirst() );
+ 	if ( c && m_image )
+ 	{
+-		if ( c->displayPicture() )
++		KTempFile* tempFile = c->displayPicture();
++		if ( tempFile && tempFile->file() && tempFile->file()->size() != 0 )
+ 		{
+ 			// FIXME: don't duplicate this code with the c'tor - Martijn
+ 			// FIXME: don't hardcode the 22x22 geometry, but adjust to the toolbar's height - Martijn
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/oscar/aim/kopete_aim.desktop kdenetwork/kopete/protocols/oscar/aim/kopete_aim.desktop
+--- kdenetwork.orig/kopete/protocols/oscar/aim/kopete_aim.desktop	Tue Mar 23 14:00:18 2004
++++ kdenetwork/kopete/protocols/oscar/aim/kopete_aim.desktop	Sat Apr 17 14:46:59 2004
+@@ -35,12 +35,14 @@
+ Comment[gl]=Protocolo para se conectar ó AIM
+ Comment[he]=פרוטוקול התחברות ל- AIM
+ Comment[hi]=से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na AIM
+ Comment[hu]=Protokoll az AIM használatához
+ Comment[is]=Samskiptamáti til að tengjast AIM
+ Comment[it]=Protocollo per connessione a AIM
+ Comment[ja]=AIMに接続するプロトコル
+ Comment[nb]=Protokoll for å koble til AIM
+ Comment[nl]=Protocol om met AIM (AOL Instant Messenger) te verbinden
++Comment[nn]=Protokoll for å kopla til AIM
+ Comment[pl]=Protokół połączenia z serwerem AIM
+ Comment[pt]=Um protocolo para se ligar ao AIM
+ Comment[pt_BR]=Protocolo de conexão ao AIM
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/oscar/icq/icq_webhandler/icq_webhandler.desktop kdenetwork/kopete/protocols/oscar/icq/icq_webhandler/icq_webhandler.desktop
+--- kdenetwork.orig/kopete/protocols/oscar/icq/icq_webhandler/icq_webhandler.desktop	Wed Feb  4 15:14:37 2004
++++ kdenetwork/kopete/protocols/oscar/icq/icq_webhandler/icq_webhandler.desktop	Sun Apr  4 14:54:53 2004
+@@ -8,6 +8,7 @@
+ Name[hu]=ICQ-webkezelő
+ Name[ja]=icq_ウェブハンドラ
+ Name[nb]=icq_netthåndterer
++Name[nn]=icq_netthandterar
+ Name[pt_BR]=manipulador web do icq
+ Name[sv]=ICQ-webbhantering
+ Name[ta]=PWSDirhandle
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/oscar/icq/icq_webhandler/x-icq.desktop kdenetwork/kopete/protocols/oscar/icq/icq_webhandler/x-icq.desktop
+--- kdenetwork.orig/kopete/protocols/oscar/icq/icq_webhandler/x-icq.desktop	Tue Mar 23 14:00:20 2004
++++ kdenetwork/kopete/protocols/oscar/icq/icq_webhandler/x-icq.desktop	Sat Apr 17 14:47:01 2004
+@@ -17,12 +17,14 @@
+ Comment[gl]=Contacto ICQ
+ Comment[he]=איש-קשר ICQ
+ Comment[hi]=आईसीक्यू कॉन्टेक्ट
++Comment[hr]=ICQ kontakt
+ Comment[hu]=ICQ-kapcsolat
+ Comment[is]=ICQ tengiliður
+ Comment[it]=Contatto ICQ
+ Comment[ja]=ICQコンタクト
+ Comment[nb]=ICQ kontakt
+ Comment[nl]=ICQ contact
++Comment[nn]=ICQ-kontakt
+ Comment[pl]=Kontakt ICQ
+ Comment[pt]=Contacto de ICQ
+ Comment[pt_BR]=Contato ICQ
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/oscar/icq/kopete_icq.desktop kdenetwork/kopete/protocols/oscar/icq/kopete_icq.desktop
+--- kdenetwork.orig/kopete/protocols/oscar/icq/kopete_icq.desktop	Tue Mar 23 14:00:22 2004
++++ kdenetwork/kopete/protocols/oscar/icq/kopete_icq.desktop	Sat Apr 17 14:47:03 2004
+@@ -36,12 +36,14 @@
+ Comment[gl]=Protocolo para se conectar á rede ICQ
+ Comment[he]=פרוטוקול התחברות ל- ICQ
+ Comment[hi]=आईसीक्यू से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na ICQ
+ Comment[hu]=Protokoll az ICQ használatához
+ Comment[is]=Samskiptamáti til að tengjast ICQ
+ Comment[it]=Protocollo per connessione a ICQ
+ Comment[ja]=ICQに接続するプロトコル
+ Comment[nb]=Protokoll for å koble til ICQ
+ Comment[nl]=Protocol om met ICQ te verbinden
++Comment[nn]=Protokoll for å kopla til ICQ
+ Comment[pl]=Protokół połączenia z serwerem ICQ
+ Comment[pt]=Um protocolo para se ligar ao ICQ
+ Comment[pt_BR]=Protocolo de conexão ao ICQ
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/oscar/oscaraccount.cpp kdenetwork/kopete/protocols/oscar/oscaraccount.cpp
+--- kdenetwork.orig/kopete/protocols/oscar/oscaraccount.cpp	Sun Feb 29 19:40:07 2004
++++ kdenetwork/kopete/protocols/oscar/oscaraccount.cpp	Sun Apr 11 05:55:40 2004
+@@ -733,7 +733,7 @@
+ 			// Get a list of the groups it's in
+ 			KopeteGroupList kopeteGroups = parentContact->groups();
+ 
+-			if(kopeteGroups.isEmpty())
++			if ( kopeteGroups.isEmpty() || kopeteGroups.first()->displayName() == "Top-Level" )
+ 			{
+ 				kdDebug(14150) << k_funcinfo
+ 					<< "Contact with no group, adding to group 'Buddies'" << endl;
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/sms/kopete_sms.desktop kdenetwork/kopete/protocols/sms/kopete_sms.desktop
+--- kdenetwork.orig/kopete/protocols/sms/kopete_sms.desktop	Tue Mar 23 14:00:24 2004
++++ kdenetwork/kopete/protocols/sms/kopete_sms.desktop	Sat Apr 17 14:47:05 2004
+@@ -38,12 +38,14 @@
+ Comment[gl]=Protocolo para enviar mansaxes SMS
+ Comment[he]=פרוטוקול שליחת הודעות SMS
+ Comment[hi]=से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za slanje SMS poruka
+ Comment[hu]=Protokoll SMS üzenetek küldéséhez
+ Comment[is]=Samskiptamáti til að senda SMS skilaboð
+ Comment[it]=Protocollo per inviare messaggi SMS
+ Comment[ja]=SMSメッセージを送るプロトコル
+ Comment[nb]=Protokoll for å sende SMS-meldinger
+ Comment[nl]=Protocol om SMS berichten te versturen
++Comment[nn]=Protokoll for å senda SMS-meldingar
+ Comment[pl]=Protokół wysyłania wiadomości SMS
+ Comment[pt]=Protocolo para enviar mensagens SMS
+ Comment[pt_BR]=Protocolo para o envio de mensagens SMS
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/testbed/kopete_testbed.desktop kdenetwork/kopete/protocols/testbed/kopete_testbed.desktop
+--- kdenetwork.orig/kopete/protocols/testbed/kopete_testbed.desktop	Tue Mar 23 14:00:26 2004
++++ kdenetwork/kopete/protocols/testbed/kopete_testbed.desktop	Sat Apr 17 14:47:07 2004
+@@ -21,10 +21,12 @@
+ Name[fi]=Testipenkki
+ Name[gl]=testbed
+ Name[hi]=टेस्टबेड
++Name[hr]=Probno okruženje
+ Name[hu]=Tesztelési
+ Name[is]=Prufuhorn
+ Name[nb]=Testbenk
+ Name[nl]=Testomgeving
++Name[nn]=Testbenk
+ Name[pl]=Testowy
+ Name[pt]=Testes
+ Name[sk]=Test
+@@ -52,12 +54,14 @@
+ Comment[gl]=Protocolo de Kopete para probas
+ Comment[he]=פרוטוקול הניסוי של Kopete
+ Comment[hi]=के-ऑप्टी टेस्ट प्रोटोकॉल
++Comment[hr]=Kopete protokol za testiranje
+ Comment[hu]=Kopete tesztprotokoll
+ Comment[is]=Kopete prufuíhlutur
+ Comment[it]=Protocollo di test di Kopete
+ Comment[ja]=Kopeteテストプロトコル
+ Comment[nb]=Kopete protokoll for tester
+ Comment[nl]=Kopete testprotocol
++Comment[nn]=Kopete-protokoll for testing
+ Comment[pl]=Protokół testowy Kopete
+ Comment[pt]=Protocolo de teste do Kopete
+ Comment[pt_BR]=Protocolo de Teste do Kopete
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/winpopup/config/kopete_wp_config.desktop kdenetwork/kopete/protocols/winpopup/config/kopete_wp_config.desktop
+--- kdenetwork.orig/kopete/protocols/winpopup/config/kopete_wp_config.desktop	Tue Mar 23 14:00:28 2004
++++ kdenetwork/kopete/protocols/winpopup/config/kopete_wp_config.desktop	Sat Apr 17 14:47:09 2004
+@@ -29,12 +29,14 @@
+ Name[gl]=Plugin para WinPopup
+ Name[he]=תוסף WinPopup
+ Name[hi]=विन-पॉपअप प्लगइन
++Name[hr]=WinPopup umetak
+ Name[hu]=WinPopup bővítőmodul
+ Name[is]=WinPopup íhlutur
+ Name[it]=Plugin WinPopup
+ Name[ja]=WinPopupプラグイン
+ Name[nb]=Programtillegg for WinPopup
+ Name[nl]=WinPopup plug-in
++Name[nn]=Programtillegg for vindaugsmeldingar
+ Name[pl]=Wtyczka WinPopup
+ Name[pt]='Plugin' do WinPopup
+ Name[pt_BR]=Janela de Contexto
+@@ -63,11 +65,13 @@
+ Comment[gl]=Mensaxes "WinPopup" do sistema Windows de Microsoft
+ Comment[he]=מסרים בפרוטוקול "WinPopup" של מיקרוסופט
+ Comment[hi]=माइक्रोसॉफ्ट "WinPopup" विंडो मैसेंजर
++Comment[hr]=Microsoft "WinPopup" slanje poruka
+ Comment[hu]=Microsoft "WinPopup" üzenetek
+ Comment[it]=Finestra dei messaggi Microsoft "WinPopup"
+ Comment[ja]=Microsoft "WinPopup" ウィンドウメッセンジャ
+ Comment[nb]=Microsoft «WinPopup» Window Messenger
+ Comment[nl]=Microsoft "WinPopup" Windows Messenger
++Comment[nn]=Microsoft-vindaugsmeldingar
+ Comment[pl]=Komunikator Windows "WinPopup"
+ Comment[pt]=Mensageiro de Janelas "WinPopup" da Microsoft
+ Comment[pt_BR]=Mensageiro Instantâneo
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/winpopup/kopete_wp.desktop kdenetwork/kopete/protocols/winpopup/kopete_wp.desktop
+--- kdenetwork.orig/kopete/protocols/winpopup/kopete_wp.desktop	Tue Mar 23 14:00:30 2004
++++ kdenetwork/kopete/protocols/winpopup/kopete_wp.desktop	Sat Apr 17 14:47:11 2004
+@@ -18,6 +18,7 @@
+ Name=WinPopup
+ Name[ca]=Finestres emergents
+ Name[hi]=विन-पॉपअप
++Name[nn]=Vindaugsmeldingar
+ Name[pt_BR]=Janela de Contexto
+ Name[xx]=xxWinPopupxx
+ Name[zh_CN]=WinPoup
+@@ -38,12 +39,14 @@
+ Comment[gl]=Protocolo para enviar mensaxes a máquinas Windows mediante o protocolo Winpopup
+ Comment[he]=תוסף לשליחת מסרי WinPopup
+ Comment[hi]=विंडोस विन-पॉपअप मैसेंजर भेजने का प्रोटोकॉल
++Comment[hr]=Protokol za slanje Windows WinPopup poruka
+ Comment[hu]=Protokoll Windows felbukkanó üzenetek küldéséhez
+ Comment[is]=Protocol til að senda Windows WinPopup skeyti
+ Comment[it]=Protocollo per inviare messaggi Windows WinPopup
+ Comment[ja]=WindowsのWinPopupメッセージを送るプロトコル
+ Comment[nb]=Protokoll for å sende Windows WinPopup -meldinger
+ Comment[nl]=Protocol om WinPopup berichten te versturen
++Comment[nn]=Protokoll for å senda Windows-vindaugsmeldingar
+ Comment[pl]=Protokół wysyłania komunikatów Windows WinPopup
+ Comment[pt]=Um protocolo para enviar mensagens de WinPopup do Windows
+ Comment[pt_BR]=Protocolo para o envio de mensagens de janela do Windows
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/kopete_yahoo.desktop kdenetwork/kopete/protocols/yahoo/kopete_yahoo.desktop
+--- kdenetwork.orig/kopete/protocols/yahoo/kopete_yahoo.desktop	Tue Mar 23 14:00:32 2004
++++ kdenetwork/kopete/protocols/yahoo/kopete_yahoo.desktop	Sat Apr 17 14:47:13 2004
+@@ -35,12 +35,14 @@
+ Comment[gl]=Protocolo para se conectar a Yahoo
+ Comment[he]=פרוטוקול התחברות ל- Yahoo
+ Comment[hi]=से जुड़ने का प्रोटोकॉल
++Comment[hr]=Protokol za povezivanje na Yahoo
+ Comment[hu]=Protokoll a Yahoo-hoz való csatlakozáshoz
+ Comment[is]=Protocol til að tengjast Yahoo
+ Comment[it]=Protocollo per connessione a Yahoo
+ Comment[ja]=Yahooに接続するプロトコル
+ Comment[nb]=Protokoll for å koble til Yahoo
+ Comment[nl]=Protocol om met Yahoo te verbinden
++Comment[nn]=Protokoll for å kopla til Yahoo
+ Comment[pl]=Protokół połączenia z serwerem Yahoo
+ Comment[pt]=Um protocolo para se ligar ao Yahoo
+ Comment[pt_BR]=Protocolo para conexão ao Yahoo
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/libyahoo2/sha.c kdenetwork/kopete/protocols/yahoo/libyahoo2/sha.c
+--- kdenetwork.orig/kopete/protocols/yahoo/libyahoo2/sha.c	Mon Sep 29 21:29:26 2003
++++ kdenetwork/kopete/protocols/yahoo/libyahoo2/sha.c	Fri Apr 30 19:22:08 2004
+@@ -50,7 +50,7 @@
+    */
+   for (i = 0; i < len; i++) {
+     ctx->W[ctx->lenW / 4] <<= 8;
+-    ctx->W[ctx->lenW / 4] |= (unsigned long)dataIn[i];
++    ctx->W[ctx->lenW / 4] |= (uint32)dataIn[i];
+     if ((++ctx->lenW) % 64 == 0) {
+       shaHashBlock(ctx);
+       ctx->lenW = 0;
+@@ -109,7 +109,7 @@
+ 
+ static void shaHashBlock(SHA_CTX *ctx) {
+   int t;
+-  unsigned long A,B,C,D,E,TEMP;
++  uint32 A,B,C,D,E,TEMP;
+ 
+   for (t = 16; t <= 79; t++)
+     ctx->W[t] =
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/libyahoo2/sha.h kdenetwork/kopete/protocols/yahoo/libyahoo2/sha.h
+--- kdenetwork.orig/kopete/protocols/yahoo/libyahoo2/sha.h	Mon Sep 29 21:29:26 2003
++++ kdenetwork/kopete/protocols/yahoo/libyahoo2/sha.h	Fri Apr 30 19:23:38 2004
+@@ -9,10 +9,10 @@
+ int strprintsha(char *dest, int *hashval);
+  
+ typedef struct {
+-  unsigned long H[5];
+-  unsigned long W[80];
++  uint32 H[5];
++  uint32 W[80];
+   int lenW;
+-  unsigned long sizeHi,sizeLo;
++  uint32 sizeHi,sizeLo;
+ } SHA_CTX;
+  
+ void shaInit(SHA_CTX *ctx);
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/yahoocontact.cpp kdenetwork/kopete/protocols/yahoo/yahoocontact.cpp
+--- kdenetwork.orig/kopete/protocols/yahoo/yahoocontact.cpp	Sun Feb 29 00:15:12 2004
++++ kdenetwork/kopete/protocols/yahoo/yahoocontact.cpp	Sat May  1 04:39:00 2004
+@@ -19,6 +19,7 @@
+ */
+ #include "kopetegroup.h"
+ #include "kopetemessagemanagerfactory.h"
++#include "kopetemetacontact.h"
+ 
+ // Local Includes
+ #include "yahoocontact.h"
+@@ -97,7 +98,7 @@
+ 	kdDebug(14180) << k_funcinfo  << endl;
+ 	if(!m_account->isConnected()) return;
+ 
+-	if(!m_account->isOnServer(m_userId))
++	if ( !m_account->isOnServer(m_userId) && !metaContact()->isTemporary() )
+ 	{	kdDebug(14180) << "Contact " << m_userId << " doesn't exist on server-side. Adding..." << endl;
+ 
+ 		KopeteGroupList groupList = metaContact()->groups();
+@@ -106,6 +107,28 @@
+ 	}
+ }
+ 
++void YahooContact::syncGroups()
++{
++	if ( !m_account->isConnected() )
++		return;
++
++	if ( !m_account->isOnServer( contactId() ) )
++	{
++		//TODO: Share this code with the above function
++		kdDebug(14180) << k_funcinfo << "Contact isn't on the server. Adding..." << endl;
++		KopeteGroupList groupList = metaContact()->groups();
++		for ( KopeteGroup *g = groupList.first(); g; g = groupList.next() )
++			m_account->yahooSession()->addBuddy(m_userId, g->displayName() );
++	}
++	else
++	{
++		QString newGroup = metaContact()->groups().first()->displayName();
++		m_account->yahooSession()->changeBuddyGroup( contactId(), m_groupName, newGroup );
++		m_groupName = newGroup;
++	}
++}
++
++
+ bool YahooContact::isOnline() const
+ {
+ 	//kdDebug(14180) << k_funcinfo << endl;
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/yahoocontact.h kdenetwork/kopete/protocols/yahoo/yahoocontact.h
+--- kdenetwork.orig/kopete/protocols/yahoo/yahoocontact.h	Sun Feb 29 00:15:12 2004
++++ kdenetwork/kopete/protocols/yahoo/yahoocontact.h	Sat May  1 04:39:00 2004
+@@ -70,6 +70,8 @@
+ 	 */
+ 	void syncToServer();
+ 
++	void syncGroups();
++
+ private slots:
+ 	void slotMessageManagerDestroyed();
+ 	void slotSendMessage(KopeteMessage &);
+diff -urN -x CVS kdenetwork.orig/kpf/kpfapplet.desktop kdenetwork/kpf/kpfapplet.desktop
+--- kdenetwork.orig/kpf/kpfapplet.desktop	Tue Mar 23 14:00:34 2004
++++ kdenetwork/kpf/kpfapplet.desktop	Sun Apr 25 01:30:12 2004
+@@ -20,7 +20,7 @@
+ Name[ga]=Freastalaí Comhad Poiblí
+ Name[gl]=Servidor público de arquivos
+ Name[he]=שרת קבצים ציבורי
+-Name[hi]=पब्लिक फाइल सर्वर
++Name[hi]=पब्लिक फ़ाइल सर्वर
+ Name[hr]=Javni poslužitelj datoteka
+ Name[hu]=KPF fájlkiszolgáló
+ Name[is]=Almennur skráarmiðlari
+@@ -33,7 +33,7 @@
+ Name[ms]=Pelayan Fail Awam
+ Name[mt]=Server tal-fajls pubbliċi
+ Name[nb]=Offentlig filtjener
+-Name[nl]=Publiek toegangelijke bestandsserver
++Name[nl]=Publiekelijk toegankelijke bestandsserver
+ Name[nn]=Offentleg filtenar
+ Name[nso]=Seabi sa Faele ya Setshaba
+ Name[pl]=Publiczny serwer plików
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/Belarus/.directory kdenetwork/kppp/DB/Provider/Belarus/.directory
+--- kdenetwork.orig/kppp/DB/Provider/Belarus/.directory	Thu Mar  4 14:12:00 2004
++++ kdenetwork/kppp/DB/Provider/Belarus/.directory	Sun Apr  4 14:55:09 2004
+@@ -24,6 +24,7 @@
+ Name[lv]=Baltkrievu
+ Name[nb]=Hviterussland
+ Name[nl]=Wit-Rusland
++Name[nn]=Kviterussland
+ Name[pl]=Białoruś
+ Name[pt]=Bielorússia
+ Name[pt_BR]=Bielo-rússia
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/France/.directory kdenetwork/kppp/DB/Provider/France/.directory
+--- kdenetwork.orig/kppp/DB/Provider/France/.directory	Thu Mar  4 14:12:07 2004
++++ kdenetwork/kppp/DB/Provider/France/.directory	Sun Apr  4 14:55:11 2004
+@@ -29,6 +29,7 @@
+ Name[mt]=Franza
+ Name[nb]=Frankrike
+ Name[nl]=Frankrijk
++Name[nn]=Frankrike
+ Name[pl]=Francja
+ Name[pt]=França
+ Name[pt_BR]=França
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/Ireland/.directory kdenetwork/kppp/DB/Provider/Ireland/.directory
+--- kdenetwork.orig/kppp/DB/Provider/Ireland/.directory	Thu Mar  4 14:12:11 2004
++++ kdenetwork/kppp/DB/Provider/Ireland/.directory	Sun Apr  4 14:55:13 2004
+@@ -25,6 +25,7 @@
+ Name[lt]=Airija
+ Name[nb]=Irland
+ Name[nl]=Ierland
++Name[nn]=Irland
+ Name[pl]=Irlandia
+ Name[pt]=Irlanda
+ Name[pt_BR]=Irlanda
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/Slovenia/.directory kdenetwork/kppp/DB/Provider/Slovenia/.directory
+--- kdenetwork.orig/kppp/DB/Provider/Slovenia/.directory	Thu Mar  4 14:12:21 2004
++++ kdenetwork/kppp/DB/Provider/Slovenia/.directory	Sun Apr 25 01:30:14 2004
+@@ -1,5 +1,6 @@
+ [Desktop Entry]
+ Name=Slovenia
++Name[ar]=سلوفينيا
+ Name[az]=Sloveniya
+ Name[be]=Славенія
+ Name[bg]=Словения
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/Switzerland/.directory kdenetwork/kppp/DB/Provider/Switzerland/.directory
+--- kdenetwork.orig/kppp/DB/Provider/Switzerland/.directory	Thu Mar  4 14:12:25 2004
++++ kdenetwork/kppp/DB/Provider/Switzerland/.directory	Sun Apr  4 14:55:15 2004
+@@ -31,6 +31,7 @@
+ Name[mt]=Svizzera
+ Name[nb]=Sveits
+ Name[nl]=Zwitserland
++Name[nn]=Sveits
+ Name[pl]=Szwajcaria
+ Name[pt]=Suíça
+ Name[pt_BR]=Suíça
+diff -urN -x CVS kdenetwork.orig/kppp/DB/Provider/Yugoslavia/.directory kdenetwork/kppp/DB/Provider/Yugoslavia/.directory
+--- kdenetwork.orig/kppp/DB/Provider/Yugoslavia/.directory	Thu Mar  4 14:12:33 2004
++++ kdenetwork/kppp/DB/Provider/Yugoslavia/.directory	Sun Apr 25 01:30:17 2004
+@@ -1,5 +1,6 @@
+ [Desktop Entry]
+ Name=Yugoslavia
++Name[ar]=يوغوسلافيا
+ Name[be]=Югаславія
+ Name[bg]=Югославия
+ Name[bs]=Jugoslavija
+@@ -16,11 +17,13 @@
+ Name[gl]=Iugoslavia
+ Name[he]=יוגוסלביה
+ Name[hi]=यूगोस्लाविया
++Name[hr]=Jugoslavija
+ Name[hu]=Jugoszlávia
+ Name[is]=Júgóslavía
+ Name[ja]=ユーゴスラビア
+ Name[nb]=Jugoslavia
+ Name[nl]=Joegoslavië
++Name[nn]=Jugoslavia
+ Name[pl]=Jugosławia
+ Name[pt]=Jugoslávia
+ Name[pt_BR]=Iugoslávia
+diff -urN -x CVS kdenetwork.orig/kppp/Kppp.desktop kdenetwork/kppp/Kppp.desktop
+--- kdenetwork.orig/kppp/Kppp.desktop	Sun Mar 28 15:53:09 2004
++++ kdenetwork/kppp/Kppp.desktop	Sun Apr 25 01:30:19 2004
+@@ -2,7 +2,6 @@
+ Encoding=UTF-8
+ GenericName=Internet Dial-up Tool
+ GenericName[af]=Internet Op-bel Program
+-GenericName[ar]=أداة للإتصال بشبكة الإنترنت
+ GenericName[bg]=Програма за включване в Интернет чрез телефон
+ GenericName[bs]=Program za spajanje na Internet
+ GenericName[ca]=Eina per a la connexió telefònica a Internet
+diff -urN -x CVS kdenetwork.orig/kppp/accounts.cpp kdenetwork/kppp/accounts.cpp
+--- kdenetwork.orig/kppp/accounts.cpp	Sat Dec 13 19:41:17 2003
++++ kdenetwork/kppp/accounts.cpp	Wed Apr 14 18:25:05 2004
+@@ -1,7 +1,7 @@
+ /*
+  *           kPPP: A pppd front end for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  *            Copyright (C) 1997 Bernd Johannes Wuebben
+  *                   wuebben@math.cornell.edu
+@@ -265,7 +265,7 @@
+ 	"very special settings, you might want to try the standard, "
+ 		"dialog-based setup."),
+ 		i18n("Create New Account"),
+-		i18n("&Wizard"), i18n("&Manual Setup"), i18n("Cancel"));
++		i18n("&Wizard"), i18n("&Manual Setup"));
+ 
+   switch(query) {
+   case KMessageBox::Yes:
+diff -urN -x CVS kdenetwork.orig/kppp/connect.cpp kdenetwork/kppp/connect.cpp
+--- kdenetwork.orig/kppp/connect.cpp	Sat Aug 30 00:24:11 2003
++++ kdenetwork/kppp/connect.cpp	Fri Apr 30 12:22:39 2004
+@@ -127,7 +127,7 @@
+   debug->setToggleButton(true);
+   connect(debug, SIGNAL(clicked()), SIGNAL(toggleDebugWindow()));
+ 
+-  cancel = new QPushButton(i18n("&Cancel"), this);
++  cancel = new KPushButton(KStdGuiItem::cancel(), this);
+   cancel->setFocus();
+   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
+ 
+@@ -374,14 +374,27 @@
+ 
+       QStringList &plist = gpppdata.phonenumbers();
+       QString bmarg= gpppdata.dialPrefix();
+-      bmarg += *plist.at(dialnumber);
++      
++      // pppd cannot handle numbers in Hindic/Bengali digits
++      // need to transform them to Arab digits
++      QString numberToDial = *plist.at(dialnumber);
++       for (unsigned int i=0; i<numberToDial.length(); i++)
++        {
++                QChar c = numberToDial[i];
++                if (c.isDigit())
++                        c = c.digitValue() + '0';
++                numberToDial[i] = c;
++        }
++
++      
++      bmarg += numberToDial;
+       QString bm = i18n("Dialing %1").arg(bmarg);
+       messg->setText(bm);
+       emit debugMessage(bm);
+ 
+       QString pn = gpppdata.modemDialStr();
+       pn += gpppdata.dialPrefix();
+-      pn += *plist.at(dialnumber);
++      pn += numberToDial;
+       if(++dialnumber >= plist.count())
+         dialnumber = 0;
+       writeline(pn);
+diff -urN -x CVS kdenetwork.orig/kppp/connect.h kdenetwork/kppp/connect.h
+--- kdenetwork.orig/kppp/connect.h	Fri Mar  7 23:06:51 2003
++++ kdenetwork/kppp/connect.h	Sun Apr 11 11:10:21 2004
+@@ -2,7 +2,7 @@
+  *
+  *            kPPP: A pppd front end for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  *            Copyright (C) 1997 Bernd Johannes Wuebben
+  *                   wuebben@math.cornell.edu
+@@ -30,7 +30,7 @@
+ #define _CONNECT_H_
+ 
+ #include <qtimer.h>
+-#include <qpushbutton.h>
++#include <kpushbutton.h>
+ #include <qlabel.h>
+ #include <qevent.h>
+ 
+@@ -129,7 +129,7 @@
+   QTimer *if_timeout_timer;
+ 
+   QLabel *messg;
+-  QPushButton *cancel;
++  KPushButton *cancel;
+ 
+   bool firstrunID;
+   bool firstrunPW;
+diff -urN -x CVS kdenetwork.orig/kppp/kpppwidget.cpp kdenetwork/kppp/kpppwidget.cpp
+--- kdenetwork.orig/kppp/kpppwidget.cpp	Sat Nov 29 12:20:49 2003
++++ kdenetwork/kppp/kpppwidget.cpp	Wed Apr 14 18:25:05 2004
+@@ -2,7 +2,7 @@
+  *
+  *            kPPP: A pppd front end for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  *            Copyright (C) 1997 Bernd Johannes Wuebben
+  *                   wuebben@math.cornell.edu
+@@ -174,12 +174,12 @@
+   tl->addLayout(l2);
+ 
+   int minw = 0;
+-  quit_b = new KPushButton(KGuiItem(i18n("&Quit"), "exit" ), this);
++  quit_b = new KPushButton(KStdGuiItem::quit(), this);
+   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
+   if(quit_b->sizeHint().width() > minw)
+       minw = quit_b->sizeHint().width();
+ 
+-  setup_b = new KPushButton(KGuiItem(i18n("Co&nfigure...")), this);
++  setup_b = new KPushButton(KGuiItem(i18n("Co&nfigure..."), "configure"), this);
+   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
+   if(setup_b->sizeHint().width() > minw)
+       minw = setup_b->sizeHint().width();
+@@ -187,12 +187,11 @@
+   if(gpppdata.access() != KConfig::ReadWrite)
+     setup_b->setEnabled(false);
+ 
+-  help_b = new KPushButton(i18n("&Help"), this);
++  help_b = new KPushButton(KStdGuiItem::help(), this);
+   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
+ 
+   KHelpMenu *helpMenu = new KHelpMenu(this, KGlobal::instance()->aboutData(), true);
+   help_b->setPopup((QPopupMenu*)helpMenu->menu());
+-  help_b->setGuiItem (KGuiItem(i18n("&Help"), "help" ) );
+ 
+   if(help_b->sizeHint().width() > minw)
+       minw = help_b->sizeHint().width();
+@@ -522,7 +521,7 @@
+ 	    }
+ 	}
+ 
+-	if(KMessageBox::warningYesNo(0, msg, i18n("Error"), i18n("&OK"), i18n("&Details...")) == KMessageBox::No)
++	if(KMessageBox::warningYesNo(0, msg, i18n("Error"), KStdGuiItem::ok(), i18n("&Details...")) == KMessageBox::No)
+ 	  PPPL_ShowLog();
+       } else { /* reconnect on disconnect */
+ 	kdDebug(5002) << "Trying to reconnect... " << endl;
+diff -urN -x CVS kdenetwork.orig/kppp/loginterm.cpp kdenetwork/kppp/loginterm.cpp
+--- kdenetwork.orig/kppp/loginterm.cpp	Fri Mar  7 23:11:30 2003
++++ kdenetwork/kppp/loginterm.cpp	Tue Apr 13 14:15:05 2004
+@@ -1,7 +1,7 @@
+ /*
+  *              kPPP: A pppd Front End for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  *              Copyright (C) 1997-98 Bernd Johannes Wuebben
+  *                      wuebben@math.cornell.edu
+@@ -30,6 +30,8 @@
+ 
+ #include <stdio.h>
+ #include <klocale.h>
++#include <kpushbutton.h>
++#include <kdialogbase.h>
+ 
+ extern KPPPWidget *p_kppp;
+ 
+@@ -112,13 +114,11 @@
+   text_window->setFocus();
+   vgr->addWidget(text_window, 0, 0);
+ 
+-  cancel_b = new QPushButton(this, "cancel");
+-  cancel_b->setText(i18n("&Cancel"));
++  cancel_b = new KPushButton(KStdGuiItem::cancel(), this, "cancel");
+   cancel_b->setFixedHeight(25);
+   connect(cancel_b, SIGNAL(clicked()), SLOT(cancelbutton()));
+ 
+-  continue_b = new QPushButton(this, "continue");
+-  continue_b->setText(i18n("C&ontinue"));
++  continue_b = new KPushButton(KStdGuiItem::cont(), this, "continue");
+   continue_b->setFixedHeight(25);
+   connect(continue_b, SIGNAL(clicked()), SLOT(continuebutton()));
+ 
+diff -urN -x CVS kdenetwork.orig/kppp/logview/main.cpp kdenetwork/kppp/logview/main.cpp
+--- kdenetwork.orig/kppp/logview/main.cpp	Wed Jun 25 09:08:43 2003
++++ kdenetwork/kppp/logview/main.cpp	Mon Apr 12 19:04:26 2004
+@@ -27,6 +27,9 @@
+ #include <klocale.h>
+ #include <kcmdlineargs.h>
+ #include <kaboutdata.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
++#include <kiconloader.h>
+ 
+ #define F_EXIT     101
+ 
+@@ -66,16 +69,15 @@
+     // create menu
+     mb = new KMenuBar(this);
+     QPopupMenu *fm = new QPopupMenu;
+-    fm->insertItem(i18n("E&xit"), F_EXIT);
++    fm->insertItem(SmallIcon("exit"),KStdGuiItem::quit().text(), F_EXIT);
+     mb->insertItem(i18n("&File"), fm);
+ 
+-    mb->setAccel(CTRL + Key_X, F_EXIT);
++    mb->setAccel(CTRL + Key_Q, F_EXIT);
+     connect(mb, SIGNAL(activated(int)),
+ 	    this, SLOT(menuCallback(int)));
+   } else {
+     mb = 0;
+-    QPushButton *but = new QPushButton(w);
+-    but->setText(i18n("&Close"));
++    QPushButton *but = new KPushButton(KStdGuiItem::close(),w);
+     QHBoxLayout *lh = new QHBoxLayout(l);
+     lh->addStretch(10);
+     lh->addWidget(but);
+diff -urN -x CVS kdenetwork.orig/kppp/main.cpp kdenetwork/kppp/main.cpp
+--- kdenetwork.orig/kppp/main.cpp	Wed Jun 25 09:08:43 2003
++++ kdenetwork/kppp/main.cpp	Wed Apr 14 18:25:05 2004
+@@ -274,7 +274,7 @@
+                        "click Continue to begin.")
+                   .arg(pidfile).arg(pid);
+     int button = KMessageBox::warningYesNo(0, msg, i18n("Error"),
+-                                      i18n("Exit"), i18n("Continue"));
++                                      i18n("Exit"), KStdGuiItem::cont());
+     if (button == KMessageBox::Yes)            /* exit */
+        return 1;
+ 
+diff -urN -x CVS kdenetwork.orig/kppp/miniterm.cpp kdenetwork/kppp/miniterm.cpp
+--- kdenetwork.orig/kppp/miniterm.cpp	Tue Oct 28 17:58:07 2003
++++ kdenetwork/kppp/miniterm.cpp	Sun Apr 11 11:10:21 2004
+@@ -1,7 +1,7 @@
+ /*
+  *            kPPP: A front end for pppd for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  * Copyright (C) 1997 Bernd Johannes Wuebben
+  *                    wuebben@math.cornell.edu
+@@ -54,7 +54,7 @@
+   KWin::setIcons(winId(), kapp->icon(), kapp->miniIcon());
+ 
+   m_file = new QPopupMenu(this);
+-  m_file->insertItem( i18n("&Close"),this, SLOT(cancelbutton()) );
++  m_file->insertItem( SmallIcon("fileclose"), i18n("&Close"), this, SLOT(cancelbutton()) );
+   m_options = new QPopupMenu(this);
+   m_options->insertItem(i18n("&Reset Modem"),this,SLOT(resetModem()));
+   m_help =
+diff -urN -x CVS kdenetwork.orig/kppp/modeminfo.cpp kdenetwork/kppp/modeminfo.cpp
+--- kdenetwork.orig/kppp/modeminfo.cpp	Mon Oct 27 12:03:18 2003
++++ kdenetwork/kppp/modeminfo.cpp	Wed Apr 14 18:25:05 2004
+@@ -1,7 +1,7 @@
+ /*
+  *            kPPP: A front end for pppd for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  * Copyright (C) 1997 Bernd Johannes Wuebben
+  *                    wuebben@math.cornell.edu
+@@ -30,9 +30,10 @@
+ #include <kwin.h>
+ #include <kmessagebox.h>
+ #include <kapplication.h>
++#include <klocale.h>
++#include <kpushbutton.h>
+ #include "modeminfo.h"
+ #include "modem.h"
+-#include <klocale.h>
+ 
+ ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
+   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
+@@ -64,7 +65,7 @@
+   tl->addWidget(progressBar);
+   tl->addWidget(statusBar);
+ 
+-  cancel = new QPushButton(i18n("&Cancel"), this);
++  cancel = new KPushButton(KStdGuiItem::cancel(), this);
+   cancel->setFocus();
+   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
+ 
+@@ -269,7 +270,7 @@
+   //tl->addSpacing(1);
+ 
+   QHBoxLayout *l2 = new QHBoxLayout;
+-  QPushButton *ok = new QPushButton(i18n("&Close"), this);
++  QPushButton *ok = new KPushButton(KStdGuiItem::close(), this);
+   ok->setDefault(TRUE);
+   ok->setFocus();
+ 
+diff -urN -x CVS kdenetwork.orig/kppp/pppstatdlg.cpp kdenetwork/kppp/pppstatdlg.cpp
+--- kdenetwork.orig/kppp/pppstatdlg.cpp	Wed Jun 25 09:08:43 2003
++++ kdenetwork/kppp/pppstatdlg.cpp	Wed Apr 14 18:25:05 2004
+@@ -1,7 +1,7 @@
+ /*
+  *            kPPP: A pppd front end for the KDE project
+  *
+- * $Id$
++ * $Id$
+  *
+  *            Copyright (C) 1997 Bernd Johannes Wuebben
+  *                   wuebben@math.cornell.edu
+@@ -29,12 +29,13 @@
+ #include <kiconloader.h>
+ #include <kapplication.h>
+ #include <klocale.h>
+-#include <qpushbutton.h>
+ #include <qlabel.h>
+ #include <qframe.h>
+ #include <qgroupbox.h>
+ #include <qlineedit.h>
+ #include <qtimer.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
+ 
+ #include "pppdata.h"
+ #include "pppstatdlg.h"
+@@ -169,8 +170,7 @@
+     graph->setBackgroundColor(bg);
+   }
+ 
+-  cancelbutton = new QPushButton(this, "cancelbutton");
+-  cancelbutton->setText(i18n("&Close"));
++  cancelbutton = new KPushButton(KStdGuiItem::close(),this, "cancelbutton");
+   cancelbutton->setFocus();
+   connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
+   cancelbutton->setFixedHeight(cancelbutton->sizeHint().height());
+diff -urN -x CVS kdenetwork.orig/krdc/krdc.desktop kdenetwork/krdc/krdc.desktop
+--- kdenetwork.orig/krdc/krdc.desktop	Sun Feb 29 16:47:05 2004
++++ kdenetwork/krdc/krdc.desktop	Sat Apr 17 14:47:19 2004
+@@ -23,6 +23,7 @@
+ Name[gl]=Conexión de escritorio remota
+ Name[he]=חיבור לשולחן עבודה מרוחק
+ Name[hi]=रिमोट डेस्कटॉप कनेक्शन
++Name[hr]=Remote Desktop (udaljeni desktop) povezivanje
+ Name[hu]=Távoli munkaasztal elérése
+ Name[is]=Tengingar við fjarlæg skjáborð
+ Name[it]=Connessioni a desktop remoto
+diff -urN -x CVS kdenetwork.orig/krfb/kcm_krfb/kcmkrfb.desktop kdenetwork/krfb/kcm_krfb/kcmkrfb.desktop
+--- kdenetwork.orig/krfb/kcm_krfb/kcmkrfb.desktop	Thu Mar  4 14:12:35 2004
++++ kdenetwork/krfb/kcm_krfb/kcmkrfb.desktop	Sun Apr 25 01:30:21 2004
+@@ -83,7 +83,8 @@
+ Comment[ga]=Cumraigh Roinnt Deisce
+ Comment[gl]=Configura-la compartición do escritorio
+ Comment[he]=שינוי הגדרות שיתוף שולחנות העבודה
+-Comment[hi]=कॉन्फिगर डेस्कटॉप साझा
++Comment[hi]=कॉन्फ़िगर डेस्कटॉप साझा
++Comment[hr]=Podešavanje dijeljenja radne površine
+ Comment[hu]=A munkaasztal-megosztás beállításai
+ Comment[is]=Stilla skjáborðsmiðlun
+ Comment[it]=Configura condivisione desktop
+@@ -115,6 +116,7 @@
+ Comment[zh_TW]=設定桌面分享
+ Comment[zu]=Hlela kahle Ukwahlulelana kwe-Desktop
+ Keywords=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited
++Keywords[ar]=مشاركة سطح المكتب,krfb,vnc,مشاركة,krdc,اتصال سطح مكتب بعيد,دعوة,منفذ,slp,غير مدعو
+ Keywords[bg]=споделяне,работно,място,десктоп,покана,връзка,desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited
+ Keywords[bs]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,dijeljenje desktopa,dijeljenje,udaljeni dekstop,poziv,nepozvan
+ Keywords[ca]=compartició de l'escriptori,krfb,vnc,compartir,krdc,connexió a l'escriptori remot,invitació,port,slp,no invitat
+@@ -137,6 +139,7 @@
+ Keywords[ms]= perkongsian ruang kerja, sambungan, liang, desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited
+ Keywords[nb]=skrivebordsdeling,krfb,vnc,deling,krdc,tilkobling til fjernt skrivebord,invitasjon,port,slp,ikke invitert
+ Keywords[nl]=desktop sharing,krfb,vnc,sharing,rdp,krdc,remote desktop connection,uitnodiging,slp,rdp,verbinding,bureaubladvrijgave,bureaublad op afstand
++Keywords[nn]=skrivebordsdeling,krfb,vnc,deling,krdc,nettverksskrivebord,invitasjon,port,slp,ikkje invitert
+ Keywords[pl]=współdzielenie pulpitu,krfb,vnc,współdzielenie,rdp,krdc,zdalne połączenie, zdalne biurko, zdalny pulpit, zaproszenie,port,slp
+ Keywords[pt]=partilha do ecrã,krfb,vnc,partilha,krdc,ligação a um ecrã remoto,convite,porto,slp,sem convite
+ Keywords[pt_BR]=compartilhamento de desktop,krfb,vnc,compartilhamento,krdc,conexão a desktop remoto,convite,porta,slp,não convidado
+diff -urN -x CVS kdenetwork.orig/krfb/krfb_httpd/kinetd_krfb_httpd.desktop kdenetwork/krfb/krfb_httpd/kinetd_krfb_httpd.desktop
+--- kdenetwork.orig/krfb/krfb_httpd/kinetd_krfb_httpd.desktop	Wed Mar  3 14:51:58 2004
++++ kdenetwork/krfb/krfb_httpd/kinetd_krfb_httpd.desktop	Sun Apr 25 01:30:23 2004
+@@ -14,6 +14,7 @@
+ X-KDE-KINETD-serviceLifetime=1200
+ 
+ Name=KRfb Micro Httpd
++Name[ar]=KRfb ميكرو httpd
+ Name[bg]=Микро уеб сървър (KRfb - httpd)
+ Name[cy]=Meicro-Httpd KRfb
+ Name[da]=KRfb Micro-Httpd
+@@ -27,6 +28,7 @@
+ Name[ms]=Httpd Mikro KRfb
+ Name[nb]=KRfb mikro- http-nisse
+ Name[nl]=KRfb micro webserver
++Name[nn]=KRfb-mikro-http-nisse
+ Name[pl]=Mikroskopijny serwer HTTP dla KRfb
+ Name[pt]=Micro Httpd do KRfb
+ Name[ru]=KRfb микро-httpd
+@@ -36,6 +38,7 @@
+ Name[xx]=xxKRfb Micro Httpdxx
+ Name[zh_CN]=KRfb 微 Httpd
+ Comment=A micro http daemon for krfb that serves the VNC viewer applet.
++Comment[ar]=مراقب httpd صغير لـkrfb الذي يخدم بريمج عرض VNC.
+ Comment[bg]=Малък уеб сървър, който обслужва аплета за преглед на VNC
+ Comment[bs]=Mikro HTTP demon za krfb koji služi za applet VNC preglednika.
+ Comment[ca]=Un micro-dimoni http per a krfb que serveix l'applet visor VNC.
+@@ -56,6 +59,7 @@
+ Comment[ms]=Daemon http miKro untuk krfb yang melayan aplet pelihat VNC.
+ Comment[nb]=En bitteliten http-nisse for krfb som hjelper visningsprogrammet for VNC.
+ Comment[nl]=Een micro webserver voor krfb dat de VNC weergave-applet beschikbaar stelt.
++Comment[nn]=Ein ørliten http-nisse for krfb som hjelper visingsprogrammet for VNC.
+ Comment[pl]=Mikroskopijny serwer HTTP dla KRfb obsługującego aplet przeglądarki VNC.
+ Comment[pt]=Um micro-servidor de HTTP para o krfb que serve a 'applet' de visualização de VNC.
+ Comment[pt_BR]=Um micro daemon de http, para o krfb, que serve o miniaplicativo de visualização do VNC.
+diff -urN -x CVS kdenetwork.orig/ksirc/KSProgress/ksprogressdata.cpp kdenetwork/ksirc/KSProgress/ksprogressdata.cpp
+--- kdenetwork.orig/ksirc/KSProgress/ksprogressdata.cpp	Wed Sep 25 17:34:29 2002
++++ kdenetwork/ksirc/KSProgress/ksprogressdata.cpp	Wed Apr 14 18:25:05 2004
+@@ -15,7 +15,8 @@
+ #undef Inherited
+ #define Inherited QFrame
+ 
+-#include <qpushbutton.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
+ 
+ #include <klocale.h>
+ 
+@@ -33,12 +34,11 @@
+ 	progress->setMaximumSize( 32767, 32767 );
+ 
+ 	QPushButton* dlgedit_PushButton_1;
+-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
++	dlgedit_PushButton_1 = new KPushButton( KStdGuiItem::cancel(), this, "PushButton_1" );
+ 	dlgedit_PushButton_1->setGeometry( 70, 90, 100, 30 );
+ 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
+ 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
+ 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(cancelPressed()) );
+-	dlgedit_PushButton_1->setText( i18n("&Cancel") );
+ 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
+ 
+ 	fileName = new QLabel( this, "Label_1" );
+diff -urN -x CVS kdenetwork.orig/ksirc/KSTicker/speeddialogData.cpp kdenetwork/ksirc/KSTicker/speeddialogData.cpp
+--- kdenetwork.orig/ksirc/KSTicker/speeddialogData.cpp	Sun Mar  9 11:39:52 2003
++++ kdenetwork/ksirc/KSTicker/speeddialogData.cpp	Wed Apr 14 18:25:05 2004
+@@ -15,8 +15,9 @@
+ #define Inherited QDialog
+ 
+ #include <qlabel.h>
+-#include <qpushbutton.h>
+ #include <klocale.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
+ 
+ speeddialogData::speeddialogData
+ (
+@@ -91,12 +92,11 @@
+ 	dlgedit_Label_2->setMargin( -1 );
+ 
+ 	QPushButton* dlgedit_PushButton_2;
+-	dlgedit_PushButton_2 = new QPushButton( this, "PushButton_2" );
++	dlgedit_PushButton_2 = new KPushButton( KStdGuiItem::close(), this, "PushButton_2" );
+ 	dlgedit_PushButton_2->setGeometry( 140, 80, 120, 30 );
+ 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
+ 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
+ 	connect( dlgedit_PushButton_2, SIGNAL(pressed()), SLOT(terminate()) );
+-	dlgedit_PushButton_2->setText( i18n("&Close") );
+ //	dlgedit_PushButton_2->setAutoRepeat( FALSE );
+ //	dlgedit_PushButton_2->setAutoResize( FALSE );
+ 
+diff -urN -x CVS kdenetwork.orig/ksirc/eventsrc kdenetwork/ksirc/eventsrc
+--- kdenetwork.orig/ksirc/eventsrc	Sun Feb 29 16:47:23 2004
++++ kdenetwork/ksirc/eventsrc	Sat Apr 17 14:47:23 2004
+@@ -27,6 +27,7 @@
+ Name[gl]=Evento de canle
+ Name[he]=אירוע של הערוץ
+ Name[hi]=चैनल घटना
++Name[hr]=Događaj na kanalu
+ Name[hu]=Csatornaesemény
+ Name[is]=Atburður á rás
+ Name[it]=Canale evento
+@@ -79,6 +80,7 @@
+ Comment[gl]=Evento na canle de IRC
+ Comment[he]=אירוע של ערוץ IRC
+ Comment[hi]=IRC चैनल घटना
++Comment[hr]=Događaj IRC kanala
+ Comment[hu]=IRC csatornaesemény
+ Comment[is]=IRC rásar-atburður
+ Comment[it]=Evento canale IRC
+@@ -136,6 +138,7 @@
+ Name[gl]=Mensaxe personal na canle
+ Name[he]=הודעה אישית בערוץ
+ Name[hi]=चैनल में व्यक्तिगत संदेश
++Name[hr]=Osobna poruka u kanalu
+ Name[hu]=Személyes üzenet a csatornán
+ Name[is]=Persónulegt skeyti á rás
+ Name[it]=Messaggio personale nel canale
+@@ -187,6 +190,7 @@
+ Comment[gl]=Alguén mencionou o teu alcume no IRC
+ Comment[he]=מישהו הזכיר את הכינוי שלך ב-IRC
+ Comment[hi]=संदेश मे किसी ने आपका निक उल्लेख किया
++Comment[hr]=Netko je spomenuo vaš nickname na IRC-u
+ Comment[hu]=Valaki említette az IRC-n az Ön becenevét
+ Comment[is]=Einhver minntist á þig á Irkinu
+ Comment[it]=Qualcuno ha menzionato il tuo nick su IRC
+diff -urN -x CVS kdenetwork.orig/ksirc/mditoplevel.cpp kdenetwork/ksirc/mditoplevel.cpp
+--- kdenetwork.orig/ksirc/mditoplevel.cpp	Sat Jan 10 05:13:56 2004
++++ kdenetwork/ksirc/mditoplevel.cpp	Wed Apr 14 18:25:05 2004
+@@ -54,7 +54,7 @@
+     m_addressedIcon = UserIcon( "info" );
+ 
+     m_pop = new KPopupMenu(m_tab, "");
+-    m_pop->insertItem( i18n("Close"), this, SLOT( slotCloseLastWid() ));
++    m_pop->insertItem( SmallIcon("fileclose"), i18n("Close"), this, SLOT( slotCloseLastWid() ));
+ 
+ }
+ 
+diff -urN -x CVS kdenetwork.orig/ksirc/ssfepromptdata.cpp kdenetwork/ksirc/ssfepromptdata.cpp
+--- kdenetwork.orig/ksirc/ssfepromptdata.cpp	Thu Dec 13 21:13:01 2001
++++ kdenetwork/ksirc/ssfepromptdata.cpp	Wed Apr 14 18:25:05 2004
+@@ -15,7 +15,8 @@
+ #undef Inherited
+ #define Inherited QDialog
+ 
+-#include <qpushbutton.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
+ 
+ ssfepromptdata::ssfepromptdata
+ (
+@@ -44,12 +45,11 @@
+ 	SLine->setFrame( TRUE );
+ 
+ 	QPushButton* dlgedit_PushButton_1;
+-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
++	dlgedit_PushButton_1 = new KPushButton( KStdGuiItem::ok(), this, "PushButton_1" );
+ 	dlgedit_PushButton_1->setGeometry( 240, 50, 100, 30 );
+ 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
+ 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
+ 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(terminate()) );
+-	dlgedit_PushButton_1->setText( "&OK" );
+ 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
+ 	dlgedit_PushButton_1->setAutoDefault( TRUE );
+ 
+diff -urN -x CVS kdenetwork.orig/ktalkd/kcmktalkd/kcmktalkd.desktop kdenetwork/ktalkd/kcmktalkd/kcmktalkd.desktop
+--- kdenetwork.orig/ktalkd/kcmktalkd/kcmktalkd.desktop	Thu Mar  4 14:12:51 2004
++++ kdenetwork/ktalkd/kcmktalkd/kcmktalkd.desktop	Sun Apr 25 01:30:25 2004
+@@ -28,7 +28,8 @@
+ Name[fr]=Discussion sur Réseau local
+ Name[gl]=Chat na rede local
+ Name[he]=שיחות ברשת המקומית
+-Name[hi]=स्थानीय नेटवर्क चैट
++Name[hi]=स्थानीय नेटवर्क गपशप
++Name[hr]=Razgovor u lokalnoj mreži
+ Name[hu]=Csevegés a helyi hálózaton
+ Name[is]=Staðarnetsspjall
+ Name[it]=Chat rete locale
+@@ -82,7 +83,7 @@
+ Comment[ga]=Cumraíocht deamhan comhrá
+ Comment[gl]=Configuración do demo talk
+ Comment[he]=שינוי הגדרות תהליך הרקע Talk
+-Comment[hi]=टाक डेमन कॉन्फिगरेशन
++Comment[hi]=टाक डेमन कॉन्फ़िगरेशन
+ Comment[hr]=Postava talk daemona
+ Comment[hu]=a talk szolgáltatás beállítása
+ Comment[id]=Konfigurasi daemon Talk
+diff -urN -x CVS kdenetwork.orig/lanbrowsing/kcmlisa/kcmkiolan.desktop kdenetwork/lanbrowsing/kcmlisa/kcmkiolan.desktop
+--- kdenetwork.orig/lanbrowsing/kcmlisa/kcmkiolan.desktop	Tue Mar 23 14:00:37 2004
++++ kdenetwork/lanbrowsing/kcmlisa/kcmkiolan.desktop	Sat Apr 17 14:47:28 2004
+@@ -66,6 +66,7 @@
+ Comment[gl]=Configuración de lan: e rlan:
+ Comment[he]=שינוי הגדרות :lan ו-:rlan
+ Comment[hi]=लैन: तथा आर-लैन: सेटअप
++Comment[hr]=Podešavanje lan-a i rlan-a
+ Comment[hu]=A lan: és az rlan: protokoll beállítása
+ Comment[is]=lan: og rlan: uppsetning
+ Comment[it]=Configurazione lan: e rlan:
+diff -urN -x CVS kdenetwork.orig/lanbrowsing/kcmlisa/kcmlisa.desktop kdenetwork/lanbrowsing/kcmlisa/kcmlisa.desktop
+--- kdenetwork.orig/lanbrowsing/kcmlisa/kcmlisa.desktop	Thu Mar  4 14:12:55 2004
++++ kdenetwork/lanbrowsing/kcmlisa/kcmlisa.desktop	Sat Apr 17 14:47:30 2004
+@@ -33,6 +33,7 @@
+ Comment[gl]=Configuración de LISa
+ Comment[he]=שינוי הגדרות LISa
+ Comment[hi]=लिसा सेटअप
++Comment[hr]=Podešavanje LISa-e
+ Comment[hu]=A LISa szolgáltatás beállítása
+ Comment[is]=Stillingar LISa
+ Comment[it]=Impostazioni LISa
+@@ -87,6 +88,7 @@
+ Keywords[ja]=lisa,ネットワーク,smb,ftp,fish,http
+ Keywords[nb]=lisa,nettverk,smb,ftp,fish,http
+ Keywords[nl]=lisa,netwerk,smb,ftp,fish,http,samba
++Keywords[nn]=lisa,nettverk,smb,ftp,fish,http
+ Keywords[pl]=lisa,sieć,smb,ftp,fish,http
+ Keywords[pt]=lisa,rede,smb,ftp,fish,http
+ Keywords[pt_BR]=lisa,rede,smb,ftp,fish,http
+diff -urN -x CVS kdenetwork.orig/lanbrowsing/kcmlisa/kcmreslisa.desktop kdenetwork/lanbrowsing/kcmlisa/kcmreslisa.desktop
+--- kdenetwork.orig/lanbrowsing/kcmlisa/kcmreslisa.desktop	Thu Mar  4 14:12:57 2004
++++ kdenetwork/lanbrowsing/kcmlisa/kcmreslisa.desktop	Sat Apr 17 14:47:32 2004
+@@ -32,6 +32,7 @@
+ Comment[gl]=Configuración de ResLISa
+ Comment[he]=שינוי הגדרות ResLISa
+ Comment[hi]=सेटअप रेस-लिसा
++Comment[hr]=Podešavanje ResLISa-e
+ Comment[hu]=A ResLISa szolgáltatás beállítása
+ Comment[is]=Stillingar ResLISa
+ Comment[it]=Impostazioni ResLISa
+@@ -87,6 +88,7 @@
+ Keywords[ja]=reslisa,ネットワーク,smb,ftp,fish,http
+ Keywords[nb]=reslisa,nettverk,smb,ftp,fish,http
+ Keywords[nl]=reslisa,netwerk,smb,ftp,fish,http,samba
++Keywords[nn]=reslisa,nettverk,smb,ftp,fish,http
+ Keywords[pl]=reslisa,sieć,smb,ftp,fish,http
+ Keywords[pt]=reslisa,rede,smb,ftp,fish,http
+ Keywords[pt_BR]=reslisa,rede,smb,ftp,fish,http
+diff -urN -x CVS kdenetwork.orig/wifi/kcmwifi/kcmwifi.desktop kdenetwork/wifi/kcmwifi/kcmwifi.desktop
+--- kdenetwork.orig/wifi/kcmwifi/kcmwifi.desktop	Thu Mar  4 14:13:01 2004
++++ kdenetwork/wifi/kcmwifi/kcmwifi.desktop	Sun Apr 25 01:30:27 2004
+@@ -7,6 +7,7 @@
+ X-KDE-Library=kwifimanager
+ X-KDE-RootOnly=true
+ Name=Wireless Network
++Name[ar]=شبكة لاسلكية
+ Name[bg]=Безжична мрежа
+ Name[bs]=Bežična mreža
+ Name[ca]=Xarxa sense fils
+@@ -23,6 +24,7 @@
+ Name[gl]=Rede inalámbrica
+ Name[he]=רשת אלחוטית
+ Name[hi]=वायरलेस  नेटवर्क
++Name[hr]=Bežična mreža
+ Name[hu]=Vezeték nélküli hálózat
+ Name[is]=Þráðlaus nettenging
+ Name[it]=Rete senza fili
+@@ -30,6 +32,7 @@
+ Name[ms]=Jaringan Tanpa Wayar
+ Name[nb]=Trådløst nettverk
+ Name[nl]=Draadloos netwerk
++Name[nn]=Trådlaust nettverk
+ Name[pl]=Sieć bezprzewodowa
+ Name[pt]=Rede Sem Fios
+ Name[pt_BR]=Rede Sem Fio
+@@ -46,6 +49,7 @@
+ Name[xx]=xxWireless Networkxx
+ Name[zh_CN]=无线网
+ Comment=Set up your wireless LAN
++Comment[ar]=ركب شبكة LAN الاسلكية الخاصةبك
+ Comment[bg]=Настройки на безжична локална мрежа
+ Comment[bs]=Podesite vaš bežični LAN
+ Comment[ca]=Configureu la vostra xarxa local sense fils
+@@ -61,6 +65,7 @@
+ Comment[gl]=Configura a túa rede inalámbrica
+ Comment[he]=הגדרת רשת ה- LAN האלחוטית שלך
+ Comment[hi]=आपके बेतार लैन सेट अप करे
++Comment[hr]=Podešavamke vaše bežične lokalne mrežu
+ Comment[hu]=A vezeték nélküli (WiFi) hálózat beállításai
+ Comment[is]=Uppsetning á þráðlausu staðarneti
+ Comment[it]=Configura la tua rete LAN senza fili
+@@ -68,6 +73,7 @@
+ Comment[ms]=Pasang LAN tanpa wayar
+ Comment[nb]=Sett opp trådløst nettverk
+ Comment[nl]=Stel hier uw draadloos netwerk in
++Comment[nn]=Set opp trådlaust nettverk
+ Comment[pl]=Ustawienia sieci bezprzewodowej
+ Comment[pt]=Configuração da rede sem fios
+ Comment[pt_BR]=Configurar a sua rede local sem fio
+@@ -84,6 +90,7 @@
+ Comment[xx]=xxSet up your wireless LANxx
+ Comment[zh_CN]=设置您的无线局域网
+ Keywords=network,orinoco,wireless,wlan,wlan-ng
++Keywords[ar]=شبكة,orinoco,لاسلكي,wlan,wlan-ng
+ Keywords[bg]=мрежа,безжична,настройки,локална,споделяне,network,orinoco,wireless,wlan,wlan-ng
+ Keywords[ca]=xarxa,orinoco,sense fils,wlan,wlan-ng
+ Keywords[cs]=síť,orinoco,bezdrát,wlan,wlan-ng
+@@ -104,6 +111,7 @@
+ Keywords[ms]=jaringan,tanpa wayar,network,orinoco,wireless,wlan,wlan-ng
+ Keywords[nb]=nettverk,orinoco,trådløst,wlan,wlan-ng
+ Keywords[nl]=netwerk,orinoco,wireless,wlan,wlan-ng,draadloos
++Keywords[nn]=nettverk,orinoco,trådlaust,wlan,wlan-ng
+ Keywords[pl]=sieć,orinoco,bezprzewodowy,bezprzewodowa,wi-fi,wlan,wlan-ng
+ Keywords[pt]=rede,orinoco,wireless,wlan,wlan-ng,sem fios
+ Keywords[pt_BR]=rede,orinoco,sem fio,wlan,wlan-ng
+diff -urN -x CVS kdenetwork.orig/wifi/kwifimanager.desktop kdenetwork/wifi/kwifimanager.desktop
+--- kdenetwork.orig/wifi/kwifimanager.desktop	Sat Mar 27 14:13:27 2004
++++ kdenetwork/wifi/kwifimanager.desktop	Sat Apr 17 14:47:36 2004
+@@ -20,12 +20,14 @@
+ Comment[gl]=Unha ferramente para a monitorización de redes inalámbricas
+ Comment[he]=צג בקרה לחיבורי רשת LAN אלחוטית
+ Comment[hi]=एक बेतार लैन कनेक्शन मॉनीटर
++Comment[hr]=Nadglednik bežične LAN veze
+ Comment[hu]=Kapcsolatkezelő vezeték nélküli hálózatokhoz
+ Comment[is]=Vaktskjár á þráðlaust staðarneti
+ Comment[it]=Controllo connessione rete LAN senza fili
+ Comment[ja]=ワイヤレスLAN接続モニタ
+ Comment[nb]=Passer på det trådløse nettverket
+ Comment[nl]=Een programma voor het monitoren van een draadloos lokaal netwerk
++Comment[nn]=Passar på det trådlause nettverket
+ Comment[pl]=Program monitorujący połączenia w sieci bezprzewodowej
+ Comment[pt]=Um monitor de ligações na rede local sem-fios ('wireless')
+ Comment[pt_BR]=Um monitor de conexões LAN sem fio
+@@ -49,6 +51,7 @@
+ Name[hi]=के-विफि-मैनेजर
+ Name[ja]=KWiFiマネージャ
+ Name[nb]=KWiFiHåndterer
++Name[nn]=KWiFiHandterar
+ Name[xx]=xxKWiFiManagerxx
+ GenericName=Wireless LAN Manager
+ GenericName[bg]=Безжична мрежа
+@@ -66,12 +69,14 @@
+ GenericName[ga]=Bainisteoir Ghréasáin gan sreang
+ GenericName[gl]=Administrador da Rede LAN inalámbrica
+ GenericName[hi]= बेतार लैन मैनेजर
++GenericName[hr]=Upravitelj bežičnog LAN-a
+ GenericName[hu]=WiFi-kezelő
+ GenericName[is]=Fylgist með staðarneti
+ GenericName[it]=Gestione LAN senza fili
+ GenericName[ja]=ワイヤレスLANマネージャ
+ GenericName[nb]=Trådløst nettverksbehandler
+ GenericName[nl]=Draadloos netwerkbeheer
++GenericName[nn]=Handsamar for trådlaust nettverk
+ GenericName[pl]=Nadzorca sieci bezprzewodowej
+ GenericName[pt]=Gestor de Rede Sem Fios
+ GenericName[pt_BR]=Gerenciador de Wireless na LAN
+diff -urN -x CVS kdenetwork.orig/wifi/kwireless/kwireless.desktop kdenetwork/wifi/kwireless/kwireless.desktop
+--- kdenetwork.orig/wifi/kwireless/kwireless.desktop	Thu Mar  4 14:13:05 2004
++++ kdenetwork/wifi/kwireless/kwireless.desktop	Sun Apr 25 01:30:29 2004
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Comment=Displays information about wireless network devices
++Comment[ar]=عرض معلومات أجهزة الشبكة الاسلكية
+ Comment[bg]=Данни за устройствата поддържащи безжичната мрежа
+ Comment[bs]=Prikazuje informacije o bežičnim mrežnim uređajima
+ Comment[ca]=Mostra informació quant als dispositius de la xarxa sense fils
+@@ -16,6 +17,7 @@
+ Comment[gl]=Información sobre os dispositivos de rede inalámbirca
+ Comment[he]=מציג מידע ונתונים על התקני רשת אלחוטית
+ Comment[hi]=वायरलेस नेटवर्क उपकरण के बारे में जानकारी दिखाए
++Comment[hr]=Prikazuje informacije o bežičnim mrežnim uređajima
+ Comment[hu]=Megjeleníti a vezeték nélküli hálózatok csatolókártyáinak jellemzőit
+ Comment[is]=Sýnir upplýsingar um tæki fyrir þráðlausar nettengingar
+ Comment[it]=Visualizza informazioni sui dispositivi di rete senza fili
+@@ -23,6 +25,7 @@
+ Comment[ms]=Memaparkan maklumat berkaitan peranti jaringan tanpa wayar
+ Comment[nb]=Viser informasjon om enheter for trådløst nettverk
+ Comment[nl]=Toont informatie over draadloze netwerkapparaten
++Comment[nn]=Viser informasjon om einingar for trådlause nettverk
+ Comment[pl]=Wyświetla informacje o bezprzewodowych kartach sieciowych
+ Comment[pt]=Mostra informações sobre os dispositivos de rede sem-fios ('wireless')
+ Comment[pt_BR]=Mostra informação sobre dispositivos de rede sem fio
+@@ -37,6 +40,7 @@
+ Comment[xx]=xxDisplays information about wireless network devicesxx
+ Comment[zh_CN]=显示关于无线网络设备的信息
+ Name=Wireless Network Information
++Name[ar]=معلومات الشبكة الاسلكية
+ Name[bg]=Данни за безжична мрежа
+ Name[bs]=Informacije o bežičnoj mreži
+ Name[ca]=Informació de la xarxa sense fils
+@@ -53,6 +57,7 @@
+ Name[gl]=Información sobre a rede inalámbrica
+ Name[he]=נתוני רשת אלחוטית
+ Name[hi]=वायरलेस नेटवर्क जानकारी
++Name[hr]=Informacije o bežičnoj mreži
+ Name[hu]=A vezeték nélküli hálózat jellemzői
+ Name[is]=Upplýsingar um þráðlausa netið
+ Name[it]=Informazione rete senza fili
+@@ -60,6 +65,7 @@
+ Name[ms]=Maklumat Jaringan Tanpa Wayar
+ Name[nb]=Informasjon om trådløst nettverk
+ Name[nl]=Draadloos netwerk-informatie
++Name[nn]=Informasjon om trådlaust nettverk
+ Name[pl]=Informacja o sieci bezprzewodowej
+ Name[pt]=Informação da Rede Sem-Fios ('Wireless')
+ Name[pt_BR]=Informação sobre Rede Sem Fio
+diff -urN -x CVS kdenetwork.orig/wifi/strength.cpp kdenetwork/wifi/strength.cpp
+--- kdenetwork.orig/wifi/strength.cpp	Mon Feb 16 20:28:29 2004
++++ kdenetwork/wifi/strength.cpp	Mon Apr 19 17:01:55 2004
+@@ -73,7 +73,7 @@
+       sstrength2 = sstrength2.arg(i18n("N/A"));
+       strengthpainter->drawPixmap (50, 20, *NOT_CON_OFFLINE_ADHOC);
+       emit strengthChanged(NOT_CON_OFFLINE_ADHOC,sstrength2);
+-      if (led->state=true) led->Off();
++      if (led->state==true) led->Off();
+     }
+   else if (information->mode == 1)
+     {
+@@ -81,7 +81,7 @@
+       sstrength2 = sstrength2.arg(i18n("N/A"));
+       strengthpainter->drawPixmap (50, 20, *NOT_CON_OFFLINE_ADHOC);
+       emit strengthChanged(NOT_CON_OFFLINE_ADHOC,sstrength2);
+-      if (led->state=true) led->Off();
++      if (led->state==true) led->Off();
+     }
+   else if (tempstrength > 45)
+     {
+@@ -89,7 +89,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *EXCELLENT);
+       emit strengthChanged(EXCELLENT,sstrength2);
+-      if (led->state=false) led->On();
++      if (led->state==false) led->On();
+     }
+   else if (tempstrength > 35)
+     {
+@@ -97,7 +97,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *EXCELLENT);
+       emit strengthChanged(EXCELLENT,sstrength2);
+-      if (led->state=false) led->On();
++      if (led->state==false) led->On();
+     }
+   else if (tempstrength > 25)
+     {
+@@ -105,7 +105,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *EXCELLENT);
+       emit strengthChanged(EXCELLENT,sstrength2);
+-      if (led->state=false) led->On();
++      if (led->state==false) led->On();
+     }
+   else if (tempstrength > 15)
+     {
+@@ -113,7 +113,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *GOOD);
+       emit strengthChanged(GOOD,sstrength2);
+-      if (led->state=false) led->On();
++      if (led->state==false) led->On();
+     }
+   else if (tempstrength > 5)
+     {
+@@ -121,7 +121,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *MARGINAL);
+       emit strengthChanged(MARGINAL,sstrength2);
+-      if (led->state=false) led->On();
++      if (led->state==false) led->On();
+     }
+   else if (tempstrength > 0)
+     {
+@@ -129,7 +129,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *OOR_MINIMUM);
+       emit strengthChanged(OOR_MINIMUM,sstrength2);
+-      if (led->state=true) led->Off();
++      if (led->state==true) led->Off();
+     }
+   else if ((tempstrength == 0) && (information->mode == 2))
+     {
+@@ -137,7 +137,7 @@
+       sstrength2 = sstrength2.arg(tempstrength);
+       strengthpainter->drawPixmap (50, 20, *OOR_DOWN);
+       emit strengthChanged(OOR_DOWN,sstrength2);
+-      if (led->state=true) led->Off();
++      if (led->state==true) led->Off();
+     }
+   else
+     {
+@@ -145,7 +145,7 @@
+       sstrength2 = sstrength2.arg("N/A");
+       strengthpainter->drawPixmap (50, 20, *NOT_CON_OFFLINE_ADHOC);
+       emit strengthChanged(NOT_CON_OFFLINE_ADHOC,sstrength2);
+-      if (led->state=true) led->Off();
++      if (led->state==true) led->Off();
+     };
+   sstrength2 = i18n("Signal strength: ")+sstrength2;
+   strengthpainter->drawText (5, 70, sstrength1);
+diff -urN -x CVS kdenetwork.orig/wifi/stuff.cpp kdenetwork/wifi/stuff.cpp
+--- kdenetwork.orig/wifi/stuff.cpp	Sat Feb 14 11:34:10 2004
++++ kdenetwork/wifi/stuff.cpp	Mon Apr 12 17:31:57 2004
+@@ -57,80 +57,6 @@
+   return result;
+ }
+ 
+-Interface_Talker::Interface_Talker(QString iface){
+-    device_information.has_frequency=false;
+-    device_information.frequency=0.;
+-    device_information.has_mode=false;
+-    device_information.mode=0;
+-    device_information.has_key=0;
+-    device_information.key="";
+-    device_information.key_size=0;
+-    device_information.key_flags=0;
+-    device_information.essid="";
+-    device_information.access_point_address="";
+-    device_information.ip_address="";
+-    device_information.bitrate=0.;
+-    device_information.interface_name=iface;
+-    device_information.socket=-1;
+-    device_information.has_range=false;
+-    for (int i=0;i<MAX_HISTORY;i++) {
+-      statistical_data.sigLevel[i]=0;
+-      statistical_data.noiseLevel[i]=0;
+-      statistical_data.qual[i]=0;
+-      statistical_data.valid[i]=false;
+-      statistical_data.current=0;
+-    }
+-}
+-
+-int Interface_Talker_wirelessextensions::open_device_socket() {
+-  device_information.socket = iw_sockets_open();
+-  return device_information.socket;
+-}
+-
+-void Interface_Talker_wirelessextensions::poll_device_info(){
+-  kdDebug() << "unimplemented\n";
+-}
+-
+-bool Interface_Talker_wirelessextensions::give_device_freq(float &freq){
+-  kdDebug() << "unimplemented\n";
+-  return false;
+-}
+-
+-bool Interface_Talker_wirelessextensions::give_mode(int &mode){
+-  kdDebug() << "unimplemented\n";
+-  return false;
+-}
+-
+-bool Interface_Talker_wirelessextensions::give_key(QString &key,int size,int flags){
+-  kdDebug() << "unimplemented\n";
+-  return false;
+-}
+-
+-QString Interface_Talker_wirelessextensions::give_essid(){
+-  kdDebug() << "unimplemented\n";
+-  return "";
+-}
+-
+-bool Interface_Talker_wirelessextensions::give_AP_info(QString &mac, QString &ip){
+-  kdDebug() << "unimplemented\n";
+-  return false;
+-}
+-
+-double Interface_Talker_wirelessextensions::give_bitrate(){
+-  kdDebug() << "unimplemented\n";
+-  return 0.;
+-}
+-
+-QString Interface_Talker_wirelessextensions::give_interface_name(){
+-  kdDebug() << "unimplemented\n";
+-  return "";
+-}
+-
+-bool Interface_Talker_wirelessextensions::give_current_quality(int &sig, int &noi, int &qua){
+-  kdDebug() << "unimplemented\n";
+-  return false;
+-}
+-
+ void
+ sinus_wave (double frequency)
+ {
+diff -urN -x CVS kdenetwork.orig/wifi/stuff.h kdenetwork/wifi/stuff.h
+--- kdenetwork.orig/wifi/stuff.h	Wed Mar  3 13:24:19 2004
++++ kdenetwork/wifi/stuff.h	Mon Apr 12 17:31:57 2004
+@@ -82,68 +82,6 @@
+   int current;
+ };
+ 
+-class Interface_Talker {
+-  public:
+-  Interface_Talker(QString iface="");
+-  virtual int open_device_socket()=0;
+-  virtual void poll_device_info()=0;
+-  virtual bool give_device_freq(float &freq)=0;
+-    // true: device returned valid frequency
+-  virtual bool give_mode(int &mode)=0;
+-    // true: device returned valid mode info
+-  virtual bool give_key(QString &key,int size,int flags)=0;
+-    // true: device has set up a valid crypto key
+-  virtual QString give_essid()=0;
+-  virtual bool give_AP_info(QString &mac, QString &ip)=0;
+-    // true: could retrieve IP, false: returned IP info invalid
+-  virtual double give_bitrate()=0;
+-  virtual QString give_interface_name()=0;
+-    // if no device is attached, return empty QString
+-  virtual bool give_current_quality(int &sig, int &noi, int &qua)=0;
+-    // quality info is only valid when true
+-  virtual ~Interface_Talker(){};
+-  protected:
+-  struct deviceinfo_new {
+-    bool has_frequency;
+-    float frequency;
+-    bool has_mode;
+-    int mode;
+-    bool has_key;
+-    QString key;
+-    int key_size;
+-    int key_flags;
+-    QString essid;
+-    QString access_point_address;
+-    QString ip_address;
+-    double bitrate;
+-    QString interface_name;
+-    int socket;
+-    bool has_range;
+-  } device_information;
+-  struct stats {
+-    int sigLevel[MAX_HISTORY];
+-    int noiseLevel[MAX_HISTORY];
+-    int qual[MAX_HISTORY];
+-    bool valid[MAX_HISTORY];
+-    int current;
+-  } statistical_data;
+-};
+-
+-class Interface_Talker_wirelessextensions : public Interface_Talker {
+-  public:
+-  Interface_Talker_wirelessextensions();
+-  int open_device_socket();
+-  void poll_device_info();
+-  bool give_device_freq(float &freq);
+-  bool give_mode(int &mode);
+-  bool give_key(QString &key,int size,int flags);
+-  QString give_essid();
+-  bool give_AP_info(QString &mac, QString &ip);
+-  double give_bitrate();
+-  QString give_interface_name();
+-  bool give_current_quality(int &sig, int &noi, int &qua);
+-};
+-
+ void sinus_wave (double frequency);
+ 
+ class MyTimeNotify:public
+diff -urN -x CVS kdenetwork.orig/wifi/wirelesstools.cpp kdenetwork/wifi/wirelesstools.cpp
+--- kdenetwork.orig/wifi/wirelesstools.cpp	Tue Mar 30 11:27:06 2004
++++ kdenetwork/wifi/wirelesstools.cpp	Wed Apr  7 04:39:43 2004
+@@ -69,8 +69,13 @@
+     }
+   else
+     {
++#if HAVE_IW_27
++      strncpy(info->b.name, wrq.u.name, IFNAMSIZ);
++      info->b.name[IFNAMSIZ] = '\0';
++#else
+       strncpy(info->name, wrq.u.name, IFNAMSIZ);
+       info->name[IFNAMSIZ] = '\0';
++#endif
+     }
+ 
+   /* Get ranges */
+@@ -80,15 +85,25 @@
+   /* Get network ID */
+   if(iw_get_ext(skfd, ifname, SIOCGIWNWID, &wrq) >= 0)
+     {
++#if HAVE_IW_27
++      info->b.has_nwid = 1;
++      memcpy(&(info->b.nwid), &(wrq.u.nwid), sizeof(iwparam));
++#else
+       info->has_nwid = 1;
+       memcpy(&(info->nwid), &(wrq.u.nwid), sizeof(iwparam));
++#endif
+     }
+ 
+   /* Get frequency / channel */
+   if(iw_get_ext(skfd, ifname, SIOCGIWFREQ, &wrq) >= 0)
+     {
++#if HAVE_IW_27
++      info->b.has_freq = 1;
++      info->b.freq = iw_freq2float(&(wrq.u.freq));
++#else
+       info->has_freq = 1;
+       info->freq = iw_freq2float(&(wrq.u.freq));
++#endif
+     }
+ 
+   /* Get sensitivity */
+@@ -99,24 +114,43 @@
+     }
+ 
+   /* Get encryption information */
++#if HAVE_IW_27
++  wrq.u.data.pointer = (caddr_t) info->b.key;
++#else
+   wrq.u.data.pointer = (caddr_t) info->key;
++#endif
+   wrq.u.data.length = IW_ENCODING_TOKEN_MAX;
+   wrq.u.data.flags = 0;
+   if(iw_get_ext(skfd, ifname, SIOCGIWENCODE, &wrq) >= 0)
+     {
++#if HAVE_IW_27
++      info->b.has_key = 1;
++      info->b.key_size = wrq.u.data.length;
++      info->b.key_flags = wrq.u.data.flags;
++#else
+       info->has_key = 1;
+       info->key_size = wrq.u.data.length;
+       info->key_flags = wrq.u.data.flags;
++#endif
+     }
+ 
+   /* Get ESSID */
++#if HAVE_IW_27
++  wrq.u.essid.pointer = (caddr_t) info->b.essid;
++#else
+   wrq.u.essid.pointer = (caddr_t) info->essid;
++#endif
+   wrq.u.essid.length = IW_ESSID_MAX_SIZE + 1;
+   wrq.u.essid.flags = 0;
+   if(iw_get_ext(skfd, ifname, SIOCGIWESSID, &wrq) >= 0)
+     {
++#if HAVE_IW_27
++      info->b.has_essid = 1;
++      info->b.essid_on = wrq.u.data.flags;
++#else
+       info->has_essid = 1;
+       info->essid_on = wrq.u.data.flags;
++#endif
+     }
+ 
+   /* Get AP address */
+@@ -158,9 +192,15 @@
+   /* Get operation mode */
+   if(iw_get_ext(skfd, ifname, SIOCGIWMODE, &wrq) >= 0)
+     {
++#if HAVE_IW_27
++      info->b.mode = wrq.u.mode;
++      if((info->b.mode < IW_NUM_OPER_MODE) && (info->b.mode >= 0))
++	info->b.has_mode = 1;
++#else
+       info->mode = wrq.u.mode;
+       if((info->mode < IW_NUM_OPER_MODE) && (info->mode >= 0))
+ 	info->has_mode = 1;
++#endif
+     }
+ 
+   /* Get Power Management settings */
+@@ -237,16 +277,31 @@
+ 	      wtc_private_iw_get_stats (transfer->skfd, device, tempic2);
+ 	      kdDebug() << "Found!\n";
+         already_warned=false;
++#if HAVE_IW_27
++	      transfer->has_freq = tempic1->b.has_freq;
++	      transfer->freq = tempic1->b.freq;
++	      transfer->mode = tempic1->b.mode;
++	      transfer->has_mode = tempic1->b.has_mode;
++	      transfer->has_key = tempic1->b.has_key;
++	      char *test = (char *) tempic1->b.key;
++#else
+ 	      transfer->has_freq = tempic1->has_freq;
+ 	      transfer->freq = tempic1->freq;
+ 	      transfer->mode = tempic1->mode;
+ 	      transfer->has_mode = tempic1->has_mode;
+ 	      transfer->has_key = tempic1->has_key;
+ 	      char *test = (char *) tempic1->key;
++#endif
+ 	      transfer->key = test;
++#if HAVE_IW_27
++	      transfer->key_size = tempic1->b.key_size;
++	      transfer->key_flags = tempic1->b.key_flags;
++	      transfer->essid = tempic1->b.essid;
++#else
+ 	      transfer->key_size = tempic1->key_size;
+ 	      transfer->key_flags = tempic1->key_flags;
+ 	      transfer->essid = tempic1->essid;
++#endif
+ 	      transfer->ap_addr = tempic1->ap_addr;
+ 	      transfer->bitrate = tempic1->bitrate;
+ 	      transfer->used_interface = *it;
+@@ -264,16 +319,31 @@
+       transfer->qual.qual = 0;
+       transfer->qual.noise = 154;
+       transfer->qual.level = 154;
++#if HAVE_IW_27
++      transfer->has_freq = tempic1->b.has_freq;
++      transfer->freq = tempic1->b.freq;
++      transfer->mode = tempic1->b.mode;
++      transfer->has_mode = tempic1->b.has_mode;
++      transfer->has_key = tempic1->b.has_key;
++      char *test = (char *) tempic1->b.key;
++#else
+       transfer->has_freq = tempic1->has_freq;
+       transfer->freq = tempic1->freq;
+       transfer->mode = tempic1->mode;
+       transfer->has_mode = tempic1->has_mode;
+       transfer->has_key = tempic1->has_key;
+       char *test = (char *) tempic1->key;
++#endif
+       transfer->key = test;
++#if HAVE_IW_27
++      transfer->key_size = tempic1->b.key_flags;
++      transfer->key_flags = tempic1->b.key_flags;
++      transfer->essid = tempic1->b.essid;
++#else
+       transfer->key_size = tempic1->key_flags;
+       transfer->key_flags = tempic1->key_flags;
+       transfer->essid = tempic1->essid;
++#endif
+       transfer->ap_addr = tempic1->ap_addr;
+       transfer->bitrate = tempic1->bitrate;
+       transfer->used_interface = "";
+@@ -295,16 +365,31 @@
+ 	  char device[128];
+ 	  snprintf(device,128,"%s",transfer->used_interface.latin1());
+ 	  wtc_private_iw_get_stats (transfer->skfd, device, tempic2);
++#if HAVE_IW_27
++	  transfer->has_freq = tempic1->b.has_freq;
++	  transfer->freq = tempic1->b.freq;
++	  transfer->mode = tempic1->b.mode;
++	  transfer->has_mode = tempic1->b.has_mode;
++	  transfer->has_key = tempic1->b.has_key;
++	  char *test = (char *) tempic1->b.key;
++#else
+ 	  transfer->has_freq = tempic1->has_freq;
+ 	  transfer->freq = tempic1->freq;
+ 	  transfer->mode = tempic1->mode;
+ 	  transfer->has_mode = tempic1->has_mode;
+ 	  transfer->has_key = tempic1->has_key;
+ 	  char *test = (char *) tempic1->key;
++#endif
+ 	  transfer->key = test;
++#if HAVE_IW_27
++	  transfer->key_size = tempic1->b.key_flags;
++	  transfer->key_flags = tempic1->b.key_flags;
++	  transfer->essid = tempic1->b.essid;
++#else
+ 	  transfer->key_size = tempic1->key_flags;
+ 	  transfer->key_flags = tempic1->key_flags;
+ 	  transfer->essid = tempic1->essid;
++#endif
+ 	  transfer->ap_addr = tempic1->ap_addr;
+ 	  transfer->bitrate = tempic1->bitrate;
+ 	  transfer->qual = tempic2->qual;
+@@ -321,16 +406,31 @@
+ 	  transfer->qual.qual = 0;
+ 	  transfer->qual.level = 154;
+ 	  transfer->qual.noise = 154;
++#if HAVE_IW_27
++	  transfer->has_freq = tempic1->b.has_freq;
++	  transfer->freq = tempic1->b.freq;
++	  transfer->mode = tempic1->b.mode;
++	  transfer->has_mode = tempic1->b.has_mode;
++	  transfer->has_key = tempic1->b.has_key;
++	  char *test = (char *) tempic1->b.key;
++#else
+ 	  transfer->has_freq = tempic1->has_freq;
+ 	  transfer->freq = tempic1->freq;
+ 	  transfer->mode = tempic1->mode;
+ 	  transfer->has_mode = tempic1->has_mode;
+ 	  transfer->has_key = tempic1->has_key;
+ 	  char *test = (char *) tempic1->key;
++#endif
+ 	  transfer->key = test;
++#if HAVE_IW_27
++	  transfer->key_size = tempic1->b.key_flags;
++	  transfer->key_flags = tempic1->b.key_flags;
++	  transfer->essid = tempic1->b.essid;
++#else
+ 	  transfer->key_size = tempic1->key_flags;
+ 	  transfer->key_flags = tempic1->key_flags;
+ 	  transfer->essid = tempic1->essid;
++#endif
+ 	  transfer->ap_addr = tempic1->ap_addr;
+ 	  transfer->bitrate = tempic1->bitrate;
+ 	  transfer->used_interface = "";
