@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.3
+Release:	0.4
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
@@ -20,6 +20,7 @@ Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/%{version}/kde-i18n-%{n
 Source2:	lisa.init
 Source3:	lisa.sysconfig
 Source4:	%{name}-lisarc
+Source5:	%{name}-ktalkd.png
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
@@ -394,6 +395,12 @@ cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
+install %{SOURCE5} $RPM_BUILD_ROOT%{_pixmapsdir}/ktalkd.png 
+for i in {kdict,kget,kit,kmail,knewsticker,knode,korn,kppp,krdc,krfb}.png \
+	 ksirc.png; do
+	ln -s crystalsvg/48x48/apps/$i $RPM_BUILD_ROOT%{_pixmapsdir}/$i
+done
+
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang	kdict		--with-kde
@@ -476,8 +483,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
-%{_pixmapsdir}/*/*/*/kdict*
 %{_applnkdir}/Utilities/kdict.desktop
+%{_pixmapsdir}/*/*/*/kdict*
+%{_pixmapsdir}/kdict.png
 
 %files kget -f kget.lang
 %defattr(644,root,root,755)
@@ -487,8 +495,9 @@ fi
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
-%{_pixmapsdir}/*/*/*/*kget*
 %{_applnkdir}/Network/Misc/kget.desktop
+%{_pixmapsdir}/*/*/*/*kget*
+%{_pixmapsdir}/kget.png
 
 %files kinetd -f kinetd.lang
 %defattr(644,root,root,755)
@@ -501,9 +510,10 @@ fi
 %files kit -f kit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
-%{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
+%{_applnkdir}/Network/Misc/kit.desktop
 %{_pixmapsdir}/*/*/*/kit.png
+%{_pixmapsdir}/kit.png
 
 %files kmail -f kmail.lang
 %defattr(644,root,root,755)
@@ -513,14 +523,15 @@ fi
 %attr(755,root,root) %{_bindir}/mail.local
 %{_libdir}/kde3/kfile_rfc822.la
 %attr(755,root,root) %{_libdir}/kde3/kfile_rfc822.so
-%{_applnkdir}/Network/Mail/KMail.desktop
-%{_applnkdir}/Utilities/kmailcvt.desktop
 %{_datadir}/apps/kconf_update/k[!n]*
 %{_datadir}/apps/kconf_update/u*
 %{_datadir}/apps/kgpgcertmanager/kgpgcertmanagerui.rc
 %{_datadir}/apps/kmail
 %{_datadir}/services/kfile_rfc822.desktop
+%{_applnkdir}/Network/Mail/KMail.desktop
+%{_applnkdir}/Utilities/kmailcvt.desktop
 %{_pixmapsdir}/*/*/*/kmail*.png
+%{_pixmapsdir}/kmail.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
@@ -529,28 +540,31 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_libdir}/kde3/kcm_knewsticker.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
-%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
-%{_applnkdir}/Network/News/knewsticker*.desktop
-%{_applnkdir}/.hidden/knewstickerstub.desktop
-%{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
+%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
+%{_applnkdir}/Network/News/knewsticker*.desktop
+%{_applnkdir}/.hidden/knewstickerstub.desktop
+%{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_pixmapsdir}/*/*/*/knewsticker.png
+%{_pixmapsdir}/knewsticker.png
 
 %files knode -f knode.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knode
-%{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
+%{_applnkdir}/Network/News/KNode.desktop
 %{_pixmapsdir}/*/*/*/knode.png
+%{_pixmapsdir}/knode.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
 %{_pixmapsdir}/*/*/*/korn.png
+%{_pixmapsdir}/korn.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -566,10 +580,11 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
+%{_datadir}/apps/kppp
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
-%{_datadir}/apps/kppp
 %{_pixmapsdir}/*/*/*/kppp.png
+%{_pixmapsdir}/kppp.png
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
@@ -586,6 +601,8 @@ fi
 %{_applnkdir}/Settings/KDE/Network/kcmkrfb.desktop
 %{_pixmapsdir}/*/*/*/krdc*
 %{_pixmapsdir}/[!l]*/*/*/krfb*
+%{_pixmapsdir}/krdc.png
+%{_pixmapsdir}/krfb.png
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -595,11 +612,12 @@ fi
 %attr(755,root,root) %{_libdir}/ksirc.so
 %{_libdir}/libkntsrcfilepropsdlg.la
 %attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.so
-%{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_pixmapsdir}/[!l]*/*/*/ksirc*
+%{_applnkdir}/Network/Communications/ksirc.desktop
+%{_pixmapsdir}/[!l]*/*/*/ksirc.png
+%{_pixmapsdir}/ksirc.png
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
@@ -608,8 +626,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
-%{_pixmapsdir}/*/*/*/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
+%{_pixmapsdir}/*/*/*/ktalkd.png
+%{_pixmapsdir}/ktalkd.png
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
