@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -307,7 +307,7 @@ TODO.
 
 %prep
 %setup -q -n %{name}-%{_snap}
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
@@ -648,17 +648,17 @@ fi
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
 
-#%files ktalkd -f ktalkd.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/ktalkd
-#%attr(755,root,root) %{_bindir}/ktalkdlg
-#%attr(755,root,root) %{_bindir}/mail.local
-#%{_libdir}/kde3/kcm_ktalkd.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
-#%{_datadir}/config/ktalkd*
-#%{_datadir}/sounds/ktalkd*
-#%{_desktopdir}/kde/kcmktalkd.desktop
-#%{_iconsdir}/*/*/*/ktalkd*
+%files ktalkd -f ktalkd.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ktalkd
+%attr(755,root,root) %{_bindir}/ktalkdlg
+%attr(755,root,root) %{_bindir}/mail.local
+%{_libdir}/kde3/kcm_ktalkd.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
+%{_datadir}/config/ktalkdrc
+%{_datadir}/sounds/ktalkd.wav
+%{_desktopdir}/kde/kcmktalkd.desktop
+%{_iconsdir}/*/*/*/ktalkd.png
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
