@@ -1,6 +1,6 @@
 
 %define		_state		unstable
-%define		_kdever		kde-3.1-rc4
+%define		_kdever		kde-3.1-rc5
 
 Summary:        K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.1
-Release:	1
+Release:	2
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -355,9 +355,6 @@ mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
 mv -f $ALD/{Settings/[!K]*,Settings/KDE}
 mv -f $ALD/{System,Network/Misc}/krfb.desktop
 
-cp -r \
-    $RPM_BUILD_ROOT%{_datadir}/apps/{konqueror/dirtree,konqsidebartng/virtual_folders}
-
 #bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict		--with-kde
@@ -559,7 +556,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
-%{_datadir}/apps/konqsidebartng/virtual_folders/remote/lan.desktop
 %{_applnkdir}/.hidden/kcmkiolan.desktop
 %{_applnkdir}/.hidden/kcmlisa.desktop
 %{_applnkdir}/.hidden/kcmreslisa.desktop
