@@ -1658,6 +1658,7 @@ fi
 %post	librss		-p /sbin/ldconfig
 %postun	librss		-p /sbin/ldconfig
 
+%if %{with i18n}
 %files kdict-i18n -f kdict.lang
 %files kget-i18n -f kget.lang
 %files knewsticker-i18n -f knewsticker.lang
@@ -1669,6 +1670,7 @@ fi
 %files ktalkd-i18n -f ktalkd.lang
 %files kwifimanager-i18n -f kwifimanager.lang
 %files lanbrowser-i18n -f lisa.lang
+%endif
 
 %files devel
 %defattr(644,root,root,755)
