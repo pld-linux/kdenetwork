@@ -1,8 +1,8 @@
 %define		_state		stable
-%define		_ver		3.3.1
+%define		_ver		3.3.2
 
-%define		_minlibsevr	9:3.3.1
-%define		_minbaseevr	9:3.3.1
+%define		_minlibsevr	9:3.3.2
+%define		_minbaseevr	9:3.3.2
 #
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -10,21 +10,19 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	6
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	4b35a9e23ef555b47e9423082856ca80
-# Source0-size:	6970170
+# Source0-md5:	652a5703b8dc937c4009e002dc3035f3
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
-# Source1-size:	4177
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
-Patch100:	%{name}-branch.diff
+#Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 BuildRequires:	autoconf
@@ -849,7 +847,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-%patch100 -p1
+#%%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
@@ -860,7 +858,7 @@ echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	kget/kget.desk top
+	kget/kget.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
 	kppp/logview/kppplogview.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
