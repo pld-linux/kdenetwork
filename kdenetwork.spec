@@ -1,21 +1,25 @@
+
 %define		_state		unstable
 %define		_ver		3.3.92
+%define         _snap           050217
 
-%define		_minlibsevr	9:3.3.92
-%define		_minbaseevr	9:3.3.92
-#
+%define		_minlibsevr	9:3.3.92.050217
+%define		_minbaseevr	9:3.3.92.050217
+
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
+Version:        %{_ver}.%{_snap}
+#Version:	%{_ver}
 Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	11128438407210ca58687ba183e0ab30
+Source0:        http://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+#%% Source0-md5:	11128438407210ca58687ba183e0ab30
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
 Source2:	%{name}-lisa.init
@@ -883,7 +887,8 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_snap}
+#%setup -q
 %patch0 -p1
 %patch1 -p1
 
