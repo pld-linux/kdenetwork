@@ -1,13 +1,13 @@
 
 %define		_state		unstable
-%define		_kdever		kde-3.1-rc2
+%define		_kdever		kde-3.1-rc3
 
 Summary:        K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.0.98
+Version:	3.0.99
 Release:	2
 Epoch:		8
 License:	GPL
@@ -19,7 +19,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.t
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
-Patch3:		%{name}-kget_icons.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -319,7 +318,6 @@ Przegl±darka LAN-u dla KDE.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
