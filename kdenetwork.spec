@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -89,9 +89,9 @@ Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
 Requires:	kdelibs-devel >= 9:%{version}
-Requires:	%{name}-kopete-protocol-msn-lib = %{epoch}:%{version}-%{release}
-Requires:	%{name}-kopete-protocol-oscar = %{epoch}:%{version}-%{release}
-Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
+Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-librss-devel
 Obsoletes:	%{name}-rss-devel
 
@@ -169,6 +169,7 @@ Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
+Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-tools-autoaway
 Obsoletes:	kopete-plugin-tools-autoreplace
@@ -224,6 +225,7 @@ Summary:	Adds AIM protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u AIM
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-aim
 Adds AIM protocol support.
@@ -248,6 +250,7 @@ Summary:	Adds ICQ protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u ICQ
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-icq
 Adds ICQ protocol support.
@@ -283,6 +286,7 @@ Dodaje obs³ugê protoko³u Jabber.
 Summary:	Adds MSN protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u MSN
 Group:		X11/Applications/Networking
+Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-msn
@@ -290,31 +294,6 @@ Adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl
 Dodaje obs³ugê protoko³u MSN.
-
-%package kopete-protocol-msn-lib
-Summary:	MSN protocol shared library
-Summary(pl):	Biblioteka wspó³dzielona dla protoko³u MSN
-Group:		X11/Libraries
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-2
-
-%description kopete-protocol-msn-lib
-MSN protocol shared library.
-
-%description kopete-protocol-msn-lib -l pl
-Biblioteka wspó³dzielona dla protoko³u MSN.
-
-%package kopete-protocol-oscar
-Summary:	Adds OSCAR protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u OSCAR
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-
-%description kopete-protocol-oscar
-Adds OSCAR protocol support.
-
-%description kopete-protocol-oscar -l pl
-Dodaje obs³ugê protoko³u OSCAR.
 
 %package kopete-protocol-sms
 Summary:	Adds SMS contact support
@@ -654,11 +633,65 @@ KDE LAN Browser.
 %description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
+%package libkopete
+Summary:	A kopete library
+Summary(pl):	Bibliotek kopete
+Group:		X11/Libraries
+Requires:	kdelibs >= 9:%{version}
+Obsoletes:	%{name}-kopete < 10:3.1.93.031114-3
+
+%description libkopete
+A kopete library.
+
+%description libkopete -l pl
+Bibliotek kopete.
+
+%package libkopete_msn
+Summary:	MSN protocol shared library
+Summary(pl):	Biblioteka wspó³dzielona dla protoko³u MSN
+Group:		X11/Libraries
+Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
+Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-3
+
+%description libkopete_msn
+MSN protocol shared library.
+
+%description libkopete_msn -l pl
+Biblioteka wspó³dzielona dla protoko³u MSN.
+
+%package libkopete_oscar
+Summary:	Adds OSCAR protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u OSCAR
+Group:		X11/Applications/Networking
+Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
+Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-3
+
+%description libkopete_oscar
+A shared library which adds OSCAR protocol support needed eg. by
+aim and icq.
+
+%description libkopete_oscar -l pl
+Biblioteka dodaj±ca obs³ugê protoko³u OSCAR uzywanego m. innymi
+przez aim i icq.
+
+%package librss
+Summary:	A rss library
+Summary(pl):	Bibliotek rss
+Group:		X11/Libraries
+Requires:	kdelibs >= 9:%{version}
+Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
+
+%description librss
+A kopete rss.
+
+%description librss -l pl
+Bibliotek rss.
+
 %package rss
 Summary:	TODO
 Summary(pl):	TODO
-Group:		X11/Libraries
-Obsoletes:	%{name}-librss
+Group:		X11/Applications
+Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 
 %description rss
 TODO.
@@ -743,17 +776,17 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%post	kopete			-p /sbin/ldconfig
-%postun	kopete			-p /sbin/ldconfig
+%post	libkopete	-p /sbin/ldconfig
+%postun	libkopete	-p /sbin/ldconfig
 
-%post	kopete-protocol-msn-lib	-p /sbin/ldconfig
-%postun	kopete-protocol-msn-lib	-p /sbin/ldconfig
+%post	libkopete_msn	-p /sbin/ldconfig
+%postun	libkopete_msn	-p /sbin/ldconfig
 
-%post	kopete-protocol-oscar	-p /sbin/ldconfig
-%postun	kopete-protocol-oscar	-p /sbin/ldconfig
+%post	libkopete_oscar	-p /sbin/ldconfig
+%postun	libkopete_oscar	-p /sbin/ldconfig
 
-%post	rss			-p /sbin/ldconfig
-%postun	rss			-p /sbin/ldconfig
+%post	librss		-p /sbin/ldconfig
+%postun	librss		-p /sbin/ldconfig
 
 %files devel
 %defattr(644,root,root,755)
@@ -792,25 +825,15 @@ fi
 %{_datadir}/services/kded/kinetd.desktop
 %{_datadir}/servicetypes/kinetdmodule.desktop
 
-#%files kit -f kit.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kit
-#%{_datadir}/apps/kit
-#%{_desktopdir}/kde/kit.desktop
-#%{_iconsdir}/*/*/*/kit.png
-
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %{_libdir}/kde3/knewsticker_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
-#%{_libdir}/kde3/kcm_knewsticker.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
 %{_applnkdir}/.hidden/knewstickerstub.desktop
-#%{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
 
@@ -819,10 +842,6 @@ fi
 %attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-account-kconf_update
 %attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
-#%%attr(755,root,root) %{_bindir}/winpopup-install.sh
-#%%attr(755,root,root) %{_bindir}/winpopup-send.sh
-%{_libdir}/libkopete.la
-%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
@@ -831,8 +850,6 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-#%{_libdir}/kde3/kcm_kopete_pluginconfig.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_pluginconfig.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %{_libdir}/kde3/kopete_chatwindow.la
@@ -849,15 +866,22 @@ fi
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/admin_icon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aol_icon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/dt_icon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/free_icon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteavailable.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteaway.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmsg.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmessage.mng
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/status_unknown.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/emoticons
-#%{_datadir}/apps/kopete/pics/newmessage.mng
 %{_datadir}/apps/kopete/styles
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
@@ -866,7 +890,6 @@ fi
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
-#%{_datadir}/services/kopete_pluginconfig.desktop
 %{_datadir}/servicetypes/kopeteplugin.desktop
 %{_datadir}/servicetypes/kopeteprotocol.desktop
 %{_datadir}/servicetypes/kopeteui.desktop
@@ -882,7 +905,6 @@ fi
 %{_libdir}/kde3/kopete*aim*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/aim*
-#%{_datadir}/apps/kopete/pics/aim*
 %{_datadir}/services/kopete_aim.desktop
 
 %files kopete-protocol-gg
@@ -891,7 +913,6 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*gadu*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
-#%{_datadir}/apps/kopete/pics/gg*
 %{_datadir}/services/kopete_gadu.desktop
 
 %files kopete-protocol-icq
@@ -899,7 +920,6 @@ fi
 %{_libdir}/kde3/kopete*icq*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/icq*
-#%{_datadir}/apps/kopete/pics/icq*
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -907,14 +927,12 @@ fi
 %{_libdir}/kde3/kopete*irc*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
-#%{_datadir}/apps/kopete/pics/irc_connecting.mng
 %{_datadir}/services/kopete_irc.desktop
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
-#%{_datadir}/apps/kopete/pics/jabber*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
 %{_datadir}/services/kopete_jabber.desktop
 
@@ -927,17 +945,6 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
-
-%files kopete-protocol-msn-lib
-%defattr(644,root,root,755)
-%{_libdir}/libkopete_msn_shared.la
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
-
-%files kopete-protocol-oscar
-%defattr(644,root,root,755)
-%{_libdir}/libkopete_oscar.la
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*_icon.png
 
 #%files kopete-protocol-sms
 #%defattr(644,root,root,755)
@@ -1023,7 +1030,6 @@ fi
 %{_datadir}/apps/kopete_history
 %{_datadir}/services/kopete_history.desktop
 %{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
-##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/history.png
 
 #%files kopete-tool-motionaway
 #%defattr(644,root,root,755)
@@ -1189,11 +1195,29 @@ fi
 %{_applnkdir}/.hidden/kcmlisa.desktop
 %{_applnkdir}/.hidden/kcmreslisa.desktop
 
+%files libkopete
+%defattr(644,root,root,755)
+%{_libdir}/libkopete.la
+%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+
+%files libkopete_msn
+%defattr(644,root,root,755)
+%{_libdir}/libkopete_msn_shared.la
+%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+
+%files libkopete_oscar
+%defattr(644,root,root,755)
+%{_libdir}/libkopete_oscar.la
+%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+
+%files librss
+%defattr(644,root,root,755)
+%{_libdir}/librss.la
+%attr(755,root,root) %{_libdir}/librss.so.*.*.*
+
 %files rss
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/feedbrowser
 %attr(755,root,root) %{_bindir}/rssclient
 %attr(755,root,root) %{_bindir}/rssservice
-%{_libdir}/librss.la
-%attr(755,root,root) %{_libdir}/librss.so.*.*.*
 %{_datadir}/services/rssservice.desktop
