@@ -85,17 +85,17 @@ monitoração da caixa de correio kppp: configuração fácil para conexão
 PPP krn: leitor de notícias
 
 %package devel
-Summary:	Header files and development documentation
-Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
+Summary:	kdenetwork header files
+Summary(pl):	Pliki nag³ówkowe kdenetwork
 Summary(pt_BR):	Arquivos de inclusão para compilar aplicações que usem as bibliotecas do kdenetwork
 Group:		X11/Development/Libraries
 Requires:	kdelibs >= 8:%{version}
 
 %description devel
-Header files and development documentation.
+kdenetwork header files.
 
 %description devel -l pl
-Pliki nag³ówkowe i dokumentacja developerska.
+Pliki nag³ówkowe kdenetwork.
 
 %description devel -l pt_BR
 Arquivos de inclusão para compilar aplicações que usem as bibliotecas
@@ -351,9 +351,8 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
-for plik in `find ./ -name *.desktop | grep -l '\[nb\]/'` ; do
-	echo $plik
-	echo -e ',s/\[nb\]/[no]/\n,w' | ed $plik
+for plik in `find . -name \*.desktop | xargs grep -l '\[nb\]'` ; do
+	echo -e ',s/\[nb\]=/[no]=/\n,w' | ed $plik 2>/dev/null
 done
 
 %{__make} -f admin/Makefile.common cvs
