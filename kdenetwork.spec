@@ -1589,6 +1589,14 @@ cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
+%if %{with i18n}
+bzip2 -dc %{SOURCE14} | tar xf - -C $RPM_BUILD_ROOT
+for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
+        [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] && rm -f $f
+done
+%endif
+	
+
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
 %find_lang knewsticker		--with-kde
