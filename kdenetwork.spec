@@ -17,8 +17,8 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.
 # generated from kde-i18n
 #Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Source2:	lisa.init
-Source3:        lisa.sysconfig
-Source4:        %{name}-lisarc
+Source3:	lisa.sysconfig
+Source4:	%{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
@@ -286,7 +286,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:       kdebase-core >= %{version}
+Requires:	kdebase-core >= %{version}
 Requires:	%{name}-kinetd = %{epoch}:%{version}
 
 %description krfb
