@@ -1,12 +1,10 @@
 #
 # Conditional build:
-%bcond_with ggstatus	# Use proper sstatus behaviour for gg (which means
-#			  losing some contactlist features in kopete due
 %bcond_with  i18n    # don't build i18n subpackage
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040225
+%define		_snap		040327
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -29,7 +27,7 @@ Source4:	%{name}-lisarc
 Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
-Patch3:		%{name}-ggstatus.patch
+Patch3:		kde-common-QTDOCDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -367,6 +365,19 @@ are configurable.
 %description kopete-tool-autoaway -l pl
 Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
 zaistnieniu których ma nast±piæ, s± konfigurowalne.
+
+%package kopete-tool-alias
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Conflicts:	kdenetwork-kopete < 10:3.2.90.040312-1
+
+%description kopete-tool-alias
+TODO.
+
+%description kopete-tool-alias -l pl
+TODO.
 
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
@@ -913,15 +924,16 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%{?with_ggstatus:%patch3 -p1}
+%patch3 -p1
+
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 
 %build
 cp /usr/share/automake/config.sub admin
 
 export UNSERMAKE=/usr/share/unsermake/unsermake
-
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 
 %{__make} -f admin/Makefile.common cvs
 
@@ -939,11 +951,18 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
+# Workaround for doc caches (unsermake bug?)
+cd doc
+for i in `find . -name index.cache.bz2`; do
+	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$i
+done
+cd -	 
+
 %if %{with i18n}
 if [ -f "%{SOURCE1}" ] ; then
 	bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 	for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
-		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] ; then
+		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ]; then
 			rm -f $f
 		fi
 	done
@@ -951,7 +970,6 @@ else
 	echo "No i18n sources found and building --with i18n. FIXIT!"
 	exit 1
 fi
-
 %endif
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
@@ -963,9 +981,7 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
    $RPM_BUILD_ROOT%{_desktopdir}/kde
 
-cd $RPM_BUILD_ROOT%{_iconsdir}
-mv {locolor,crystalsvg}/16x16/apps/krfb.png
-cd -
+mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
@@ -988,30 +1004,24 @@ cat lanbrowser.lang >> lisa.lang
 %if %{with i18n}
 %find_lang kcmktalkd		--with-kde
 cat kcmktalkd.lang >> ktalkd.lang
-##%find_lang kcmkxmlrpcd		--with-kde
+##%find_lang kcmkxmlrpcd	--with-kde
 %find_lang kcm_krfb             --with-kde
 cat kcm_krfb.lang >> krfb.lang
-
-%find_lang kcmlanbrowser           --with-kde
+%find_lang kcmlanbrowser	--with-kde
 cat kcmlanbrowser.lang >> lisa.lang
-%find_lang kio_lan           --with-kde
+%find_lang kio_lan		--with-kde
 cat kio_lan.lang >> lisa.lang
-
-%find_lang kppplogview       --with-kde
+%find_lang kppplogview		--with-kde
 cat kppplogview.lang >> kppp.lang
-
-%find_lang kwireless            --with-kde
+%find_lang kwireless		--with-kde
 cat kwireless.lang >> kwifimanager.lang
-%find_lang kcmwifi            --with-kde
+%find_lang kcmwifi		--with-kde
 cat kcmwifi.lang >> kwifimanager.lang
-
-%find_lang kdictapplet        --with-kde
+%find_lang kdictapplet		--with-kde
 cat kdictapplet.lang >> kdict.lang
-
-%find_lang dcopservice       --with-kde
-%find_lang desktop_kdenetwork           --with-kde
+%find_lang dcopservice		--with-kde
+%find_lang desktop_kdenetwork	--with-kde
 %find_lang kinetd               --with-kde
-
 %endif
 
 files="\
@@ -1035,9 +1045,7 @@ for i in $files; do
 done
 
 durne=`ls -1 *.lang|grep -v _en`
-
-for i in $durne; 
-do
+for i in $durne; do
 	echo $i >> control
 	grep -v en\/ $i|grep -v apidocs >> ${i}.1
 	if [ -f ${i}.1 ] ; then
@@ -1149,14 +1157,10 @@ fi
 %attr(755,root,root) %{_bindir}/kopete
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
-%{_libdir}/kde3/kcm_kopete_alias.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/kopete_alias.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
 %{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
 %{_libdir}/kde3/libkrichtexteditpart.la
@@ -1193,9 +1197,7 @@ fi
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
-%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
 %{_datadir}/services/chatwindow.desktop
-%{_datadir}/services/kopete_alias.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
@@ -1288,6 +1290,15 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
 %{_datadir}/services/kopete_yahoo.desktop
+
+%files kopete-tool-alias
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kcm_kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
+%{_libdir}/kde3/kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
+%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
+%{_datadir}/services/kopete_alias.desktop
 
 %files kopete-tool-autoreplace
 %defattr(644,root,root,755)
