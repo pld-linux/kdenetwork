@@ -1,9 +1,8 @@
 
-%define         _state          stable
-%define         _ver		3.1
+%define		_state		stable
+%define		_ver		3.1
 
-
-Summary:        K Desktop Environment - network applications
+Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
@@ -12,7 +11,6 @@ Version:	%{_ver}
 Release:	6
 Epoch:		9
 License:	GPL
-Vendor:		The KDE Team
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
@@ -20,7 +18,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
-
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -350,7 +347,7 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 rm -rf $RPM_BUILD_ROOT
 
 install -d \
-    $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
+	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
 install -d $RPM_BUILD_ROOT%{_datadir}/apps/konqsidebartng
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
@@ -562,8 +559,8 @@ rm -rf $RPM_BUILD_ROOT
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/k*talkd*
-%{_libdir}/kde3/kcm_ktalkd.la 
-%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so 
+%{_libdir}/kde3/kcm_ktalkd.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_pixmapsdir}/*/*/*/ktalkd*
