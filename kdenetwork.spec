@@ -1,8 +1,8 @@
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	1.1.1
-Release:	3
+Version:	1.1.2
+Release:	1
 Vendor:		The KDE Team
 Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
 #Patch:		kmail.charset.patch
@@ -185,18 +185,19 @@ Requires:	kdelibs = %{version}
 #%patch -p1
 
 %build
-export KDEDIR=/usr/X11R6
-CXXFLAGS="$RPM_OPT_FLAGS -Wall" \
+export KDEDIR=%{_prefix}
+CXXFLAGS="$RPM_OPT_FLAGS -Wall -fno-rtti" \
 CFLAGS="$RPM_OPT_FLAGS -Wall" \
 ./configure %{_target_platform} \
 	--prefix=$KDEDIR \
+	--with-qt-dir=%{_prefix} \
  	--with-install-root=$RPM_BUILD_ROOT \
  	--with-pam="yes"
 make KDEDIR=$KDEDIR
 
 %install
 rm -rf $RPM_BUILD_ROOT
-export KDEDIR=/usr/X11R6
+export KDEDIR=%{_prefix}
 make RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
 
 %find_lang karchie
@@ -365,7 +366,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/ksirc.kdelnk
-%config(missingok) /etc/X11/kde/applnk/Internet/pws.kdelnk
 
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
