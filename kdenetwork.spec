@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -1120,7 +1120,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
-%{_datadir}/mimelnk/application/x-icq.desktop
+# moved to kdelibs; used also by sim
+#%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
