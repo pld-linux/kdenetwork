@@ -4,6 +4,10 @@
 # losing some contactlist features in kopete due 
 # to a design bug)
 
+%bcond_without	loadmovie 
+# Use this bcond (--without loadmovie) if you are using qt from 
+# devel as it has a memleak in QMovie. Qt 3.2.3 is safe.
+
 %define		_state		stable
 %define		_ver		3.2.0
 #%%define		_snap		040110
@@ -718,7 +722,7 @@ TODO.
 %patch1 -p1
 %patch2 -p1
 %{?with_ggstatus:%patch3 -p1}
-%patch4 -p1
+%{?without_loadmovie:%patch4 -p1}
 %patch5 -p1
 
 %build
