@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030512
+%define		_snap		030518
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
