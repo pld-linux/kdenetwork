@@ -31,6 +31,7 @@ Patch2:		%{name}-use_sendmail.patch
 Patch3:		%{name}-vcategories.patch
 Patch4:		%{name}-ggstatus.patch
 Patch5:		%{name}-dcoprss.patch
+Patch6:		%{name}-gcc34.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -916,6 +917,7 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 cp /usr/share/automake/config.sub admin
