@@ -588,7 +588,7 @@ Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
-
+Requires:	perl-Socket6 >= 0.11
 %description ksirc
 KDE IRC client.
 
