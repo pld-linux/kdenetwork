@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.1
-Release:	2
+Release:	3
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -355,6 +355,10 @@ mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
 mv -f $ALD/{Settings/[!K]*,Settings/KDE}
 mv -f $ALD/{System,Network/Misc}/krfb.desktop
 
+cd $RPM_BUILD_ROOT%{_pixmapsdir}
+mv {locolor,crystalsvg}/16x16/apps/krfb.png
+cd -
+
 #bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict		--with-kde
@@ -516,7 +520,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/krfb.desktop
 %{_applnkdir}/Settings/KDE/Network/kcmkrfb.desktop
 %{_pixmapsdir}/*/*/*/krdc*
-%{_pixmapsdir}/*/*/*/krfb*
+%{_pixmapsdir}/[!l]*/*/*/krfb*
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -528,7 +532,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_pixmapsdir}/*/*/*/ksirc*
+%{_pixmapsdir}/[!l]*/*/*/ksirc*
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
