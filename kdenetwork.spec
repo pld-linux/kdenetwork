@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030518
+%define		_snap		030602
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -15,7 +15,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://team.pld.org.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	a940930a57205f2e5a6c331ec539020b
+# Source0-md5:	29f1b3d11357a511a38fff1dbc6181c3
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
