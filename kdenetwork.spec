@@ -6,7 +6,7 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040206
+%define		_snap		040217
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -19,7 +19,7 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}.tar.bz2
 ##%% Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
 #Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 ##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
@@ -909,7 +909,7 @@ Internationalization and localization files for rss.
 Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
-%setup -q -n %{name}-%{_snap}
+%setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -1498,7 +1498,8 @@ fi
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
-%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+# Messing one !
+# %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
