@@ -6,7 +6,7 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040217
+%define		_snap		040225
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -919,6 +919,9 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 cp /usr/share/automake/config.sub admin
 
 export UNSERMAKE=/usr/share/unsermake/unsermake
+
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 
 %{__make} -f admin/Makefile.common cvs
 
