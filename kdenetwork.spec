@@ -1,7 +1,7 @@
 
 %define		_state		unstable
-%define		_ver		3.1.90
-%define		_snap		030726
+%define		_ver		3.1.91
+%define		_snap		030918
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -15,12 +15,13 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	db7cbef6b4bdc81124a4448720586eda
+# Source0-md5:	81a2328891e262687d0f19cfc401b2a7
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
+Patch2:		%{name}-vcategories.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -31,9 +32,6 @@ BuildRequires:	libxml2-progs
 BuildRequires:	openslp-devel
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	%{_docdir}/kde/HTML
-%define		_icondir	%{_datadir}/icons
 
 %define		no_install_post_chrpath		1
 
@@ -80,6 +78,21 @@ kmail: leitor de correio knu: utilitários de rede korn: ferramenta de
 monitoração da caixa de correio kppp: configuração fácil para conexão
 PPP krn: leitor de notícias
 
+%package devel
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Development/Libraries
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
+Obsoletes:	%{name}-librss-devel
+Obsoletes:	%{name}-rss-devel
+
+%description devel
+TODO.
+
+%description devel -l pl
+TODO.
+
 %package kdict
 Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
@@ -87,9 +100,6 @@ License:	Artistic
 Group:		X11/Applications
 Requires:	kdebase-kicker >= %{version}
 Provides:	kdict
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kdict
 Online dictionary client.
@@ -107,9 +117,6 @@ Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Obsoletes:	%{name}-krfb < 9:3.1-6
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kinetd
 An Internet daemon that starts network services on demand.
@@ -122,9 +129,6 @@ Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kget
 File Downloader.
@@ -132,35 +136,12 @@ File Downloader.
 %description kget -l pl
 ¦ci±gacz plików.
 
-%package kit
-Summary:	KDE AOL Instant Messenger
-Summary(pl):	Klient AOL Instant Messenger dla KDE
-Summary(pt_BR):	Comunicador que usa o protocolo AOL
-License:	LGPL
-Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
-
-%description kit
-KDE AOL Instant Messenger.
-
-%description kit -l pl
-Klient AOL Instant Messenger dla KDE.
-
-%description kit -l pt_BR
-Comunicador que usa o protocolo AOL.
-
 %package knewsticker
 Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
 Requires:	kdebase-kicker >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description knewsticker
 KDE News Ticker.
@@ -171,14 +152,42 @@ News Ticker dla KDE.
 %description knewsticker -l pt_BR
 Miniaplicativo de exibição de notícias para o painel Kicker.
 
+%package kopete
+Summary:	Multi-protocol plugin-based instant messenger
+Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
+Group:		X11/Applications
+Requires:	kdebase-core >= 9:%{version}
+Obsoletes:	kopete
+
+%description kopete
+Kopete is a flexible and extendable multiple protocol instant
+messaging system designed as a plugin-based system. All protocols are
+plugins and allow modular installment, configuration, and usage
+without the main application knowing anything about the plugin being
+loaded. The goal of Kopete is to provide users with a standard and
+easy to use interface between all of their instant messaging systems,
+but at the same time also providing developers with the ease of
+writing plugins to support a new protocol. The core Kopete development
+team provides a handful of plugins that most users can use, in
+addition to templates for new developers to base a plugin off of.
+
+%description kopete -l pl
+Kopete to rozszerzalny i rozbudowywalny komunikator obs³uguj±cy wiele
+protoko³ów, zaprojektowany w oparciu o wtyczki. Wszystkie protoko³y s±
+wtyczkami, co pozwala na modularn± instalacjê, konfiguracjê i u¿ywanie
+bez potrzeby obs³ugi ³adowanych wtyczek w g³ównej aplikacji. Celem
+Kopete jest wyposa¿enie u¿ytkowników w standardowy i ³atwy w u¿yciu
+interfejs pomiêdzy wszystkimi systemami komunikatorów, a jednocze¶nie
+zapewenienie programistom ³atwo¶ci pisania wtyczek obs³uguj±cych nowe
+protoko³y. Za³oga programistów Kopete udostêpnia podrêczny zestaw
+wtyczek u¿ywanych przez wiêkszo¶æ u¿ytkowników oraz szablony dla
+nowych programistów, na których mo¿na opieraæ nowe wtyczki.
+
 %package kpf
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
 Requires:	kdebase-kicker >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kpf
 Public fileserver applet.
@@ -193,9 +202,6 @@ Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
 Requires:	ppp
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kppp
 A PPPP dialer for KDE. It supports multiple accounts.
@@ -213,9 +219,6 @@ Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description ksirc
 KDE IRC client.
@@ -232,9 +235,6 @@ Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description krfb
 Virtual Desktops.
@@ -247,9 +247,6 @@ Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description ktalkd
 Talk daemon.
@@ -262,9 +259,6 @@ Summary:	Wireless LAN
 Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kwifimanager
 Wireless LAN.
@@ -277,9 +271,6 @@ Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -294,9 +285,6 @@ Group:		X11/Applications
 Requires:	konqueror >= %{version}
 Obsoletes:	%{name}-lisa
 Obsoletes:	lisa
-Obsoletes:	%{name}-kmail
-Obsoletes:	%{name}-knode
-Obsoletes:	%{name}-korn
 Provides:	lisa
 
 %description lanbrowser
@@ -317,23 +305,11 @@ TODO.
 %description rss -l pl
 TODO.
 
-%package rss-devel
-Summary:	TODO
-Summary(pl):	TODO
-Group:		X11/Development/Libraries
-Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-librss-devel
-
-%description rss-devel
-TODO.
-
-%description rss-devel -l pl
-TODO.
-
 %prep
 %setup -q -n %{name}-%{_snap}
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 
@@ -342,9 +318,11 @@ for plik in `find ./ -name *.desktop` ; do
 	sed -i -e "s/\[nb\]/\[no\]/g" $plik
 done
 
-%configure \
-	--%{!?debug:dis}%{?debug:en}able-debug \
-	--enable-final
+%{__make} -f admin/Makefile.common cvs
+
+#export DO_NOT_COMPILE=kopete
+
+%configure
 
 %{__make}
 
@@ -354,24 +332,24 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_appsdir=%{_applnkdir} \
-	kde_htmldir=%{_htmldir}
+	kde_htmldir=%{_docdir}/kde/HTML
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-
-mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings,KDE-Settings}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
-cd $RPM_BUILD_ROOT%{_icondir}
+mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/kopete.desktop \
+    $RPM_BUILD_ROOT%{_desktopdir}/kde
+
+cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
 %find_lang kdict		--with-kde
-%find_lang kit			--with-kde
 %find_lang knewsticker		--with-kde
-#%find_lang korn			--with-kde
+%find_lang kopete		--with-kde
 %find_lang kpf			--with-kde
 %find_lang kppp			--with-kde
 %find_lang krfb			--with-kde
@@ -379,6 +357,7 @@ cd -
 %find_lang ktalkd		--with-kde
 %find_lang kcmtalkd		--with-kde
 cat kcmtalkd.lang >> ktalkd.lang
+%find_lang kwifimanager		--with-kde
 %find_lang kxmlrpcd		--with-kde
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
@@ -403,13 +382,21 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%post	rss
-/sbin/ldconfig
+%post	kopete	-p /sbin/ldconfig
+%postun	kopete	-p /sbin/ldconfig
 
-%postun	rss
-/sbin/ldconfig
+%post	rss	-p /sbin/ldconfig
+%postun	rss	-p /sbin/ldconfig
 
-#%files kwifimanager
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/rss                                                      
+%{_libdir}/libkopete.so
+%{_libdir}/libkopete_msn.so
+%{_libdir}/libkopete_oscar.so
+%{_libdir}/librss.so
+
+#%files kwifimanager -f kwifimanager.lang
 #%defattr(644,root,root,755)
 #%{_libdir}/kde3/kcm_kwifimanager.la
 #%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
@@ -422,8 +409,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
-%{_desktopdir}/kdict.desktop
-%{_icondir}/*/*/*/kdict*
+%{_desktopdir}/kde/kdict.desktop
+%{_iconsdir}/*/*/*/kdict*
 
 %files kget
 %defattr(644,root,root,755)
@@ -433,8 +420,8 @@ fi
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
-%{_desktopdir}/kget.desktop
-%{_icondir}/*/*/*/*kget*
+%{_desktopdir}/kde/kget.desktop
+%{_iconsdir}/*/*/*/*kget*
 
 %files kinetd
 %defattr(644,root,root,755)
@@ -444,12 +431,12 @@ fi
 %{_datadir}/services/kded/kinetd.desktop
 %{_datadir}/servicetypes/kinetdmodule.desktop
 
-%files kit -f kit.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kit
-%{_datadir}/apps/kit
-%{_desktopdir}/kit.desktop
-%{_icondir}/*/*/*/kit.png
+#%files kit -f kit.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kit
+#%{_datadir}/apps/kit
+#%{_desktopdir}/kde/kit.desktop
+#%{_iconsdir}/*/*/*/kit.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
@@ -463,8 +450,149 @@ fi
 %{_datadir}/apps/kconf_update/kn*
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_applnkdir}/.hidden/kcmnewsticker.desktop
-%{_desktopdir}/knewsticker*.desktop
-%{_icondir}/*/*/*/knewsticker.png
+%{_desktopdir}/kde/knewsticker*.desktop
+%{_iconsdir}/*/*/*/knewsticker.png
+
+%files kopete -f kopete.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-account-kconf_update
+%attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-pluginloader2-kconf_update
+%attr(755,root,root) %{_bindir}/kopete
+%attr(755,root,root) %{_bindir}/winpopup-install.sh
+%attr(755,root,root) %{_bindir}/winpopup-send.sh
+%{_libdir}/libkopete.la
+%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+%{_libdir}/libkopete_msn.la
+%attr(755,root,root) %{_libdir}/libkopete_msn.so.*.*.*
+%{_libdir}/libkopete_oscar.la
+%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%{_libdir}/kde3/kcm_kopete_accountconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
+%{_libdir}/kde3/kcm_kopete_appearanceconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
+%{_libdir}/kde3/kcm_kopete_autoreplace.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
+%{_libdir}/kde3/kcm_kopete_behaviorconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
+%{_libdir}/kde3/kcm_kopete_cryptography.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_cryptography.so
+%{_libdir}/kde3/kcm_kopete_highlight.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_highlight.so
+%{_libdir}/kde3/kcm_kopete_history.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_history.so
+%{_libdir}/kde3/kcm_kopete_motionaway.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_motionaway.so
+%{_libdir}/kde3/kcm_kopete_msn.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
+%{_libdir}/kde3/kcm_kopete_nowlistening.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
+%{_libdir}/kde3/kcm_kopete_pluginconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_pluginconfig.so
+%{_libdir}/kde3/kcm_kopete_texteffect.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_texteffect.so
+%{_libdir}/kde3/kcm_kopete_translator.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
+%{_libdir}/kde3/kcm_kopete_webpresence.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
+%{_libdir}/kde3/kopete_aim.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_aim.so
+%{_libdir}/kde3/kopete_autoreplace.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_autoreplace.so
+%{_libdir}/kde3/kopete_chatwindow.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
+%{_libdir}/kde3/kopete_connectionstatus.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_connectionstatus.so
+%{_libdir}/kde3/kopete_contactnotes.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_contactnotes.so
+%{_libdir}/kde3/kopete_cryptography.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_cryptography.so
+%{_libdir}/kde3/kopete_gadu.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_gadu.so
+%{_libdir}/kde3/kopete_highlight.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_highlight.so
+%{_libdir}/kde3/kopete_history.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_history.so
+%{_libdir}/kde3/kopete_icq.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_icq.so
+%{_libdir}/kde3/kopete_irc.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_irc.so
+%{_libdir}/kde3/kopete_jabber.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_jabber.so
+%{_libdir}/kde3/kopete_motionaway.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_motionaway.so
+%{_libdir}/kde3/kopete_msn.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_msn.so
+%{_libdir}/kde3/kopete_nowlistening.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_nowlistening.so
+%{_libdir}/kde3/kopete_sms.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_sms.so
+#%{_libdir}/kde3/kopete_spellcheck.la
+#%attr(755,root,root) %{_libdir}/kde3/kopete_spellcheck.so
+%{_libdir}/kde3/kopete_texteffect.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_texteffect.so
+%{_libdir}/kde3/kopete_translator.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_translator.so
+%{_libdir}/kde3/kopete_webpresence.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_webpresence.so
+%{_libdir}/kde3/kopete_wp.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_wp.so
+%{_libdir}/kde3/kopete_yahoo.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
+%{_libdir}/kde3/libkrichtexteditpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
+%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
+%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
+%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%{_datadir}/apps/kopete
+%{_datadir}/apps/krichtexteditpart/krichtexteditpartui.rc
+%{_datadir}/services/aim.desktop
+%{_datadir}/services/autoreplace.desktop
+%{_datadir}/services/chatwindow.desktop
+%{_datadir}/services/connectionstatus.desktop
+%{_datadir}/services/contactnotes.desktop
+%{_datadir}/services/cryptography.desktop
+%{_datadir}/services/gadu.desktop
+%{_datadir}/services/highlight.desktop
+%{_datadir}/services/history.desktop
+%{_datadir}/services/icq.desktop
+%{_datadir}/services/irc.desktop
+%{_datadir}/services/jabber.desktop
+%{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_highlight_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
+%{_datadir}/services/kopete_accountconfig.desktop
+%{_datadir}/services/kopete_appearanceconfig.desktop
+%{_datadir}/services/kopete_behaviorconfig.desktop
+%{_datadir}/services/kopete_pluginconfig.desktop
+%{_datadir}/services/motionaway.desktop
+%{_datadir}/services/msn.desktop
+%{_datadir}/services/nowlistening.desktop
+%{_datadir}/services/sms.desktop
+#%{_datadir}/services/spellcheck.desktop
+%{_datadir}/services/texteffect.desktop
+%{_datadir}/services/translator.desktop
+%{_datadir}/services/webpresence.desktop
+%{_datadir}/services/wp.desktop
+%{_datadir}/services/yahoo.desktop
+%{_datadir}/servicetypes/kopeteplugin.desktop
+%{_datadir}/servicetypes/kopeteprotocol.desktop
+%{_datadir}/servicetypes/kopeteui.desktop
+%{_datadir}/sounds/Kopete_Event.ogg
+%{_datadir}/sounds/Kopete_Received.ogg
+%{_datadir}/sounds/Kopete_Sent.ogg
+%{_datadir}/sounds/Kopete_User_is_Online.ogg
+%{_desktopdir}/kde/kopete.desktop
+%{_iconsdir}/crystalsvg/*/apps/kopete.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -474,16 +602,16 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
-%{_icondir}/*/*/*/kpf*
+%{_iconsdir}/*/*/*/kpf*
 
 %files kppp -f kppp.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
 %{_datadir}/apps/kppp
-%{_desktopdir}/Kppp.desktop
-%{_desktopdir}/kppplogview.desktop
-%{_icondir}/*/*/*/kppp.png
+%{_desktopdir}/kde/Kppp.desktop
+%{_desktopdir}/kde/kppplogview.desktop
+%{_iconsdir}/*/*/*/kppp.png
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
@@ -498,11 +626,11 @@ fi
 %{_datadir}/services/kinetd_krfb_httpd.desktop
 %{_datadir}/services/rdp.protocol
 %{_datadir}/services/vnc.protocol
-%{_applnkdir}/KDE-Settings/Network/kcmkrfb.desktop
-%{_desktopdir}/krfb.desktop
-%{_desktopdir}/krdc.desktop
-%{_icondir}/*/*/*/krdc*
-%{_icondir}/[!l]*/*/*/krfb*
+%{_desktopdir}/kde//kcmkrfb.desktop
+%{_desktopdir}/kde/krfb.desktop
+%{_desktopdir}/kde/krdc.desktop
+%{_iconsdir}/*/*/*/krdc*
+%{_iconsdir}/[!l]*/*/*/krfb*
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -517,20 +645,20 @@ fi
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_desktopdir}/ksirc.desktop
-%{_icondir}/[!l]*/*/*/ksirc*
+%{_desktopdir}/kde/ksirc.desktop
+%{_iconsdir}/[!l]*/*/*/ksirc*
 
-%files ktalkd -f ktalkd.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ktalkd
-%attr(755,root,root) %{_bindir}/ktalkdlg
-%attr(755,root,root) %{_bindir}/mail.local
-%{_libdir}/kde3/kcm_ktalkd.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
-%{_datadir}/config/ktalkd*
-%{_datadir}/sounds/ktalkd*
-%{_applnkdir}/KDE-Settings/Network/kcmktalkd.desktop
-%{_icondir}/*/*/*/ktalkd*
+#%files ktalkd -f ktalkd.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/ktalkd
+#%attr(755,root,root) %{_bindir}/ktalkdlg
+#%attr(755,root,root) %{_bindir}/mail.local
+#%{_libdir}/kde3/kcm_ktalkd.la
+#%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
+#%{_datadir}/config/ktalkd*
+#%{_datadir}/sounds/ktalkd*
+#%{_desktopdir}/kde/kcmktalkd.desktop
+#%{_iconsdir}/*/*/*/ktalkd*
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
@@ -570,8 +698,3 @@ fi
 %{_libdir}/librss.la                                                      
 %attr(755,root,root) %{_libdir}/librss.so.*.*.*    
 %{_datadir}/services/rssservice.desktop
-
-%files rss-devel
-%defattr(644,root,root,755)
-%{_includedir}/rss                                                      
-%{_libdir}/librss.so
