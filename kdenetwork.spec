@@ -358,8 +358,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install -d \
-	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
-	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
+	$RPM_BUILD_ROOT{%{_sysconfdir}/{rc.d/init.d,sysconfig},/usr/bin} \
+	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,M{ail,isc},News}}
+
+mv $RPM_BUILD_ROOT{%{_bindir}/{,res}lisa,/usr/bin}
 
 ALD=$RPM_BUILD_ROOT%{_applnkdir}
 
@@ -609,8 +611,8 @@ fi
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
 %attr(754,root,root) /etc/rc.d/init.d/lisa
-%attr(755,root,root) %{_bindir}/reslisa
-%attr(755,root,root) %{_bindir}/lisa
+%attr(755,root,root) /usr/bin/lisa
+%attr(755,root,root) /usr/bin/reslisa
 %{_libdir}/kde3/kio_lan.la
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.so
 %{_libdir}/kde3/kcm_lanbrowser.la
