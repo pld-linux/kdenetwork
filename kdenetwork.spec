@@ -6,8 +6,8 @@ Release:     2
 Vendor:      The KDE Team
 Source:      ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
 #Patch:       kmail.charset.patch
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Copyright:   GPL
 Requires:    qt >= 1.40, kdelibs = %{version}
 BuildRoot:   /tmp/%{name}-%{version}-root
@@ -45,8 +45,8 @@ Pakiet zawiera:
 %package karchie
 Summary:     KDE Archie clients
 Summary(pl): Klient programu archie dla KDE
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE/Sieci
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description karchie
@@ -58,8 +58,8 @@ Klient programu archie dla KDE.
 %package kbiff
 Summary:     KDE kbiff
 Summary(pl): KDE kbiff
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE/Sieci
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description kbiff
@@ -69,8 +69,8 @@ Requires:    qt >= 1.40, kdelibs = %{version}
 %package kfinger
 Summary:     KDE finger client
 Summary(pl): Klient programu 'finger' dla KDE
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE/Sieci
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description kfinger
@@ -80,7 +80,7 @@ Requires:    qt >= 1.40, kdelibs = %{version}
 %package kmail
 Summary:     KDE Mail client
 Summary(pl): Program pocztowy KDE
-Group:       X11/KDE/Network
+Group:       X11/KDE/Networking
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description kmail
@@ -98,7 +98,7 @@ Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów znaków.
 %package knu
 Summary:     KDE Network Utilities	
 Summary(pl): Narzêdzia sieciowe KDE
-Group:       X11/KDE/Network
+Group:       X11/KDE/Networking
 Requires:    qt >= 1.40, kdelibs = %{version}, netkit-base
 
 %description knu
@@ -110,7 +110,7 @@ Interfejs do narzêdzi: ping, host i traceroute.
 %package korn 
 Summary:     KDE 'biff' application
 Summary(pl): Wska¼nik skrzynki pocztowej dla KDE
-Group:       X11/KDE/Network
+Group:       X11/KDE/Networking
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description korn
@@ -122,7 +122,7 @@ Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach pocztowych.
 %package kppp
 Summary:     KDE PPP dialer	
 Summary(pl): Program do po³±czeñ modemowych dla KDE
-Group:       X11/KDE/Network
+Group:       X11/KDE/Networking
 Requires:    qt >= 1.40, kdelibs = %{version}, ppp 
 
 %description kppp
@@ -135,7 +135,7 @@ Posiada ³atwy interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 %package krn
 Summary:     KDE News Reader	
 Summary(pl): Czytnik newsówd dla KDE
-Group:       X11/KDE/Network
+Group:       X11/KDE/Networking
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description krn
@@ -148,8 +148,8 @@ Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile.
 %package ksirc
 Summary:     KDE IRC client
 Summary(pl): Klient IRC dla KDE
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE/Sieci
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description ksirc
@@ -159,8 +159,8 @@ Requires:    qt >= 1.40, kdelibs = %{version}
 %package ktalkd
 Summary:     KDE Mail client
 Summary(pl): Program pocztowy KDE
-Group:       X11/KDE/Network
-Group(pl):   X11/KDE/Sieci
+Group:       X11/KDE/Networking
+Group(pl):   X11/KDE/Sieciowe
 Requires:    qt >= 1.40, kdelibs = %{version}
 
 %description ktalkd
