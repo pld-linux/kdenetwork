@@ -24,6 +24,8 @@ Patch4:		%{name}-fix-kpgp-mem-leak.patch
 Patch5:		%{name}-fix-copy-link-location.patch
 Patch6:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
 Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
+# Security fix from 3.0.5
+Patch8:		%{name}-lan.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -300,6 +302,7 @@ do kdenetwork.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
