@@ -1,0 +1,128 @@
+--- kdenetwork-3.2.1/kopete/protocols/irc/libkirc/kircfunctors.h.orig	2003-09-21 10:40:30.000000000 +0200
++++ kdenetwork-3.2.1/kopete/protocols/irc/libkirc/kircfunctors.h	2004-03-26 12:11:55.713177952 +0100
+@@ -101,10 +101,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				bool (TClass::*tmp)(const KIRCMessage&) = (bool (TClass::*)(const KIRCMessage&))(m_method);
+-				return (*m_obj.*tmp)(msg);
++				bool (TClass::*tmp)(const KIRCMessage&) = (bool (TClass::*)(const KIRCMessage&))(this->m_method);
++				return (*(this->m_obj).*tmp)(msg);
+ 			}
+ 			return false;
+ 		}
+@@ -124,10 +124,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)() = (void (TClass::*)())m_method;
+-				emit (*m_obj.*tmp)();
++				void (TClass::*tmp)() = (void (TClass::*)())this->m_method;
++				emit (*(this->m_obj).*tmp)();
+ 				return true;
+ 			}
+ 			return false;
+@@ -147,10 +147,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.args()[argindex]);
++				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.args()[argindex]);
+ 				return true;
+ 			}
+ 			return false;
+@@ -170,10 +170,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.prefix());
++				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.prefix());
+ 				return true;
+ 			}
+ 			return false;
+@@ -193,10 +193,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.suffix());
++				void (TClass::*tmp)(const QString&) = (void (TClass::*)(const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.suffix());
+ 				return true;
+ 			}
+ 			return false;
+@@ -216,10 +216,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.args()[type], msg.args()[type+1]);
++				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.args()[this->type], msg.args()[this->type+1]);
+ 				return true;
+ 			}
+ 			return false;
+@@ -239,10 +239,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.prefix(), msg.args()[argindex]);
++				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.prefix(), msg.args()[argindex]);
+ 				return true;
+ 			}
+ 			return false;
+@@ -262,10 +262,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.args()[argindex], msg.suffix());
++				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.args()[argindex], msg.suffix());
+ 				return true;
+ 			}
+ 			return false;
+@@ -285,10 +285,10 @@
+ public:
+ 	virtual bool operator()(const KIRCMessage &msg)
+ 		{
+-			if(isValid())
++			if(this->isValid())
+ 			{
+-				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))m_method;
+-				emit (*m_obj.*tmp)(msg.prefix(), msg.suffix());
++				void (TClass::*tmp)(const QString&, const QString&) = (void (TClass::*)(const QString&, const QString&))this->m_method;
++				emit (*(this->m_obj).*tmp)(msg.prefix(), msg.suffix());
+ 				return true;
+ 			}
+ 			return false;
