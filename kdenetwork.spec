@@ -286,8 +286,8 @@ Dodaje obs³ugê protoko³u Jabber.
 Summary:	Adds MSN protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u MSN
 Group:		X11/Applications/Networking
-Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-msn
 Adds MSN protocol support.
