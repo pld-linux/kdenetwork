@@ -1,7 +1,7 @@
 
 %define		_state		unstable
-%define		_ver		3.1.93
-%define		_snap		031114
+%define		_ver		3.1.94
+%define		_snap		031204
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -9,13 +9,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	3
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	8a96ab626116aed1ddeeadb75f69860a
+# Source0-md5:	a9cdcba68c1e1c2083e5a8f40ad99193
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -723,7 +723,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_appsdir=%{_applnkdir} \
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
@@ -732,7 +731,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
-mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/kopete.desktop \
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
    $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 cd $RPM_BUILD_ROOT%{_iconsdir}
@@ -752,7 +751,7 @@ cat krdc.lang >> krfb.lang
 %find_lang kcmtalkd		--with-kde
 cat kcmtalkd.lang >> ktalkd.lang
 %find_lang kwifimanager		--with-kde
-%find_lang kxmlrpcd		--with-kde
+#%find_lang kxmlrpcd		--with-kde
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
 cat lanbrowser.lang >> lisa.lang
@@ -833,7 +832,7 @@ fi
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
-%{_applnkdir}/.hidden/knewstickerstub.desktop
+%{_datadir}/applnk/.hidden/knewstickerstub.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
 
@@ -1191,9 +1190,9 @@ fi
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
 #%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
-%{_applnkdir}/.hidden/kcmkiolan.desktop
-%{_applnkdir}/.hidden/kcmlisa.desktop
-%{_applnkdir}/.hidden/kcmreslisa.desktop
+%{_datadir}/applnk/.hidden/kcmkiolan.desktop
+%{_datadir}/applnk/.hidden/kcmlisa.desktop
+%{_datadir}/applnk/.hidden/kcmreslisa.desktop
 
 %files libkopete
 %defattr(644,root,root,755)
