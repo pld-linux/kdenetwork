@@ -1,6 +1,6 @@
 
 %define		_state		stable
-%define		_ver		3.1.1
+%define		_ver		3.1.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -102,7 +102,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 Provides:	kdict
 Obsoletes:	kdict
 
@@ -120,7 +120,7 @@ Internet.
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-krfb < 3.1-6
 
 %description kinetd
@@ -133,7 +133,7 @@ Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 
 %description kget
 File Downloader.
@@ -188,7 +188,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description knewsticker
 KDE News Ticker.
@@ -206,7 +206,7 @@ Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
 Requires:	%{name} = %{version}
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
@@ -223,7 +223,7 @@ Summary:	KDE 'biff' application
 Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
 Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
@@ -239,7 +239,7 @@ Miniaplicativo de monitoração da caixa de correio.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description kpf
 Public fileserver applet.
@@ -252,7 +252,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Requires:	ppp
 
 %description kppp
@@ -285,7 +285,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:       kdebase-core >= %{version}
 Requires:	%{name}-kinetd = %{version}
 
 %description krfb
@@ -298,7 +298,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 
 %description ktalkd
 Talk daemon.
@@ -348,14 +348,14 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 for plik in `find ./ -name *.desktop` ; do
 	if [ -d $plik ]; then
 	echo $plik
-	sed -ie 's/\[nb\]/\[no\]/g' $plik
+	sed -i -e 's/\[nb\]/\[no\]/g' $plik
 	fi
 done
-				
+
+%{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
-	--enable-kernel-threads \
 	--with-pam="yes" \
 	--enable-final
 %{__make}
