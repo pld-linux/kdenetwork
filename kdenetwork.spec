@@ -17,7 +17,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	http://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	4b35a9e23ef555b47e9423082856ca80
+# Source0-md5:	962ff8207d025846cf8cbc15960be2ca
 # Source0-size:	6970170
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
