@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.1.90
-%define		_snap		030623
+%define		_snap		030726
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -15,7 +15,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	2dacca3527ea4daa2a27641f36b5f274
+# Source0-md5:	db7cbef6b4bdc81124a4448720586eda
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -322,6 +322,7 @@ TODO.
 Summary:	TODO
 Summary(pl):	TODO
 Group:		X11/Development/Libraries
+Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-librss-devel
 
 %description rss-devel
@@ -371,7 +372,7 @@ cd -
 %find_lang kdict		--with-kde
 %find_lang kit			--with-kde
 %find_lang knewsticker		--with-kde
-%find_lang korn			--with-kde
+#%find_lang korn			--with-kde
 %find_lang kpf			--with-kde
 %find_lang kppp			--with-kde
 %find_lang krfb			--with-kde
@@ -403,8 +404,11 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%post	rss	-p /sbin/ldconfig
-%postun	rss	-p /sbin/ldconfig
+%post	rss
+/sbin/ldconfig
+
+%postun	rss
+/sbin/ldconfig
 
 #%files kwifimanager
 #%defattr(644,root,root,755)
@@ -505,8 +509,10 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%{_libdir}/ksirc.la
-%attr(755,root,root) %{_libdir}/ksirc.so
+%{_libdir}/libkdeinit_ksirc.la
+%attr(755,root,root) %{_libdir}/libkdeinit_ksirc.so
+%{_libdir}/kde3/ksirc.la
+%attr(755,root,root) %{_libdir}/kde3/ksirc.so
 %{_libdir}/kde3/libkntsrcfilepropsdlg.la
 %attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
 %{_datadir}/config/ksircrc
@@ -530,8 +536,10 @@ fi
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kxmlrpcd
-%{_libdir}/kxmlrpcd.la
-%attr(755,root,root) %{_libdir}/kxmlrpcd.so
+%{_libdir}/libkdeinit_kxmlrpcd.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kxmlrpcd.so
+%{_libdir}/kde3/kxmlrpcd.la
+%attr(755,root,root) %{_libdir}/kde3/kxmlrpcd.so
 %{_libdir}/kde3/kcm_xmlrpcd.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 %{_datadir}/services/kxmlrpcd.desktop
@@ -567,3 +575,4 @@ fi
 %files rss-devel
 %defattr(644,root,root,755)
 %{_includedir}/rss                                                      
+%{_libdir}/librss.so
