@@ -1,17 +1,16 @@
-%define 	sver    beta1
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	2.2
-Release:	0.%{sver}.1
-Epoch:		7
+Version:	2.2.1
+Release:	1
+Epoch:		8
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Vendor:		The KDE Team
-Source0:	ftp://ftp.kde.org/pub/kde/unstable/%{version}%{sver}/src/%{name}-%{version}%{sver}.tar.bz2
-BuildRequires:	qt-devel >= 2.2.2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}%{sver}.tar.bz2
+BuildRequires:	qt-devel >= 2.3.0
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
