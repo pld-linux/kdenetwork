@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -22,6 +22,8 @@ Source4:	%{name}-lisarc
 Patch0:		kde-general-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
+Patch3:		%{name}-ggstatus.patch
+BuildRequires:	artsc-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -34,9 +36,11 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	openslp-devel
+BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xmms-devel
+BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libkopete_oscar.so.1
@@ -706,6 +710,7 @@ TODO.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 for f in `find . -name \*.desktop | xargs grep -l '\[nb\]'` ; do
