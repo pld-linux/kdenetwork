@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	8
+Release:	9
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -453,8 +453,10 @@ rm -rf $RPM_BUILD_ROOT
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
-%attr(755,root,root) %{_libdir}/kde3/knewsticker_applet.??
-%attr(755,root,root) %{_libdir}/kde3/libkcm_newsticker.??
+%attr(755,root,root) %{_libdir}/kde3/knewsticker_applet.so
+%{_libdir}/kde3/knewsticker_applet.la
+%attr(755,root,root) %{_libdir}/kde3/libkcm_newsticker.so
+%{_libdir}/kde3/libkcm_newsticker.la
 %{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
 %{_applnkdir}/Settings/KDE/Network/kcmnewsticker.desktop
 %{_applnkdir}/Network/News/knewsticker*.desktop
@@ -470,8 +472,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
-%attr(755,root,root) %{_libdir}/kde3/libkcm_lanbrowser.??
+%attr(755,root,root) %{_libdir}/kde3/libkcm_lanbrowser.so
+%{_libdir}/kde3/libkcm_lanbrowser.la
 %attr(755,root,root) %{_libdir}/kio_lan.so
+%{_libdir}/kio_lan.la
 %{_applnkdir}/Settings/KDE/Network/lanbrowser.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
@@ -492,16 +496,21 @@ rm -rf $RPM_BUILD_ROOT
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kxmlrpcd
-%attr(755,root,root) %{_libdir}/kxmlrpcd.??
-%attr(755,root,root) %{_libdir}/kde3/libkcm_xmlrpcd.??
-%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmkxmlrpcd.??
+%attr(755,root,root) %{_libdir}/kxmlrpcd.so
+%{_libdir}/kxmlrpcd.la
+%attr(755,root,root) %{_libdir}/kde3/libkcm_xmlrpcd.so
+%{_libdir}/kde3/libkcm_xmlrpcd.la
+%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmkxmlrpcd.so
+%{_libdir}/kde3/libkcm_kcmkxmlrpcd.la
 %{_datadir}/services/kxmlrpcd.desktop
 %{_applnkdir}/Settings/KDE/System/kcmkxmlrpcd.desktop
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde3/kpfapplet.??
-%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialogplugin.??
+%attr(755,root,root) %{_libdir}/kde3/kpfapplet.so
+%attr(755,root,root) %{_libdir}/kde3/kpfapplet.la
+%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialogplugin.so
+%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialogplugin.la
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kpf*}
@@ -510,7 +519,8 @@ rm -rf $RPM_BUILD_ROOT
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/k*talkd*
-%attr(755,root,root) %{_libdir}/kde3/libkcm_ktalkd.??
+%attr(755,root,root) %{_libdir}/kde3/libkcm_ktalkd.so
+%{_libdir}/kde3/libkcm_ktalkd.la
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
