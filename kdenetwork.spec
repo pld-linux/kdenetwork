@@ -1,10 +1,11 @@
+%bcond_with	cvs	# dont get the tarball
 
 %define		_state		snapshots
 %define		_ver		3.2.91
 %define		_snap		040630
 
 %define		_minlibsevr	9:3.2.91.040629
-%define		_minbaseevr	9:3.2.91.040629		
+%define		_minbaseevr	9:3.2.91.040629
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -16,15 +17,19 @@ Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
+
+%if ! %{with cvs}
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
+##%% Source0-md5:	53c949621c89a48a3a326ae98e608f48
+%else
+Source0:	kdesource.tar.gz
+%endif
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Source5:	kopetestyles.tar.bz2
-# Source5-md5:	cbb4ea50899c8493ca8359b8dac72746
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-vcategories.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -704,8 +709,8 @@ Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kdenetwork-kopete-protocol-oscar < 10:3.1.93.031114-3
 
 %description libkopete_oscar
-A shared library which adds OSCAR protocol support needed eg. by
-AIM and ICQ.
+A shared library which adds OSCAR protocol support needed eg. by AIM
+and ICQ.
 
 %description libkopete_oscar -l pl
 Biblioteka dodaj±ca obs³ugê protoko³u OSCAR u¿ywanego miêdzy innymi
@@ -737,19 +742,49 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
+%if ! %{with cvs}
 %setup -q -n %{name}-%{_snap}
+%else
+%setup -q -n %{name} -D
+%endif
+
+%if ! %{with cvs}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
+	kget/kget.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+	kppp/logview/kppplogview.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+	kppp/Kppp.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	krdc/krdc.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	krfb/krfb/krfb.desktop
+%endif
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Dictionary;/' \
+	kdict/kdict.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;IRCClient;/' \
+	ksirc/ksirc.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
+	kopete/kopete/kopete.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
+	wifi/kwifimanager.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;News;/' \
+	knewsticker/knewsticker-standalone.desktop
+
 %build
-cp /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
+cp %{_datadir}/automake/config.sub admin
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
 
 %{__make} -f admin/Makefile.common cvs
 
@@ -767,7 +802,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-tar xfj %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles/
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
