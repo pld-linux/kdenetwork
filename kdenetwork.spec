@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -902,6 +902,7 @@ export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %configure \
 	--disable-rpath \
 	--enable-final \
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
 
 %{__make}
