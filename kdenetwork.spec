@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030406
+%define		_snap		030418
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -321,9 +321,9 @@ for plik in `find ./ -name *.desktop` ; do
 done
 				
 %configure \
+	--enable-final \
 	--%{!?debug:dis}%{?debug:en}able-debug \
-	--with-pam="yes" \
-	--enable-final
+	--with-pam="yes"
 
 %{__make}
 
@@ -332,13 +332,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install -d \
-	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
-	$RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
-mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings/[!K]*,Settings/KDE}
-mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/ksirc.desktop \
-    $RPM_BUILD_ROOT%{_desktopdir}
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings,KDE-Settings}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
@@ -387,7 +383,7 @@ fi
 #%defattr(644,root,root,755)
 #%{_libdir}/kde3/kcm_kwifimanager.la
 #%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
-#%{_applnkdir}/Settings/KDE/Network/kcmwifi.desktop
+#%{_applnkdir}/KDE-Settings/Network/kcmwifi.desktop
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
@@ -472,7 +468,7 @@ fi
 %{_datadir}/services/kinetd_krfb_httpd.desktop
 %{_datadir}/services/rdp.protocol
 %{_datadir}/services/vnc.protocol
-%{_applnkdir}/Settings/KDE/Network/kcmkrfb.desktop
+%{_applnkdir}/KDE-Settings/Network/kcmkrfb.desktop
 %{_desktopdir}/krfb.desktop
 %{_desktopdir}/krdc.desktop
 %{_pixmapsdir}/*/*/*/krdc*
@@ -482,8 +478,8 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%{_libdir}/ksirc.la
-%attr(755,root,root) %{_libdir}/ksirc.so
+#%{_libdir}/ksirc.la
+#%attr(755,root,root) %{_libdir}/ksirc.so
 %{_libdir}/kde3/libkntsrcfilepropsdlg.la
 %attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
 %{_datadir}/config/ksircrc
@@ -501,7 +497,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
-%{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
+%{_applnkdir}/KDE-Settings/Network/kcmktalkd.desktop
 %{_pixmapsdir}/*/*/*/ktalkd*
 
 %files kxmlrpcd -f kxmlrpcd.lang
