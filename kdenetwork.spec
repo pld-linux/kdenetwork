@@ -1,11 +1,11 @@
 
 %define		_state		snapshots
-%define		_ver		3.2.90
-%define		_snap		040525
+%define		_ver		3.2.91
+%define		_snap		040630
 %define		_packager	adgor
 
-%define		_minlibsevr	9:3.2.90.040524
-%define		_minbaseevr	9:3.2.90.040524		
+%define		_minlibsevr	9:3.2.91.040629
+%define		_minbaseevr	9:3.2.91.040629		
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -25,10 +25,9 @@ Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Source5:	kopetestyles.tar.bz2
 # Source5-md5:	cbb4ea50899c8493ca8359b8dac72746
-Patch0:		kde-common-utmpx.patch
+Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
-Patch3:		kde-common-QTDOCDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -114,6 +113,18 @@ Pliki nag³ówkowe kdenetwork.
 %description devel -l pt_BR
 Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
+
+%package filesharing
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Applications
+Requires:	kdebase-core >= %{_minlibsevr}
+
+%description filesharing
+TODO.
+
+%description filesharing -l pl
+TODO.
 
 %package kdict
 Summary:	Online dictionary client
@@ -733,13 +744,9 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-im/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-core/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/cutestuff/network/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
@@ -828,6 +835,19 @@ fi
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/rss
+
+%files filesharing
+%defattr(644,root,root,755)
+%{_libdir}/kde3/fileshare_propsdlgplugin.la
+%attr(755,root,root) %{_libdir}/kde3/fileshare_propsdlgplugin.so
+%{_libdir}/kde3/kcm_fileshare.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
+%{_libdir}/kde3/libkcm_kcmsambaconf.la
+%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
+%{_datadir}/services/fileshare_propsdlgplugin.desktop
+%{_desktopdir}/kde/fileshare.desktop
+%{_desktopdir}/kde/kcmsambaconf.desktop
+%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
@@ -936,6 +956,15 @@ fi
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
 %{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
 %{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
+# TODO (separate?)
+%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
+%{_libdir}/kde3/kcm_kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
+%{_libdir}/kde3/kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
+%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
+%{_datadir}/services/kopete_latex.desktop
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -943,6 +972,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
+%{_datadir}/services/aim.protocol
 %{_datadir}/services/kopete_aim.desktop
 
 %files kopete-protocol-gg
@@ -959,6 +989,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
+%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -968,6 +999,7 @@ fi
 %{_datadir}/apps/kopete/ircnetworks.xml
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
+%{_datadir}/services/irc.protocol
 #%%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
 %files kopete-protocol-jabber
