@@ -1,5 +1,3 @@
-# NOTE: Need /var/run/utmp(x) file to exists during configure 
-#   to build Ktalkd part.
  
 %define		_state		unstable
 %define		_ver		3.1.93
@@ -11,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -58,7 +56,7 @@ KDE network applications. Package includes:
 - KTalkd - takt daemon
 - KXmlRpcd - XmlRpc Daemon
 - Lanbrowser - LAN Browser
-- KWiFi - TODO
+- KWiFiManager - wireless network manager
 
 %description -l pl
 Aplikacje sieciowe KDE. Pakiet zawiera:
@@ -76,7 +74,7 @@ Aplikacje sieciowe KDE. Pakiet zawiera:
 - KTalkd - demon Talk
 - KXmlRpcd - demon XmlRpc
 - Lanbrowser - przegl±darka LAN-u
-- KWiFi - TODO
+- KWiFiManager - zarz±dca sieci bezprzewodowej
 
 %description -l pt_BR
 Aplicações de Rede para o KDE.
