@@ -1,16 +1,16 @@
-Summary:     K Desktop Environment - network applications
-Summary(pl): K Desktop Environment - aplikacje sieciowe
-Name:        kdenetwork
-Version:     1.1.1
-Release:     2
-Vendor:      The KDE Team
-Source:      ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
-#Patch:       kmail.charset.patch
-Group:       X11/KDE/Networking
-Group(pl):   X11/KDE/Sieciowe
-Copyright:   GPL
-Requires:    qt >= 1.40, kdelibs = %{version}
-BuildRoot:   /tmp/%{name}-%{version}-root
+Summary:	K Desktop Environment - network applications
+Summary(pl):	K Desktop Environment - aplikacje sieciowe
+Name:		kdenetwork
+Version:	1.1.1
+Release:	3
+Vendor:		The KDE Team
+Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
+#Patch:		kmail.charset.patch
+Group:		X11/KDE/Networking
+Group(pl):	X11/KDE/Sieciowe
+Copyright:	GPL
+Requires:	qt >= 1.40, kdelibs = %{version}
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix /usr/X11R6
 
@@ -173,8 +173,7 @@ Requires:    qt >= 1.40, kdelibs = %{version}
 
 %build
 export KDEDIR=/usr/X11R6
-# don't use -fno-exceptions - ksirc requires exceptions
-CXXFLAGS="$RPM_OPT_FLAGS -Wall -fno-rtti" \
+CXXFLAGS="$RPM_OPT_FLAGS -Wall" \
 CFLAGS="$RPM_OPT_FLAGS -Wall" \
 ./configure %{_target_platform} \
 	--prefix=$KDEDIR \
