@@ -5,12 +5,13 @@
  Name[zh_TW]=桌面分享
  Name[zu]=Ukwahlulelana kwe-Desktop
 -Categories=Qt;KDE;System
-+Categories=Qt;KDE;Network
---- kdenetwork-030914/kopete/kopete/kopete.desktop~	2003-09-16 19:40:38.000000000 +0200
-+++ kdenetwork-030914/kopete/kopete/kopete.desktop	2003-09-17 09:46:17.000000000 +0200
-@@ -10,4 +10,4 @@
++Categories=Qt;KDE;Network;
+--- kdenetwork/kopete/kopete/kopete.desktop.orig	2004-03-13 18:46:53.000000000 +0100
++++ kdenetwork/kopete/kopete/kopete.desktop	2004-03-13 19:07:41.923725848 +0100
+@@ -54,5 +54,5 @@
  Type=Application
  Terminal=0
  Icon=kopete
 -Categories=Qt;KDE;Network
-+Categories=Qt;KDE;Network;X-Communication
++Categories=Qt;KDE;Network;InstantMessaging;
+ X-DCOP-ServiceType=Unique
