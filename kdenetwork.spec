@@ -158,6 +158,7 @@ Summary:	KDE Mail client
 Summary(pl):	Program pocztowy KDE
 Summary(pt_BR):	Cliente / leitor de e-mails para o KDE
 Group:		X11/Applications
+Requires:	kdebase-mailnews
 Requires:	kdelibs >= %{version}
 
 %description kmail
@@ -197,8 +198,9 @@ Summary:	KDE News Reader
 Summary(pl):	Czytnik newsów dla KDE
 Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
+Requires:	kdebase-mailnews
 Requires:	kdelibs >= %{version}
-Requires:	kdenetwork >= %{version}
+Requires:	%{name} >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
