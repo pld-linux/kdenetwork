@@ -125,7 +125,6 @@ Summary:	A DICT protocol client
 Summary(pl):	Klient protoko³u DICT
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minlibsevr}
 Provides:	kdict
 
 %description kdict
