@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	5
+Release:	6
 Epoch:		9
 License:	GPL
 Vendor:		The KDE Team
@@ -114,6 +114,19 @@ Klient s³ownika.
 %description kdict -l pt_BR
 kdict é um utilitário de dicionário que usa servidores dictd da
 Internet.
+
+%package kinetd
+Summary:	KDE Internet Daemon
+Summary(pl):	Demon internetowy KDE
+Group:		X11/Applications
+Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-krfb < 3.1-6
+
+%description kinetd
+An Internet daemon that starts network services on demand.
+
+%description kinetd -l pl
+Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 
 %package kget
 Summary:	File Downloander
@@ -270,6 +283,7 @@ Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Requires:	%{name}-kinetd = %{version}
 
 %description krfb
 Virtual Desktops.
@@ -427,14 +441,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kget
 %attr(755,root,root) %{_libdir}/kde3/khtml_kget.*
 %{_datadir}/apps/kget
-# what about?
-%dir %{_datadir}/apps/khtml
-%dir %{_datadir}/apps/khtml/kpartplugins
-#
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_pixmapsdir}/*/*/*/*kget*
 %{_applnkdir}/Network/Misc/kget.desktop
+
+%files kinetd
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kded_kinetd.la
+%attr(755,root,root) %{_libdir}/kde3/kded_kinetd.so
+%{_datadir}/apps/kinetd
+%{_datadir}/services/kded/kinetd.desktop
+%{_datadir}/servicetypes/kinetdmodule.desktop
 
 %files kit -f kit.lang
 %defattr(644,root,root,755)
@@ -508,15 +526,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
-%attr(755,root,root) %{_libdir}/kde3/kcm_krfb.*
-%attr(755,root,root) %{_libdir}/kde3/kded_kinetd.*
-%{_datadir}/apps/kinetd
+%{_libdir}/kde3/kcm_krfb.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_krfb.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
-%{_datadir}/services/kded/*
 %{_datadir}/services/kinetd_krfb.desktop
 %{_datadir}/services/vnc.protocol
-%{_datadir}/servicetypes/kinetdmodule.desktop
 %{_applnkdir}/Network/Misc/krdc.desktop
 %{_applnkdir}/Network/Misc/krfb.desktop
 %{_applnkdir}/Settings/KDE/Network/kcmkrfb.desktop
