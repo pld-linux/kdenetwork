@@ -11,7 +11,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -734,7 +734,6 @@ Summary:	Internationalization and localization files for kdict
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
 Group:		X11/Applications
 Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
 %description kdict-i18n
@@ -748,7 +747,6 @@ Summary:	Internationalization and localization files for kinetd
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description kinetd-i18n
 Internationalization and localization files for kinetd.
@@ -761,7 +759,6 @@ Summary:	Internationalization and localization files for kget
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kgeta
 Group:		X11/Applications
 Requires:	%{name}-kget = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
 %description kget-i18n
@@ -775,7 +772,6 @@ Summary:	Internationalization and localization files for knewsticker
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewstickera
 Group:		X11/Applications
 Requires:	%{name}-knewsticker = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-kicker-i18n >= 9:%{version}
 
 %description knewsticker-i18n
@@ -789,7 +785,6 @@ Summary:	Internationalization and localization files for kopete
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kopete
 Group:		X11/Applications
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description kopete-i18n
 Internationalization and localization files for kopete.
@@ -802,7 +797,6 @@ Summary:	Internationalization and localization files for kpf
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpf
 Group:		X11/Applications
 Requires:	%{name}-kpf = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-kicker-i18n >= 9:%{version}
 
 %description kpf-i18n
@@ -816,7 +810,6 @@ Summary:	Internationalization and localization files for kppp
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kppp
 Group:		X11/Applications
 Requires:	%{name}-kppp = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
 %description kppp-i18n
@@ -830,7 +823,6 @@ Summary:	Internationalization and localization files for krfb
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla krfb
 Group:		X11/Applications
 Requires:	%{name}-krfb = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	%{name}-kinetd-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
@@ -845,7 +837,6 @@ Summary:	Internationalization and localization files for ksirc
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ksirc
 Group:		X11/Applications
 Requires:	%{name}-ksirc = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
 %description ksirc-i18n
@@ -859,7 +850,6 @@ Summary:	Internationalization and localization files for ktalkd
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ktalkd
 Group:		X11/Applications
 Requires:	%{name}-ktalkd = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
 %description ktalkd-i18n
@@ -873,7 +863,6 @@ Summary:	Internationalization and localization files for kwifimanager
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanagera
 Group:		X11/Applications
 Requires:	%{name}-kwifimanager = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description kwifimanager-i18n
 Internationalization and localization files for kwifimanager.
@@ -886,7 +875,6 @@ Summary:	Internationalization and localization files for lanbrowser
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla lanbrowsera
 Group:		X11/Applications
 Requires:	%{name}-lanbrowser = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	konqueror-i18n >= 9:%{version}
 
 %description lanbrowser-i18n
@@ -900,7 +888,6 @@ Summary:	Internationalization and localization files for rss
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
 Group:		X11/Applications
 Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description rss-i18n
 Internationalization and localization files for rss.
