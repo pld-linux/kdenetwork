@@ -1490,7 +1490,8 @@ fi
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
-%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+# konqueror/dirtree no longer supported!
+# %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
