@@ -1626,7 +1626,7 @@ krfb
 ksirc
 ktalkd
 kwifimanager
-lanbrowser"
+lisa"
 
 for i in $files; do
         echo "%defattr(644,root,root,755)" > ${i}_en.lang
