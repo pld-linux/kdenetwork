@@ -1,4 +1,5 @@
 
+
 %define		_state		unstable
 %define		_ver		3.1.92
 %define		_snap		031006
@@ -659,7 +660,7 @@ done
 
 #export DO_NOT_COMPILE=kopete
 
-%configure
+%configure --enable-final
 
 %{__make}
 
