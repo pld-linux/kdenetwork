@@ -15,8 +15,8 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/3.3/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	ae7d989594ec2a7c073478e4535c284b
 #Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_ver}.tar.bz2
-# Source0-md5:	435a1b8c0a491994de9cc17d2fab71e9
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
 Source2:	%{name}-lisa.init
