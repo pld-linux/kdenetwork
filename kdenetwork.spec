@@ -802,7 +802,7 @@ Pliki umiêdzynarodawiaj±ce dla kdict.
 Summary:	Internationalization and localization files for kinetd
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
 Group:	X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 Obsoletes:	kde-i18n-Affrikaans
 Obsoletes:	kde-i18n-Afrikaans
 Obsoletes:	kde-i18n-Arabic
@@ -877,7 +877,7 @@ Pliki umiêdzynarodawiaj±ce dla kinetd.
 Summary:	Common internationalization and localization files for kdenetwork
 Summary(pl):	Wspó³dzielone pliki umiêdzynarodawiaj±ce dla kdenetwork
 Group:	X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
+#Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	kde-i18n-Affrikaans
 Obsoletes:	kde-i18n-Afrikaans
 Obsoletes:	kde-i18n-Arabic
@@ -1705,7 +1705,7 @@ Pliki umiêdzynarodawiaj±ce dla lanbrowser.
 Summary:	Internationalization and localization files for rss
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
 Group:	X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
+Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
 Obsoletes:	kde-i18n-Affrikaans
 Obsoletes:	kde-i18n-Afrikaans
 Obsoletes:	kde-i18n-Arabic
