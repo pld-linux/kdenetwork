@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030329
+%define		_snap		030403
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -14,7 +14,7 @@ Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://team.pld.org.pl/~djurban/kde/%{name}-%{_snap}.tar.bz2
+Source0:	http://team.pld.org.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 Source2:	lisa.init
 Source3:        lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -27,6 +27,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
+BuildRequires:	openslp-devel
 BuildRequires:	qt-devel >= 3.1
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -323,9 +324,9 @@ done
 				
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
-	--enable-kernel-threads \
 	--with-pam="yes" \
 	--enable-final
+
 %{__make}
 
 %install
@@ -384,11 +385,11 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%files kwifimanager
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kwifimanager.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
-%{_applnkdir}/Settings/KDE/Network/kcmwifi.desktop
+#%files kwifimanager
+#%defattr(644,root,root,755)
+#%{_libdir}/kde3/kcm_kwifimanager.la
+#%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
+#%{_applnkdir}/Settings/KDE/Network/kcmwifi.desktop
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
@@ -433,21 +434,13 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_libdir}/kde3/kcm_knewsticker.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
-#%{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
-#%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_desktopdir}/knewsticker*.desktop
 %{_pixmapsdir}/*/*/*/knewsticker.png
-
-#%files korn -f korn.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/korn
-#%{_desktopdir}/KOrn.desktop
-#%{_pixmapsdir}/*/*/*/korn.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -506,7 +499,6 @@ fi
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
 %attr(755,root,root) %{_bindir}/mail.local
-
 %{_libdir}/kde3/kcm_ktalkd.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
