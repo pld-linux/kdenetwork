@@ -34,8 +34,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_fontdir	/usr/share/fonts
 %define		_htmldir	/usr/share/doc/kde/HTML
-%define		_applnkdir	/usr/share/applnk
-%define		_pixmapsdir	/usr/share/pixmaps
 
 %define		no_install_post_chrpath		1
 
@@ -325,6 +323,7 @@ Przegl±darka LAN-u dla KDE.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
+kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 %configure \
