@@ -18,7 +18,7 @@ Release:	1
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
-Group:		X11/Applications
+Group:		X11/Libraries
 %if %{?_buildsnap:1}%{!?_buildsnap:0}
 Source0:	ftp://ftp.kde.org/pub/kde/snapshots/%{name}-%{_snapshot}.tar.bz2
 %else
@@ -217,7 +217,6 @@ Summary:	KDE 'biff' application
 Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
 Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
