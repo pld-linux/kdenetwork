@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without  i18n    # don't build i18n subpackage
+%bcond_without	i18n	# don't build i18n subpackage
 #
 %define		_state		stable
 %define		_ver		3.2.0
@@ -20,7 +20,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.
 #Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
 # Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
 %if %{with i18n}
-Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
+Source1:	http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 # Source1-md5:	1722734fd00114d8286d66b15dc86820
 %endif
 Source2:	%{name}-lisa.init
@@ -31,7 +31,7 @@ Patch1:		kde-common-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
 Patch3:		%{name}-vcategories.patch
 Patch4:		%{name}-ggstatus.patch
-Patch5:         %{name}-dcoprss.patch
+Patch5:		%{name}-dcoprss.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -983,32 +983,32 @@ cat lanbrowser.lang >> lisa.lang
 ##%find_lang kcmkxmlrpcd		--with-kde
 %find_lang ktalkd		--with-kde
 %find_lang kcmtalkd		--with-kde
-%find_lang kcmktalkd             --with-kde
+%find_lang kcmktalkd		--with-kde
 cat kcmtalkd.lang >> ktalkd.lang
 cat kcmktalkd.lang >> ktalkd.lang
 
-%find_lang kcm_krfb             --with-kde
+%find_lang kcm_krfb		--with-kde
 cat kcm_krfb.lang >> krfb.lang
 
-%find_lang kcmlanbrowser           --with-kde
+%find_lang kcmlanbrowser	--with-kde
 cat kcmlanbrowser.lang >> lisa.lang
-%find_lang kio_lan           --with-kde
+%find_lang kio_lan		--with-kde
 cat kio_lan.lang >> lisa.lang
 
-%find_lang kppplogview       --with-kde
+%find_lang kppplogview		--with-kde
 cat kppplogview.lang >> kppp.lang
 
-%find_lang kwireless            --with-kde
+%find_lang kwireless		--with-kde
 cat kwireless.lang >> kwifimanager.lang
-%find_lang kcmwifi            --with-kde
+%find_lang kcmwifi		--with-kde
 cat kcmwifi.lang >> kwifimanager.lang
 
-%find_lang kdictapplet        --with-kde
+%find_lang kdictapplet		--with-kde
 cat kdictapplet.lang >> kdict.lang
 
-%find_lang dcopservice       --with-kde
-%find_lang desktop_kdenetwork           --with-kde
-%find_lang kinetd               --with-kde
+%find_lang dcopservice		--with-kde
+%find_lang desktop_kdenetwork	--with-kde
+%find_lang kinetd		--with-kde
 
 %endif
 
