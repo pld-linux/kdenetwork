@@ -1,0 +1,11 @@
+diff -urN kdenetwork-3.0.orig/aclocal.m4 kdenetwork-3.0/aclocal.m4
+--- kdenetwork-3.0.orig/aclocal.m4	Mon Mar 25 13:53:55 2002
++++ kdenetwork-3.0/aclocal.m4	Sun Apr 21 15:11:45 2002
+@@ -4144,6 +4144,7 @@
+ 
+     for ac_file in    \
+                       \
++	/var/run/utmpx \
+ 	/var/run/utmp \
+ 	/var/adm/utmp \
+ 	/etc/utmp     \

@@ -1,8 +1,7 @@
-diff -urN kdenetwork-3.0.1.orig/kmail/kmmainwin.rc kdenetwork-3.0.1/kmail/kmmainwin.rc
---- kdenetwork-3.0.1.orig/kmail/kmmainwin.cpp	Wed May  8 20:29:53 2002
-+++ kdenetwork-3.0.1/kmail/kmmainwin.cpp	Fri Jun 14 18:37:08 2002
-@@ -1954,7 +1954,7 @@
-   (void) new KAction( i18n("&Find in Message..."), KStdAccel::shortcut(KStdAccel::Find), this,
+--- kdenetwork-3.0.8/kmail/kmmainwin.cpp.orig	Sun Sep 22 07:51:33 2002
++++ kdenetwork-3.0.8/kmail/kmmainwin.cpp	Mon Sep 30 04:20:58 2002
+@@ -2267,7 +2267,7 @@
+   (void) new KAction( i18n("&Find in Message..."), "find", KStdAccel::shortcut(KStdAccel::Find), this,
  		      SLOT(slotFind()), actionCollection(), "find_in_messages" );
  
 -  (void) new KAction( i18n("Select &All Messages"), Key_K, this,
@@ -10,46 +9,41 @@ diff -urN kdenetwork-3.0.1.orig/kmail/kmmainwin.rc kdenetwork-3.0.1/kmail/kmmain
  		      SLOT(slotMarkAll()), actionCollection(), "mark_all_messages" );
  
    (void) new KAction( i18n("Select Message &Text"), KStdAccel::shortcut(KStdAccel::SelectAll), this,
-@@ -1982,10 +1982,10 @@
-   removeFolderAction = new KAction( i18n("&Remove"), 0, this,
- 		      SLOT(slotRemoveFolder()), actionCollection(), "remove" );
+@@ -2296,10 +2296,10 @@
+   removeFolderAction = new KAction( i18n("&Delete Folder"), "editdelete", 0, this,
+ 		      SLOT(slotRemoveFolder()), actionCollection(), "delete_folder" );
  
--  preferHtmlAction = new KToggleAction( i18n("Pre&fer HTML to Plain Text"), 0, this,
-+  preferHtmlAction = new KToggleAction( i18n("Pre&fer HTML to Plain Text"),"html", 0, this,
+-  preferHtmlAction = new KToggleAction( i18n("Prefer &HTML to Plain Text"), 0, this,
++  preferHtmlAction = new KToggleAction( i18n("Prefer &HTML to Plain Text"), "html", 0, this,
  		      SLOT(slotOverrideHtml()), actionCollection(), "prefer_html" );
  
 -  threadMessagesAction = new KToggleAction( i18n("&Thread Messages"), 0, this,
-+  threadMessagesAction = new KToggleAction( i18n("&Thread Messages"),"view_tree", 0, this,
++  threadMessagesAction = new KToggleAction( i18n("&Thread Messages"), "view_tree", 0, this,
  		      SLOT(slotOverrideThread()), actionCollection(), "thread_messages" );
  
    //----- Message Menu
-@@ -2192,7 +2192,7 @@
-   (void) new KAction( i18n("Appl&y Filters"), "filter", CTRL+Key_J, this,
- 		      SLOT(slotApplyFilters()), actionCollection(), "apply_filters" );
+@@ -2625,11 +2625,11 @@
+ 		     SLOT(slotCollapseAllThreads()),
+ 		     actionCollection(), "collapse_all_threads" );
  
--  viewSourceAction = new KAction( i18n("&View Source..."), Key_V, this,
-+  viewSourceAction = new KAction( i18n("&View Source..."), "source", Key_V, this,
+-  toggleFixFontAction = new KToggleAction( i18n("Use Fi&xed Font"),
++  toggleFixFontAction = new KToggleAction( i18n("Use Fi&xed Font"), "text",
+ 			Key_X, this, SLOT(slotToggleFixedFont()),
+ 			actionCollection(), "toggle_fixedfont" );
+ 
+-  viewSourceAction = new KAction( i18n("&View Source"), Key_V, this,
++  viewSourceAction = new KAction( i18n("&View Source"), "source",  Key_V, this,
  		      SLOT(slotShowMsgSrc()), actionCollection(), "view_source" );
  
  
-@@ -2219,7 +2219,7 @@
-   mViewMenu->setItemChecked((int)mMsgView->attachmentStyle()+5, TRUE);
- 
-   mViewMenu->insertSeparator();
--  toggleFixFontAction = new KToggleAction( i18n("Fixed Font &Widths"),
-+  toggleFixFontAction = new KToggleAction( i18n("Fixed Font &Widths"),"text",
- 			0, this, SLOT(slotToggleFixedFont()),
- 			actionCollection(), "toggle_fixedfont" );
-   viewMenuAction->insert( toggleFixFontAction );
-diff -urN kdenetwork-3.0.1.orig/kmail/kmcomposewin.cpp kdenetwork-3.0.1/kmail/kmcomposewin.cpp
---- kdenetwork-3.0.1.orig/kmail/kmcomposewin.cpp	Wed May  8 20:29:49 2002
-+++ kdenetwork-3.0.1/kmail/kmcomposewin.cpp	Fri Jun 14 17:58:16 2002
-@@ -790,7 +790,7 @@
+--- kdenetwork-3.0.8/kmail/kmcomposewin.cpp.orig	Sun Sep 22 07:51:33 2002
++++ kdenetwork-3.0.8/kmail/kmcomposewin.cpp	Mon Sep 30 04:14:26 2002
+@@ -840,7 +840,7 @@
    (void) new KAction (i18n("Cl&ean Spaces"), 0, this, SLOT(slotCleanSpace()),
                        actionCollection(), "clean_spaces");
-
--  fixedFontAction = new KToggleAction( i18n("Fixed Font &Widths"), 0, this,
-+  fixedFontAction = new KToggleAction( i18n("Fixed Font &Widths"), "text", 0, this,
+ 
+-  fixedFontAction = new KToggleAction( i18n("Use Fi&xed Font"), 0, this,
++  fixedFontAction = new KToggleAction( i18n("Use Fi&xed Font"), "text", 0, this,
                        SLOT(slotUpdateFont()), actionCollection(), "toggle_fixedfont" );
-
+ 
    //these are checkable!!!
