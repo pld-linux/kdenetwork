@@ -1,6 +1,8 @@
 # Conditional build:
-#	--with		kmail_toolbars_patch	aplies patch assigning icons
-#						to some toolbar buttons in kmail
+# _kmail_toolbars_patch		- aplies patch assigning icons
+#				  to some toolbar buttons in kmail
+# _with_pixmapsubdirs		- leave different depth/resolution icons
+#
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(ko):	K 데스크탑 환경 - 네트웍 응용 프로그램
@@ -43,6 +45,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_htmldir	/usr/share/doc/kde/HTML
 
 %define		no_install_post_chrpath		1
+%define		_with_pixmapsubdirs		1
 
 %description
 KDE network applications. Package includes:
@@ -396,14 +399,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
-%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png}
 %{_pixmapsdir}/kmail*.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/korn.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/korn.png}
 %{_pixmapsdir}/korn.png
 
 %files kppp -f kppp.lang
@@ -413,7 +416,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
-%{_pixmapsdir}/hicolor/*x*/apps/kppp.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kppp.png}
 %{_pixmapsdir}/kppp.png
 
 %files knode -f knode.lang
@@ -421,7 +424,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
-%{_pixmapsdir}/hicolor/*x*/apps/knode.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/knode.png}
 %{_pixmapsdir}/knode.png
 
 %files ksirc -f ksirc.lang
@@ -434,7 +437,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/ksirc.png}
 %{_pixmapsdir}/ksirc.png
 
 %files kit -f kit.lang
@@ -442,7 +445,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
-%{_pixmapsdir}/hicolor/*x*/apps/kit.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kit.png}
 %{_pixmapsdir}/kit.png
 
 %files knewsticker -f knewsticker.lang
@@ -458,7 +461,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/*
-%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png}
 %{_pixmapsdir}/knewsticker.png
 
 %files lanbrowser -f lisa.lang
@@ -481,7 +484,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_applnkdir}/Utilities/kdict.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/kdict.png
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kdict.png}
 %{_pixmapsdir}/kdict.png
 
 %files kxmlrpcd -f kxmlrpcd.lang
@@ -499,7 +502,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialogplugin.??
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/kpf*
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/kpf*}
 %{_pixmapsdir}/kpf*
 
 %files ktalkd -f ktalkd.lang
@@ -509,7 +512,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/ktalkd*
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/ktalkd*}
 %{_pixmapsdir}/ktalkd*
 
 %files devel
