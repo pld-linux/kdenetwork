@@ -281,7 +281,7 @@ autoconf
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
         CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
-
+kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
