@@ -1,6 +1,6 @@
 
 %define		_state		stable
-%define		_ver		3.1.1
+%define		_ver		3.1.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -8,13 +8,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1.1
+Release:	0.9
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
-Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+#Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Source2:	lisa.init
 Source3:        lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -29,7 +29,7 @@ BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	qt-devel >= 3.1
-BuildRequires:	perl
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -103,7 +103,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 Provides:	kdict
 Obsoletes:	kdict
 
@@ -121,7 +121,7 @@ Internet.
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-krfb < 3.1-6
 
 %description kinetd
@@ -134,7 +134,7 @@ Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 
 %description kget
 File Downloader.
@@ -165,8 +165,8 @@ Summary(pl):	Program pocztowy KDE
 Summary(pt_BR):	Cliente / leitor de e-mails para o KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
+Requires:	%{name} = %{version}
 Requires:	kdelibs >= %{version}
-Requires:	%{name} >= %{version}
 
 %description kmail
 This is electronic mail client for KDE. It is able to retrievie mail
@@ -189,7 +189,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description knewsticker
 KDE News Ticker.
@@ -206,8 +206,8 @@ Summary(pl):	Czytnik newsów dla KDE
 Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
-Requires:	kdelibs >= %{version}
-Requires:	%{name} >= %{version}
+Requires:	%{name} = %{version}
+Requires:	kdebase-core >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
@@ -224,7 +224,7 @@ Summary:	KDE 'biff' application
 Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
 Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
@@ -240,7 +240,7 @@ Miniaplicativo de monitoração da caixa de correio.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 
 %description kpf
 Public fileserver applet.
@@ -253,7 +253,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Requires:	ppp
 
 %description kppp
@@ -286,7 +286,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:       kdebase-core >= %{version}
 Requires:	%{name}-kinetd = %{version}
 
 %description krfb
@@ -299,7 +299,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 
 %description ktalkd
 Talk daemon.
@@ -346,14 +346,15 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
-for plik in `find ./ -name \*.desktop` ; do
-		echo $plik
-		perl -pi -e "s/\[nb\]/\[no\]/g" $plik
+for plik in `find ./ -name *.desktop` ; do
+	echo $plik
+	sed -i -e 's/\[nb\]/\[no\]/g' $plik
 done
+
+%{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
-	--enable-kernel-threads \
 	--with-pam="yes" \
 	--enable-final
 %{__make}
@@ -361,13 +362,11 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
 install -d \
-	$RPM_BUILD_ROOT{%{_sysconfdir}/{rc.d/init.d,sysconfig},/usr/bin} \
-	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,M{ail,isc},News}}
+	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
+	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
 
-mv $RPM_BUILD_ROOT{%{_bindir}/{,res}lisa,/usr/bin}
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 ALD=$RPM_BUILD_ROOT%{_applnkdir}
 
@@ -392,7 +391,7 @@ cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+#bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict		--with-kde
 #%find_lang kdictapplet 	--with-kde
@@ -617,8 +616,8 @@ fi
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
 %attr(754,root,root) /etc/rc.d/init.d/lisa
-%attr(755,root,root) /usr/bin/lisa
-%attr(755,root,root) /usr/bin/reslisa
+%attr(755,root,root) %{_bindir}/reslisa
+%attr(755,root,root) %{_bindir}/lisa
 %{_libdir}/kde3/kio_lan.la
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.so
 %{_libdir}/kde3/kcm_lanbrowser.la
