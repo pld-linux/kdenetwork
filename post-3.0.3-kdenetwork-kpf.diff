@@ -1,0 +1,55 @@
+Index: Resource.cpp
+===================================================================
+RCS file: /home/kde/kdenetwork/kpf/src/Resource.cpp,v
+retrieving revision 1.5.2.1
+retrieving revision 1.5.2.4
+diff -u -3 -p -r1.5.2.1 -r1.5.2.4
+--- Resource.cpp	2002/03/31 19:04:11	1.5.2.1
++++ Resource.cpp	2002/10/07 13:35:42	1.5.2.4
+@@ -27,7 +27,6 @@
+ #include <qfileinfo.h>
+ #include <qregexp.h>
+ #include <kglobal.h>
+-#include <kiconloader.h>
+ 
+ #include <kmimemagic.h>
+ 
+@@ -93,15 +92,7 @@ namespace KPF
+     if ('/' != d->root.at(d->root.length() - 1))
+       d->root += '/';
+ 
+-
+-    // Was an icon requested ?
+-    QRegExp iconExp("^?icon=(.*)$");
+-
+-    if (iconExp.search(d->path) != -1) {
+-      d->root = "";
+-      d->path = KGlobal::iconLoader()->iconPath(iconExp.cap(1), KIcon::Small);
+-    }
+-    else if (d->path.right(1) == "/")
++    if (d->path.right(1) == "/")
+     {
+       // A directory was requested 
+       kpfDebug << "Directory requested" << endl;
+Index: DirectoryLister.cpp
+===================================================================
+RCS file: /home/kde/kdenetwork/kpf/src/DirectoryLister.cpp,v
+retrieving revision 1.2.2.1
+retrieving revision 1.2.2.3
+diff -u -3 -p -r1.2.2.1 -r1.2.2.3
+--- DirectoryLister.cpp	2002/03/31 19:04:11	1.2.2.1
++++ DirectoryLister.cpp	2002/10/07 13:35:42	1.2.2.3
+@@ -255,13 +255,6 @@ namespace KPF
+ 
+       html_stream << "<td class=\"" << td_class << "\">";
+ 
+-      html_stream << "<img src=\"/?icon=";
+-      if (fi->fileName() != "..")
+-          html_stream << KMimeType::iconForURL(KURL(root + path + fi->fileName()));
+-      else
+-          html_stream << "folder_open" << endl;
+-      html_stream << "\" alt=\"\">&nbsp;";
+-
+       QString item_class = QString((fi->isDir()) ? "direntry" : "fileentry");
+       html_stream << "<a href=\"" + QStyleSheet::escape(path + fi->fileName()) + "\" class=\"" << item_class << "\">";
+ 
