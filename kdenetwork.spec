@@ -1,19 +1,29 @@
 
 %define		_state		unstable
-%define		_kdever		kde-3.1-beta2
+%define		_kdever		kde-3.1-rc1
+%define		_snapshot	021031
+%define		_buildsnap	1
 
 Summary:        K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.0.8
-Release:	1.1
+Version:	3.0.9
+%if %{?_buildsnap:1}%{!?_buildsnap:0}
+Release:	0.%{_snapshot}.1
+%else
+Release:	1
+%endif
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
 Group:		X11/Applications
+%if %{?_buildsnap:1}%{!?_buildsnap:0}
+Source0:	ftp://ftp.kde.org/pub/kde/snapshots/%{name}-%{_snapshot}.tar.bz2
+%else
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
+%endif
 # generated from kde-i18n
 #Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-utmpx.patch
@@ -26,12 +36,14 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
-BuildRequires:	qt-devel >= 3.0.5
+BuildRequires:	qt-devel >= 3.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_fontdir	/usr/share/fonts
 %define		_htmldir	/usr/share/doc/kde/HTML
+
+%define		no_install_post_chrpath		1
 
 %description
 KDE network applications. Package includes:
@@ -309,10 +321,12 @@ KDE LAN Browser.
 %description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
-
-
 %prep
+%if %{?_buildsnap:1}%{!?_buildsnap:0}
+%setup -q -n %{name}-%{_snapshot}
+%else
 %setup -q
+%endif
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -320,8 +334,12 @@ Przegl±darka LAN-u dla KDE.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
-
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
+
+%if %{?_buildsnap:1}%{!?_buildsnap:0}
+make -f Makefile.cvs
+%endif
+
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
@@ -352,7 +370,6 @@ mv -f $ALD/{Internet/More,Network/Misc}/kppplogview.desktop
 mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
 mv -f $ALD/{Settings/[!K]*,Settings/KDE}
 mv -f $ALD/{System,Network/Misc}/krfb.desktop
-mv -f $ALD/Settings/KDE/Network/{lanbrowser.desktop,lanbrowser-lisa.desktop}
 
 cp -r \
     $RPM_BUILD_ROOT%{_datadir}/apps/{konqueror/dirtree,konqsidebartng/virtual_folders}
@@ -394,7 +411,7 @@ cat lanbrowser.lang >> lisa.lang
 #cat {kcmlanbrowser,kio_lan}.lang >> lisa.lang
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 #%files -f libkdenetwork.lang
 %files
@@ -422,18 +439,23 @@ rm -rf $RPM_BUILD_ROOT
 %files kget
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
+%attr(755,root,root) %{_libdir}/kde3/khtml_kget.*
 %{_datadir}/apps/kget
+# what about?
+%dir %{_datadir}/apps/khtml
+%dir %{_datadir}/apps/khtml/kpartplugins
+#
+%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
-%{_pixmapsdir}/*/*/*/kget*
+%{_pixmapsdir}/*/*/*/*kget*
 %{_applnkdir}/Network/Misc/kget.desktop
-
 
 %files kit -f kit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
-%{_pixmapsdir}/hicolor/*x*/apps/kit.png
+%{_pixmapsdir}/*/*/*/kit.png
 
 %files kmail -f kmail.lang
 %defattr(644,root,root,755)
@@ -449,13 +471,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kgpgcertmanager/kgpgcertmanagerui.rc
 %{_datadir}/apps/kmail
 %{_datadir}/services/kfile_rfc822.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
+%{_pixmapsdir}/*/*/*/kmail*.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.*
-%attr(755,root,root) %{_libdir}/kde3/libkcm_knewsticker.*
+%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.*
 %{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
 %{_applnkdir}/Network/News/knewsticker*.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
@@ -464,20 +486,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
-%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
+%{_pixmapsdir}/*/*/*/knewsticker.png
 
 %files knode -f knode.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
-%{_pixmapsdir}/hicolor/*x*/apps/knode.png
+%{_pixmapsdir}/*/*/*/knode.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/korn.png
+%{_pixmapsdir}/*/*/*/korn.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -494,7 +516,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
-%{_pixmapsdir}/hicolor/*x*/apps/kppp.png
+%{_pixmapsdir}/*/*/*/kppp.png
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
@@ -549,9 +571,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lisa
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.*
 %attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.*
-%{_applnkdir}/Settings/KDE/Network/lanbrowser-lisa.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/remote/lan.desktop
+%{_applnkdir}/.hidden/kcmkiolan.desktop
+%{_applnkdir}/.hidden/kcmlisa.desktop
+%{_applnkdir}/.hidden/kcmreslisa.desktop
