@@ -1,5 +1,4 @@
 
-
 %define		_state		unstable
 %define		_ver		3.1.93
 %define		_snap		031105
@@ -10,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	1.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -31,8 +30,12 @@ BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
+BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	openslp-devel
+BuildRequires:	pcre-devel
 BuildRequires:	sed >= 4.0
+BuildRequires:	xmms-devel
+BuildRequires:	wireless-tools
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
