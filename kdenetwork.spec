@@ -1,6 +1,7 @@
 
-%define		_state		stable
-%define		_ver		3.1.1
+%define		_state		unstable
+%define		_ver		3.2
+%define		_snap		030329
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -8,19 +9,17 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	0.%{_snap}.1
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# generated from kde-i18n
-#Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+Source0:	http://team.pld.org.pl/~djurban/kde/%{name}-%{_snap}.tar.bz2
 Source2:	lisa.init
 Source3:        lisa.sysconfig
 Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-kmail_toolbars.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -32,8 +31,7 @@ BuildRequires:	qt-devel >= 3.1
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_fontdir	/usr/share/fonts
-%define		_htmldir	/usr/share/doc/kde/HTML
+%define		_htmldir	%{_docdir}/kde/HTML
 
 %define		no_install_post_chrpath		1
 
@@ -80,23 +78,6 @@ kmail: leitor de correio knu: utilitários de rede korn: ferramenta de
 monitoração da caixa de correio kppp: configuração fácil para conexão
 PPP krn: leitor de notícias
 
-%package devel
-Summary:	Header files and development documentation
-Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
-Summary(pt_BR):	Arquivos de inclusão para compilar aplicações que usem as bibliotecas do kdenetwork
-Group:		X11/Development/Libraries
-Requires:	kdelibs >= %{version}
-
-%description devel
-Header files and development documentation.
-
-%description devel -l pl
-Pliki nag³ówkowe i dokumentacja developerska.
-
-%description devel -l pt_BR
-Arquivos de inclusão para compilar aplicações que usem as bibliotecas
-do kdenetwork.
-
 %package kdict
 Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
@@ -104,7 +85,9 @@ License:	Artistic
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Provides:	kdict
-Obsoletes:	kdict
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kdict
 Online dictionary client.
@@ -122,6 +105,9 @@ Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Obsoletes:	%{name}-krfb < 3.1-6
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kinetd
 An Internet daemon that starts network services on demand.
@@ -134,6 +120,9 @@ Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kget
 File Downloader.
@@ -148,6 +137,9 @@ Summary(pt_BR):	Comunicador que usa o protocolo AOL
 License:	LGPL
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kit
 KDE AOL Instant Messenger.
@@ -158,37 +150,15 @@ Klient AOL Instant Messenger dla KDE.
 %description kit -l pt_BR
 Comunicador que usa o protocolo AOL.
 
-%package kmail
-Summary:	KDE Mail client
-Summary(pl):	Program pocztowy KDE
-Summary(pt_BR):	Cliente / leitor de e-mails para o KDE
-Group:		X11/Applications
-Requires:	kdebase-mailnews
-Requires:	%{name} = %{version}
-Requires:	kdelibs >= %{version}
-
-%description kmail
-This is electronic mail client for KDE. It is able to retrievie mail
-from POP3 accounts and from local mailboxes.
-
-This package contains version patched for better charset support.
-
-%description kmail -l pl
-Program pocztowy dla KDE. Potrafi odczytywaæ pocztê z kont POP3 jak i
-lokalnych skrzynek.
-
-Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów
-znaków.
-
-%description kmail -l pt_BR
-Poderoso cliente / leitor de e-mails para o KDE.
-
 %package knewsticker
 Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description knewsticker
 KDE News Ticker.
@@ -199,47 +169,14 @@ News Ticker dla KDE.
 %description knewsticker -l pt_BR
 Miniaplicativo de exibição de notícias para o painel Kicker.
 
-%package knode
-Summary:	KDE News Reader
-Summary(pl):	Czytnik newsów dla KDE
-Summary(pt_BR):	Leitor de notícias (news) do KDE
-Group:		X11/Applications
-Requires:	kdebase-mailnews
-Requires:	%{name} = %{version}
-Requires:	kdelibs >= %{version}
-
-%description knode
-This is a news reader for KDE. It has threading and everything else
-you need to be happy reading your news.
-
-%description knode -l pl
-Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile.
-
-%description knode -l pt_BR
-Leitor de notícias (news) do KDE.
-
-%package korn
-Summary:	KDE 'biff' application
-Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
-Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
-Group:		X11/Applications
-Requires:	kdelibs >= %{version}
-
-%description korn
-A simple program showing number of mails in your folders.
-
-%description korn -l pl
-Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach
-pocztowych.
-
-%description korn -l pt_BR
-Miniaplicativo de monitoração da caixa de correio.
-
 %package kpf
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kpf
 Public fileserver applet.
@@ -254,6 +191,9 @@ Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Requires:	ppp
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kppp
 A PPPP dialer for KDE. It supports multiple accounts.
@@ -271,6 +211,9 @@ Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description ksirc
 KDE IRC client.
@@ -287,6 +230,9 @@ Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Requires:	%{name}-kinetd = %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description krfb
 Virtual Desktops.
@@ -299,6 +245,9 @@ Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description ktalkd
 Talk daemon.
@@ -306,11 +255,28 @@ Talk daemon.
 %description ktalkd -l pl
 Demon talk.
 
+%package kwifimanager
+Summary:	Wireless LAN
+Summary(pl):	Bezprzewodowy LAN
+Group:		X11/Applications
+Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
+
+%description kwifimanager
+Wireless LAN
+%description kwifimanager -l pl
+Bezprzewodowy LAN
+
 %package kxmlrpcd
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -325,6 +291,9 @@ Group:		X11/Applications
 Requires:	konqueror >= %{version}
 Obsoletes:	%{name}-lisa
 Obsoletes:	lisa
+Obsoletes:	%{name}-kmail
+Obsoletes:	%{name}-knode
+Obsoletes:	%{name}-korn
 Provides:	lisa
 
 %description lanbrowser
@@ -334,10 +303,9 @@ KDE LAN Browser.
 Przegl±darka LAN-u dla KDE.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -352,7 +320,6 @@ for plik in `find ./ -name *.desktop` ; do
 	fi
 done
 				
-
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
@@ -363,26 +330,15 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d \
-	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
-	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
-
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-ALD=$RPM_BUILD_ROOT%{_applnkdir}
+install -d \
+	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
+	$RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE
 
-mv -f $ALD/{Internet,Network/Communications}/ksirc.desktop
-mv -f $ALD/{Internet,Network/Mail}/KMail.desktop
-mv -f $ALD/{Internet,Network/Misc}/Kppp.desktop
-mv -f $ALD/{Internet,Network/Misc}/kget.desktop
-mv -f $ALD/{Internet,Network/Misc}/kit.desktop
-mv -f $ALD/{Internet,Network/Misc}/krdc.desktop
-mv -f $ALD/{Internet,Network/News}/KNode.desktop
-mv -f $ALD/{Internet/More,Network/Mail}/KOrn.desktop
-mv -f $ALD/{Internet/More,Network/Misc}/kppplogview.desktop
-mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
-mv -f $ALD/{Settings/[!K]*,Settings/KDE}
-mv -f $ALD/{System,Network/Misc}/krfb.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings/[!K]*,Settings/KDE}
+mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/ksirc.desktop \
+    $RPM_BUILD_ROOT%{_desktopdir}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
@@ -392,41 +348,21 @@ cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-#bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
-
 %find_lang kdict		--with-kde
-#%find_lang kdictapplet 	--with-kde
-#cat kdictapplet.lang >> kdict.lang
 %find_lang kit			--with-kde
-%find_lang kmail		--with-kde
-%find_lang kgpgcertmanager	--with-kde
-#%find_lang kmailcvt		--with-kde
-cat kgpgcertmanager.lang >> kmail.lang
-#cat kmailcvt.lang >> kmail.lang
 %find_lang knewsticker		--with-kde
-#%find_lang kcmnewsticker	--with-kde
-#cat kcmnewsticker.lang >> knewsticker.lang
-%find_lang knode		--with-kde
 %find_lang korn			--with-kde
 %find_lang kpf			--with-kde
 %find_lang kppp			--with-kde
 %find_lang krfb			--with-kde
-#%find_lang kppplogview		--with-kde
-#cat kppplogview.lang >> kppp.lang
 %find_lang ksirc		--with-kde
 %find_lang ktalkd		--with-kde
 %find_lang kcmtalkd		--with-kde
 cat kcmtalkd.lang >> ktalkd.lang
 %find_lang kxmlrpcd		--with-kde
-#%find_lang kcmkxmlrpcd		--with-kde
-#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
-#%find_lang libkdenetwork	--with-kde
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
 cat lanbrowser.lang >> lisa.lang
-#%find_lang kcmlanbrowser	--with-kde
-#%find_lang kio_lan		--with-kde
-#cat {kcmlanbrowser,kio_lan}.lang >> lisa.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -447,19 +383,11 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-#%files -f libkdenetwork.lang
-%files
+%files kwifimanager
 %defattr(644,root,root,755)
-%{_libdir}/libmimelib.la
-%attr(755,root,root) %{_libdir}/libmimelib.so.*
-%{_libdir}/libkdenetwork.la
-%attr(755,root,root) %{_libdir}/libkdenetwork.so.*
-
-%files devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmimelib.so
-%attr(755,root,root) %{_libdir}/libkdenetwork.so
-%{_includedir}/*
+%{_libdir}/kde3/kcm_kwifimanager.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
+%{_applnkdir}/Settings/KDE/Network/kcmwifi.desktop
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
@@ -468,8 +396,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
+%{_desktopdir}/kdict.desktop
 %{_pixmapsdir}/*/*/*/kdict*
-%{_applnkdir}/Utilities/kdict.desktop
 
 %files kget
 %defattr(644,root,root,755)
@@ -479,8 +407,8 @@ fi
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
+%{_desktopdir}/kget.desktop
 %{_pixmapsdir}/*/*/*/*kget*
-%{_applnkdir}/Network/Misc/kget.desktop
 
 %files kinetd
 %defattr(644,root,root,755)
@@ -493,26 +421,9 @@ fi
 %files kit -f kit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
-%{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
+%{_desktopdir}/kit.desktop
 %{_pixmapsdir}/*/*/*/kit.png
-
-%files kmail -f kmail.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kmail
-%attr(755,root,root) %{_bindir}/kmailcvt
-%attr(755,root,root) %{_bindir}/kgpgcertmanager
-%attr(755,root,root) %{_bindir}/mail.local
-%{_libdir}/kde3/kfile_rfc822.la
-%attr(755,root,root) %{_libdir}/kde3/kfile_rfc822.so
-%{_applnkdir}/Network/Mail/KMail.desktop
-%{_applnkdir}/Utilities/kmailcvt.desktop
-%{_datadir}/apps/kconf_update/k[!n]*
-%{_datadir}/apps/kconf_update/u*
-%{_datadir}/apps/kgpgcertmanager/kgpgcertmanagerui.rc
-%{_datadir}/apps/kmail
-%{_datadir}/services/kfile_rfc822.desktop
-%{_pixmapsdir}/*/*/*/kmail*.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
@@ -521,28 +432,21 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_libdir}/kde3/kcm_knewsticker.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
-%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
-%{_applnkdir}/Network/News/knewsticker*.desktop
-%{_applnkdir}/.hidden/knewstickerstub.desktop
-%{_applnkdir}/.hidden/kcmnewsticker.desktop
-%{_datadir}/services/knewsservice.protocol
+#%{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
+#%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
+%{_applnkdir}/.hidden/knewstickerstub.desktop
+%{_applnkdir}/.hidden/kcmnewsticker.desktop
+%{_desktopdir}/knewsticker*.desktop
 %{_pixmapsdir}/*/*/*/knewsticker.png
 
-%files knode -f knode.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/knode
-%{_applnkdir}/Network/News/KNode.desktop
-%{_datadir}/apps/knode
-%{_pixmapsdir}/*/*/*/knode.png
-
-%files korn -f korn.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/korn
-%{_applnkdir}/Network/Mail/KOrn.desktop
-%{_pixmapsdir}/*/*/*/korn.png
+#%files korn -f korn.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/korn
+#%{_desktopdir}/KOrn.desktop
+#%{_pixmapsdir}/*/*/*/korn.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -558,24 +462,27 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
-%{_applnkdir}/Network/Misc/Kppp.desktop
-%{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
+%{_desktopdir}/Kppp.desktop
+%{_desktopdir}/kppplogview.desktop
 %{_pixmapsdir}/*/*/*/kppp.png
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
+%attr(755,root,root) %{_bindir}/krfb_httpd
 %{_libdir}/kde3/kcm_krfb.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_krfb.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
 %{_datadir}/services/kinetd_krfb.desktop
+%{_datadir}/services/kinetd_krfb_httpd.desktop
+%{_datadir}/services/rdp.protocol
 %{_datadir}/services/vnc.protocol
-%{_applnkdir}/Network/Misc/krdc.desktop
-%{_applnkdir}/Network/Misc/krfb.desktop
 %{_applnkdir}/Settings/KDE/Network/kcmkrfb.desktop
+%{_desktopdir}/krfb.desktop
+%{_desktopdir}/krdc.desktop
 %{_pixmapsdir}/*/*/*/krdc*
 %{_pixmapsdir}/[!l]*/*/*/krfb*
 
@@ -585,23 +492,26 @@ fi
 %attr(755,root,root) %{_bindir}/dsirc
 %{_libdir}/ksirc.la
 %attr(755,root,root) %{_libdir}/ksirc.so
-%{_libdir}/libkntsrcfilepropsdlg.la
-%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.so
-%{_applnkdir}/Network/Communications/ksirc.desktop
+%{_libdir}/kde3/libkntsrcfilepropsdlg.la
+%attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
+%{_desktopdir}/ksirc.desktop
 %{_pixmapsdir}/[!l]*/*/*/ksirc*
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/k*talkd*
+%attr(755,root,root) %{_bindir}/ktalkd
+%attr(755,root,root) %{_bindir}/ktalkdlg
+%attr(755,root,root) %{_bindir}/mail.local
+
 %{_libdir}/kde3/kcm_ktalkd.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
-%{_pixmapsdir}/*/*/*/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
+%{_pixmapsdir}/*/*/*/ktalkd*
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
