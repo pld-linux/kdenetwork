@@ -25,11 +25,10 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= %{version}
+BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	openslp-devel
-BuildRequires:	qt-devel >= 3.1
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
