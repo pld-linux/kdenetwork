@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030403
+%define		_snap		030406
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -316,9 +316,8 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 for plik in `find ./ -name *.desktop` ; do
-	if [ -d $plik ]; then
 	echo $plik
-	sed -ie 's/\[nb\]/\[no\]/g' $plik
+	sed -i -e "s/\[nb\]/\[no\]/g" $plik
 	fi
 done
 				
