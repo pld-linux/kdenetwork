@@ -1,4 +1,4 @@
-%define		_state		unstable
+%define		_state		stable
 %define		_ver		3.3.0
 
 %define		_minlibsevr	9:3.3.0
@@ -17,6 +17,8 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/3.3/src/%{name}-%{version}.tar.bz2
 #Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_ver}.tar.bz2
 # Source0-md5:	435a1b8c0a491994de9cc17d2fab71e9
+Source1:	%{name}-kopetestyles.tar.bz2
+# Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -896,7 +898,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-
+%{__tar} cfj %{SOURCE1} -C $RPM_BUILD_ROOT/%{_datadir}/apps/kopete/styles
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
