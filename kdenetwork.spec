@@ -386,9 +386,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f libkdenetwork.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmimelib.la
 %attr(755,root,root) %{_libdir}/libmimelib.so.*.*
-%attr(755,root,root) %{_libdir}/libkdenetwork.la
 %attr(755,root,root) %{_libdir}/libkdenetwork.so.*.*
 
 %files kmail -f kmail.lang
@@ -398,12 +396,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
+%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
 %{_pixmapsdir}/kmail*.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
+%{_pixmapsdir}/hicolor/*x*/apps/korn.png
 %{_pixmapsdir}/korn.png
 
 %files kppp -f kppp.lang
@@ -413,6 +413,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
+%{_pixmapsdir}/hicolor/*x*/apps/kppp.png
 %{_pixmapsdir}/kppp.png
 
 %files knode -f knode.lang
@@ -420,6 +421,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
+%{_pixmapsdir}/hicolor/*x*/apps/knode.png
 %{_pixmapsdir}/knode.png
 
 %files ksirc -f ksirc.lang
@@ -432,6 +434,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
+%{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
 %{_pixmapsdir}/ksirc.png
 
 %files kit -f kit.lang
@@ -439,6 +442,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
+%{_pixmapsdir}/hicolor/*x*/apps/kit.png
 %{_pixmapsdir}/kit.png
 
 %files knewsticker -f knewsticker.lang
@@ -454,6 +458,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/*
+%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
 %{_pixmapsdir}/knewsticker.png
 
 %files lanbrowser -f lisa.lang
@@ -475,37 +480,42 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kdictapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
-%{_pixmapsdir}/kdict.png
 %{_applnkdir}/Utilities/kdict.desktop
+%{_pixmapsdir}/hicolor/*x*/apps/kdict.png
+%{_pixmapsdir}/kdict.png
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_bindir}/kxmlrpcd
-%{_libdir}/kxmlrpcd.??
-%{_libdir}/kde3/libkcm_xmlrpcd.??
-%{_libdir}/kde3/libkcm_kcmkxmlrpcd.??
+%attr(755,root,root) %{_bindir}/kxmlrpcd
+%attr(755,root,root) %{_libdir}/kxmlrpcd.??
+%attr(755,root,root) %{_libdir}/kde3/libkcm_xmlrpcd.??
+%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmkxmlrpcd.??
 %{_datadir}/services/kxmlrpcd.desktop
 %{_applnkdir}/Settings/KDE/System/kcmkxmlrpcd.desktop
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kpfapplet.??
-%{_libdir}/kde3/kpfpropertiesdialogplugin.??
+%attr(755,root,root) %{_libdir}/kde3/kpfapplet.??
+%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialogplugin.??
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
+%{_pixmapsdir}/hicolor/*x*/apps/kpf*
 %{_pixmapsdir}/kpf*
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_bindir}/k*talkd*
-%{_libdir}/kde3/libkcm_ktalkd.??
+%attr(755,root,root) %{_bindir}/k*talkd*
+%attr(755,root,root) %{_libdir}/kde3/libkcm_ktalkd.??
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
-%{_pixmapsdir}/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
+%{_pixmapsdir}/hicolor/*x*/apps/ktalkd*
+%{_pixmapsdir}/ktalkd*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmimelib.so
 %attr(755,root,root) %{_libdir}/libkdenetwork.so
+%attr(755,root,root) %{_libdir}/libmimelib.la
+%attr(755,root,root) %{_libdir}/libkdenetwork.la
 %{_includedir}/*
