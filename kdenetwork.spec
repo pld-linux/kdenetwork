@@ -203,11 +203,11 @@ install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -v /sbin/ldconfig
-%postun -v /sbin/ldconfig
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
-%post   -v /sbin/ldconfig -n kdict
-%postun -v /sbin/ldconfig -n kdict
+%post kdict  -p /sbin/ldconfig
+%postun kdict -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
