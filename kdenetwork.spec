@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	4
+Release:	5
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -24,8 +24,10 @@ Patch4:		%{name}-fix-kpgp-mem-leak.patch
 Patch5:		%{name}-fix-copy-link-location.patch
 Patch6:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
 Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
+Patch8:		%{name}-no_versioned_modules.patch
+Patch9:		%{name}-desktop.patch
 # Security fix from 3.0.5
-Patch8:		%{name}-lan.patch
+Patch10:	%{name}-lan.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -303,6 +305,8 @@ do kdenetwork.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -333,6 +337,8 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/News}/knewsticker-standalone.d
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/kppplogview.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Communications}/ksirc.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE/
+
+mv -f $RPM_BUILD_ROOT%{_pixmapsdir}{/hicolor/48x48/apps/*,}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
@@ -388,13 +394,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
-%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
+%{_pixmapsdir}/kmail*.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
-%{_pixmapsdir}/hicolor/*x*/apps/korn.png
+%{_pixmapsdir}/korn.png
 
 %files kppp -f kppp.lang
 %defattr(644,root,root,755)
@@ -403,33 +409,33 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
-%{_pixmapsdir}/hicolor/*x*/apps/kppp.png
+%{_pixmapsdir}/kppp.png
 
 %files knode -f knode.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
-%{_pixmapsdir}/hicolor/*x*/apps/knode.png
+%{_pixmapsdir}/knode.png
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%attr(755,root,root) %{_libdir}/ksirc.*
-%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.??
+%attr(755,root,root) %{_libdir}/ksirc.so
+%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.so
 %{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_pixmapsdir}/*/*/*/ksirc*
+%{_pixmapsdir}/ksirc.png
 
 %files kit -f kit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/apps/kit
-%{_pixmapsdir}/hicolor/*x*/apps/kit.png
+%{_pixmapsdir}/kit.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
@@ -443,15 +449,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_datadir}/apps/kconf_update/*
-%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
+%{_datadir}/apps/kconf_update
+%{_pixmapsdir}/knewsticker.png
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
 %attr(755,root,root) %{_libdir}/kde3/libkcm_lanbrowser.??
-%attr(755,root,root) %{_libdir}/kio_lan.??
+%attr(755,root,root) %{_libdir}/kio_lan.so
 %{_applnkdir}/Settings/KDE/Network/lanbrowser.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
@@ -462,10 +468,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
 %attr(755,root,root) %{_libdir}/kde3/kdictapplet.la
-%attr(755,root,root) %{_libdir}/kde3/kdictapplet.so.*.*.*
+%attr(755,root,root) %{_libdir}/kde3/kdictapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
-%{_pixmapsdir}/*/*/*/kdict*
+%{_pixmapsdir}/kdict.png
 %{_applnkdir}/Utilities/kdict.desktop
 
 %files kxmlrpcd -f kxmlrpcd.lang
@@ -483,7 +489,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/kpfpropertiesdialogplugin.??
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
-%{_pixmapsdir}/*/*/*/kpf*
+%{_pixmapsdir}/kpf*
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
@@ -491,7 +497,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkcm_ktalkd.??
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
-%{_pixmapsdir}/*/*/*/ktalkd*
+%{_pixmapsdir}/ktalkd*
 %{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
 
 %files devel
