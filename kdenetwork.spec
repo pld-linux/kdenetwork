@@ -1,6 +1,6 @@
 
 %define		_state		stable
-%define		_ver		3.1.3
+%define		_ver		3.1.4
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -8,15 +8,15 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.3
+Release:	0.1
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	18b1a274575eddf053dd6e72ad5554c7
+# Source0-md5:	83d69ab3be7b4b10b898b250eb2d9046
 # generated from kde-i18n
 Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/%{version}/kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	8f87953c55737558c3ba3311ed125563
+# Source1-md5:	b2500672d83d30aeb98dd7d0b9549e8d
 Source2:	lisa.init
 Source3:	lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -31,7 +31,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 8:%{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
-BuildRequires:	qt-devel >= 3.1
+BuildRequires:	qt-devel >= 3.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_fontdir	/usr/share/fonts
