@@ -176,7 +176,7 @@ export KDEDIR=/usr/X11R6
 # don't use -fno-exceptions - ksirc requires exceptions
 CXXFLAGS="$RPM_OPT_FLAGS -Wall -fno-rtti" \
 CFLAGS="$RPM_OPT_FLAGS -Wall" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=$KDEDIR \
  	--with-install-root=$RPM_BUILD_ROOT \
  	--with-pam="yes"
