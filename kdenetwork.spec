@@ -212,6 +212,8 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Provides:	kdict
+Obsoletes:	kdict
 
 %description kdict
 Online dictionary client.
