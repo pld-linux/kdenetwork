@@ -351,7 +351,8 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
-for plik in `find . -name \*.desktop | xargs grep -l '\[nb\]'` ; do
+for plik in `find . -name \*.desktop -o -name \*rc -o -name .directory |\
+	     xargs grep -l '\[nb\]'` ; do
 	echo -e ',s/\[nb\]=/[no]=/\n,w' | ed $plik 2>/dev/null
 done
 
