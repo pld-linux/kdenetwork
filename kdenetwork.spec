@@ -1,11 +1,11 @@
 
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040508
+%define		_snap		040513
 %define		_packager	adgor
 
-%define		_minlibsevr	9:3.2.90.040508
-%define		_minbaseevr	9:3.2.90.040508		
+%define		_minlibsevr	9:3.2.90.040513
+%define		_minbaseevr	9:3.2.90.040513		
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -44,7 +44,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	unsermake
+BuildRequires:	unsermake >= 040511
 BuildRequires:	xmms-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -764,14 +764,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-# Workaround for doc caches (unsermake bug?)
-cd doc
-for i in `find . -name index.cache.bz2`; do
-	z=`echo $i|sed -e "s,kcmktalkd,kcmtalkd," `
-	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$z
-done
-cd -	 
-
 tar xfj %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles/
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
@@ -798,35 +790,6 @@ cat kcmtalkd.lang >> ktalkd.lang
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
 cat lanbrowser.lang >> lisa.lang
-
-files="\
-	kdict \
-	kget \
-	knewsticker \
-	kopete \
-	kpf \
-	kppp \
-	krfb \
-	ksirc \
-	ktalkd \
-	kwifimanager \
-	lisa"
-
-for i in $files; do
-	> ${i}_en.lang
-	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
-	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
-	mv ${i}.lang.1 ${i}.lang
-done
-
-durne=`ls -1 *.lang|grep -v _en`
-for i in $durne; do
-	echo $i >> control
-	grep -v en\/ $i|grep -v apidocs >> ${i}.1
-	if [ -f ${i}.1 ] ; then
-		mv ${i}.1 ${i}
-	fi
-done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -867,7 +830,7 @@ fi
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/rss
 
-%files kdict -f kdict_en.lang
+%files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
 %{_libdir}/kde3/kdict_panelapplet.la
@@ -877,7 +840,7 @@ fi
 %{_desktopdir}/kde/kdict.desktop
 %{_iconsdir}/*/*/*/kdict*
 
-%files kget -f kget_en.lang
+%files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -896,7 +859,7 @@ fi
 %{_datadir}/services/kded/kinetd.desktop
 %{_datadir}/servicetypes/kinetdmodule.desktop
 
-%files knewsticker -f knewsticker_en.lang
+%files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %{_libdir}/kde3/knewsticker_panelapplet.la
@@ -908,7 +871,7 @@ fi
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
 
-%files kopete -f kopete_en.lang
+%files kopete -f kopete.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
@@ -954,7 +917,7 @@ fi
 %{_datadir}/apps/kopete/styles
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
-%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
+#%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
@@ -1182,7 +1145,7 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/services/kopete_webpresence.desktop
 
-%files kpf -f kpf_en.lang
+%files kpf -f kpf.lang
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kpf_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
@@ -1192,7 +1155,7 @@ fi
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_iconsdir}/*/*/*/kpf*
 
-%files kppp -f kppp_en.lang
+%files kppp -f kppp.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
@@ -1201,7 +1164,7 @@ fi
 %{_desktopdir}/kde/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
 
-%files krfb -f krfb_en.lang
+%files krfb -f krfb.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
@@ -1220,7 +1183,7 @@ fi
 %{_iconsdir}/*/*/*/krdc*
 %{_iconsdir}/[!l]*/*/*/krfb*
 
-%files ksirc -f ksirc_en.lang
+%files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
@@ -1236,7 +1199,7 @@ fi
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
 
-%files ktalkd -f ktalkd_en.lang
+%files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
@@ -1259,7 +1222,7 @@ fi
 #%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 #%{_datadir}/services/kxmlrpcd.desktop
 
-%files kwifimanager -f kwifimanager_en.lang
+%files kwifimanager -f kwifimanager.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kwifimanager
 %{_libdir}/libkwireless.la
@@ -1272,7 +1235,7 @@ fi
 %{_datadir}/applications/kde/kwifimanager.desktop
 %{_iconsdir}/*/*/apps/kwifimanager.*
 
-%files lanbrowser -f lisa_en.lang
+%files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
