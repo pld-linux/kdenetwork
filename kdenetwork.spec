@@ -307,7 +307,7 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/kppplogview.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Communications}/ksirc.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE/
 
-bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict --with-kde
 %find_lang knewsticker --with-kde
