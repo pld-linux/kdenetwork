@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
@@ -24,6 +24,7 @@ Source5:	%{name}-ktalkd.png
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
+Patch3:		post-3.1.5-%{name}.diff
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -344,6 +345,7 @@ Przegl±darka LAN-u dla KDE.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p0
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
