@@ -1,11 +1,3 @@
-%define	_Xdir		/usr/X11R6
-%define _Xbin		%{_Xdir}/bin
-%define _Xshare		%{_Xdir}/share
-%define _Xlocale	%{_Xdir}/share/locale
-%define _Xlib		%{_Xdir}/lib
-%define _Xinclude	%{_Xdir}/include
-
-
 Summary:     K Desktop Environment - network applications
 Summary(pl): K Desktop Environment - aplikacje sieciowe
 Name:        kdenetwork
@@ -18,7 +10,9 @@ Group:       X11/KDE/Network
 Group(pl):   X11/KDE
 Copyright:   GPL
 Requires:    qt >= 1.40, kdelibs = %{version}
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:   /tmp/%{name}-%{version}-root
+
+%define _prefix /usr/X11R6
 
 %description
 KDE network applications.
@@ -193,19 +187,19 @@ rm -rf $RPM_BUILD_ROOT
 export KDEDIR=/usr/X11R6
 make RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
 
-%find_lang karchie %{_builddir}/karchie.lang
-%find_lang kbiff %{_builddir}/kbiff.lang
-%find_lang kfinger %{_builddir}/kfinger.lang
-%find_lang kmail %{_builddir}/kmail.lang
-%find_lang knu %{_builddir}/knu.lang
-%find_lang korn %{_builddir}/korn.lang
-%find_lang kppp %{_builddir}/kppp.lang
-%find_lang kppplogview %{_builddir}/kppplogview.lang
-%find_lang krn %{_builddir}/krn.lang
-%find_lang ksirc %{_builddir}/ksirc.lang
-%find_lang pws %{_builddir}/pws.lang
-%find_lang ktalkd %{_builddir}/ktalkd.lang
-%find_lang kcmktalkd %{_builddir}/kcmktalkd/lang
+%find_lang karchie
+%find_lang kbiff
+%find_lang kfinger
+%find_lang kmail
+%find_lang knu
+%find_lang korn
+%find_lang kppp
+%find_lang kppplogview
+%find_lang krn
+%find_lang ksirc
+%find_lang pws
+%find_lang ktalkd
+%find_lang kcmktalkd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -215,199 +209,199 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files karchie -f karchie.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/karchierc
 %config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
 
-%{_Xbin}/karchie
+%{_bindir}/karchie
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/karchie
+%lang(en) %{_datadir}/kde/doc/HTML/en/karchie
 
-%{_Xshare}/kde/icons/karchie.xpm
-%{_Xshare}/kde/icons/mini/karchie.xpm
+%{_datadir}/kde/icons/karchie.xpm
+%{_datadir}/kde/icons/mini/karchie.xpm
 
 #################################################
 #             KBIFF - checking OK
 #################################################
 
 %files kbiff -f kbiff.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
 
-%{_Xbin}/kbiff
+%{_bindir}/kbiff
 
-%{_Xshare}/kde/apps/kbiff
+%{_datadir}/kde/apps/kbiff
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/kbiff
+%lang(en) %{_datadir}/kde/doc/HTML/en/kbiff
 
-%{_Xshare}/kde/icons/kbiff.xpm
-%{_Xshare}/kde/icons/mini/kbiff.xpm
+%{_datadir}/kde/icons/kbiff.xpm
+%{_datadir}/kde/icons/mini/kbiff.xpm
 
 #################################################
 #             KFINGER - checking OK
 #################################################
 
 %files kfinger -f kfinger.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/kfingerrc
 %config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
 
-%{_Xbin}/kfinger
+%{_bindir}/kfinger
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/kfinger
+%lang(en) %{_datadir}/kde/doc/HTML/en/kfinger
 
-%{_Xshare}/kde/toolbar
+%{_datadir}/kde/toolbar
 
 #################################################
 #             KMAIL - checking OK
 #################################################
 
 %files kmail -f kmail.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
 
-%attr(755,root,root) /usr/X11R6/bin/kmail
+%attr(755, root, root) %{_bindir}/kmail
 
-%{_Xshare}/kde/apps/kmail
+%{_datadir}/kde/apps/kmail
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/kmail
+%lang(en) %{_datadir}/kde/doc/HTML/en/kmail
 
-%{_Xshare}/kde/icons/kmail.xpm
-%{_Xshare}/kde/icons/mini/kmail.xpm
+%{_datadir}/kde/icons/kmail.xpm
+%{_datadir}/kde/icons/mini/kmail.xpm
 
 #################################################
 #             KNU - checking OK
 #################################################
 
-%files knu -f knu
-%defattr(644,root,root,755)
+%files knu -f knu.lang
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
 
-%attr(755,root,root) /usr/X11R6/bin/knu
+%attr(755, root, root) %{_bindir}/knu
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/knu
+%lang(en) %{_datadir}/kde/doc/HTML/en/knu
 
-/usr/X11R6/share/kde/icons/mini/knu.xpm
-/usr/X11R6/share/kde/icons/knu.xpm
+%{_datadir}/kde/icons/mini/knu.xpm
+%{_datadir}/kde/icons/knu.xpm
 
 #################################################
 #             Korn - checking OK
 #################################################
 
 %files korn -f korn.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
 
-%attr(755,root,root) /usr/X11R6/bin/korn
+%attr(755, root, root) %{_bindir}/korn
 
-%lang(en) /usr/X11R6/share/kde/doc/HTML/en/korn
+%lang(en) %{_datadir}/kde/doc/HTML/en/korn
 
-/usr/X11R6/share/kde/icons/mini/korn.xpm
-/usr/X11R6/share/kde/icons/korn.xpm
+%{_datadir}/kde/icons/mini/korn.xpm
+%{_datadir}/kde/icons/korn.xpm
 
 #################################################
 #             KPPP - checking OK
 #################################################
 
-%files kppp -f kppp  -f kppplogview
-%defattr(644,root,root,755)
+%files kppp -f kppp.lang  -f kppplogview.lang
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
 
-%attr(755,root,root) /usr/X11R6/bin/kppplogview
-%attr(2755,root, uucp) /usr/X11R6/bin/kppp
+%attr(755, root, root) %{_bindir}/kppplogview
+%attr(2755,root, uucp) %{_bindir}/kppp
 
-/usr/X11R6/share/kde/apps/kppp
+%{_datadir}/kde/apps/kppp
 
-%lang(en) /usr/X11R6/share/kde/doc/HTML/en/kppp
+%lang(en) %{_datadir}/kde/doc/HTML/en/kppp
 
-/usr/X11R6/share/kde/icons/mini/kppp.xpm
-/usr/X11R6/share/kde/icons/kppp.xpm
+%{_datadir}/kde/icons/mini/kppp.xpm
+%{_datadir}/kde/icons/kppp.xpm
 
 #################################################
 #             KRN - checking OK
 #################################################
 
 %files krn -f krn.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
 
-%attr(755,root,root) /usr/X11R6/bin/krn
-%attr(755,root,root) /usr/X11R6/bin/kdecode
-%attr(755,root,root) /usr/X11R6/bin/newkrn
+%attr(755, root, root) %{_bindir}/krn
+%attr(755, root, root) %{_bindir}/kdecode
+%attr(755, root, root) %{_bindir}/newkrn
 
-/usr/X11R6/share/kde/apps/krn
+%{_datadir}/kde/apps/krn
 
-%lang(en) /usr/X11R6/share/kde/doc/HTML/en/krn
+%lang(en) %{_datadir}/kde/doc/HTML/en/krn
 
-/usr/X11R6/share/kde/icons/mini/krn.xpm
-/usr/X11R6/share/kde/icons/krn.xpm
+%{_datadir}/kde/icons/mini/krn.xpm
+%{_datadir}/kde/icons/krn.xpm
 
 #################################################
 #             KSIRC - checking
 #################################################
 
 %files ksirc -f ksirc.lang -f pws.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/ksirc.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/pws.kdelnk
 
-%attr(755,root,root) %{_Xbin}/ksirc
-%attr(755,root,root) %{_Xbin}/dsirc
-%attr(755,root,root) %{_Xbin}/ksticker
-%attr(755,root,root) %{_Xbin}/mathpod
+%attr(755, root, root) %{_bindir}/ksirc
+%attr(755, root, root) %{_bindir}/dsirc
+%attr(755, root, root) %{_bindir}/ksticker
+%attr(755, root, root) %{_bindir}/mathpod
 
-%{_Xlib}/ksirc
+/usr/X11R6/lib/ksirc
 
-%attr(755,root,root) %{_Xlib}/libpuke*
+/usr/X11R6/lib/libpuke*
+/usr/X11R6/lib/libkplunger*
 
-%attr(755,root,root) %{_Xlib}/libkplunger*
+%{_datadir}/kde/apps/ksirc
 
-%{_Xshare}/kde/apps/ksirc
+%lang(en) %{_datadir}/kde/doc/HTML/en/ksirc
+%lang(en) %{_datadir}/kde/doc/HTML/en/pws
 
-%lang(en) %{_Xshare}/kde/doc/HTML/en/ksirc
-%lang(en) %{_Xshare}/kde/doc/HTML/en/pws
-
-%{_Xshare}/kde/icons/mini/pws.xpm
-%{_Xshare}/kde/icons/ksirc.gif
-%{_Xshare}/kde/icons/pws.xpm
+%{_datadir}/kde/icons/mini/pws.xpm
+%{_datadir}/kde/icons/ksirc.gif
+%{_datadir}/kde/icons/pws.xpm
 
 #################################################
 #             KTALKD - checking OK
 #################################################
 
 %files ktalkd -f ktalkd.lang -f kcmktalkd.lang
-%defattr(644,root,root,755)
+%defattr(644, root, root, 755)
 
 %config(missingok) /etc/X11/kde/ktalkdrc
 %config(missingok) /etc/X11/kde/applnk/Settings/Network/kcmktalkd.kdelnk
 
-%{_Xbin}/kcmktalkd
-%{_Xbin}/kotalkd
-%{_Xbin}/ktalkd
-%{_Xbin}/ktalkdlg
-%{_Xbin}/mail.local
+%{_bindir}/kcmktalkd
+%{_bindir}/kotalkd
+%{_bindir}/ktalkd
+%{_bindir}/ktalkdlg
+%{_bindir}/mail.local
 
-%lang(el) %{_Xshare}/kde/doc/HTML/el/ktalkd
-%lang(en) %{_Xshare}/kde/doc/HTML/en/ktalkd
-%lang(fr) %{_Xshare}/kde/doc/HTML/fr/ktalkd
-%lang(it) %{_Xshare}/kde/doc/HTML/it/ktalkd
+%lang(el) %{_datadir}/kde/doc/HTML/el/ktalkd
+%lang(en) %{_datadir}/kde/doc/HTML/en/ktalkd
+%lang(fr) %{_datadir}/kde/doc/HTML/fr/ktalkd
+%lang(it) %{_datadir}/kde/doc/HTML/it/ktalkd
 
-%{_Xshare}/kde/sounds/ktalkd.wav
+%{_datadir}/kde/sounds/ktalkd.wav
 
 %changelog
-* Fri May 21 1999 Wojciech "Sas" Cieciwa <cieciwa@alpha.zarz.agh.edu.pl>
+* Mon May 24 1999 Wojciech "Sas" Cieciwa <cieciwa@alpha.zarz.agh.edu.pl>
   [1.1.1-2]
-- fixes problem with locale files uses '%find_lang' macro.
+- fixes problem with locale files uses '%find_lang' macro,
+- fixes problem with file locations.
 
 * Wed May 19 1999 Wojciech "Sas" Cieciwa <cieciwa@alpha.zarz.agh.edu.pl>
   [1.1.1-1]
