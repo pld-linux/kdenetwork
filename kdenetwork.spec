@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.99
-Release:	2
+Release:	1
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
