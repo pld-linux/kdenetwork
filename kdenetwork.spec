@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030602
+%define		_snap		030613
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -15,7 +15,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	29f1b3d11357a511a38fff1dbc6181c3
+# Source0-md5:	ffe20e3ce078d98d2fdbfdf5563f8d8c
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -34,6 +34,7 @@ BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	%{_docdir}/kde/HTML
+%define		_icondir	%{_datadir}/icons
 
 %define		no_install_post_chrpath		1
 
@@ -305,16 +306,34 @@ KDE LAN Browser.
 %description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
+%package librss
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Libraries
+
+%description librss
+TODO.
+
+%description librss -l pl
+TODO.
+
+%package librss-devel
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Development/Libraries
+
+%description librss-devel
+TODO.
+
+%description librss-devel -l pl
+TODO.
+
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
-kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 for plik in `find ./ -name *.desktop` ; do
 	echo $plik
@@ -322,14 +341,18 @@ for plik in `find ./ -name *.desktop` ; do
 done
 
 %configure \
-	--%{!?debug:dis}%{?debug:en}able-debug
-	
+	--%{!?debug:dis}%{?debug:en}able-debug \
+	--enable-final
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_appsdir=%{_applnkdir} \
+	kde_htmldir=%{_htmldir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
@@ -339,7 +362,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
-cd $RPM_BUILD_ROOT%{_pixmapsdir}
+cd $RPM_BUILD_ROOT%{_icondir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
@@ -378,6 +401,9 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
+%post	librss		-p /sbin/ldconfig
+%postun	librss		-p /sbin/ldconfig
+
 #%files kwifimanager
 #%defattr(644,root,root,755)
 #%{_libdir}/kde3/kcm_kwifimanager.la
@@ -392,7 +418,7 @@ fi
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kdict.desktop
-%{_pixmapsdir}/*/*/*/kdict*
+%{_icondir}/*/*/*/kdict*
 
 %files kget
 %defattr(644,root,root,755)
@@ -403,7 +429,7 @@ fi
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kget.desktop
-%{_pixmapsdir}/*/*/*/*kget*
+%{_icondir}/*/*/*/*kget*
 
 %files kinetd
 %defattr(644,root,root,755)
@@ -418,7 +444,7 @@ fi
 %attr(755,root,root) %{_bindir}/kit
 %{_datadir}/apps/kit
 %{_desktopdir}/kit.desktop
-%{_pixmapsdir}/*/*/*/kit.png
+%{_icondir}/*/*/*/kit.png
 
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
@@ -433,7 +459,7 @@ fi
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_desktopdir}/knewsticker*.desktop
-%{_pixmapsdir}/*/*/*/knewsticker.png
+%{_icondir}/*/*/*/knewsticker.png
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
@@ -443,7 +469,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
-%{_pixmapsdir}/*/*/*/kpf*
+%{_icondir}/*/*/*/kpf*
 
 %files kppp -f kppp.lang
 %defattr(644,root,root,755)
@@ -452,7 +478,7 @@ fi
 %{_datadir}/apps/kppp
 %{_desktopdir}/Kppp.desktop
 %{_desktopdir}/kppplogview.desktop
-%{_pixmapsdir}/*/*/*/kppp.png
+%{_icondir}/*/*/*/kppp.png
 
 %files krfb -f krfb.lang
 %defattr(644,root,root,755)
@@ -470,8 +496,8 @@ fi
 %{_applnkdir}/KDE-Settings/Network/kcmkrfb.desktop
 %{_desktopdir}/krfb.desktop
 %{_desktopdir}/krdc.desktop
-%{_pixmapsdir}/*/*/*/krdc*
-%{_pixmapsdir}/[!l]*/*/*/krfb*
+%{_icondir}/*/*/*/krdc*
+%{_icondir}/[!l]*/*/*/krfb*
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -485,7 +511,7 @@ fi
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_desktopdir}/ksirc.desktop
-%{_pixmapsdir}/[!l]*/*/*/ksirc*
+%{_icondir}/[!l]*/*/*/ksirc*
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
@@ -497,7 +523,7 @@ fi
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_applnkdir}/KDE-Settings/Network/kcmktalkd.desktop
-%{_pixmapsdir}/*/*/*/ktalkd*
+%{_icondir}/*/*/*/ktalkd*
 
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
@@ -526,3 +552,12 @@ fi
 %{_applnkdir}/.hidden/kcmkiolan.desktop
 %{_applnkdir}/.hidden/kcmlisa.desktop
 %{_applnkdir}/.hidden/kcmreslisa.desktop
+
+%files librss
+%defattr(644,root,root,755)
+%{_libdir}/librss.la                                                      
+%attr(755,root,root) %{_libdir}/librss.so.*.*.*    
+
+%files librss-devel
+%defattr(644,root,root,755)
+%{_includedir}/rss                                                      
