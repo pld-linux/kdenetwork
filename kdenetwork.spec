@@ -65,7 +65,7 @@ KDE network applications. Package includes:
 %description -l pl
 Aplikacje sieciowe KDE. Pakiet zawiera nastêpuj±ce programy:
 - KDict - klient s³ownika
-- KGet - ¦ciagacz plików
+- KGet - ¶ci±gacz plików
 - KIT - klient AOL Instant Messenger
 - KNewsticker - aplet wy¶wietlaj±cy nowo¶ci
 - KPF - applet publicznego serwera plików
