@@ -617,6 +617,7 @@ Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
 Requires:	kdelibs >= 9:%{version}
 Requires:	wireless-tools
+Obsoletes:	kwifimanager
 
 %description kwifimanager
 Wireless LAN.
