@@ -19,7 +19,7 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	47a8d21ce486426caf56bf6129ce993f
 Source1:	%{name}-kopetestyles.tar.bz2
-# Source1-md5:	ed406a9c0f5ada76aeaec567bc85aa86	
+# Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922	
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
