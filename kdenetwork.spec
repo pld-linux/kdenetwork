@@ -11,7 +11,7 @@ Group(pl):	X11/KDE/Sieciowe
 Copyright:	GPL
 Requires:	qt >= 1.40
 Requires:	kdelibs = %{version}
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix 	/usr/X11R6
 
