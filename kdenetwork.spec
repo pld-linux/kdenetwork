@@ -4,7 +4,7 @@
 
 %define		_ver		3.0.3
 #define		_sub_ver
-%define		_rel		0.1
+%define		_rel		1
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -33,11 +33,12 @@ Patch2:		%{name}-use_sendmail.patch
 %{?_with_kmail_toolbars_patch:Patch3: %{name}-kmail_toolbars.patch}
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= %{version}
+BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
+BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
-BuildRequires:	fam-devel
+BuildRequires:	qt-devel >= 3.0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -304,7 +305,8 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
-	--with-pam="yes"
+	--with-pam="yes" \
+	--enable-final
 %{__make}
 
 %install
