@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	3
+Release:	4
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -876,7 +876,7 @@ echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 	-e 's/Terminal=0/Terminal=false/' \
 	ksirc/ksirc.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
-	-e 's/Terminal=0/Terminal=false/' \
+	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8 \
 	kopete/kopete/kopete.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
