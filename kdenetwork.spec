@@ -234,6 +234,7 @@ Biblioteki przegl±darki LAN-u dla KDE.
 Summary:	KDE LAN information server
 Summary(pl):	Serwer informacji o LAN-ie dla KDE
 Group:		Networking/Daemons
+Requires(post,preun):/sbin/chkconfig
 Obsoletes:	lisa
 Provides:	lisa
 Conflicts:	%{name}-lanbrowser <= 3.0.4-9
