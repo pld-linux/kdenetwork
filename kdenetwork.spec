@@ -104,7 +104,6 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-kicker >= %{version}
 Provides:	kdict
 Obsoletes:	kdict
 
