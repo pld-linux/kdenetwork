@@ -4,7 +4,7 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040327
+%define		_snap		040403
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -17,8 +17,8 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}.tar.bz2
-##%% Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
+Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	a53b2a4d9b2748c65149578927c8b531
 #Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 ##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
 Source2:	%{name}-lisa.init
