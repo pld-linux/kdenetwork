@@ -19,7 +19,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.
 # generated from kde-i18n
 Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-use_sendmail.patch
-Patch1: 	%{name}-kmail_toolbars.patch
+Patch1:		%{name}-kmail_toolbars.patch
 Patch2:		%{name}-fix-kio_lan.patch
 Patch3:		%{name}-fix-sync-config-when-we-close-config-dialogbox.patch
 Patch4:		%{name}-fix-kpgp-mem-leak.patch
