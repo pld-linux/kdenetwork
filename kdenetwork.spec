@@ -163,7 +163,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-kicker >= 9:%{version}
+Requires:	kdebase-desktop >= 9:%{version}
 
 %description knewsticker
 KDE News Ticker.
@@ -542,7 +542,7 @@ na stronie WWW.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-kicker >= 9:%{version}
+Requires:	kdebase-desktop >= 9:%{version}
 
 %description kpf
 Public fileserver applet.
@@ -760,7 +760,7 @@ Summary:	Internationalization and localization files for knewsticker
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewstickera
 Group:		X11/Applications
 Requires:	%{name}-knewsticker = %{epoch}:%{version}-%{release}
-Requires:	kdebase-kicker-i18n >= 9:%{version}
+Requires:	kdebase-desktop-i18n >= 9:%{version}
 
 %description knewsticker-i18n
 Internationalization and localization files for knewsticker.
@@ -786,7 +786,7 @@ Summary:	Internationalization and localization files for kpf
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpf
 Group:		X11/Applications
 Requires:	%{name}-kpf = %{epoch}:%{version}-%{release}
-Requires:	kdebase-kicker-i18n >= 9:%{version}
+Requires:	kdebase-desktop-i18n >= 9:%{version}
 
 %description kpf-i18n
 Internationalization and localization files for kpf.
