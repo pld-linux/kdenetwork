@@ -1,4 +1,4 @@
- 
+
 %define		_state		unstable
 %define		_ver		3.1.93
 %define		_snap		031105
@@ -17,13 +17,14 @@ Group:		X11/Libraries
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	6119b4d75327b96b83801f6afa1b08d0
 Source2:	%{name}-lisa.init
-Source3:        %{name}-lisa.sysconfig
-Source4:        %{name}-lisarc
+Source3:	%{name}-lisa.sysconfig
+Source4:	%{name}-lisarc
 Patch0:		kde-general-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	ed
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
@@ -35,7 +36,6 @@ BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	openslp-devel
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	sed >= 4.0
 BuildRequires:	xmms-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -85,8 +85,8 @@ monitoração da caixa de correio kppp: configuração fácil para conexão
 PPP krn: leitor de notícias
 
 %package devel
-Summary:	kdenetwork - header files
-Summary(pl):	kdenetwork - pliki nag³ówkowe
+Summary:	kdenetwork header files
+Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
 Requires:	kdelibs-devel >= 9:%{version}
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
@@ -97,10 +97,14 @@ Obsoletes:	%{name}-librss-devel
 Obsoletes:	%{name}-rss-devel
 
 %description devel
-kdenetwork - header files.
+kdenetwork header files.
 
 %description devel -l pl
-kdenetwork - pliki nag³ówkowe.
+Pliki nag³ówkowe kdenetwork.
+
+%description devel -l pt_BR
+Arquivos de inclusão para compilar aplicações que usem as bibliotecas
+do kdenetwork.
 
 %package kdict
 Summary:	Online dictionary client
@@ -218,10 +222,10 @@ wtyczek u¿ywanych przez wiêkszo¶æ u¿ytkowników oraz szablony dla
 nowych programistów, na których mo¿na opieraæ nowe wtyczki.
 
 %package kopete-protocol-aim
-Summary:        Adds AIM protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u AIM
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds AIM protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u AIM
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-aim
 Adds AIM protocol support.
@@ -230,10 +234,10 @@ Adds AIM protocol support.
 Dodaje obs³ugê protoko³u AIM.
 
 %package kopete-protocol-gg
-Summary:        Adds GaduGadu protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u GaduGadu
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds GaduGadu protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u GaduGadu
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-gg
 Adds GaguGadu protocol support.
@@ -242,10 +246,10 @@ Adds GaguGadu protocol support.
 Dodaje obs³ugê protoko³u GaduGadu.
 
 %package kopete-protocol-icq
-Summary:        Adds ICQ protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u ICQ
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds ICQ protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u ICQ
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-icq
 Adds ICQ protocol support.
@@ -254,10 +258,10 @@ Adds ICQ protocol support.
 Dodaje obs³ugê protoko³u ICQ.
 
 %package kopete-protocol-irc
-Summary:        Adds IRC support
-Summary(pl):    Dodaje obs³ugê IRC
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds IRC support
+Summary(pl):	Dodaje obs³ugê IRC
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-irc
 Adds IRC support.
@@ -266,11 +270,11 @@ Adds IRC support.
 Dodaje obs³ugê IRC.
 
 %package kopete-protocol-jabber
-Summary:        Adds Jabber protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u Jabber
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:       libpsi >= 20021108
+Summary:	Adds Jabber protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u Jabber
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	libpsi >= 20021108
 
 %description kopete-protocol-jabber
 Adds Jabber protocol support.
@@ -279,10 +283,10 @@ Adds Jabber protocol support.
 Dodaje obs³ugê protoko³u Jabber.
 
 %package kopete-protocol-msn
-Summary:        Adds MSN protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u MSN
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds MSN protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u MSN
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-msn
 Adds MSN protocol support.
@@ -291,10 +295,10 @@ Adds MSN protocol support.
 Dodaje obs³ugê protoko³u MSN.
 
 %package kopete-protocol-oscar
-Summary:        Adds OSCAR protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u OSCAR
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds OSCAR protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u OSCAR
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-oscar
 Adds OSCAR protocol support.
@@ -303,10 +307,10 @@ Adds OSCAR protocol support.
 Dodaje obs³ugê protoko³u OSCAR.
 
 %package kopete-protocol-sms
-Summary:        Adds SMS contact support
-Summary(pl):    Dodaje obs³ugê kontaktów SMS
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds SMS contact support
+Summary(pl):	Dodaje obs³ugê kontaktów SMS
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-sms
 Adds SMS contact support.
@@ -315,10 +319,10 @@ Adds SMS contact support.
 Dodaje obs³ugê kontaktów SMS.
 
 %package kopete-protocol-testbed
-Summary:        Adds Testbed protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u testbed
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds Testbed protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u testbed
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-testbed
 Adds Testbed protocol support.
@@ -327,10 +331,10 @@ Adds Testbed protocol support.
 Dodaje obs³ugê protoko³u testbed.
 
 %package kopete-protocol-winpopup
-Summary:        Adds winpopup messaging support
-Summary(pl):    Dodaje obs³ugê komunikacji via winpopup
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds winpopup messaging support
+Summary(pl):	Dodaje obs³ugê komunikacji via winpopup
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-winpopup
 Adds winpopup messaging support.
@@ -339,10 +343,10 @@ Adds winpopup messaging support.
 Dodaje obs³ugê komunikacji via winpopup.
 
 %package kopete-protocol-yahoo
-Summary:        Adds yahoo protocol support
-Summary(pl):    Dodaje obs³ugê protoko³u yahoo
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Adds yahoo protocol support
+Summary(pl):	Dodaje obs³ugê protoko³u yahoo
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-yahoo
 Adds yahoo protocol support.
@@ -351,10 +355,10 @@ Adds yahoo protocol support.
 Dodaje obs³ugê protoko³u yahoo.
 
 %package kopete-tool-autoaway
-Summary:        An autoaway plugin
-Summary(pl):    Wtyczka automatycznego przej¶cia w stan zajêty
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	An autoaway plugin
+Summary(pl):	Wtyczka automatycznego przej¶cia w stan zajêty
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-autoaway
 Automatically changes status to away. Conditions are configurable.
@@ -364,10 +368,10 @@ Automatycznie zmienia status na zajêty. Warunki, po zaistnieniu
 których ma nastapiæ, s± konfigurowalne.
 
 %package kopete-tool-autoreplace
-Summary:        Autoreplaces some text you can choose
-Summary(pl):    Wtyczka automatycznej zamiany tekstu
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Autoreplaces some text you can choose
+Summary(pl):	Wtyczka automatycznej zamiany tekstu
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-autoreplace
 Autoreplaces some text you can choose.
@@ -376,10 +380,10 @@ Autoreplaces some text you can choose.
 Wtyczka automatycznej zamiany tekstu.
 
 %package kopete-tool-conectionstatus
-Summary:        Internet connection detector
-Summary(pl):    Wykrywacz po³±czeñ internetowych
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Internet connection detector
+Summary(pl):	Wykrywacz po³±czeñ internetowych
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-conectionstatus
 Automatically detects whether the internet connection is available or
@@ -390,22 +394,22 @@ Automatycznie sprawdza czy dostêpne jest po³±czenie do internetu czy
 nie.
 
 %package kopete-tool-contactnotes
-Summary:        Add personal notes to your contacts
-Summary(pl):    Dodawanie notatek do kontaktów
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Add personal notes to your contacts
+Summary(pl):	Dodawanie notatek do kontaktów
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-contactnotes
 Allows adding personal notes to your contacts.
 
-%description kopete-tool-contactnotes  -l pl
+%description kopete-tool-contactnotes -l pl
 Umo¿liwia dodawanie notatek do kontaktów.
 
 %package kopete-tool-cryptography
-Summary:        Messages encryptor
-Summary(pl):    Program do szyfrowania wiadomo¶ci
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Messages encryptor
+Summary(pl):	Program do szyfrowania wiadomo¶ci
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-cryptography
 OpenPGP messages encryptor.
@@ -414,19 +418,19 @@ OpenPGP messages encryptor.
 Program do szyfrowania wiadomo¶ci przy pomocy OpenPGP.
 
 %package kopete-tool-highlight
-Summary:        A highlighter plugin
-Summary(pl):    Wtyczka podkre¶laj±ca wybrane teksty
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	A highlighter plugin
+Summary(pl):	Wtyczka podkre¶laj±ca wybrane teksty
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-highlight
 A highlighter plugin.
 
 %package kopete-tool-history
-Summary:        A history plugin
-Summary(pl):    Wtyczka obs³uguj±ca historiê rozmów
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	A history plugin
+Summary(pl):	Wtyczka obs³uguj±ca historiê rozmów
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-history
 A history plugin.
@@ -435,10 +439,10 @@ A history plugin.
 Wtyczka obs³uguj±ca historiê rozmów.
 
 %package kopete-tool-importer
-Summary:        Contact importer
-Summary(pl):    Importer kontaktów
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Contact importer
+Summary(pl):	Importer kontaktów
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-importer
 Allows importing contacts from other IM's.
@@ -447,19 +451,19 @@ Allows importing contacts from other IM's.
 Umo¿liwia importowanie kontaktów z innych komunikatorów.
 
 %package kopete-tool-nowlistening
-Summary:        Playlist informer
-Summary(pl):    Informator o playliscie
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:       xmms >= 1.0.0
-Requires:       kdemultimedia-noatun >= 3.1
-Requires:       kdemultimedia-kscd >= 3.1
+Summary:	Playlist informer
+Summary(pl):	Informator o playliscie
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	xmms >= 1.0.0
+Requires:	kdemultimedia-noatun >= 3.1
+Requires:	kdemultimedia-kscd >= 3.1
 
 %package kopete-tool-motionaway
-Summary:        Sets away status when not detecting movement near the computer
-Summary(pl):    Zmienia status na zajêty je¶li nie wykrywa ruchu wokó³ komputera
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Sets away status when not detecting movement near the computer
+Summary(pl):	Zmienia status na zajêty je¶li nie wykrywa ruchu wokó³ komputera
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-motionaway
 This plugin sets away status when not detecting movement near the
@@ -478,10 +482,10 @@ Ta wtyczka wypisuje podczas rozmow nazwê aktualnie s³uchanej piosenki
 w xmms/kscd/noatun.
 
 %package kopete-tool-spellcheck
-Summary:        A spell checking plugin.
-Summary(pl):    Wtyczka sprawdzaj±ca pisownie.
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	A spell checking plugin.
+Summary(pl):	Wtyczka sprawdzaj±ca pisownie.
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-spellcheck
 A spell checking plugin.
@@ -490,10 +494,10 @@ A spell checking plugin.
 Wtyczka sprawdzaj±ca pisownie.
 
 %package kopete-tool-texteffect
-Summary:        A plugin that adds nice effects to your messages
-Summary(pl):    Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	A plugin that adds nice effects to your messages
+Summary(pl):	Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-texteffect
 A plugin that adds nice effects to your messages.
@@ -502,10 +506,10 @@ A plugin that adds nice effects to your messages.
 Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci.
 
 %package kopete-tool-translator
-Summary:        Uses babelfish to translate messages
-Summary(pl):    Wykorzystuje babelfish do t³umaczenia wiadomo¶ci
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Summary:	Uses babelfish to translate messages
+Summary(pl):	Wykorzystuje babelfish do t³umaczenia wiadomo¶ci
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-translator
 This plugin uses babelfish to translate messages.
@@ -514,12 +518,12 @@ This plugin uses babelfish to translate messages.
 Ta wtyczka wykorzystuje babelfish do t³umaczenia wiadomo¶ci.
 
 %package kopete-tool-webpresence
-Summary:        Web contactlist presenter
-Summary(pl):    Wy¶wietlacz listy kontaktów na WWW
-Group:          X11/Applications/Networking
-Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:       libxml2 >= 2.4.8
-Requires:       libxslt >= 1.0.7
+Summary:	Web contactlist presenter
+Summary(pl):	Wy¶wietlacz listy kontaktów na WWW
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	libxml2 >= 2.4.8
+Requires:	libxslt >= 1.0.7
 
 %description kopete-tool-webpresence
 This plugin shows the status of (parts of) your contactlist on a
@@ -659,9 +663,8 @@ TODO.
 %patch2 -p1
 
 %build
-
-for f in `find . -name *.desktop` ; do
-	sed -i 's/\[nb\]/\[no\]/g' $f
+for f in `find . -name \*.desktop | xargs grep -l '\[nb\]'` ; do
+	echo -e ',s/\[nb\]=/[no]=/\n,w' | ed $f 2>/dev/null
 done
 
 %{__make} -f admin/Makefile.common cvs
@@ -687,7 +690,7 @@ install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
 mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/kopete.desktop \
-    $RPM_BUILD_ROOT%{_desktopdir}/kde
+   $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
@@ -744,7 +747,7 @@ fi
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/rss                                                      
+%{_includedir}/rss
 %{_libdir}/libkopete.so
 %{_libdir}/libkopete_msn_shared.so
 %{_libdir}/libkopete_oscar.so
@@ -1023,7 +1026,7 @@ fi
 %{_libdir}/kde3/kcm_kopete_nowlistening.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
 %{_libdir}/kde3/kopete*nowlistening*.la
-%attr(755,root,root)  %{_libdir}/kde3/kopete*nowlistening*.so
+%attr(755,root,root) %{_libdir}/kde3/kopete*nowlistening*.so
 %{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
 %{_datadir}/services/kopete_nowlistening.desktop
 
@@ -1178,6 +1181,6 @@ fi
 %attr(755,root,root) %{_bindir}/feedbrowser
 %attr(755,root,root) %{_bindir}/rssclient
 %attr(755,root,root) %{_bindir}/rssservice
-%{_libdir}/librss.la                                                      
-%attr(755,root,root) %{_libdir}/librss.so.*.*.*    
+%{_libdir}/librss.la
+%attr(755,root,root) %{_libdir}/librss.so.*.*.*
 %{_datadir}/services/rssservice.desktop
