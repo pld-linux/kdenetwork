@@ -8,14 +8,15 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.1
+Release:	0.2
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	18b1a274575eddf053dd6e72ad5554c7
 # generated from kde-i18n
-#Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/%{version}/kde-i18n-%{name}-%{version}.tar.bz2
+# Source1-md5:	6ce7c922744e58421646d01605d80961
 Source2:	lisa.init
 Source3:	lisa.sysconfig
 Source4:	%{name}-lisarc
