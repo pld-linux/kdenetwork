@@ -4,7 +4,8 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040407
+%define		_snap		040424
+%define		_packager	adgor
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -17,7 +18,7 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{_snap}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	a288fdce17c360df3a19e787994c2f49
 #Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 ##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
@@ -30,6 +31,7 @@ Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		kde-common-QTDOCDIR.patch
+Patch4:		%{name}-libgadu_version.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -164,7 +166,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-kicker >= 9:%{version}
+Requires:	kdebase-desktop >= 9:%{version}
 
 %description knewsticker
 KDE News Ticker.
@@ -556,7 +558,7 @@ na stronie WWW.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-kicker >= 9:%{version}
+Requires:	kdebase-desktop >= 9:%{version}
 
 %description kpf
 Public fileserver applet.
@@ -922,11 +924,12 @@ Internationalization and localization files for rss.
 Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
@@ -934,9 +937,10 @@ echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-im/Mak
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-core/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/cutestuff/network/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
 %build
-#cp /usr/share/automake/config.sub admin
+cp /usr/share/automake/config.sub admin
 export UNSERMAKE=/usr/share/unsermake/unsermake
 
 %{__make} -f admin/Makefile.common cvs
@@ -945,6 +949,8 @@ export UNSERMAKE=/usr/share/unsermake/unsermake
 	--disable-rpath \
 	--enable-final \
 	--with-qt-libraries=%{_libdir}
+
+read
 
 %{__make}
 
@@ -1512,6 +1518,7 @@ fi
 %{_datadir}/apps/kwifimanager
 %{_datadir}/applications/kde/kcmwifi.desktop
 %{_datadir}/applications/kde/kwifimanager.desktop
+%{_iconsdir}/*/*/apps/kwifimanager.*
 
 %files lanbrowser -f lisa_en.lang
 %defattr(644,root,root,755)
