@@ -1,10 +1,11 @@
+%define 	sver    beta1
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	2.1.1
-Release:	2
+Version:	2.2
+Release:        0.%{sver}.1
 Vendor:		The KDE Team
-Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/src/%{name}-%{version}.tar.bz2
+Source:		ftp://ftp.kde.org/pub/kde/unstable/%{version}%{sver}/src/%{name}-%{version}%{sver}.tar.bz2
 Group:          X11/Applications
 Copyright:	GPL
 BuildRequires:	qt-devel >= 2.2.2
@@ -112,16 +113,6 @@ Requires:	kdelibs >= %{version}
 
 %description -l pl kit
 
-%package keystone
-Summary:     	Allows remote access to the desktops of other machines.
-Summary(pl): 	Umo¿liwia zdalny dostêp do biurek (desktop) innych komputerow
-Group:       	X11/Applications
-Requires:	kdelibs >= %{version}
-
-%description keystone
-
-%description -l pl keystone
-
 %package knewsticker
 Summary:     	KDE News Ticker
 Group:       	X11/Applications
@@ -142,12 +133,12 @@ Requires:	kdelibs >= %{version}
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{sver}
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
-%configure \
+%configure2_13 \
 	--with-qt-dir=%{_prefix} \
  	--with-install-root=$RPM_BUILD_ROOT \
  	--with-pam="yes"
@@ -167,7 +158,6 @@ install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 install kppp/Kppp.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kppp/logview/kppplogview.desktop 	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kit/kit.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install keystone/keystone.desktop 	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 
 %clean
@@ -181,16 +171,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmail
 %{_includedir}/kmail*.h
 %{_datadir}/doc/kde/HTML/en/kmail
-%{_pixmapsdir}/locolor/*x*/apps/kmail.png
 %{_pixmapsdir}/hicolor/*x*/apps/kmail.png
-%{_pixmapsdir}/hicolor/*x*/actions/message_get.png
 
 %files korn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
 %{_datadir}/doc/kde/HTML/en/korn
-%{_pixmapsdir}/locolor/*x*/apps/korn.png
 %{_pixmapsdir}/hicolor/*x*/apps/korn.png
 
 %files kppp
@@ -201,7 +188,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
 %{_datadir}/doc/kde/HTML/en/kppp
-%{_pixmapsdir}/locolor/*x*/apps/kppp.png
 %{_pixmapsdir}/hicolor/*x*/apps/kppp.png
 
 %files knode
@@ -210,7 +196,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
 %{_datadir}/doc/kde/HTML/en/knode
-%{_pixmapsdir}/locolor/*x*/apps/knode.png
 %{_pixmapsdir}/hicolor/*x*/apps/knode.png
 
 %files ksirc
@@ -223,7 +208,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/doc/kde/HTML/en/ksirc
-%{_pixmapsdir}/locolor/*x*/apps/ksirc.png
 %{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
 
 %files kit
@@ -231,17 +215,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/doc/kde/HTML/en/kit
-%{_pixmapsdir}/locolor/*x*/apps/kit.png
 %{_pixmapsdir}/hicolor/*x*/apps/kit.png
-
-%files keystone
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/keystone
-%{_applnkdir}/Network/Misc/keystone.desktop
-%{_datadir}/config/protocols/vnc.desktop
-%{_datadir}/doc/kde/HTML/en/keystone
-%{_pixmapsdir}/locolor/*x*/apps/keystone.png
-%{_pixmapsdir}/hicolor/*x*/apps/keystone.png
 
 %files knewsticker
 %defattr(644,root,root,755)
@@ -251,10 +225,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Settings/Personalization/kcmnewsticker.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_datadir}/services/knewsservice.protocol
-%{_datadir}/doc/kde/HTML/en/keystone
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_pixmapsdir}/locolor/*x*/apps/knewsticker.png
 %{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
 
 %files lanbrowser
@@ -266,6 +238,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Settings/Network/lanbrowser.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
-%{_datadir}/doc/kde/HTML/en/keystone
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
