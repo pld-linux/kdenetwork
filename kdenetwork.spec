@@ -344,6 +344,14 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
+for plik in `find ./ -name *.desktop` ; do
+	if [ -d $plik ]; then
+	echo $plik
+	sed -ie "s/[nb]/[no]/g" $plik
+	fi
+done
+				
+
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
