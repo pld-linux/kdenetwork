@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.2
+Release:	0.3
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
@@ -16,7 +16,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.
 # Source0-md5:	18b1a274575eddf053dd6e72ad5554c7
 # generated from kde-i18n
 Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/%{version}/kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	6ce7c922744e58421646d01605d80961
+# Source1-md5:	8f87953c55737558c3ba3311ed125563
 Source2:	lisa.init
 Source3:	lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -27,7 +27,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= %{version}
+BuildRequires:	kdelibs-devel >= 8:%{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	qt-devel >= 3.1
@@ -87,7 +87,7 @@ Summary:	Header files and development documentation
 Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
 Summary(pt_BR):	Arquivos de inclusão para compilar aplicações que usem as bibliotecas do kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 8:%{version}
 
 %description devel
 Header files and development documentation.
@@ -149,7 +149,7 @@ Summary(pl):	Klient AOL Instant Messenger dla KDE
 Summary(pt_BR):	Comunicador que usa o protocolo AOL
 License:	LGPL
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 8:%{version}
 
 %description kit
 KDE AOL Instant Messenger.
@@ -167,7 +167,7 @@ Summary(pt_BR):	Cliente / leitor de e-mails para o KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
 Requires:	%{name} = %{epoch}:%{version}
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 8:%{version}
 
 %description kmail
 This is electronic mail client for KDE. It is able to retrievie mail
@@ -272,7 +272,7 @@ Summary:	KDE IRC client
 Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 8:%{version}
 
 %description ksirc
 KDE IRC client.
@@ -312,7 +312,7 @@ Demon talk.
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 8:%{version}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -364,12 +364,11 @@ done
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d \
-	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
 	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 ALD=$RPM_BUILD_ROOT%{_applnkdir}
 
@@ -394,7 +393,7 @@ cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-#bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict		--with-kde
 #%find_lang kdictapplet 	--with-kde
