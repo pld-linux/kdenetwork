@@ -15,7 +15,7 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	d981fa1114d06256230bed4a4b948766
 # generated from kde-i18n
-# Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/kde-i18n-%{name}-%{version}.tar.bz2
 Source2:	lisa.init
 Source3:        lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -29,8 +29,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
-BuildRequires:	qt-devel >= 3.1
 BuildRequires:	perl
+BuildRequires:	qt-devel >= 3.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -361,12 +361,11 @@ done
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-install -d \
-	$RPM_BUILD_ROOT{%{_sysconfdir}/{rc.d/init.d,sysconfig},/usr/bin} \
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{rc.d/init.d,sysconfig},/usr/bin} \
 	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,M{ail,isc},News}}
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT{%{_bindir}/{,res}lisa,/usr/bin}
 
