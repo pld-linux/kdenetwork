@@ -1,0 +1,64 @@
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kopete/protocols/configure.in.in
+--- kdenetwork.orig/kopete/protocols/configure.in.in	Sat May 29 17:18:52 2004
++++ kdenetwork/kopete/protocols/configure.in.in	Mon Jun  7 00:06:15 2004
+@@ -2,7 +2,7 @@
+ [
+ sed -e "s/#undef __GG_LIBGADU_$1/#define __GG_LIBGADU_$1/" \
+ ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h > ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.1
+-mv ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h{.1,}
++mv ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.1 ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h
+ ])
+ 	 
+ LIBGG_INCLUDES=""
+@@ -67,13 +67,13 @@
+ 	AC_SUBST(COMPILE_GADU)
+ 	use_libgadu_copy=no
+ 	], [
+-	if test "$LIBPTHREAD" != "" ; then
++	if test "$kde_use_threading" = "yes" ; then
+ 	AC_MSG_RESULT([no, falling back on supplied libgadu-copy])
+ 	use_libgadu_copy=yes
+ 	COMPILE_GADU=true
+ 	else
+ 	use_libgadu_copy=no
+-	AC_MSG_RESULT([no, cannot fall back on libgadu-copy (no pthread)])
++	AC_MSG_RESULT([no, cannot fall back on libgadu-copy (no threads)])
+ 	COMPILE_GADU=	
+ 	use_libgadu_copy=no
+ 	fi
+@@ -86,7 +86,8 @@
+ CXXFLAGS="$ac_save_CXXFLAGS"
+ 
+ if test "$use_libgadu_copy" = "yes"; then
+-	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h{.in,}
++	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.in \
++	${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h
+ 	if test "$ac_cv_c_bigendian" = "yes"; then
+ 		AC_LIBGADU_DEFINE([BIGENDIAN])	
+ 	fi
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in kdenetwork/kopete/protocols/gadu/libgadu/libgadu-config.h.in
+--- kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in	Sun May 30 12:44:14 2004
++++ kdenetwork/kopete/protocols/gadu/libgadu/libgadu-config.h.in	Mon Jun  7 00:06:15 2004
+@@ -25,6 +25,6 @@
+ #undef __GG_LIBGADU_HAVE_OPENSSL
+ 
+ /* Include file containing uintXX_t declarations. */
+-#include <stdint.h>
++#include <inttypes.h>
+ 
+ #endif /* __GG_LIBGADU_CONFIG_H */
+diff -urN -x CVS kdenetwork.orig/lanbrowsing/kcmlisa/setupwizard.cpp kdenetwork/lanbrowsing/kcmlisa/setupwizard.cpp
+--- kdenetwork.orig/lanbrowsing/kcmlisa/setupwizard.cpp	Sat Sep 20 19:31:44 2003
++++ kdenetwork/lanbrowsing/kcmlisa/setupwizard.cpp	Mon Jun  7 22:10:56 2004
+@@ -444,7 +444,11 @@
+ void SetupWizard::showPage(QWidget* page)
+ {
+    if (page==m_noNicPage)
++   {
+       m_manualAddress->setFocus();
++      setNextEnabled(m_noNicPage, false);
++      setHelpEnabled(m_noNicPage, false);
++   }
+    else if (page==m_multiNicPage)
+       m_nicListBox->setFocus();
+    else if ( page == m_searchPage)
