@@ -4,7 +4,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	2.2.2
-Release:	2
+Release:	3
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -25,7 +25,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix 	/usr/X11R6
 %define         _fontdir        /usr/share/fonts
-%define         _htmldir        %{_datadir}/doc/kde/HTML
+%define         _htmldir        /usr/share/doc/kde/HTML
 
 %description
 KDE network applications. Package includes:
@@ -314,14 +314,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
-%{_datadir}/doc/kde/HTML/en/kmail
+%{_htmldir}/en/kmail
 %{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
 
 %files korn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
-%{_datadir}/doc/kde/HTML/en/korn
+%{_htmldir}/en/korn
 %{_pixmapsdir}/hicolor/*x*/apps/korn.png
 
 %files kppp
@@ -331,7 +331,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
-%{_datadir}/doc/kde/HTML/en/kppp
+%{_htmldir}/en/kppp
 %{_pixmapsdir}/hicolor/*x*/apps/kppp.png
 
 %files knode
@@ -339,7 +339,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
-%{_datadir}/doc/kde/HTML/en/knode
+%{_htmldir}/en/knode
 %{_pixmapsdir}/hicolor/*x*/apps/knode.png
 
 %files ksirc
@@ -352,14 +352,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_datadir}/doc/kde/HTML/en/ksirc
+%{_htmldir}/en/ksirc
 %{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
 
 %files kit
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
-%{_datadir}/doc/kde/HTML/en/kit
+%{_htmldir}/en/kit
 %{_datadir}/apps/kit
 %{_pixmapsdir}/hicolor/*x*/apps/kit.png
 
