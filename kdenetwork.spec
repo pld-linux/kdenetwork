@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.1.93
-%define		_snap		031105
+%define		_snap		031114
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -9,13 +9,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	3
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	6119b4d75327b96b83801f6afa1b08d0
+# Source0-md5:	8a96ab626116aed1ddeeadb75f69860a
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -842,11 +842,12 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmsg.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmessage.mng
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/status_unknown.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/emoticons
-%{_datadir}/apps/kopete/pics/newmessage.mng
+#%{_datadir}/apps/kopete/pics/newmessage.mng
 %{_datadir}/apps/kopete/styles
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
@@ -871,7 +872,7 @@ fi
 %{_libdir}/kde3/kopete*aim*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/aim*
-%{_datadir}/apps/kopete/pics/aim*
+#%{_datadir}/apps/kopete/pics/aim*
 %{_datadir}/services/kopete_aim.desktop
 
 %files kopete-protocol-gg
@@ -880,7 +881,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*gadu*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
-%{_datadir}/apps/kopete/pics/gg*
+#%{_datadir}/apps/kopete/pics/gg*
 %{_datadir}/services/kopete_gadu.desktop
 
 %files kopete-protocol-icq
@@ -888,7 +889,7 @@ fi
 %{_libdir}/kde3/kopete*icq*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/icq*
-%{_datadir}/apps/kopete/pics/icq*
+#%{_datadir}/apps/kopete/pics/icq*
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -896,14 +897,14 @@ fi
 %{_libdir}/kde3/kopete*irc*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
-%{_datadir}/apps/kopete/pics/irc_connecting.mng
+#%{_datadir}/apps/kopete/pics/irc_connecting.mng
 %{_datadir}/services/kopete_irc.desktop
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
-%{_datadir}/apps/kopete/pics/jabber*
+#%{_datadir}/apps/kopete/pics/jabber*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
 %{_datadir}/services/kopete_jabber.desktop
 
@@ -916,7 +917,7 @@ fi
 %{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
-%{_datadir}/apps/kopete/pics/msn*
+#%{_datadir}/apps/kopete/pics/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
 
