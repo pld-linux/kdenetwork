@@ -481,7 +481,7 @@ rm -rf $RPM_BUILD_ROOT
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
-%attr(755,root,root) %{_libdir}/kde3/kdictapplet.la
+%{_libdir}/kde3/kdictapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kdictapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
@@ -521,6 +521,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmimelib.so
 %attr(755,root,root) %{_libdir}/libkdenetwork.so
-%attr(755,root,root) %{_libdir}/libmimelib.la
-%attr(755,root,root) %{_libdir}/libkdenetwork.la
+%{_libdir}/libmimelib.la
+%{_libdir}/libkdenetwork.la
 %{_includedir}/*
