@@ -4,7 +4,7 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040506
+%define		_snap		040508
 %define		_packager	adgor
 
 %define		_minlibsevr	9:3.2.90.040503
@@ -21,9 +21,9 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-#Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
-Source0:	%{name}-%{_snap}.tar.bz2
-# Source0-md5:	53c949621c89a48a3a326ae98e608f48
+Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
+#Source0:	%{name}-%{_snap}.tar.bz2
+##%% Source0-md5:	53c949621c89a48a3a326ae98e608f48
 #Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 ##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
 Source2:	%{name}-lisa.init
@@ -493,7 +493,7 @@ Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	kdemultimedia-noatun >= 3.1
+#Requires:	kdemultimedia-noatun >= 3.1
 Requires:	kdemultimedia-kscd >= 3.1
 Requires:	xmms >= 1.0.0
 
