@@ -9,7 +9,7 @@ Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Vendor:		The KDE Team
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}%{sver}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
 BuildRequires:	qt-devel >= 2.3.0
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
