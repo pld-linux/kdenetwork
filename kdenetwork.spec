@@ -1,35 +1,28 @@
 #
 # Conditional build:
-%bcond_with ggstatus	
-#			Use proper sstatus behaviour for gg (which means
-#			losing some contactlist features in kopete due
-#			to a design bug)
-%bcond_without	loadmovie 
-#			Use this bcond if you are using qt from devel
-#			as it has a memleak in QMovie. Qt 3.2.3 is safe.
-%bcond_without  i18n    # don't build i18n subpackage
+%bcond_with ggstatus	# Use proper sstatus behaviour for gg (which means
+#			  losing some contactlist features in kopete due
+%bcond_with  i18n    # don't build i18n subpackage
 #
-%define		_state		stable
-%define		_ver		3.2.0
-#%%define		_snap		040110
+%define		_state		snapshots
+%define		_ver		3.2.90
+%define		_snap		040206
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
+Version:	%{_ver}.%{_snap}
 Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-#Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
-# Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
-%if %{with i18n}
-Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	1722734fd00114d8286d66b15dc86820
-%endif
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
+##%% Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
+#Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
+##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -37,9 +30,6 @@ Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		%{name}-ggstatus.patch
-Patch4:         %{name}-remove_loadmovie.patch
-Patch5:         %{name}-dcoprss.patch
-Patch6:         %{name}-libiw_27.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -54,6 +44,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	unsermake
 BuildRequires:	xmms-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -918,23 +909,23 @@ Internationalization and localization files for rss.
 Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %{?with_ggstatus:%patch3 -p1}
-%{!?with_loadmovie:%patch4 -p0}
-%patch5 -p1
-%patch6 -p1
 
 %build
 cp /usr/share/automake/config.sub admin
+
+export UNSERMAKE=/usr/share/unsermake/unsermake
+
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--disable-rpath \
-	--with-qt-libraries=%{_libdir} \
-	--enable-final
+	--enable-final \
+	--with-qt-libraries=%{_libdir}
 
 %{__make}
 
@@ -983,19 +974,18 @@ cd -
 %find_lang krfb			--with-kde
 cat krdc.lang >> krfb.lang
 %find_lang ksirc		--with-kde
+%find_lang ktalkd		--with-kde
+%find_lang kcmtalkd		--with-kde
+cat kcmtalkd.lang >> ktalkd.lang
 %find_lang kwifimanager		--with-kde
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
 cat lanbrowser.lang >> lisa.lang
 
 %if %{with i18n}
-##%find_lang kcmkxmlrpcd		--with-kde
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-%find_lang kcmktalkd             --with-kde
-cat kcmtalkd.lang >> ktalkd.lang
+%find_lang kcmktalkd		--with-kde
 cat kcmktalkd.lang >> ktalkd.lang
-
+##%find_lang kcmkxmlrpcd		--with-kde
 %find_lang kcm_krfb             --with-kde
 cat kcm_krfb.lang >> krfb.lang
 
@@ -1021,22 +1011,35 @@ cat kdictapplet.lang >> kdict.lang
 
 %endif
 
-files="kdict \
-kget \
-knewsticker \
-kopete \
-kpf \
-kppp \
-krfb \
-ksirc \
-kwifimanager \
-lisa"
+files="\
+	kdict \
+	kget \
+	knewsticker \
+	kopete \
+	kpf \
+	kppp \
+	krfb \
+	ksirc \
+	ktalkd \
+	kwifimanager \
+	lisa"
 
 for i in $files; do
 	> ${i}_en.lang
 	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
 	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
 	mv ${i}.lang.1 ${i}.lang
+done
+
+durne=`ls -1 *.lang|grep -v _en`
+
+for i in $durne; 
+do
+	echo $i >> control
+	grep -v en\/ $i|grep -v apidocs >> ${i}.1
+	if [ -f ${i}.1 ] ; then
+		mv ${i}.1 ${i}
+	fi
 done
 
 %clean
@@ -1143,16 +1146,18 @@ fi
 %attr(755,root,root) %{_bindir}/kopete
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
+%{_libdir}/kde3/kcm_kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
-%{_libdir}/kde3/kcm_kopete_autoreplace.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/libkrichtexteditpart.la
-%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
+%{_libdir}/kde3/kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
 %{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
+%{_libdir}/kde3/libkrichtexteditpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
@@ -1185,7 +1190,9 @@ fi
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
+%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
 %{_datadir}/services/chatwindow.desktop
+%{_datadir}/services/kopete_alias.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
@@ -1225,6 +1232,7 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*irc*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
+%{_datadir}/apps/kopete/ircnetworks.xml
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
 #%%{_datadir}/apps/kopete/pics/irc_connecting.mng
@@ -1441,7 +1449,7 @@ fi
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
 
-%files ktalkd
+%files ktalkd -f ktalkd_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
