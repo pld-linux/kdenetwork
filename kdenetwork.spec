@@ -4,23 +4,23 @@
 # losing some contactlist features in kopete due 
 # to a design bug)
 
-%define		_state		unstable
-%define		_ver		3.1.94
-%define		_snap		040110
+%define		_state		stable
+%define		_ver		3.2.0
+#%%define		_snap		040110
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}.%{_snap}
-Release:	2
+Version:	%{_ver}
+Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	577c6a74891c6adc571ab680ed73c9e8
+Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
+# Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -28,6 +28,8 @@ Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		%{name}-ggstatus.patch
+Patch4:         %{name}-remove_loadmovie.patch
+Patch5:         %{name}-dcoprss.patch
 BuildRequires:	artsc-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -711,11 +713,13 @@ TODO.
 TODO.
 
 %prep
-%setup -q -n %{name}-%{_snap}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %{?with_ggstatus:%patch3 -p1}
+%patch4 -p1
+%patch5 -p1
 
 %build
 cp /usr/share/automake/config.sub admin
@@ -938,7 +942,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
-%{_datadir}/apps/kopete/pics/irc_connecting.mng
+#%%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
