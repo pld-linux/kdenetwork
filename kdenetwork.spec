@@ -22,6 +22,10 @@ Source4:	%{name}-lisarc
 Patch0:		kde-general-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
+Patch3: 	%{name}-ggstatus.patch
+BuildRequires:	artsc-devel
+BuildRequires:	openssl-devel
+BuildRequires:	xrender-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -704,6 +708,7 @@ TODO.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 for f in `find . -name \*.desktop | xargs grep -l '\[nb\]'` ; do
