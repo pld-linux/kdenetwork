@@ -898,7 +898,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-%{__tar} cfj %{SOURCE1} -C $RPM_BUILD_ROOT/%{_datadir}/apps/kopete/styles
+%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT/%{_datadir}/apps/kopete/styles
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
