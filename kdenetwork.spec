@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	3
+Release:	4
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -827,6 +827,15 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+
+for f in `find . -name *.desktop | xargs grep -l '^Terminal=0'`; do
+	%{__sed} -i -e 's/^Terminal=0/Terminal=false/' $f
+done
+for f in `find . -name *.desktop | xargs grep -l '^Type=Application'`; do
+	if ! grep '^Encoding=' $f >/dev/null; then
+		%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' $f
+	fi
+done
 
 %build
 cp %{_datadir}/automake/config.sub admin
