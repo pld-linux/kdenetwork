@@ -19,7 +19,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	a288fdce17c360df3a19e787994c2f49
+##%% Source0-md5:	a288fdce17c360df3a19e787994c2f49
 #Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 ##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
 Source2:	%{name}-lisa.init
