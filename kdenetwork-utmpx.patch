@@ -1,7 +1,6 @@
-diff -urN kdenetwork-3.0.orig/aclocal.m4 kdenetwork-3.0/aclocal.m4
---- kdenetwork-3.0.orig/aclocal.m4	Mon Mar 25 13:53:55 2002
-+++ kdenetwork-3.0/aclocal.m4	Sun Apr 21 15:11:45 2002
-@@ -4144,6 +4144,7 @@
+--- kdenetwork-030918/admin/acinclude.m4.in~	2003-09-17 23:36:46.000000000 +0200
++++ kdenetwork-030918/admin/acinclude.m4.in	2003-09-22 18:10:27.000000000 +0200
+@@ -4224,6 +4224,7 @@
  
      for ac_file in    \
                        \
