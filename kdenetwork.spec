@@ -104,7 +104,8 @@ Posiada ³atwy interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 %build
 export KDEDIR=/usr/X11R6
 CXXFLAGS="$RPM_OPT_FLAGS -Wall" CFLAGS="$RPM_OPT_FLAGS -Wall" \
-./configure --prefix=$KDEDIR \
+./configure %{_target} \
+	--prefix=$KDEDIR \
  	--with-install-root=$RPM_BUILD_ROOT \
  	--with-pam="yes"
 make KDEDIR=$KDEDIR
