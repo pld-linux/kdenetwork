@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	5
+Release:	6
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -859,7 +859,7 @@ echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	kget/kget.desktop
+	kget/kget.desk top
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
 	kppp/logview/kppplogview.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
@@ -891,6 +891,9 @@ echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 for f in `find . -name \*.desktop`; do
 	if grep -q '^Categories=.*[^;]$' $f; then
 		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
+	fi
+	if grep -q '\[ven\]' $f; then
+		sed -i -e 's/\[ven\]/[ve]/' $f
 	fi
 done
 
