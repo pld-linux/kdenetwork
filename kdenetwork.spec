@@ -1,28 +1,23 @@
 %define		_state		unstable
 %define		_ver		3.3.92
-%define		_snap		050210
 
-%define		_minlibsevr	9:3.3.92.050210
-%define		_minbaseevr	9:3.3.92.050210
+%define		_minlibsevr	9:3.3.92
+%define		_minbaseevr	9:3.3.92
 #
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}.%{_snap}
-#Version:	%{_ver}
+Version:	%{_ver}
 Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-#%% Source0-md5:	962ff8207d025846cf8cbc15960be2ca
-#%% Source0-size:	6970170
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	11128438407210ca58687ba183e0ab30
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
-# Source1-size:	4177
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -148,6 +143,14 @@ s³ów, któr± mo¿e zwróciæ zaawansowane zapytanie.
 kdict é um utilitário de dicionário que usa servidores dictd da
 Internet.
 
+%package kdnssd
+Summary:	DNS-SD Services Watcher
+License:	Artistic
+Group:		X11/Applications
+
+%description kdnssd
+DNS-SD Services Watcher
+
 %package kinetd
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
@@ -162,6 +165,24 @@ client connects. Configurable using DCOP.
 %description kinetd -l pl
 Demon KDE nas³uchuj±cy na portach TCP i uruchamiaj±cy programy po
 po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
+
+%package kfile-torrent
+Summary:	Meta information plugin for BitTorrent files (*.torrent)
+Summary(pl):	Wtyczka pobieraj±ca metainformacje z plików BitTorrenta (*.torrent)
+Group:		X11/Applications
+Requires:	kdemultimedia-kfile >= %{_minbaseevr}
+
+%description kfile-torrent
+This is a meta information plugin for BitTorrent files (*.torrent).
+
+It doesn't depend on BitTorrent or any non-standard library being
+installed.
+
+%description kfile-torrent -l pl
+Wtyczka pobieraj±ca metainformacje z plików BitTorrenta (*.torrent).
+
+Nie jest zale¿na od BitTorrenta ani od ¿adnych niestandardowych
+bibliotek.
 
 %package kget
 Summary:	File downloand manager
@@ -282,6 +303,18 @@ Kopete plugin which adds GaduGadu protocol support.
 
 %description kopete-protocol-gg -l pl
 Wtyczka Kopete dodaj±ca obs³ugê protoko³u GaduGadu.
+
+%package kopete-protocol-groupwise
+Summary:	Kopete plugin which adds Groupwise protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Groupwise
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-protocol-groupwise
+Kopete plugin which adds Groupwise protocol support.
+
+%description kopete-protocol-groupwise -l pl
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Groupwise.
 
 %package kopete-protocol-icq
 Summary:	Kopete plugin which adds ICQ protocol support
@@ -679,6 +712,7 @@ Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	perl-Socket6 >= 0.11
+Requires:	perl-IO-Socket-SSL
 
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
@@ -849,8 +883,7 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-%setup -q -n %{name}-%{_snap}
-#%setup -q
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
@@ -995,7 +1028,6 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
 %{_libdir}/kde3/libkcm_kcmsambaconf.la
 %attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
-%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
 %{_datadir}/services/fileshare_propsdlgplugin.desktop
 %{_desktopdir}/kde/fileshare.desktop
 %{_desktopdir}/kde/kcmsambaconf.desktop
@@ -1010,6 +1042,23 @@ fi
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kde/kdict.desktop
 %{_iconsdir}/*/*/*/kdict*
+
+%files kdnssd
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kded_dnssdwatcher.la
+%attr(755,root,root) %{_libdir}/kde3/kded_dnssdwatcher.so
+%{_libdir}/kde3/kio_zeroconf.la
+%attr(755,root,root) %{_libdir}/kde3/kio_zeroconf.so
+%{_datadir}/apps/remoteview/zeroconf.desktop
+%{_datadir}/apps/zeroconf
+%{_datadir}/services/kded/dnssdwatcher.desktop
+%{_datadir}/services/zeroconf.protocol
+
+%files kfile-torrent
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kfile_torrent.la
+%attr(755,root,root) %{_libdir}/kde3/kfile_torrent.so
+%{_datadir}/services/kfile_torrent.desktop
 
 %files kget -f kget.lang
 %defattr(644,root,root,755)
@@ -1049,12 +1098,18 @@ fi
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
+%{_libdir}/kde3/kcm_kopete_addbookmarks.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
+%{_libdir}/kde3/kcm_kopete_netmeeting.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
+%{_libdir}/kde3/kopete_addbookmarks.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
 %{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
 %{_libdir}/kde3/kopete_emailwindow.la
@@ -1063,32 +1118,33 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-account-0.10.pl
+%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
-%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
+%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
+%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %dir %{_datadir}/apps/kopete
 %{_datadir}/apps/kopete/*rc
 %dir %{_datadir}/apps/kopete/icons
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
+%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.png
+%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.svgz
 %{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/account_offline_overlay.*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/logging.png
-%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/kgpg_key1.png
-%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/kgpg_key2.png
-%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/kgpg_key3.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
+%{_datadir}/apps/kopete/icons/*/*/actions/logging.png
 %{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
 %{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
 %{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
@@ -1097,7 +1153,6 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
 %dir %{_datadir}/apps/kopete/pics
-#%{_datadir}/apps/kopete/pics/emoticons
 %{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_statistics
@@ -1106,6 +1161,7 @@ fi
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/emailwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
+%{_datadir}/services/kopete_addbookmarks.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
 %{_datadir}/services/kopete_statistics.desktop
@@ -1118,7 +1174,7 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
-%{_iconsdir}/crystalsvg/scalable/apps/kopete2.svgz
+%{_iconsdir}/crystalsvg/*/apps/kopete2.svgz
 %{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
@@ -1133,44 +1189,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
 %{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
 %{_datadir}/config.kcfg/latexconfig.kcfg
+%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
 %{_datadir}/services/kopete_latex.desktop
-
-%{_libdir}/kde3/kcm_kopete_addbookmarks.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
-%{_libdir}/kde3/kopete_addbookmarks.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
-%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
-%{_datadir}/services/kopete_addbookmarks.desktop
-
-%{_libdir}/kde3/kcm_kopete_netmeeting.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
-%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
-
-%{_libdir}/kde3/kopete_groupwise.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_groupwise.so
-%{_datadir}/services/kopete_groupwise.desktop
-%{_datadir}/apps/kopete_groupwise
-%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/groupwise_*.png
-%{_datadir}/apps/kopete/icons/crystalsvg/16x16/actions/groupwise_connecting.mng
-%{_datadir}/apps/kopete/icons/crystalsvg/*/apps/groupwise_protocol.png
-
-# kfile-torrent
-%{_libdir}/kde3/kfile_torrent.la
-%attr(755,root,root) %{_libdir}/kde3/kfile_torrent.so
-%{_datadir}/services/kfile_torrent.desktop
-
-# dnssdwatcher
-%{_libdir}/kde3/kded_dnssdwatcher.la
-%attr(755,root,root) %{_libdir}/kde3/kded_dnssdwatcher.so
-%{_datadir}/services/kded/dnssdwatcher.desktop
-
-# kde-kio-zeroconf
-%{_libdir}/kde3/kio_zeroconf.la
-%attr(755,root,root) %{_libdir}/kde3/kio_zeroconf.so
-%{_datadir}/apps/remoteview/zeroconf.desktop
-%{_datadir}/apps/zeroconf
-%{_datadir}/services/zeroconf.protocol
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1188,6 +1209,14 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
 %{_datadir}/services/kopete_gadu.desktop
+
+%files kopete-protocol-groupwise
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kopete*groupwise*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*groupwise*.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/groupwise*
+%{_datadir}/apps/kopete_groupwise
+%{_datadir}/services/kopete_groupwise.desktop
 
 %files kopete-protocol-icq
 %defattr(644,root,root,755)
@@ -1229,6 +1258,7 @@ fi
 %{_datadir}/apps/kopete_netmeeting
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
 %{_datadir}/services/kopete_msn.desktop
 %{_datadir}/services/kopete_netmeeting.desktop
 
@@ -1415,6 +1445,7 @@ fi
 %{_datadir}/services/kinetd_krfb_httpd.desktop
 %{_datadir}/services/rdp.protocol
 %{_datadir}/services/vnc.protocol
+%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
 %{_desktopdir}/kde/kcmkrfb.desktop
 %{_desktopdir}/kde/krfb.desktop
 %{_desktopdir}/kde/krdc.desktop
