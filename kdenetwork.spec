@@ -1590,7 +1590,7 @@ mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
 %if %{with i18n}
-bzip2 -dc %{SOURCE14} | tar xf - -C $RPM_BUILD_ROOT
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
         [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] && rm -f $f
 done
