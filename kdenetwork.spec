@@ -1,7 +1,7 @@
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	2.2.1
+Version:	2.2.2
 Release:	1
 Epoch:		8
 License:	GPL
@@ -151,6 +151,25 @@ Requires:	kdelibs >= %{version}
 %description lanbrowser
 KDE Lan Browser.
 
+%package kdict
+Summary:	Online dictionary client
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
+Requires:	kdelibs >= %{version}
+
+%description kdict
+Online dictionary client
+
+%package devel
+Summary:	Header files and development documentation
+Group:		X11/Development/Libraries
+
+Requires:	kdelibs >= %{version}
+
+%description devel
+Header files and development documentation
+
 %prep
 %setup -q
 %patch0 -p1
@@ -172,30 +191,34 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/{Communications,Mail,News,Misc}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install kmail/KMail.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
+install kmailcvt/kmailcvt.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install knode/KNode.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/News
 install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 install kppp/Kppp.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kppp/logview/kppplogview.desktop 	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kit/kit.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*
+%attr(755,root,root) %{_libdir}/libmimelib.la
+%attr(755,root,root) %{_libdir}/libmimelib.so.*.*
+%attr(755,root,root) %{_libdir}/libkdenetwork.so.*.*
+%attr(755,root,root) %{_libdir}/libkdenetwork.la
 
 %files kmail
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kmail
 %attr(755,root,root) %{_bindir}/kmailcvt
 %{_applnkdir}/Network/Mail/KMail.desktop
+%{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
-%{_includedir}/kmail*.h
 %{_datadir}/doc/kde/HTML/en/kmail
-%{_pixmapsdir}/hicolor/*x*/apps/kmail.png
+%{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
 
 %files korn
 %defattr(644,root,root,755)
@@ -226,11 +249,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%attr(755,root,root) %{_bindir}/ksticker
 %attr(755,root,root) %{_libdir}/ksirc.*
+%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.??
 %{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
+%{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_datadir}/doc/kde/HTML/en/ksirc
 %{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
 
@@ -239,6 +263,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
 %{_datadir}/doc/kde/HTML/en/kit
+%{_datadir}/apps/kit
 %{_pixmapsdir}/hicolor/*x*/apps/kit.png
 
 %files knewsticker
@@ -247,10 +272,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ksticker
 %attr(755,root,root) %{_libdir}/lib*newsticker*
 %{_applnkdir}/Settings/Personalization/kcmnewsticker.desktop
+%{_applnkdir}/Settings/Network/kcmnewsticker.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
+%{_datadir}/apps/kconf_update/*
 %{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
 
 %files lanbrowser
@@ -258,9 +285,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
 %attr(755,root,root) %{_libdir}/lib*lanbrowser*
-%attr(755,root,root) %{_libdir}/kio_lan.so
+%attr(755,root,root) %{_libdir}/kio_lan.??
 %{_applnkdir}/Settings/Network/lanbrowser.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+
+%files kdict
+%defattr(644,root,root,755)
+%{_bindir}/kdict
+%attr(755,root,root) %{_libdir}/libkdictapplet.la
+%attr(755,root,root) %{_libdir}/libkdictapplet.so.*.*
+%{_datadir}/apps/kdict
+%{_datadir}/apps/kicker/applets/kdictapplet.desktop
+%{_pixmapsdir}/*/*/*/kdict*
+%{_applnkdir}/Network/Misc/kdict.desktop
+
+%files devel
+%defattr(755,root,root)
+%{_libdir}/libkdictapplet.so
+%{_libdir}/libmimelib.so
+%{_libdir}/libkdenetwork.so
+%{_includedir}/*
