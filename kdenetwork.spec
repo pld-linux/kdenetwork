@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	1
+Release:	2
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -308,6 +308,7 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
 	--with-pam="yes" \
+	--disable-rpath \
 	--enable-final
 %{__make}
 
