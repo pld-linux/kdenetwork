@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	7
+Release:	8
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -29,6 +29,7 @@ Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
 Patch8:		%{name}-no_versioned_modules.patch
 # Security fix from 3.0.5
 Patch9:		%{name}-lan.patch
+Patch10:	%{name}-desktop.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	awk
@@ -309,6 +310,7 @@ do kdenetwork.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
