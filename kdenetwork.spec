@@ -394,7 +394,7 @@ cat lanbrowser.lang >> lisa.lang
 #cat {kcmlanbrowser,kio_lan}.lang >> lisa.lang
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 #%files -f libkdenetwork.lang
 %files
