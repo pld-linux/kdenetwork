@@ -1,10 +1,5 @@
-Index: document.cpp
-===================================================================
-RCS file: /home/kde/kdenetwork/dcoprss/document.cpp,v
-retrieving revision 1.12
-diff -u -u -r1.12 document.cpp
---- kdenetwork/dcoprss/document.cpp~	18 Jan 2004 11:34:58 -0000	1.12
-+++ kdenetwork/dcoprss/document.cpp	28 Jan 2004 17:09:18 -0000
+--- kdenetwork-3.2.0/dcoprss/document.cpp~	2004-01-29 07:27:06.453723968 +0100
++++ kdenetwork-3.2.0/dcoprss/document.cpp	2004-01-29 07:27:37.742967280 +0100
 @@ -76,7 +76,7 @@
  			connect(img, SIGNAL(gotPixmap(const QPixmap &)),
  				SLOT(pixmapLoaded(const QPixmap &)));
@@ -17,7 +12,7 @@ diff -u -u -r1.12 document.cpp
 @@ -246,7 +246,7 @@
  		Loader *loader = Loader::create(this,
  			SLOT(loadingComplete(Loader *, Document, Status)));
- 		loader->loadFrom(KURL( m_Url ),  new FileRetriever());
+ 		loader->loadFrom(m_Url,  new FileRetriever());
 -		documentUpdateing(DCOPRef(this));
 +		documentUpdating(DCOPRef(this));
  	}
@@ -32,13 +27,8 @@ diff -u -u -r1.12 document.cpp
  			}
  		}
  		*/
-Index: service.h
-===================================================================
-RCS file: /home/kde/kdenetwork/dcoprss/service.h,v
-retrieving revision 1.12
-diff -u -u -r1.12 service.h
---- kdenetwork/dcoprss/service.h~	18 Jun 2003 12:27:52 -0000	1.12
-+++ kdenetwork/dcoprss/service.h	28 Jan 2004 17:09:18 -0000
+--- kdenetwork-3.2.0/dcoprss/service.h~	2003-06-18 14:27:52.000000000 +0200
++++ kdenetwork-3.2.0/dcoprss/service.h	2004-01-29 07:30:22.186967992 +0100
 @@ -132,7 +132,7 @@
  		/**
  		* The pixmap is currently loading
