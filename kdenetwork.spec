@@ -2,7 +2,7 @@ Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
 Version:	2.2.2
-Release:	1
+Release:	2
 Epoch:		8
 License:	GPL
 Group:		X11/Applications
@@ -203,12 +203,18 @@ install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -v /sbin/ldconfig
+%postun -v /sbin/ldconfig
+
+%post   -v /sbin/ldconfig -n kdict
+%postun -v /sbin/ldconfig -n kdict
+
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmimelib.la
-%attr(755,root,root) %{_libdir}/libmimelib.so.*
-%attr(755,root,root) %{_libdir}/libkdenetwork.so.*
+%attr(755,root,root) %{_libdir}/libmimelib.so.*.*
 %attr(755,root,root) %{_libdir}/libkdenetwork.la
+%attr(755,root,root) %{_libdir}/libkdenetwork.so.*.*
 
 %files kmail
 %defattr(644,root,root,755)
