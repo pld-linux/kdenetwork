@@ -886,6 +886,11 @@ echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 	knewsticker/knewsticker-standalone.desktop
 %{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	wifi/kcmwifi/kcmwifi.desktop
+for f in `find . -name \*.desktop`; do
+	if grep -q '^Categories=.*[^;]$' $f; then
+		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
+	fi
+done
 
 %build
 cp %{_datadir}/automake/config.sub admin
