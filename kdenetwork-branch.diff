@@ -1,6 +1,6 @@
 diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kopete/protocols/configure.in.in
 --- kdenetwork.orig/kopete/protocols/configure.in.in	Sat May 29 17:18:52 2004
-+++ kdenetwork/kopete/protocols/configure.in.in	Wed Jun  9 17:17:14 2004
++++ kdenetwork/kopete/protocols/configure.in.in	Wed Jun  9 18:14:50 2004
 @@ -2,7 +2,7 @@
  [
  sed -e "s/#undef __GG_LIBGADU_$1/#define __GG_LIBGADU_$1/" \
@@ -33,15 +33,26 @@ diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kop
  	fi
  	AC_SUBST(COMPILE_GADU)	
  	])
-@@ -86,7 +86,8 @@
+@@ -84,9 +84,10 @@
+ AM_CONDITIONAL(include_libggcopy, test -n "$use_libgadu_copy")
+ LIBS="$ac_save_LIBS"
  CXXFLAGS="$ac_save_CXXFLAGS"
- 
+-
++KDE_CHECK_SSL
  if test "$use_libgadu_copy" = "yes"; then
 -	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h{.in,}
 +	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.in \
 +	${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h
  	if test "$ac_cv_c_bigendian" = "yes"; then
  		AC_LIBGADU_DEFINE([BIGENDIAN])	
+ 	fi
+@@ -94,7 +95,6 @@
+ 	if test "$kde_cv_c_long_long" = "yes"; then
+ 	AC_LIBGADU_DEFINE([HAVE_LONG_LONG])
+ 	fi
+-	KDE_CHECK_SSL
+ 	if test  "$have_ssl" = "yes"; then
+ 	AC_LIBGADU_DEFINE([HAVE_OPENSSL])
  	fi
 diff -urN -x CVS kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in kdenetwork/kopete/protocols/gadu/libgadu/libgadu-config.h.in
 --- kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in	Sun May 30 12:44:14 2004
