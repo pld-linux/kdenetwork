@@ -1,82 +1,326 @@
-diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kopete/protocols/configure.in.in
---- kdenetwork.orig/kopete/protocols/configure.in.in	Sat May 29 17:18:52 2004
-+++ kdenetwork/kopete/protocols/configure.in.in	Wed Jun  9 18:14:50 2004
-@@ -2,7 +2,7 @@
- [
- sed -e "s/#undef __GG_LIBGADU_$1/#define __GG_LIBGADU_$1/" \
- ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h > ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.1
--mv ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h{.1,}
-+mv ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.1 ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h
- ])
- 	 
- LIBGG_INCLUDES=""
-@@ -65,17 +65,17 @@
- 	AC_SUBST(LIBGG_LIBS)
- 	COMPILE_GADU=true
- 	AC_SUBST(COMPILE_GADU)
--	use_libgadu_copy=no
-+	use_libgadu_copy=
- 	], [
--	if test "$LIBPTHREAD" != "" ; then
-+	if test "$kde_use_threading" = "yes" ; then
- 	AC_MSG_RESULT([no, falling back on supplied libgadu-copy])
- 	use_libgadu_copy=yes
- 	COMPILE_GADU=true
- 	else
--	use_libgadu_copy=no
--	AC_MSG_RESULT([no, cannot fall back on libgadu-copy (no pthread)])
-+	use_libgadu_copy=
-+	AC_MSG_RESULT([no, cannot fall back on libgadu-copy (no threads)])
- 	COMPILE_GADU=	
--	use_libgadu_copy=no
-+	use_libgadu_copy=
- 	fi
- 	AC_SUBST(COMPILE_GADU)	
- 	])
-@@ -84,9 +84,10 @@
- AM_CONDITIONAL(include_libggcopy, test -n "$use_libgadu_copy")
- LIBS="$ac_save_LIBS"
- CXXFLAGS="$ac_save_CXXFLAGS"
--
-+KDE_CHECK_SSL
- if test "$use_libgadu_copy" = "yes"; then
--	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h{.in,}
-+	cp ${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h.in \
-+	${srcdir}/kopete/protocols/gadu/libgadu/libgadu-config.h
- 	if test "$ac_cv_c_bigendian" = "yes"; then
- 		AC_LIBGADU_DEFINE([BIGENDIAN])	
- 	fi
-@@ -94,7 +95,6 @@
- 	if test "$kde_cv_c_long_long" = "yes"; then
- 	AC_LIBGADU_DEFINE([HAVE_LONG_LONG])
- 	fi
--	KDE_CHECK_SSL
- 	if test  "$have_ssl" = "yes"; then
- 	AC_LIBGADU_DEFINE([HAVE_OPENSSL])
- 	fi
-diff -urN -x CVS kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in kdenetwork/kopete/protocols/gadu/libgadu/libgadu-config.h.in
---- kdenetwork.orig/kopete/protocols/gadu/libgadu/libgadu-config.h.in	Sun May 30 12:44:14 2004
-+++ kdenetwork/kopete/protocols/gadu/libgadu/libgadu-config.h.in	Mon Jun  7 00:06:15 2004
-@@ -25,6 +25,6 @@
- #undef __GG_LIBGADU_HAVE_OPENSSL
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/chatwindow/chatview.cpp kdenetwork/kopete/kopete/chatwindow/chatview.cpp
+--- kdenetwork.orig/kopete/kopete/chatwindow/chatview.cpp	Sat Jul 31 09:08:42 2004
++++ kdenetwork/kopete/kopete/chatwindow/chatview.cpp	Tue Aug 17 02:25:15 2004
+@@ -1342,7 +1342,10 @@
  
- /* Include file containing uintXX_t declarations. */
--#include <stdint.h>
-+#include <inttypes.h>
- 
- #endif /* __GG_LIBGADU_CONFIG_H */
-diff -urN -x CVS kdenetwork.orig/lanbrowsing/kcmlisa/setupwizard.cpp kdenetwork/lanbrowsing/kcmlisa/setupwizard.cpp
---- kdenetwork.orig/lanbrowsing/kcmlisa/setupwizard.cpp	Sat Sep 20 19:31:44 2003
-+++ kdenetwork/lanbrowsing/kcmlisa/setupwizard.cpp	Mon Jun  7 22:10:56 2004
-@@ -444,7 +444,11 @@
- void SetupWizard::showPage(QWidget* page)
+ void ChatView::slotRefreshView()
  {
-    if (page==m_noNicPage)
-+   {
-       m_manualAddress->setFocus();
-+      setNextEnabled(m_noNicPage, false);
-+      setHelpEnabled(m_noNicPage, false);
-+   }
-    else if (page==m_multiNicPage)
-       m_nicListBox->setFocus();
-    else if ( page == m_searchPage)
+-	HTMLElement styleElement = chatView->document().documentElement().firstChild().firstChild();
++	Element htmlElement = chatView->document().documentElement();
++	Element headElement = htmlElement.getElementsByTagName( QString::fromLatin1("head") ).item(0);
++	HTMLElement styleElement = headElement.getElementsByTagName( QString::fromLatin1("style") ).item(0);
++	if ( !styleElement.isNull() )
+ 	styleElement.setInnerText( styleHTML() );
+ 
+ 	HTMLBodyElement bodyElement = chatView->htmlDocument().body();
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopeteaddrbookexport.cpp kdenetwork/kopete/kopete/contactlist/kopeteaddrbookexport.cpp
+--- kdenetwork.orig/kopete/kopete/contactlist/kopeteaddrbookexport.cpp	Tue Jun 15 02:22:25 2004
++++ kdenetwork/kopete/kopete/contactlist/kopeteaddrbookexport.cpp	Tue Aug 17 02:24:19 2004
+@@ -34,9 +34,10 @@
+ #include "kopeteaddrbookexport.h"
+ #include "kopeteaddrbookexportui.h"
+ 
+-KopeteAddressBookExport::KopeteAddressBookExport( QWidget *parent, KopeteMetaContact *mc ) : QWidget( parent )
++KopeteAddressBookExport::KopeteAddressBookExport( QWidget *parent, KopeteMetaContact *mc ) : QObject( parent )
+ {
+ 	// instantiate dialog and populate widgets
++	mParent = parent;
+ 	mAddressBook = KABC::StdAddressBook::self();
+ 	mMetaContact = mc;
+ }
+@@ -172,7 +173,7 @@
+ 		numHomePhones = 0;
+ 		numWorkPhones = 0;
+ 		numMobilePhones = 0;
+-		mDialog = new KDialogBase( this, "addressbookexportdialog", true, i18n("Export to Address Book"), KDialogBase::Ok|KDialogBase::Cancel );
++		mDialog = new KDialogBase( mParent, "addressbookexportdialog", true, i18n("Export to Address Book"), KDialogBase::Ok|KDialogBase::Cancel );
+ 		mUI = new AddressBookExportUI( mDialog );
+ 		mDialog->setMainWidget( mUI );
+ 		mDialog->setButtonOKText( i18n( "Merge selected fields" ), i18n( "Set addressbook fields using the selected data from Kopete" ) ); 
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopeteaddrbookexport.h kdenetwork/kopete/kopete/contactlist/kopeteaddrbookexport.h
+--- kdenetwork.orig/kopete/kopete/contactlist/kopeteaddrbookexport.h	Thu May  6 18:29:51 2004
++++ kdenetwork/kopete/kopete/contactlist/kopeteaddrbookexport.h	Tue Aug 17 02:24:19 2004
+@@ -33,7 +33,7 @@
+ class KListBox;
+ class KComboBox;
+ 
+-class KopeteAddressBookExport : public QWidget
++class KopeteAddressBookExport : public QObject
+ {
+ public:
+ 	KopeteAddressBookExport( QWidget *parent, KopeteMetaContact *mc );
+@@ -82,6 +82,7 @@
+ 	QStringList newValues( KListBox *listBox, uint counter );
+ 	
+ 	// the GUI
++	QWidget *mParent;
+ 	KDialogBase * mDialog;
+ 	QPixmap mAddrBookIcon;
+ 	AddressBookExportUI *mUI;
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopetegroupviewitem.cpp kdenetwork/kopete/kopete/contactlist/kopetegroupviewitem.cpp
+--- kdenetwork.orig/kopete/kopete/contactlist/kopetegroupviewitem.cpp	Fri Jul 30 19:08:20 2004
++++ kdenetwork/kopete/kopete/contactlist/kopetegroupviewitem.cpp	Tue Aug 17 02:20:31 2004
+@@ -166,7 +166,7 @@
+ 	// Sorting in this slot is extremely expensive as it's called dozens of times and
+ 	// the sorting itself is rather slow. Therefore we call delayedSort, which tries
+ 	// to group multiple sort requests into one.
+-	if ( KopeteContactListView *lv = dynamic_cast<KopeteContactListView *>( listView() ) )
++	if ( ListView::ListView *lv = dynamic_cast<ListView::ListView *>( listView() ) )
+ 		lv->delayedSort();
+ 	else
+ 		listView()->sort();
+@@ -191,10 +191,7 @@
+ {
+ 	//kdDebug(14000) << k_funcinfo << endl;
+ 	KListViewItem::okRename(col);
+-	if ( col == 0 )
+-		group()->setDisplayName(text(0));
+ 	setRenameEnabled( 0, false );
+-	refreshDisplayName();
+ }
+ 
+ void KopeteGroupViewItem::cancelRename( int col )
+@@ -266,7 +263,7 @@
+ void KopeteGroupViewItem::setText( int column, const QString &text )
+ {
+ 	if ( column == 0 )
+-		d->name->setText( text );
++		group()->setDisplayName( text );
+ 	else
+ 		KListViewItem::setText( column, text );
+ }
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopetelistviewitem.cpp kdenetwork/kopete/kopete/contactlist/kopetelistviewitem.cpp
+--- kdenetwork.orig/kopete/kopete/contactlist/kopetelistviewitem.cpp	Fri Jul 30 17:10:30 2004
++++ kdenetwork/kopete/kopete/contactlist/kopetelistviewitem.cpp	Tue Aug 17 02:10:09 2004
+@@ -885,6 +885,13 @@
+ 	KListViewItem::setHeight( minHeight );
+ }
+ 
++int Item::width( const QFontMetrics &, const QListView *lv, int c ) const
++{
++	// Qt computes the itemRect from this. we want the whole item to be
++	// clickable, so we return the widest we could possibly be.
++	return lv->header()->sectionSize( c );
++}
++
+ void Item::paintCell( QPainter *p, const QColorGroup &cg, int column, int width, int align )
+ {
+ 	QPixmap back( width, height() );
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopetelistviewitem.h kdenetwork/kopete/kopete/contactlist/kopetelistviewitem.h
+--- kdenetwork.orig/kopete/kopete/contactlist/kopetelistviewitem.h	Fri Jul 30 17:10:30 2004
++++ kdenetwork/kopete/kopete/contactlist/kopetelistviewitem.h	Tue Aug 17 02:10:49 2004
+@@ -312,6 +312,8 @@
+ 	 */
+ 	static void setEffects( bool animation, bool fading, bool folding );
+ 
++	int width( const QFontMetrics & fm, const QListView * lv, int c ) const;
++
+ protected:
+ 	void componentAdded( Component *component );
+ 	void componentRemoved( Component *component );
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/contactlist/kopetemetacontactlvi.cpp kdenetwork/kopete/kopete/contactlist/kopetemetacontactlvi.cpp
+--- kdenetwork.orig/kopete/kopete/contactlist/kopetemetacontactlvi.cpp	Fri Jul 30 20:30:57 2004
++++ kdenetwork/kopete/kopete/contactlist/kopetemetacontactlvi.cpp	Tue Aug 17 02:20:31 2004
+@@ -434,6 +434,12 @@
+ void KopeteMetaContactLVI::slotDisplayNameChanged()
+ {
+ 	d->nameText->setText( m_metaContact->displayName() );
++
++	// delay the sort if we can
++	if ( ListView::ListView *lv = dynamic_cast<ListView::ListView *>( listView() ) )
++		lv->delayedSort();
++	else
++		listView()->sort();
+ }
+ 
+ /*
+@@ -468,7 +474,6 @@
+ void KopeteMetaContactLVI::okRename( int col )
+ {
+ 	KListViewItem::okRename( col );
+-	rename( text( 0 ) );
+ 	setRenameEnabled( 0, false );
+ }
+ 
+@@ -893,7 +898,7 @@
+ void KopeteMetaContactLVI::setText( int column, const QString &text )
+ {
+ 	if ( column == 0 )
+-		d->nameText->setText( text );
++		rename( text );
+ 	else
+ 		KListViewItem::setText( column, text );
+ }
+@@ -901,7 +906,3 @@
+ #include "kopetemetacontactlvi.moc"
+ 
+ // vim: set noet ts=4 sts=4 sw=4:
+-
+-
+-
+-
+diff -urN -x CVS kdenetwork.orig/kopete/kopete/systemtray.cpp kdenetwork/kopete/kopete/systemtray.cpp
+--- kdenetwork.orig/kopete/kopete/systemtray.cpp	Sat Jul 31 21:38:10 2004
++++ kdenetwork/kopete/kopete/systemtray.cpp	Tue Aug 17 02:22:29 2004
+@@ -285,9 +285,10 @@
+ 		{
+ 			bOnline = true; // at least one contact is online
+ 		}
+-		else if (c->onlineStatus().status() == KopeteOnlineStatus::Away)
++		else if (c->onlineStatus().status() == KopeteOnlineStatus::Away
++		      || c->onlineStatus().status() == KopeteOnlineStatus::Invisible)
+ 		{
+-			bAway = true; // at least one contact is away
++			bAway = true; // at least one contact is away or invisible
+ 		}
+ 		else // this account must be offline (or unknown, which I don't know how to handle)
+ 		{
+diff -urN -x CVS kdenetwork.orig/kopete/libkopete/kopeteaccountmanager.cpp kdenetwork/kopete/libkopete/kopeteaccountmanager.cpp
+--- kdenetwork.orig/kopete/libkopete/kopeteaccountmanager.cpp	Fri Jul 30 21:05:31 2004
++++ kdenetwork/kopete/libkopete/kopeteaccountmanager.cpp	Tue Aug 17 02:09:06 2004
+@@ -99,7 +99,10 @@
+ 
+ 	for ( QPtrListIterator<KopeteAccount> it( d->accounts ); it.current(); ++it )
+ 	{
+-		if ( it.current()->isConnected() )
++		// FIXME: ICQ's invisible online should be set to invisible away
++		KopeteContact *self = it.current()->myself();
++		bool isInvisible = self && self->onlineStatus().status() == KopeteOnlineStatus::Invisible;
++		if ( it.current()->isConnected() && !isInvisible )
+ 			it.current()->setAway( true, awayReason.isNull() ? KopeteAway::message() : awayReason );
+ 	}
+ }
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/configure.in.in kdenetwork/kopete/protocols/configure.in.in
+--- kdenetwork.orig/kopete/protocols/configure.in.in	Wed Jun  9 16:49:36 2004
++++ kdenetwork/kopete/protocols/configure.in.in	Mon Aug 16 23:54:17 2004
+@@ -131,10 +131,12 @@
+ 	fi
+ fi
+ 
+-AC_CHECK_HEADER(idna.h,
+-		AC_CHECK_LIB(idn, stringprep_check_version,
+-				[libidn=yes; IDN_LIBS="-lidn"], libidn=no),
+-		libidn=no)
++KDE_CHECK_HEADER(idna.h,, libidn=no)
++
++if test "$libidn" != "no" ; then
++	KDE_CHECK_LIB(idn, stringprep_check_version,
++		[libidn=yes; IDN_LIBS="-lidn"], libidn=no)
++fi
+ 
+ if test "$libidn" != "no" ; then
+ 	AC_DEFINE(LIBIDN, 1, [Define to 1 if you want IDN support.])
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/gadu/gadudcctransaction.h kdenetwork/kopete/protocols/gadu/gadudcctransaction.h
+--- kdenetwork.orig/kopete/protocols/gadu/gadudcctransaction.h	Sun Aug  1 21:11:18 2004
++++ kdenetwork/kopete/protocols/gadu/gadudcctransaction.h	Tue Aug 17 10:26:25 2004
+@@ -63,7 +63,7 @@
+ 	void enableNotifiers( int );
+ 	void disableNotifiers();
+ 	void checkDescriptor();
+-	void closeDCC();;
++	void closeDCC();
+ 	void destroyNotifiers();
+ 	void createNotifiers( bool );
+ 	void askIncommingTransfer();
+diff -urN -x CVS kdenetwork.orig/kopete/protocols/yahoo/yahooaccount.cpp kdenetwork/kopete/protocols/yahoo/yahooaccount.cpp
+--- kdenetwork.orig/kopete/protocols/yahoo/yahooaccount.cpp	Wed Jul 14 00:10:28 2004
++++ kdenetwork/kopete/protocols/yahoo/yahooaccount.cpp	Fri Aug 20 06:28:57 2004
+@@ -120,6 +120,10 @@
+ 	//Handle bold, underline and italic messages
+ 	filteredMsg.replace( QRegExp("\033\\[1m"), "<b>" );
+ 	filteredMsg.replace( QRegExp("\033\\[x1m"), "</b>" );
++    //work around gaim's broken sending
++    filteredMsg.remove( QRegExp( "\033\\[xlm" ) );
++    filteredMsg.remove( QRegExp( "\033\\[lm" ) );
++    //end work around
+ 	filteredMsg.replace( QRegExp("\033\\[3m"), "<i>" );
+ 	filteredMsg.replace( QRegExp("\033\\[x3m"), "</i>" );
+ 	filteredMsg.replace( QRegExp("\033\\[4m"), "<u>" );
+@@ -609,38 +613,43 @@
+ 		addContact( who, who, 0L, KopeteAccount::DontChangeKABC, QString::null, true );
+ 	}
+ 
+-	KopeteMessageManager *mm = contact(who)->manager();
+-
+-	// Tell the message manager that the buddy is done typing
+-	mm->receivedTypingMsg(contact(who), false);
+-
+-	justMe.append(myself());
+-
++    //Parse the message for it's properties
++    kdDebug(14180) << "Original message is '" << msg << "'" << endl;
++    //kdDebug(14180) << "Message color is " << getMsgColor(msg) << endl;
++    QColor fgColor = getMsgColor( msg );
+ 	if (tm == 0)
+ 		msgDT.setTime_t(time(0L));
+ 	else
+ 		msgDT.setTime_t(tm, Qt::LocalTime);
+ 
+-	KopeteMessage kmsg(msgDT, contact(who), justMe, msg,
+-					KopeteMessage::Inbound , KopeteMessage::PlainText);
++    QString newMsgText = stripMsgColorCodes( msg );
+ 
+-	QString newMsg = stripMsgColorCodes(kmsg.plainBody());
++    kdDebug(14180) << "Message after stripping color codes '" << newMsgText << "'" << endl;
+ 
+-	kmsg.setFg(getMsgColor(msg));
+-//	kdDebug(14180) << "Message color is " << getMsgColor(msg) << endl;
+-
+-	if (newMsg.find("<font") != -1)
++   	if (newMsgText.find("<font") != -1)
+ 	{
+-		msgFont.setFamily(newMsg.section('"', 1,1));
++		msgFont.setFamily(newMsgText.section('"', 1,1));
+ 
+-		if (newMsg.find("size"))
+-			msgFont.setPointSize(newMsg.section('"', 3,3).toInt());
++		if (newMsgText.find("size"))
++			msgFont.setPointSize(newMsgText.section('"', 3,3).toInt());
+ 
+ 		//remove the font encoding since we handle them ourselves
+-		newMsg.remove(newMsg.mid(0, newMsg.find('>')+1));
++		newMsgText.remove(newMsgText.mid(0, newMsgText.find('>')+1));
+ 	}
+-	//set the new body that has correct HTML
+-	kmsg.setBody(newMsg, KopeteMessage::RichText);
++
++    kdDebug(14180) << "Message after removing font tags '" << newMsgText << "'" << endl;
++
++	KopeteMessageManager *mm = contact(who)->manager();
++
++	// Tell the message manager that the buddy is done typing
++	mm->receivedTypingMsg(contact(who), false);
++
++	justMe.append(myself());
++
++	KopeteMessage kmsg(msgDT, contact(who), justMe, newMsgText,
++					KopeteMessage::Inbound , KopeteMessage::RichText);
++
++	kmsg.setFg( fgColor );
+ 	kmsg.setFont(msgFont);
+ 	mm->appendMessage(kmsg);
+ 
+diff -urN -x CVS kdenetwork.orig/wifi/interface_wireless.cpp kdenetwork/wifi/interface_wireless.cpp
+--- kdenetwork.orig/wifi/interface_wireless.cpp	Sun May 30 23:18:31 2004
++++ kdenetwork/wifi/interface_wireless.cpp	Tue Aug 17 14:12:49 2004
+@@ -121,7 +121,7 @@
+ QString Interface_wireless::get_IP_info ()
+ {
+   return ip_address;
+-};
++}
+ 
+ double Interface_wireless::get_bitrate ()
+ {
+diff -urN -x CVS kdenetwork.orig/wifi/interface_wireless_wirelessextensions.cpp kdenetwork/wifi/interface_wireless_wirelessextensions.cpp
+--- kdenetwork.orig/wifi/interface_wireless_wirelessextensions.cpp	Wed Jul 14 08:49:30 2004
++++ kdenetwork/wifi/interface_wireless_wirelessextensions.cpp	Tue Aug 17 14:12:49 2004
+@@ -222,7 +222,7 @@
+ Interface_wireless_wirelessextensions::Interface_wireless_wirelessextensions (QStringList * ignoreInterfaces)
+ 		: Interface_wireless(ignoreInterfaces)
+ {
+-};
++}
+ 
+ bool Interface_wireless_wirelessextensions::poll_device_info ()
+ {
