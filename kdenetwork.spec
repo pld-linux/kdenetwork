@@ -29,6 +29,7 @@ BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	qt-devel >= 3.1
+BuildRequires:	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -346,11 +347,8 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 for plik in `find ./ -name \*.desktop` ; do
-	if [ -d $plik ]; then
 		echo $plik
-		sed -e "s/[nb]/[no]/g" > $plik.1
-		mv -f $plik.1 $plik
-	fi
+		perl -pi -e "s/\[nb\]/\[no\]/g" $plik
 done
 
 %configure \
