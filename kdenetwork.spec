@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -856,28 +856,36 @@ echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
+	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	kget/kget.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
 	kppp/logview/kppplogview.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+	-e 's/Terminal=0/Terminal=false/' \
 	kppp/Kppp.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	krdc/krdc.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	krfb/krfb/krfb.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Dictionary;/' \
+	-e 's/Terminal=0/Terminal=false/' \
 	kdict/kdict.desktop
-
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;IRCClient;/' \
+	-e 's/Terminal=0/Terminal=false/' \
 	ksirc/ksirc.desktop
-
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
+	-e 's/Terminal=0/Terminal=false/' \
 	kopete/kopete/kopete.desktop
-
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
+	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	wifi/kwifimanager.desktop
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;News;/' \
+	-e 's/Terminal=0/Terminal=false/' \
 	knewsticker/knewsticker-standalone.desktop
+%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+	wifi/kcmwifi/kcmwifi.desktop
 
 %build
 cp %{_datadir}/automake/config.sub admin
