@@ -4,7 +4,7 @@
 
 %define		_ver		3.0.2
 #define		_sub_ver
-%define		_rel		2
+%define		_rel		2.1
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -300,11 +300,6 @@ do kdenetwork.
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
-autoconf
-
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-        CPPFLAGS="`pkg-config libpng12 --cflags`"
-fi
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
