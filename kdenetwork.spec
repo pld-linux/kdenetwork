@@ -8,13 +8,16 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.2
+Release:	0.3
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
 #Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+Source2:	lisa.init
+Source3:        lisa.sysconfig
+Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
@@ -319,7 +322,10 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	konqueror >= %{version}
+Obsoletes:	%{name}-lisa
+Obsoletes:	lisa
+Provides:	lisa
 
 %description lanbrowser
 KDE LAN Browser.
@@ -349,11 +355,11 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d \
-	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
-install -d $RPM_BUILD_ROOT%{_datadir}/apps/konqsidebartng
-
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+install -d \
+	$RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig} \
+	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
 
 ALD=$RPM_BUILD_ROOT%{_applnkdir}
 
@@ -369,6 +375,10 @@ mv -f $ALD/{Internet/More,Network/Misc}/kppplogview.desktop
 mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
 mv -f $ALD/{Settings/[!K]*,Settings/KDE}
 mv -f $ALD/{System,Network/Misc}/krfb.desktop
+
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
 cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
@@ -412,6 +422,22 @@ cat lanbrowser.lang >> lisa.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post lanbrowser
+/sbin/chkconfig --add lisa
+if [ -r /var/lock/subsys/lisa ]; then
+	/etc/rc.d/init.d/lisa restart >&2
+else
+	echo "Run \"/etc/rc.d/init.d/lisa start\" to start Lisa daemon."
+fi
+
+%preun lanbrowser
+if [ "$1" = "0" ]; then
+	if [ -r /var/lock/subsys/lisa ]; then
+		/etc/rc.d/init.d/lisa stop >&2
+	fi
+	/sbin/chkconfig --del lisa
+fi
 
 #%files -f libkdenetwork.lang
 %files
@@ -580,6 +606,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
+%attr(754,root,root) /etc/rc.d/init.d/lisa
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
 %{_libdir}/kde3/kio_lan.la
