@@ -3,11 +3,14 @@ Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
 Version:	2.2
-Release:        0.%{sver}.1
+Release:	0.%{sver}.1
+Epoch:		7
+License:	GPL
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Vendor:		The KDE Team
-Source:		ftp://ftp.kde.org/pub/kde/unstable/%{version}%{sver}/src/%{name}-%{version}%{sver}.tar.bz2
-Group:          X11/Applications
-Copyright:	GPL
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/%{version}%{sver}/src/%{name}-%{version}%{sver}.tar.bz2
 BuildRequires:	qt-devel >= 2.2.2
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -17,59 +20,65 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define         _htmldir        %{_datadir}/doc/kde/HTML
 
 %description
-KDE network applications.
-Package includes:
-  KMail - e-mail client. Patched for proper charsets support
-  KORN - "biff" program
-  KPPP - PPP dialer
-  KNODE - news client
-  KSirc - IRC client
-  KTalkd - takt daemon
+KDE network applications. Package includes:
+- KMail - e-mail client. Patched for proper charsets support
+- KORN - "biff" program
+- KPPP - PPP dialer
+- KNODE - news client
+- KSirc - IRC client
+- KTalkd - takt daemon
 
 %description -l pl
-Aplikacje sieciowe KDE.
-Pakiet zawiera:
-  KMail - program pocztowy, z poprawion± obs³ug± zestawów znaków
-  KORN - program pokazuj±cy stan skrzynek pocztowych
-  KPPP - program do nawi±zywania po³±czeñ modemowych
-  KNODE - Program do czytania newsów
-  KSirc - IRC dla KDE
-  KTalkd - talk daemon dla KDE
+Aplikacje sieciowe KDE. Pakiet zawiera:
+- KMail - program pocztowy, z poprawion± obs³ug± zestawów znaków
+- KORN - program pokazuj±cy stan skrzynek pocztowych
+- KPPP - program do nawi±zywania po³±czeñ modemowych
+- KNODE - Program do czytania newsów
+- KSirc - IRC dla KDE
+- KTalkd - talk daemon dla KDE
 
 %package kmail
-Summary:     	KDE Mail client
-Summary(pl): 	Program pocztowy KDE
-Group:       	X11/Applications
+Summary:	KDE Mail client
+Summary(pl):	Program pocztowy KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description kmail
-This is electronic mail client for KDE.
-It is able to retrievie mail from POP3 accounts and from local mailboxes. 
+This is electronic mail client for KDE. It is able to retrievie mail
+from POP3 accounts and from local mailboxes.
 
 This package contains version patched for better charset support.
 
 %description -l pl kmail
-Program pocztowy dla KDE.
-Potrafi odczytywaæ pocztê z kont POP3 jak i lokalnych skrzynek.
+Program pocztowy dla KDE. Potrafi odczytywaæ pocztê z kont POP3 jak i
+lokalnych skrzynek.
 
-Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów znaków.
+Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów
+znaków.
 
 %package korn 
-Summary:     	KDE 'biff' application
-Summary(pl): 	Wska¼nik skrzynki pocztowej dla KDE
-Group:       	X11/Applications
+Summary:	KDE 'biff' application
+Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
 
 %description -l pl korn
-Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach pocztowych.
+Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach
+pocztowych.
 
 %package kppp
-Summary:     	KDE PPP dialer	
-Summary(pl): 	Program do po³±czeñ modemowych dla KDE
-Group:       	X11/Applications
+Summary:	KDE PPP dialer	
+Summary(pl):	Program do po³±czeñ modemowych dla KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 Requires:	ppp 
 
@@ -77,13 +86,15 @@ Requires:	ppp
 A PPPP dialer for KDE. It supports multiple accounts.
 
 %description -l pl kppp
-Program no nawi±zywania po³±czeñ modemowych pod KDE.
-Posiada ³atwy interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
+Program no nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
+interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 
 %package knode
-Summary:     	KDE News Reader	
-Summary(pl): 	Czytnik newsów dla KDE
-Group:       	X11/Applications
+Summary:	KDE News Reader	
+Summary(pl):	Czytnik newsów dla KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description knode
@@ -91,40 +102,53 @@ This is a news reader for KDE. It has threading and everything else
 you need to be happy reading your news.
 
 %description -l pl knode
-Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile. 
+Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile.
 
 %package ksirc
-Summary:     	KDE IRC client
-Summary(pl): 	Klient IRC dla KDE
-Group:       	X11/Applications
+Summary:	KDE IRC client
+Summary(pl):	Klient IRC dla KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description ksirc
+KDE IRC client.
 
 %description -l pl ksirc
+Klient IRC dla KDE.
 
 %package kit
-Summary:     	KDE AOL Instant Messenger
-Summary(pl): 	Klient AOL Instant Messenger dla KDE
-Group:       	X11/Applications
+Summary:	KDE AOL Instant Messenger
+Summary(pl):	Klient AOL Instant Messenger dla KDE
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description kit
+KDE AOL Instant Messenger.
 
 %description -l pl kit
+Klient AOL Instant Messenger dla KDE.
 
 %package knewsticker
-Summary:     	KDE News Ticker
-Group:       	X11/Applications
+Summary:	KDE News Ticker
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description knewsticker
+KDE News Ticker.
 
-%description -l pl knewsticker
+#%description -l pl knewsticker
 
 %package lanbrowser
-Summary:     	KDE Lan Browser
-Group:       	X11/Applications
+Summary:	KDE Lan Browser
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description lanbrowser
