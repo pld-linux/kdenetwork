@@ -216,12 +216,12 @@ export KDEDIR CXXFLAGS CFLAGS LDFLAGS
 	--with-qt-dir=%{_prefix} \
  	--with-install-root=$RPM_BUILD_ROOT \
  	--with-pam="yes"
-make KDEDIR=$KDEDIR
+%{__make} KDEDIR=$KDEDIR
 
 %install
 rm -rf $RPM_BUILD_ROOT
 export KDEDIR=%{_prefix}
-make RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
+%{__make} RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
 
 %find_lang caitoo
 %find_lang karchie
