@@ -1,14 +1,14 @@
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	2.0.1
+Version:	2.1.1
 Release:	2
 Vendor:		The KDE Team
 Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/src/%{name}-%{version}.tar.bz2
 Group:          X11/Applications
 Copyright:	GPL
 BuildRequires:	qt-devel >= 2.2.2
-BuildRequires:	kdelibs-devel = %{version}
+BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix 	/usr/X11R6
@@ -102,16 +102,6 @@ Requires:	kdelibs = %{version}
 
 %description -l pl ksirc
 
-%package ktalkd
-Summary:     	KDE Mail client
-Summary(pl): 	Program pocztowy KDE
-Group:       	X11/Applications
-Requires:	kdelibs = %{version}
-
-%description ktalkd
-
-%description -l pl ktalkd
-
 %package kit
 Summary:     	KDE AOL Instant Messenger
 Summary(pl): 	Klient AOL Instant Messenger dla KDE
@@ -132,6 +122,23 @@ Requires:	kdelibs = %{version}
 
 %description -l pl keystone
 
+%package knewsticker
+Summary:     	KDE News Ticker
+Group:       	X11/Applications
+Requires:	kdelibs = %{version}
+
+%description knewsticker
+
+%description -l pl knewsticker
+
+%package lanbrowser
+Summary:     	KDE Lan Browser
+Group:       	X11/Applications
+Requires:	kdelibs = %{version}
+
+%description lanbrowser
+
+%description -l pl lanbrowser
 
 
 %prep
@@ -169,6 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %files kmail
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kmail
+%attr(755,root,root) %{_bindir}/kmailcvt
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_datadir}/apps/kmail
 %{_includedir}/kmail*.h
@@ -218,19 +226,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/locolor/*x*/apps/ksirc.png
 %{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
 
-%files ktalkd
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kotalkd
-%attr(755,root,root) %{_bindir}/ktalkd
-%attr(755,root,root) %{_bindir}/ktalkdlg
-%attr(755,root,root) %{_bindir}/mail.local
-%{_applnkdir}/Settings/Network/kcmktalkd.desktop
-%{_datadir}/config/ktalkdrc
-%{_datadir}/sounds/ktalkd.wav
-%{_datadir}/doc/kde/HTML/en/ktalkd
-%{_pixmapsdir}/locolor/*x*/apps/ktalkd.png
-%{_pixmapsdir}/hicolor/*x*/apps/ktalkd.png
-
 %files kit
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
@@ -242,11 +237,35 @@ rm -rf $RPM_BUILD_ROOT
 %files keystone
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/keystone
-%attr(755,root,root) %{_bindir}/ktalkd
-%attr(755,root,root) %{_bindir}/ktalkdlg
-%attr(755,root,root) %{_bindir}/mail.local
 %{_applnkdir}/Network/Misc/keystone.desktop
 %{_datadir}/config/protocols/vnc.desktop
-%{_datadir}/doc/kde/HTML/en/ktalkd
-%{_pixmapsdir}/locolor/*x*/apps/ktalkd.png
-%{_pixmapsdir}/hicolor/*x*/apps/ktalkd.png
+%{_datadir}/doc/kde/HTML/en/keystone
+%{_pixmapsdir}/locolor/*x*/apps/keystone.png
+%{_pixmapsdir}/hicolor/*x*/apps/keystone.png
+
+%files knewsticker
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/knewstickerstub
+%attr(755,root,root) %{_bindir}/ksticker
+%attr(755,root,root) %{_libdir}/lib*newsticker*
+%{_applnkdir}/Settings/Personalization/kcmnewsticker.desktop
+%{_applnkdir}/.hidden/knewstickerstub.desktop
+%{_datadir}/services/knewsservice.protocol
+%{_datadir}/doc/kde/HTML/en/keystone
+%{_datadir}/apps/knewsticker
+%{_datadir}/apps/kicker/applets/knewsticker.desktop
+%{_pixmapsdir}/locolor/*x*/apps/knewsticker.png
+%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
+
+%files lanbrowser
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/reslisa
+%attr(755,root,root) %{_bindir}/lisa
+%attr(755,root,root) %{_libdir}/lib*lanbrowser*
+%attr(755,root,root) %{_libdir}/kio_lan.so
+%{_applnkdir}/Settings/Network/lanbrowser.desktop
+%{_datadir}/services/rlan.protocol
+%{_datadir}/services/lan.protocol
+%{_datadir}/doc/kde/HTML/en/keystone
+%{_datadir}/apps/lisa
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
