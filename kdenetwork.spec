@@ -825,7 +825,7 @@ Summary:	RSS library
 Summary(pl):	Biblioteka RSS
 Group:		X11/Libraries
 Requires:	kdelibs >= %{_minlibsevr}
-Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
+Obsoletes:	kdenetwork-rss < 10:3.1.93.031114-3
 
 %description librss
 Library for RSS/RDF/XML parsers in KDE.
