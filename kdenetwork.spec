@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	5
+Release:	6
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -449,7 +449,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_datadir}/apps/kconf_update
+%{_datadir}/apps/kconf_update/*
 %{_pixmapsdir}/knewsticker.png
 
 %files lanbrowser -f lisa.lang
@@ -502,7 +502,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde3/kdictapplet.so
 %attr(755,root,root) %{_libdir}/libmimelib.so
 %attr(755,root,root) %{_libdir}/libkdenetwork.so
 %{_includedir}/*
