@@ -10,7 +10,6 @@ Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Vendor:		The KDE Team
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
-BuildRequires:	qt-devel >= 2.3.0
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -156,7 +155,7 @@ Requires:	kdelibs >= %{version}
 
 
 %prep
-%setup -q -n %{name}-%{version}%{sver}
+%setup -q
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
