@@ -416,9 +416,9 @@ rm -rf $RPM_BUILD_ROOT
 #%files -f libkdenetwork.lang
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmimelib.la
+%{_libdir}/libmimelib.la
 %attr(755,root,root) %{_libdir}/libmimelib.so.*
-%attr(755,root,root) %{_libdir}/libkdenetwork.la
+%{_libdir}/libkdenetwork.la
 %attr(755,root,root) %{_libdir}/libkdenetwork.so.*
 
 %files devel
@@ -430,7 +430,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
-%attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.*
+%{_libdir}/kde3/kdict_panelapplet.la
+%attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_pixmapsdir}/*/*/*/kdict*
@@ -439,7 +440,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kget
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
-%attr(755,root,root) %{_libdir}/kde3/khtml_kget.*
+%{_libdir}/kde3/khtml_kget.la
+%attr(755,root,root) %{_libdir}/kde3/khtml_kget.so
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
@@ -467,7 +469,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kmailcvt
 %attr(755,root,root) %{_bindir}/kgpgcertmanager
 %attr(755,root,root) %{_bindir}/mail.local
-%attr(755,root,root) %{_libdir}/kde3/kfile_rfc822.*
+%{_libdir}/kde3/kfile_rfc822.la
+%attr(755,root,root) %{_libdir}/kde3/kfile_rfc822.so
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Utilities/kmailcvt.desktop
 %{_datadir}/apps/kconf_update/k[!n]*
@@ -480,8 +483,10 @@ rm -rf $RPM_BUILD_ROOT
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
-%attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.*
-%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.*
+%{_libdir}/kde3/knewsticker_panelapplet.la
+%attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
+%{_libdir}/kde3/kcm_knewsticker.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
 %{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
 %{_applnkdir}/Network/News/knewsticker*.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
@@ -507,8 +512,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.*
-%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.*
+%{_libdir}/kde3/kpf_panelapplet.la
+%attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
+%{_libdir}/kde3/kpfpropertiesdialog.la
+%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
 %{_datadir}/apps/kicker/applets/kpf*
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_pixmapsdir}/*/*/*/kpf*
@@ -542,8 +549,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%attr(755,root,root) %{_libdir}/ksirc.*
-%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.??
+%{_libdir}/ksirc.la
+%attr(755,root,root) %{_libdir}/ksirc.so
+%{_libdir}/libkntsrcfilepropsdlg.la
+%attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.so
 %{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
@@ -553,7 +562,8 @@ rm -rf $RPM_BUILD_ROOT
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/k*talkd*
-%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.* 
+%{_libdir}/kde3/kcm_ktalkd.la 
+%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so 
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_pixmapsdir}/*/*/*/ktalkd*
@@ -562,16 +572,20 @@ rm -rf $RPM_BUILD_ROOT
 %files kxmlrpcd -f kxmlrpcd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kxmlrpcd
-%attr(755,root,root) %{_libdir}/kxmlrpcd.??
-%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.*
+%{_libdir}/kxmlrpcd.la
+%attr(755,root,root) %{_libdir}/kxmlrpcd.so
+%{_libdir}/kde3/kcm_xmlrpcd.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 %{_datadir}/services/kxmlrpcd.desktop
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
-%attr(755,root,root) %{_libdir}/kde3/kio_lan.*
-%attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.*
+%{_libdir}/kde3/kio_lan.la
+%attr(755,root,root) %{_libdir}/kde3/kio_lan.so
+%{_libdir}/kde3/kcm_lanbrowser.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.so
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
