@@ -158,6 +158,31 @@ Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
 Obsoletes:	kopete
+Obsoletes:	kopete-plugin-tools-autoaway
+Obsoletes:	kopete-plugin-tools-autoreplace
+Obsoletes:	kopete-plugin-tools-conectionstatus
+Obsoletes:	kopete-plugin-tools-contactnotes
+Obsoletes:	kopete-plugin-tools-cryptography
+Obsoletes:	kopete-plugin-tools-history
+Obsoletes:	kopete-plugin-tools-highlight
+Obsoletes:	kopete-plugin-tools-importer
+Obsoletes:	kopete-plugin-tools-nowlistening
+Obsoletes:	kopete-plugin-tools-motionaway
+Obsoletes:	kopete-plugin-tools-spellcheck
+Obsoletes:	kopete-plugin-tools-texteffect
+Obsoletes:	kopete-plugin-tools-translator
+Obsoletes:	kopete-plugin-tools-webpresence
+Obsoletes:	kopete-plugin-protocols-aim
+Obsoletes:	kopete-plugin-protocols-gg
+Obsoletes:	kopete-plugin-protocols-icq
+Obsoletes:	kopete-plugin-protocols-irc
+Obsoletes:	kopete-plugin-protocols-jabber
+Obsoletes:	kopete-plugin-protocols-msn
+Obsoletes:	kopete-plugin-protocols-oscar
+Obsoletes:	kopete-plugin-protocols-sms
+Obsoletes:	kopete-plugin-protocols-winpopup
+Obsoletes:	kopete-plugin-protocols-yahoo
+
 
 %description kopete
 Kopete is a flexible and extendable multiple protocol instant
@@ -305,6 +330,332 @@ TODO.
 %description rss -l pl
 TODO.
 
+
+###################################
+#        BEGIN KOPETE
+###################################
+
+
+%package kopete-plugin-tools-autoaway
+Summary:        An autoaway plugin
+Summary(pl):    Wtyczka automatycznego przej¶cia w stan zajêty
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-autoaway
+Automatically changes status to away. Conditions are configurable.
+
+%description kopete-plugin-tools-autoaway -l pl
+Automatycznie zmienia status na zajêty. Warunki, po zaistnieniu
+których ma nastapiæ, s± konfigurowalne.
+
+%package kopete-plugin-tools-autoreplace
+Summary:        Autoreplaces some text you can choose
+Summary(pl):    Wtyczka automatycznej zamiany tekstu
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-autoreplace
+Autoreplaces some text you can choose.
+
+%description kopete-plugin-tools-autoreplace -l pl
+Wtyczka automatycznej zamiany tekstu.
+
+
+%package kopete-plugin-tools-conectionstatus
+Summary:        Internet connection detector
+Summary(pl):    Wykrywacz po³±czeñ internetowych
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-conectionstatus
+Automatically detects whether the internet connection is available or
+not.
+
+%description kopete-plugin-tools-conectionstatus -l pl
+Automatycznie sprawdza czy dostêpne jest po³±czenie do internetu czy
+nie.
+
+%package kopete-plugin-tools-contactnotes
+Summary:        Add personal notes to your contacts
+Summary(pl):    Dodawanie notatek do kontaktów
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-contactnotes
+Allows adding personal notes to your contacts.
+
+%description kopete-plugin-tools-contactnotes  -l pl
+Umo¿liwia dodawanie notatek do kontaktów.
+
+%package kopete-plugin-tools-cryptography
+Summary:        Messages encryptor
+Summary(pl):    Program do szyfrowania wiadomo¶ci
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-cryptography
+OpenPGP messages encryptor.
+
+%description kopete-plugin-tools-cryptography -l pl
+Program do szyfrowania wiadomo¶ci przy pomocy OpenPGP.
+
+
+%package kopete-plugin-tools-history
+Summary:        A history plugin
+Summary(pl):    Wtyczka obs³uguj±ca historiê rozmów
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-history
+A history plugin.
+
+%description kopete-plugin-tools-history -l pl
+Wtyczka obs³uguj±ca historiê rozmów.
+
+%package kopete-plugin-tools-highlight
+Summary:        A highlighter plugin
+Summary(pl):    Wtyczka podkre¶laj±ca wybrane teksty
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-highlight
+A highlighter plugin.
+
+%package kopete-plugin-tools-importer
+Summary:        Contact importer
+Summary(pl):    Importer kontaktów
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-importer
+Allows importing contacts from other IM's.
+
+%description kopete-plugin-tools-importer -l pl
+Umo¿liwia importowanie kontaktów z innych komunikatorów.
+
+%package kopete-plugin-tools-nowlistening
+Summary:        Playlist informer
+Summary(pl):    Informator o playliscie
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:       xmms >= 1.0.0
+Requires:       kdemultimedia-noatun >= 3.1
+Requires:       kdemultimedia-kscd >= 3.1
+
+%description kopete-plugin-tools-nowlistening
+This plugin tells selected live chats what you're currently listening
+to in xmms/kscd/noatun.
+
+%description kopete-plugin-tools-nowlistening -l pl
+Ta wtyczka wypisuje podczas rozmow nazwê aktualnie s³uchanej piosenki
+w xmms/kscd/noatun.
+
+%package kopete-plugin-tools-motionaway
+Summary:        Sets away status when not detecting movement near the computer
+Summary(pl):    Zmienia status na zajêty je¶li nie wykrywa ruchu wokó³ komputera
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-motionaway
+This plugin sets away status when not detecting movement near the
+computer.
+
+%description kopete-plugin-tools-motionaway -l pl
+Ta wtyczka zmienia status na zajêty je¶li nie wykrywa ruchu wokó³
+komputera.
+
+
+%package kopete-plugin-tools-spellcheck
+Summary:        A spell checking plugin.
+Summary(pl):    Wtyczka sprawdzaj±ca pisownie.
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-spellcheck
+A spell checking plugin.
+
+%description kopete-plugin-tools-spellcheck -l pl
+Wtyczka sprawdzaj±ca pisownie.
+
+
+%package kopete-plugin-tools-texteffect
+Summary:        A plugin that adds nice effects to your messages
+Summary(pl):    Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-texteffect
+A plugin that adds nice effects to your messages.
+
+%description kopete-plugin-tools-texteffect -l pl
+Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci.
+
+%package kopete-plugin-tools-translator
+Summary:        Uses babelfish to translate messages
+Summary(pl):    Wykorzystuje babelfish do t³umaczenia wiadomo¶ci
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-tools-translator
+This plugin uses babelfish to translate messages.
+
+%description kopete-plugin-tools-translator -l pl
+Ta wtyczka wykorzystuje babelfish do t³umaczenia wiadomo¶ci.
+
+
+%package kopete-plugin-tools-webpresence
+Summary:        Web contactlist presenter
+Summary(pl):    Wy¶wietlacz listy kontaktów na WWW
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:       libxml2 >= 2.4.8
+Requires:       libxslt >= 1.0.7
+
+%description kopete-plugin-tools-webpresence
+This plugin shows the status of (parts of) your contactlist on a
+webpage.
+
+%description kopete-plugin-tools-webpresence -l pl
+Ta wtyczka pokazuje status (ca³ej lub cze¶ci) listy kontaktów na
+stronie WWW.
+
+%package kopete-plugin-protocols-aim
+Summary:        Adds AIM protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u AIM
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-aim
+Adds AIM protocol support.
+
+%description kopete-plugin-protocols-aim -l pl
+Dodaje obs³ugê protoko³u AIM.
+
+%package kopete-plugin-protocols-gg
+Summary:        Adds GaduGadu protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u GaduGadu
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-gg
+Adds GaguGadu protocol support.
+
+%description kopete-plugin-protocols-gg -l pl
+Dodaje obs³ugê protoko³u GaduGadu.
+#1
+%package kopete-plugin-protocols-icq
+Summary:        Adds ICQ protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u ICQ
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-icq
+Adds ICQ protocol support.
+
+%description kopete-plugin-protocols-icq -l pl
+Dodaje obs³ugê protoko³u ICQ.
+
+%package kopete-plugin-protocols-irc
+Summary:        Adds IRC support
+Summary(pl):    Dodaje obs³ugê IRC
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-irc
+Adds IRC support.
+
+%description kopete-plugin-protocols-irc -l pl
+Dodaje obs³ugê IRC.
+
+%package kopete-plugin-protocols-jabber
+Summary:        Adds Jabber protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u Jabber
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:       libpsi >= 20021108
+
+%description kopete-plugin-protocols-jabber
+Adds Jabber protocol support.
+
+%description kopete-plugin-protocols-jabber -l pl
+Dodaje obs³ugê protoko³u Jabber.
+
+%package kopete-plugin-protocols-msn
+Summary:        Adds MSN protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u MSN
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-msn
+Adds MSN protocol support.
+
+%description kopete-plugin-protocols-msn -l pl
+Dodaje obs³ugê protoko³u MSN.
+
+%package kopete-plugin-protocols-testbed
+Summary:        Adds Testbed protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u testbed
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-testbed
+Adds Testbed protocol support.
+
+%description kopete-plugin-protocols-testbed -l pl
+Dodaje obs³ugê protoko³u testbed.
+
+%package kopete-plugin-protocols-oscar
+Summary:        Adds OSCAR protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u OSCAR
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-oscar
+Adds OSCAR protocol support.
+
+%description kopete-plugin-protocols-oscar -l pl
+Dodaje obs³ugê protoko³u OSCAR.
+
+%package kopete-plugin-protocols-sms
+Summary:        Adds SMS contact support
+Summary(pl):    Dodaje obs³ugê kontaktów SMS
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-sms
+Adds SMS contact support.
+
+%description kopete-plugin-protocols-sms -l pl
+Dodaje obs³ugê kontaktów SMS.
+
+%package kopete-plugin-protocols-winpopup
+Summary:        Adds winpopup messaging support
+Summary(pl):    Dodaje obs³ugê komunikacji via winpopup
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-winpopup
+Adds winpopup messaging support.
+
+%description kopete-plugin-protocols-winpopup -l pl
+Dodaje obs³ugê komunikacji via winpopup.
+
+%package kopete-plugin-protocols-yahoo
+Summary:        Adds yahoo protocol support
+Summary(pl):    Dodaje obs³ugê protoko³u yahoo
+Group:          X11/Applications/Networking
+Requires:       %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-plugin-protocols-yahoo
+Adds yahoo protocol support.
+
+%description kopete-plugin-protocols-yahoo -l pl
+Dodaje obs³ugê protoko³u yahoo.
+
+
+###################################
+
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
@@ -393,9 +744,9 @@ fi
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/rss                                                      
-%{_libdir}/libkopete.so
-%{_libdir}/libkopete_msn.so
-%{_libdir}/libkopete_oscar.so
+#%%{_libdir}/libkopete.so
+#%%{_libdir}/libkopete_msn.so
+#%%{_libdir}/libkopete_oscar.so
 %{_libdir}/librss.so
 
 #%files kwifimanager -f kwifimanager.lang
@@ -460,14 +811,10 @@ fi
 %attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-account-kconf_update
 %attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
-%attr(755,root,root) %{_bindir}/winpopup-install.sh
-%attr(755,root,root) %{_bindir}/winpopup-send.sh
-%{_libdir}/libkopete.la
+#%%attr(755,root,root) %{_bindir}/winpopup-install.sh
+#%%attr(755,root,root) %{_bindir}/winpopup-send.sh
+#%%{_libdir}/libkopete.la
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
-%{_libdir}/libkopete_msn.la
-%attr(755,root,root) %{_libdir}/libkopete_msn.so.*.*.*
-%{_libdir}/libkopete_oscar.la
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
@@ -476,123 +823,29 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/kcm_kopete_cryptography.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_cryptography.so
-%{_libdir}/kde3/kcm_kopete_highlight.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_highlight.so
-%{_libdir}/kde3/kcm_kopete_history.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_history.so
-%{_libdir}/kde3/kcm_kopete_motionaway.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_motionaway.so
-%{_libdir}/kde3/kcm_kopete_msn.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
-%{_libdir}/kde3/kcm_kopete_nowlistening.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
-%{_libdir}/kde3/kcm_kopete_pluginconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_pluginconfig.so
-%{_libdir}/kde3/kcm_kopete_texteffect.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_texteffect.so
-%{_libdir}/kde3/kcm_kopete_translator.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
-%{_libdir}/kde3/kcm_kopete_webpresence.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
-%{_libdir}/kde3/kcm_kopete_wp.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
-%{_libdir}/kde3/kopete_aim.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_aim.so
-%{_libdir}/kde3/kopete_autoreplace.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_autoreplace.so
-%{_libdir}/kde3/kopete_chatwindow.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
-%{_libdir}/kde3/kopete_connectionstatus.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_connectionstatus.so
-%{_libdir}/kde3/kopete_contactnotes.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_contactnotes.so
-%{_libdir}/kde3/kopete_cryptography.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_cryptography.so
-%{_libdir}/kde3/kopete_gadu.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_gadu.so
-%{_libdir}/kde3/kopete_highlight.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_highlight.so
-%{_libdir}/kde3/kopete_history.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_history.so
-%{_libdir}/kde3/kopete_icq.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_icq.so
-%{_libdir}/kde3/kopete_irc.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_irc.so
-%{_libdir}/kde3/kopete_jabber.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_jabber.so
-%{_libdir}/kde3/kopete_motionaway.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_motionaway.so
-%{_libdir}/kde3/kopete_msn.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_msn.so
-%{_libdir}/kde3/kopete_nowlistening.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_nowlistening.so
-%{_libdir}/kde3/kopete_sms.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_sms.so
-#%{_libdir}/kde3/kopete_spellcheck.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete_spellcheck.so
-%{_libdir}/kde3/kopete_testbed.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
-%{_libdir}/kde3/kopete_texteffect.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_texteffect.so
-%{_libdir}/kde3/kopete_translator.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_translator.so
-%{_libdir}/kde3/kopete_webpresence.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_webpresence.so
-%{_libdir}/kde3/kopete_wp.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_wp.so
-#%{_libdir}/kde3/kopete_yahoo.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
+%{_libdir}/kde3/kcm_kopete_pluginconfig.la
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
+%{_libdir}/kde3/kopete_chatwindow.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
-%{_datadir}/apps/kopete
+%dir %{_datadir}/apps/kopete
+%{_datadir}/apps/kopete/*rc
+%{_datadir}/apps/kopete/styles/*
+%{_datadir}/apps/kopete/pics/emoticons
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
-%{_datadir}/services/aim.desktop
-%{_datadir}/services/autoreplace.desktop
 %{_datadir}/services/chatwindow.desktop
-%{_datadir}/services/connectionstatus.desktop
-%{_datadir}/services/contactnotes.desktop
-%{_datadir}/services/cryptography.desktop
-%{_datadir}/services/gadu.desktop
-%{_datadir}/services/highlight.desktop
-%{_datadir}/services/history.desktop
-%{_datadir}/services/icq.desktop
-%{_datadir}/services/irc.desktop
-%{_datadir}/services/jabber.desktop
-%{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_highlight_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
 %{_datadir}/services/kopete_pluginconfig.desktop
-%{_datadir}/services/motionaway.desktop
-%{_datadir}/services/msn.desktop
-%{_datadir}/services/nowlistening.desktop
-%{_datadir}/services/sms.desktop
-#%{_datadir}/services/spellcheck.desktop
-%{_datadir}/services/testbed.desktop
-%{_datadir}/services/texteffect.desktop
-%{_datadir}/services/translator.desktop
-%{_datadir}/services/webpresence.desktop
-%{_datadir}/services/wp.desktop
-#%{_datadir}/services/yahoo.desktop
 %{_datadir}/servicetypes/kopeteplugin.desktop
 %{_datadir}/servicetypes/kopeteprotocol.desktop
 %{_datadir}/servicetypes/kopeteui.desktop
@@ -602,6 +855,220 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmsg.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/status_unknown.png
+%{_datadir}/apps/kopete/pics/newmessage.mng
+
+
+##################################
+#      KOPETE SUBPKGS
+#################################
+
+
+%files kopete-plugin-tools-autoreplace
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*autoreplace*.so
+%{_libdir}/kde3/kopete*autoreplace*.la
+%{_libdir}/kde3/kcm_kopete_autoreplace.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
+%{_datadir}/services/autoreplace.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
+%{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
+
+%files kopete-plugin-tools-conectionstatus
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*connectionstatus*.so
+%{_libdir}/kde3/kopete*connectionstatus*.la
+%{_datadir}/services/connectionstatus.desktop
+
+%files kopete-plugin-tools-contactnotes
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*contactnotes*.so
+%{_libdir}/kde3/kopete*contactnotes*.la
+%{_datadir}/services/contactnotes.desktop
+
+%files kopete-plugin-tools-cryptography
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
+%{_libdir}/kde3/kcm_kopete_cryptography.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_cryptography.so
+%attr(755,root,root) %{_libdir}/kde3/kopete*cryptography*.so
+%{_libdir}/kde3/kopete*cryptography*.la
+%{_datadir}/services/cryptography.desktop
+
+%files kopete-plugin-tools-history
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
+%{_libdir}/kde3/kcm_kopete_history.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_history.so
+%attr(755,root,root) %{_libdir}/kde3/kopete*history*.so
+%{_libdir}/kde3/kopete*history*.la
+%{_datadir}/services/history.desktop
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/history.png
+
+%files kopete-plugin-tools-highlight
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_highlight_config.desktop
+%{_libdir}/kde3/kcm_kopete_highlight.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_highlight.so
+%attr(755,root,root) %{_libdir}/kde3/kopete*highlight*.so
+%{_libdir}/kde3/kopete*highlight*.la
+%{_datadir}/services/highlight.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/highlight.png
+
+%files kopete-plugin-tools-nowlistening
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
+%attr(755,root,root)  %{_libdir}/kde3/kopete*nowlistening*.so
+%{_libdir}/kde3/kcm_kopete_nowlistening.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
+%{_libdir}/kde3/kopete*nowlistening*.la
+%{_datadir}/services/nowlistening.desktop
+
+%files kopete-plugin-tools-motionaway
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
+%attr(755,root,root) %{_libdir}/kde3/kopete*motionaway*.so
+%{_libdir}/kde3/kcm_kopete_motionaway.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_motionaway.so
+%{_libdir}/kde3/kopete*motionaway*.la
+%{_datadir}/services/motionaway.desktop
+
+#%%files kopete-plugin-tools-spellcheck
+#%%defattr(644,root,root,755)
+#%%attr(755,root,root) %{_libdir}/kde3/kopete*spellcheck*.so
+#%%{_libdir}/kde3/kopete*spellcheck*.la
+#%%{_datadir}/services/spellcheck.desktop
+
+
+%files kopete-plugin-tools-texteffect
+%defattr(644,root,root,755)
+%{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
+%attr(755,root,root) %{_libdir}/kde3/kopete*texteffect*.so
+%{_libdir}/kde3/kcm_kopete_texteffect.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_texteffect.so
+%{_libdir}/kde3/kopete*texteffect*.la
+%{_datadir}/services/texteffect.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/texteffect.png
+
+%files kopete-plugin-tools-translator
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*translator*.so
+%{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
+%{_libdir}/kde3/kcm_kopete_translator.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
+%{_libdir}/kde3/kopete*translator*.la
+%{_datadir}/services/translator.desktop
+
+%files kopete-plugin-tools-webpresence
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*webpresence*.so
+%{_libdir}/kde3/kcm_kopete_webpresence.la
+%{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
+%{_libdir}/kde3/kopete*webpresence*.la
+%{_datadir}/services/webpresence.desktop
+%{_datadir}/apps/kopete/webpresence/webpresencedefault.xsl
+%{_datadir}/apps/kopete/webpresence/wpimages.xsl
+
+%files kopete-plugin-protocols-aim
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
+%{_libdir}/kde3/kopete*aim*.la
+%{_datadir}/services/aim.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aim*
+%{_datadir}/apps/kopete/pics/aim*
+
+%files kopete-plugin-protocols-gg
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*gadu*.so
+%{_libdir}/kde3/kopete*gadu*.la
+%{_datadir}/services/gadu.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
+%{_datadir}/apps/kopete/pics/gg*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
+
+%files kopete-plugin-protocols-icq
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
+%{_libdir}/kde3/kopete*icq*.la
+%{_datadir}/services/icq.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/icq*
+%{_datadir}/apps/kopete/pics/icq*
+
+%files kopete-plugin-protocols-irc
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
+%{_libdir}/kde3/kopete*irc*.la
+%{_datadir}/services/irc.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
+%{_datadir}/apps/kopete/pics/irc_connecting.mng
+
+%files kopete-plugin-protocols-jabber
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
+%{_libdir}/kde3/kopete*jabber*.la
+%{_datadir}/services/jabber.desktop
+%{_datadir}/apps/kopete/pics/jabber*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
+
+%files kopete-plugin-protocols-msn
+%defattr(644,root,root,755)
+#%%{_libdir}/libkopete_msn.la
+%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
+%{_libdir}/kde3/kcm_kopete_msn.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
+%attr(755,root,root) %{_libdir}/libkopete_msn.so.*.*.*
+%attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
+%{_libdir}/kde3/kopete*msn*.la
+%{_datadir}/services/msn.desktop
+%{_datadir}/apps/kopete/pics/msn*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
+
+%files kopete-plugin-protocols-oscar
+%defattr(644,root,root,755)
+#%%{_libdir}/libkopete_oscar.la
+%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*_icon.png
+
+%files kopete-plugin-protocols-sms
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kopete*sms*.so
+%{_libdir}/kde3/kopete*sms*.la
+%{_datadir}/services/sms.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
+
+#%%files kopete-plugin-protocols-yahoo
+#%%defattr(644,root,root,755)
+#%%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo*.so
+#%%{_libdir}/kde3/kopete_yahoo*.la
+#%%{_datadir}/services/yahoo.desktop
+#%%{_datadir}/apps/kopete/icons/*/*/*/yahoo*
+
+%files kopete-plugin-protocols-winpopup
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kcm_kopete_wp.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
+%attr(755,root,root) %{_bindir}/winpopup*.sh
+%attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
+%{_libdir}/kde3/kopete*wp*.la
+%{_datadir}/services/wp.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
+%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
+
+%files kopete-plugin-protocols-testbed
+%{_libdir}/kde3/kopete_testbed.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
+%{_datadir}/services/testbed.desktop
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/testbed*
+
+
+###################################
+
+
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
