@@ -51,7 +51,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 KDE network applications. Package includes:
 - KDict - Online dictionary client
 - KGet - file downloader
-- KIT - AOL Instant Messenger
 - KNewsticker - News Ticker
 - KPF - Public fileserver applet
 - KPPP - PPP dialer
@@ -67,7 +66,6 @@ KDE network applications. Package includes:
 Aplikacje sieciowe KDE. Pakiet zawiera nastêpuj±ce programy:
 - KDict - klient s³ownika
 - KGet - ¶ci±gacz plików
-- KIT - klient AOL Instant Messenger
 - KNewsticker - aplet wy¶wietlaj±cy nowo¶ci
 - KPF - applet publicznego serwera plików
 - KPPP - program do nawi±zywania po³±czeñ modemowych
@@ -208,6 +206,7 @@ Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
+Obsoletes:	kdenetwork-kit
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-tools-autoaway
 Obsoletes:	kopete-plugin-tools-autoreplace
