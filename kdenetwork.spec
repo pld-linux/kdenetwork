@@ -18,7 +18,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.1
+Release:	0.2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -34,6 +34,7 @@ Patch2:		%{name}-vcategories.patch
 Patch3:		%{name}-ggstatus.patch
 Patch4:         %{name}-remove_loadmovie.patch
 Patch5:         %{name}-dcoprss.patch
+Patch6:         %{name}-libiw_27.patch
 BuildRequires:	artsc-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -722,19 +723,20 @@ TODO.
 %patch1 -p1
 %patch2 -p1
 %{?with_ggstatus:%patch3 -p1}
-%{?without_loadmovie:%patch4 -p1}
+%{?without_loadmovie:%patch4 -p0}
 %patch5 -p1
+%patch6 -p1
 
 %build
-cp /usr/share/automake/config.sub admin
-%{__make} -f admin/Makefile.common cvs
+#cp /usr/share/automake/config.sub admin
+#%%{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--disable-rpath \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
 
-%{__make}
+#%%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
