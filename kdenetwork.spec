@@ -1,29 +1,19 @@
 
 %define		_state		unstable
-%define		_kdever		kde-3.1-rc1
-%define		_snapshot	021031
-%define		_buildsnap	1
+%define		_kdever		kde-3.1-rc2
 
 Summary:        K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.0.9
-%if %{?_buildsnap:1}%{!?_buildsnap:0}
-Release:	0.%{_snapshot}.1
-%else
+Version:	3.0.98
 Release:	1
-%endif
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
 Group:		X11/Libraries
-%if %{?_buildsnap:1}%{!?_buildsnap:0}
-Source0:	ftp://ftp.kde.org/pub/kde/snapshots/%{name}-%{_snapshot}.tar.bz2
-%else
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-%endif
 # generated from kde-i18n
 #Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-utmpx.patch
@@ -93,7 +83,7 @@ Summary:	Header files and development documentation
 Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
 Summary(pt_BR):	Arquivos de inclusão para compilar aplicações que usem as bibliotecas do kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description devel
 Header files and development documentation.
@@ -128,7 +118,7 @@ Internet.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description kget
 File Downloader.
@@ -200,7 +190,6 @@ Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
 Requires:	kdelibs >= %{version}
-Requires:	%{name} >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
@@ -217,6 +206,7 @@ Summary:	KDE 'biff' application
 Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
 Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
 Group:		X11/Applications
+Requires:	kdelibs >= %{version}
 
 %description korn
 A simple program showing number of mails in your folders.
@@ -232,7 +222,7 @@ Miniaplicativo de monitoração da caixa de correio.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description kpf
 Public fileserver applet.
@@ -278,7 +268,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description krfb
 Virtual Desktops.
@@ -290,7 +280,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description ktalkd
 Talk daemon.
@@ -302,7 +292,7 @@ Demon talk.
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= %{version}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -323,11 +313,7 @@ KDE LAN Browser.
 Przegl±darka LAN-u dla KDE.
 
 %prep
-%if %{?_buildsnap:1}%{!?_buildsnap:0}
-%setup -q -n %{name}-%{_snapshot}
-%else
 %setup -q
-%endif
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -337,10 +323,6 @@ kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
-%if %{?_buildsnap:1}%{!?_buildsnap:0}
-make -f Makefile.cvs
-%endif
-
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
@@ -349,7 +331,7 @@ make -f Makefile.cvs
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 install -d \
     $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
