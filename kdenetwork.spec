@@ -1,7 +1,4 @@
-#
-# Conditional build:
-%bcond_with  i18n    # don't build i18n subpackage
-#
+
 %define		_state		snapshots
 %define		_ver		3.2.90
 %define		_snap		040508
@@ -24,8 +21,6 @@ Group:		X11/Libraries
 Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
 #Source0:	%{name}-%{_snap}.tar.bz2
 ##%% Source0-md5:	53c949621c89a48a3a326ae98e608f48
-#Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
-##%% Source1-md5:	1722734fd00114d8286d66b15dc86820
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -734,202 +729,6 @@ RSS parsers used by different applications.
 %description rss -l pl
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
-# <i18n stuff>
-
-%package i18n
-Summary:	Common internationalization and localization files for kdenetwork
-Summary(pl):	Wspó³dzielone pliki umiêdzynarodawiaj±ce dla kdenetwork
-Group:		X11/Applications
-#Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description i18n
-Internationalization and localization files for kdenetwork.
-
-%description i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kdenetwork.
-
-%package kdict-i18n
-Summary:	Internationalization and localization files for kdict
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
-Group:		X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kdict-i18n
-Internationalization and localization files for kdict.
-
-%description kdict-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kdict.
-
-%package kinetd-i18n
-Summary:	Internationalization and localization files for kinetd
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
-Group:		X11/Applications
-Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description kinetd-i18n
-Internationalization and localization files for kinetd.
-
-%description kinetd-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kinetd.
-
-%package kget-i18n
-Summary:	Internationalization and localization files for kget
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kgeta
-Group:		X11/Applications
-Requires:	%{name}-kget = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kget-i18n
-Internationalization and localization files for kget.
-
-%description kget-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kgeta.
-
-%package knewsticker-i18n
-Summary:	Internationalization and localization files for knewsticker
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewstickera
-Group:		X11/Applications
-Requires:	%{name}-knewsticker = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-kicker-i18n >= 9:%{version}
-
-%description knewsticker-i18n
-Internationalization and localization files for knewsticker.
-
-%description knewsticker-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla knewstickera.
-
-%package kopete-i18n
-Summary:	Internationalization and localization files for kopete
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kopete
-Group:		X11/Applications
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description kopete-i18n
-Internationalization and localization files for kopete.
-
-%description kopete-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kopete.
-
-%package kpf-i18n
-Summary:	Internationalization and localization files for kpf
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpf
-Group:		X11/Applications
-Requires:	%{name}-kpf = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-kicker-i18n >= 9:%{version}
-
-%description kpf-i18n
-Internationalization and localization files for kpf.
-
-%description kpf-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kpf.
-
-%package kppp-i18n
-Summary:	Internationalization and localization files for kppp
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kppp
-Group:		X11/Applications
-Requires:	%{name}-kppp = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kppp-i18n
-Internationalization and localization files for kppp.
-
-%description kppp-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kppp.
-
-%package krfb-i18n
-Summary:	Internationalization and localization files for krfb
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla krfb
-Group:		X11/Applications
-Requires:	%{name}-krfb = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	%{name}-kinetd-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description krfb-i18n
-Internationalization and localization files for krfb.
-
-%description krfb-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla krfb.
-
-%package ksirc-i18n
-Summary:	Internationalization and localization files for ksirc
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ksirc
-Group:		X11/Applications
-Requires:	%{name}-ksirc = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description ksirc-i18n
-Internationalization and localization files for ksirc.
-
-%description ksirc-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla ksirc.
-
-%package ktalkd-i18n
-Summary:	Internationalization and localization files for ktalkd
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ktalkd
-Group:		X11/Applications
-Requires:	%{name}-ktalkd = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description ktalkd-i18n
-Internationalization and localization files for ktalkd.
-
-%description ktalkd-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla ktalkd.
-
-%package kwifimanager-i18n
-Summary:	Internationalization and localization files for kwifimanager
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanagera
-Group:		X11/Applications
-Requires:	%{name}-kwifimanager = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description kwifimanager-i18n
-Internationalization and localization files for kwifimanager.
-
-%description kwifimanager-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kwifimanagera.
-
-%package lanbrowser-i18n
-Summary:	Internationalization and localization files for lanbrowser
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla lanbrowsera
-Group:		X11/Applications
-Requires:	%{name}-lanbrowser = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-Requires:	konqueror-i18n >= 9:%{version}
-
-%description lanbrowser-i18n
-Internationalization and localization files for lanbrowser.
-
-%description lanbrowser-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla lanbrowsera.
-
-%package rss-i18n
-Summary:	Internationalization and localization files for rss
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
-Group:		X11/Applications
-Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description rss-i18n
-Internationalization and localization files for rss.
-
-%description rss-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla rss.
-
-# </i18n stuff>
-
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
@@ -973,20 +772,6 @@ for i in `find . -name index.cache.bz2`; do
 done
 cd -	 
 
-%if %{with i18n}
-if [ -f "%{SOURCE1}" ] ; then
-	bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
-	for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
-		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ]; then
-			rm -f $f
-		fi
-	done
-else
-	echo "No i18n sources found and building --with i18n. FIXIT!"
-	exit 1
-fi
-%endif
-
 tar xfj %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles/
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
@@ -1013,29 +798,6 @@ cat kcmtalkd.lang >> ktalkd.lang
 %find_lang lisa			--with-kde
 %find_lang lanbrowser		--with-kde
 cat lanbrowser.lang >> lisa.lang
-
-%if %{with i18n}
-%find_lang kcmktalkd		--with-kde
-cat kcmktalkd.lang >> ktalkd.lang
-##%find_lang kcmkxmlrpcd	--with-kde
-%find_lang kcm_krfb             --with-kde
-cat kcm_krfb.lang >> krfb.lang
-%find_lang kcmlanbrowser	--with-kde
-cat kcmlanbrowser.lang >> lisa.lang
-%find_lang kio_lan		--with-kde
-cat kio_lan.lang >> lisa.lang
-%find_lang kppplogview		--with-kde
-cat kppplogview.lang >> kppp.lang
-%find_lang kwireless		--with-kde
-cat kwireless.lang >> kwifimanager.lang
-%find_lang kcmwifi		--with-kde
-cat kcmwifi.lang >> kwifimanager.lang
-%find_lang kdictapplet		--with-kde
-cat kdictapplet.lang >> kdict.lang
-%find_lang dcopservice		--with-kde
-%find_lang desktop_kdenetwork	--with-kde
-%find_lang kinetd               --with-kde
-%endif
 
 files="\
 	kdict \
@@ -1096,23 +858,6 @@ fi
 
 %post	librss		-p /sbin/ldconfig
 %postun	librss		-p /sbin/ldconfig
-
-%if %{with i18n}
-%files i18n -f desktop_kdenetwork.lang
-%files kdict-i18n -f kdict.lang
-%files kget-i18n -f kget.lang
-%files knewsticker-i18n -f knewsticker.lang
-%files kopete-i18n -f kopete.lang
-%files kpf-i18n -f kpf.lang
-%files kppp-i18n -f kppp.lang
-%files krfb-i18n -f krfb.lang
-%files ksirc-i18n -f ksirc.lang
-%files ktalkd-i18n -f ktalkd.lang
-%files kwifimanager-i18n -f kwifimanager.lang
-%files lanbrowser-i18n -f lisa.lang
-%files kinetd-i18n -f kinetd.lang
-%files rss-i18n -f dcopservice.lang
-%endif
 
 %files devel
 %defattr(644,root,root,755)
