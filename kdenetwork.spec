@@ -1,9 +1,6 @@
 #
-# Conditional build:
-%bcond_without	i18n	# don't build i18n subpackage
-#
 %define		_state		stable
-%define		_ver		3.2.2
+%define		_ver		3.2.3
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -11,17 +8,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://download.kde.org/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
+#Source0:	http://download.kde.org/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
 # Source0-md5:	405ade1938cd74e3e9643f25814ee81d
-#Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
-%if %{with i18n}
-Source1:	kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	1db6bca62229dd593267308473de5cd1
-%endif
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
@@ -55,16 +48,16 @@ KDE network applications. Package includes:
 - KDict - Online dictionary client
 - KGet - file downloader
 - KIT - AOL Instant Messenger
-- KMail - e-mail client. Patched for proper charsets support
 - KNewsticker - News Ticker
-- KNODE - news client
-- KORN - "biff" program
+
 - KPF - Public fileserver applet
 - KPPP - PPP dialer
-- KRFB - virtual desktops
+- krdc
+- krfb - virtual desktops
 - KSirc - IRC client
 - KTalkd - takt daemon
 - KXmlRpcd - XmlRpc Daemon
+
 - Lanbrowser - LAN Browser
 - KWiFiManager - wireless network manager
 
@@ -117,14 +110,19 @@ Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
 %package kdict
-Summary:	Online dictionary client
-Summary(pl):	Klient s³ownika
+Summary:	A DICT protocol client
+Summary(pl):	Klient protoko³u DICT
 License:	Artistic
 Group:		X11/Applications
 Provides:	kdict
 
 %description kdict
-Online dictionary client.
+A graphical client for the DICT protocol used for several online
+dictionaries (like dict.org). It enables you to search through
+dictionary databases for a word or phrase, then displays suitable
+definitions. KDict tries to ease basic as well as advanced queries. A
+separate list offers a convenient way to deal with the enormous number
+of matching words that a advanced query can return.
 
 %description kdict -l pl
 Klient s³ownika.
@@ -141,19 +139,22 @@ Requires:	kdelibs >= 9:%{version}
 Obsoletes:	kdenetwork-krfb < 9:3.1-6
 
 %description kinetd
-An Internet daemon that starts network services on demand.
+A KDE daemon that listen on TCP ports and starts programs when a
+client connects. Configurable using DCOP.
+
 
 %description kinetd -l pl
 Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 
 %package kget
-Summary:	File Downloander
-Summary(pl):	¦ci±gacz plików
+Summary:	File downloand manager
+Summary(pl):	Mened¿er ¶ci±gania plików
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
 
 %description kget
-File Downloader.
+A GetRight-like file download manager with resuming support and
+konqueror/mozilla integration.
 
 %description kget -l pl
 ¦ci±gacz plików.
@@ -166,7 +167,11 @@ Group:		X11/Applications
 Requires:	kdebase-desktop >= 9:%{version}
 
 %description knewsticker
-KDE News Ticker.
+KNewsTicker is an applet for the KDE panel (also known as Kicker)
+which provides an easy and convenient way to access the news as
+reported by many news sites (such as Slashdot, Linux Weekly News or
+Freshmeat). It can be used with virtually any website that provides
+RSS/RDF feeds.
 
 %description knewsticker -l pl
 News Ticker dla KDE.
@@ -318,16 +323,18 @@ Kopete plugin which adds SMS contact support.
 Wtyczka Kopete dodaj±ca obs³ugê kontaktów SMS.
 
 %package kopete-protocol-testbed
-Summary:	Kopete plugin which adds Testbed protocol support
-Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Testbed
-Group:		X11/Applications/Networking
+Summary:	A sample plugin for kopete.
+Summary(pl):	Przyk³adowa wtyczka dla kopete.
+Group:		X11/Development/Libraries
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-testbed
-Kopete plugin which adds Testbed protocol support.
+A sample plugin for kopete, which allows developers to learn the
+kopete programming interface.
 
 %description kopete-protocol-testbed -l pl
-Wtyczka Kopete dodaj±ca obs³ugê protoko³u Testbed.
+Przyk³adowa wtyczka do kopete, u³atwiaj±ca developerom zapoznanie siê
+z interfejsem programowania biblioteki kopete.
 
 %package kopete-protocol-winpopup
 Summary:	Kopete plugin which adds WinPopUp messaging support
@@ -517,7 +524,8 @@ Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-translator
-This Kopete plugin uses babelfish to translate messages.
+This Kopete plugin uses web translating engines (like Altavista's
+babelfish or Google) to translate messages.
 
 %description kopete-tool-translator -l pl
 Ta wtyczka Kopete wykorzystuje babelfish do t³umaczenia wiadomo¶ci.
@@ -531,8 +539,7 @@ Requires:	libxml2 >= 2.4.8
 Requires:	libxslt >= 1.0.7
 
 %description kopete-tool-webpresence
-This Kopete plugin shows the status of (parts of) your contactlist on
-a webpage.
+This Kopete plugin shows the status of your IM accounts on a webpage.
 
 %description kopete-tool-webpresence -l pl
 Ta wtyczka Kopete pokazuje status (ca³ej lub czê¶ci) listy kontaktów
@@ -545,7 +552,24 @@ Group:		X11/Applications
 Requires:	kdebase-desktop >= 9:%{version}
 
 %description kpf
-Public fileserver applet.
+kpf provides simple file sharing using HTTP (the Hyper Text Transfer
+Protocol,) which is the same protocol used by web sites to provide
+data to your web browser. kpf is strictly a public fileserver, which
+means that there are no access restrictions to shared files. Whatever
+you select for sharing is available to anyone.
+
+kpf is designed to be used for sharing files with friends, not to act
+like a fully-fledged web server such as Apache. kpf was primarily
+conceived as an easy way to share files with others while chatting on
+IRC (Internet Relay Chat, or "chat rooms".)
+
+Typical usage: kpf is set up to serve files from the public_html
+folder in your home folder. You wish to make a file available to some
+people with whom you are chatting online. Rather than send them each
+an email with the file attached (some may not even be interested,) you
+copy the file into your public_html folder and announce to those
+listening that your file is available at
+http://www.mymachine.net:8001/thefile
 
 %description kpf -l pl
 Applet publicznego serwera plików.
@@ -559,7 +583,21 @@ Requires:	kdebase-core >= 9:%{version}
 Requires:	ppp
 
 %description kppp
-A PPPP dialer for KDE. It supports multiple accounts.
+KPPP is a dialer and front end for pppd. It allows for interactive
+script generation and network setup. It will automate the dialing in
+process to your ISP while letting you conveniently monitor the entire
+process.
+
+Once connected KPPP will provide a rich set of statistics and keep
+track of the time spent online for you.
+
+A built-in terminal and script generator will enable you to set up
+your connection with ease. You will no longer need an additional
+terminal program such as seyon or minicom to test and setup your
+connection.
+
+KPPP features elaborate phone cost accounting, which enables you to
+easily track your online costs.
 
 %description kppp -l pl
 Program do nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
@@ -576,7 +614,8 @@ Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
 
 %description ksirc
-KDE IRC client.
+KSirc is the default KDE IRC client. It supports scripting with Perl
+and has a lot of compatibility with mIrc for general use.
 
 %description ksirc -l pl
 Klient IRC dla KDE.
@@ -592,7 +631,12 @@ Requires:	kdebase-core >= 9:%{version}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 
 %description krfb
-Virtual Desktops.
+Remote Desktop Connection is a client application that allows you to
+view or even control the desktop session on another machine that is
+running a compatible (VNC) server. You would typically use Remote
+Desktop Connection with the KDE VNC server, which is Desktop Sharing
+(also provided in this package), since it closely matches the special
+features of Remote Desktop Connection.
 
 %description krfb -l pl
 Wirtualne biurka.
@@ -604,7 +648,9 @@ Group:		X11/Applications
 Requires:	kdebase-core >= 9:%{version}
 
 %description ktalkd
-Talk daemon.
+A talk daemon replacement. Support the talk protocol and features an
+answering machine plus a possibility to inform you about incoming
+messages.
 
 %description ktalkd -l pl
 Demon talk.
@@ -618,7 +664,12 @@ Requires:	wireless-tools
 Obsoletes:	kwifimanager
 
 %description kwifimanager
-Wireless LAN.
+The KWiFiManager suite is a set of tools which allows you to manage
+your wireless LAN PC-Card under the K Desktop Environment. It provides
+information about your current connection and lets you set up up to
+four independent configurations which can be loaded automatically when
+KDE is started. KWiFiManager supports every wireless LAN card that
+uses the wireless extensions interface.
 
 %description kwifimanager -l pl
 Bezprzewodowy LAN.
@@ -645,7 +696,7 @@ Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
 
 %description lanbrowser
-KDE LAN Browser.
+A browser for Samba shares in your Local Area Network.
 
 %description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
@@ -684,8 +735,8 @@ Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kdenetwork-kopete-protocol-oscar < 10:3.1.93.031114-3
 
 %description libkopete_oscar
-A shared library which adds OSCAR protocol support needed eg. by
-AIM and ICQ.
+A shared library which adds OSCAR protocol support needed eg. by AIM
+and ICQ.
 
 %description libkopete_oscar -l pl
 Biblioteka dodaj±ca obs³ugê protoko³u OSCAR u¿ywanego miêdzy innymi
@@ -699,7 +750,7 @@ Requires:	kdelibs >= 9:%{version}
 Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
 
 %description librss
-rss library.
+Libraries for RSS/RDF/XML parsers in KDE.
 
 %description librss -l pl
 Biblioteka rss.
@@ -716,176 +767,6 @@ RSS parsers used by different applications.
 %description rss -l pl
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
-%package kdict-i18n
-Summary:	Internationalization and localization files for kdict
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
-Group:		X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kdict-i18n
-Internationalization and localization files for kdict.
-
-%description kdict-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kdict.
-
-%package kinetd-i18n
-Summary:	Internationalization and localization files for kinetd
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
-Group:		X11/Applications
-Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description kinetd-i18n
-Internationalization and localization files for kinetd.
-
-%description kinetd-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kinetd.
-
-%package kget-i18n
-Summary:	Internationalization and localization files for kget
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kgeta
-Group:		X11/Applications
-Requires:	%{name}-kget = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kget-i18n
-Internationalization and localization files for kget.
-
-%description kget-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kgeta.
-
-%package knewsticker-i18n
-Summary:	Internationalization and localization files for knewsticker
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewstickera
-Group:		X11/Applications
-Requires:	%{name}-knewsticker = %{epoch}:%{version}-%{release}
-Requires:	kdebase-desktop-i18n >= 9:%{version}
-
-%description knewsticker-i18n
-Internationalization and localization files for knewsticker.
-
-%description knewsticker-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla knewstickera.
-
-%package kopete-i18n
-Summary:	Internationalization and localization files for kopete
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kopete
-Group:		X11/Applications
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description kopete-i18n
-Internationalization and localization files for kopete.
-
-%description kopete-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kopete.
-
-%package kpf-i18n
-Summary:	Internationalization and localization files for kpf
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpf
-Group:		X11/Applications
-Requires:	%{name}-kpf = %{epoch}:%{version}-%{release}
-Requires:	kdebase-desktop-i18n >= 9:%{version}
-
-%description kpf-i18n
-Internationalization and localization files for kpf.
-
-%description kpf-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kpf.
-
-%package kppp-i18n
-Summary:	Internationalization and localization files for kppp
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kppp
-Group:		X11/Applications
-Requires:	%{name}-kppp = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description kppp-i18n
-Internationalization and localization files for kppp.
-
-%description kppp-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kppp.
-
-%package krfb-i18n
-Summary:	Internationalization and localization files for krfb
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla krfb
-Group:		X11/Applications
-Requires:	%{name}-krfb = %{epoch}:%{version}-%{release}
-Requires:	%{name}-kinetd-i18n = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description krfb-i18n
-Internationalization and localization files for krfb.
-
-%description krfb-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla krfb.
-
-%package ksirc-i18n
-Summary:	Internationalization and localization files for ksirc
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ksirc
-Group:		X11/Applications
-Requires:	%{name}-ksirc = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description ksirc-i18n
-Internationalization and localization files for ksirc.
-
-%description ksirc-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla ksirc.
-
-%package ktalkd-i18n
-Summary:	Internationalization and localization files for ktalkd
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ktalkd
-Group:		X11/Applications
-Requires:	%{name}-ktalkd = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-
-%description ktalkd-i18n
-Internationalization and localization files for ktalkd.
-
-%description ktalkd-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla ktalkd.
-
-%package kwifimanager-i18n
-Summary:	Internationalization and localization files for kwifimanager
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanagera
-Group:		X11/Applications
-Requires:	%{name}-kwifimanager = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description kwifimanager-i18n
-Internationalization and localization files for kwifimanager.
-
-%description kwifimanager-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kwifimanagera.
-
-%package lanbrowser-i18n
-Summary:	Internationalization and localization files for lanbrowser
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla lanbrowsera
-Group:		X11/Applications
-Requires:	%{name}-lanbrowser = %{epoch}:%{version}-%{release}
-Requires:	konqueror-i18n >= 9:%{version}
-
-%description lanbrowser-i18n
-Internationalization and localization files for lanbrowser.
-
-%description lanbrowser-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla lanbrowsera.
-
-%package rss-i18n
-Summary:	Internationalization and localization files for rss
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
-Group:		X11/Applications
-Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-i18n >= 9:%{version}
-
-%description rss-i18n
-Internationalization and localization files for rss.
-
-%description rss-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla rss.
-
 %prep
 %setup -q
 %patch1 -p1
@@ -896,7 +777,10 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 %patch6 -p1
 
 %build
-cp /usr/share/automake/config.sub admin
+cp %{_datadir}/automake/config.sub admin
+export kde_htmldir=%{_kdedocdir}
+export kde_libs_htmldir=%{_kdedocdir}
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
@@ -911,22 +795,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
-
-%if %{with i18n}
-if [ -f "%{SOURCE1}" ] ; then
-	bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
-	for f in $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/*.mo; do
-		if [ "`file $f | sed -e 's/.*,//' -e 's/message.*//'`" -le 1 ] ; then
-			rm -f $f
-		fi
-	done
-else
-	echo "No i18n sources found and building --with i18n. FIXIT!"
-	exit 1
-fi
-
-%endif
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
@@ -941,85 +811,7 @@ cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-%find_lang kdict		--with-kde
-%find_lang kget			--with-kde
-%find_lang knewsticker		--with-kde
-%find_lang kopete		--with-kde
-%find_lang kpf			--with-kde
-%find_lang kppp			--with-kde
-%find_lang krdc			--with-kde
-%find_lang krfb			--with-kde
-cat krdc.lang >> krfb.lang
-%find_lang ksirc		--with-kde
-%find_lang kwifimanager		--with-kde
-%find_lang lisa			--with-kde
-%find_lang lanbrowser		--with-kde
-cat lanbrowser.lang >> lisa.lang
 
-%if %{with i18n}
-
-#%%find_lang kxmlrpcd		--with-kde
-#%%find_lang kcmkxmlrpcd		--with-kde
-#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
-
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-%find_lang kcmktalkd		--with-kde
-cat kcmtalkd.lang >> ktalkd.lang
-cat kcmktalkd.lang >> ktalkd.lang
-
-%find_lang kcm_krfb		--with-kde
-cat kcm_krfb.lang >> krfb.lang
-
-%find_lang kcmlanbrowser	--with-kde
-cat kcmlanbrowser.lang >> lisa.lang
-%find_lang kio_lan		--with-kde
-cat kio_lan.lang >> lisa.lang
-
-%find_lang kppplogview		--with-kde
-cat kppplogview.lang >> kppp.lang
-
-%find_lang kwireless		--with-kde
-cat kwireless.lang >> kwifimanager.lang
-%find_lang kcmwifi		--with-kde
-cat kcmwifi.lang >> kwifimanager.lang
-
-%find_lang kdictapplet		--with-kde
-cat kdictapplet.lang >> kdict.lang
-
-%find_lang dcopservice		--with-kde
-%find_lang kinetd		--with-kde
-
-%endif
-
-files="kdict \
-kget \
-knewsticker \
-kopete \
-kpf \
-kppp \
-krfb \
-ksirc \
-kwifimanager \
-lisa"
-
-for i in $files; do
-	> ${i}_en.lang
-	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
-	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
-	mv ${i}.lang.1 ${i}.lang
-done
-
-durne=`ls -1 *.lang|grep -v _en`
-
-for i in $durne; 
-do
-	echo $i >> control
-	grep -v en\/ $i|grep -v apidocs >> ${i}.1
-	if [ -f ${i}.1 ] ; then
-		mv ${i}.1 ${i}
-	fi
-done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1052,22 +844,6 @@ fi
 %post	librss		-p /sbin/ldconfig
 %postun	librss		-p /sbin/ldconfig
 
-%if %{with i18n}
-%files kdict-i18n -f kdict.lang
-%files kget-i18n -f kget.lang
-%files knewsticker-i18n -f knewsticker.lang
-%files kopete-i18n -f kopete.lang
-%files kpf-i18n -f kpf.lang
-%files kppp-i18n -f kppp.lang
-%files krfb-i18n -f krfb.lang
-%files ksirc-i18n -f ksirc.lang
-%files ktalkd-i18n -f ktalkd.lang
-%files kwifimanager-i18n -f kwifimanager.lang
-%files lanbrowser-i18n -f lisa.lang
-%files kinetd-i18n -f kinetd.lang
-%files rss-i18n -f dcopservice.lang
-%endif
-
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so
@@ -1076,7 +852,7 @@ fi
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/rss
 
-%files kdict -f kdict_en.lang
+%files kdict
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
 %{_libdir}/kde3/kdict_panelapplet.la
@@ -1085,8 +861,9 @@ fi
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kde/kdict.desktop
 %{_iconsdir}/*/*/*/kdict*
+%{_kdedocdir}/en/kdict
 
-%files kget -f kget_en.lang
+%files kget
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -1096,6 +873,7 @@ fi
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kde/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
+%{_kdedocdir}/en/kget
 
 %files kinetd
 %defattr(644,root,root,755)
@@ -1105,7 +883,7 @@ fi
 %{_datadir}/services/kded/kinetd.desktop
 %{_datadir}/servicetypes/kinetdmodule.desktop
 
-%files knewsticker -f knewsticker_en.lang
+%files knewsticker
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %{_libdir}/kde3/knewsticker_panelapplet.la
@@ -1116,8 +894,9 @@ fi
 %{_datadir}/applnk/.hidden/knewstickerstub.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
+%{_kdedocdir}/en/knewsticker
 
-%files kopete -f kopete_en.lang
+%files kopete
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
@@ -1177,6 +956,7 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
+%{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1366,7 +1146,7 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/services/kopete_webpresence.desktop
 
-%files kpf -f kpf_en.lang
+%files kpf
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kpf_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
@@ -1375,8 +1155,9 @@ fi
 %{_datadir}/apps/kicker/applets/kpfapplet.desktop
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_iconsdir}/*/*/*/kpf*
+%{_kdedocdir}/en/kpf
 
-%files kppp -f kppp_en.lang
+%files kppp
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
@@ -1384,8 +1165,9 @@ fi
 %{_desktopdir}/kde/Kppp.desktop
 %{_desktopdir}/kde/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
+%{_kdedocdir}/en/kppp
 
-%files krfb -f krfb_en.lang
+%files krfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
@@ -1403,8 +1185,9 @@ fi
 %{_desktopdir}/kde/krdc.desktop
 %{_iconsdir}/*/*/*/krdc*
 %{_iconsdir}/[!l]*/*/*/krfb*
+%{_kdedocdir}/en/krfb
 
-%files ksirc -f ksirc_en.lang
+%files ksirc
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
@@ -1419,6 +1202,7 @@ fi
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
+%{_kdedocdir}/en/ksirc
 
 %files ktalkd
 %defattr(644,root,root,755)
@@ -1431,6 +1215,7 @@ fi
 %{_datadir}/sounds/ktalkd.wav
 %{_desktopdir}/kde/kcmktalkd.desktop
 %{_iconsdir}/*/*/*/ktalkd.png
+%{_kdedocdir}/en/ktalkd
 
 #%files kxmlrpcd -f kxmlrpcd.lang
 #%defattr(644,root,root,755)
@@ -1443,7 +1228,7 @@ fi
 #%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 #%{_datadir}/services/kxmlrpcd.desktop
 
-%files kwifimanager -f kwifimanager_en.lang
+%files kwifimanager
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kwifimanager
 %{_libdir}/libkwireless.la
@@ -1454,8 +1239,9 @@ fi
 %{_datadir}/apps/kwifimanager
 %{_datadir}/applications/kde/kcmwifi.desktop
 %{_datadir}/applications/kde/kwifimanager.desktop
+%{_kdedocdir}/en/kwifimanager
 
-%files lanbrowser -f lisa_en.lang
+%files lanbrowser
 %defattr(644,root,root,755)
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
@@ -1474,6 +1260,7 @@ fi
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
+%{_kdedocdir}/en/lisa
 
 %files libkopete
 %defattr(644,root,root,755)
