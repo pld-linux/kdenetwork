@@ -1,4 +1,4 @@
-
+%bcond_without	xmms
 %define		_state		stable
 %define		_kdever		3.4
 %define		_ver		3.4.0
@@ -24,6 +24,7 @@ Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
+Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 BuildRequires:	autoconf
@@ -41,7 +42,9 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 #BuildRequires:	unsermake >= 040511
+%if %{with xmms}
 BuildRequires:	xmms-devel
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libkopete_oscar.so.1
@@ -559,7 +562,9 @@ Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 #Requires:	kdemultimedia-noatun >= 3.1
 #Requires:	kdemultimedia-kscd >= 3.1
+%if %{with xmms}
 Requires:	xmms >= 1.0.0
+%endif
 
 %description kopete-tool-nowlistening
 This Kopete plugin tells selected live chats what you're currently
@@ -891,6 +896,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
+%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
