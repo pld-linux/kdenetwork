@@ -351,7 +351,7 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 for plik in `find ./ -name *.desktop | grep -l '\[nb\]/'` ; do
 	echo $plik
-	echo -e 's/\[nb\]/[no]/\n,w' | ed $plik
+	echo -e ',s/\[nb\]/[no]/\n,w' | ed $plik
 done
 
 %{__make} -f admin/Makefile.common cvs
