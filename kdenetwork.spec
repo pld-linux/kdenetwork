@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -847,7 +847,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-#%patch100 -p1
+%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
@@ -892,6 +892,36 @@ for f in `find . -name \*.desktop`; do
 		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
 	fi
 done
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Calendar;/' \
+	korganizer/korganizer.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
+	kpilot/kpilot/kpilotdaemon.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
+	kpilot/kpilot/kpilot.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
+	kpilot/conduits/docconduit/kpalmdoc.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;ContactManagement;/' \
+	kaddressbook/kaddressbook.desktop:
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;X-PIM/' \
+	kontact/src/Kontact.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Email;/' \
+	kmail/KMail.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;News;/' \
+	knode/KNode.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
+	kmobile/kmobile.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
+	kandy/src/kandy.desktop
 
 %build
 cp %{_datadir}/automake/config.sub admin
