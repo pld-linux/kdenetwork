@@ -1,10 +1,10 @@
 # Conditional build:
-#	--with		kmail_mainwin_patch	aplies patch assinging icons
+#	--with		kmail_toolbars_patch	aplies patch assinging icons
 #						to some toolbar buttons in kmail
 
 %define		_ver		3.0.1
 #define		_sub_ver
-%define		_rel		5
+%define		_rel		6
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -30,7 +30,7 @@ Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
-%{?_with_kmail_mainwin_patch:Patch3: %{name}-kmail_mainwin.patch}
+%{?_with_kmail_toolbars_patch:Patch3: %{name}-kmail_toolbars.patch}
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= %{version}
@@ -290,7 +290,7 @@ do kdenetwork.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%if%{?_with_kmail_mainwin_patch:1}%{!?_with_kmail_mainwin_patch:0}
+%if%{?_with_kmail_toolbars_patch:1}%{!?_with_kmail_toolbars_patch:0}
 %patch3 -p1
 %endif
 
