@@ -53,15 +53,15 @@ Aplikacje sieciowe KDE. Pakiet zawiera:
 - KMail - program pocztowy, z poprawion± obs³ug± zestawów znaków
 - KORN - program pokazuj±cy stan skrzynek pocztowych
 - KPPP - program do nawi±zywania po³±czeñ modemowych
-- KNODE - Program do czytania newsów
-- KSirc - Klient IRC
+- KNODE - program do czytania newsów
+- KSirc - klient IRC
 - KIT - klient AOL Instant Messenger
 - KNewsticker - News Ticker
-- Lanbrowser - Przegl±darka LAN-u
-- KDict - Klient s³ownika
-- KXmlRpcd - Daemon XmlRpc
-- KPF - Applet publicznego serwera plików
-- KTalkd - Daemon Talk
+- Lanbrowser - przegl±darka LAN-u
+- KDict - klient s³ownika
+- KXmlRpcd - demon XmlRpc
+- KPF - applet publicznego serwera plików
+- KTalkd - demon Talk
 
 %description -l pt_BR
 Aplicações de Rede para o KDE.
@@ -167,6 +167,7 @@ Cliente de IRC do KDE.
 Summary:	KDE AOL Instant Messenger
 Summary(pl):	Klient AOL Instant Messenger dla KDE
 Summary(pt_BR):	Comunicador que usa o protocolo AOL
+License:	LGPL
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 
@@ -204,12 +205,13 @@ Requires:	kdelibs >= %{version}
 %description lanbrowser
 KDE LAN Browser.
 
-%description lanbrowser
+%description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
 %package kdict
 Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
+License:	Artistic
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 Provides:	kdict
@@ -235,7 +237,7 @@ Requires:	kdelibs = %{version}
 KDE XmlRpc Daemon.
 
 %description kxmlrpcd -l pl
-Deamon XmlRpc dla KDE.
+Demon XmlRpc dla KDE.
 
 %package kpf
 Summary:	Public fileserver applet
@@ -259,7 +261,7 @@ Requires:	kdelibs = %{version}
 Talk daemon.
 
 %description ktalkd -l pl
-Daemon talk.
+Demon talk.
 
 %package devel
 Summary:	Header files and development documentation
@@ -279,7 +281,7 @@ Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
 %prep
-%setup -q
+%setup	-q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -350,10 +352,10 @@ cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post   kdict -p /sbin/ldconfig
+%post	kdict -p /sbin/ldconfig
 %postun kdict -p /sbin/ldconfig
 
 %files -f libkdenetwork.lang
