@@ -1,6 +1,6 @@
 %define		_ver		3.0
 #define		_sub_ver
-%define		_rel		0.9
+%define		_rel		1
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -214,40 +214,40 @@ kdict é um utilitário de dicionário que usa servidores dictd da
 Internet.
 
 %package kxmlrpcd
-Summary:	-
-Summary(pl):	-
+Summary:	KDE XmlRpc Daemon
+Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
 Requires:	kdelibs = %{version}
 
 %description kxmlrpcd
--
+KDE XmlRpc Daemon.
 
 %description kxmlrpcd -l pl
--
+Deamon XmlRpc dla KDE.
 
 %package kpf
-Summary:	-
-Summary(pl):	-
+Summary:	Public fileserver applet
+Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
 Requires:	kdelibs = %{version}
 
 %description kpf
--
+Public fileserver applet.
 
 %description kpf -l pl
--
+Applet publicznego serwera plików.
 
 %package ktalkd
-Summary:	-
-Summary(pl):	-
+Summary:	Talk daemon
+Summary(pl):	Daemon talk
 Group:		X11/Applications
 Requires:	kdelibs = %{version}
 
 %description ktalkd
--
+Talk daemon.
 
 %description ktalkd -l pl
--
+Daemon talk.
 
 %package devel
 Summary:	Header files and development documentation
@@ -435,11 +435,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ktalkd
 %defattr(644,root,root,755)
-%{_bindir}/k*talkd*
+%attr(755,root,root)%{_bindir}/k*talkd*
 %{_libdir}/kde3/libkcm_ktalkd.??
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_pixmapsdir}/*/*/*/ktalkd*
+%{_applnkdir}/Settings/KDE/Network/kcmktalkd.desktop
 
 %files devel
 %defattr(644,root,root,755)
