@@ -102,7 +102,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-kicker >= 9:%{version}
+Requires:	kdebase-core >= 9:%{version}
 Provides:	kdict
 
 %description kdict
@@ -1071,7 +1071,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
 %{_libdir}/kde3/kpfpropertiesdialog.la
 %attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
-%{_datadir}/apps/kicker/applets/kpf*
+%{_datadir}/apps/kicker/applets/kpfapplet.desktop
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_iconsdir}/*/*/*/kpf*
 
