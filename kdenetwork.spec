@@ -1,6 +1,6 @@
 %define		_ver		3.0.1
 #define		_sub_ver
-%define		_rel		3
+%define		_rel		4
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -321,29 +321,34 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Sett
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
-#%find_lang kdict --with-kde
-#%find_lang knewsticker --with-kde
-#%find_lang kpf --with-kde
-#%find_lang ktalkd --with-kde
-#%find_lang lisa --with-kde
-
-
-%find_lang tmp.%{name} --with-kde --all-name
-grep -E libkdenetwork tmp.%{name}.lang > %{name}.lang
-
-grep -E kdict tmp.%{name}.lang > kdict.lang
-grep -E kmail tmp.%{name}.lang > kmail.lang
-grep -E newsticker tmp.%{name}.lang > knewsticker.lang
-grep -E kppp tmp.%{name}.lang > kppp.lang
-grep -E ktalkd tmp.%{name}.lang > ktalkd.lang
-grep -E kxmlrpcd tmp.%{name}.lang > kxmlrpcd.lang
-grep -E kcmlanbrowser\|kio_lan tmp.%{name}.lang > lanbrowser.lang
-
+%find_lang kdict --with-kde
+%find_lang kdictapplet --with-kde
+cat kdictapplet.lang >> kdict.lang
+%find_lang knewsticker --with-kde
+%find_lang kcmnewsticker --with-kde
+cat kcmnewsticker.lang >> knewsticker.lang
+%find_lang kpf --with-kde
+%find_lang ktalkd --with-kde
+%find_lang kcmktalkd --with-kde
+cat kcmktalkd.lang >> ktalkd.lang
+%find_lang lisa --with-kde
+%find_lang kcmlanbrowser --with-kde
+%find_lang kio_lan --with-kde
+cat kcmlanbrowser.lang kio_lan.lang >> lisa.lang
 %find_lang kit --with-kde
+%find_lang kmail --with-kde
+%find_lang kmailcvt --with-kde
+cat kmailcvt.lang >> kmail.lang
 %find_lang knode --with-kde
 %find_lang korn --with-kde
-%find_lang kpf --with-kde
+%find_lang kppp --with-kde
+%find_lang kppplogview --with-kde
+cat kppplogview.lang >> kppp.lang
 %find_lang ksirc --with-kde
+%find_lang kxmlrpcd --with-kde
+%find_lang kcmkxmlrpcd --with-kde
+cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
+%find_lang libkdenetwork --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -354,7 +359,7 @@ rm -rf $RPM_BUILD_ROOT
 %post   kdict -p /sbin/ldconfig
 %postun kdict -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files -f libkdenetwork.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmimelib.la
 %attr(755,root,root) %{_libdir}/libmimelib.so.*.*
@@ -368,14 +373,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Mail/KMail.desktop
 %{_applnkdir}/Network/Mail/kmailcvt.desktop
 %{_datadir}/apps/kmail
-#%{_htmldir}/en/kmail
 %{_pixmapsdir}/hicolor/*x*/apps/kmail*.png
 
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/korn
 %{_applnkdir}/Network/Mail/KOrn.desktop
-#%{_htmldir}/en/korn
 %{_pixmapsdir}/hicolor/*x*/apps/korn.png
 
 %files kppp -f kppp.lang
@@ -385,7 +388,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Network/Misc/Kppp.desktop
 %{_applnkdir}/Network/Misc/kppplogview.desktop
 %{_datadir}/apps/kppp
-#%{_htmldir}/en/kppp
 %{_pixmapsdir}/hicolor/*x*/apps/kppp.png
 
 %files knode -f knode.lang
@@ -393,7 +395,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/knode
 %{_applnkdir}/Network/News/KNode.desktop
 %{_datadir}/apps/knode
-#%{_htmldir}/en/knode
 %{_pixmapsdir}/hicolor/*x*/apps/knode.png
 
 %files ksirc -f ksirc.lang
@@ -406,14 +407,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-#%{_htmldir}/en/ksirc
 %{_pixmapsdir}/*/*/*/ksirc*
 
 %files kit -f kit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kit
 %{_applnkdir}/Network/Misc/kit.desktop
-#%{_htmldir}/en/kit
 %{_datadir}/apps/kit
 %{_pixmapsdir}/hicolor/*x*/apps/kit.png
 
@@ -432,7 +431,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kconf_update/*
 %{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
 
-%files lanbrowser -f lanbrowser.lang
+%files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
