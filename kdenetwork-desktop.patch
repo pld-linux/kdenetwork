@@ -1,139 +1,47 @@
---- kdenetwork-3.0.4/kit/kit.desktop~	Mon Nov 11 18:31:35 2002
-+++ kdenetwork-3.0.4/kit/kit.desktop	Mon Nov 11 18:31:35 2002
-@@ -58,7 +58,7 @@
- MimeType=
- DocPath=kit/index.html
- Exec=kit
--Icon=kit
-+Icon=kit.png
- TerminalOptions=
- Path=
- Type=Application
---- kdenetwork-3.0.4/kdict/kdict.desktop~	Mon Nov 11 18:30:06 2002
-+++ kdenetwork-3.0.4/kdict/kdict.desktop	Mon Nov 11 18:30:06 2002
-@@ -2,7 +2,7 @@
+--- kdenetwork-3.0.4/kmailcvt/kmailcvt.desktop.orig	Tue Nov 19 00:23:48 2002
++++ kdenetwork-3.0.4/kmailcvt/kmailcvt.desktop	Tue Nov 19 00:25:48 2002
+@@ -1,6 +1,6 @@
+ [KDE Desktop Entry]
  Encoding=UTF-8
- Type=Application
- Exec=kdict -caption "%c" %i %m
--Icon=kdict
-+Icon=kdict.png
- Terminal=0
- Name=Kdict
- Name[cs]=KDict
---- kdenetwork-3.0.4/kmail/KMail.desktop~	Mon Nov 11 18:34:18 2002
-+++ kdenetwork-3.0.4/kmail/KMail.desktop	Mon Nov 11 18:34:18 2002
-@@ -12,7 +12,7 @@
- Name[xx]=xx
- Type=Application
- Exec=kmail -caption "%c" %i %m
--Icon=kmail
-+Icon=kmail.png
- DocPath=kmail/index.html
- GenericName=Mail Client
- GenericName[af]=Pos Kliënt
---- kdenetwork-3.0.4/kmailcvt/kmailcvt.desktop~	Mon Nov 11 18:35:03 2002
-+++ kdenetwork-3.0.4/kmailcvt/kmailcvt.desktop	Mon Nov 11 18:35:03 2002
-@@ -44,6 +44,6 @@
+-Name=KMail/KAB Import Tool
++Name=KMail/KAB import tool
+ Name[af]=Kpos/Kab In voer Program
+ Name[ar]=أداة استيراد KMail/دفتر العناوين
+ Name[bg]=Импорт на Инструменти в KMail/KAB
+@@ -23,7 +23,7 @@
+ Name[lv]=KMail/KAB Importa Rīks
+ Name[nb]=KMail-/KAB-importverktøy
+ Name[nn]=KMail-/KAB-importverktøy
+-Name[pl]=Narzędzie do importu książek adresowych KAB
++Name[pl]=Import do KMail/KAB
+ Name[pt]=Ferramenta de Importação do KMail/KAB
+ Name[pt_BR]=Importação - Kmail/KAB
+ Name[ro]=Utilitar importare KMail/KAB
+@@ -42,6 +42,8 @@
+ Name[zh_CN]=KMail/KAB 导入工具
+ Name[zh_TW]=KMail/KAB 匯入工具
  Name[zu]=Ithuluzi Lohwebo lwangaphakathi lwe KMail/KAB
++Comment=KMail/KAB adressbook import tool
++Comment[pl]=Narzędzie do importu książek adresowych KAB
  Type=Application
  Exec=kmailcvt -caption "%c" %i %m  
--Icon=kmailcvt
-+Icon=kmailcvt.png
- Terminal=0
- X-DCOP-ServiceType=Multi
---- kdenetwork-3.0.4/knewsticker/knewsticker-standalone.desktop~	Mon Nov 11 18:36:29 2002
-+++ kdenetwork-3.0.4/knewsticker/knewsticker-standalone.desktop	Mon Nov 11 18:36:29 2002
-@@ -18,7 +18,7 @@
- Name[zu]=Umlungiseleli Wezindaba ze K
- Type=Application
- Exec=appletproxy $KDEDIR/share/apps/kicker/applets/knewsticker.desktop
--Icon=knewsticker
-+Icon=knewsticker.png
- DocPath=knewsticker/index.html
- GenericName=News Ticker
- GenericName[af]=Nuus Tikker
---- kdenetwork-3.0.4/knewsticker/knewstickerstub/knewstickerstub.desktop~	Mon Nov 11 18:37:24 2002
-+++ kdenetwork-3.0.4/knewsticker/knewstickerstub/knewstickerstub.desktop	Mon Nov 11 18:37:24 2002
-@@ -97,7 +97,7 @@
- Comment[zu]=Isiqalo sesiphelo sezindaba zesiphelo senhlanganiso lomlekeleli wezindaba ze K
- MimeType=text/rdf;text/rss
- Exec=knewstickerstub -a %u
--Icon=knode
-+Icon=knode.png
- NoDisplay=true
- Type=Application
- Terminal=0
---- kdenetwork-3.0.4/knewsticker/kcmnewsticker/kcmnewsticker.desktop~	Mon Nov 11 18:39:37 2002
-+++ kdenetwork-3.0.4/knewsticker/kcmnewsticker/kcmnewsticker.desktop	Mon Nov 11 18:39:37 2002
-@@ -1,6 +1,6 @@
- [Desktop Entry]
- Encoding=UTF-8
--Icon=knewsticker
-+Icon=knewsticker.png
- Type=Application
- Exec=kcmshell kcmnewsticker
- DocPath=knewsticker/configuration.html#config-general
---- kdenetwork-3.0.4/knode/KNode.desktop~	Mon Nov 11 18:41:32 2002
-+++ kdenetwork-3.0.4/knode/KNode.desktop	Mon Nov 11 18:41:32 2002
-@@ -2,7 +2,7 @@
- Encoding=UTF-8
- Type=Application
- Exec=knode -caption "%c" %i %m
--Icon=knode
-+Icon=knode.png
- Terminal=0
- Name=KNode
- Name[af]=Knode
---- kdenetwork-3.0.4/korn/KOrn.desktop~	Mon Nov 11 18:51:32 2002
-+++ kdenetwork-3.0.4/korn/KOrn.desktop	Mon Nov 11 18:51:32 2002
-@@ -46,7 +46,7 @@
- GenericName[zh_TW]=郵件提示
- GenericName[zu]=Umposi Ohlomile
- Exec=korn  -caption "%c" %i %m %f
--Icon=korn
-+Icon=korn.png
- TerminalOptions=
- Path=
- DocPath=korn/index.html
---- kdenetwork-3.0.4/kppp/Kppp.desktop~	Mon Nov 11 18:56:32 2002
-+++ kdenetwork-3.0.4/kppp/Kppp.desktop	Mon Nov 11 18:56:32 2002
-@@ -52,7 +52,7 @@
+ Icon=kmailcvt.png
+--- kdenetwork-3.0.4/kppp/logview/kppplogview.desktop.orig	Tue Nov 19 00:29:35 2002
++++ kdenetwork-3.0.4/kppp/logview/kppplogview.desktop	Tue Nov 19 00:30:19 2002
+@@ -25,7 +25,7 @@
+ Name[lv]=KPPP - Žurnāla Skatītājs
+ Name[nb]=KPPP - loggvisning
+ Name[nn]=KPPP - loggvising
+-Name[pl]=KPPP - Przeglądarka logów
++Name[pl]=KPPP - logi
+ Name[pt]=KPPP - Visualizador dos Registos
+ Name[pt_BR]=KPPP - Visualisador de Logs
+ Name[ro]=Jurnal conectare Internet
+@@ -44,6 +44,7 @@
+ Name[zh_CN]=KPPP - 记录查看
+ Name[zh_TW]=KPPP - 紀錄檔檢視器
+ Name[zu]=KPPP - Umboniso Wongeniso
++Comment[pl]=KPPP - Przeglądarka logów
  MimeType=
- DocPath=kppp/index.html
- Exec=kppp %i %m
--Icon=kppp
-+Icon=kppp.png
- TerminalOptions=
- Path=
- Type=Application
---- kdenetwork-3.0.4/ksirc/ksirc.desktop~	Mon Nov 11 19:00:07 2002
-+++ kdenetwork-3.0.4/ksirc/ksirc.desktop	Mon Nov 11 19:00:07 2002
-@@ -62,7 +62,7 @@
- Name[xx]=xx
- MimeType=
- Exec=ksirc %i %m
--Icon=ksirc
-+Icon=ksirc.png
- TerminalOptions=
- Path=
- Type=Application
---- kdenetwork-3.0.4/kpf/kpfapplet.desktop~	Mon Nov 11 19:04:58 2002
-+++ kdenetwork-3.0.4/kpf/kpfapplet.desktop	Mon Nov 11 19:04:58 2002
-@@ -44,6 +44,6 @@
- Name[zh_CN]=公共文件服务器
- Name[zh_TW]=公共檔案伺服器
- Name[zu]=Ifayela Lomlekeleli Wovelele
--Icon=kpf
-+Icon=kpf.png
- X-KDE-Library=kpfapplet
- X-KDE-UniqueApplet=true
---- kdenetwork-3.0.4/ktalkd/kcmktalkd/kcmktalkd.desktop~	Mon Nov 11 19:05:55 2002
-+++ kdenetwork-3.0.4/ktalkd/kcmktalkd/kcmktalkd.desktop	Mon Nov 11 19:05:55 2002
-@@ -1,6 +1,6 @@
- [Desktop Entry]
- Encoding=UTF-8
--Icon=ktalkd
-+Icon=ktalkd.png
- Type=Application
- DocPath=kcontrol/talk.html
- Exec=kcmshell kcmktalkd
+ Exec=kppplogview
+ Icon=kppp
