@@ -4,8 +4,11 @@
 #
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040424
+%define		_snap		040504
 %define		_packager	adgor
+
+%define		_minlibsevr	9:3.2.90.040503
+%define		_minbaseevr	9:3.2.90.040503		
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -31,12 +34,11 @@ Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		kde-common-QTDOCDIR.patch
-Patch4:		%{name}-libgadu_version.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:%{version}
+BuildRequires:	kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libiw-devel
 BuildRequires:	libtool
@@ -101,7 +103,7 @@ PPP krn: leitor de notícias
 Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs-devel >= 9:%{version}
+Requires:	kdelibs-devel >= %{_minlibsevr}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
@@ -123,7 +125,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minlibsevr}
 Provides:	kdict
 
 %description kdict
@@ -140,8 +142,8 @@ Internet.
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
-Obsoletes:	%{name}-krfb < 9:3.1-6
+Requires:	kdelibs >= %{_minlibsevr}
+Obsoletes:	kdenetwork-krfb < 9:3.1-6
 
 %description kinetd
 An Internet daemon that starts network services on demand.
@@ -153,7 +155,7 @@ Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description kget
 File Downloader.
@@ -166,7 +168,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-desktop >= 9:%{version}
+Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description knewsticker
 KDE News Ticker.
@@ -181,7 +183,7 @@ Miniaplicativo de exibição de notícias para o painel Kicker.
 Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-tools-autoaway
@@ -558,7 +560,7 @@ na stronie WWW.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-desktop >= 9:%{version}
+Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description kpf
 Public fileserver applet.
@@ -571,7 +573,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	ppp
 
 %description kppp
@@ -589,7 +591,7 @@ Summary:	KDE IRC client
 Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	perl-Socket6 >= 0.11
 %description ksirc
 KDE IRC client.
@@ -604,7 +606,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 
 %description krfb
@@ -617,7 +619,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description ktalkd
 Talk daemon.
@@ -629,7 +631,7 @@ Demon talk.
 Summary:	Wireless LAN
 Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Requires:	wireless-tools
 
 %description kwifimanager
@@ -642,7 +644,7 @@ Bezprzewodowy LAN.
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -654,7 +656,7 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-Requires:	konqueror >= 9:%{version}
+Requires:	konqueror >= %{_minbaseevr}
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
@@ -669,7 +671,7 @@ Przegl±darka LAN-u dla KDE.
 Summary:	kopete library
 Summary(pl):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
 
 %description libkopete
@@ -710,7 +712,7 @@ przez AIM i ICQ.
 Summary:	rss library
 Summary(pl):	Biblioteka rss
 Group:		X11/Libraries
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
 
 %description librss
@@ -730,6 +732,8 @@ RSS parsers used by different applications.
 
 %description rss -l pl
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
+
+# <i18n stuff>
 
 %package i18n
 Summary:	Common internationalization and localization files for kdenetwork
@@ -923,13 +927,14 @@ Internationalization and localization files for rss.
 %description rss-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla rss.
 
+# </i18n stuff>
+
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
@@ -949,8 +954,6 @@ export UNSERMAKE=/usr/share/unsermake/unsermake
 	--disable-rpath \
 	--enable-final \
 	--with-qt-libraries=%{_libdir}
-
-read
 
 %{__make}
 
