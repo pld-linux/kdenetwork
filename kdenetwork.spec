@@ -23,9 +23,9 @@ BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define 	_prefix 	/usr/X11R6
-%define         _fontdir        /usr/share/fonts
-%define         _htmldir        /usr/share/doc/kde/HTML
+%define		_prefix		/usr/X11R6
+%define		_fontdir	/usr/share/fonts
+%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KDE network applications. Package includes:
@@ -36,7 +36,6 @@ KDE network applications. Package includes:
 - KSirc - IRC client
 - KTalkd - takt daemon
 
-%description -l es
 %description -l pl
 Aplikacje sieciowe KDE. Pakiet zawiera:
 - KMail - program pocztowy, z poprawion± obs³ug± zestawów znaków
@@ -73,17 +72,17 @@ from POP3 accounts and from local mailboxes.
 
 This package contains version patched for better charset support.
 
-%description -l pl kmail
+%description kmail -l pl
 Program pocztowy dla KDE. Potrafi odczytywaæ pocztê z kont POP3 jak i
 lokalnych skrzynek.
 
 Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów
 znaków.
 
-%description -l pt_BR kmail
+%description kmail -l pt_BR
 Poderoso cliente / leitor de e-mails para o KDE.
 
-%package korn 
+%package korn
 Summary:	KDE 'biff' application
 Summary(pl):	Wska¼nik skrzynki pocztowej dla KDE
 Summary(pt_BR):	Miniaplicativo de monitoração da caixa de correio
@@ -98,15 +97,15 @@ Requires:	kdelibs >= %{version}
 %description korn
 A simple program showing number of mails in your folders.
 
-%description -l pl korn
+%description korn -l pl
 Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach
 pocztowych.
 
-%description -l pt_BR korn
+%description korn -l pt_BR
 Miniaplicativo de monitoração da caixa de correio.
 
 %package kppp
-Summary:	KDE PPP dialer	
+Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
@@ -116,20 +115,20 @@ Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
 Requires:	kdelibs >= %{version}
-Requires:	ppp 
+Requires:	ppp
 
 %description kppp
 A PPPP dialer for KDE. It supports multiple accounts.
 
-%description -l pl kppp
+%description kppp -l pl
 Program no nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
 interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 
-%description -l pt_BR kppp
+%description kppp -l pt_BR
 O discador para Internet.
 
 %package knode
-Summary:	KDE News Reader	
+Summary:	KDE News Reader
 Summary(pl):	Czytnik newsów dla KDE
 Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
@@ -144,10 +143,10 @@ Requires:	kdelibs >= %{version}
 This is a news reader for KDE. It has threading and everything else
 you need to be happy reading your news.
 
-%description -l pl knode
+%description knode -l pl
 Czytnik newsów dla KDE. Obs³uguje w±tki oraz killfile.
 
-%description -l pt_BR knode
+%description knode -l pt_BR
 Leitor de notícias (news) do KDE.
 
 %package ksirc
@@ -165,10 +164,10 @@ Requires:	kdelibs >= %{version}
 %description ksirc
 KDE IRC client.
 
-%description -l pl ksirc
+%description ksirc -l pl
 Klient IRC dla KDE.
 
-%description -l pt_BR ksirc
+%description ksirc -l pt_BR
 Cliente de IRC do KDE.
 
 %package kit
@@ -186,14 +185,15 @@ Requires:	kdelibs >= %{version}
 %description kit
 KDE AOL Instant Messenger.
 
-%description -l pl kit
+%description kit -l pl
 Klient AOL Instant Messenger dla KDE.
 
-%description -l pt_BR kit
+%description kit -l pt_BR
 Comunicador que usa o protocolo AOL.
 
 %package knewsticker
 Summary:	KDE News Ticker
+Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
 Group(de):	X11/Applikationen
@@ -206,11 +206,15 @@ Requires:	kdelibs >= %{version}
 %description knewsticker
 KDE News Ticker.
 
-%description -l pt_BR knewsticker
+%description knewsticker -l pl
+News Ticker dla KDE.
+
+%description knewsticker -l pt_BR
 Miniaplicativo de exibição de notícias para o painel Kicker.
 
 %package lanbrowser
-Summary:	KDE Lan Browser
+Summary:	KDE LAN Browser
+Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
@@ -220,10 +224,14 @@ Group(pt):	X11/Aplicações
 Requires:	kdelibs >= %{version}
 
 %description lanbrowser
-KDE Lan Browser.
+KDE LAN Browser.
+
+%description lanbrowser
+Przegl±darka LAN-u dla KDE.
 
 %package kdict
 Summary:	Online dictionary client
+Summary(pl):	Klient s³ownika
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
@@ -235,12 +243,16 @@ Requires:	kdelibs >= %{version}
 %description kdict
 Online dictionary client.
 
-%description -l pt_BR kdict
+%description kdict -l pl
+Klient s³ownika.
+
+%description kdict -l pt_BR
 kdict é um utilitário de dicionário que usa servidores dictd da
-internet.
+Internet.
 
 %package devel
 Summary:	Header files and development documentation
+Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
 Summary(pt_BR):	Arquivos de inclusão para compilar aplicações que usem as bibliotecas do kdenetwork
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
@@ -255,7 +267,10 @@ Requires:	kdelibs = %{version}
 %description devel
 Header files and development documentation.
 
-%description -l pt_BR devel
+%description devel -l pl
+Pliki nag³ówkowe i dokumentacja developerska.
+
+%description devel -l pt_BR
 Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
@@ -272,7 +287,7 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
- 	--with-pam="yes"
+	--with-pam="yes"
 %{__make}
 
 %install
@@ -286,9 +301,9 @@ install kmailcvt/kmailcvt.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install knode/KNode.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/News
 install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
-install kppp/Kppp.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install kppp/logview/kppplogview.desktop 	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install kit/kit.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+install kppp/Kppp.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+install kppp/logview/kppplogview.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+install kit/kit.desktop			$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 
 %clean
@@ -297,7 +312,7 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post   kdict  -p /sbin/ldconfig
+%post   kdict -p /sbin/ldconfig
 %postun kdict -p /sbin/ldconfig
 
 %files
