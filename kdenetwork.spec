@@ -1,7 +1,7 @@
 
 %define		_state		unstable
-%define		_ver		3.1.91
-%define		_snap		030918
+%define		_ver		3.1.92
+%define		_snap		030930
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -9,13 +9,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	81a2328891e262687d0f19cfc401b2a7
+# Source0-md5:	12b53a31adfd7ddc5b4f044a920e4028
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -98,7 +98,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-kicker >= %{version}
+Requires:	kdebase-kicker >= 9:%{version}
 Provides:	kdict
 
 %description kdict
@@ -115,7 +115,7 @@ Internet.
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 9:%{version}
 Obsoletes:	%{name}-krfb < 9:3.1-6
 
 %description kinetd
@@ -128,7 +128,7 @@ Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
+Requires:	kdebase-core >= 9:%{version}
 
 %description kget
 File Downloader.
@@ -141,7 +141,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-kicker >= %{version}
+Requires:	kdebase-kicker >= 9:%{version}
 
 %description knewsticker
 KDE News Ticker.
@@ -187,7 +187,7 @@ nowych programistów, na których mo¿na opieraæ nowe wtyczki.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-kicker >= %{version}
+Requires:	kdebase-kicker >= 9:%{version}
 
 %description kpf
 Public fileserver applet.
@@ -200,7 +200,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
+Requires:	kdebase-core >= 9:%{version}
 Requires:	ppp
 
 %description kppp
@@ -218,7 +218,7 @@ Summary:	KDE IRC client
 Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
+Requires:	kdebase-core >= 9:%{version}
 
 %description ksirc
 KDE IRC client.
@@ -233,7 +233,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
+Requires:	kdebase-core >= 9:%{version}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 
 %description krfb
@@ -246,7 +246,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdebase-core >= %{version}
+Requires:	kdebase-core >= 9:%{version}
 
 %description ktalkd
 Talk daemon.
@@ -258,7 +258,7 @@ Demon talk.
 Summary:	Wireless LAN
 Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 9:%{version}
 
 %description kwifimanager
 Wireless LAN.
@@ -270,7 +270,7 @@ Bezprzewodowy LAN.
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdelibs >= 9:%{version}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -352,7 +352,9 @@ cd -
 %find_lang kopete		--with-kde
 %find_lang kpf			--with-kde
 %find_lang kppp			--with-kde
+%find_lang krdc			--with-kde
 %find_lang krfb			--with-kde
+cat krdc.lang >> krfb.lang
 %find_lang ksirc		--with-kde
 %find_lang ktalkd		--with-kde
 %find_lang kcmtalkd		--with-kde
@@ -494,6 +496,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
 %{_libdir}/kde3/kcm_kopete_webpresence.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
+%{_libdir}/kde3/kcm_kopete_wp.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
 %{_libdir}/kde3/kopete_aim.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_aim.so
 %{_libdir}/kde3/kopete_autoreplace.la
@@ -528,6 +532,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_sms.so
 #%{_libdir}/kde3/kopete_spellcheck.la
 #%attr(755,root,root) %{_libdir}/kde3/kopete_spellcheck.so
+%{_libdir}/kde3/kopete_testbed.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
 %{_libdir}/kde3/kopete_texteffect.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_texteffect.so
 %{_libdir}/kde3/kopete_translator.la
@@ -536,8 +542,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_webpresence.so
 %{_libdir}/kde3/kopete_wp.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_wp.so
-%{_libdir}/kde3/kopete_yahoo.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
+#%{_libdir}/kde3/kopete_yahoo.la
+#%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -547,7 +553,8 @@ fi
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 %{_datadir}/apps/kopete
-%{_datadir}/apps/krichtexteditpart/krichtexteditpartui.rc
+%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
+%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
 %{_datadir}/services/aim.desktop
 %{_datadir}/services/autoreplace.desktop
 %{_datadir}/services/chatwindow.desktop
@@ -570,6 +577,7 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
@@ -579,11 +587,12 @@ fi
 %{_datadir}/services/nowlistening.desktop
 %{_datadir}/services/sms.desktop
 #%{_datadir}/services/spellcheck.desktop
+%{_datadir}/services/testbed.desktop
 %{_datadir}/services/texteffect.desktop
 %{_datadir}/services/translator.desktop
 %{_datadir}/services/webpresence.desktop
 %{_datadir}/services/wp.desktop
-%{_datadir}/services/yahoo.desktop
+#%{_datadir}/services/yahoo.desktop
 %{_datadir}/servicetypes/kopeteplugin.desktop
 %{_datadir}/servicetypes/kopeteprotocol.desktop
 %{_datadir}/servicetypes/kopeteui.desktop
