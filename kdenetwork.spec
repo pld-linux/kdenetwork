@@ -1,6 +1,6 @@
 %define		_ver		3.0.1
 #define		_sub_ver
-%define		_rel		1
+%define		_rel		2
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -383,7 +383,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kit
 %{_pixmapsdir}/hicolor/*x*/apps/kit.png
 
-%files knewsticker
+%files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_applet.??
@@ -398,7 +398,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kconf_update/*
 %{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png
 
-%files lanbrowser
+%files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
@@ -410,7 +410,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
-%files kdict
+%files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
 %attr(755,root,root) %{_libdir}/kde3/kdictapplet.la
@@ -429,7 +429,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kxmlrpcd.desktop
 %{_applnkdir}/Settings/KDE/System/kcmkxmlrpcd.desktop
 
-%files kpf
+%files kpf -f kpf.lang
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kpfapplet.??
 %{_libdir}/kde3/kpfpropertiesdialogplugin.??
@@ -437,7 +437,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
 %{_pixmapsdir}/*/*/*/kpf*
 
-%files ktalkd
+%files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root)%{_bindir}/k*talkd*
 %{_libdir}/kde3/libkcm_ktalkd.??
