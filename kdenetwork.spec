@@ -1419,7 +1419,7 @@ fi
 %{_datadir}/services/kinetd_krfb_httpd.desktop
 %{_datadir}/services/rdp.protocol
 %{_datadir}/services/vnc.protocol
-%{_desktopdir}/kde//kcmkrfb.desktop
+%{_desktopdir}/kde/kcmkrfb.desktop
 %{_desktopdir}/kde/krfb.desktop
 %{_desktopdir}/kde/krdc.desktop
 %{_iconsdir}/*/*/*/krdc*
