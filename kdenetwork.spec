@@ -12,7 +12,7 @@ Copyright:	GPL
 Requires:	qt >= 1.40, kdelibs = %{version}
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix /usr/X11R6
+%define 	_prefix 	/usr/X11R6
 
 %description
 KDE network applications.
@@ -99,7 +99,7 @@ Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów znaków.
 Summary:     KDE Network Utilities	
 Summary(pl): Narzêdzia sieciowe KDE
 Group:       X11/KDE/Networking
-Requires:    qt >= 1.40, kdelibs = %{version}, netkit-base
+Requires:    qt >= 1.40, kdelibs = %{version}, inetd
 
 %description knu
 Frontend to ping, host and traceroute utilities.
@@ -208,14 +208,14 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files karchie -f karchie.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/karchierc
 %config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
 
 %{_bindir}/karchie
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/karchie
+%{_datadir}/kde/doc/HTML/en/karchie
 
 %{_datadir}/kde/icons/karchie.xpm
 %{_datadir}/kde/icons/mini/karchie.xpm
@@ -225,7 +225,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kbiff -f kbiff.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
 
@@ -233,7 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/kde/apps/kbiff
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/kbiff
+%{_datadir}/kde/doc/HTML/en/kbiff
 
 %{_datadir}/kde/icons/kbiff.xpm
 %{_datadir}/kde/icons/mini/kbiff.xpm
@@ -243,14 +243,14 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kfinger -f kfinger.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/kfingerrc
 %config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
 
 %{_bindir}/kfinger
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/kfinger
+%{_datadir}/kde/doc/HTML/en/kfinger
 
 %{_datadir}/kde/toolbar
 
@@ -259,15 +259,15 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kmail -f kmail.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
 
-%attr(755, root, root) %{_bindir}/kmail
+%attr(755,root,root) %{_bindir}/kmail
 
 %{_datadir}/kde/apps/kmail
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/kmail
+%{_datadir}/kde/doc/HTML/en/kmail
 
 %{_datadir}/kde/icons/kmail.xpm
 %{_datadir}/kde/icons/mini/kmail.xpm
@@ -277,13 +277,13 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files knu -f knu.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
 
-%attr(755, root, root) %{_bindir}/knu
+%attr(755,root,root) %{_bindir}/knu
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/knu
+%{_datadir}/kde/doc/HTML/en/knu
 
 %{_datadir}/kde/icons/mini/knu.xpm
 %{_datadir}/kde/icons/knu.xpm
@@ -293,13 +293,13 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files korn -f korn.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
 
-%attr(755, root, root) %{_bindir}/korn
+%attr(755,root,root) %{_bindir}/korn
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/korn
+%{_datadir}/kde/doc/HTML/en/korn
 
 %{_datadir}/kde/icons/mini/korn.xpm
 %{_datadir}/kde/icons/korn.xpm
@@ -309,7 +309,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kppp -f kppp.lang  -f kppplogview.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
@@ -319,7 +319,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/kde/apps/kppp
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/kppp
+%{_datadir}/kde/doc/HTML/en/kppp
 
 %{_datadir}/kde/icons/mini/kppp.xpm
 %{_datadir}/kde/icons/kppp.xpm
@@ -329,17 +329,17 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files krn -f krn.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
 
-%attr(755, root, root) %{_bindir}/krn
-%attr(755, root, root) %{_bindir}/kdecode
-%attr(755, root, root) %{_bindir}/newkrn
+%attr(755,root,root) %{_bindir}/krn
+%attr(755,root,root) %{_bindir}/kdecode
+%attr(755,root,root) %{_bindir}/newkrn
 
 %{_datadir}/kde/apps/krn
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/krn
+%{_datadir}/kde/doc/HTML/en/krn
 
 %{_datadir}/kde/icons/mini/krn.xpm
 %{_datadir}/kde/icons/krn.xpm
@@ -349,15 +349,15 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files ksirc -f ksirc.lang -f pws.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/ksirc.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/pws.kdelnk
 
-%attr(755, root, root) %{_bindir}/ksirc
-%attr(755, root, root) %{_bindir}/dsirc
-%attr(755, root, root) %{_bindir}/ksticker
-%attr(755, root, root) %{_bindir}/mathpod
+%attr(755,root,root) %{_bindir}/ksirc
+%attr(755,root,root) %{_bindir}/dsirc
+%attr(755,root,root) %{_bindir}/ksticker
+%attr(755,root,root) %{_bindir}/mathpod
 
 /usr/X11R6/lib/ksirc
 
@@ -366,8 +366,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/kde/apps/ksirc
 
-%lang(en) %{_datadir}/kde/doc/HTML/en/ksirc
-%lang(en) %{_datadir}/kde/doc/HTML/en/pws
+%{_datadir}/kde/doc/HTML/en/ksirc
+%{_datadir}/kde/doc/HTML/en/pws
 
 %{_datadir}/kde/icons/mini/pws.xpm
 %{_datadir}/kde/icons/ksirc.gif
@@ -378,7 +378,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files ktalkd -f ktalkd.lang -f kcmktalkd.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/ktalkdrc
 %config(missingok) /etc/X11/kde/applnk/Settings/Network/kcmktalkd.kdelnk
@@ -389,8 +389,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/ktalkdlg
 %{_bindir}/mail.local
 
+%{_datadir}/kde/doc/HTML/en/ktalkd
 %lang(el) %{_datadir}/kde/doc/HTML/el/ktalkd
-%lang(en) %{_datadir}/kde/doc/HTML/en/ktalkd
 %lang(fr) %{_datadir}/kde/doc/HTML/fr/ktalkd
 %lang(it) %{_datadir}/kde/doc/HTML/it/ktalkd
 
