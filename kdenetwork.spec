@@ -1,11 +1,11 @@
 
 %define		_state		snapshots
 %define		_ver		3.2.90
-%define		_snap		040513
+%define		_snap		040515
 %define		_packager	adgor
 
-%define		_minlibsevr	9:3.2.90.040513
-%define		_minbaseevr	9:3.2.90.040513		
+%define		_minlibsevr	9:3.2.90.040515
+%define		_minbaseevr	9:3.2.90.040515		
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -489,7 +489,7 @@ Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 #Requires:	kdemultimedia-noatun >= 3.1
-Requires:	kdemultimedia-kscd >= 3.1
+#Requires:	kdemultimedia-kscd >= 3.1
 Requires:	xmms >= 1.0.0
 
 %description kopete-tool-nowlistening
