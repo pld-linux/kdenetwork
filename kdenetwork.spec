@@ -4,7 +4,7 @@
 
 %define		_ver		3.0.2
 #define		_sub_ver
-%define		_rel		1.5
+%define		_rel		2
 
 %{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
 %{!?_sub_ver:	%define	_version	%{_ver}}
@@ -37,6 +37,7 @@ BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
+BuildRequires:	fam-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -331,33 +332,33 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Sett
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
 %find_lang kdict --with-kde
-#%find_lang kdictapplet --with-kde
-#cat kdictapplet.lang >> kdict.lang
+%find_lang kdictapplet --with-kde
+cat kdictapplet.lang >> kdict.lang
 %find_lang knewsticker --with-kde
-#%find_lang kcmnewsticker --with-kde
-#cat kcmnewsticker.lang >> knewsticker.lang
+%find_lang kcmnewsticker --with-kde
+cat kcmnewsticker.lang >> knewsticker.lang
 %find_lang kpf --with-kde
 %find_lang ktalkd --with-kde
-#%find_lang kcmktalkd --with-kde
-#cat kcmktalkd.lang >> ktalkd.lang
+%find_lang kcmktalkd --with-kde
+cat kcmktalkd.lang >> ktalkd.lang
 %find_lang lisa --with-kde
-#%find_lang kcmlanbrowser --with-kde
-#%find_lang kio_lan --with-kde
-#cat kcmlanbrowser.lang kio_lan.lang >> lisa.lang
+%find_lang kcmlanbrowser --with-kde
+%find_lang kio_lan --with-kde
+cat kcmlanbrowser.lang kio_lan.lang >> lisa.lang
 %find_lang kit --with-kde
 %find_lang kmail --with-kde
-#%find_lang kmailcvt --with-kde
-#cat kmailcvt.lang >> kmail.lang
+%find_lang kmailcvt --with-kde
+cat kmailcvt.lang >> kmail.lang
 %find_lang knode --with-kde
 %find_lang korn --with-kde
 %find_lang kppp --with-kde
-#%find_lang kppplogview --with-kde
-#cat kppplogview.lang >> kppp.lang
+%find_lang kppplogview --with-kde
+cat kppplogview.lang >> kppp.lang
 %find_lang ksirc --with-kde
-#%find_lang kxmlrpcd --with-kde
-#%find_lang kcmkxmlrpcd --with-kde
-#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
-#%find_lang libkdenetwork --with-kde
+%find_lang kxmlrpcd --with-kde
+%find_lang kcmkxmlrpcd --with-kde
+cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
+%find_lang libkdenetwork --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
