@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030423
+%define		_snap		030504
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -84,7 +84,7 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 Provides:	kdict
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
@@ -120,7 +120,7 @@ Demon internetowy, który uruchamia na ¿±danie us³ugi sieciowe.
 Summary:	File Downloander
 Summary(pl):	¦ci±gacz plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -137,7 +137,7 @@ Summary(pl):	Klient AOL Instant Messenger dla KDE
 Summary(pt_BR):	Comunicador que usa o protocolo AOL
 License:	LGPL
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -156,7 +156,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -174,7 +174,7 @@ Miniaplicativo de exibição de notícias para o painel Kicker.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-kicker >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -190,7 +190,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Requires:	ppp
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
@@ -211,7 +211,7 @@ Summary:	KDE IRC client
 Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -229,7 +229,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Requires:	%{name}-kinetd = %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
@@ -245,7 +245,7 @@ Wirtualne biurka.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	kdebase-core >= %{version}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -335,6 +335,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings,KDE-Settings}
+mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/ksirc.desktop \
+	$RPM_BUILD_ROOT%{_desktopdir}
+
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
@@ -478,8 +481,8 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-#%{_libdir}/ksirc.la
-#%attr(755,root,root) %{_libdir}/ksirc.so
+%{_libdir}/ksirc.la
+%attr(755,root,root) %{_libdir}/ksirc.so
 %{_libdir}/kde3/libkntsrcfilepropsdlg.la
 %attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
 %{_datadir}/config/ksircrc
