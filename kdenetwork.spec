@@ -16,8 +16,8 @@ Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://team.pld.org.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	a940930a57205f2e5a6c331ec539020b
-Source2:	lisa.init
-Source3:        lisa.sysconfig
+Source2:	%{name}-lisa.init
+Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
