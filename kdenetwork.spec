@@ -3,7 +3,7 @@
 %bcond_without	i18n	# don't build i18n subpackage
 #
 %define		_state		stable
-%define		_ver		3.2.0
+%define		_ver		3.2.1
 #%%define		_snap		040110
 
 Summary:	K Desktop Environment - network applications
@@ -12,13 +12,13 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+Source0:	http://download.kde.org/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
+# Source0-md5:	c9135b09191624490590a014da4bfb3d
 #Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
-# Source0-md5:	80d5a03ac950a7fac10bacbb122db11f
 %if %{with i18n}
 Source1:	http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{version}.tar.bz2
 # Source1-md5:	1722734fd00114d8286d66b15dc86820
@@ -912,7 +912,7 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
