@@ -1446,7 +1446,7 @@ fi
 %{_desktopdir}/kde/ksirc.desktop
 %{_iconsdir}/[!l]*/*/*/ksirc*
 
-%files ktalkd -f ktalkd_en.lang
+%files ktalkd
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
