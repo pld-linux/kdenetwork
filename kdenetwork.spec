@@ -10,7 +10,7 @@ Source:		ftp://ftp.kde.org/pub/kde/snapshots/current/%{name}-%{REV}.tar.bz2
 Group:		X11/KDE/Networking
 Group(pl):	X11/KDE/Sieciowe
 Copyright:	GPL
-Requires:	qt >= 1.40
+BuildRequires:	qt >= 2.1
 Requires:	kdelibs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,12 +44,32 @@ Pakiet zawiera:
   KSirc - IRC dla KDE
   KTalkd - talk daemon dla KDE
 
+%package libsearch
+Summary:	KDE search library
+Summary(pl):	xxx
+Group:		X11/KDE/Networking
+Group(pl):	X11/KDE/Sieciowe
+Requires:	qt>= 2.1
+Requires:	kdelibs = %{version}
+%description libsearch
+%description -l pl libsearch
+
+%package caitoo
+Summary:	KDE subpackage
+Summary(pl):	Pakiet pomocniczy dla KDE 
+Group:		X11/KDE/Networking
+Group(pl):	X11/KDE/Sieciowe
+Requires:	qt >= 2.1
+Requires:	kdelibs = %{version}
+%description caitoo
+%description -l pl caitoo
+
 %package karchie
 Summary:     	KDE Archie clients
 Summary(pl): 	Klient programu archie dla KDE
 Group:       	X11/KDE/Networking
 Group(pl):   	X11/KDE/Sieciowe
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description karchie
@@ -63,7 +83,7 @@ Summary:     	KDE kbiff
 Summary(pl): 	KDE kbiff
 Group:       	X11/KDE/Networking
 Group(pl):   	X11/KDE/Sieciowe
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description kbiff
@@ -75,7 +95,7 @@ Summary:     	KDE finger client
 Summary(pl): 	Klient programu 'finger' dla KDE
 Group:       	X11/KDE/Networking
 Group(pl):   	X11/KDE/Sieciowe
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description kfinger
@@ -86,7 +106,7 @@ Requires:	kdelibs = %{version}
 Summary:     	KDE Mail client
 Summary(pl): 	Program pocztowy KDE
 Group:       	X11/KDE/Networking
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description kmail
@@ -105,7 +125,7 @@ Ten pakiet zawiera wersj± programu z poprawion± obs³ug± zestawów znaków.
 Summary:     	KDE Network Utilities	
 Summary(pl): 	Narzêdzia sieciowe KDE
 Group:       	X11/KDE/Networking
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 Requires:	inetdaemon
 
@@ -119,7 +139,7 @@ Interfejs do narzêdzi: ping, host i traceroute.
 Summary:     	KDE 'biff' application
 Summary(pl): 	Wska¼nik skrzynki pocztowej dla KDE
 Group:       	X11/KDE/Networking
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description korn
@@ -132,7 +152,7 @@ Programik pokazuj±cy ilo¶æ wiadomo¶ci w wybranych folderach pocztowych.
 Summary:     	KDE PPP dialer	
 Summary(pl): 	Program do po³±czeñ modemowych dla KDE
 Group:       	X11/KDE/Networking
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 Requires:	ppp 
 
@@ -147,7 +167,7 @@ Posiada ³atwy interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 Summary:     	KDE News Reader	
 Summary(pl): 	Czytnik newsów dla KDE
 Group:       	X11/KDE/Networking
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description krn
@@ -162,7 +182,7 @@ Summary:     	KDE IRC client
 Summary(pl): 	Klient IRC dla KDE
 Group:       	X11/KDE/Networking
 Group(pl):   	X11/KDE/Sieciowe
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description ksirc
@@ -174,7 +194,7 @@ Summary:     	KDE Mail client
 Summary(pl): 	Program pocztowy KDE
 Group:       	X11/KDE/Networking
 Group(pl):   	X11/KDE/Sieciowe
-Requires:    	qt >= 1.40
+Requires:    	qt >= 2.1
 Requires:	kdelibs = %{version}
 
 %description ktalkd
@@ -186,10 +206,12 @@ Requires:	kdelibs = %{version}
 #%patch -p1
 
 %build
-export KDEDIR=%{_prefix}
-CXXFLAGS="$RPM_OPT_FLAGS -Wall -fno-rtti" \
-CFLAGS="$RPM_OPT_FLAGS -Wall" \
-./configure %{_target_platform} \
+KDEDIR=%{_prefix}
+CXXFLAGS="$RPM_OPT_FLAGS -Wall"
+CFLAGS="$RPM_OPT_FLAGS -Wall"
+LDFLAGS="-s"
+export KDEDIR CXXFLAGS CFLAGS LDFLAGS
+%configure \
 	--prefix=$KDEDIR \
 	--with-qt-dir=%{_prefix} \
  	--with-install-root=$RPM_BUILD_ROOT \
@@ -201,6 +223,7 @@ rm -rf $RPM_BUILD_ROOT
 export KDEDIR=%{_prefix}
 make RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
 
+%find_lang caitoo
 %find_lang karchie
 %find_lang kbiff
 %find_lang kfinger
@@ -218,6 +241,33 @@ make RUN_KAPPFINDER=no prefix=$RPM_BUILD_ROOT$KDEDIR install
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post libsearch
+/sbin/ldconfig
+
+%postun libsearch
+/sbin/ldconfig
+
+%post ksirc
+/sbin/ldconfig
+
+%postun ksirc
+/sbin/ldconfig
+#################################################
+#             CAITOO
+#################################################
+%files caitoo -f caitoo.lang
+%defattr(644,root,root,755)
+
+%config(missingok) %{_applnkdir}/Internet/caitoo.desktop
+
+%attr(755,root,root) %{_bindir}/caitoo
+
+%attr(644,root,root) %{_includedir}/caitoo*.h
+
+%{_datadir}/apps/caitoo
+
+%{_datadir}/icons/locolor/*x*/apps/caitoo.png
+
 #################################################
 #             KARCHIE - checking OK
 #################################################
@@ -225,15 +275,13 @@ rm -rf $RPM_BUILD_ROOT
 %files karchie -f karchie.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/karchierc
-%config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
+#%config(missingok) %{_datadir}/config//karchierc
+#%config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
 
-%{_bindir}/karchie
+%attr(755,root,root) %{_bindir}/karchie
 
-%{_datadir}/kde/doc/HTML/en/karchie
-
-%{_datadir}/kde/icons/karchie.xpm
-%{_datadir}/kde/icons/mini/karchie.xpm
+%{_datadir}/icons/locolor/*x*/apps/karchie.png
+%{_datadir}/icons/hicolor/*x*/apps/karchie.png
 
 #################################################
 #             KBIFF - checking OK
@@ -242,16 +290,14 @@ rm -rf $RPM_BUILD_ROOT
 %files kbiff -f kbiff.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
 
-%{_bindir}/kbiff
+%attr(755,root,root) %{_bindir}/kbiff
 
-%{_datadir}/kde/apps/kbiff
+%{_datadir}/apps/kbiff
 
-%{_datadir}/kde/doc/HTML/en/kbiff
-
-%{_datadir}/kde/icons/kbiff.xpm
-%{_datadir}/kde/icons/mini/kbiff.xpm
+%{_datadir}/icons/locolor/*x*/apps/kbiff.png
+%{_datadir}/icons/hicolor/*x*/apps/kbiff.png
 
 #################################################
 #             KFINGER - checking OK
@@ -260,14 +306,12 @@ rm -rf $RPM_BUILD_ROOT
 %files kfinger -f kfinger.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/kfingerrc
-%config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
+#%config(missingok) %{_datadir}/config/kfingerrc
+#%config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
 
-%{_bindir}/kfinger
+%attr(755,root,root) %{_bindir}/kfinger
 
-%{_datadir}/kde/doc/HTML/en/kfinger
-
-%{_datadir}/kde/toolbar
+%{_datadir}/toolbar
 
 #################################################
 #             KMAIL - checking OK
@@ -276,16 +320,16 @@ rm -rf $RPM_BUILD_ROOT
 %files kmail -f kmail.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
 
 %attr(755,root,root) %{_bindir}/kmail
 
-%{_datadir}/kde/apps/kmail
+%attr(644,root,root) %{_includedir}/kmail*.h
 
-%{_datadir}/kde/doc/HTML/en/kmail
+%{_datadir}/apps/kmail
 
-%{_datadir}/kde/icons/kmail.xpm
-%{_datadir}/kde/icons/mini/kmail.xpm
+%{_datadir}/icons/locolor/*x*/apps/kmail.png
+%{_datadir}/icons/hicolor/*x*/apps/kmail.png
 
 #################################################
 #             KNU - checking OK
@@ -294,14 +338,11 @@ rm -rf $RPM_BUILD_ROOT
 %files knu -f knu.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
 
 %attr(755,root,root) %{_bindir}/knu
 
-%{_datadir}/kde/doc/HTML/en/knu
-
-%{_datadir}/kde/icons/mini/knu.xpm
-%{_datadir}/kde/icons/knu.xpm
+%{_datadir}/icons/locolor/*x*/apps/knu.png
 
 #################################################
 #             Korn - checking OK
@@ -310,14 +351,12 @@ rm -rf $RPM_BUILD_ROOT
 %files korn -f korn.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
 
 %attr(755,root,root) %{_bindir}/korn
 
-%{_datadir}/kde/doc/HTML/en/korn
-
-%{_datadir}/kde/icons/mini/korn.xpm
-%{_datadir}/kde/icons/korn.xpm
+%{_datadir}/icons/locolor/*x*/apps/korn.png
+%{_datadir}/icons/hicolor/*x*/apps/korn.png
 
 #################################################
 #             KPPP - checking OK
@@ -326,18 +365,16 @@ rm -rf $RPM_BUILD_ROOT
 %files kppp -f kppp.lang  -f kppplogview.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
-%config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
 
 %attr(755, root, root) %{_bindir}/kppplogview
 %attr(2755,root, uucp) %{_bindir}/kppp
 
-%{_datadir}/kde/apps/kppp
+%{_datadir}/apps/kppp
 
-%{_datadir}/kde/doc/HTML/en/kppp
-
-%{_datadir}/kde/icons/mini/kppp.xpm
-%{_datadir}/kde/icons/kppp.xpm
+%{_datadir}/icons/locolor/*x*/apps/kppp.png
+%{_datadir}/icons/hicolor/*x*/apps/kppp.png
 
 #################################################
 #             KRN - checking OK
@@ -346,7 +383,7 @@ rm -rf $RPM_BUILD_ROOT
 %files krn -f krn.lang
 %defattr(644,root,root,755)
 
-%config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
+#%config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
 
 %attr(755,root,root) %{_bindir}/krn
 %attr(755,root,root) %{_bindir}/kdecode
@@ -373,19 +410,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ksticker
 %attr(755,root,root) %{_bindir}/mathpod
 
-/usr/X11R6/lib/ksirc
+%{_libdir}/ksirc
 
-/usr/X11R6/lib/libpuke*
-/usr/X11R6/lib/libkplunger*
+%attr(644,root,root) %{_libdir}/libplunger.a
+%attr(755,root,root) %{_libdir}/libpuke.la
+%attr(755,root,root) %{_libdir}/libpuke.so.*.*.*
 
-%{_datadir}/kde/apps/ksirc
+%{_datadir}/apps/ksirc
 
-%{_datadir}/kde/doc/HTML/en/ksirc
-%{_datadir}/kde/doc/HTML/en/pws
-
-%{_datadir}/kde/icons/mini/pws.xpm
-%{_datadir}/kde/icons/ksirc.gif
-%{_datadir}/kde/icons/pws.xpm
+%{_datadir}/icons/locolor/*x*/apps/ksirc.png
+%{_datadir}/icons/locolor/*x*/apps/pws.png
+%{_datadir}/icons/hicolor/*x*/apps/ksirc.png
 
 #################################################
 #             KTALKD - checking OK
@@ -409,3 +444,19 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/kde/doc/HTML/it/ktalkd
 
 %{_datadir}/kde/sounds/ktalkd.wav
+
+#################################################
+#             LIBSEARCH
+#################################################
+%files libsearch
+%defattr(644,root,root,755)
+
+%attr(644,root,root) %{_includedir}/ftpsearch.h
+%attr(644,root,root) %{_includedir}/kping.h
+%attr(644,root,root) %{_includedir}/newssearch.h
+%attr(644,root,root) %{_includedir}/websearch.h
+
+%attr(755,root,root) %{_libdir}/libsearch.la
+%attr(755,root,root) %{_libdir}/libsearch.so.*.*.*
+
+%{_datadir}/apps/libsearch
