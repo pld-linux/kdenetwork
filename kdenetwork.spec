@@ -1,10 +1,11 @@
+%define		REV	20000418
 Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
-Version:	1.1.2
-Release:	1
+Version:	2.0
+Release:	1.pre_%{REV}
 Vendor:		The KDE Team
-Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
+Source:		ftp://ftp.kde.org/pub/kde/snapshots/current/%{name}-%{REV}.tar.bz2
 #Patch:		kmail.charset.patch
 Group:		X11/KDE/Networking
 Group(pl):	X11/KDE/Sieciowe
@@ -181,7 +182,7 @@ Requires:	kdelibs = %{version}
 %description -l pl ktalkd
 
 %prep
-%setup -q
+%setup -q -n %{name}
 #%patch -p1
 
 %build
