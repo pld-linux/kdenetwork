@@ -14,7 +14,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	http://download.kde.org/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
 Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
-# Source0-md5:	405ade1938cd74e3e9643f25814ee81d
+# Source0-md5:	a58915e964d8f6ec87c76acaab9f8929
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
