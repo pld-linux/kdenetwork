@@ -18,7 +18,7 @@ Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
-%{?_with_kmail_toolbars_patch:Patch3: %{name}-kmail_toolbars.patch}
+Patch3: 	%{name}-kmail_toolbars.patch}
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
