@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -925,6 +925,8 @@ mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 %find_lang kget			--with-kde
 %find_lang knewsticker		--with-kde
 %find_lang kopete		--with-kde
+grep -v /kdenetwork-apidocs/ kopete.lang > kopete.lang.
+mv kopete.lang. kopete.lang
 %find_lang kpf			--with-kde
 %find_lang kppp			--with-kde
 %find_lang krdc			--with-kde
