@@ -318,7 +318,6 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 for plik in `find ./ -name *.desktop` ; do
 	echo $plik
 	sed -i -e "s/\[nb\]/\[no\]/g" $plik
-	fi
 done
 				
 %configure \
