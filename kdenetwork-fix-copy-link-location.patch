@@ -1,0 +1,30 @@
+--- kdenetwork-3.0.3/knode/knarticlewidget.cpp--	2002-09-01 10:16:37.000000000 +0200
++++ kdenetwork-3.0.3/knode/knarticlewidget.cpp	2002-09-01 10:17:37.000000000 +0200
+@@ -52,6 +52,7 @@
+ #include "knpgp.h"
+ #include "knode.h"
+ #include <kpopupmenu.h>
++#include <kurldrag.h>
+ 
+ #define PUP_OPEN    1000
+ #define PUP_SAVE    2000
+@@ -1427,8 +1428,17 @@ void KNArticleWidget::anchorClicked(cons
+           openURL(target);
+         break;
+         case PUP_COPYURL:
+-          QApplication::clipboard()->setText(target);
+-        break;
++	  {
++	    KURL::List lst;
++	    lst.append( target );
++	    // Set it in both the mouse selection and in the clipboard
++	    QApplication::clipboard()->setSelectionMode(true);
++	    QApplication::clipboard()->setData( KURLDrag::newDrag( lst ) );
++	    QApplication::clipboard()->setSelectionMode(false);
++	    QApplication::clipboard()->setData( KURLDrag::newDrag( lst ) );
++	    //QApplication::clipboard()->setText(target);
++	    break;
++	  }
+       }
+     }
+   }

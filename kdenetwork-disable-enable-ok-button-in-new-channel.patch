@@ -1,0 +1,49 @@
+--- kdenetwork/ksirc/NewWindowDialog.cpp--	2002-07-23 07:45:47.000000000 +0200
++++ kdenetwork/ksirc/NewWindowDialog.cpp	2002-07-23 07:47:37.000000000 +0200
+@@ -4,7 +4,7 @@
+ #include <kcombobox.h>
+ #include <qhbox.h>
+ #include <qlabel.h>
+-
++#include <qlineedit.h>
+ #include "NewWindowDialog.h"
+ 
+ NewWindowDialog::NewWindowDialog(QWidget * parent, const char * name)
+@@ -22,10 +22,13 @@ NewWindowDialog::NewWindowDialog(QWidget
+   connect(
+       combo_, SIGNAL(activated(const QString &)),
+       combo_, SLOT(addToHistory(const QString &)));
++  connect( combo_->lineEdit(), SIGNAL(textChanged ( const QString & )),
++	   this, SLOT( slotTextChanged( const QString &)));
+ 
+   KConfig *kConfig = kapp->config();
+   KConfigGroupSaver saver(kConfig, "Recent");
+   combo_->setHistoryItems(kConfig->readListEntry("Channels"));
++  slotTextChanged( combo_->lineEdit()->text());
+ }
+ 
+ NewWindowDialog::~NewWindowDialog()
+@@ -35,6 +38,12 @@ NewWindowDialog::~NewWindowDialog()
+   kConfig->writeEntry("Channels", combo_->historyItems());
+ }
+ 
++void NewWindowDialog::slotTextChanged( const QString &_text)
++{
++  enableButtonOK( !_text.isEmpty() );
++}
++
++
+   void
+ NewWindowDialog::slotOk()
+ {
+--- kdenetwork/ksirc/NewWindowDialog.h--	2002-07-23 07:47:47.000000000 +0200
++++ kdenetwork/ksirc/NewWindowDialog.h	2002-07-23 07:48:14.000000000 +0200
+@@ -17,7 +17,7 @@ class NewWindowDialog : public KDialogBa
+   protected slots:
+ 
+     void slotOk();
+-
++  void slotTextChanged( const QString &);
+   signals:
+ 
+     void openTopLevel(QString);
