@@ -2,7 +2,7 @@ Summary:     K Desktop Environment - network applications
 Summary(pl): K Desktop Environment - aplikacje sieciowe
 Name:        kdenetwork
 Version:     1.0
-Release:     4
+Release:     7
 Vendor:      The KDE Team
 Source:      ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/source/%{name}-%{version}.tar.gz
 Patch:       kmail.charset.patch
@@ -262,6 +262,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(2755,root, uucp) /usr/X11R6/bin/kppp
 
 %changelog
+* Wed Dec  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0-7]
+- recompiled against libstdc++.so.2.9.
+
 * Sun Oct 4 1998 Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl>
   [1.0-4]
 - created new spec based on kdebase.spec.
