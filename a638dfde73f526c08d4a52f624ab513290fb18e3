@@ -1,0 +1,6 @@
+- Cosmetics
+
+revision 1.43.2.13  2002/06/14 23:03:20  adgor
+- Conditional "--with kmail_mainwin_patch" renamed to
+  "--with kmail_toolbars_patch" (Patch3 is updated and renamed)
+- Release 6
