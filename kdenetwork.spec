@@ -16,16 +16,14 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
 Source1:	kde-i18n-%{name}-%{version}.tar.bz2
-Patch0:		%{name}-am15.patch
-Patch1:		%{name}-utmpx.patch
-Patch2:		%{name}-use_sendmail.patch
-Patch3: 	%{name}-kmail_toolbars.patch
-Patch4:		%{name}-fix-kio_lan.patch
-Patch5:		%{name}-fix-sync-config-when-we-close-config-dialogbox.patch
-Patch6:		%{name}-fix-kpgp-mem-leak.patch
-Patch7:		%{name}-fix-copy-link-location.patch
-Patch8:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
-Patch9:		%{name}-disable-enable-ok-button-in-new-channel.patch
+Patch0:		%{name}-use_sendmail.patch
+Patch1: 	%{name}-kmail_toolbars.patch
+Patch2:		%{name}-fix-kio_lan.patch
+Patch3:		%{name}-fix-sync-config-when-we-close-config-dialogbox.patch
+Patch4:		%{name}-fix-kpgp-mem-leak.patch
+Patch5:		%{name}-fix-copy-link-location.patch
+Patch6:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
+Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -291,17 +289,15 @@ do kdenetwork.
 %prep
 %setup	-q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %if%{?_with_kmail_toolbars_patch:1}%{!?_with_kmail_toolbars_patch:0}
-%patch3 -p1
+%patch1 -p1
 %endif
+%patch2 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
