@@ -768,6 +768,8 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
