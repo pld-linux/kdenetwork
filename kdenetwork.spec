@@ -1,20 +1,33 @@
+%define		_ver		3.0
+#define		_sub_ver
+%define		_rel		0.9
+
+%{?_sub_ver:	%define	_version	%{_ver}%{_sub_ver}}
+%{!?_sub_ver:	%define	_version	%{_ver}}
+%{?_sub_ver:	%define	_release	0.%{_sub_ver}.%{_rel}}
+%{!?_sub_ver:	%define	_release	%{_rel}}
+%{!?_sub_ver:	%define	_ftpdir	stable}
+%{?_sub_ver:	%define	_ftpdir	unstable/kde-%{version}%{_sub_ver}}
+
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	2.2.2
-Release:	3
+Version:	%{_version}
+Release:	%{_release}
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-knewsticker-utf8.patch
-Patch1:		%{name}-am15.patch
+Source0:	ftp://ftp.kde.org/pub/kde/%{_ftpdir}/%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-am15.patch
+Patch1:		%{name}-utmpx.patch
+Patch2:		%{name}-use_sendmail.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= %{version}
+BuildRequires:	gettext-devel
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -200,6 +213,42 @@ Klient s³ownika.
 kdict é um utilitário de dicionário que usa servidores dictd da
 Internet.
 
+%package kxmlrpcd
+Summary:	-
+Summary(pl):	-
+Group:		X11/Applications
+Requires:	kdelibs = %{version}
+
+%description kxmlrpcd
+-
+
+%description kxmlrpcd -l pl
+-
+
+%package kpf
+Summary:	-
+Summary(pl):	-
+Group:		X11/Applications
+Requires:	kdelibs = %{version}
+
+%description kpf
+-
+
+%description kpf -l pl
+-
+
+%package ktalkd
+Summary:	-
+Summary(pl):	-
+Group:		X11/Applications
+Requires:	kdelibs = %{version}
+
+%description ktalkd
+-
+
+%description ktalkd -l pl
+-
+
 %package devel
 Summary:	Header files and development documentation
 Summary(pl):	Pliki nag³ówkowe i dokumentacja developerska
@@ -221,12 +270,14 @@ do kdenetwork.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
-%{__make} -f Makefile.cvs
+autoconf
+
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
@@ -235,19 +286,26 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/{Communications,Mail,News,Misc}
+install -d $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install kmail/KMail.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
-install kmailcvt/kmailcvt.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
-install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
-install knode/KNode.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/News
-install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
-install kppp/Kppp.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install kppp/logview/kppplogview.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install kit/kit.desktop			$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
-install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Mail}/KMail.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/News}/KNode.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Mail}/KOrn.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Utilities,Network/Mail}/kmailcvt.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/Kppp.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/kit.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/News}/knewsticker-standalone.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Misc}/kppplogview.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Communications}/ksirc.desktop
+mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE/
+
+%find_lang kdict --with-kde
+%find_lang knewsticker --with-kde
+%find_lang kpf --with-kde
+%find_lang ktalkd --with-kde
+%find_lang lisa --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -311,7 +369,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_htmldir}/en/ksirc
-%{_pixmapsdir}/hicolor/*x*/apps/ksirc.png
+%{_pixmapsdir}/*/*/*/ksirc*
 
 %files kit
 %defattr(644,root,root,755)
@@ -324,10 +382,11 @@ rm -rf $RPM_BUILD_ROOT
 %files knewsticker
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
-%attr(755,root,root) %{_bindir}/ksticker
-%attr(755,root,root) %{_libdir}/lib*newsticker*
-%{_applnkdir}/Settings/Personalization/kcmnewsticker.desktop
-%{_applnkdir}/Settings/Network/kcmnewsticker.desktop
+%attr(755,root,root) %{_libdir}/kde3/knewsticker_applet.??
+%attr(755,root,root) %{_libdir}/kde3/libkcm_newsticker.??
+%{_applnkdir}/Settings/KDE/Personalization/kcmnewsticker.desktop
+%{_applnkdir}/Settings/KDE/Network/kcmnewsticker.desktop
+%{_applnkdir}/Network/News/knewsticker*.desktop
 %{_applnkdir}/.hidden/knewstickerstub.desktop
 %{_datadir}/services/knewsservice.protocol
 %{_datadir}/apps/knewsticker
@@ -339,9 +398,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
-%attr(755,root,root) %{_libdir}/lib*lanbrowser*
+%attr(755,root,root) %{_libdir}/kde3/libkcm_lanbrowser.??
 %attr(755,root,root) %{_libdir}/kio_lan.??
-%{_applnkdir}/Settings/Network/lanbrowser.desktop
+%{_applnkdir}/Settings/KDE/Network/lanbrowser.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
@@ -350,16 +409,41 @@ rm -rf $RPM_BUILD_ROOT
 %files kdict
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
-%attr(755,root,root) %{_libdir}/libkdictapplet.la
-%attr(755,root,root) %{_libdir}/libkdictapplet.so.*.*
+%attr(755,root,root) %{_libdir}/kde3/kdictapplet.la
+%attr(755,root,root) %{_libdir}/kde3/kdictapplet.so.*.*.*
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_pixmapsdir}/*/*/*/kdict*
-%{_applnkdir}/Network/Misc/kdict.desktop
+%{_applnkdir}/Utilities/kdict.desktop
+
+%files kxmlrpcd
+%defattr(644,root,root,755)
+%attr(755,root,root)%{_bindir}/kxmlrpcd
+%{_libdir}/kxmlrpcd.??
+%{_libdir}/kde3/libkcm_xmlrpcd.??
+%{_libdir}/kde3/libkcm_kcmkxmlrpcd.??
+%{_datadir}/services/kxmlrpcd.desktop
+%{_applnkdir}/Settings/KDE/System/kcmkxmlrpcd.desktop
+
+%files kpf
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kpfapplet.??
+%{_libdir}/kde3/kpfpropertiesdialogplugin.??
+%{_datadir}/apps/kicker/applets/kpf*
+%{_datadir}/services/kpfpropertiesdialogplugin.desktop
+%{_pixmapsdir}/*/*/*/kpf*
+
+%files ktalkd
+%defattr(644,root,root,755)
+%{_bindir}/k*talkd*
+%{_libdir}/kde3/libkcm_ktalkd.??
+%{_datadir}/config/ktalkd*
+%{_datadir}/sounds/ktalkd*
+%{_pixmapsdir}/*/*/*/ktalkd*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkdictapplet.so
+%attr(755,root,root) %{_libdir}/kde3/kdictapplet.so
 %attr(755,root,root) %{_libdir}/libmimelib.so
 %attr(755,root,root) %{_libdir}/libkdenetwork.so
 %{_includedir}/*
