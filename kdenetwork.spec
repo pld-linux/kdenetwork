@@ -278,6 +278,10 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
 autoconf
 
+if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
+        CPPFLAGS="`pkg-config libpng12 --cflags`"
+fi
+
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
