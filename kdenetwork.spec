@@ -1194,20 +1194,16 @@ fi
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/admin_icon.png
-##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aol_icon.png
-##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/dt_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
-##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/free_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteavailable.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteaway.png
+%{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
+%{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
+%{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
+%{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmsg.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmessage.mng
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/status_unknown.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/emoticons
 %{_datadir}/apps/kopete/styles
@@ -1227,10 +1223,12 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
 %{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
 %{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
-
-
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1279,10 +1277,14 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
 %{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
-%{_datadir}/apps/kopete_msn/msnchatui.rc
+%{_libdir}/kde3/kopete_netmeeting.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_netmeeting.so
+%{_datadir}/apps/kopete_msn
+%{_datadir}/apps/kopete_netmeeting
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
+%{_datadir}/services/kopete_netmeeting.desktop
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
@@ -1375,6 +1377,7 @@ fi
 %{_libdir}/kde3/kopete*history*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*history*.so
 %{_datadir}/apps/kopete_history
+%{_datadir}/config.kcfg/historyconfig.kcfg
 %{_datadir}/services/kopete_history.desktop
 %{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
 
