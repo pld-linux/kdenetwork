@@ -936,8 +936,7 @@ echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/cutestuff/networ
 echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 
 %build
-cp /usr/share/automake/config.sub admin
-
+#cp /usr/share/automake/config.sub admin
 export UNSERMAKE=/usr/share/unsermake/unsermake
 
 %{__make} -f admin/Makefile.common cvs
@@ -959,7 +958,8 @@ rm -rf $RPM_BUILD_ROOT
 # Workaround for doc caches (unsermake bug?)
 cd doc
 for i in `find . -name index.cache.bz2`; do
-	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$i
+	z=`echo $i|sed -e "s,kcmktalkd,kcmtalkd," `
+	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$z
 done
 cd -	 
 
@@ -1177,17 +1177,21 @@ fi
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
+%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %dir %{_datadir}/apps/kopete
 %{_datadir}/apps/kopete/*rc
 %dir %{_datadir}/apps/kopete/icons
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/admin_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aol_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/dt_icon.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/admin_icon.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aol_icon.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/dt_icon.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/free_icon.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/free_icon.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteavailable.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteaway.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
@@ -1216,12 +1220,17 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
+%{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
+%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
+
+
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*aim*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aim*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
 %{_datadir}/services/kopete_aim.desktop
 
 %files kopete-protocol-gg
@@ -1236,7 +1245,8 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*icq*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/icq*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -1253,6 +1263,7 @@ fi
 %{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
 %{_datadir}/services/kopete_jabber.desktop
 
 %files kopete-protocol-msn
@@ -1261,6 +1272,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
 %{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
+%{_datadir}/apps/kopete_msn/msnchatui.rc
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
@@ -1520,6 +1532,7 @@ fi
 %{_datadir}/apps/lisa
 # Messing one !
 # %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
