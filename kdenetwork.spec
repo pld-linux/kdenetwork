@@ -14,7 +14,7 @@ Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://team.pld.org.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
+Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	29f1b3d11357a511a38fff1dbc6181c3
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
