@@ -1,0 +1,53 @@
+--- kdenetwork-3.2.0/configure.in.in.orig	2003-06-11 16:21:43.000000000 +0200
++++ kdenetwork-3.2.0/configure.in.in	2004-01-29 15:52:59.000000000 +0100
+@@ -79,6 +79,27 @@
+ 	DO_NOT_COMPILE="$DO_NOT_COMPILE wifi"
+ fi
+ 
++AC_MSG_CHECKING([if wireless tools >= 27 are installed])
++AC_LANG_SAVE
++AC_LANG_CPLUSPLUS
++AC_TRY_COMPILE(
++	[
++		#include <iwlib.h>
++	],
++	[
++	 	// checking how many arguments does it iw_get_stats want
++		// the result is unimportant
++		struct wireless_info info;
++		char * stupid;
++		iw_get_stats(iw_sockets_open(), stupid, &(info.stats));
++		       
++	],	AC_MSG_RESULT(no)
++	,
++               AC_MSG_RESULT(yes)
++	       AC_DEFINE(HAVE_IW_27, 1, [Define if you have iwlib newer than 26])    
++	
++)
++
+ # check for SLP
+ dnl define the configure option that disables slp
+ AC_ARG_ENABLE(slp, [  --disable-slp     don't require libslp (Browsing in krfb and krdc not possible) ],  with_slp=$enableval, with_slp=yes)
+--- kdenetwork-3.2.0/wifi/kwireless/linuxwirelesswidget.cpp.orig	2004-01-29 13:31:26.000000000 +0100
++++ kdenetwork-3.2.0/wifi/kwireless/linuxwirelesswidget.cpp	2004-01-29 17:15:43.000055368 +0100
+@@ -12,6 +12,7 @@
+ #include <kdebug.h>
+ #include <klocale.h>
+ #include "linuxwirelesswidget.h"
++#include "config.h"
+ 
+ extern "C" {
+ #include <iwlib.h>
+@@ -124,7 +125,11 @@
+             }
+ 
+             // get the device statistics:
+-            if(iw_get_stats(socketFD, device_c_str, &(info.stats)) >= 0)
++#if HAVE_IW_27 
++	    if(iw_get_stats(socketFD, device_c_str, &(info.stats), &(info.range), info.has_range)>= 0)
++#else
++	    if(iw_get_stats(socketFD, device_c_str, &(info.stats)) >= 0)
++#endif
+ 	    {
+                 info.has_stats = 1;
+                 bool isAbs; // true if values are relative tp a peak value,
