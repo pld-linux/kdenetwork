@@ -122,7 +122,6 @@ Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
 License:	Artistic
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
 Provides:	kdict
 
 %description kdict
