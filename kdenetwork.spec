@@ -1,26 +1,28 @@
 
-%define         _state          stable
-%define         _ver		3.1
+%define		_state		stable
+%define		_ver		3.1.1
 
-
-Summary:        K Desktop Environment - network applications
+Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	6
+Release:	3
 Epoch:		9
 License:	GPL
-Vendor:		The KDE Team
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	d981fa1114d06256230bed4a4b948766
 # generated from kde-i18n
-#Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+Source1:	ftp://blysk.ds.pg.gda.pl/linux/kde-i18n-package/kde-i18n-%{name}-%{version}.tar.bz2
+# Source1-md5:	9065345bf2ad6037b3e2c1a10a4e015d
+Source2:	lisa.init
+Source3:        lisa.sysconfig
+Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
-
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -28,9 +30,11 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
+BuildRequires:	perl
 BuildRequires:	qt-devel >= 3.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_prefix		/usr/X11R6
 %define		_fontdir	/usr/share/fonts
 %define		_htmldir	/usr/share/doc/kde/HTML
 
@@ -164,6 +168,7 @@ Summary(pt_BR):	Cliente / leitor de e-mails para o KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
 Requires:	kdelibs >= %{version}
+Requires:	%{name} >= %{version}
 
 %description kmail
 This is electronic mail client for KDE. It is able to retrievie mail
@@ -204,6 +209,7 @@ Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
 Requires:	kdebase-mailnews
 Requires:	kdelibs >= %{version}
+Requires:	%{name} >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
@@ -319,7 +325,10 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{version}
+Requires:	konqueror >= %{version}
+Obsoletes:	%{name}-lisa
+Obsoletes:	lisa
+Provides:	lisa
 
 %description lanbrowser
 KDE LAN Browser.
@@ -339,6 +348,11 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
+for plik in `find ./ -name \*.desktop` ; do
+		echo $plik
+		perl -pi -e "s/\[nb\]/\[no\]/g" $plik
+done
+
 %configure \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--enable-kernel-threads \
@@ -348,12 +362,13 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{rc.d/init.d,sysconfig},/usr/bin} \
+	$RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,M{ail,isc},News}}
 
-install -d \
-    $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
-install -d $RPM_BUILD_ROOT%{_datadir}/apps/konqsidebartng
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+mv $RPM_BUILD_ROOT{%{_bindir}/{,res}lisa,/usr/bin}
 
 ALD=$RPM_BUILD_ROOT%{_applnkdir}
 
@@ -370,51 +385,87 @@ mv -f $ALD/{Internet/More,Network/News}/knewsticker-standalone.desktop
 mv -f $ALD/{Settings/[!K]*,Settings/KDE}
 mv -f $ALD/{System,Network/Misc}/krfb.desktop
 
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
+
 cd $RPM_BUILD_ROOT%{_pixmapsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-#bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+
+%find_lang lisa			--with-kde
+%find_lang lanbrowser		--with-kde
+%find_lang kcmlanbrowser	--with-kde
+%find_lang kio_lan		--with-kde
+cat {lanbrowser,kcmlanbrowser,kio_lan}.lang >> lisa.lang
+
+%find_lang ktalkd		--with-kde
+%find_lang kcmktalkd		--with-kde
+%find_lang kcmtalkd		--with-kde
+cat {kcmktalkd,kcmtalkd}.lang >> ktalkd.lang
 
 %find_lang kdict		--with-kde
-#%find_lang kdictapplet 	--with-kde
-#cat kdictapplet.lang >> kdict.lang
-%find_lang kit			--with-kde
-%find_lang kmail		--with-kde
-%find_lang kgpgcertmanager	--with-kde
-#%find_lang kmailcvt		--with-kde
-cat kgpgcertmanager.lang >> kmail.lang
-#cat kmailcvt.lang >> kmail.lang
+%find_lang kdictapplet		--with-kde
+cat kdictapplet.lang >> kdict.lang
+
+%find_lang krfb			--with-kde
+%find_lang kcm_krfb		--with-kde
+%find_lang krdc			--with-kde
+cat {krdc,kcm_krfb}.lang >> krfb.lang
+
+%find_lang kxmlrpcd		--with-kde
+%find_lang kcmkxmlrpcd		--with-kde
+cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
+
 %find_lang knewsticker		--with-kde
-#%find_lang kcmnewsticker	--with-kde
-#cat kcmnewsticker.lang >> knewsticker.lang
+%find_lang kcmnewsticker	--with-kde
+cat kcmnewsticker.lang >> knewsticker.lang
+
+%find_lang kmail		--with-kde
+%find_lang kfile_rfc822		--with-kde
+%find_lang kgpgcertmanager	--with-kde
+%find_lang kpgpcertmanager	--with-kde
+%find_lang kmailcvt		--with-kde
+cat {kfile_rfc822,kgpgcertmanager,kpgpcertmanager,kmailcvt}.lang >> kmail.lang
+
+%find_lang kppp			--with-kde
+%find_lang kppplogview		--with-kde
+cat kppplogview.lang >> kppp.lang
+
+%find_lang libkdenetwork	--with-kde
+%find_lang desktop_kdenetwork	--with-kde
+cat desktop_kdenetwork.lang >> libkdenetwork.lang
+
+%find_lang kinetd		--with-kde
+%find_lang kit			--with-kde
 %find_lang knode		--with-kde
 %find_lang korn			--with-kde
 %find_lang kpf			--with-kde
-%find_lang kppp			--with-kde
-%find_lang krfb			--with-kde
-#%find_lang kppplogview		--with-kde
-#cat kppplogview.lang >> kppp.lang
 %find_lang ksirc		--with-kde
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-cat kcmtalkd.lang >> ktalkd.lang
-%find_lang kxmlrpcd		--with-kde
-#%find_lang kcmkxmlrpcd		--with-kde
-#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
-#%find_lang libkdenetwork	--with-kde
-%find_lang lisa			--with-kde
-%find_lang lanbrowser		--with-kde
-cat lanbrowser.lang >> lisa.lang
-#%find_lang kcmlanbrowser	--with-kde
-#%find_lang kio_lan		--with-kde
-#cat {kcmlanbrowser,kio_lan}.lang >> lisa.lang
+%find_lang kget			--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-#%files -f libkdenetwork.lang
-%files
+%post lanbrowser
+/sbin/chkconfig --add lisa
+if [ -r /var/lock/subsys/lisa ]; then
+	/etc/rc.d/init.d/lisa restart >&2
+else
+	echo "Run \"/etc/rc.d/init.d/lisa start\" to start Lisa daemon."
+fi
+
+%preun lanbrowser
+if [ "$1" = "0" ]; then
+	if [ -r /var/lock/subsys/lisa ]; then
+		/etc/rc.d/init.d/lisa stop >&2
+	fi
+	/sbin/chkconfig --del lisa
+fi
+
+%files -f libkdenetwork.lang
 %defattr(644,root,root,755)
 %{_libdir}/libmimelib.la
 %attr(755,root,root) %{_libdir}/libmimelib.so.*
@@ -437,7 +488,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*/*/*/kdict*
 %{_applnkdir}/Utilities/kdict.desktop
 
-%files kget
+%files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -448,7 +499,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*/*/*/*kget*
 %{_applnkdir}/Network/Misc/kget.desktop
 
-%files kinetd
+%files kinetd -f kinetd.lang
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kded_kinetd.la
 %attr(755,root,root) %{_libdir}/kde3/kded_kinetd.so
@@ -562,8 +613,8 @@ rm -rf $RPM_BUILD_ROOT
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/k*talkd*
-%{_libdir}/kde3/kcm_ktalkd.la 
-%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so 
+%{_libdir}/kde3/kcm_ktalkd.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkd*
 %{_datadir}/sounds/ktalkd*
 %{_pixmapsdir}/*/*/*/ktalkd*
@@ -580,8 +631,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/reslisa
-%attr(755,root,root) %{_bindir}/lisa
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
+%attr(754,root,root) /etc/rc.d/init.d/lisa
+%attr(755,root,root) /usr/bin/lisa
+%attr(755,root,root) /usr/bin/reslisa
 %{_libdir}/kde3/kio_lan.la
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.so
 %{_libdir}/kde3/kcm_lanbrowser.la
