@@ -1,7 +1,7 @@
 
 %define		_state		unstable
 %define		_ver		3.2
-%define		_snap		030504
+%define		_snap		030512
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -319,12 +319,10 @@ for plik in `find ./ -name *.desktop` ; do
 	echo $plik
 	sed -i -e "s/\[nb\]/\[no\]/g" $plik
 done
-				
-%configure \
-	--enable-final \
-	--%{!?debug:dis}%{?debug:en}able-debug \
-	--with-pam="yes"
 
+%configure \
+	--%{!?debug:dis}%{?debug:en}able-debug
+	
 %{__make}
 
 %install
@@ -335,9 +333,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
 mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings,KDE-Settings}
-mv $RPM_BUILD_ROOT%{_applnkdir}/Internet/ksirc.desktop \
-	$RPM_BUILD_ROOT%{_desktopdir}
-
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
