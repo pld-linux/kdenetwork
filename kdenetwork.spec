@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	6
+Release:	7
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -25,11 +25,11 @@ Patch5:		%{name}-fix-copy-link-location.patch
 Patch6:		%{name}-launch-spellchecking-config-when-it-didnot-configurate.patch
 Patch7:		%{name}-disable-enable-ok-button-in-new-channel.patch
 Patch8:		%{name}-no_versioned_modules.patch
-Patch9:		%{name}-desktop.patch
 # Security fix from 3.0.5
-Patch10:	%{name}-lan.patch
+Patch9:		%{name}-lan.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	awk
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{version}
@@ -306,7 +306,6 @@ do kdenetwork.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -341,6 +340,11 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Sett
 mv -f $RPM_BUILD_ROOT%{_pixmapsdir}{/hicolor/48x48/apps/*,}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
+
+for f in `find $RPM_BUILD_ROOT%{_applnkdir} -name '.directory' -o -name '*.desktop'` ; do
+	awk -v F=$f '/^Icon=/ && !/\.xpm$/ && !/\.png$/ { $0 = $0 ".png";} { print $0; } END { if(F == ".directory") print "Type=Directory"; }' < $f > $f.tmp
+	mv -f $f{.tmp,}
+done
 
 %find_lang kdict --with-kde
 %find_lang kdictapplet --with-kde
