@@ -893,36 +893,6 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Calendar;/' \
-	korganizer/korganizer.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
-	kpilot/kpilot/kpilotdaemon.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
-	kpilot/kpilot/kpilot.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
-	kpilot/conduits/docconduit/kpalmdoc.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;ContactManagement;/' \
-	kaddressbook/kaddressbook.desktop:
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;X-PIM/' \
-	kontact/src/Kontact.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Email;/' \
-	kmail/KMail.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;News;/' \
-	knode/KNode.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
-	kmobile/kmobile.desktop
-
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;PDA;/' \
-	kandy/src/kandy.desktop
-
 %build
 cp %{_datadir}/automake/config.sub admin
 export UNSERMAKE=%{_datadir}/unsermake/unsermake
