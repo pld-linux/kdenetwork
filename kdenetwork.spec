@@ -25,13 +25,13 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	ed
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 8:%{version}
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	qt-devel >= 3.1
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_fontdir	/usr/share/fonts
@@ -349,9 +349,9 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
-for plik in `find ./ -name *.desktop` ; do
+for plik in `find ./ -name *.desktop | grep -l '\[nb\]/'` ; do
 	echo $plik
-	sed -i -e 's/\[nb\]/\[no\]/g' $plik
+	echo -e 's/\[nb\]/[no]/\n,w' | ed $plik
 done
 
 %{__make} -f admin/Makefile.common cvs
