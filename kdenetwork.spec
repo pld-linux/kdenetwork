@@ -10,6 +10,7 @@ Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Vendor:		The KDE Team
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-knewsticker-utf8.patch
 BuildRequires:	kdelibs-devel >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -140,8 +141,6 @@ Requires:	kdelibs >= %{version}
 %description knewsticker
 KDE News Ticker.
 
-#%description -l pl knewsticker
-
 %package lanbrowser
 Summary:	KDE Lan Browser
 Group:		X11/Applications
@@ -150,12 +149,12 @@ Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= %{version}
 
 %description lanbrowser
-
-%description -l pl lanbrowser
-
+KDE Lan Browser.
 
 %prep
 %setup -q
+%patch0 -p1
+
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
@@ -168,7 +167,6 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/{Communications,Mail,News,Misc}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
