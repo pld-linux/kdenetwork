@@ -28,6 +28,7 @@ BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
+BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	openslp-devel
