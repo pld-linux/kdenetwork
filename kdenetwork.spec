@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -89,8 +89,7 @@ Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
 Requires:	kdelibs-devel >= 9:%{version}
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	%{name}-kopete-protocol-msn = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kopete-protocol-msn-lib = %{epoch}:%{version}-%{release}
 Requires:	%{name}-kopete-protocol-oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-librss-devel
@@ -196,7 +195,6 @@ Obsoletes:	kopete-plugin-protocols-sms
 Obsoletes:	kopete-plugin-protocols-winpopup
 Obsoletes:	kopete-plugin-protocols-yahoo
 
-
 %description kopete
 Kopete is a flexible and extendable multiple protocol instant
 messaging system designed as a plugin-based system. All protocols are
@@ -292,6 +290,19 @@ Adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl
 Dodaje obs³ugê protoko³u MSN.
+
+%package kopete-protocol-msn-lib
+Summary:	MSN protocol shared library
+Summary(pl):	Biblioteka wspó³dzielona dla protoko³u MSN
+Group:		X11/Libraries
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-2
+
+%description kopete-protocol-msn-lib
+MSN protocol shared library.
+
+%description kopete-protocol-msn-lib -l pl
+Biblioteka wspó³dzielona dla protoko³u MSN.
 
 %package kopete-protocol-oscar
 Summary:	Adds OSCAR protocol support
@@ -735,8 +746,8 @@ fi
 %post	kopete			-p /sbin/ldconfig
 %postun	kopete			-p /sbin/ldconfig
 
-%post	kopete-protocol-msn	-p /sbin/ldconfig
-%postun	kopete-protocol-msn	-p /sbin/ldconfig
+%post	kopete-protocol-msn-lib	-p /sbin/ldconfig
+%postun	kopete-protocol-msn-lib	-p /sbin/ldconfig
 
 %post	kopete-protocol-oscar	-p /sbin/ldconfig
 %postun	kopete-protocol-oscar	-p /sbin/ldconfig
@@ -909,16 +920,18 @@ fi
 
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
-%{_libdir}/libkopete_msn_shared.la
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
 %{_libdir}/kde3/kcm_kopete_msn.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
 %{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
-#%{_datadir}/apps/kopete/pics/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
+
+%files kopete-protocol-msn-lib
+%defattr(644,root,root,755)
+%{_libdir}/libkopete_msn_shared.la
+%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
 
 %files kopete-protocol-oscar
 %defattr(644,root,root,755)
