@@ -13,7 +13,6 @@ Version:	3.0.4
 Release:	10
 Epoch:		8
 License:	GPL
-Vendor:		The KDE Team
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
