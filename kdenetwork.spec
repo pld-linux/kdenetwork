@@ -435,6 +435,7 @@ cat {kcmlanbrowser,kio_lan,lanbrowser}.lang >> lisa.lang
 
 # probably obsolete
 #%find_lang	kcmkxmlrpcd	--with-kde
+#%find_lang	kpgpcertmanager	--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
