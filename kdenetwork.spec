@@ -1,5 +1,6 @@
 
 %define		_state		stable
+%define		_kdever		3.4
 %define		_ver		3.4.0
 
 %define		_minlibsevr	9:3.4.0
@@ -15,7 +16,7 @@ Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	47a8d21ce486426caf56bf6129ce993f
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	0d5f3da1dca6f0ec9fe2cc4a724998ee
