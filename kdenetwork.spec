@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.4
-Release:	9
+Release:	10
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -18,6 +18,9 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.bz2
 # generated from kde-i18n
 Source1:	kde-i18n-%{name}-%{version}.tar.bz2
+Source2:	lisa.init
+Source3:	lisa.sysconfig
+Source4:	%{name}-lisarc
 Patch0:		%{name}-use_sendmail.patch
 Patch1:		%{name}-kmail_toolbars.patch
 Patch2:		%{name}-fix-kio_lan.patch
@@ -30,6 +33,8 @@ Patch8:		%{name}-no_versioned_modules.patch
 # Security fix from 3.0.5
 Patch9:		%{name}-lan.patch
 Patch10:	%{name}-desktop.patch
+# ported from lisa.spec
+Patch11:	%{name}-lisa_net_auto_conf.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	awk
@@ -213,16 +218,31 @@ News Ticker dla KDE.
 Miniaplicativo de exibição de notícias para o painel Kicker.
 
 %package lanbrowser
-Summary:	KDE LAN Browser
-Summary(pl):	Przegl±darka LAN-u dla KDE
+Summary:	KDE LAN browser libraries
+Summary(pl):	Biblioteki przegl±darki LAN-u dla KDE
 Group:		X11/Applications
+Requires:	lisa
 Requires:	kdelibs >= %{version}
 
 %description lanbrowser
-KDE LAN Browser.
+KDE LAN browser libraries.
 
 %description lanbrowser -l pl
-Przegl±darka LAN-u dla KDE.
+Biblioteki przegl±darki LAN-u dla KDE.
+
+%package lisa
+Summary:	KDE LAN information server
+Summary(pl):	Serwer informacji o LAN-ie dla KDE
+Group:		Networking/Daemons
+Obsoletes:	lisa
+Provides:	lisa
+Conflicts:	%{name}-lanbrowser <= 3.0.4-9
+
+%description lisa
+KDE LAN information server.
+
+%description lisa -l pl
+Serwer informacji o LAN-ie dla KDE.
 
 %package kdict
 Summary:	Online dictionary client
@@ -311,6 +331,7 @@ do kdenetwork.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -327,7 +348,8 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
+install -d $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}} \
+	$RPM_BUILD_ROOT{/etc/{rc.d/init.d,sysconfig},%{_sysconfdir},/usr/bin}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -343,6 +365,12 @@ mv $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/Communications}/ksirc.desktop
 mv $RPM_BUILD_ROOT%{_applnkdir}/Settings/[!K]* $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE/
 
 mv -f $RPM_BUILD_ROOT%{_pixmapsdir}{/hicolor/48x48/apps/*,}
+
+mv -f $RPM_BUILD_ROOT%{_bindir}/{res,}lisa $RPM_BUILD_ROOT/usr/bin
+
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
@@ -364,7 +392,7 @@ cat kcmktalkd.lang >> ktalkd.lang
 %find_lang lisa --with-kde
 %find_lang kcmlanbrowser --with-kde
 %find_lang kio_lan --with-kde
-cat kcmlanbrowser.lang kio_lan.lang >> lisa.lang
+cat kio_lan.lang >> kcmlanbrowser.lang
 %find_lang kit --with-kde
 %find_lang kmail --with-kde
 %find_lang kmailcvt --with-kde
@@ -388,6 +416,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	kdict -p /sbin/ldconfig
 %postun kdict -p /sbin/ldconfig
+
+%post lisa
+/sbin/chkconfig --add lisa
+if [ -r /var/lock/subsys/lisa ]; then
+	/etc/rc.d/init.d/lisa restart >&2
+else
+	echo "Run \"/etc/rc.d/init.d/lisa start\" to start Lisa daemon."
+fi
+
+%preun lisa
+if [ "$1" = "0" ]; then
+	if [ -r /var/lock/subsys/lisa ]; then
+		/etc/rc.d/init.d/lisa stop >&2
+	fi
+	/sbin/chkconfig --del lisa
+fi
 
 %files -f libkdenetwork.lang
 %defattr(644,root,root,755)
@@ -434,12 +478,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
 %attr(755,root,root) %{_libdir}/ksirc.so
+#%{_libdir}/ksirc.la
 %attr(755,root,root) %{_libdir}/libkntsrcfilepropsdlg.so
+#%{_libdir}/libkntsrcfilepropsdlg.la
 %{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/ksirc.png}
+%{?_with_pixmapsubdirs:%{_pixmapsdir}/*color/*x*/apps/ksirc.png}
 %{_pixmapsdir}/ksirc.png
 
 %files kit -f kit.lang
@@ -468,10 +514,8 @@ rm -rf $RPM_BUILD_ROOT
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/hicolor/*x*/apps/knewsticker.png}
 %{_pixmapsdir}/knewsticker.png
 
-%files lanbrowser -f lisa.lang
+%files lanbrowser -f kcmlanbrowser.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/reslisa
-%attr(755,root,root) %{_bindir}/lisa
 %attr(755,root,root) %{_libdir}/kde3/libkcm_lanbrowser.so
 %{_libdir}/kde3/libkcm_lanbrowser.la
 %attr(755,root,root) %{_libdir}/kio_lan.so
@@ -481,6 +525,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
 %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+
+%files lisa -f lisa.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) /usr/bin/reslisa
+%attr(755,root,root) /usr/bin/lisa
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
+%attr(754,root,root) /etc/rc.d/init.d/lisa
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
