@@ -215,7 +215,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files karchie -f karchie.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/karchierc
 %config(missingok) /etc/X11/kde/applnk/Internet/karchie.kdelnk
@@ -232,7 +232,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kbiff -f kbiff.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/kbiff.kdelnk
 
@@ -250,7 +250,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kfinger -f kfinger.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/kfingerrc
 %config(missingok) /etc/X11/kde/applnk/Internet/kfinger.kdelnk
@@ -266,11 +266,11 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kmail -f kmail.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KMail.kdelnk
 
-%attr(755, root, root) /usr/X11R6/bin/kmail
+%attr(755,root,root) /usr/X11R6/bin/kmail
 
 %{_Xshare}/kde/apps/kmail
 
@@ -284,11 +284,11 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files knu -f knu
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/knu.kdelnk
 
-%attr(755, root, root) /usr/X11R6/bin/knu
+%attr(755,root,root) /usr/X11R6/bin/knu
 
 %lang(en) %{_Xshare}/kde/doc/HTML/en/knu
 
@@ -300,11 +300,11 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files korn -f korn.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/KOrn.kdelnk
 
-%attr(755, root, root) /usr/X11R6/bin/korn
+%attr(755,root,root) /usr/X11R6/bin/korn
 
 %lang(en) /usr/X11R6/share/kde/doc/HTML/en/korn
 
@@ -316,12 +316,12 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files kppp -f kppp  -f kppplogview
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Kppp.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/kppplogview.kdelnk
 
-%attr(755, root, root) /usr/X11R6/bin/kppplogview
+%attr(755,root,root) /usr/X11R6/bin/kppplogview
 %attr(2755,root, uucp) /usr/X11R6/bin/kppp
 
 /usr/X11R6/share/kde/apps/kppp
@@ -336,13 +336,13 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files krn -f krn.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/Krn.kdelnk
 
-%attr(755, root, root) /usr/X11R6/bin/krn
-%attr(755, root, root) /usr/X11R6/bin/kdecode
-%attr(755, root, root) /usr/X11R6/bin/newkrn
+%attr(755,root,root) /usr/X11R6/bin/krn
+%attr(755,root,root) /usr/X11R6/bin/kdecode
+%attr(755,root,root) /usr/X11R6/bin/newkrn
 
 /usr/X11R6/share/kde/apps/krn
 
@@ -356,21 +356,21 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files ksirc -f ksirc.lang -f pws.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/applnk/Internet/ksirc.kdelnk
 %config(missingok) /etc/X11/kde/applnk/Internet/pws.kdelnk
 
-%attr(755, root, root) %{_Xbin}/ksirc
-%attr(755, root, root) %{_Xbin}/dsirc
-%attr(755, root, root) %{_Xbin}/ksticker
-%attr(755, root, root) %{_Xbin}/mathpod
+%attr(755,root,root) %{_Xbin}/ksirc
+%attr(755,root,root) %{_Xbin}/dsirc
+%attr(755,root,root) %{_Xbin}/ksticker
+%attr(755,root,root) %{_Xbin}/mathpod
 
 %{_Xlib}/ksirc
 
-%attr(755, root, root) %{_Xlib}/libpuke*
+%attr(755,root,root) %{_Xlib}/libpuke*
 
-%attr(755, root, root) %{_Xlib}/libkplunger*
+%attr(755,root,root) %{_Xlib}/libkplunger*
 
 %{_Xshare}/kde/apps/ksirc
 
@@ -386,7 +386,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################################
 
 %files ktalkd -f ktalkd.lang -f kcmktalkd.lang
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 
 %config(missingok) /etc/X11/kde/ktalkdrc
 %config(missingok) /etc/X11/kde/applnk/Settings/Network/kcmktalkd.kdelnk
