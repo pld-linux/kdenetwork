@@ -664,7 +664,7 @@ Summary:	Adds OSCAR protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u OSCAR
 Group:		X11/Applications/Networking
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-3
+Obsoletes:	%{name}-kopete-protocol-oscar < 10:3.1.93.031114-3
 
 %description libkopete_oscar
 A shared library which adds OSCAR protocol support needed eg. by
