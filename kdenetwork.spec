@@ -170,7 +170,7 @@ po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
 Summary:	Meta information plugin for BitTorrent files (*.torrent)
 Summary(pl):	Wtyczka pobieraj±ca metainformacje z plików BitTorrenta (*.torrent)
 Group:		X11/Applications
-Requires:	kdemultimedia-kfile >= %{_minbaseevr}
+Requires:	konqueror >= %{_ver}
 
 %description kfile-torrent
 This is a meta information plugin for BitTorrent files (*.torrent).
