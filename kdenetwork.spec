@@ -1,26 +1,27 @@
 
 %define		_state		unstable
-%define		_ver		3.2
-%define		_snap		030613
+%define		_ver		3.1.90
+%define		_snap		030618
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
-Release:	0.%{_snap}.1
-Epoch:		9
+Version:	%{_ver}.%{_snap}
+Release:	1
+Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	ffe20e3ce078d98d2fdbfdf5563f8d8c
+# Source0-md5:	f6c0dacfaf4b3037e60d562445517e8a
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
+Patch2:		%{name}-fix-service_h.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -107,7 +108,7 @@ Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
-Obsoletes:	%{name}-krfb < 3.1-6
+Obsoletes:	%{name}-krfb < 9:3.1-6
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -232,7 +233,7 @@ Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kdebase-core >= %{version}
-Requires:	%{name}-kinetd = %{version}
+Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-kmail
 Obsoletes:	%{name}-knode
 Obsoletes:	%{name}-korn
@@ -306,32 +307,35 @@ KDE LAN Browser.
 %description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
-%package librss
+%package rss
 Summary:	TODO
 Summary(pl):	TODO
 Group:		X11/Libraries
+Obsoletes:	%{name}-librss
 
-%description librss
+%description rss
 TODO.
 
-%description librss -l pl
+%description rss -l pl
 TODO.
 
-%package librss-devel
+%package rss-devel
 Summary:	TODO
 Summary(pl):	TODO
 Group:		X11/Development/Libraries
+Obsoletes:	%{name}-librss-devel
 
-%description librss-devel
+%description rss-devel
 TODO.
 
-%description librss-devel -l pl
+%description rss-devel -l pl
 TODO.
 
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 
@@ -401,8 +405,8 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%post	librss		-p /sbin/ldconfig
-%postun	librss		-p /sbin/ldconfig
+%post	rss	-p /sbin/ldconfig
+%postun	rss	-p /sbin/ldconfig
 
 #%files kwifimanager
 #%defattr(644,root,root,755)
@@ -553,11 +557,15 @@ fi
 %{_applnkdir}/.hidden/kcmlisa.desktop
 %{_applnkdir}/.hidden/kcmreslisa.desktop
 
-%files librss
+%files rss
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/feedbrowser
+%attr(755,root,root) %{_bindir}/rssclient
+%attr(755,root,root) %{_bindir}/rssservice
 %{_libdir}/librss.la                                                      
 %attr(755,root,root) %{_libdir}/librss.so.*.*.*    
+%{_datadir}/services/rssservice.desktop
 
-%files librss-devel
+%files rss-devel
 %defattr(644,root,root,755)
 %{_includedir}/rss                                                      
