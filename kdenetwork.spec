@@ -24,6 +24,8 @@ Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{_snap}.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
+Source5:	kopetestyles.tar.bz2
+# Source5-md5:	cbb4ea50899c8493ca8359b8dac72746
 Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
@@ -928,6 +930,9 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-im/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/iris/xmpp-core/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/libiris/cutestuff/network/Makefile.am
 echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
 
 %build
@@ -972,6 +977,7 @@ else
 fi
 %endif
 
+tar xfj %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles/
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
