@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.8
-Release:	1
+Release:	1.1
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -186,6 +186,7 @@ Summary(pl):	Czytnik newsów dla KDE
 Summary(pt_BR):	Leitor de notícias (news) do KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
+Requires:	kdenetwork >= %{version}
 
 %description knode
 This is a news reader for KDE. It has threading and everything else
