@@ -1,0 +1,13 @@
+diff -b -p -u -r1.213 -r1.214
+--- kppp/main.cpp	9 Sep 2002 17:58:39 -0000	1.213
++++ kppp/main.cpp	10 Dec 2002 17:45:20 -0000	1.214
+@@ -328,7 +328,8 @@ pid_t execute_command (const QString & c
+     signal(SIGCHLD, SIG_IGN);
+ 
+     // close file descriptors
+-    for (int fd = 3; fd < 20; fd++)
++    const int open_max = sysconf( _SC_OPEN_MAX );
++    for (int fd = 3; fd < open_max; ++fd)
+       close(fd);
+ 
+     // drop privileges if running setuid root
