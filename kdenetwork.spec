@@ -18,12 +18,12 @@ Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Patch1:		kde-common-utmpx.patch
-Patch2:		%{name}-use_sendmail.patch
-Patch3:		%{name}-vcategories.patch
-Patch4:		%{name}-ggstatus.patch
-Patch5:		%{name}-dcoprss.patch
-Patch6:		%{name}-kopete-gg.patch
+Patch100:	%{name}-branch.diff
+Patch0:		kde-common-utmpx.patch
+Patch1:		%{name}-use_sendmail.patch
+Patch2:		%{name}-vcategories.patch
+Patch3:		%{name}-ggstatus.patch
+Patch4:		%{name}-dcoprss.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -39,6 +39,7 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xmms-devel
+BuildRequires:	libidn-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libkopete_oscar.so.1
@@ -769,12 +770,12 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
+%patch100 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 cp %{_datadir}/automake/config.sub admin
@@ -1186,6 +1187,7 @@ fi
 %{_iconsdir}/*/*/*/krdc*
 %{_iconsdir}/[!l]*/*/*/krfb*
 %{_kdedocdir}/en/krfb
+%{_kdedocdir}/en/krdc
 
 %files ksirc
 %defattr(644,root,root,755)
@@ -1216,7 +1218,7 @@ fi
 %{_desktopdir}/kde/kcmktalkd.desktop
 %{_iconsdir}/*/*/*/ktalkd.png
 %{_kdedocdir}/en/ktalkd
-
+%{_kdedocdir}/en/kcontrol/kcmtalkd
 #%files kxmlrpcd -f kxmlrpcd.lang
 #%defattr(644,root,root,755)
 #%attr(755,root,root) %{_bindir}/kxmlrpcd
@@ -1261,6 +1263,7 @@ fi
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
 %{_kdedocdir}/en/lisa
+%{_kdedocdir}/en/kcontrol/lanbrowser
 
 %files libkopete
 %defattr(644,root,root,755)
