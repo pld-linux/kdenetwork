@@ -108,16 +108,16 @@ Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
 %package filesharing
-Summary:	TODO
-Summary(pl):	TODO
+Summary:	File sharing plugins
+Summary(pl):	Wtyczki obs³uguj±ce wspó³dzielenie plików
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minlibsevr}
 
 %description filesharing
-TODO.
+File sharing plugins.
 
 %description filesharing -l pl
-TODO.
+Wtyczki obs³uguj±ce wspó³dzielenie plików.
 
 %package kdict
 Summary:	A DICT protocol client
@@ -396,17 +396,17 @@ Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
 zaistnieniu których ma nast±piæ, s± konfigurowalne.
 
 %package kopete-tool-alias
-Summary:	TODO
-Summary(pl):	TODO
+Summary:	Kopete plugin to add custom aliases for commands
+Summary(pl):	Wtyczka Kopete do dodawania w³asnych aliasów dla poleceñ
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Conflicts:	kdenetwork-kopete < 10:3.2.90.040312-1
 
 %description kopete-tool-alias
-TODO.
+Kopete plugin to add custom aliases for commands.
 
 %description kopete-tool-alias -l pl
-TODO.
+Wtyczka Kopete do dodawania w³asnych aliasów dla poleceñ.
 
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
@@ -677,6 +677,7 @@ Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	perl-Socket6 >= 0.11
+
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
 and has a lot of compatibility with mIrc for general use.
@@ -898,7 +899,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT/%{_datadir}/apps/kopete/styles
+%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
