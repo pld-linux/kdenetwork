@@ -30,7 +30,7 @@ Patch2:		%{name}-use_sendmail.patch
 Patch3:		%{name}-vcategories.patch
 Patch4:		%{name}-ggstatus.patch
 Patch5:		%{name}-dcoprss.patch
-Patch6:		%{name}-gcc34.patch
+Patch6:		%{name}-kopete-gg.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -1010,7 +1010,6 @@ cat kcmwifi.lang >> kwifimanager.lang
 cat kdictapplet.lang >> kdict.lang
 
 %find_lang dcopservice		--with-kde
-%find_lang desktop_kdenetwork	--with-kde
 %find_lang kinetd		--with-kde
 
 %endif
@@ -1076,7 +1075,6 @@ fi
 %postun	librss		-p /sbin/ldconfig
 
 %if %{with i18n}
-%files i18n -f desktop_kdenetwork.lang
 %files kdict-i18n -f kdict.lang
 %files kget-i18n -f kget.lang
 %files knewsticker-i18n -f knewsticker.lang
