@@ -1,35 +1,33 @@
-#
-%define		_state		stable
-%define		_ver		3.2.3
+%define		_state		unstable
+%define		_ver		3.3.0
+%define		_snap		rc2
 
+%define		_minlibsevr	9:3.3.0
+%define		_minbaseevr	9:3.3.0
+#
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	4
+Release:	0.%{_snap}.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	a58915e964d8f6ec87c76acaab9f8929
-#Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
+# Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_ver}-%{_snap}.tar.bz2
+# Source0-md5:	435a1b8c0a491994de9cc17d2fab71e9
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
-Patch100:	%{name}-branch.diff
-Patch0:		kde-common-utmpx.patch
+Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-vcategories.patch
-Patch3:		%{name}-ggstatus.patch
-Patch4:		%{name}-dcoprss.patch
-Patch5:		%{name}-yahoo_protocol_change.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:%{version}
+BuildRequires:	kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
@@ -40,7 +38,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	unsermake
+BuildRequires:	unsermake >= 040511
 BuildRequires:	xmms-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -91,7 +89,7 @@ PPP krn: leitor de notícias
 Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs-devel >= 9:%{version}
+Requires:	kdelibs-devel >= %{_minlibsevr}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
@@ -108,11 +106,24 @@ Pliki nag³ówkowe kdenetwork.
 Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
+%package filesharing
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Applications
+Requires:	kdebase-core >= %{_minlibsevr}
+
+%description filesharing
+TODO.
+
+%description filesharing -l pl
+TODO.
+
 %package kdict
 Summary:	A DICT protocol client
 Summary(pl):	Klient protoko³u DICT
 License:	Artistic
 Group:		X11/Applications
+Requires:	kdebase-core >= %{_minlibsevr}
 Provides:	kdict
 
 %description kdict
@@ -139,7 +150,7 @@ Internet.
 Summary:	KDE Internet Daemon
 Summary(pl):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-krfb < 9:3.1-6
 
 %description kinetd
@@ -154,7 +165,7 @@ po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
 Summary:	File downloand manager
 Summary(pl):	Zarz±dca ¶ci±gania plików
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description kget
 A GetRight-like file download manager with resuming support and
@@ -169,7 +180,7 @@ Summary:	KDE News Ticker
 Summary(pl):	News Ticker dla KDE
 Summary(pt_BR):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-desktop >= 9:%{version}
+Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description knewsticker
 KNewsTicker is an applet for the KDE panel (also known as Kicker)
@@ -192,7 +203,7 @@ Miniaplicativo de exibição de notícias para o painel Kicker.
 Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-tools-autoaway
@@ -383,6 +394,19 @@ are configurable.
 Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
 zaistnieniu których ma nast±piæ, s± konfigurowalne.
 
+%package kopete-tool-alias
+Summary:	TODO
+Summary(pl):	TODO
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Conflicts:	kdenetwork-kopete < 10:3.2.90.040312-1
+
+%description kopete-tool-alias
+TODO.
+
+%description kopete-tool-alias -l pl
+TODO.
+
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
 Summary(pl):	Wtyczka Kopete do automatycznej zamiany tekstu
@@ -490,8 +514,8 @@ Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	kdemultimedia-noatun >= 3.1
-Requires:	kdemultimedia-kscd >= 3.1
+#Requires:	kdemultimedia-noatun >= 3.1
+#Requires:	kdemultimedia-kscd >= 3.1
 Requires:	xmms >= 1.0.0
 
 %description kopete-tool-nowlistening
@@ -558,7 +582,7 @@ na stronie WWW.
 Summary:	Public fileserver applet
 Summary(pl):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-desktop >= 9:%{version}
+Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description kpf
 kpf provides simple file sharing using HTTP (the Hyper Text Transfer
@@ -605,7 +629,7 @@ Summary:	KDE PPP dialer
 Summary(pl):	Program do po³±czeñ modemowych dla KDE
 Summary(pt_BR):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	ppp
 
 %description kppp
@@ -650,8 +674,8 @@ Summary:	KDE IRC client
 Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
-
+Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	perl-Socket6 >= 0.11
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
 and has a lot of compatibility with mIrc for general use.
@@ -667,7 +691,7 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 
 %description krfb
@@ -690,7 +714,7 @@ specjalnych mo¿liwo¶ci Remote Desktop Connection.
 Summary:	Talk daemon
 Summary(pl):	Daemon talk
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:%{version}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description ktalkd
 A talk daemon replacement. Support the talk protocol and features an
@@ -705,7 +729,7 @@ sekretarkê oraz mo¿liwo¶æ informowania o przychodz±cych wiadomo¶ciach.
 Summary:	Wireless LAN
 Summary(pl):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Requires:	wireless-tools
 Obsoletes:	kwifimanager
 
@@ -729,7 +753,7 @@ u¿ywaj±ce interfejsu rozszerzeñ bezprzewodowych.
 Summary:	KDE XmlRpc Daemon
 Summary(pl):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -741,7 +765,7 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-Requires:	konqueror >= 9:%{version}
+Requires:	konqueror >= %{_minbaseevr}
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
@@ -756,7 +780,7 @@ Przegl±darka dla udzia³ów Samby w sieci lokalnej.
 Summary:	kopete library
 Summary(pl):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
 
 %description libkopete
@@ -797,7 +821,7 @@ przez AIM i ICQ.
 Summary:	RSS library
 Summary(pl):	Biblioteka RSS
 Group:		X11/Libraries
-Requires:	kdelibs >= 9:%{version}
+Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
 
 %description librss
@@ -819,35 +843,49 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-%setup -q
-%patch100 -p1
+%setup -q -D
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
-for f in `find . -name *.desktop | xargs grep -l '^Terminal=0'`; do
-	%{__sed} -i -e 's/^Terminal=0/Terminal=false/' $f
-done
-for f in `find . -name *.desktop | xargs grep -l '^Type=Application'`; do
-	if ! grep '^Encoding=' $f >/dev/null; then
-		%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' $f
-	fi
-done
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/gadu/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/jabber/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> krdc/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> wifi/Makefile.am
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
+	kget/kget.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+	kppp/logview/kppplogview.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+	kppp/Kppp.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	krdc/krdc.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+	krfb/krfb/krfb.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Dictionary;/' \
+	kdict/kdict.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;IRCClient;/' \
+	ksirc/ksirc.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
+	kopete/kopete/kopete.desktop
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
+	wifi/kwifimanager.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;News;/' \
+	knewsticker/knewsticker-standalone.desktop
 
 %build
 cp %{_datadir}/automake/config.sub admin
-export kde_htmldir=%{_kdedocdir}
-export kde_libs_htmldir=%{_kdedocdir}
 export UNSERMAKE=%{_datadir}/unsermake/unsermake
+
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--disable-rpath \
-	--with-qt-libraries=%{_libdir} \
-	--enable-final
+	--enable-final \
+	--with-qt-libraries=%{_libdir}
 
 %{__make}
 
@@ -856,8 +894,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir}
+	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 
@@ -865,11 +902,25 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 
-mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kopete.desktop \
-   $RPM_BUILD_ROOT%{_desktopdir}/kde
+mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 
-cd $RPM_BUILD_ROOT%{_iconsdir}
-mv {locolor,crystalsvg}/16x16/apps/krfb.png
+%find_lang kdict		--with-kde
+%find_lang kget			--with-kde
+%find_lang knewsticker		--with-kde
+%find_lang kopete		--with-kde
+%find_lang kpf			--with-kde
+%find_lang kppp			--with-kde
+%find_lang krdc			--with-kde
+%find_lang krfb			--with-kde
+cat krdc.lang >> krfb.lang
+%find_lang ksirc		--with-kde
+%find_lang ktalkd		--with-kde
+%find_lang kcmtalkd		--with-kde
+cat kcmtalkd.lang >> ktalkd.lang
+%find_lang kwifimanager		--with-kde
+%find_lang lisa			--with-kde
+%find_lang lanbrowser		--with-kde
+cat lanbrowser.lang >> lisa.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -910,7 +961,20 @@ fi
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/rss
 
-%files kdict
+%files filesharing
+%defattr(644,root,root,755)
+%{_libdir}/kde3/fileshare_propsdlgplugin.la
+%attr(755,root,root) %{_libdir}/kde3/fileshare_propsdlgplugin.so
+%{_libdir}/kde3/kcm_fileshare.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
+%{_libdir}/kde3/libkcm_kcmsambaconf.la
+%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
+%{_datadir}/services/fileshare_propsdlgplugin.desktop
+%{_desktopdir}/kde/fileshare.desktop
+%{_desktopdir}/kde/kcmsambaconf.desktop
+%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
+
+%files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
 %{_libdir}/kde3/kdict_panelapplet.la
@@ -921,7 +985,7 @@ fi
 %{_iconsdir}/*/*/*/kdict*
 %{_kdedocdir}/en/kdict
 
-%files kget
+%files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -941,7 +1005,7 @@ fi
 %{_datadir}/services/kded/kinetd.desktop
 %{_datadir}/servicetypes/kinetdmodule.desktop
 
-%files knewsticker
+%files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %{_libdir}/kde3/knewsticker_panelapplet.la
@@ -954,7 +1018,7 @@ fi
 %{_iconsdir}/*/*/*/knewsticker.png
 %{_kdedocdir}/en/knewsticker
 
-%files kopete
+%files kopete -f kopete.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
 %attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
@@ -965,42 +1029,42 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/libkrichtexteditpart.la
-%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
+%{_libdir}/kde3/libkrichtexteditpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
+%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %dir %{_datadir}/apps/kopete
 %{_datadir}/apps/kopete/*rc
 %dir %{_datadir}/apps/kopete/icons
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*
 %dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/admin_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aol_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/dt_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/emoticon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/free_icon.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteavailable.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopeteaway.png
+%{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
+%{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
+%{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
+%{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmsg.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/newmessage.mng
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/status_unknown.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/emoticons
 %{_datadir}/apps/kopete/styles
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
-%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
+#%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartsimple.rc
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
@@ -1014,13 +1078,29 @@ fi
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
 %{_iconsdir}/crystalsvg/*/apps/kopete.png
-%{_kdedocdir}/en/kopete
+%{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
+%{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
+%{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
+%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
+# TODO (separate?)
+%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
+%{_libdir}/kde3/kcm_kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
+%{_libdir}/kde3/kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
+%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
+%{_datadir}/services/kopete_latex.desktop
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*aim*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/aim*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
+%{_datadir}/services/aim.protocol
 %{_datadir}/services/kopete_aim.desktop
 
 %files kopete-protocol-gg
@@ -1035,15 +1115,19 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*icq*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/icq*
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
+%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*irc*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
+%{_datadir}/apps/kopete/ircnetworks.xml
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
+%{_datadir}/services/irc.protocol
 #%%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
 %files kopete-protocol-jabber
@@ -1051,6 +1135,7 @@ fi
 %{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
+%{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
 %{_datadir}/services/kopete_jabber.desktop
 
 %files kopete-protocol-msn
@@ -1059,9 +1144,14 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
 %{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
+%{_libdir}/kde3/kopete_netmeeting.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_netmeeting.so
+%{_datadir}/apps/kopete_msn
+%{_datadir}/apps/kopete_netmeeting
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
+%{_datadir}/services/kopete_netmeeting.desktop
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
@@ -1094,6 +1184,15 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
 %{_datadir}/services/kopete_yahoo.desktop
+
+%files kopete-tool-alias
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kcm_kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
+%{_libdir}/kde3/kopete_alias.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
+%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
+%{_datadir}/services/kopete_alias.desktop
 
 %files kopete-tool-autoreplace
 %defattr(644,root,root,755)
@@ -1145,6 +1244,7 @@ fi
 %{_libdir}/kde3/kopete*history*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*history*.so
 %{_datadir}/apps/kopete_history
+%{_datadir}/config.kcfg/historyconfig.kcfg
 %{_datadir}/services/kopete_history.desktop
 %{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
 
@@ -1204,7 +1304,7 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/services/kopete_webpresence.desktop
 
-%files kpf
+%files kpf -f kpf.lang
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kpf_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
@@ -1215,7 +1315,7 @@ fi
 %{_iconsdir}/*/*/*/kpf*
 %{_kdedocdir}/en/kpf
 
-%files kppp
+%files kppp -f kppp.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
@@ -1225,7 +1325,7 @@ fi
 %{_iconsdir}/*/*/*/kppp.png
 %{_kdedocdir}/en/kppp
 
-%files krfb
+%files krfb -f krfb.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
@@ -1246,7 +1346,7 @@ fi
 %{_kdedocdir}/en/krfb
 %{_kdedocdir}/en/krdc
 
-%files ksirc
+%files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
@@ -1263,7 +1363,7 @@ fi
 %{_iconsdir}/[!l]*/*/*/ksirc*
 %{_kdedocdir}/en/ksirc
 
-%files ktalkd
+%files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
@@ -1287,7 +1387,7 @@ fi
 #%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
 #%{_datadir}/services/kxmlrpcd.desktop
 
-%files kwifimanager
+%files kwifimanager -f kwifimanager.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kwifimanager
 %{_libdir}/libkwireless.la
@@ -1298,9 +1398,9 @@ fi
 %{_datadir}/apps/kwifimanager
 %{_datadir}/applications/kde/kcmwifi.desktop
 %{_datadir}/applications/kde/kwifimanager.desktop
-%{_kdedocdir}/en/kwifimanager
+%{_iconsdir}/*/*/apps/kwifimanager.*
 
-%files lanbrowser
+%files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
@@ -1314,8 +1414,9 @@ fi
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
-# konqueror/dirtree no longer supported!
+# Messing one !
 # %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
