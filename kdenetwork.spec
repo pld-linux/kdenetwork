@@ -18,7 +18,7 @@ Group:       X11/KDE/Network
 Group(pl):   X11/KDE
 Copyright:   GPL
 Requires:    qt >= 1.40, kdelibs = %{version}
-BuildRoot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 KDE network applications.
