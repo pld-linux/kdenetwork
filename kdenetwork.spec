@@ -1,7 +1,7 @@
 
 %define         _state          unstable
 %define         _ver		3.1
-%define         _rcver		rc6
+%define         _rcver		rc7
 %define         _kdever		kde-%{_ver}-%{_rcver}
 
 Summary:        K Desktop Environment - network applications
@@ -9,9 +9,9 @@ Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}%{_rcver}
-Release:	2
-Epoch:		8
+Version:	%{_ver}
+Release:	4
+Epoch:		9
 License:	GPL
 Vendor:		The KDE Team
 Group:		X11/Libraries
