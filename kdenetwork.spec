@@ -2,7 +2,7 @@
 
 %define		_state		unstable
 %define		_ver		3.1.92
-%define		_snap		031014
+%define		_snap		031024
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -16,7 +16,7 @@ License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	cf485e70bb661846804a74f96647b1d7
+# Source0-md5:	79c9955c21df5aa4d181d2fdcb233675
 Source2:	%{name}-lisa.init
 Source3:        %{name}-lisa.sysconfig
 Source4:        %{name}-lisarc
@@ -790,13 +790,13 @@ fi
 %attr(755,root,root) %{_bindir}/knewstickerstub
 %{_libdir}/kde3/knewsticker_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
-%{_libdir}/kde3/kcm_knewsticker.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
+#%{_libdir}/kde3/kcm_knewsticker.la
+#%attr(755,root,root) %{_libdir}/kde3/kcm_knewsticker.so
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
 %{_datadir}/apps/kconf_update/kn*
 %{_applnkdir}/.hidden/knewstickerstub.desktop
-%{_applnkdir}/.hidden/kcmnewsticker.desktop
+#%{_applnkdir}/.hidden/kcmnewsticker.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
 
