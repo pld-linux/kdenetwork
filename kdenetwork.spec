@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.2
+Release:	0.3
 Epoch:		9
 License:	GPL
 Group:		X11/Libraries
@@ -396,39 +396,45 @@ cd -
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT
 
-%find_lang kdict		--with-kde
-#%find_lang kdictapplet 	--with-kde
-#cat kdictapplet.lang >> kdict.lang
-%find_lang kit			--with-kde
-%find_lang kmail		--with-kde
-%find_lang kgpgcertmanager	--with-kde
-#%find_lang kmailcvt		--with-kde
-cat kgpgcertmanager.lang >> kmail.lang
-#cat kmailcvt.lang >> kmail.lang
-%find_lang knewsticker		--with-kde
-#%find_lang kcmnewsticker	--with-kde
-#cat kcmnewsticker.lang >> knewsticker.lang
-%find_lang knode		--with-kde
-%find_lang korn			--with-kde
-%find_lang kpf			--with-kde
-%find_lang kppp			--with-kde
-%find_lang krfb			--with-kde
-#%find_lang kppplogview		--with-kde
-#cat kppplogview.lang >> kppp.lang
-%find_lang ksirc		--with-kde
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-cat kcmtalkd.lang >> ktalkd.lang
-%find_lang kxmlrpcd		--with-kde
-#%find_lang kcmkxmlrpcd		--with-kde
-#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
-#%find_lang libkdenetwork	--with-kde
-%find_lang lisa			--with-kde
-%find_lang lanbrowser		--with-kde
-cat lanbrowser.lang >> lisa.lang
-#%find_lang kcmlanbrowser	--with-kde
-#%find_lang kio_lan		--with-kde
-#cat {kcmlanbrowser,kio_lan}.lang >> lisa.lang
+%find_lang	kdict		--with-kde
+%find_lang	kdictapplet 	--with-kde
+cat kdictapplet.lang >> kdict.lang
+%find_lang	kget		--with-kde
+%find_lang	kinetd		--with-kde
+%find_lang	kit		--with-kde
+%find_lang	kmail		--with-kde
+%find_lang	kfile_rfc822	--with-kde
+%find_lang	kgpgcertmanager	--with-kde
+%find_lang	kmailcvt	--with-kde
+cat {kfile_rfc822,kgpgcertmanager,kmailcvt}.lang >> kmail.lang
+%find_lang	knewsticker	--with-kde
+%find_lang	kcmnewsticker	--with-kde
+cat kcmnewsticker.lang >> knewsticker.lang
+%find_lang	knode		--with-kde
+%find_lang	korn		--with-kde
+%find_lang	kpf		--with-kde
+%find_lang	kppp		--with-kde
+%find_lang	kppplogview	--with-kde
+cat kppplogview.lang >> kppp.lang
+%find_lang	krfb		--with-kde
+%find_lang	kcm_krfb	--with-kde
+%find_lang	krdc		--with-kde
+cat {kcm_krfb,krdc}.lang >> krfb.lang
+%find_lang	ksirc		--with-kde
+%find_lang	ktalkd		--with-kde
+%find_lang	kcmktalkd	--with-kde
+%find_lang	kcmtalkd	--with-kde
+cat kcm{,k}talkd.lang >> ktalkd.lang
+%find_lang	kxmlrpcd	--with-kde
+%find_lang	libkdenetwork	--with-kde
+%find_lang	lisa		--with-kde
+%find_lang	lanbrowser	--with-kde
+%find_lang	kcmlanbrowser	--with-kde
+%find_lang	kio_lan		--with-kde
+cat {kcmlanbrowser,kio_lan,lanbrowser}.lang >> lisa.lang
+
+# probably obsolete
+#%find_lang	kcmkxmlrpcd	--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -449,8 +455,7 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-#%files -f libkdenetwork.lang
-%files
+%files -f libkdenetwork.lang
 %defattr(644,root,root,755)
 %{_libdir}/libmimelib.la
 %attr(755,root,root) %{_libdir}/libmimelib.so.*
@@ -473,7 +478,7 @@ fi
 %{_pixmapsdir}/*/*/*/kdict*
 %{_applnkdir}/Utilities/kdict.desktop
 
-%files kget
+%files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -484,7 +489,7 @@ fi
 %{_pixmapsdir}/*/*/*/*kget*
 %{_applnkdir}/Network/Misc/kget.desktop
 
-%files kinetd
+%files kinetd -f kinetd.lang
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kded_kinetd.la
 %attr(755,root,root) %{_libdir}/kde3/kded_kinetd.so
