@@ -1,7 +1,12 @@
 
+%bcond_with ggstatus	
+# Use proper sstatus behaviour for gg (which means 
+# losing some contactlist features in kopete due 
+# to a design bug)
+
 %define		_state		unstable
 %define		_ver		3.1.94
-%define		_snap		031204
+%define		_snap		040110
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -14,12 +19,12 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	a9cdcba68c1e1c2083e5a8f40ad99193
+Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	577c6a74891c6adc571ab680ed73c9e8
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Patch0:		kde-general-utmpx.patch
+Patch0:		kde-common-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		%{name}-ggstatus.patch
@@ -710,7 +715,7 @@ TODO.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+%{?with_ggstatus:%patch3 -p1}
 
 %build
 cp /usr/share/automake/config.sub admin
@@ -748,6 +753,7 @@ mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
 %find_lang kdict		--with-kde
+%find_lang kget			--with-kde
 %find_lang knewsticker		--with-kde
 %find_lang kopete		--with-kde
 %find_lang kpf			--with-kde
@@ -814,7 +820,7 @@ fi
 %{_desktopdir}/kde/kdict.desktop
 %{_iconsdir}/*/*/*/kdict*
 
-%files kget
+%files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %{_libdir}/kde3/khtml_kget.la
@@ -847,8 +853,8 @@ fi
 
 %files kopete -f kopete.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-account-kconf_update
-%attr(755,root,root) %{_bindir}/kconf_update_bin/kopete-pluginloader2-kconf_update
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
 %{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
@@ -936,6 +942,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
+%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
@@ -954,12 +961,12 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kopete_msn.desktop
 
-#%files kopete-protocol-sms
-#%defattr(644,root,root,755)
-#%{_libdir}/kde3/kopete*sms*.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete*sms*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
-#%{_datadir}/services/kopete_sms.desktop
+%files kopete-protocol-sms
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kopete*sms*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*sms*.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
+%{_datadir}/services/kopete_sms.desktop
 
 #%files kopete-protocol-testbed
 #%defattr(644,root,root,755)
@@ -1198,7 +1205,7 @@ fi
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
 %{_datadir}/apps/lisa
-#%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
 %{_datadir}/applnk/.hidden/kcmreslisa.desktop
