@@ -676,6 +676,7 @@ Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	perl-Socket6 >= 0.11
+Requires:	perl-IO-Socket-SSL
 
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
