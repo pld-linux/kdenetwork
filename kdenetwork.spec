@@ -144,6 +144,7 @@ Cliente de IRC do KDE.
 Summary:	KDE AOL Instant Messenger
 Summary(pl):	Klient AOL Instant Messenger dla KDE
 Summary(pt_BR):	Comunicador que usa o protocolo AOL
+License:	LGPL
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 
@@ -219,7 +220,7 @@ Arquivos de inclusão para compilar aplicações que usem as bibliotecas
 do kdenetwork.
 
 %prep
-%setup -q
+%setup	-q
 %patch0 -p1
 %patch1 -p1
 
