@@ -274,7 +274,6 @@ Summary:	Adds Jabber protocol support
 Summary(pl):	Dodaje obs³ugê protoko³u Jabber
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	libpsi >= 20021108
 
 %description kopete-protocol-jabber
 Adds Jabber protocol support.
