@@ -8,11 +8,11 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	a58915e964d8f6ec87c76acaab9f8929
 #Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
 Source2:	%{name}-lisa.init
@@ -25,6 +25,7 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-vcategories.patch
 Patch3:		%{name}-ggstatus.patch
 Patch4:		%{name}-dcoprss.patch
+Patch5:		%{name}-yahoo_protocol_change.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -681,8 +682,8 @@ features of Remote Desktop Connection.
 Remote Desktop Connection to aplikacja kliencka umo¿liwiaj±ca
 ogl±danie a nawet sterowanie sesj± na innej maszynie z dzia³aj±cym
 kompatybilnym serwerem (VNC). Zwykle u¿ywa siê Remote Desktop
-Connection z u¿yciem serwera KDE VNC, czyli "dzielenia pulpitu"
-(tak¿e dostarczanego przez ten pakiet), jako ¿e najlepiej pasuje do
+Connection z u¿yciem serwera KDE VNC, czyli "dzielenia pulpitu" (tak¿e
+dostarczanego przez ten pakiet), jako ¿e najlepiej pasuje do
 specjalnych mo¿liwo¶ci Remote Desktop Connection.
 
 %package ktalkd
@@ -825,6 +826,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 cp %{_datadir}/automake/config.sub admin
