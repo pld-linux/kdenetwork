@@ -9,7 +9,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -38,6 +38,8 @@ BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xmms-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoreqdep	libkopete_oscar.so.1
 
 %description
 KDE network applications. Package includes:
