@@ -1,12 +1,5 @@
 #
 # Conditional build:
-%bcond_with ggstatus	
-#			Use proper sstatus behaviour for gg (which means
-#			losing some contactlist features in kopete due
-#			to a design bug)
-%bcond_without	loadmovie 
-#			Use this bcond if you are using qt from devel
-#			as it has a memleak in QMovie. Qt 3.2.3 is safe.
 %bcond_without  i18n    # don't build i18n subpackage
 #
 %define		_state		stable
@@ -33,13 +26,12 @@ Source1:        http://ep09.pld-linux.org/~djurban/kde/i18n/kde-i18n-%{name}-%{v
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Patch0:		kde-common-utmpx.patch
-Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-vcategories.patch
-Patch3:		%{name}-ggstatus.patch
-Patch4:         %{name}-remove_loadmovie.patch
+Patch0:		%{name}-3.2branch.diff
+Patch1:		kde-common-utmpx.patch
+Patch2:		%{name}-use_sendmail.patch
+Patch3:		%{name}-vcategories.patch
+Patch4:		%{name}-ggstatus.patch
 Patch5:         %{name}-dcoprss.patch
-Patch6:         %{name}-libiw_27.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
@@ -922,10 +914,9 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%{?with_ggstatus:%patch3 -p1}
-%{!?with_loadmovie:%patch4 -p0}
+%patch3 -p1
+%patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 cp /usr/share/automake/config.sub admin
