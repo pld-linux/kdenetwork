@@ -1,15 +1,14 @@
-
+#
+# Conditional build:
 %bcond_with ggstatus	
-# Use proper sstatus behaviour for gg (which means 
-# losing some contactlist features in kopete due 
-# to a design bug)
-
+#			Use proper sstatus behaviour for gg (which means
+#			losing some contactlist features in kopete due
+#			to a design bug)
 %bcond_without	loadmovie 
-# Use this bcond (--without loadmovie) if you are using qt from 
-# devel as it has a memleak in QMovie. Qt 3.2.3 is safe.
-
-%bcond_without  i18n    # dont build i18n subpackage
-
+#			Use this bcond if you are using qt from devel
+#			as it has a memleak in QMovie. Qt 3.2.3 is safe.
+%bcond_without  i18n    # don't build i18n subpackage
+#
 %define		_state		stable
 %define		_ver		3.2.0
 #%%define		_snap		040110
@@ -41,11 +40,9 @@ Patch3:		%{name}-ggstatus.patch
 Patch4:         %{name}-remove_loadmovie.patch
 Patch5:         %{name}-dcoprss.patch
 Patch6:         %{name}-libiw_27.patch
-BuildRequires:	artsc-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ed
-BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libgadu-devel >= 1.4
@@ -58,7 +55,6 @@ BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xmms-devel
-BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libkopete_oscar.so.1
@@ -239,312 +235,318 @@ wtyczkami, co pozwala na modularn± instalacjê, konfiguracjê i u¿ywanie
 bez potrzeby obs³ugi ³adowanych wtyczek w g³ównej aplikacji. Celem
 Kopete jest wyposa¿enie u¿ytkowników w standardowy i ³atwy w u¿yciu
 interfejs pomiêdzy wszystkimi systemami komunikatorów, a jednocze¶nie
-zapewenienie programistom ³atwo¶ci pisania wtyczek obs³uguj±cych nowe
+zapewnienie programistom ³atwo¶ci pisania wtyczek obs³uguj±cych nowe
 protoko³y. Za³oga programistów Kopete udostêpnia podrêczny zestaw
 wtyczek u¿ywanych przez wiêkszo¶æ u¿ytkowników oraz szablony dla
 nowych programistów, na których mo¿na opieraæ nowe wtyczki.
 
 %package kopete-protocol-aim
-Summary:	Adds AIM protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u AIM
+Summary:	Kopete plugin which adds AIM protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u AIM
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-aim
-Adds AIM protocol support.
+Kopete plugin which adds AIM protocol support.
 
 %description kopete-protocol-aim -l pl
-Dodaje obs³ugê protoko³u AIM.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u AIM.
 
 %package kopete-protocol-gg
-Summary:	Adds GaduGadu protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u GaduGadu
+Summary:	Kopete plugin which adds GaduGadu protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u GaduGadu
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-gg
-Adds GaguGadu protocol support.
+Kopete plugin which adds GaduGadu protocol support.
 
 %description kopete-protocol-gg -l pl
-Dodaje obs³ugê protoko³u GaduGadu.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u GaduGadu.
 
 %package kopete-protocol-icq
-Summary:	Adds ICQ protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u ICQ
+Summary:	Kopete plugin which adds ICQ protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u ICQ
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-icq
-Adds ICQ protocol support.
+Kopete plugin which adds ICQ protocol support.
 
 %description kopete-protocol-icq -l pl
-Dodaje obs³ugê protoko³u ICQ.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u ICQ.
 
 %package kopete-protocol-irc
-Summary:	Adds IRC support
-Summary(pl):	Dodaje obs³ugê IRC
+Summary:	Kopete plugin which adds IRC support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê IRC-a
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-irc
-Adds IRC support.
+Kopete plugin which adds IRC support.
 
 %description kopete-protocol-irc -l pl
-Dodaje obs³ugê IRC.
+Wtyczka Kopete dodaj±ca obs³ugê IRC-a.
 
 %package kopete-protocol-jabber
-Summary:	Adds Jabber protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u Jabber
+Summary:	Kopete plugin which adds Jabber protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Jabber
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-jabber
-Adds Jabber protocol support.
+Kopete plugin which adds Jabber protocol support.
 
 %description kopete-protocol-jabber -l pl
-Dodaje obs³ugê protoko³u Jabber.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Jabber.
 
 %package kopete-protocol-msn
-Summary:	Adds MSN protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u MSN
+Summary:	Kopete plugin which adds MSN protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-msn
-Adds MSN protocol support.
+Kopete plugin which adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl
-Dodaje obs³ugê protoko³u MSN.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN.
 
 %package kopete-protocol-sms
-Summary:	Adds SMS contact support
-Summary(pl):	Dodaje obs³ugê kontaktów SMS
+Summary:	Kopete plugin which adds SMS contact support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê kontaktów SMS
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-sms
-Adds SMS contact support.
+Kopete plugin which adds SMS contact support.
 
 %description kopete-protocol-sms -l pl
-Dodaje obs³ugê kontaktów SMS.
+Wtyczka Kopete dodaj±ca obs³ugê kontaktów SMS.
 
 %package kopete-protocol-testbed
-Summary:	Adds Testbed protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u testbed
+Summary:	Kopete plugin which adds Testbed protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Testbed
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-testbed
-Adds Testbed protocol support.
+Kopete plugin which adds Testbed protocol support.
 
 %description kopete-protocol-testbed -l pl
-Dodaje obs³ugê protoko³u testbed.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Testbed.
 
 %package kopete-protocol-winpopup
-Summary:	Adds winpopup messaging support
-Summary(pl):	Dodaje obs³ugê komunikacji via winpopup
+Summary:	Kopete plugin which adds WinPopUp messaging support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê komunikacji przez WinPopUp
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-winpopup
-Adds winpopup messaging support.
+Kopete plugin which adds WinPopUp messaging support.
 
 %description kopete-protocol-winpopup -l pl
-Dodaje obs³ugê komunikacji via winpopup.
+Wtyczka Kopete dodaj±ca obs³ugê komunikacji przez WinPopUp.
 
 %package kopete-protocol-yahoo
-Summary:	Adds yahoo protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u yahoo
+Summary:	Kopete plugin which adds Yahoo protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Yahoo
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-yahoo
-Adds yahoo protocol support.
+Kopete plugin which adds Yahoo protocol support.
 
 %description kopete-protocol-yahoo -l pl
-Dodaje obs³ugê protoko³u yahoo.
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Yahoo.
 
 %package kopete-tool-autoaway
-Summary:	An autoaway plugin
-Summary(pl):	Wtyczka automatycznego przej¶cia w stan zajêty
+Summary:	Kopete autoaway plugin
+Summary(pl):	Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-autoaway
-Automatically changes status to away. Conditions are configurable.
+Kopete plugin which automatically changes status to away. Conditions
+are configurable.
 
 %description kopete-tool-autoaway -l pl
-Automatycznie zmienia status na zajêty. Warunki, po zaistnieniu
-których ma nastapiæ, s± konfigurowalne.
+Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
+zaistnieniu których ma nast±piæ, s± konfigurowalne.
 
 %package kopete-tool-autoreplace
-Summary:	Autoreplaces some text you can choose
-Summary(pl):	Wtyczka automatycznej zamiany tekstu
+Summary:	Kopete plugin which autoreplaces some text you can choose
+Summary(pl):	Wtyczka Kopete do automatycznej zamiany tekstu
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-autoreplace
-Autoreplaces some text you can choose.
+Kopete plugin which autoreplaces some text you can choose.
 
 %description kopete-tool-autoreplace -l pl
-Wtyczka automatycznej zamiany tekstu.
+Wtyczka Kopete do automatycznej zamiany tekstu.
 
 %package kopete-tool-conectionstatus
-Summary:	Internet connection detector
-Summary(pl):	Wykrywacz po³±czeñ internetowych
+Summary:	Kopete Internet connection detector
+Summary(pl):	Wykrywacz po³±czeñ internetowych dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-conectionstatus
-Automatically detects whether the internet connection is available or
-not.
+Kopete tool which automatically detects whether the internet
+connection is available or not.
 
 %description kopete-tool-conectionstatus -l pl
-Automatycznie sprawdza czy dostêpne jest po³±czenie do internetu czy
-nie.
+Narzêdzie Kopete automatycznie sprawdzaj±ce, czy dostêpne jest
+po³±czenie do Internetu.
 
 %package kopete-tool-contactnotes
-Summary:	Add personal notes to your contacts
-Summary(pl):	Dodawanie notatek do kontaktów
+Summary:	Kopete tool which adds personal notes to your contacts
+Summary(pl):	Narzêdzie Kopete do dodawania notatek do kontaktów
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-contactnotes
-Allows adding personal notes to your contacts.
+Kopete tool which allows adding personal notes to your contacts.
 
 %description kopete-tool-contactnotes -l pl
-Umo¿liwia dodawanie notatek do kontaktów.
+Narzêdzie Kopete umo¿liwiaj±ce dodawanie notatek do kontaktów.
 
 %package kopete-tool-cryptography
-Summary:	Messages encryptor
-Summary(pl):	Program do szyfrowania wiadomo¶ci
+Summary:	Kopete messages encryptor
+Summary(pl):	Program do szyfrowania wiadomo¶ci dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-cryptography
-OpenPGP messages encryptor.
+OpenPGP messages encryptor for Kopete.
 
 %description kopete-tool-cryptography -l pl
-Program do szyfrowania wiadomo¶ci przy pomocy OpenPGP.
+Program dla Kopete do szyfrowania wiadomo¶ci przy pomocy OpenPGP.
 
 %package kopete-tool-highlight
-Summary:	A highlighter plugin
-Summary(pl):	Wtyczka podkre¶laj±ca wybrane teksty
+Summary:	A highlighter plugin for Kopete
+Summary(pl):	Wtyczka Kopete podkre¶laj±ca wybrane teksty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-highlight
-A highlighter plugin.
+A highlighter plugin for Kopete.
+
+%description kopete-tool-highlight -l pl
+Wtyczka Kopete podkre¶laj±ca wybrane teksty.
 
 %package kopete-tool-history
-Summary:	A history plugin
-Summary(pl):	Wtyczka obs³uguj±ca historiê rozmów
+Summary:	A history plugin for Kopete
+Summary(pl):	Wtyczka Kopete obs³uguj±ca historiê rozmów
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-history
-A history plugin.
+A history plugin for Kopete.
 
 %description kopete-tool-history -l pl
-Wtyczka obs³uguj±ca historiê rozmów.
+Wtyczka Kopete obs³uguj±ca historiê rozmów.
 
 %package kopete-tool-importer
-Summary:	Contact importer
-Summary(pl):	Importer kontaktów
+Summary:	Contact importer for Kopete
+Summary(pl):	Importer kontaktów dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-importer
-Allows importing contacts from other IM's.
+Kopete tool which allows importing contacts from other instant
+messengers.
 
 %description kopete-tool-importer -l pl
-Umo¿liwia importowanie kontaktów z innych komunikatorów.
-
-%package kopete-tool-nowlistening
-Summary:	Playlist informer
-Summary(pl):	Informator o playliscie
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Requires:	xmms >= 1.0.0
-Requires:	kdemultimedia-noatun >= 3.1
-Requires:	kdemultimedia-kscd >= 3.1
+Narzêdzie Kopete umo¿liwiaj±ce importowanie kontaktów z innych
+komunikatorów.
 
 %package kopete-tool-motionaway
-Summary:	Sets away status when not detecting movement near the computer
-Summary(pl):	Zmienia status na zajêty je¶li nie wykrywa ruchu wokó³ komputera
+Summary:	Kopete plugin which sets away status when not detecting movement near the computer
+Summary(pl):	Wtyczka Kopete zmieniaj±ca status na zajêty je¶li nie wykrywa ruchu wokó³ komputera
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-motionaway
-This plugin sets away status when not detecting movement near the
-computer.
+This Kopete plugin sets away status when not detecting movement near
+the computer.
 
 %description kopete-tool-motionaway -l pl
-Ta wtyczka zmienia status na zajêty je¶li nie wykrywa ruchu wokó³
-komputera.
+Ta wtyczka Kopete zmienia status na zajêty je¶li nie wykrywa ruchu
+wokó³ komputera.
+
+%package kopete-tool-nowlistening
+Summary:	Playlist informer for Kopete
+Summary(pl):	Informator o playli¶cie dla Kopete
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	kdemultimedia-noatun >= 3.1
+Requires:	kdemultimedia-kscd >= 3.1
+Requires:	xmms >= 1.0.0
 
 %description kopete-tool-nowlistening
-This plugin tells selected live chats what you're currently listening
-to in xmms/kscd/noatun.
+This Kopete plugin tells selected live chats what you're currently
+listening to in xmms/kscd/noatun.
 
 %description kopete-tool-nowlistening -l pl
-Ta wtyczka wypisuje podczas rozmow nazwê aktualnie s³uchanej piosenki
-w xmms/kscd/noatun.
+Ta wtyczka Kopete wypisuje podczas wybranych rozmów nazwê aktualnie
+s³uchanej piosenki w xmms/kscd/noatun.
 
 %package kopete-tool-spellcheck
-Summary:	A spell checking plugin.
-Summary(pl):	Wtyczka sprawdzaj±ca pisownie.
+Summary:	A spell checking plugin for Kopete
+Summary(pl):	Wtyczka Kopete sprawdzaj±ca pisownie
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-spellcheck
-A spell checking plugin.
+A spell checking plugin for Kopete.
 
 %description kopete-tool-spellcheck -l pl
-Wtyczka sprawdzaj±ca pisownie.
+Wtyczka Kopete sprawdzaj±ca pisownie.
 
 %package kopete-tool-texteffect
-Summary:	A plugin that adds nice effects to your messages
-Summary(pl):	Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci
+Summary:	Kopete plugin that adds nice effects to your messages
+Summary(pl):	Wtyczka Kopete dodaj±ca ³adne efekty do wiadomo¶ci
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-texteffect
-A plugin that adds nice effects to your messages.
+Kopete plugin that adds nice effects to your messages.
 
 %description kopete-tool-texteffect -l pl
-Wtyczka dodaj±ca ³adne efekty do twoich wiadomo¶ci.
+Wtyczka Kopete dodaj±ca ³adne efekty do wiadomo¶ci.
 
 %package kopete-tool-translator
-Summary:	Uses babelfish to translate messages
-Summary(pl):	Wykorzystuje babelfish do t³umaczenia wiadomo¶ci
+Summary:	Kopete plugin which uses babelfish to translate messages
+Summary(pl):	Wtyczka Kopete wykorzystuj±ca babelfish do t³umaczenia wiadomo¶ci
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-translator
-This plugin uses babelfish to translate messages.
+This Kopete plugin uses babelfish to translate messages.
 
 %description kopete-tool-translator -l pl
-Ta wtyczka wykorzystuje babelfish do t³umaczenia wiadomo¶ci.
+Ta wtyczka Kopete wykorzystuje babelfish do t³umaczenia wiadomo¶ci.
 
 %package kopete-tool-webpresence
-Summary:	Web contactlist presenter
-Summary(pl):	Wy¶wietlacz listy kontaktów na WWW
+Summary:	Web contactlist presenter for Kopete
+Summary(pl):	Wy¶wietlacz listy kontaktów na WWW dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	libxml2 >= 2.4.8
 Requires:	libxslt >= 1.0.7
 
 %description kopete-tool-webpresence
-This plugin shows the status of (parts of) your contactlist on a
-webpage.
+This Kopete plugin shows the status of (parts of) your contactlist on
+a webpage.
 
 %description kopete-tool-webpresence -l pl
-Ta wtyczka pokazuje status (ca³ej lub cze¶ci) listy kontaktów na
-stronie WWW.
+Ta wtyczka Kopete pokazuje status (ca³ej lub czê¶ci) listy kontaktów
+na stronie WWW.
 
 %package kpf
 Summary:	Public fileserver applet
@@ -570,7 +572,7 @@ Requires:	ppp
 A PPPP dialer for KDE. It supports multiple accounts.
 
 %description kppp -l pl
-Program no nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
+Program do nawi±zywania po³±czeñ modemowych pod KDE. Posiada ³atwy
 interfejs i mo¿liwo¶æ zdefiniowania kilku kont.
 
 %description kppp -l pt_BR
@@ -646,10 +648,10 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-Requires:	konqueror >= %{version}
-Obsoletes:	%{name}-lisa
-Obsoletes:	lisa
+Requires:	konqueror >= 9:%{version}
 Provides:	lisa
+Obsoletes:	kdenetwork-lisa
+Obsoletes:	lisa
 
 %description lanbrowser
 KDE LAN Browser.
@@ -658,24 +660,24 @@ KDE LAN Browser.
 Przegl±darka LAN-u dla KDE.
 
 %package libkopete
-Summary:	A kopete library
-Summary(pl):	Bibliotek kopete
+Summary:	kopete library
+Summary(pl):	Biblioteka kopete
 Group:		X11/Libraries
 Requires:	kdelibs >= 9:%{version}
-Obsoletes:	%{name}-kopete < 10:3.1.93.031114-3
+Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
 
 %description libkopete
-A kopete library.
+kopete library.
 
 %description libkopete -l pl
-Bibliotek kopete.
+Biblioteka kopete.
 
 %package libkopete_msn
 Summary:	MSN protocol shared library
 Summary(pl):	Biblioteka wspó³dzielona dla protoko³u MSN
 Group:		X11/Libraries
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-kopete-protocol-msn < 10:3.1.93.031114-3
+Obsoletes:	kdenetwork-kopete-protocol-msn < 10:3.1.93.031114-3
 
 %description libkopete_msn
 MSN protocol shared library.
@@ -684,32 +686,32 @@ MSN protocol shared library.
 Biblioteka wspó³dzielona dla protoko³u MSN.
 
 %package libkopete_oscar
-Summary:	Adds OSCAR protocol support
-Summary(pl):	Dodaje obs³ugê protoko³u OSCAR
+Summary:	Shared library which adds OSCAR protocol support
+Summary(pl):	Biblioteka dodaj±ca obs³ugê protoko³u OSCAR
 Group:		X11/Applications/Networking
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-kopete-protocol-oscar < 10:3.1.93.031114-3
+Obsoletes:	kdenetwork-kopete-protocol-oscar < 10:3.1.93.031114-3
 
 %description libkopete_oscar
 A shared library which adds OSCAR protocol support needed eg. by
-aim and icq.
+AIM and ICQ.
 
 %description libkopete_oscar -l pl
-Biblioteka dodaj±ca obs³ugê protoko³u OSCAR uzywanego m. innymi
-przez aim i icq.
+Biblioteka dodaj±ca obs³ugê protoko³u OSCAR u¿ywanego miêdzy innymi
+przez AIM i ICQ.
 
 %package librss
-Summary:	A rss library
-Summary(pl):	Bibliotek rss
+Summary:	rss library
+Summary(pl):	Biblioteka rss
 Group:		X11/Libraries
 Requires:	kdelibs >= 9:%{version}
 Obsoletes:	%{name}-rss < 10:3.1.93.031114-3
 
 %description librss
-A kopete rss.
+rss library.
 
 %description librss -l pl
-Bibliotek rss.
+Biblioteka rss.
 
 %package rss
 Summary:	RSS parsers used by different applications
@@ -723,65 +725,64 @@ RSS parsers used by different applications.
 %description rss -l pl
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
-%package kdict-i18n
-Summary:	Internationalization and localization files for kdict
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
-Group:	X11/Applications
-Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core-i18n >= 9:%{version}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description kdict-i18n
-Internationalization and localization files for kdict.
-
-%description -l pl kdict-i18n
-Pliki umiêdzynarodawiaj±ce dla kdict.
-
-%package kinetd-i18n
-Summary:	Internationalization and localization files for kinetd
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
-Group:	X11/Applications
-Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
-
-%description kinetd-i18n
-Internationalization and localization files for kinetd.
-
-%description -l pl kinetd-i18n
-Pliki umiêdzynarodawiaj±ce dla kinetd.
-
 %package i18n
 Summary:	Common internationalization and localization files for kdenetwork
 Summary(pl):	Wspó³dzielone pliki umiêdzynarodawiaj±ce dla kdenetwork
-Group:	X11/Applications
+Group:		X11/Applications
 #Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	kdelibs-i18n >= 9:%{version}
 
 %description i18n
 Internationalization and localization files for kdenetwork.
 
-%description -l pl i18n
+%description i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla kdenetwork.
+
+%package kdict-i18n
+Summary:	Internationalization and localization files for kdict
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kdict
+Group:		X11/Applications
+Requires:	%{name}-kdict = %{epoch}:%{version}-%{release}
+Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
+Requires:	kdebase-core-i18n >= 9:%{version}
+
+%description kdict-i18n
+Internationalization and localization files for kdict.
+
+%description kdict-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kdict.
+
+%package kinetd-i18n
+Summary:	Internationalization and localization files for kinetd
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kinetd
+Group:		X11/Applications
+Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
+Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
+
+%description kinetd-i18n
+Internationalization and localization files for kinetd.
+
+%description kinetd-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kinetd.
 
 %package kget-i18n
 Summary:	Internationalization and localization files for kget
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kget
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kgeta
+Group:		X11/Applications
 Requires:	%{name}-kget = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
 
-
 %description kget-i18n
 Internationalization and localization files for kget.
 
-%description -l pl kget-i18n
-Pliki umiêdzynarodawiaj±ce dla kget.
+%description kget-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kgeta.
 
 %package knewsticker-i18n
 Summary:	Internationalization and localization files for knewsticker
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewsticker
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla knewstickera
+Group:		X11/Applications
 Requires:	%{name}-knewsticker = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-kicker-i18n >= 9:%{version}
@@ -789,26 +790,26 @@ Requires:	kdebase-kicker-i18n >= 9:%{version}
 %description knewsticker-i18n
 Internationalization and localization files for knewsticker.
 
-%description -l pl knewsticker-i18n
-Pliki umiêdzynarodawiaj±ce dla knewsticker.
+%description knewsticker-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla knewstickera.
 
 %package kopete-i18n
 Summary:	Internationalization and localization files for kopete
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kopete
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description kopete-i18n
 Internationalization and localization files for kopete.
 
-%description -l pl kopete-i18n
+%description kopete-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla kopete.
 
 %package kpf-i18n
 Summary:	Internationalization and localization files for kpf
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpf
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-kpf = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-kicker-i18n >= 9:%{version}
@@ -816,13 +817,13 @@ Requires:	kdebase-kicker-i18n >= 9:%{version}
 %description kpf-i18n
 Internationalization and localization files for kpf.
 
-%description -l pl kpf-i18n
+%description kpf-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla kpf.
 
 %package kppp-i18n
 Summary:	Internationalization and localization files for kppp
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kppp
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-kppp = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
@@ -830,13 +831,13 @@ Requires:	kdebase-core-i18n >= 9:%{version}
 %description kppp-i18n
 Internationalization and localization files for kppp.
 
-%description -l pl kppp-i18n
+%description kppp-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla kppp.
 
 %package krfb-i18n
 Summary:	Internationalization and localization files for krfb
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla krfb
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-krfb = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	%{name}-kinetd-i18n = %{epoch}:%{version}-%{release}
@@ -845,13 +846,13 @@ Requires:	kdebase-core-i18n >= 9:%{version}
 %description krfb-i18n
 Internationalization and localization files for krfb.
 
-%description -l pl krfb-i18n
+%description krfb-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla krfb.
 
 %package ksirc-i18n
 Summary:	Internationalization and localization files for ksirc
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ksirc
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-ksirc = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
@@ -859,13 +860,13 @@ Requires:	kdebase-core-i18n >= 9:%{version}
 %description ksirc-i18n
 Internationalization and localization files for ksirc.
 
-%description -l pl ksirc-i18n
+%description ksirc-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla ksirc.
 
 %package ktalkd-i18n
 Summary:	Internationalization and localization files for ktalkd
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla ktalkd
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-ktalkd = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core-i18n >= 9:%{version}
@@ -873,26 +874,26 @@ Requires:	kdebase-core-i18n >= 9:%{version}
 %description ktalkd-i18n
 Internationalization and localization files for ktalkd.
 
-%description -l pl ktalkd-i18n
+%description ktalkd-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla ktalkd.
 
 %package kwifimanager-i18n
 Summary:	Internationalization and localization files for kwifimanager
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanager
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kwifimanagera
+Group:		X11/Applications
 Requires:	%{name}-kwifimanager = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description kwifimanager-i18n
 Internationalization and localization files for kwifimanager.
 
-%description -l pl kwifimanager-i18n
-Pliki umiêdzynarodawiaj±ce dla kwifimanager.
+%description kwifimanager-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kwifimanagera.
 
 %package lanbrowser-i18n
 Summary:	Internationalization and localization files for lanbrowser
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla lanbrowser
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla lanbrowsera
+Group:		X11/Applications
 Requires:	%{name}-lanbrowser = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 Requires:	konqueror-i18n >= 9:%{version}
@@ -900,21 +901,20 @@ Requires:	konqueror-i18n >= 9:%{version}
 %description lanbrowser-i18n
 Internationalization and localization files for lanbrowser.
 
-%description -l pl lanbrowser-i18n
-Pliki umiêdzynarodawiaj±ce dla lanbrowser.
-
+%description lanbrowser-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla lanbrowsera.
 
 %package rss-i18n
 Summary:	Internationalization and localization files for rss
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla rss
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-rss = %{epoch}:%{version}-%{release}
 Requires:	%{name}-i18n = %{epoch}:%{version}-%{release}
 
 %description rss-i18n
 Internationalization and localization files for rss.
 
-%description -l pl rss-i18n
+%description rss-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
@@ -923,7 +923,7 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 %patch1 -p1
 %patch2 -p1
 %{?with_ggstatus:%patch3 -p1}
-%{?without_loadmovie:%patch4 -p0}
+%{!?with_loadmovie:%patch4 -p0}
 %patch5 -p1
 %patch6 -p1
 
@@ -973,8 +973,6 @@ cd $RPM_BUILD_ROOT%{_iconsdir}
 mv {locolor,crystalsvg}/16x16/apps/krfb.png
 cd -
 
-
-
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
 %find_lang knewsticker		--with-kde
@@ -1009,7 +1007,6 @@ cat kio_lan.lang >> lisa.lang
 %find_lang kppplogview       --with-kde
 cat kppplogview.lang >> kppp.lang
 
-
 %find_lang kwireless            --with-kde
 cat kwireless.lang >> kwifimanager.lang
 %find_lang kcmwifi            --with-kde
@@ -1041,7 +1038,7 @@ for i in $files; do
 	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
 	mv ${i}.lang.1 ${i}.lang
 done
-				
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -1074,6 +1071,7 @@ fi
 %postun	librss		-p /sbin/ldconfig
 
 %if %{with i18n}
+%files i18n -f desktop_kdenetwork.lang
 %files kdict-i18n -f kdict.lang
 %files kget-i18n -f kget.lang
 %files knewsticker-i18n -f knewsticker.lang
@@ -1086,19 +1084,16 @@ fi
 %files kwifimanager-i18n -f kwifimanager.lang
 %files lanbrowser-i18n -f lisa.lang
 %files kinetd-i18n -f kinetd.lang
-%files i18n -f desktop_kdenetwork.lang
 %files rss-i18n -f dcopservice.lang
-
-
 %endif
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete.so
+%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
+%attr(755,root,root) %{_libdir}/libkopete_oscar.so
+%attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/rss
-%{_libdir}/libkopete.so
-%{_libdir}/libkopete_msn_shared.so
-%{_libdir}/libkopete_oscar.so
-%{_libdir}/librss.so
 
 %files kdict -f kdict_en.lang
 %defattr(644,root,root,755)
