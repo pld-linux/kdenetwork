@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -26,7 +26,6 @@ Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Patch0:		%{name}-3.2branch.diff
 Patch1:		kde-common-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
 Patch3:		%{name}-vcategories.patch
@@ -38,7 +37,7 @@ BuildRequires:	ed
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libgadu-devel >= 1.4
-BuildRequires:	libiw-devel
+BuildRequires:	libiw-devel >= 27
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
@@ -912,7 +911,6 @@ Pliki umiêdzynarodawiaj±ce dla rss.
 
 %prep
 %setup -q
-#%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -981,7 +979,11 @@ cat krdc.lang >> krfb.lang
 cat lanbrowser.lang >> lisa.lang
 
 %if %{with i18n}
-##%find_lang kcmkxmlrpcd		--with-kde
+
+#%%find_lang kxmlrpcd		--with-kde
+#%%find_lang kcmkxmlrpcd		--with-kde
+#cat kcmkxmlrpcd.lang >> kxmlrpcd.lang
+
 %find_lang ktalkd		--with-kde
 %find_lang kcmtalkd		--with-kde
 %find_lang kcmktalkd		--with-kde
