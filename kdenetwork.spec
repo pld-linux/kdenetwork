@@ -206,8 +206,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmimelib.la
-%attr(755,root,root) %{_libdir}/libmimelib.so.*.*
-%attr(755,root,root) %{_libdir}/libkdenetwork.so.*.*
+%attr(755,root,root) %{_libdir}/libmimelib.so.*
+%attr(755,root,root) %{_libdir}/libkdenetwork.so.*
 %attr(755,root,root) %{_libdir}/libkdenetwork.la
 
 %files kmail
