@@ -1156,8 +1156,6 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
 %{_libdir}/kde3/kcm_kopete_appearanceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
-%{_libdir}/kde3/kcm_kopete_autoreplace.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
 %{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
 %{_libdir}/kde3/libkrichtexteditpart.la
