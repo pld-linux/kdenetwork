@@ -3,6 +3,7 @@
 #				  to some toolbar buttons in kmail
 # _with_pixmapsubdirs		- leave different depth/resolution icons
 #
+%define		_with_pixmapsubdirs	1
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(ko):	K 데스크탑 환경 - 네트웍 응용 프로그램
@@ -10,7 +11,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplica寤es de rede
 Name:		kdenetwork
 Version:	3.0.5a
-Release:	0.1
+Release:	0.2
 Epoch:		8
 License:	GPL
 Group:		X11/Applications
