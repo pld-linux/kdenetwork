@@ -8,7 +8,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.98
-Release:	1
+Release:	2
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -19,6 +19,8 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.t
 Patch0:		%{name}-utmpx.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kmail_toolbars.patch
+Patch3:		%{name}-kget_icons.patch
+
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -317,6 +319,7 @@ Przegl±darka LAN-u dla KDE.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -331,7 +334,7 @@ kde_cv_utmp_file=/var/run/utmpx ; export kde_cv_utmp_file
 %{__make}
 
 %install
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 install -d \
     $RPM_BUILD_ROOT%{_applnkdir}{/Settings/KDE,/Network/{Communications,Mail,News,Misc}}
