@@ -3,8 +3,7 @@
 %bcond_without	i18n	# don't build i18n subpackage
 #
 %define		_state		stable
-%define		_ver		3.2.1
-#%%define		_snap		040110
+%define		_ver		3.2.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -17,11 +16,11 @@ Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	http://download.kde.org/%{_state}/%{_ver}/src/%{name}-%{_ver}.tar.bz2
-# Source0-md5:	c9135b09191624490590a014da4bfb3d
+# Source0-md5:	405ade1938cd74e3e9643f25814ee81d
 #Source0:	http://ep09.pld-linux.org/~djurban/kde/%{name}-%{version}.tar.bz2
 %if %{with i18n}
 Source1:	kde-i18n-%{name}-%{version}.tar.bz2
-# Source1-md5:	8a51ab6e18bc02940a0fc356125691ab
+# Source1-md5:	1db6bca62229dd593267308473de5cd1
 %endif
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
