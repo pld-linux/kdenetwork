@@ -1,6 +1,6 @@
 
 %define		_state		unstable
-%define		_kdever		kde-3.1-beta1
+%define		_kdever		kde-3.1-beta2
 
 Summary:        K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
