@@ -396,22 +396,3 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/kde/doc/HTML/it/ktalkd
 
 %{_datadir}/kde/sounds/ktalkd.wav
-
-%changelog
-* Mon May 24 1999 Wojciech "Sas" Cieciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [1.1.1-2]
-- fixes problem with locale files uses '%find_lang' macro,
-- fixes problem with file locations.
-
-* Wed May 19 1999 Wojciech "Sas" Cieciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [1.1.1-1]
-- updated to version 1.1.1,
-- removed wmconfig part from /etc/X11,
-
-* Wed Dec  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.0-7]
-- recompiled against libstdc++.so.2.9.
-
-* Sun Oct 4 1998 Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl>
-  [1.0-4]
-- created new spec based on kdebase.spec.
