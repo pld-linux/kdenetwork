@@ -181,12 +181,13 @@ Requires:	kdelibs >= %{version}
 %description lanbrowser
 KDE LAN Browser.
 
-%description lanbrowser
+%description lanbrowser -l pl
 Przegl±darka LAN-u dla KDE.
 
 %package kdict
 Summary:	Online dictionary client
 Summary(pl):	Klient s³ownika
+License:	Artistic
 Group:		X11/Applications
 Requires:	kdelibs >= %{version}
 
@@ -252,10 +253,10 @@ install kdict/kdict.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post   kdict -p /sbin/ldconfig
+%post	kdict -p /sbin/ldconfig
 %postun kdict -p /sbin/ldconfig
 
 %files
