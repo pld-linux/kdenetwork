@@ -1,4 +1,6 @@
-
+# NOTE: Need /var/run/utmp(x) file to exists during configure 
+#   to build Ktalkd part.
+ 
 %define		_state		unstable
 %define		_ver		3.1.93
 %define		_snap		031105
@@ -9,7 +11,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	1.1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -28,6 +30,7 @@ BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:%{version}
 BuildRequires:	libgadu-devel >= 1.4
+BuildRequires:	libiw-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
@@ -55,6 +58,7 @@ KDE network applications. Package includes:
 - KTalkd - takt daemon
 - KXmlRpcd - XmlRpc Daemon
 - Lanbrowser - LAN Browser
+- KWiFi - TODO
 
 %description -l pl
 Aplikacje sieciowe KDE. Pakiet zawiera:
@@ -72,6 +76,7 @@ Aplikacje sieciowe KDE. Pakiet zawiera:
 - KTalkd - demon Talk
 - KXmlRpcd - demon XmlRpc
 - Lanbrowser - przegl±darka LAN-u
+- KWiFi - TODO
 
 %description -l pt_BR
 Aplicações de Rede para o KDE.
@@ -747,11 +752,21 @@ fi
 %{_libdir}/libkopete_oscar.so
 %{_libdir}/librss.so
 
-#%files kwifimanager -f kwifimanager.lang
-#%defattr(644,root,root,755)
-#%{_libdir}/kde3/kcm_kwifimanager.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
-#%{_applnkdir}/KDE-Settings/Network/kcmwifi.desktop
+%files kwifimanager -f kwifimanager.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kwifimanager
+%{_libdir}/kde3/kcm_kwifimanager.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kwifimanager.so
+%{_libdir}/libkwireless.*
+%{_datadir}/applications/kde/*.desktop
+%{_datadir}/apps/kicker/applets/kwireless.desktop
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/kwifimanager
+%{_datadir}/apps/kwifimanager/locations
+%{_datadir}/apps/kwifimanager/pics
+%{_datadir}/apps/kwifimanager/pics/*
+%{_iconsdir}/locolor/32x32/apps/krfb.png
+#%%{_applnkdir}/KDE-Settings/Network/kcmwifi.desktop
 
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
