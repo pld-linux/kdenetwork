@@ -7,7 +7,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.0.3
-Release:	3
+Release:	4
 Epoch:		8
 License:	GPL
 Vendor:		The KDE Team
@@ -19,6 +19,7 @@ Patch0:		%{name}-am15.patch
 Patch1:		%{name}-utmpx.patch
 Patch2:		%{name}-use_sendmail.patch
 Patch3: 	%{name}-kmail_toolbars.patch
+Patch4:		post-3.0.3-%{name}-kpf.diff
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
@@ -288,6 +289,7 @@ do kdenetwork.
 %if%{?_with_kmail_toolbars_patch:1}%{!?_with_kmail_toolbars_patch:0}
 %patch3 -p1
 %endif
+%patch4 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
