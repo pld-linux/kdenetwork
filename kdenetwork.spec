@@ -1,5 +1,5 @@
 # Conditional build:
-#	--with		kmail_toolbars_patch	aplies patch assinging icons
+#	--with		kmail_toolbars_patch	aplies patch assigning icons
 #						to some toolbar buttons in kmail
 
 %define		_ver		3.0.1
