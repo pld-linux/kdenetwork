@@ -10,7 +10,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	3
+Release:	4
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -114,6 +114,7 @@ Summary:	File sharing plugins
 Summary(pl):	Wtyczki obs³uguj±ce wspó³dzielenie plików
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minlibsevr}
+Obsoletes:	kcm_sambaconf
 
 %description filesharing
 File sharing plugins.
