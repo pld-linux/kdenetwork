@@ -2,7 +2,7 @@ Summary:	K Desktop Environment - network applications
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Name:		kdenetwork
 Version:	2.0.1
-Release:	1
+Release:	2
 Vendor:		The KDE Team
 Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/distribution/tar/generic/src/%{name}-%{version}.tar.bz2
 Group:          X11/Applications
@@ -149,14 +149,14 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/{IRC,Mail,News,Misc}
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/{Communications,Mail,News,Misc}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install kmail/KMail.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install korn/KOrn.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Mail
 install knode/KNode.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/News
-install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/IRC
+install ksirc/ksirc.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 install kppp/Kppp.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kppp/logview/kppplogview.desktop 	$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 install kit/kit.desktop 		$RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
@@ -211,7 +211,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/dsirc
 %attr(755,root,root) %{_bindir}/ksticker
 %attr(755,root,root) %{_libdir}/ksirc.*
-%{_applnkdir}/Network/IRC/ksirc.desktop
+%{_applnkdir}/Network/Communications/ksirc.desktop
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
 %{_datadir}/doc/kde/HTML/en/ksirc
