@@ -13,7 +13,7 @@ Epoch:		9
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_ver}/src/%{name}-%{version}.tar.bz2
-# Source0-md5: 65096524065af061c94d800de3c24959
+# Source0-md5: 	baf7663463d9e85a96d5c5143ef2b4be
 # generated from kde-i18n
 #Source1:	kde-i18n-%{name}-%{version}.tar.bz2
 Source2:	lisa.init
