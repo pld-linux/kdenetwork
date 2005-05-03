@@ -1,30 +1,31 @@
 %bcond_without	xmms
 %define		_state		stable
-%define		_kdever		3.4
-%define		_ver		3.4.0
-
-%define		_minlibsevr	9:3.4.0
-%define		_minbaseevr	9:3.4.0
+%define		_kdever		3.4.89
+%define		_ver		3.4.89
+%define		_snap		050428
+%define		_minlibsevr	9:3.4.89.050428
+%define		_minbaseevr	9:3.4.89.050428
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
+Version:	%{_ver}.%{_snap}
 Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	47a8d21ce486426caf56bf6129ce993f
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
+Source0:        ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
+##% Source0-md5:	47a8d21ce486426caf56bf6129ce993f
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922	
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
-Patch100:	%{name}-branch.diff
+#Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 BuildRequires:	autoconf
@@ -893,8 +894,9 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-%setup -q
-%patch100 -p1
+#%setup -q
+%setup -q -n %{name}-%{_snap}
+#%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
@@ -1203,6 +1205,15 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
 %{_datadir}/services/kopete_latex.desktop
+# New icons
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_away_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_busy_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_food_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_invisible_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_phone_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_xa_overlay.png
+# New one
+%{_datadir}/services/invitation.protocol
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
