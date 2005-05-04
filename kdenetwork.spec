@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	2.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -816,6 +816,7 @@ Group:		X11/Applications
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
+Requires:	samba-client
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
