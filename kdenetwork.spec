@@ -1,10 +1,10 @@
 %bcond_without	xmms
 %define		_state		stable
-%define		_kdever		3.4
-%define		_ver		3.4.0
+%define		_kdever		3.4.1
+%define		_ver		3.4.1
 
-%define		_minlibsevr	9:3.4.0
-%define		_minbaseevr	9:3.4.0
+%define		_minlibsevr	9:3.4.1
+%define		_minbaseevr	9:3.4.1
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -12,12 +12,12 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2.1
+Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	47a8d21ce486426caf56bf6129ce993f
+# Source0-md5:	cfdec84537bd20f032b9b27c74bc28ba
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922	
 Source2:	%{name}-lisa.init
@@ -895,7 +895,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-%patch100 -p1
+#%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 
