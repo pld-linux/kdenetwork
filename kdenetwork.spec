@@ -1236,8 +1236,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
-# moved to kdelibs; used also by sim
-%{_datadir}/mimelnk/application/x-icq.desktop
+# x-icq.desktop moved to kdelibs; used also by sim
+#%%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
