@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -816,6 +816,7 @@ Group:		X11/Applications
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
+Requires:	samba-client
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
@@ -1236,7 +1237,7 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
 # moved to kdelibs; used also by sim
-%{_datadir}/mimelnk/application/x-icq.desktop
+#%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
