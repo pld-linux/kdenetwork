@@ -42,6 +42,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	sed >= 4.0
 #BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -966,7 +967,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
+install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
@@ -1513,8 +1514,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
-%{_datadir}/applications/kde/kcmwifi.desktop
-%{_datadir}/applications/kde/kwifimanager.desktop
+%{_desktopdir}/kde/kcmwifi.desktop
+%{_desktopdir}/kde/kwifimanager.desktop
 %{_iconsdir}/*/*/apps/kwifimanager.*
 
 %files lanbrowser -f lisa.lang
