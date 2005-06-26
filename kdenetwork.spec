@@ -2,9 +2,9 @@
 %define		_state		stable
 %define		_kdever		3.4.89
 %define		_ver		3.4.89
-%define		_snap		050428
-%define		_minlibsevr	9:3.4.89.050428
-%define		_minbaseevr	9:3.4.89.050428
+%define		_snap		050626
+%define		_minlibsevr	9:3.4.89.050624
+%define		_minbaseevr	9:3.4.89.050625
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -160,21 +160,6 @@ DNS-SD Services Watcher.
 %description kdnssd -l pl
 Nadzorowanie us³ug DNS-SD.
 
-%package kinetd
-Summary:	KDE Internet Daemon
-Summary(pl):	Demon internetowy KDE
-Group:		X11/Applications
-Requires:	kdelibs >= %{_minlibsevr}
-Obsoletes:	kdenetwork-krfb < 9:3.1-6
-
-%description kinetd
-A KDE daemon that listen on TCP ports and starts programs when a
-client connects. Configurable using DCOP.
-
-%description kinetd -l pl
-Demon KDE nas³uchuj±cy na portach TCP i uruchamiaj±cy programy po
-po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
-
 %package kfile-torrent
 Summary:	Meta information plugin for BitTorrent files (*.torrent)
 Summary(pl):	Wtyczka pobieraj±ca metainformacje z plików BitTorrenta (*.torrent)
@@ -206,6 +191,21 @@ Konqueror/Mozilla integration.
 %description kget -l pl
 Zarz±dca ¶ci±gania plików podobny do GetRighta z obs³ug± wznawiania
 oraz integracj± z Konquerorem/Mozill±.
+
+%package kinetd
+Summary:	KDE Internet Daemon
+Summary(pl):	Demon internetowy KDE
+Group:		X11/Applications
+Requires:	kdelibs >= %{_minlibsevr}
+Obsoletes:	kdenetwork-krfb < 9:3.1-6
+
+%description kinetd
+A KDE daemon that listen on TCP ports and starts programs when a
+client connects. Configurable using DCOP.
+
+%description kinetd -l pl
+Demon KDE nas³uchuj±cy na portach TCP i uruchamiaj±cy programy po
+po³±czeniu klienta. Jest konfigurowalny przy u¿yciu DCOP.
 
 %package knewsticker
 Summary:	KDE News Ticker
@@ -940,6 +940,8 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
+echo "KDE_OPTIONS = nofinal" >> kopete/protocols/yahoo/libyahoo2/Makefile.am
+
 %build
 cp %{_datadir}/automake/config.sub admin
 
@@ -1049,8 +1051,12 @@ fi
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
+%{_libdir}/kde3/kdict.la
+%attr(755,root,root) %{_libdir}/kde3/kdict.so
 %{_libdir}/kde3/kdict_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
+%{_libdir}/libkdeinit_kdict.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kdict.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kde/kdict.desktop
@@ -1081,6 +1087,7 @@ fi
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kde/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
@@ -1171,6 +1178,7 @@ fi
 %{_datadir}/apps/kopete_statistics
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
+%{_datadir}/config.kcfg/kopete.kcfg
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/emailwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
@@ -1186,14 +1194,15 @@ fi
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
-%{_iconsdir}/crystalsvg/*/apps/kopete.png
-%{_iconsdir}/crystalsvg/*/apps/kopete2.svgz
+%{_iconsdir}/*/*/apps/kopete.png
+%{_iconsdir}/*/*/apps/kopete2.svgz
 %{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
 %{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
 %{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
+
 # TODO (separate?)
 %attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
 %{_libdir}/kde3/kcm_kopete_latex.la
@@ -1201,10 +1210,23 @@ fi
 %{_libdir}/kde3/kopete_latex.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
 %{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+%{_datadir}/apps/kopete_latex/latexchatui.rc
 %{_datadir}/config.kcfg/latexconfig.kcfg
-%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
 %{_datadir}/services/kopete_latex.desktop
+
+%{_libdir}/kde3/kcm_kopete_identityconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_identityconfig.so
+%{_datadir}/services/kopete_identityconfig.desktop
+
+%{_libdir}/kde3/kio_jabberdisco.la
+%attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
+%{_datadir}/services/jabberdisco.protocol
+
+%{_libdir}/kde3/kopete_testbed.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/apps/testbed_protocol.png
+%{_datadir}/services/kopete_testbed.desktop
 # New icons
 %{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_away_overlay.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_busy_overlay.png
@@ -1213,6 +1235,7 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_phone_overlay.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_xa_overlay.png
 # New one
+%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
 %{_datadir}/services/invitation.protocol
 
 %files kopete-protocol-aim
@@ -1314,6 +1337,7 @@ fi
 %{_libdir}/kde3/kopete_yahoo.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
+%{_datadir}/apps/kopete_yahoo/yahoochatui.rc
 %{_datadir}/services/kopete_yahoo.desktop
 
 %files kopete-tool-alias
