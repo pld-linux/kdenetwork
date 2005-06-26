@@ -1,33 +1,30 @@
 %bcond_without	xmms
 %define		_state		stable
-%define		_kdever		3.4.1
-%define		_ver		3.4.1
-
-%define		_minlibsevr	9:3.4.1
-%define		_minbaseevr	9:3.4.1
+%define		_kdever		3.4.89
+%define		_ver		3.4.89
+%define		_snap		050428
+%define		_minlibsevr	9:3.4.89.050428
+%define		_minbaseevr	9:3.4.89.050428
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
-Release:	1
+Version:	%{_ver}.%{_snap}
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	cfdec84537bd20f032b9b27c74bc28ba
-Source1:	%{name}-kopetestyles.tar.bz2
-# Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922	
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
+Source0:	ziew.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Icon:		kde-network.xpm
-Patch100:	%{name}-branch.diff
+#Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-libgadu.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -42,7 +39,6 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	sed >= 4.0
 #BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -515,6 +511,20 @@ A highlighter plugin for Kopete.
 %description kopete-tool-highlight -l pl
 Wtyczka Kopete podkre¶laj±ca wybrane teksty.
 
+%package kopete-tool-latex
+Summary:	A latex plugin for Kopete
+Summary(pl):	Wtyczka Kopete renderuj±ca tekst w formacie latexu
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Conflicts:	%{name}-kopete < 10:3.4.89-1
+
+%description kopete-tool-latex
+A latex plugin for Kopete.
+
+%description kopete-tool-latex -l pl
+Wtyczka Kopete renderuj±ca tekst w formacie latexu.
+
+
 %package kopete-tool-history
 Summary:	A history plugin for Kopete
 Summary(pl):	Wtyczka Kopete obs³uguj±ca historiê rozmów
@@ -818,7 +828,6 @@ Group:		X11/Applications
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
-Requires:	samba-client
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
@@ -896,11 +905,10 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-%setup -q
+%setup -q -n %{name} -T -D
 #%patch100 -p1
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -942,17 +950,17 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
-%build
 cp %{_datadir}/automake/config.sub admin
 
 #export UNSERMAKE=%{_datadir}/unsermake/unsermake
 
 %{__make} -f admin/Makefile.common cvs
 
+%build
 %configure \
 	--disable-rpath \
-	--enable-final \
 	--with-qt-libraries=%{_libdir} \
+	--with-distribution="PLD Linux Distribution" \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
 %endif
@@ -966,12 +974,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
+%{__make} -C kopete/protocols/winpopup install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
 
-install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
-%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
 
 mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 
@@ -1053,6 +1063,10 @@ fi
 %attr(755,root,root) %{_bindir}/kdict
 %{_libdir}/kde3/kdict_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
+%{_libdir}/kde3/kdict.la
+%attr(755,root,root) %{_libdir}/kde3/kdict.so
+%{_libdir}/libkdeinit_kdict.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kdict.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
 %{_desktopdir}/kde/kdict.desktop
@@ -1083,6 +1097,7 @@ fi
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kde/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
@@ -1123,6 +1138,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
 %{_libdir}/kde3/kcm_kopete_netmeeting.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
+%{_libdir}/kde3/kcm_kopete_identityconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_identityconfig.so
 %{_libdir}/kde3/kopete_addbookmarks.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
 %{_libdir}/kde3/kopete_chatwindow.la
@@ -1173,6 +1190,7 @@ fi
 %{_datadir}/apps/kopete_statistics
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
+%{_datadir}/config.kcfg/kopete.kcfg
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/emailwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
@@ -1188,25 +1206,24 @@ fi
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
-%{_iconsdir}/crystalsvg/*/apps/kopete.png
-%{_iconsdir}/crystalsvg/*/apps/kopete2.svgz
+%{_iconsdir}/*/*/apps/kopete.png
+%{_iconsdir}/*/*/apps/kopete2.svgz
 %{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
 %{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
 %{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
 %{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
-# TODO (separate?)
-%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
-%{_libdir}/kde3/kcm_kopete_latex.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
-%{_libdir}/kde3/kopete_latex.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
-%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
-%{_datadir}/config.kcfg/latexconfig.kcfg
-%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
-%{_datadir}/services/kopete_latex.desktop
+# New icons
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_away_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_busy_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_food_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_invisible_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_phone_overlay.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_xa_overlay.png
+# New one
+%{_datadir}/services/invitation.protocol
+%{_datadir}/services/kopete_identityconfig.desktop
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1239,8 +1256,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
-# x-icq.desktop moved to kdelibs; used also by sim
-#%%{_datadir}/mimelnk/application/x-icq.desktop
+# moved to kdelibs; used also by sim
+%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -1259,6 +1276,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
+%{_libdir}/kde3/kio_jabberdisco.la
+%attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
+%{_datadir}/services/jabberdisco.protocol
 %{_datadir}/services/kopete_jabber.desktop
 
 %files kopete-protocol-msn
@@ -1291,21 +1311,22 @@ fi
 #%{_datadir}/apps/kopete/icons/crystalsvg/*/*/testbed*
 #%{_datadir}/services/kopete_testbed.desktop
 
-#%files kopete-protocol-winpopup
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/winpopup*.sh
+%files kopete-protocol-winpopup
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/winpopup*.sh
 #%{_libdir}/kde3/kcm_kopete_wp.la
 #%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
-#%{_libdir}/kde3/kopete*wp*.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
+%{_libdir}/kde3/kopete*wp*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
 #%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
-#%{_datadir}/services/kopete_wp.desktop
+%{_datadir}/services/kopete_wp.desktop
 
 %files kopete-protocol-yahoo
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete_yahoo.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
+%{_datadir}/apps/kopete_yahoo
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
 %{_datadir}/services/kopete_yahoo.desktop
 
@@ -1350,6 +1371,22 @@ fi
 %{_datadir}/apps/kopete_cryptography
 %{_datadir}/services/kopete_cryptography.desktop
 %{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
+
+
+%files kopete-tool-latex
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
+%{_libdir}/kde3/kcm_kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
+%{_libdir}/kde3/kopete_latex.la
+%attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
+%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+%{_datadir}/config.kcfg/latexconfig.kcfg
+%{_datadir}/apps/kopete_latex
+%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
+%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
+%{_datadir}/services/kopete_latex.desktop
+
 
 %files kopete-tool-highlight
 %defattr(644,root,root,755)
@@ -1514,8 +1551,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
-%{_desktopdir}/kde/kcmwifi.desktop
-%{_desktopdir}/kde/kwifimanager.desktop
+%{_datadir}/applications/kde/kcmwifi.desktop
+%{_datadir}/applications/kde/kwifimanager.desktop
 %{_iconsdir}/*/*/apps/kwifimanager.*
 
 %files lanbrowser -f lisa.lang
