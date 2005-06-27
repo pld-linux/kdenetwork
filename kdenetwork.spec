@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -371,6 +371,19 @@ Kopete plugin which adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl
 Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN.
+
+%package kopete-protocol-skype
+Summary:	Kopete plugin which adds Skype protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Skype
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	skype
+
+%description kopete-protocol-skype
+Kopete plugin which adds Skype protocol support.
+
+%description kopete-protocol-skype -l pl
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Skype.
 
 %package kopete-protocol-sms
 Summary:	Kopete plugin which adds SMS contact support
@@ -1296,6 +1309,18 @@ fi
 %{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
 %{_datadir}/services/kopete_msn.desktop
 %{_datadir}/services/kopete_netmeeting.desktop
+
+%files kopete-protocol-skype
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kopete*skype*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*skype*.so
+%{_datadir}/apps/kopete/icons/*/*/*/call.png
+%{_datadir}/apps/kopete/icons/*/*/*/contact_ffc_overlay.png
+%{_datadir}/apps/kopete/icons/*/*/*/contact_unknown_overlay.png
+%{_datadir}/icons/*/*/*/call.png
+%{_datadir}/apps/kopete/icons/*/*/*/*skype*
+%{_datadir}/services/kopete_skype.desktop
+%{_datadir}/apps/kopete_skype
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
