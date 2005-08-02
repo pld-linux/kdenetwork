@@ -897,7 +897,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-#%patch100 -p1
+%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
