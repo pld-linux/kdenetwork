@@ -1,8 +1,8 @@
 %bcond_without	xmms
 %define		_state		stable
-%define		_kdever		3.4.89
-%define		_ver		3.4.89
-%define		_snap		050428
+%define		_kdever		3.4.91
+%define		_ver		3.4.91
+%define		_snap		050927
 %define		_minlibsevr	9:3.4.89.050428
 %define		_minbaseevr	9:3.4.89.050428
 
@@ -12,7 +12,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}.%{_snap}
-Release:	3
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -91,6 +91,7 @@ Group:		X11/Development/Libraries
 Requires:	kdelibs-devel >= %{_minlibsevr}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
+Requires: %{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 Obsoletes:	kdenetwork-librss-devel
 Obsoletes:	kdenetwork-rss-devel
@@ -372,6 +373,18 @@ Kopete plugin which adds MSN protocol support.
 %description kopete-protocol-msn -l pl
 Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN.
 
+%package kopete-protocol-meanwhile
+Summary:  Kopete plugin which adds Lotus Sametime protocol support
+Summary(pl):  Wtyczka Kopete dodaj±ca obs³ugê protoko³u Lotus Sametime
+Group:    X11/Applications/Networking
+Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-protocol-meanwhile
+Kopete plugin which adds meanwhile Lotus Sametime support.
+
+%description kopete-protocol-meanwhile -l pl
+Wtyczka Kopete dodaj±ca obs³ugê protoko³u Lotus Sametime.
+
 %package kopete-protocol-skype
 Summary:	Kopete plugin which adds Skype protocol support
 Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Skype
@@ -461,6 +474,34 @@ Kopete plugin to add custom aliases for commands.
 
 %description kopete-tool-alias -l pl
 Wtyczka Kopete do dodawania w³asnych aliasów dla poleceñ.
+
+%package kopete-tool-avdeviceconfig
+Summary:  Kopete avdeviceconfig plugin
+Summary(pl):  Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
+Group:    X11/Applications/Networking
+Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-tool-avdeviceconfig
+Kopete plugin which automatically changes status to away. Conditions
+are configurable.
+
+%description kopete-tool-avdeviceconfig -l pl
+Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
+zaistnieniu których ma nast±piæ, s± konfigurowalne.
+
+%package kopete-tool-smpppdcs
+Summary:  Kopete smpppdcs plugin
+Summary(pl):  Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
+Group:    X11/Applications/Networking
+Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+
+%description kopete-tool-smpppdcs
+Kopete plugin which automatically changes status to away. Conditions
+are configurable.
+
+%description kopete-tool-smpppdcs -l pl
+Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
+zaistnieniu których ma nast±piæ, s± konfigurowalne.
 
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
@@ -877,6 +918,18 @@ MSN protocol shared library.
 %description libkopete_msn -l pl
 Biblioteka wspó³dzielona dla protoko³u MSN.
 
+%package libkopete_videodevice
+Summary:  Video input device support library for kopete
+Summary(pl):  Biblioteka z obs³ug± urz±dzeñ wej¶cia video dla kopete
+Group:    X11/Libraries
+Requires: %{name}-libkopete = %{epoch}:%{version}-%{release}
+
+%description libkopete_videodevice
+Video input device support library for kopete.
+
+%description libkopete_videodevice -l pl
+Biblioteka z obs³ug± urz±dzeñ wej¶cia video dla kopete.
+
 %package libkopete_oscar
 Summary:	Shared library which adds OSCAR protocol support
 Summary(pl):	Biblioteka dodaj±ca obs³ugê protoko³u OSCAR
@@ -977,7 +1030,11 @@ cp %{_datadir}/automake/config.sub admin
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
 %endif
-	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full}
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
+	--disable-testbed \
+	--with-wifi \
+	--enable-smpppd \
+	--enable-sametime-plugin
 
 %{__make}
 
@@ -1054,6 +1111,8 @@ fi
 %attr(755,root,root) %{_libdir}/libkopete.so
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
+%attr(755,root,root) %{_libdir}/libkopete_videodevice.so
+%attr(755,root,root) %{_libdir}/libkvideoio.so
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/kopete
 %{_includedir}/rss
@@ -1112,6 +1171,7 @@ fi
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
 %{_datadir}/mimelnk/application/x-kgetlist.desktop
+%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
 
@@ -1204,6 +1264,7 @@ fi
 %dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
 %{_datadir}/config.kcfg/kopete.kcfg
+%{_datadir}/config.kcfg/kopeteidentityconfigpreferences.kcfg
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/emailwindow.desktop
 %{_datadir}/services/kopete_accountconfig.desktop
@@ -1294,6 +1355,13 @@ fi
 %{_datadir}/services/jabberdisco.protocol
 %{_datadir}/services/kopete_jabber.desktop
 
+%files kopete-protocol-meanwhile
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kopete*meanwhile*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*meanwhile*.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/meanwhile*
+%{_datadir}/services/kopete_meanwhile.desktop
+
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kcm_kopete_msn.la
@@ -1310,6 +1378,7 @@ fi
 %{_datadir}/services/kopete_msn.desktop
 %{_datadir}/services/kopete_netmeeting.desktop
 
+%if 0
 %files kopete-protocol-skype
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*skype*.la
@@ -1321,6 +1390,7 @@ fi
 %{_datadir}/apps/kopete/icons/*/*/*/*skype*
 %{_datadir}/services/kopete_skype.desktop
 %{_datadir}/apps/kopete_skype
+%endif
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
@@ -1373,6 +1443,13 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
 %{_datadir}/services/kopete_autoreplace.desktop
 %{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
+
+%files kopete-tool-avdeviceconfig
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kcm_kopete_avdeviceconfig.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_avdeviceconfig.so
+%{_datadir}/services/kopete_avdeviceconfig.desktop
+#%{_datadir}/services/kconfiguredialog/kopete_avdeviceconfig.desktop
 
 %files kopete-tool-conectionstatus
 %defattr(644,root,root,755)
@@ -1449,6 +1526,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
 %{_libdir}/kde3/kopete*nowlistening*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*nowlistening*.so
+%{_datadir}/config.kcfg/nowlisteningconfig.kcfg
 %{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
 %{_datadir}/services/kopete_nowlistening.desktop
 
@@ -1457,6 +1535,16 @@ fi
 #%%{_libdir}/kde3/kopete*spellcheck*.la
 #%%attr(755,root,root) %{_libdir}/kde3/kopete*spellcheck*.so
 #%%{_datadir}/services/spellcheck.desktop
+
+%files kopete-tool-smpppdcs
+%defattr(644,root,root,755)
+%{_libdir}/kde3/kcm_kopete_smpppdcs.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_smpppdcs.so
+%{_libdir}/kde3/kopete*smpppdcs*.la
+%attr(755,root,root) %{_libdir}/kde3/kopete*smpppdcs*.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/smpppdcs.png
+%{_datadir}/services/kopete_smpppdcs.desktop
+%{_datadir}/services/kconfiguredialog/kopete_smpppdcs_config.desktop
 
 %files kopete-tool-texteffect
 %defattr(644,root,root,755)
@@ -1484,9 +1572,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
 %{_libdir}/kde3/kopete*webpresence*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*webpresence*.so
-%dir %{_datadir}/apps/kopete/webpresence
-%{_datadir}/apps/kopete/webpresence/webpresencedefault.xsl
-%{_datadir}/apps/kopete/webpresence/wpimages.xsl
+%{_datadir}/apps/kopete/webpresence
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/services/kopete_webpresence.desktop
 
@@ -1606,6 +1692,13 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/libkopete.la
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+
+%files libkopete_videodevice
+%defattr(644,root,root,755)
+%{_libdir}/libkopete_videodevice.la
+%attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
+%{_libdir}/libkvideoio.la
+%attr(755,root,root) %{_libdir}/libkvideoio.so.*.*.*
 
 %files libkopete_msn
 %defattr(644,root,root,755)
