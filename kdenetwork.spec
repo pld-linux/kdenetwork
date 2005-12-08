@@ -1,5 +1,9 @@
 %bcond_without	xmms
 %bcond_with	skype
+%bcond_with	hidden_visibility	# pass '--fvisibility=hidden'
+					# & '--fvisibility-inlines-hidden'
+					# to g++ 
+#
 %define		_state		stable
 %define		_kdever		3.5
 %define		_ver		3.5.0
@@ -31,6 +35,7 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+%{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
@@ -43,6 +48,7 @@ BuildRequires:	meanwhile-devel
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
+%{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 #BuildRequires:	unsermake >= 040511
@@ -1025,24 +1031,23 @@ done
 
 cp %{_datadir}/automake/config.sub admin
 
-#export UNSERMAKE=%{_datadir}/unsermake/unsermake
-
 %{__make} -f admin/Makefile.common cvs
 
 %build
 %configure \
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
+	%{!?debug:--disable-rpath} \
+	--disable-testbed \
 	--enable-final \
-	--disable-rpath \
-	--with-qt-libraries=%{_libdir} \
-	--with-distribution="PLD Linux Distribution" \
+	%{?with_hidden_visibility:--enable-gcc-hidden-visibility} \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
 %endif
-	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
-	--disable-testbed \
-	--with-wifi \
+	--enable-sametime-plugin \
 	--enable-smpppd \
-	--enable-sametime-plugin
+	--with-distribution="PLD Linux Distribution" \
+	--with-qt-libraries=%{_libdir} \
+	--with-wifi
 
 %{__make}
 
