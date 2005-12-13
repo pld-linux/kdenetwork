@@ -2,7 +2,7 @@
 %bcond_with	skype
 %bcond_with	hidden_visibility	# pass '--fvisibility=hidden'
 					# & '--fvisibility-inlines-hidden'
-					# to g++ 
+					# to g++
 #
 %define		_state		stable
 %define		_kdever		3.5
@@ -33,6 +33,7 @@ Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
+#BuildRequires:	unsermake >= 040511
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -51,7 +52,6 @@ BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
-#BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -100,11 +100,11 @@ PPP krn: leitor de notícias
 Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs-devel >= %{_minlibsevr}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-devel >= %{_minlibsevr}
 Obsoletes:	kdenetwork-librss-devel
 Obsoletes:	kdenetwork-rss-devel
 
@@ -245,8 +245,8 @@ Miniaplicativo de exibição de notícias para o painel Kicker.
 Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
+Requires:	kdebase-core >= %{_minbaseevr}
 Obsoletes:	kdenetwork-kit
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-tools-autoaway
@@ -386,9 +386,9 @@ Kopete plugin which adds MSN protocol support.
 Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN.
 
 %package kopete-protocol-meanwhile
-Summary:  Kopete plugin which adds Lotus Sametime protocol support
-Summary(pl):  Wtyczka Kopete dodaj±ca obs³ugê protoko³u Lotus Sametime
-Group:    X11/Applications/Networking
+Summary:	Kopete plugin which adds Lotus Sametime protocol support
+Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Lotus Sametime
+Group:		X11/Applications/Networking
 Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-meanwhile
@@ -423,7 +423,7 @@ Kopete plugin which adds SMS contact support.
 Wtyczka Kopete dodaj±ca obs³ugê kontaktów SMS.
 
 %package kopete-protocol-testbed
-Summary:	A sample plugin for kopete.
+Summary:	A sample plugin for kopete
 Summary(pl):	Przyk³adowa wtyczka dla kopete.
 Group:		X11/Development/Libraries
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
@@ -488,9 +488,9 @@ Kopete plugin to add custom aliases for commands.
 Wtyczka Kopete do dodawania w³asnych aliasów dla poleceñ.
 
 %package kopete-tool-avdeviceconfig
-Summary:  Kopete avdeviceconfig plugin
-Summary(pl):  Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
-Group:    X11/Applications/Networking
+Summary:	Kopete avdeviceconfig plugin
+Summary(pl):	Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
+Group:		X11/Applications/Networking
 Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-avdeviceconfig
@@ -502,9 +502,9 @@ Wtyczka Kopete automatycznie zmieniaj±ca status na zajêty. Warunki, po
 zaistnieniu których ma nast±piæ, s± konfigurowalne.
 
 %package kopete-tool-smpppdcs
-Summary:  Kopete smpppdcs plugin
-Summary(pl):  Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
-Group:    X11/Applications/Networking
+Summary:	Kopete smpppdcs plugin
+Summary(pl):	Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
+Group:		X11/Applications/Networking
 Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-smpppdcs
@@ -635,9 +635,9 @@ wokó³ komputera.
 Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-#Requires:	kdemultimedia-noatun >= 3.1
 #Requires:	kdemultimedia-kscd >= 3.1
+#Requires:	kdemultimedia-noatun >= 3.1
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 %if %{with xmms}
 Requires:	xmms >= 1.0.0
 %endif
@@ -799,8 +799,8 @@ Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
-Requires:	perl-Socket6 >= 0.11
 Requires:	perl-IO-Socket-SSL
+Requires:	perl-Socket6 >= 0.11
 
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
@@ -817,8 +817,8 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description krfb
 Remote Desktop Connection is a client application that allows you to
@@ -891,9 +891,9 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
+Requires:	rc-scripts
 Requires:	samba-client
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
@@ -932,9 +932,9 @@ MSN protocol shared library.
 Biblioteka wspó³dzielona dla protoko³u MSN.
 
 %package libkopete_videodevice
-Summary:  Video input device support library for kopete
-Summary(pl):  Biblioteka z obs³ug± urz±dzeñ wej¶cia video dla kopete
-Group:    X11/Libraries
+Summary:	Video input device support library for kopete
+Summary(pl):	Biblioteka z obs³ug± urz±dzeñ wej¶cia video dla kopete
+Group:		X11/Libraries
 Requires: %{name}-libkopete = %{epoch}:%{version}-%{release}
 
 %description libkopete_videodevice
@@ -1399,7 +1399,7 @@ fi
 %{_datadir}/apps/kopete/icons/*/*/*/call.png
 %{_datadir}/apps/kopete/icons/*/*/*/contact_ffc_overlay.png
 %{_datadir}/apps/kopete/icons/*/*/*/contact_unknown_overlay.png
-%{_datadir}/icons/*/*/*/call.png
+%{_iconsdir}/*/*/*/call.png
 %{_datadir}/apps/kopete/icons/*/*/*/*skype*
 %{_datadir}/services/kopete_skype.desktop
 %{_datadir}/apps/kopete_skype
@@ -1675,14 +1675,14 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
-%{_datadir}/applications/kde/kcmwifi.desktop
-%{_datadir}/applications/kde/kwifimanager.desktop
+%{_desktopdir}/kde/kcmwifi.desktop
+%{_desktopdir}/kde/kwifimanager.desktop
 %{_iconsdir}/*/*/apps/kwifimanager.*
 
 %files lanbrowser -f lisa.lang
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lisarc
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/lisa
 %attr(754,root,root) /etc/rc.d/init.d/lisa
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
