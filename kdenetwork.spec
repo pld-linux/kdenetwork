@@ -17,7 +17,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -33,7 +33,6 @@ Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
-#BuildRequires:	unsermake >= 040511
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -52,6 +51,7 @@ BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
+#BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -389,7 +389,7 @@ Wtyczka Kopete dodaj±ca obs³ugê protoko³u MSN.
 Summary:	Kopete plugin which adds Lotus Sametime protocol support
 Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Lotus Sametime
 Group:		X11/Applications/Networking
-Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-protocol-meanwhile
 Kopete plugin which adds meanwhile Lotus Sametime support.
@@ -491,7 +491,7 @@ Wtyczka Kopete do dodawania w³asnych aliasów dla poleceñ.
 Summary:	Kopete avdeviceconfig plugin
 Summary(pl):	Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
 Group:		X11/Applications/Networking
-Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-avdeviceconfig
 Kopete plugin which automatically changes status to away. Conditions
@@ -505,7 +505,7 @@ zaistnieniu których ma nast±piæ, s± konfigurowalne.
 Summary:	Kopete smpppdcs plugin
 Summary(pl):	Wtyczka Kopete do automatycznego przechodzenia w stan zajêty
 Group:		X11/Applications/Networking
-Requires: %{name}-kopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
 %description kopete-tool-smpppdcs
 Kopete plugin which automatically changes status to away. Conditions
@@ -635,9 +635,9 @@ wokó³ komputera.
 Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 #Requires:	kdemultimedia-kscd >= 3.1
 #Requires:	kdemultimedia-noatun >= 3.1
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 %if %{with xmms}
 Requires:	xmms >= 1.0.0
 %endif
@@ -935,7 +935,7 @@ Biblioteka wspó³dzielona dla protoko³u MSN.
 Summary:	Video input device support library for kopete
 Summary(pl):	Biblioteka z obs³ug± urz±dzeñ wej¶cia video dla kopete
 Group:		X11/Libraries
-Requires: %{name}-libkopete = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 
 %description libkopete_videodevice
 Video input device support library for kopete.
