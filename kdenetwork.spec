@@ -28,7 +28,6 @@ Source1:	%{name}-kopetestyles.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Icon:		kde-network.xpm
 Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
