@@ -5,11 +5,11 @@
 					# to g++
 #
 %define		_state		stable
-%define		_kdever		3.5
-%define		_ver		3.5.0
+%define		_kdever		3.5.1
+%define		_ver		3.5.1
 
-%define		_minlibsevr	9:3.5.0
-%define		_minbaseevr	9:3.5.0
+%define		_minlibsevr	9:3.5.1
+%define		_minbaseevr	9:3.5.1
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -17,12 +17,12 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	c83dce8cc496b6ec8773483df1c85119
+# Source0-md5:	02ced8c14c80f28635056488949d56d7
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -1269,6 +1269,7 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete_avdevice.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
