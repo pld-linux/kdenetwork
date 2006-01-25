@@ -1037,7 +1037,7 @@ cp %{_datadir}/automake/config.sub admin
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	%{!?debug:--disable-rpath} \
 	--disable-testbed \
-	--enable-final \
+	--disable-final \
 	%{?with_hidden_visibility:--enable-gcc-hidden-visibility} \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
