@@ -1,9 +1,15 @@
+# TODO
+# - find & fix missing BR:
+# RPM build errors:
+#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.la
+#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.so
+#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/apps/kopete/icons/crystalsvg/*/*/meanwhile*
+#    File not found: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/services/kopete_meanwhile.desktop
+#
+# Conditional build:
 %bcond_without	xmms
 %bcond_with	skype
-%bcond_with	hidden_visibility	# pass '--fvisibility=hidden'
-					# & '--fvisibility-inlines-hidden'
-					# to g++
-#
+%bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
 %define		_state		stable
 %define		_kdever		3.5.1
 %define		_ver		3.5.1
@@ -17,7 +23,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -32,6 +38,7 @@ Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
+Patch3:		%{name}-kopete-qca-tls.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -327,6 +334,7 @@ Summary:	Kopete plugin which adds Groupwise protocol support
 Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Groupwise
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+#Suggests:	qt-plugin-qca-tls
 
 %description kopete-protocol-groupwise
 Kopete plugin which adds Groupwise protocol support.
@@ -364,6 +372,7 @@ Summary:	Kopete plugin which adds Jabber protocol support
 Summary(pl):	Wtyczka Kopete dodaj±ca obs³ugê protoko³u Jabber
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+#Suggests:	qt-plugin-qca-tls
 
 %description kopete-protocol-jabber
 Kopete plugin which adds Jabber protocol support.
@@ -987,6 +996,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 #%patch100 -p0
 %patch0 -p1
 %patch1 -p1
+%patch3 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -1047,15 +1057,26 @@ cp %{_datadir}/automake/config.sub admin
 	--with-qt-libraries=%{_libdir} \
 	--with-wifi
 
-%{__make}
+%{__make} \
+	%{?with_verbose:VERBOSE=1} \
+	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
+	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
+	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)'
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
+	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
+	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 %{__make} -C kopete/protocols/winpopup install \
+	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
+	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
+	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
