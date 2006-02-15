@@ -34,7 +34,6 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
