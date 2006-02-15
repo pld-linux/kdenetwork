@@ -1029,11 +1029,10 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
+%build
 cp %{_datadir}/automake/config.sub admin
-
 %{__make} -f admin/Makefile.common cvs
 
-%build
 %configure \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	%{!?debug:--disable-rpath} \
