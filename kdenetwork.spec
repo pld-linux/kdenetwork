@@ -34,6 +34,7 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
@@ -248,20 +249,6 @@ Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= %{_minbaseevr}
 Obsoletes:	kdenetwork-kit
 Obsoletes:	kopete
-Obsoletes:	kopete-plugin-tools-autoaway
-Obsoletes:	kopete-plugin-tools-autoreplace
-Obsoletes:	kopete-plugin-tools-conectionstatus
-Obsoletes:	kopete-plugin-tools-contactnotes
-Obsoletes:	kopete-plugin-tools-cryptography
-Obsoletes:	kopete-plugin-tools-history
-Obsoletes:	kopete-plugin-tools-highlight
-Obsoletes:	kopete-plugin-tools-importer
-Obsoletes:	kopete-plugin-tools-nowlistening
-Obsoletes:	kopete-plugin-tools-motionaway
-Obsoletes:	kopete-plugin-tools-spellcheck
-Obsoletes:	kopete-plugin-tools-texteffect
-Obsoletes:	kopete-plugin-tools-translator
-Obsoletes:	kopete-plugin-tools-webpresence
 Obsoletes:	kopete-plugin-protocols-aim
 Obsoletes:	kopete-plugin-protocols-gg
 Obsoletes:	kopete-plugin-protocols-icq
@@ -272,6 +259,20 @@ Obsoletes:	kopete-plugin-protocols-oscar
 Obsoletes:	kopete-plugin-protocols-sms
 Obsoletes:	kopete-plugin-protocols-winpopup
 Obsoletes:	kopete-plugin-protocols-yahoo
+Obsoletes:	kopete-plugin-tools-autoaway
+Obsoletes:	kopete-plugin-tools-autoreplace
+Obsoletes:	kopete-plugin-tools-conectionstatus
+Obsoletes:	kopete-plugin-tools-contactnotes
+Obsoletes:	kopete-plugin-tools-cryptography
+Obsoletes:	kopete-plugin-tools-highlight
+Obsoletes:	kopete-plugin-tools-history
+Obsoletes:	kopete-plugin-tools-importer
+Obsoletes:	kopete-plugin-tools-motionaway
+Obsoletes:	kopete-plugin-tools-nowlistening
+Obsoletes:	kopete-plugin-tools-spellcheck
+Obsoletes:	kopete-plugin-tools-texteffect
+Obsoletes:	kopete-plugin-tools-translator
+Obsoletes:	kopete-plugin-tools-webpresence
 
 %description kopete
 Kopete is a flexible and extendable multiple protocol instant
