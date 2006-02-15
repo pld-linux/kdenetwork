@@ -5,6 +5,10 @@
 #    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.so
 #    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/apps/kopete/icons/crystalsvg/*/*/meanwhile*
 #    File not found: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/services/kopete_meanwhile.desktop
+# - packaging check:
+#   /usr/share/apps/konqueror/dirtree/remote/lan.desktop
+#   /usr/share/icons/locolor/32x32/apps/krfb.png
+#   /usr/share/mimelnk/application/x-icq.desktop
 #
 # Conditional build:
 %bcond_without	xmms
@@ -34,11 +38,13 @@ Source1:	%{name}-kopetestyles.tar.bz2
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
+Source5:	winpopup-install.sh
 Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
 Patch3:		%{name}-kopete-qca-tls.patch
+Patch4:		%{name}-bug-14561.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -997,6 +1003,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -1087,6 +1094,15 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
 %{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
 
 mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
+
+# for kdenetwork-kopete-protocol-winpopup
+install -d $RPM_BUILD_ROOT{/var/lib/winpopup,/etc/samba}
+# TODO: add inclusion of winpopup.conf in post script?
+cat > $RPM_BUILD_ROOT/etc/samba/winpopup.conf <<'EOF'
+[global]
+message command = %{_bindir}/winpopup-send.sh %s %m &
+EOF
+install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
 
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
@@ -1449,6 +1465,9 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
 #%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
 %{_datadir}/services/kopete_wp.desktop
+# FIXME: to samba-client instead?
+%dir %attr(777,root,root) /var/lib/winpopup
+%config(noreplace) %verify(not md5 mtime size) /etc/samba/winpopup.conf
 
 %files kopete-protocol-yahoo
 %defattr(644,root,root,755)
