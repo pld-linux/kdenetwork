@@ -1,0 +1,4 @@
+- added skype plugin, it just requires to be built in kopete builddir,  to use
+  this branch (just copy the kdenetwork to rpm/BUILD and run rpmbuild -bb) you only need to
+  1. checkout trunk/KDE/kdenetwork and trunk/playground/network/kopete/protocols
+  2. copy the contents of the latter protocols directory to kdenetwork/kopete/protocols
