@@ -27,7 +27,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
