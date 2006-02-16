@@ -1,7 +1,7 @@
 Index: libwinpopup.cpp
 ===================================================================
---- kdenetwork-3.5.1/kopete/protocols/winpopup/libwinpopup.cpp	(Revision 505983)
-+++ kdenetwork-3.5.1/kopete/protocols/winpopup/libwinpopup.cpp	(Arbeitskopie)
+--- kdenetwork-3.5.1/kopete/protocols/winpopup/libwinpopup/libwinpopup.cpp	(Revision 505983)
++++ kdenetwork-3.5.1/kopete/protocols/winpopup/libwinpopup/libwinpopup.cpp	(Arbeitskopie)
 @@ -98,27 +98,26 @@
  {
  	QDir dir(WP_POPUP_DIR);
