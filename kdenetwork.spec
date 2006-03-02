@@ -61,7 +61,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
-BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 #BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
@@ -1129,17 +1129,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post lanbrowser
 /sbin/chkconfig --add lisa
-if [ -r /var/lock/subsys/lisa ]; then
-	/etc/rc.d/init.d/lisa restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/lisa start\" to start Lisa daemon."
-fi
+%service lisa restart "Lisa daemon"
 
 %preun lanbrowser
 if [ "$1" = "0" ]; then
-	if [ -r /var/lock/subsys/lisa ]; then
-		/etc/rc.d/init.d/lisa stop >&2
-	fi
+	%service lisa stop
 	/sbin/chkconfig --del lisa
 fi
 
