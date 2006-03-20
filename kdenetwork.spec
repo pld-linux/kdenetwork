@@ -1,10 +1,6 @@
 # TODO
-# - find & fix missing BR:
-# RPM build errors:
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.la
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.so
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/apps/kopete/icons/crystalsvg/*/*/meanwhile*
-#    File not found: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/services/kopete_meanwhile.desktop
+# - fix or kill skype support
+# - kill internal libgadu copy
 # - packaging check:
 #   /usr/share/apps/konqueror/dirtree/remote/lan.desktop
 #   /usr/share/icons/locolor/32x32/apps/krfb.png
@@ -12,8 +8,11 @@
 #
 # Conditional build:
 %bcond_without	xmms
-%bcond_with	skype
-%bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
+%bcond_without	hidden_visibility	# pass '--fvisibility=hidden'
+					# & '--fvisibility-inlines-hidden'
+					# to g++
+%bcond_with	skype			# incomplete!
+
 %define		_state		stable
 %define		_kdever		3.5.1
 %define		_ver		3.5.1
@@ -63,11 +62,9 @@ BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
-#BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
+BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_noautoreqdep	libkopete_oscar.so.1
 
 %description
 KDE network applications. Package includes:
