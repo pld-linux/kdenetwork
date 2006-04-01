@@ -14,24 +14,22 @@
 %bcond_without	xmms
 %bcond_with	skype
 %bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
+#
 %define		_state		stable
-%define		_kdever		3.5.2
-%define		_ver		3.5.2
-
-%define		_minlibsevr	9:3.5.2
-%define		_minbaseevr	9:3.5.2
-
+%define		_minlibsevr	9:%{version}
+%define		_minbaseevr	9:%{version}
+#
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}
+Version:	3.5.2
 Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	dddc6bb65ffb9e46d118781ca0f26da4
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
