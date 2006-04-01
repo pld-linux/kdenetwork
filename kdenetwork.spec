@@ -14,11 +14,11 @@
 %bcond_with	skype			# incomplete!
 
 %define		_state		stable
-%define		_kdever		3.5.1
-%define		_ver		3.5.1
+%define		_kdever		3.5.2
+%define		_ver		3.5.2
 
-%define		_minlibsevr	9:3.5.1
-%define		_minbaseevr	9:3.5.1
+%define		_minlibsevr	9:3.5.2
+%define		_minbaseevr	9:3.5.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
@@ -26,12 +26,12 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	%{_ver}
-Release:	3
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	02ced8c14c80f28635056488949d56d7
+# Source0-md5:	dddc6bb65ffb9e46d118781ca0f26da4
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -1724,8 +1724,7 @@ fi
 %{_datadir}/apps/remoteview/lan.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
-# Messing one!
-# %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
