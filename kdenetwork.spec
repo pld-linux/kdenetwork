@@ -642,11 +642,6 @@ Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-#Requires:	kdemultimedia-kscd >= 3.1
-#Requires:	kdemultimedia-noatun >= 3.1
-%if %{with xmms}
-Requires:	xmms >= 1.0.0
-%endif
 
 %description kopete-tool-nowlistening
 This Kopete plugin tells selected live chats what you're currently
