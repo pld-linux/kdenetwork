@@ -1,10 +1,6 @@
 # TODO
 # - fix or kill skype support
 # - kill internal libgadu copy
-# - packaging check:
-#   /usr/share/apps/konqueror/dirtree/remote/lan.desktop
-#   /usr/share/icons/locolor/32x32/apps/krfb.png
-#   /usr/share/mimelnk/application/x-icq.desktop
 #
 # Conditional build:
 %bcond_without	xmms
@@ -21,7 +17,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.2
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -1039,8 +1035,8 @@ cp %{_datadir}/automake/config.sub admin
 %configure \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	%{!?debug:--disable-rpath} \
-	--disable-testbed \
 	--disable-final \
+	--disable-testbed \
 	%{?with_hidden_visibility:--enable-gcc-hidden-visibility} \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
@@ -1049,7 +1045,8 @@ cp %{_datadir}/automake/config.sub admin
 	--enable-smpppd \
 	--with-distribution="PLD Linux Distribution" \
 	--with-qt-libraries=%{_libdir} \
-	--with-wifi
+	--with-wifi \
+	--with{!?with_xmms:out}-xmms
 
 %{__make} \
 	%{?with_verbose:VERBOSE=1} \
@@ -1090,6 +1087,11 @@ cat > $RPM_BUILD_ROOT/etc/samba/winpopup.conf <<'EOF'
 message command = %{_bindir}/winpopup-send.sh %s %m &
 EOF
 install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
+
+# Messing ones
+rm $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
+rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
 
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
