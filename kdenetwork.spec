@@ -1054,15 +1054,9 @@ cp %{_datadir}/automake/config.sub admin
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 %{__make} -C kopete/protocols/winpopup install \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
@@ -1084,7 +1078,6 @@ EOF
 install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
 
 # Messing ones
-rm $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
 rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
 
