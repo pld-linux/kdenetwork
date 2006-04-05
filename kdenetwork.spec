@@ -1,20 +1,12 @@
 # TODO
-# - find & fix missing BR:
-# RPM build errors:
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.la
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/lib/kde3/kopete*meanwhile*.so
-#    File not found by glob: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/apps/kopete/icons/crystalsvg/*/*/meanwhile*
-#    File not found: /home/glen/tmp/kdenetwork-3.5.1-root-glen/usr/share/services/kopete_meanwhile.desktop
-# - packaging check:
-#   /usr/share/apps/konqueror/dirtree/remote/lan.desktop
-#   /usr/share/icons/locolor/32x32/apps/krfb.png
-#   /usr/share/mimelnk/application/x-icq.desktop
+# - fix or kill skype support
+# - kill internal libgadu copy
 #
 # Conditional build:
 %bcond_without	xmms
-%bcond_with	skype
 %bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
-#
+%bcond_with	skype			# incomplete!
+
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
 %define		_minbaseevr	9:%{version}
@@ -25,7 +17,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.2
-Release:	1
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -61,11 +53,8 @@ BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
-#BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_noautoreqdep	libkopete_oscar.so.1
 
 %description
 KDE network applications. Package includes:
@@ -1045,8 +1034,8 @@ cp %{_datadir}/automake/config.sub admin
 %configure \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	%{!?debug:--disable-rpath} \
-	--disable-testbed \
 	--disable-final \
+	--disable-testbed \
 	%{?with_hidden_visibility:--enable-gcc-hidden-visibility} \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
@@ -1055,28 +1044,18 @@ cp %{_datadir}/automake/config.sub admin
 	--enable-smpppd \
 	--with-distribution="PLD Linux Distribution" \
 	--with-qt-libraries=%{_libdir} \
-	--with-wifi
+	--with-wifi \
+	--with%{!?with_xmms:out}-xmms
 
-%{__make} \
-	%{?with_verbose:VERBOSE=1} \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)'
-
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 %{__make} -C kopete/protocols/winpopup install \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)' \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
@@ -1096,6 +1075,10 @@ cat > $RPM_BUILD_ROOT/etc/samba/winpopup.conf <<'EOF'
 message command = %{_bindir}/winpopup-send.sh %s %m &
 EOF
 install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
+
+# Messing ones
+rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
+rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
 
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
@@ -1720,8 +1703,7 @@ fi
 %{_datadir}/apps/remoteview/lan.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
-# Messing one!
-# %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
