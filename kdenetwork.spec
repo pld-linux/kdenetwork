@@ -1046,14 +1046,9 @@ cp %{_datadir}/automake/config.sub admin
 	--with-distribution="PLD Linux Distribution" \
 	--with-qt-libraries=%{_libdir} \
 	--with-wifi \
-	--with{!?with_xmms:out}-xmms
+	--with%{!?with_xmms:out}-xmms
 
-%{__make} \
-	%{?with_verbose:VERBOSE=1} \
-	CXXLD=%{_host_cpu}-%{_vendor}-%{_os}-g++ \
-	CCLD=%{_host_cpu}-%{_vendor}-%{_os}-gcc \
-	AM_MAKEFLAGS='CXXLD=$(CXXLD) CCLD=$(CCLD)'
-
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
