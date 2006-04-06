@@ -1080,6 +1080,7 @@ install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
 # Messing ones
 rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
 rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
+rm $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
@@ -1704,7 +1705,6 @@ fi
 %{_datadir}/apps/remoteview/lan.desktop
 %{_datadir}/services/rlan.protocol
 %{_datadir}/services/lan.protocol
-%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
 %{_datadir}/applnk/.hidden/kcmkiolan.desktop
 %{_datadir}/applnk/.hidden/kcmlisa.desktop
