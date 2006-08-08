@@ -1,2399 +1,1129 @@
-Index: kpf/kpfpropertiesdialogplugin.desktop
+Index: krfb/krfb/xupdatescanner.cc
 ===================================================================
---- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -44,6 +44,7 @@
- Name[uk]=Сторінка властивостей каталогу KPF
- Name[zh_CN]=KPF 目录属性页
- Name[zh_HK]=KPF 目錄屬性頁
-+Name[zh_TW]=KPF 目錄屬性頁
- X-KDE-Library=kpfpropertiesdialog
- X-KDE-Protocol=file
- ServiceTypes=KPropsDlg/Plugin,inode/directory
-Index: kpf/kpfapplet.desktop
-===================================================================
---- kpf/kpfapplet.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kpf/kpfapplet.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -81,7 +81,7 @@
- Comment[hu]=Mini webkiszolgáló egyszerű fájlmegosztáshoz
- Comment[is]=Lítill vefþjónn sem auðveldar deilingu af skrám yfir netið
- Comment[it]=Un piccolo server web che permette di condividere dei file attraverso la rete in modo semplice
--Comment[ja]=簡単にネットワーク上でファイルを共有するための小さなウェブサーバー
-+Comment[ja]=簡単にネットワーク上でファイルを共有するための小さなウェブサーバ
- Comment[km]=ម៉ាស៊ីន​បម្រើ​វ៉េប​តូច​មួយ ដែល​អាច​ធ្វើ​ឲ្យ​ការ​ចែក​រំលែក​ឯកសារ​លើ​បណ្ដាញ​មាន​លក្ខណៈ​កាន់​តែ​ងាយស្រួល
- Comment[lt]=Nedidelis interneto serveris, kuriuo paprasta dalintis bylomis kompiuterių tinkle
- Comment[nb]=En liten vevtjener som gjør det lett å dele filer over nettet
-@@ -92,6 +92,7 @@
- Comment[pt]=Um pequeno servidor Web que torna simples a partilha de ficheiros na rede
- Comment[pt_BR]=Um pequeno servidor web que facilita o compartilhamento de arquivos na rede
- Comment[ru]=Небольшой веб-сервер, облегчающий общий доступ к файлам по сети
-+Comment[sk]=Malý web server, ktorý robí zdielanie súborov v sieti jednoduchým
- Comment[sl]=Majhen spletni strežnik, ki poenostavi deljenje datotek prek omrežja
- Comment[sr]=Мали веб сервер који дељење фајлова преко мреже чини лаким
- Comment[sr@Latn]=Mali veb server koji deljenje fajlova preko mreže čini lakim
-@@ -100,6 +101,7 @@
- Comment[uk]=Малий веб-сервер, який спрощує спільний доступ до файлів через мережу
- Comment[zh_CN]=一个小的 Web 服务器，可使得在在网上共享文件更加容易
- Comment[zh_HK]=令在網絡上分享檔案變得容易的小型網頁伺服器
-+Comment[zh_TW]=能輕易在網路上分享檔案的小型網頁伺服器
- Icon=kpf
- X-KDE-Library=kpf_panelapplet
- X-KDE-UniqueApplet=true
-Index: krdc/krdc.desktop
-===================================================================
---- krdc/krdc.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -37,6 +37,7 @@
- GenericName[pt]=Ligação a Ecrãs Remotos
- GenericName[pt_BR]=Conexões com Ambientes de Trabalho Remotos
- GenericName[ru]=Общий рабочий стол
-+GenericName[sk]=Pripojenie na vzdialenú pracovnú plochu
- GenericName[sl]=Povezava z oddaljenim namizjem
- GenericName[sr]=Удаљено повезивање на радну површину
- GenericName[sr@Latn]=Udaljeno povezivanje na radnu površinu
-@@ -46,5 +47,6 @@
- GenericName[uz]=Масофадаги иш столига уланиш
- GenericName[zh_CN]=远程桌面连接
- GenericName[zh_HK]=遠端桌面連線
-+GenericName[zh_TW]=連接遠端桌面
- DocPath=krdc/index.html
- Categories=Qt;KDE;Network;
-Index: krdc/smb2rdc.desktop
-===================================================================
---- krdc/smb2rdc.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ krdc/smb2rdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -34,6 +34,7 @@
- Name[pt]=Abrir Ligação Remota a Ecrã para Este Computador
- Name[pt_BR]=Abre Conexões Remotas para Essa Máquina
- Name[ru]=Открыть соединение Remote Desktop с этой машиной
-+Name[sk]=Otvorí spojenie na vzdialenú pracovnú plochu na tomto počítači
- Name[sl]=Odpri povezavo z oddaljenim namizjem na tem računalniku
- Name[sr]=Отвори удаљену везу са радном површином на овој машини
- Name[sr@Latn]=Otvori udaljenu vezu sa radnom površinom na ovoj mašini
-@@ -42,6 +43,7 @@
- Name[uk]=Відкрити з'єднання з віддаленою стільницею до цього комп'ютера
- Name[zh_CN]=打开到此计算机的远程桌面连接
- Name[zh_HK]=開放遠端桌面連線到這電腦
-+Name[zh_TW]=在此主機上開啟遠端桌面
- Exec=krdc %u
- Icon=krdc
+--- krfb/krfb/xupdatescanner.cc	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/krfb/xupdatescanner.cc	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -140,7 +140,7 @@
+ 	tilesX = (width + tileWidth - 1) / tileWidth;
+ 	tilesY = (height + tileHeight - 1) / tileHeight;
+ 	tileMap = new bool[tilesX * tilesY];
+-        tileRegionMap = new struct TileChangeRegion[tilesX * tilesY];
++	tileRegionMap = new struct TileChangeRegion[tilesX * tilesY];
  
-Index: krfb/krfb/krfb.desktop
+ 	unsigned int i;
+ 	for (i = 0; i < tilesX * tilesY; i++)
+@@ -203,8 +203,8 @@
+ 		XDestroyImage(scanline);
+ 		XDestroyImage(tile);
+ 	}
+-	delete tileMap;
+-        delete tileRegionMap;
++	delete [] tileMap;
++	delete [] tileRegionMap;
+ }
+ 
+ 
+Index: krfb/krfb/eventsrc
 ===================================================================
---- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -41,6 +41,7 @@
- GenericName[pt]=Partilha do Ambiente de Trabalho
- GenericName[pt_BR]=Compartilhamento de Ambiente de Trabalho
- GenericName[ru]=Общий рабочий стол
-+GenericName[sk]=Zdieľanie pracovnej plochy
- GenericName[sl]=Deljenje namizja
- GenericName[sr]=Дељење радне површине
- GenericName[sr@Latn]=Deljenje radne površine
-@@ -50,4 +51,5 @@
- GenericName[uz]=Иш столи билан бўлишиш
- GenericName[zh_CN]=桌面共享
- GenericName[zh_HK]=桌面分享
-+GenericName[zh_TW]=桌面分享
- Categories=Qt;KDE;System;
-Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
+--- krfb/krfb/eventsrc	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/krfb/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -626,7 +626,7 @@
+ Comment[hu]=A meghívott fél érvénytelen jelszót küldött. A csatlakozás nem sikerült.
+ Comment[is]=Boðinn aðili sendi ógilt lykilorð. Tengingu hafnað
+ Comment[it]=La parte invitata ha inviato una password non valida. Connessione rifiutata.
+-Comment[ja]=招待された人が不正なパスワードを送ってきました。接続は拒否されました。
++Comment[ja]=招待された人が不正なパスワードを送ってきました。接続を拒否しました。
+ Comment[km]=ភាគី​ដែល​បាន​អញ្ជើញ បាន​ផ្ញើ​ពាក្យ​សម្ងាត់​មិន​ត្រឹមត្រូវ ។ ការ​តភ្ជាប់​ត្រូវ​បាន​បដិសេធ ។
+ Comment[lt]=Pakviestoji pusė atsiuntė neteisingą slaptažodį. Ryšys nutrauktas.
+ Comment[mk]=Поканетата страна испрати невалидна лозинка. Поврзувањето е одбиено.
+@@ -685,7 +685,7 @@
+ Name[hu]=ÚjKapcsolatTartva
+ Name[is]=NýTengingÁBið
+ Name[it]=Nuova connessione da tenere
+-Name[ja]=維持中の新規接続
++Name[ja]=保留中の新規接続
+ Name[km]=ការ​ត​ភ្ជាប់​ថ្មី កំពុង​ស្ថិត​នៅ​ក្នុង​ការ​រង់​ចាំ
+ Name[lt]=Naujas kvietimas ryšiui sulaikytas
+ Name[mk]=Нова врска на чекање
+@@ -743,7 +743,7 @@
+ Comment[hu]=Csatlakozási kérés, megerősítés szükséges
+ Comment[is]=Beiðni um tengingu, notandi verður að samþykkja
+ Comment[it]=Connessione richiesta, l'utente deve accettare
+-Comment[ja]=接続が要求されています。ユーザは受け入れなければなりません。
++Comment[ja]=接続が要求されています。ユーザが許可しなければなりません。
+ Comment[km]=បាន​ស្នើ​ការ​ត​ភ្ជាប់​,​ អ្នក​ប្រើ​ត្រូវ​តែ​ទទួលយក
+ Comment[lt]=Kvietimas ryšiui išsiųstas, naudotojas turi priimti kvietimą
+ Comment[mk]=Побарано е поврзување, корисникот мора да прифати
+@@ -802,7 +802,7 @@
+ Name[hu]=ÚjKapcsolatAutoElfogadva
+ Name[is]=NýTengingSjálfvirktSamþykkt
+ Name[it]=Accettata nuova connessione automatica
+-Name[ja]=新規接続の新規受け入れ
++Name[ja]=新規接続の自動受け入れ
+ Name[km]=បាន​ទទួល​យក​ការ​ត​ភ្ជាប់​ថ្មី​ដោយ​ស្វ័យ​ប្រវត្តិ
+ Name[lt]=Naujas kvietimas ryšiui automatiškai priimtas
+ Name[mk]=Ново поврзување автоматски прифатено
+@@ -861,7 +861,7 @@
+ Comment[hu]=Automatikusan létrejött az új kapcsolat
+ Comment[is]=Nýjar tengingar sjálfkrafa samþykktar
+ Comment[it]=Stabilita nuova connessione automaticamente
+-Comment[ja]=新規接続は自動的に確立されます
++Comment[ja]=新規接続を自動的に確立しました
+ Comment[km]=បាន​បង្កើត​ការ​ត​ភ្ជាប់​ថ្មី​ដោយ​ស្វ័យ​ប្រវត្តិ
+ Comment[lt]=Naujas ryšys užmegztas automatiškai
+ Comment[mk]=Автоматски е воспоставено ново поврзување
+@@ -982,7 +982,7 @@
+ Comment[hu]=Foglalt, a csatlakozási kérés visszautasítva
+ Comment[is]=Uptekinn, tengingu hafnað
+ Comment[it]=Occupato, connessione rifiutata
+-Comment[ja]=ビジーです。接続は拒否されました
++Comment[ja]=ビジーです、接続を拒否しました
+ Comment[km]=រវល់​,​បោះបង់​ការ​ត​ភ្ជាប់
+ Comment[lt]=Užimta, kvietimas ryšiui atmestas
+ Comment[mk]=Зафатено, поврзувањето е одбиено
+Index: krfb/libvncserver/sraRegion.h
 ===================================================================
---- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -87,3 +87,4 @@
- Comment[uk]=Мікро- даемон http для krfb, який обслуговує аплет переглядача VNC.
- Comment[zh_CN]=支持 VNC 查看器小程序的 krfb 小 http 守护程序
- Comment[zh_HK]=用於 krfb，服務 VNC 檢視小程式的微型網頁伺服器
-+Comment[zh_TW]=服務 VNC 的小型網頁伺服器
+--- krfb/libvncserver/sraRegion.h	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/libvncserver/sraRegion.h	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -1,4 +1,3 @@
+-
+ #ifndef SRAREGION_H
+ #define SRAREGION_H
+ 
+@@ -38,6 +37,8 @@
+ extern unsigned long sraRgnCountRects(const sraRegion *rgn);
+ extern Bool sraRgnEmpty(const sraRegion *rgn);
+ 
++extern sraRegion *sraRgnBBox(const sraRegion *src);
++
+ /* -=- rectangle iterator */
+ 
+ typedef struct sraRectangleIterator {
+@@ -58,4 +59,7 @@
+ extern Bool sraClipRect(int *x, int *y, int *w, int *h,
+ 			int cx, int cy, int cw, int ch);
+ 
++extern Bool sraClipRect2(int *x, int *y, int *x2, int *y2,
++			int cx, int cy, int cx2, int cy2);
++
+ #endif
+Index: krfb/libvncserver/sraRegion.c
+===================================================================
+--- krfb/libvncserver/sraRegion.c	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/libvncserver/sraRegion.c	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -33,7 +33,7 @@
+ sraSpanList *sraSpanListDup(const sraSpanList *src);
+ void sraSpanListDestroy(sraSpanList *list);
+ 
+-sraSpan *
++static sraSpan *
+ sraSpanCreate(int start, int end, const sraSpanList *subspan) {
+   sraSpan *item = (sraSpan*)malloc(sizeof(sraSpan));
+   item->_next = item->_prev = NULL;
+@@ -43,7 +43,7 @@
+   return item;
+ }
+ 
+-sraSpan *
++static sraSpan *
+ sraSpanDup(const sraSpan *src) {
+   sraSpan *span;
+   if (!src) return NULL;
+@@ -51,7 +51,7 @@
+   return span;
+ }
+ 
+-void
++static void
+ sraSpanInsertAfter(sraSpan *newspan, sraSpan *after) {
+   newspan->_next = after->_next;
+   newspan->_prev = after;
+@@ -59,7 +59,7 @@
+   after->_next = newspan;
+ }
+ 
+-void
++static void
+ sraSpanInsertBefore(sraSpan *newspan, sraSpan *before) {
+   newspan->_next = before;
+   newspan->_prev = before->_prev;
+@@ -67,32 +67,34 @@
+   before->_prev = newspan;
+ }
+ 
+-void
++static void
+ sraSpanRemove(sraSpan *span) {
+   span->_prev->_next = span->_next;
+   span->_next->_prev = span->_prev;
+ }
+ 
+-void
++static void
+ sraSpanDestroy(sraSpan *span) {
+   if (span->subspan) sraSpanListDestroy(span->subspan);
+   free(span);
+ }
+ 
+-void
++#ifdef DEBUG
++static void
+ sraSpanCheck(const sraSpan *span, const char *text) {
+   /* Check the span is valid! */
+   if (span->start == span->end) {
+-    printf("%s:%d-%d\n", text, span->start, span->end); 
+-    exit(0);
++    printf(text); 
++    printf(":%d-%d\n", span->start, span->end);
+   }
+ }
++#endif
+ 
+ /* -=- SpanList routines */
+ 
+-void sraSpanPrint(const sraSpan *s);
++static void sraSpanPrint(const sraSpan *s);
+ 
+-void
++static void
+ sraSpanListPrint(const sraSpanList *l) {
+   sraSpan *curr;
+   if (!l) {
+@@ -115,8 +117,8 @@
+     sraSpanListPrint(s->subspan);
+ }
+ 
+-sraSpanList *
+-sraSpanListCreate() {
++static sraSpanList *
++sraSpanListCreate(void) {
+   sraSpanList *item = (sraSpanList*)malloc(sizeof(sraSpanList));
+   item->front._next = &(item->back);
+   item->front._prev = NULL;
+@@ -155,7 +157,7 @@
+   free(list);
+ }
+ 
+-void
++static void
+ sraSpanListMakeEmpty(sraSpanList *list) {
+   sraSpan *curr, *next;
+   while (list->front._next != &(list->back)) {
+@@ -171,7 +173,7 @@
+   list->back._next = NULL;
+ }
+ 
+-Bool
++static Bool
+ sraSpanListEqual(const sraSpanList *s1, const sraSpanList *s2) {
+   sraSpan *sp1, *sp2;
+ 
+@@ -180,7 +182,7 @@
+       return 1;
+     } else {
+       printf("sraSpanListEqual:incompatible spans (only one NULL!)\n");
+-      exit(1);
++      return FALSE;
+     }
+   }
+ 
+@@ -204,12 +206,12 @@
+   }    
+ }
+ 
+-Bool
++static Bool
+ sraSpanListEmpty(const sraSpanList *list) {
+   return (list->front._next == &(list->back));
+ }
+ 
+-unsigned long
++static unsigned long
+ sraSpanListCount(const sraSpanList *list) {
+   sraSpan *curr = list->front._next;
+   unsigned long count = 0;
+@@ -224,11 +226,12 @@
+   return count;
+ }
+ 
+-void
++static void
+ sraSpanMergePrevious(sraSpan *dest) {
+   sraSpan *prev = dest->_prev;
+-  while ((prev->end == dest->start) &&
+-	 (prev->_prev) &&
++ 
++  while ((prev->_prev) &&
++	 (prev->end == dest->start) &&
+ 	 (sraSpanListEqual(prev->subspan, dest->subspan))) {
+     /*
+     printf("merge_prev:");
+@@ -244,11 +247,11 @@
+   }
+ }    
+ 
+-void
++static void
+ sraSpanMergeNext(sraSpan *dest) {
+   sraSpan *next = dest->_next;
+-  while ((next->start == dest->end) &&
+-	 (next->_next) &&
++  while ((next->_next) &&
++	 (next->start == dest->end) &&
+ 	 (sraSpanListEqual(next->subspan, dest->subspan))) {
+ /*
+ 	  printf("merge_next:");
+@@ -264,7 +267,7 @@
+   }
+ }
+ 
+-void
++static void
+ sraSpanListOr(sraSpanList *dest, const sraSpanList *src) {
+   sraSpan *d_curr, *s_curr;
+   int s_start, s_end;
+@@ -274,7 +277,7 @@
+       return;
+     } else {
+       printf("sraSpanListOr:incompatible spans (only one NULL!)\n");
+-      exit(1);
++      return;
+     }
+   }
+ 
+@@ -354,7 +357,7 @@
+   }
+ }
+ 
+-Bool
++static Bool
+ sraSpanListAnd(sraSpanList *dest, const sraSpanList *src) {
+   sraSpan *d_curr, *s_curr, *d_next;
+ 
+@@ -363,7 +366,7 @@
+       return 1;
+     } else {
+       printf("sraSpanListAnd:incompatible spans (only one NULL!)\n");
+-      exit(1);
++      return FALSE;
+     }
+   }
+ 
+@@ -434,7 +437,7 @@
+   return !sraSpanListEmpty(dest);
+ }
+ 
+-Bool
++static Bool
+ sraSpanListSubtract(sraSpanList *dest, const sraSpanList *src) {
+   sraSpan *d_curr, *s_curr;
+ 
+@@ -443,7 +446,7 @@
+       return 1;
+     } else {
+       printf("sraSpanListSubtract:incompatible spans (only one NULL!)\n");
+-      exit(1);
++      return FALSE;
+     }
+   }
+ 
+@@ -584,6 +587,38 @@
+   }
+ }
+ 
++sraRegion *sraRgnBBox(const sraRegion *src) {
++  int xmin=((unsigned int)(int)-1)>>1,ymin=xmin,xmax=1-xmin,ymax=xmax;
++  sraSpan *vcurr, *hcurr;
++
++  if(!src)
++    return sraRgnCreate();
++
++  vcurr = ((sraSpanList*)src)->front._next;
++  while (vcurr != &(((sraSpanList*)src)->back)) {
++    if(vcurr->start<ymin)
++      ymin=vcurr->start;
++    if(vcurr->end>ymax)
++      ymax=vcurr->end;
++    
++    hcurr = vcurr->subspan->front._next;
++    while (hcurr != &(vcurr->subspan->back)) {
++      if(hcurr->start<xmin)
++	xmin=hcurr->start;
++      if(hcurr->end>xmax)
++	xmax=hcurr->end;
++      hcurr = hcurr->_next;
++    }
++
++    vcurr = vcurr->_next;
++  }
++
++  if(xmax<xmin || ymax<ymin)
++    return sraRgnCreate();
++
++  return sraRgnCreateRect(xmin,ymin,xmax,ymax);
++}
++
+ Bool
+ sraRgnPopRect(sraRegion *rgn, sraRect *rect, unsigned long flags) {
+   sraSpan *vcurr, *hcurr;
+@@ -656,7 +691,7 @@
+   sraRectangleIterator *i =
+     (sraRectangleIterator*)malloc(sizeof(sraRectangleIterator));
+   if(!i)
+-    return(0);
++    return NULL;
+ 
+   /* we have to recurse eventually. So, the first sPtr is the pointer to
+      the sraSpan in the first level. the second sPtr is the pointer to
+@@ -665,7 +700,7 @@
+   i->sPtrs = (sraSpan**)malloc(sizeof(sraSpan*)*DEFSIZE);
+   if(!i->sPtrs) {
+     free(i);
+-    return(0);
++    return NULL;
+   }
+   i->ptrSize = DEFSIZE;
+   i->sPtrs[0] = &(s->front);
+@@ -673,7 +708,7 @@
+   i->ptrPos = 0;
+   i->reverseX = 0;
+   i->reverseY = 0;
+-  return(i);
++  return i;
+ }
+ 
+ sraRectangleIterator *sraRgnGetReverseIterator(sraRegion *s,Bool reverseX,Bool reverseY)
+@@ -688,13 +723,13 @@
+   return(i);
+ }
+ 
+-Bool sraReverse(sraRectangleIterator *i)
++static Bool sraReverse(sraRectangleIterator *i)
+ {
+   return( ((i->ptrPos&2) && i->reverseX) ||
+      (!(i->ptrPos&2) && i->reverseY));
+ }
+ 
+-sraSpan* sraNextSpan(sraRectangleIterator *i)
++static sraSpan* sraNextSpan(sraRectangleIterator *i)
+ {
+   if(sraReverse(i))
+     return(i->sPtrs[i->ptrPos]->_prev);
+@@ -730,8 +765,8 @@
+   }
+ 
+   if((i->ptrPos%4)!=2) {
+-    fprintf(stderr,"sraRgnIteratorNext: offset is wrong (%d%%4!=2)\n",i->ptrPos);
+-    exit(-1);
++    printf("sraRgnIteratorNext: offset is wrong (%d%%4!=2)\n",i->ptrPos);
++    return FALSE;
+   }
+ 
+   r->y1 = i->sPtrs[i->ptrPos-2]->start;
+@@ -773,6 +808,28 @@
+   return (*w>0) && (*h>0);
+ }
+ 
++Bool
++sraClipRect2(int *x, int *y, int *x2, int *y2,
++	    int cx, int cy, int cx2, int cy2) {
++  if (*x < cx)
++    *x = cx;
++  if (*y < cy)
++    *y = cy;
++  if (*x >= cx2)
++    *x = cx2-1;
++  if (*y >= cy2)
++    *y = cy2-1;
++  if (*x2 <= cx)
++    *x2 = cx+1;
++  if (*y2 <= cy)
++    *y2 = cy+1;
++  if (*x2 > cx2)
++    *x2 = cx2;
++  if (*y2 > cy2)
++    *y2 = cy2;
++  return (*x2>*x) && (*y2>*y);
++}
++
+ /* test */
+ 
+ #ifdef SRA_TEST
+@@ -805,7 +862,7 @@
+ 	   rect.x2-rect.x1,rect.y2-rect.y1,
+ 	   rect.x1,rect.y1);
+   sraRgnReleaseIterator(i);
+-  printf("\n20x10+0+0 600x30+0+10 590x10+10+40 30x150+10+50 250x150+350+50 590x100+10+200\n\n");
++  printf("\n20x10+0+0 600x30+0+10 590x10+10+40 30x150+10+50 250x150+350+50 590x100+10+200 \n\n");
+ 
+   i = sraRgnGetReverseIterator(region,1,0);
+   while(sraRgnIteratorNext(i, &rect))
+@@ -813,7 +870,7 @@
+ 	   rect.x2-rect.x1,rect.y2-rect.y1,
+ 	   rect.x1,rect.y1);
+   sraRgnReleaseIterator(i);
+-  printf("\n20x10+0+0 600x30+0+10 590x10+10+40 250x150+350+50 30x150+10+50 590x100+10+200\n\n");
++  printf("\n20x10+0+0 600x30+0+10 590x10+10+40 250x150+350+50 30x150+10+50 590x100+10+200 \n\n");
+ 
+   i = sraRgnGetReverseIterator(region,1,1);
+   while(sraRgnIteratorNext(i, &rect))
+@@ -821,8 +878,12 @@
+ 	   rect.x2-rect.x1,rect.y2-rect.y1,
+ 	   rect.x1,rect.y1);
+   sraRgnReleaseIterator(i);
+-  printf("\n590x100+10+200 250x150+350+50 30x150+10+50 590x10+10+40 600x30+0+10 20x10+0+0\n\n");
++  printf("\n590x100+10+200 250x150+350+50 30x150+10+50 590x10+10+40 600x30+0+10 20x10+0+0 \n\n");
+ 
++  sraRgnDestroy(region);
++  sraRgnDestroy(region1);
++  sraRgnDestroy(region2);
++
+   return(0);
+ }
+ #endif
 Index: krfb/kcm_krfb/kcmkrfb.desktop
 ===================================================================
---- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -170,5 +170,6 @@
- Keywords[tr]=masaüstü paylaşımı,krfb,vnc,paylaşım,krdc,uzak masaüstü bağlantısı,davet,port,slp
- Keywords[uk]=спільні стільниці,krfb,vnc,спільний,rdp,krdc,з'єднання віддаленої стільниці,запрошення,rdp,slp,без запрошення
- Keywords[zh_CN]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,桌面共享,共享,远程桌面连接,邀请,端口,未邀请
-+Keywords[zh_TW]=desktop sharing,krfb,vnc,sharing,rdp,krdc,remote desktop connection,rdp,桌面分享,分享,遠端桌面連線,invitation,port,slp,uninvited
- 
- Categories=Qt;KDE;X-KDE-settings-network;
-Index: lanbrowsing/kcmlisa/kcmreslisa.desktop
+--- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -149,7 +149,7 @@
+ Keywords[hu]=munkaasztal-megosztás,krfb,vnc,megosztás,krdc,csatlakozás távoli munkaasztalhoz,meghívás,port,slp,meghívás nélkül
+ Keywords[is]=skjáborðsmiðlun,miðlun,krfb,vnc,rdp,krdc,fjarvinnsla,remote desktop connection,rdp
+ Keywords[it]=condivisione desktop,krfb,vnc,condivisione,krdc,connessione desktop remoto,invito,porta,slp,non invitato
+-Keywords[ja]=デスクトップ共有,krfb,vnc,共有,rdp,krdc,リモートデスクトップ接続,invitation,port,slp,uninvited
++Keywords[ja]=デスクトップ共有,krfb,vnc,共有,rdp,krdc,リモートデスクトップ接続,招待,ポート,slp,uninvited
+ Keywords[km]=ការ​ចែក​រំ​លែក​ផ្ទៃ​តុ,krfb,vnc,ការ​ចែក​រំលែក,krdc,ការ​ត​ភ្ជាប់​ផ្ទៃ​តុ​ពី​ចម្ងាយ,អញ្ជើញ,ច្រក,slp,មិន​បាន​អញ្ជើញ
+ Keywords[lt]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,dalinimasis darbastaliu,nutolusio darbastalio prijungimas,kvietimas,ryšys,nekviestas,jungtis,prievadas,dalintis,pasidalinti,jungimasis,prisijungti,kviesti
+ Keywords[mk]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,делење на површината,krfb,vnc,делење,krdc,поврзување со оддалечена  површина,покана,порта,slp,непоканет
+Index: krfb/kinetd/kinetd.cpp
 ===================================================================
---- lanbrowsing/kcmlisa/kcmreslisa.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ lanbrowsing/kcmlisa/kcmreslisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -11,6 +11,7 @@
- Name=ResLISa
- Name[hi]=रेस-लिसा
- Name[sv]=ResLisa
-+Name[zh_TW]=ResLISaName=ResLISa
- 
- Comment=Setup ResLISa
- Comment[ar]=تنصيب ResLISa
-Index: lanbrowsing/lisa/netscanner.cpp
-===================================================================
---- lanbrowsing/lisa/netscanner.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ lanbrowsing/lisa/netscanner.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -471,17 +471,6 @@
-    MyString dummy("");
-    mdcerr<<"pingScan: m_maxPings: "<<m_maxPings<<std::endl;
- 
--/*   int bufferSize(60*1024);
--   mdcerr<<"NetScanner::pingScan: regaining root privileges for setting up the icmp socket"<<std::endl;
--   seteuid(0);
--   int sockFD=socket(AF_INET,SOCK_RAW,IPPROTO_ICMP);
--   mdcerr<<"NetScanner::pingScan: setsockopt returns "<<setsockopt(sockFD,SOL_SOCKET,SO_RCVBUF,&bufferSize,sizeof(bufferSize))<<std::endl;
--   //make the socket non-blocking
--   //long int options = O_NONBLOCK | ::fcntl(sockFD, F_GETFL);
--   //mdcerr<<"NetScanner::pingScan:: made it non blocking: "<<::fcntl(sockFD, F_SETFL, options )<<std::endl;
--   seteuid(getuid());
--   mdcerr<<"NetScanner::pingScan: dropped root privileges again"<<std::endl;*/
--
-    pid_t pid=getpid();
-    ICMPEchoRequest echo;
-    echo.type=ICMP_ECHO;
-Index: lanbrowsing/lisa/main.cpp
-===================================================================
---- lanbrowsing/lisa/main.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ lanbrowsing/lisa/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -257,8 +257,12 @@
-    //for creating a raw socket
- 
-    //now dropping root privileges once and ever
-+   
-+   
-    setuid(getuid());
--   
-+   if (geteuid() != getuid())
-+     _exit(255);
+--- krfb/kinetd/kinetd.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ krfb/kinetd/kinetd.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -45,6 +45,8 @@
+ 	m_srvreg(srvreg),
+ 	m_dnssdreg(0)
+ {
++	m_dnssdRegistered = false;
 +
-    //according to R. Stevens the following three lines 
-    //make daemons feel good :)
-    setsid();
-Index: lanbrowsing/kio_lan/lisa.desktop
-===================================================================
---- lanbrowsing/kio_lan/lisa.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ lanbrowsing/kio_lan/lisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -52,6 +52,7 @@
- Name[xh]=Umkhangeli zincwadi we LAN
- Name[zh_CN]=局域网浏览器
- Name[zh_HK]=區域網絡瀏覽器
-+Name[zh_TW]=LAN 瀏覽器
- Name[zu]=Umbheki zincwadi ze LAN
- Open=false
- X-KDE-TreeModule=Directory
-Index: kdnssd/ioslave/invitation.protocol
-===================================================================
---- kdnssd/ioslave/invitation.protocol	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kdnssd/ioslave/invitation.protocol	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -40,6 +40,7 @@
- Description[pt]=Convites de SD
- Description[pt_BR]=solicitações SD
- Description[ru]=Приглашения SD
-+Description[sk]=SD pozvánky
- Description[sl]=Povabila SD
- Description[sr]=SD позивнице
- Description[sr@Latn]=SD pozivnice
-@@ -48,6 +49,7 @@
- Description[uk]=Запрошення SD
- Description[zh_CN]=SD 邀请
- Description[zh_HK]=SD 邀請
-+Description[zh_TW]=SD 邀請
- maxInstances=4
- Class=:remote
- 
-Index: kdnssd/ioslave/zeroconf.protocol
-===================================================================
---- kdnssd/ioslave/zeroconf.protocol	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kdnssd/ioslave/zeroconf.protocol	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -42,6 +42,7 @@
- Description[pt_BR]=Um IO-Slave para o ZeroConf
- Description[ro]=Un dispozitiv de I/E pentru ZeroConf
- Description[ru]=Kioslave для ZeroConf
-+Description[sk]=kioslave pre ZeroConf
- Description[sl]=Kioslave za ZeroConf
- Description[sr]=kioslave за ZeroConf
- Description[sr@Latn]=kioslave za ZeroConf
-@@ -50,6 +51,7 @@
- Description[uk]=Kioslave для ZeroConf
- Description[zh_CN]=ZeroConf 的 kioslave
- Description[zh_HK]=用於 ZeroConf 的 kioslave
-+Description[zh_TW]=ZeroConf 的 kioslave
- maxInstances=4
- Class=:local
- 
-Index: kdnssd/ioslave/zeroconf.desktop
-===================================================================
---- kdnssd/ioslave/zeroconf.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kdnssd/ioslave/zeroconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -34,6 +34,7 @@
- Name[pt_BR]=Serviços de Rede
- Name[ro]=Servicii de reţea
- Name[ru]=Сетевые службы
-+Name[sk]=Sieťové služby
- Name[sl]=Omrežne storitve
- Name[sr]=Мрежни сервиси
- Name[sr@Latn]=Mrežni servisi
-@@ -43,5 +44,6 @@
- Name[uz]=Тармоқ хизматлари
- Name[zh_CN]=网络服务
- Name[zh_HK]=網絡服務
-+Name[zh_TW]=網路服務
- Type=Link
- URL=zeroconf:/
-Index: kdnssd/kdedmodule/dnssdwatcher.desktop
-===================================================================
---- kdnssd/kdedmodule/dnssdwatcher.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kdnssd/kdedmodule/dnssdwatcher.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -29,6 +29,7 @@
- Name[pt]=Vigia de Serviços DNS-SD
- Name[pt_BR]=Monitor dos Serviços DNS-SD
- Name[ru]=Служба DNS-SD
-+Name[sk]=Sledovač DNS-SD služieb
- Name[sl]=Opazovalec storitev DNS-SD
- Name[sr]=Пратилац DNS-SD сервиса
- Name[sr@Latn]=Pratilac DNS-SD servisa
-@@ -37,6 +38,7 @@
- Name[uk]=Спостереження за службами DNS-SD
- Name[zh_CN]=DNS-SD 服务监视器
- Name[zh_HK]=DNS-SD 服務監察器
-+Name[zh_TW]=DNS-SD 服務監看器
- Comment=Keeps track of DNS-SD services and updates directory listings
- Comment[bn]=ডিএনএস-এসডি সার্ভিসের খোঁজ রাখে এবং ডিরেক্টরী তালিকা আপডেট করে
- Comment[bs]=Prati DNS-SD servise i ažurira spiskove direktorija
-@@ -65,6 +67,7 @@
- Comment[pt]=Vigia os serviços DNS-SD e actualiza listas de pastas
- Comment[pt_BR]=Monitora os serviços DNS-SD
- Comment[ru]=Обновление каталогов DNS-SD
-+Comment[sk]=Sleduje DNS-SD služby a aktualizuje výpisy priečinku
- Comment[sl]=Spremlja storitve DNS-SD in posodablja sezname imenikov
- Comment[sr]=Надгледа DNS-SD сервисе и ажурира листинге директоријума
- Comment[sr@Latn]=Nadgleda DNS-SD servise i ažurira listinge direktorijuma
-@@ -73,6 +76,7 @@
- Comment[uk]=Спостерігає за службами DNS-SD та оновлює списки каталогів
- Comment[zh_CN]=跟踪 DNS-SD 服务并更新目录列表
- Comment[zh_HK]=監察 DNS-SD 服務並更新目錄清單
-+Comment[zh_TW]=追蹤 DNS-SD 服務並更新目錄清單
- ServiceTypes=KDEDModule
- X-KDE-ModuleType=Library
- X-KDE-Library=dnssdwatcher
-Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
-===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -59,6 +59,7 @@
- Name[uk]=Зараз слухаю
- Name[zh_CN]=现在收听
- Name[zh_HK]=現正聆聽
-+Name[zh_TW]=正在收聽
- Comment=Tells your buddies what you're listening to
- Comment[ar]=تخبر أصدقائك بما تستمع إليه
- Comment[bg]=Приставка за информиране на приятелите какво слушате
-@@ -106,4 +107,5 @@
- Comment[uk]=Сповіщає ваших друзів про, те що ви зараз слухаєте
- Comment[zh_CN]=告诉您的好友您正在收听的内容
- Comment[zh_HK]=告訴您的伙伴您正在聆聽甚麼
-+Comment[zh_TW]=告訴您的好友您正在收聽什麼
- 
-Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
-===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -63,6 +63,7 @@
- Name[uk]=Зараз слухаю
- Name[zh_CN]=现在收听
- Name[zh_HK]=現正聆聽
-+Name[zh_TW]=正在收聽
- Comment=Tells your buddies what you're listening to
- Comment[ar]=تخبر أصدقائك بما تستمع إليه
- Comment[bg]=Приставка за информиране на приятелите какво слушате
-@@ -110,4 +111,5 @@
- Comment[uk]=Сповіщає ваших друзів про, те що ви зараз слухаєте
- Comment[zh_CN]=告诉您的好友您正在收听的内容
- Comment[zh_HK]=告訴您的伙伴您正在聆聽甚麼
-+Comment[zh_TW]=告訴您的好友您正在收聽什麼
- 
-Index: kopete/plugins/motionautoaway/kopete_motionaway.desktop
-===================================================================
---- kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -58,6 +58,7 @@
- Name[uk]=Автовиявлення відсутності
- Name[zh_CN]=自动离开
- Name[zh_HK]=動作感應器
-+Name[zh_TW]=動作偵測自動離開
- Comment=Sets away status when not detecting movement near the computer
- Comment[ar]=يحول وضع الاتصال إلى في الخارج عندما لا يتم تحديد تعاملات مع الكومبيوتر
- Comment[bg]=Промяна на състоянието, когато няма активност от страна на потребителя
-@@ -104,3 +105,4 @@
- Comment[uk]=Встановлює стан у значення "відсутній", якщо не реєструється робота за комп'ютером
- Comment[zh_CN]=根据计算机旁的状态设置离开状态
- Comment[zh_HK]=偵測不到電腦附近有動作時將狀態設為「離開」
-+Comment[zh_TW]=當偵測不到動作時自動設為離開
-Index: kopete/plugins/motionautoaway/kopete_motionaway_config.desktop
-===================================================================
---- kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -54,6 +54,7 @@
- Name[uk]=Автовиявлення відсутності
- Name[zh_CN]=自动离开
- Name[zh_HK]=動作感應器
-+Name[zh_TW]=動作偵測自動離開
- Comment=Sets away status when not detecting movement near the computer
- Comment[ar]=يحول وضع الاتصال إلى في الخارج عندما لا يتم تحديد تعاملات مع الكومبيوتر
- Comment[bg]=Промяна на състоянието, когато няма активност от страна на потребителя
-@@ -100,3 +101,4 @@
- Comment[uk]=Встановлює стан у значення "відсутній", якщо не реєструється робота за комп'ютером
- Comment[zh_CN]=根据计算机旁的状态设置离开状态
- Comment[zh_HK]=偵測不到電腦附近有動作時將狀態設為「離開」
-+Comment[zh_TW]=當偵測不到動作時自動設為離開
-Index: kopete/plugins/smpppdcs/config/kopete_smpppdcs_config.desktop
-===================================================================
---- kopete/plugins/smpppdcs/config/kopete_smpppdcs_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/smpppdcs/config/kopete_smpppdcs_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -42,6 +42,7 @@
- Name[pt]=Estado da Ligação SUSE SMPPPD
- Name[pt_BR]=Status da Conexão SUSE SMPPPD
- Name[ru]=Статус соединения SUSE SMPPPD
-+Name[sk]=Stav spojenia SUSE SMPPPD
- Name[sl]=Stanje povezave z uporabo SuSE SMPPPD
- Name[sr]=Статус SUSE-ове SMPPPD везе
- Name[sr@Latn]=Status SUSE-ove SMPPPD veze
-@@ -50,6 +51,7 @@
- Name[uk]=Стан з'єднання SUSE SMPPPD
- Name[zh_CN]=SUSE SMPPPD 连接状态
- Name[zh_HK]=SUSE SMPPPD 連線狀態
-+Name[zh_TW]=SUSE SMPPPD 連線狀態
- Comment=SMPPPDCS Plugin
- Comment[bn]=SMPPPDCS প্লাগিন
- Comment[br]=Lugant SMPPPDCS
-@@ -82,6 +84,7 @@
- Comment[pt_BR]=Plugin SMPPPDCS
- Comment[ro]=Modul SMPPPDCS
- Comment[ru]=Модуль SMPPPDCS
-+Comment[sk]=SMPPPDCS modul
- Comment[sl]=Vstavek SMPPPDCS
- Comment[sr]=Прикључак SMPPPDCS
- Comment[sr@Latn]=Priključak SMPPPDCS
-@@ -91,3 +94,4 @@
- Comment[uz]=SMPPPDCS плагини
- Comment[zh_CN]=SMPPPDCS 插件
- Comment[zh_HK]=SMPPPDCS 插件
-+Comment[zh_TW]=SMPPPDCS 外掛程式
-Index: kopete/plugins/smpppdcs/kopete_smpppdcs.desktop
-===================================================================
---- kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -42,6 +42,7 @@
- Name[pt]=Estado da Ligação com smpppd da SUSE (SMPPPD)
- Name[pt_BR]=Status da Conexão compatível com SUSE smpppd
- Name[ru]=Статус соединения с SUSE smpppd (SMPPPD)
-+Name[sk]=Stav spojenia SUSE smpppd-enabled (SMPPPD)
- Name[sl]=Stanje povezave z uporabo SuSE SMPPPD
- Name[sr]=Статус SUSE-ове smpppd-везе (SMPPPD)
- Name[sr@Latn]=Status SUSE-ove smpppd-veze (SMPPPD)
-@@ -50,6 +51,7 @@
- Name[uk]=SUSE smpppd-уможливлений Стан з'єднання (SMPPPD)
- Name[zh_CN]=SUSE smppp 连接状态(SMPPPD)
- Name[zh_HK]=連接 SUSE smpppd 的連線狀態 (SMPPPD)
-+Name[zh_TW]=SUSE smpppd 連線狀態
- Comment=Connects/disconnects Kopete automatically depending on availability of Internet connection
- Comment[ar]=يقوم بوصل و فصل Kopete تلقائيا استنادا إلى وضع الاتصال بالشبكة
- Comment[bg]=Автоматично установяване и прекъсване на връзката в зависимост от състоянието на връзката с Интернет
-@@ -95,3 +97,4 @@
- Comment[uk]=Автоматично входить в мережу чи виходить з неї в залежності від наявності з'єднання з Інтернет
- Comment[zh_CN]=根据 Internet 连接是否可用自动连接/断开 Kopete
- Comment[zh_HK]=自動根據互聯網連接情況連接或中斷 Kopete 連線
-+Comment[zh_TW]=自動依據網路狀況來連線/中斷連線 Kopete
-Index: kopete/plugins/alias/kopete_alias.desktop
-===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -46,6 +46,7 @@
- Name[uk]=Псевдонім
- Name[zh_CN]=别名
- Name[zh_HK]=別名
-+Name[zh_TW]=別名
- Comment=Adds custom aliases for commands
- Comment[ar]=يضيف أسماء مستعارة للأوامر
- Comment[bg]=Приставка за добавяне на запазени думи, при въвеждането на които ще се изпълняват зададени команди
-@@ -93,4 +94,5 @@
- Comment[uk]=Додає псевдоніми для команд
- Comment[zh_CN]=添加命令的自定义别名
- Comment[zh_HK]=為命令加上自訂別名
-+Comment[zh_TW]=新增命令的別名
- 
-Index: kopete/plugins/alias/kopete_alias_config.desktop
-===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -42,6 +42,7 @@
- Name[uk]=Псевдонім
- Name[zh_CN]=别名
- Name[zh_HK]=別名
-+Name[zh_TW]=別名
- Comment=Adds custom aliases for commands
- Comment[ar]=يضيف أسماء مستعارة للأوامر
- Comment[bg]=Приставка за добавяне на запазени думи, при въвеждането на които ще се изпълняват зададени команди
-@@ -89,4 +90,5 @@
- Comment[uk]=Додає псевдоніми для команд
- Comment[zh_CN]=添加命令的自定义别名
- Comment[zh_HK]=為命令加上自訂別名
-+Comment[zh_TW]=新增命令的別名
- 
-Index: kopete/plugins/translator/kopete_translator.desktop
-===================================================================
---- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -67,6 +67,7 @@
- Name[wa]=Ratournaedje
- Name[zh_CN]=翻译家
- Name[zh_HK]=翻譯者
-+Name[zh_TW]=翻譯器
- Comment=Chat with foreign buddies in your native language
- Comment[ar]=تحدث مع أصدقائك اﻷجانب بلغتك اﻷم
- Comment[be]=Гутарка з замежнымі таварышамі на Вашай роднай мове
-@@ -115,3 +116,4 @@
- Comment[uk]=Розмова з іноземними друзями на Вашій рідній мові
- Comment[zh_CN]=以您的母语与外国朋友聊天
- Comment[zh_HK]=以您的母語和外地的伙伴聊天
-+Comment[zh_TW]=用您的母語跟外國朋友聊天
-Index: kopete/plugins/translator/kopete_translator_config.desktop
-===================================================================
---- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -63,6 +63,7 @@
- Name[wa]=Ratournaedje
- Name[zh_CN]=翻译家
- Name[zh_HK]=翻譯者
-+Name[zh_TW]=翻譯器
- Comment=Translates messages from your native language to another language
- Comment[ar]=يترجم رسائل من لغتك اﻷم إلى لغة أخرى
- Comment[bg]=Приставка за превод от един език на друг в реално време
-@@ -111,5 +112,6 @@
- Comment[uk]=Перекладає повідомлення Вашою рідною мовою на якусь іншу мову
- Comment[zh_CN]=将消息从您的母语翻译成其它语言
- Comment[zh_HK]=將您母語的訊息翻譯為另一種語言
-+Comment[zh_TW]=將訊息從您的母語翻成其他語言
- 
- 
-Index: kopete/plugins/statistics/kopete_statistics.desktop
-===================================================================
---- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -48,6 +48,7 @@
- Name[pt_BR]=Estatísticas
- Name[ro]=Statistici
- Name[ru]=Статистика
-+Name[sk]=Štatistiky
- Name[sl]=Statistika
- Name[sr]=Статистика
- Name[sr@Latn]=Statistika
-@@ -57,6 +58,7 @@
- Name[uz]=Статистика
- Name[zh_CN]=统计
- Name[zh_HK]=統計
-+Name[zh_TW]=統計
- Comment=Gather some meaningful statistics
- Comment[bg]=Приставка за обобщаваща статистика
- Comment[bn]=কিছু অর্থপূর্ণ পরিসংখ্যান সমবেত করে
-@@ -86,6 +88,7 @@
- Comment[pt]=Recolher algumas estatísticas relevantes
- Comment[pt_BR]=Coleta estatísticas úteis
- Comment[ru]=Собрать некоторые статистические данные
-+Comment[sk]=Zozbiera niektoré významné štatistiky
- Comment[sl]=Zbiranje uporabne statistike
- Comment[sr]=Сакупи нешто корисне статистике
- Comment[sr@Latn]=Sakupi nešto korisne statistike
-@@ -94,3 +97,4 @@
- Comment[uk]=Зібрати деякі статистичні дані
- Comment[zh_CN]=收取更有意义的统计
- Comment[zh_HK]=收集一些有用的統計
-+Comment[zh_TW]=收集一些有用的統計
-Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
-===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -62,6 +62,7 @@
- Name[wa]=Criptografeye
- Name[zh_CN]=加密
- Name[zh_HK]=密碼學
-+Name[zh_TW]=加密
- Comment=Encrypts messages using PGP
- Comment[ar]=يشفر الرسائل باستخدام PGP
- Comment[bg]=Шифроване на съобщения с GPG
-@@ -111,4 +112,5 @@
- Comment[wa]=Ecripter les messaedjes avou PGP
- Comment[zh_CN]=用 PGP 加密消息
- Comment[zh_HK]=將訊息以 PGP 加密
-+Comment[zh_TW]=用 PGP 加密訊息
- 
-Index: kopete/plugins/cryptography/kopete_cryptography.desktop
-===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -66,6 +66,7 @@
- Name[wa]=Criptografeye
- Name[zh_CN]=加密
- Name[zh_HK]=密碼學
-+Name[zh_TW]=加密
- Comment=Encrypt and decrypt messages with GPG
- Comment[ar]=يقوم بتشفير وفل التشفير الرسائل عن طريق GPG
- Comment[bg]=Шифроване на съобщения с GPG
-@@ -115,3 +116,4 @@
- Comment[wa]=Ecripter eyet discripter les messaedjes avou GPG
- Comment[zh_CN]=用 GPG 加密和解密消息
- Comment[zh_HK]=以 GPG 加密或解密訊息
-+Comment[zh_TW]=用 GPG 加密或解密您的訊息
-Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
-===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -43,7 +43,7 @@
- Comment[hu]=Hang és videó az MSN Messengerrel
- Comment[is]=Hljóð og vídeó með MSN Messenger
- Comment[it]=Voce e video con MSN Messenger
--Comment[ja]=MSNメッセンジャで音声とビデオ
-+Comment[ja]=MSNメッセンジャーで音声とビデオ
- Comment[km]=សម្លេង និង វីដេអូ​ដោយ​ប្រើ​កម្មវិធី​ផ្ញើ​សារ MSN
- Comment[lt]=Bendravimas balsu ir vaizdu per MSN Messenger
- Comment[mk]=Глас и видео со Гласникот на MSN
-@@ -55,6 +55,7 @@
- Comment[pt]=Voz e Vídeo com o MSN Messenger
- Comment[pt_BR]=Voz e Vídeo com o MSN Messenger
- Comment[ru]=Аудио и видео с MSN Messenger
-+Comment[sk]=Hlas a video pomocou MSN Messenger
- Comment[sl]=Glas in video z MSN Messenger
- Comment[sr]=Глас и видео са MSN Messenger-ом
- Comment[sr@Latn]=Glas i video sa MSN Messenger-om
-@@ -64,3 +65,4 @@
- Comment[uk]=Аудіо і відео з MSN Messenger
- Comment[zh_CN]=与 MSN Messenger 一起使用影音
- Comment[zh_HK]=和 MSN Messenger 一起使用語音和視像
-+Comment[zh_TW]=MSN Messenger 影像與聲音
-Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
-===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -47,7 +47,7 @@
- Comment[hu]=Hang és videó az MSN Messengerrel
- Comment[is]=Hljóð og vídeó með MSN Messenger
- Comment[it]=Voce e video con MSN Messenger
--Comment[ja]=MSNメッセンジャで音声とビデオ
-+Comment[ja]=MSNメッセンジャーで音声とビデオ
- Comment[km]=សម្លេង និង វីដេអូ​ដោយ​ប្រើ​កម្មវិធី​ផ្ញើ​សារ MSN
- Comment[lt]=Bendravimas balsu ir vaizdu per MSN Messenger
- Comment[mk]=Глас и видео со Гласникот на MSN
-@@ -59,6 +59,7 @@
- Comment[pt]=Voz e Vídeo com o MSN Messenger
- Comment[pt_BR]=Voz e Vídeo com o MSN Messenger
- Comment[ru]=Аудио и видео с MSN Messenger
-+Comment[sk]=Hlas a video pomocou MSN Messenger
- Comment[sl]=Glas in video z MSN Messenger
- Comment[sr]=Глас и видео са MSN Messenger-ом
- Comment[sr@Latn]=Glas i video sa MSN Messenger-om
-@@ -68,3 +69,4 @@
- Comment[uk]=Аудіо і відео з MSN Messenger
- Comment[zh_CN]=与 MSN Messenger 一起使用影音
- Comment[zh_HK]=和 MSN Messenger 一起使用語音和視像
-+Comment[zh_TW]=MSN Messenger 影像與聲音
-Index: kopete/plugins/texteffect/kopete_texteffect.desktop
-===================================================================
---- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -64,6 +64,7 @@
- Name[uz]=Матн эффекти
- Name[zh_CN]=文字特效
- Name[zh_HK]=文字效果
-+Name[zh_TW]=文字效果
- Comment=Add nice effects to your messages
- Comment[ar]=تضيف مؤثرات لطيفة لرسائلك
- Comment[bg]=Добавяне на текстови ефекти към съобщенията
-@@ -113,3 +114,4 @@
- Comment[uz]=Хабарларга чиройли эффектларни қўшиш
- Comment[zh_CN]=在您的消息中添加文字特效
- Comment[zh_HK]=為您的訊息增加有趣的效果
-+Comment[zh_TW]=在您的訊息中加入一些效果
-Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
-===================================================================
---- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -60,6 +60,7 @@
- Name[uz]=Матн эффекти
- Name[zh_CN]=文字特效
- Name[zh_HK]=文字效果
-+Name[zh_TW]=文字效果
- Comment=Adds special effects to your text
- Comment[ar]=يضيف مؤثرات خاصة لنصوصك
- Comment[bg]=Добавяне на текстови ефекти към съобщенията
-@@ -109,4 +110,5 @@
- Comment[uk]=Додає ефекти до Ваших повідомлень
- Comment[zh_CN]=在您的文字中添加特殊效果
- Comment[zh_HK]=為您的訊息增加特別的效果
-+Comment[zh_TW]=在您的文字中加入一些特效
+ 	m_uuid = createUUID();
+ 	loadConfig(s);
  
 Index: kopete/plugins/history/kopete_history.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/history/kopete_history.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -76,6 +76,7 @@
- Name[xh]=Imbali
- Name[zh_CN]=历史
- Name[zh_HK]=歷程紀錄
-+Name[zh_TW]=歷史
- Name[zu]=Umlando
- Comment=Log all messages to keep track of your conversations
- Comment[ar]=سجل جميع الرسائل للمحافظة على محادثاتك
-@@ -125,3 +126,4 @@
- Comment[wa]=Wårder on djournå di tos vos messaedjes, po vos poleur rivey li conversåcion
- Comment[zh_CN]=记录您对话的全部消息
- Comment[zh_HK]=記錄所有訊息，讓您能追查您的對話紀錄
-+Comment[zh_TW]=紀錄所有對話訊息
+--- kopete/plugins/history/kopete_history.desktop	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/plugins/history/kopete_history.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -54,7 +54,7 @@
+ Name[nl]=Geschiedenis
+ Name[nn]=Historie
+ Name[pl]=Historia
+-Name[pt]=Historial
++Name[pt]=Histórico
+ Name[pt_BR]=História
+ Name[ro]=Istoric
+ Name[ru]=Журнал разговоров
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -72,6 +72,7 @@
- Name[xh]=Imbali
- Name[zh_CN]=历史
- Name[zh_HK]=歷程紀錄
-+Name[zh_TW]=歷史
- Name[zu]=Umlando
- Comment=History Plugin
- Comment[ar]=توصيلة المحفوظات
-@@ -126,3 +127,4 @@
- Comment[wa]=Tchôke-divins del istwere
- Comment[zh_CN]=历史插件
- Comment[zh_HK]=歷程紀錄插件
-+Comment[zh_TW]=歷史外掛程式
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -50,7 +50,7 @@
+ Name[nl]=Geschiedenis
+ Name[nn]=Historie
+ Name[pl]=Historia
+-Name[pt]=Historial
++Name[pt]=Histórico
+ Name[pt_BR]=História
+ Name[ro]=Istoric
+ Name[ru]=Журнал разговоров
+Index: kopete/protocols/oscar/liboscar/ssimodifytask.cpp
 ===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -41,6 +41,7 @@
- Name[ro]=Semne de carte
- Name[ru]=Закладки
- Name[rw]=Utumenyetso
-+Name[sk]=Záložky
- Name[sl]=Zaznamki
- Name[sr]=Маркери
- Name[sr@Latn]=Markeri
-@@ -54,6 +55,7 @@
- Name[xh]=Amanqaku encwadi
- Name[zh_CN]=书签
- Name[zh_HK]=書籤
-+Name[zh_TW]=書籤
- Name[zu]=Amamaki  encwadi
- Comment=Automatically bookmark links in incoming messages
- Comment[bg]=Автоматично добавяне на връзките във входящите съобщения към отметките
-@@ -86,6 +88,7 @@
- Comment[pt]=Adicionar automaticamente ao favoritos ligações em mensagens recebidas
- Comment[pt_BR]=Adiciona automaticamente aos favoritos os links em mensagens recebidas
- Comment[ru]=Автоматически делать закладки ссылок из входных сообщений
-+Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
- Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
- Comment[sr]=Аутоматски маркирај везе у долазећим порукама
- Comment[sr@Latn]=Automatski markiraj veze u dolazećim porukama
-@@ -95,6 +98,7 @@
- Comment[uk]=Автоматично робити закладки посилань з вхідних повідомлень
- Comment[zh_CN]=自动将收到消息中的链接加入书签
- Comment[zh_HK]=自動將收到的訊息內的連結加到書籤
-+Comment[zh_TW]=自動將接收訊息中的連結加入書籤
- Icon=konqueror
- ServiceTypes=Kopete/Plugin
- X-Kopete-Version=1000900
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
-===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -41,6 +41,7 @@
- Name[ro]=Semne de carte
- Name[ru]=Закладки
- Name[rw]=Utumenyetso
-+Name[sk]=Záložky
- Name[sl]=Zaznamki
- Name[sr]=Маркери
- Name[sr@Latn]=Markeri
-@@ -54,6 +55,7 @@
- Name[xh]=Amanqaku encwadi
- Name[zh_CN]=书签
- Name[zh_HK]=書籤
-+Name[zh_TW]=書籤
- Name[zu]=Amamaki  encwadi
- Comment=Automatically bookmark links in incoming messages
- Comment[bg]=Автоматично добавяне на връзките във входящите съобщения към отметките
-@@ -86,6 +88,7 @@
- Comment[pt]=Adicionar automaticamente ao favoritos ligações em mensagens recebidas
- Comment[pt_BR]=Adiciona automaticamente aos favoritos os links em mensagens recebidas
- Comment[ru]=Автоматически делать закладки ссылок из входных сообщений
-+Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
- Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
- Comment[sr]=Аутоматски маркирај везе у долазећим порукама
- Comment[sr@Latn]=Automatski markiraj veze u dolazećim porukama
-@@ -95,6 +98,7 @@
- Comment[uk]=Автоматично робити закладки посилань з вхідних повідомлень
- Comment[zh_CN]=自动将收到消息中的链接加入书签
- Comment[zh_HK]=自動將收到的訊息內的連結加到書籤
-+Comment[zh_TW]=自動將接收訊息中的連結加入書籤
- Icon=konqueror
- ServiceTypes=KCModule
+--- kopete/protocols/oscar/liboscar/ssimodifytask.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/ssimodifytask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -216,6 +216,10 @@
+ 	{
+ 		WORD ackCode = b->getWord();
+ 		kdDebug(OSCAR_RAW_DEBUG) << "Acknowledgement code is " << ackCode << endl;
++		
++		if ( ackCode != 0x0000 )
++			freeIdOnError();
++		
+ 		switch( ackCode )
+ 		{
+ 		case 0x0000:
+@@ -448,6 +452,31 @@
+ 	setSuccess( 0, QString::null );
+ }
  
-Index: kopete/plugins/webpresence/kopete_webpresence.desktop
++void SSIModifyTask::freeIdOnError()
++{
++	if ( m_oldItem.isValid() && m_newItem.isValid() )
++	{
++		if ( m_opSubject == Contact || m_opSubject == NoSubject )
++		{
++			if ( m_oldItem.bid() != m_newItem.bid() )
++				m_ssiManager->removeID( m_newItem );
++		}
++		else if ( m_opSubject == Group )
++		{
++			if ( m_oldItem.gid() != m_newItem.gid() )
++				m_ssiManager->removeID( m_newItem );
++		}
++	}
++	else if ( m_newItem.isValid() && !m_oldItem )
++	{
++		if ( m_opSubject == Group || m_opSubject == Contact ||
++		     m_opSubject == NoSubject )
++		{
++			m_ssiManager->removeID( m_newItem );
++		}
++	}
++}
++
+ void SSIModifyTask::sendEditStart()
+ {
+ 	SNAC editStartSnac = { 0x0013, 0x0011, 0x0000, client()->snacSequence() };
+Index: kopete/protocols/oscar/liboscar/ssimanager.h
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -60,6 +60,7 @@
- Comment[uk]=Відображає стан Вашого списку контактів (або його частини) на сторінці у Тенетах
- Comment[zh_CN]=在网页上显示您联系人的状态
- Comment[zh_HK]=在網頁上顯示您（一部份）聯絡人清單的狀態
-+Comment[zh_TW]=在網頁上顯示（部份）您的聯絡人的狀態
- Name=Web Presence
- Name[ar]=موقع على الشبكة
- Name[bg]=Уеб присъствие
-@@ -106,3 +107,4 @@
- Name[uk]=Присутність у Тенет
- Name[zh_CN]=Web 状态
- Name[zh_HK]=網上狀態
-+Name[zh_TW]=網頁連線
-Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
-===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -56,6 +56,7 @@
- Comment[uk]=Відображає стан Вашого списку контактів (або його частини) на сторінці у Тенетах
- Comment[zh_CN]=在网页上显示您联系人的状态
- Comment[zh_HK]=在網頁上顯示您（一部份）聯絡人清單的狀態
-+Comment[zh_TW]=在網頁上顯示（部份）您的聯絡人的狀態
- Name=Web Presence
- Name[ar]=موقع على الشبكة
- Name[bg]=Уеб присъствие
-@@ -102,3 +103,4 @@
- Name[uk]=Присутність у Тенет
- Name[zh_CN]=Web 状态
- Name[zh_HK]=網上狀態
-+Name[zh_TW]=網頁連線
-Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
-===================================================================
---- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -64,6 +64,7 @@
- Name[wa]=Estat do raloyaedje
- Name[zh_CN]=连接状态
- Name[zh_HK]=連線狀態
-+Name[zh_TW]=連線狀態
- Comment=Connects/disconnects Kopete automatically depending on availability of Internet connection
- Comment[ar]=يقوم بوصل و فصل Kopete تلقائيا استنادا إلى وضع الاتصال بالشبكة
- Comment[bg]=Автоматично установяване и прекъсване на връзката в зависимост от състоянието на връзката с Интернет
-@@ -109,3 +110,4 @@
- Comment[uk]=Автоматично входить в мережу чи виходить з неї в залежності від наявності з'єднання з Інтернет
- Comment[zh_CN]=根据 Internet 连接是否可用自动连接/断开 Kopete
- Comment[zh_HK]=自動根據互聯網連接情況連接或中斷 Kopete 連線
-+Comment[zh_TW]=自動依據網路狀況來連線/中斷連線 Kopete
-Index: kopete/plugins/contactnotes/kopete_contactnotes.desktop
-===================================================================
---- kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -61,6 +61,7 @@
- Name[uk]=Примітки до контакту
- Name[zh_CN]=联系人备忘
- Name[zh_HK]=聯絡人備註
-+Name[zh_TW]=聯絡人備忘錄
- Comment=Add personal notes on your contacts
- Comment[ar]=أضف ملاحظاتك الشخصية إلى بيانات اﻹتصال
- Comment[bg]=Добавяне и редактиране на бележки и коментари към контактите
-@@ -108,3 +109,4 @@
- Comment[wa]=Radjouter des notes da vosse å calpin d' adresses
- Comment[zh_CN]=在您的联系人上添加私人备忘
- Comment[zh_HK]=為您的聯絡人新增個人備註
-+Comment[zh_TW]=新增聯絡人的備忘錄
-Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
-===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -65,6 +65,7 @@
- Name[wa]=Replaecî otomaticmint
- Name[zh_CN]=自动替换
- Name[zh_HK]=自動取代
-+Name[zh_TW]=自動取代
- Comment=Auto replaces some text you can choose
- Comment[ar]=يقوم بتغيير تلفائي للنصوص التي يمكن اختيارها
- Comment[bg]=Приставка за автоматична замяна на текст в съобщенията
-@@ -112,4 +113,5 @@
- Comment[uk]=Автоматично заміняє текст, який Ви вкажете
- Comment[zh_CN]=自动替换您可选择的某些文字
- Comment[zh_HK]=自動取代可選擇的文字
-+Comment[zh_TW]=自動取代您所選擇的文字
+--- kopete/protocols/oscar/liboscar/ssimanager.h	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/ssimanager.h	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -111,6 +111,9 @@
+ 	bool newItem( const Oscar::SSI& item );
+ 	bool removeItem( const Oscar::SSI& item );
  
-Index: kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
++	void addID( const Oscar::SSI& item );
++	void removeID( const Oscar::SSI& item );
++
+ signals:
+ 	
+ 	//! Emitted when we've added a new contact to the list
+@@ -128,6 +131,8 @@
+ 	void modifyError( const QString& error );
+ 	
+ private:
++	WORD findFreeId( const QValueList<WORD>& idList, WORD fromId ) const;
++		
+ 	SSIManagerPrivate* d;
+ 	Oscar::SSI m_dummyItem;
+ };
+Index: kopete/protocols/oscar/liboscar/oscartypes.h
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -61,6 +61,7 @@
- Name[wa]=Replaecî otomaticmint
- Name[zh_CN]=自动替换
- Name[zh_HK]=自動取代
-+Name[zh_TW]=自動取代
- Comment=Autoreplaces some text you can choose
- Comment[ar]=تقوم بتغييرتلقائي لبعض النصوص التي يمكنك الاختيار منها
- Comment[bg]=Приставка за автоматична замяна на текст в съобщенията
-@@ -108,4 +109,5 @@
- Comment[uk]=Автоматично заміняє текст, який Ви вкажете
- Comment[zh_CN]=自动替换您可选择的某些文字
- Comment[zh_HK]=自動取代可選擇的文字
-+Comment[zh_TW]=自動取代您所選擇的文字
+--- kopete/protocols/oscar/liboscar/oscartypes.h	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/oscartypes.h	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -237,7 +237,7 @@
+ 	const WORD ICQ_MAJOR 			= 0x0014;
+ 	const WORD ICQ_MINOR 			= 0x0034;
+ 	const WORD ICQ_POINT 			= 0x0000;
+-	const WORD ICQ_BUILD 			= 0x0A0F;
++	const WORD ICQ_BUILD 			= 0x0BB8;
+ 	const char ICQ_OTHER[] 			= { 0x00, 0x00, 0x04, 0x3d };
+ 	const char ICQ_COUNTRY[] 		= "us";
+ 	const char ICQ_LANG[] 			= "en";
+Index: kopete/protocols/oscar/liboscar/ssimodifytask.h
+===================================================================
+--- kopete/protocols/oscar/liboscar/ssimodifytask.h	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/ssimodifytask.h	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -118,6 +118,9 @@
+ 	//! Update the SSI Manager with the new data
+ 	void updateSSIManager();
+ 	
++	//! Helper function to free id on error
++	void freeIdOnError();
++		
+ 	//! Send the SSI edit start packet
+ 	void sendEditStart();
+ 	
+Index: kopete/protocols/oscar/liboscar/client.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -183,6 +183,8 @@
+ void Client::close()
+ {
+ 	d->active = false;
++	d->awayMsgRequestTimer->stop();
++	d->awayMsgRequestQueue.clear();
+ 	d->connections.clear();
+ 	deleteStaticTasks();
  
-Index: kopete/plugins/highlight/kopete_highlight.desktop
-===================================================================
---- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -66,6 +66,7 @@
- Name[wa]=E sorbiyance
- Name[zh_CN]=突出显示
- Name[zh_HK]=加強顯示
-+Name[zh_TW]=高亮度
- Comment=Highlight messages
- Comment[ar]=الرسائل المميزة
- Comment[be]=Падсьветка паведамленьняў
-@@ -117,3 +118,4 @@
- Comment[wa]=Mete les messaedjes e sorbriyance
- Comment[zh_CN]=突出显示消息
- Comment[zh_HK]=將訊息加強顯示
-+Comment[zh_TW]=高亮度訊息
-Index: kopete/plugins/highlight/kopete_highlight_config.desktop
-===================================================================
---- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -62,6 +62,7 @@
- Name[wa]=E sorbiyance
- Name[zh_CN]=突出显示
- Name[zh_HK]=加強顯示
-+Name[zh_TW]=高亮度
- Comment=Highlights text based on filters
- Comment[ar]=تميز النصوص بناءا على التصفية
- Comment[bg]=Открояване на текст в съобщенията на базата на ключови думи
-@@ -112,3 +113,4 @@
- Comment[wa]=Mete li tecse e sorbriyance d' après les passetes
- Comment[zh_CN]=根据过滤器突出显示文字
- Comment[zh_HK]=根據過濾器將訊息加強顯示
-+Comment[zh_TW]=基於過濾器的高亮度訊息
-Index: kopete/plugins/latex/kopete_latex_config.desktop
-===================================================================
---- kopete/plugins/latex/kopete_latex_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/latex/kopete_latex_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -62,3 +62,4 @@
- Name[wa]=E sorbiyance
- Name[zh_CN]=突出显示
- Name[zh_HK]=加強顯示
-+Name[zh_TW]=高亮度
-Index: kopete/plugins/latex/kopete_latex.desktop
-===================================================================
---- kopete/plugins/latex/kopete_latex.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/plugins/latex/kopete_latex.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -62,4 +62,5 @@
- Comment[uk]=Відтворення формул Latex у вікнах розмов Kopete
- Comment[zh_CN]=在聊天窗口中渲染 Latex 公式
- Comment[zh_HK]=在聊天視窗內顯示 Latex 方程式
-+Comment[zh_TW]=在聊天視窗中加入 Latex 公式
+@@ -1047,8 +1049,11 @@
+     if ( !c )
+         return;
  
-Index: kopete/protocols/yahoo/kopete_yahoo.desktop
-===================================================================
---- kopete/protocols/yahoo/kopete_yahoo.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/yahoo/kopete_yahoo.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -71,4 +71,5 @@
- Comment[wa]=Protocole po s' raloyî a Yahoo
- Comment[zh_CN]=连接到 Yahoo 协议
- Comment[zh_HK]=用來連接至 Yahoo 的通訊協定
-+Comment[zh_TW]=連線到 Yahoo 的協定
+-    if ( c->isSupported( 0x0002 ) )
++    if ( c->isSupported( 0x0002 ) ||
++         d->stage == ClientPrivate::StageOne ) //emit on login
++    {
+         emit socketError( code, string );
++    }
  
-Index: kopete/protocols/gadu/kopete_gadu.desktop
+     //connection is deleted. deleteLater() is used
+     d->connections.remove( c );
+Index: kopete/protocols/oscar/liboscar/ssimanager.cpp
 ===================================================================
---- kopete/protocols/gadu/kopete_gadu.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/gadu/kopete_gadu.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -69,3 +69,4 @@
- Comment[uz]=Gadu-Gadu билан алоқа ўрнатиш учун протокол
- Comment[zh_CN]=连接到 Gadu-Gadu 协议
- Comment[zh_HK]=用來連接至 Gadu-Gadu 的通訊協定
-+Comment[zh_TW]=連線到 Gadu-Gadu 的協定
-Index: kopete/protocols/winpopup/kopete_wp.desktop
-===================================================================
---- kopete/protocols/winpopup/kopete_wp.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/winpopup/kopete_wp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -76,3 +76,4 @@
- Comment[wa]=Protocole po les messaedjes WinPopup di Windows
- Comment[zh_CN]=发送 Windows WinPopup 信息的协议
- Comment[zh_HK]=用來發送 Windows WinPopup 訊息的通訊協定
-+Comment[zh_TW]=送出 WinPopup 訊息的協定
-Index: kopete/protocols/winpopup/config/kopete_wp_config.desktop
-===================================================================
---- kopete/protocols/winpopup/config/kopete_wp_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/winpopup/config/kopete_wp_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -61,6 +61,7 @@
- Name[uz]=WinPopup плагини
- Name[zh_CN]=WinPopup 插件
- Name[zh_HK]=WinPopup 插件
-+Name[zh_TW]=WinPopup 外掛程式
- Comment=Microsoft "WinPopup" Window Messenger
- Comment[bg]=Приставка за връзка с Microsoft "WinPopup" Window Messenger
- Comment[bn]=মাইক্রোসফ্ট "উইন পপ-আপ" উইন্ডো বার্তাবাহক
-@@ -80,7 +81,7 @@
- Comment[hr]=Microsoft "WinPopup" slanje poruka
- Comment[hu]=Microsoft "WinPopup" üzenetek
- Comment[it]=Finestra dei messaggi Microsoft "WinPopup"
--Comment[ja]=Microsoft "WinPopup" ウィンドウメッセンジャ
-+Comment[ja]=Microsoft "WinPopup" ウィンドウメッセンジャー
- Comment[km]=កម្មវិធី​វិធី​ផ្ញើសារ "WinPopup" របស់​ម៉ៃក្រូសូហ្វ​វ៉ីនដូ
- Comment[lt]=Microsoft iššokačių žinučių klientas
- Comment[mk]=Гласник за Microsoft „WinPopup“ прозорци
-Index: kopete/protocols/sms/kopete_sms.desktop
-===================================================================
---- kopete/protocols/sms/kopete_sms.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/sms/kopete_sms.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -72,3 +72,4 @@
- Comment[wa]=Protocole po-z evoyî des messaedje SMS
- Comment[zh_CN]=发送短信息的协议
- Comment[zh_HK]=用來發送 SMS 訊息的通訊協定
-+Comment[zh_TW]=送 SMS 訊息的協定
-Index: kopete/protocols/groupwise/kopete_groupwise.desktop
-===================================================================
---- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -30,7 +30,7 @@
- Comment[he]=תוכנת המסרים של נובל GroupWise
- Comment[is]=Novell GroupWise skilaboðaþjónustan
- Comment[it]=Messaggistica per gruppi di Novell
--Comment[ja]=Novell GroupWiseメッセンジャ
-+Comment[ja]=Novell GroupWise メッセンジャー
- Comment[km]=កម្មវិធី​ផ្ញើ​សារ​របស់​ណូវែល - GroupWise
- Comment[lt]=Novell GroupWise žinučių klientas
- Comment[mk]=Гласник за Novell GroupWise 
-@@ -52,3 +52,4 @@
- Comment[uk]=Програма обміну повідомленнями Novell GroupWise
- Comment[uz]=Novell GroupWise месенжер
- Comment[zh_CN]=Novell GroupWise 信使
-+Comment[zh_TW]=Novell GroupWise 即時訊息
-Index: kopete/protocols/jabber/kopete_jabber.desktop
-===================================================================
---- kopete/protocols/jabber/kopete_jabber.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/jabber/kopete_jabber.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -68,4 +68,5 @@
- Comment[uz]=Jabber учун протокол
- Comment[zh_CN]=连接到 Jabber 协议
- Comment[zh_HK]=用來連接至 Jabber 的通訊協定
-+Comment[zh_TW]=連到 Jabber 的協定
+--- kopete/protocols/oscar/liboscar/ssimanager.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/liboscar/ssimanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -29,6 +29,8 @@
+ {
+ public:
+ 	QValueList<Oscar::SSI> SSIList;
++	QValueList<WORD> groupIdList;
++	QValueList<WORD> itemIdList;
+ 	WORD lastModTime;
+ 	WORD maxContacts;
+ 	WORD maxGroups;
+@@ -71,18 +73,47 @@
+ 		while ( it != d->SSIList.end() && d->SSIList.count() > 0 )
+ 			it = d->SSIList.remove( it );
+ 	};
++	
++	d->itemIdList.clear();
++	d->groupIdList.clear();
++	d->nextContactId = 0;
++	d->nextGroupId = 0;
+ }
  
-Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
-===================================================================
---- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -36,6 +36,7 @@
- Description[pt]=Um 'kioslave' para a Descoberta de Serviços do Jabber
- Description[pt_BR]=Um KIO-Slave para a descoberta de serviço do Jabber
- Description[ru]=Обработчик KIO для обнаружения служб Jabber
-+Description[sk]=KIO otrok pre Jabber Service Discovery
- Description[sl]=KIO slave za odkrivanje storitev za Jabber
- Description[sr]=KIO слуга за Jabber Service Discovery
- Description[sr@Latn]=KIO sluga za Jabber Service Discovery
-@@ -44,3 +45,4 @@
- Description[uk]=Підлеглий В/В для виявлення служби Jabber
- Description[zh_CN]=Jabber 服务发现的 KIO slave
- Description[zh_HK]=用於發現 Jabber 服務的 KIO slave
-+Description[zh_TW]=Jabber 服務的 kioslave
-Index: kopete/protocols/oscar/aim/kopete_aim.desktop
-===================================================================
---- kopete/protocols/oscar/aim/kopete_aim.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/oscar/aim/kopete_aim.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -68,3 +68,4 @@
- Comment[uz]=AIM билан алоқа ўрнатиш учун протокол
- Comment[zh_CN]=连接到 AIM 协议
- Comment[zh_HK]=用來連接至 AIM 的通訊協定
-+Comment[zh_TW]=連線到 AIM 的協定
-Index: kopete/protocols/oscar/icq/x-icq.desktop
-===================================================================
---- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -49,6 +49,7 @@
- Comment[uk]=Контакт ICQ
- Comment[zh_CN]=ICQ 联系人
- Comment[zh_HK]=ICQ 聯絡人
-+Comment[zh_TW]=ICQ 聯絡人
- Type=MimeType
- MimeType=application/x-icq
- Patterns=*.uin;*.icq
-Index: kopete/protocols/oscar/icq/kopete_icq.desktop
-===================================================================
---- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -68,4 +68,5 @@
- Comment[uz]=ICQ билан алоқа ўрнатиш учун протокол
- Comment[zh_CN]=连接到 ICQ 协议
- Comment[zh_HK]=用來連接至 ICQ 的通訊協定
-+Comment[zh_TW]=連線到 ICQ 的協定
+ WORD SSIManager::nextContactId()
+ {
+-	d->nextContactId++;
+-	return d->nextContactId;
++	if ( d->nextContactId == 0 )
++		d->nextContactId++;
++	
++	d->nextContactId = findFreeId( d->itemIdList, d->nextContactId );
++	if ( d->nextContactId == 0xFFFF )
++	{
++		kdWarning(OSCAR_RAW_DEBUG) << k_funcinfo << "No free id!" << endl;
++		return 0xFFFF;
++	}
++	
++	if ( d->itemIdList.contains( d->nextContactId ) == 0 )
++		d->itemIdList.append( d->nextContactId );
++		
++	return d->nextContactId++;
+ }
  
-Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
-===================================================================
---- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -19,6 +19,7 @@
- Name[is]=Á meðan
- Name[mk]=Во меѓувреме
- Name[nb]=Imens
-+Name[sk]=Medzitým
- Name[ta]=இடைப்பட்ட பொழுதில்
- Comment=Meanwhile protocol plugin
- Comment[bg]=Протокол за връзка с Meanwhile
-@@ -51,6 +52,7 @@
- Comment[pt_BR]=Plugin para o protocolo Meanwhile
- Comment[ro]=Modul de protocol Meanwhile
- Comment[ru]=Модуль протокола Meanwhile
-+Comment[sk]=Modul protokolu Medzitým
- Comment[sl]=Vstavek za protokol Meanwhile
- Comment[sr]=Прикључак за протокол Meanwhile
- Comment[sr@Latn]=Priključak za protokol Meanwhile
-@@ -61,3 +63,4 @@
- Comment[uz]=Meanwhile учун протокол
- Comment[zh_CN]=Meanwhile 协议插件
- Comment[zh_HK]=Meanwhile 通訊協定插件
-+Comment[zh_TW]=Meanwhile 協定外掛程式
-Index: kopete/protocols/testbed/kopete_testbed.desktop
-===================================================================
---- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -89,3 +89,4 @@
- Comment[wa]=Protocole di saye po Kopete
- Comment[zh_CN]=Kopete 测试协议
- Comment[zh_HK]=Kopete 測試通訊協定
-+Comment[zh_TW]=Kopete 測試協定
-Index: kopete/protocols/irc/ircnetworks.xml
-===================================================================
---- kopete/protocols/irc/ircnetworks.xml	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/irc/ircnetworks.xml	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -734,11 +734,6 @@
-         <name>Freenode</name>
-         <description>Freenode Peer-directed Projects Network</description>
-         <servers>
--            <server>
--	    	<host>irc.debian.org</host>
--		<port>6667</port>
--		<useSSL>false</useSSL>
--	    </server>
- 	    <server>
- 	    	<host>irc.kde.org</host>
- 		<port>6667</port>
-@@ -750,28 +745,39 @@
- 		<useSSL>true</useSSL>
- 	    </server>
- 	    <server>
--                <host>irc.openprojects.net</host>
-+                <host>chat.freenode.net</host>
-                 <port>6667</port>
-                 <useSSL>false</useSSL>
-             </server>
-             <server>
--                <host>us.openprojects.net</host>
-+                <host>chat.us.freenode.net</host>
-                 <port>6667</port>
-                 <useSSL>false</useSSL>
-             </server>
-             <server>
--                <host>eu.openprojects.net</host>
-+                <host>chat.eu.freenode.net</host>
-                 <port>6667</port>
-                 <useSSL>false</useSSL>
-             </server>
-             <server>
--                <host>au.openprojects.net</host>
-+                <host>chat.au.freenode.net</host>
-                 <port>6667</port>
-                 <useSSL>false</useSSL>
-             </server>
-         </servers>
-     </network>
-     <network>
-+        <name>OFTC</name>
-+        <description>The Open and Free Technology Community</description>
-+        <servers>
-+            <server>
-+                <host>irc.debian.org</host>
-+                <port>6667</port>
-+                <useSSL>false</useSSL>
-+            </server>
-+        </servers>
-+    </network>
-+    <network>
-         <name>XWorld</name>
-         <description>XWorld</description>
-         <servers>
-Index: kopete/protocols/irc/kopete_irc.desktop
-===================================================================
---- kopete/protocols/irc/kopete_irc.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/irc/kopete_irc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -69,4 +69,5 @@
- Comment[wa]=Protocole po s' raloyî so les canås IRC
- Comment[zh_CN]=连接到 IRC 协议
- Comment[zh_HK]=用來連接至 IRC 的通訊協定
-+Comment[zh_TW]=連線到 IRC 的協定
+ WORD SSIManager::nextGroupId()
+ {
+-	d->nextGroupId++;
+-	return d->nextGroupId;
++	if ( d->nextGroupId == 0 )
++		d->nextGroupId++;
++	
++	d->nextGroupId = findFreeId( d->groupIdList, d->nextGroupId );
++	if ( d->nextGroupId == 0xFFFF )
++	{
++		kdWarning(OSCAR_RAW_DEBUG) << k_funcinfo << "No free group id!" << endl;
++		return 0xFFFF;
++	}
++	
++	if ( d->groupIdList.contains( d->nextGroupId ) == 0 )
++		d->groupIdList.append( d->nextGroupId );
++	
++	return d->nextGroupId++;
+ }
  
-Index: kopete/protocols/msn/kopete_msn.desktop
-===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -23,7 +23,7 @@
- Name[de]=MSN-Messenger
- Name[gl]=MSN Messanger
- Name[hi]=एमएसएन मैसेंजर
--Name[ja]=MSNメッセンジャ
-+Name[ja]=MSNメッセンジャー
- Name[km]=កម្មវិធី​ផ្ញើសារ MSN
- Name[lt]=MSN žinučių klientas
- Name[mk]=Гласник за MSN 
-@@ -59,7 +59,7 @@
- Comment[hu]=Protokoll az MSN Messenger használatához
- Comment[is]=Samskiptamáti til að tengjast MSN Messenger
- Comment[it]=Protocollo per connessione a MSN Messenger
--Comment[ja]=MSNメッセンジャに接続するプロトコル
-+Comment[ja]=MSNメッセンジャーに接続するプロトコル
- Comment[km]=ពិធីការ​ដើម្បី​ភ្ជាប់​ទៅ​កម្មវិធី​ផ្ញើសារ MSN
- Comment[lt]=Protokolas prisijungimui prie MSN žinučių kliento
- Comment[mk]=Протокол за поврзување на Гласникот на MSN
-@@ -85,4 +85,5 @@
- Comment[wa]=Protocole po s' raloyî a MSN
- Comment[zh_CN]=连接到 MSN Messenger 协议
- Comment[zh_HK]=用來連接至 MSN Messenger 的通訊協定
-+Comment[zh_TW]=連線到 MSN 的協定
+ WORD SSIManager::numberOfItems() const
+@@ -379,10 +410,9 @@
+ 	if ( !group.name().isEmpty() ) //avoid the group with gid 0 and bid 0
+ 	{	// the group is really new
+ 		kdDebug( OSCAR_RAW_DEBUG ) << k_funcinfo << "Adding group '" << group.name() << "' to SSI list" << endl;
+-		if ( group.gid() > d->nextGroupId )
+-			d->nextGroupId = group.gid();
+ 		
+ 		d->SSIList.append( group );
++		addID( group );
+ 		emit groupAdded( group );
+ 		return true;
+ 	}
+@@ -394,6 +424,8 @@
+ 	QString groupName = group.name();
+ 	kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Removing group " << group.name() << endl;
+ 	int remcount = d->SSIList.remove( group );
++	removeID( group );
++	
+ 	if ( remcount == 0 )
+ 	{
+ 		kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "No groups removed" << endl;
+@@ -420,16 +452,10 @@
  
-Index: kopete/protocols/msn/config/kopete_msn_config.desktop
-===================================================================
---- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -63,6 +63,7 @@
- Name[wa]=Tchôke-divins MSN
- Name[zh_CN]=MSN 插件
- Name[zh_HK]=MSN 插件
-+Name[zh_TW]=MSN 外掛程式
- Comment=Microsoft Network Protocol
- Comment[ar]=بروتوكول شبكة Microsoft
- Comment[bg]=Протокол за връзка с Microsoft Network
-@@ -107,4 +108,5 @@
- Comment[wa]=Protocole pol rantoele da Microsoft
- Comment[zh_CN]=Microsoft Network 协议
- Comment[zh_HK]=Microsoft 網絡通訊協定
-+Comment[zh_TW]=Microsoft 網路協定
+ bool SSIManager::newContact( const Oscar::SSI& contact )
+ {
+-	//what to validate?
+-	if ( contact.bid() > d->nextContactId )
+-	{
+-		kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Setting next contact ID to " << contact.bid() << endl;
+-		d->nextContactId = contact.bid();
+-	}
+-	
+ 	if ( d->SSIList.findIndex( contact ) == -1 )
+ 	{
+ 		kdDebug( OSCAR_RAW_DEBUG ) << k_funcinfo << "Adding contact '" << contact.name() << "' to SSI list" << endl;
++		addID( contact );
+ 		d->SSIList.append( contact );
+ 		emit contactAdded( contact );
+ 	}
+@@ -442,6 +468,7 @@
+ {
+ 	QString contactName = contact.name();
+ 	int remcount = d->SSIList.remove( contact );
++	removeID( contact );
+ 	
+ 	if ( remcount == 0 )
+ 	{
+@@ -470,15 +497,61 @@
+ 	//no error checking for now
+ 	kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Adding item " << item.toString() << endl;
+ 	d->SSIList.append( item );
++	addID( item );
+ 	return true;
+ }
  
+ bool SSIManager::removeItem( const Oscar::SSI& item )
+ {
+ 	d->SSIList.remove( item );
++	removeID( item );
++	
+ 	return true;
+ }
+ 
++void SSIManager::addID( const Oscar::SSI& item )
++{
++	if ( item.type() == ROSTER_GROUP )
++	{
++		if ( d->groupIdList.contains( item.gid() ) == 0 )
++			d->groupIdList.append( item.gid() );
++	}
++	else
++	{
++		if ( d->itemIdList.contains( item.bid() ) == 0 )
++			d->itemIdList.append( item.bid() );
++	}
++}
++
++void SSIManager::removeID( const Oscar::SSI& item )
++{
++	if ( item.type() == ROSTER_GROUP )
++	{
++		d->groupIdList.remove( item.gid() );
++	
++		if ( d->nextGroupId > item.gid() )
++			d->nextGroupId = item.gid();
++	}
++	else
++	{
++		d->itemIdList.remove( item.bid() );
++		
++		if ( d->nextContactId > item.bid() )
++			d->nextContactId = item.bid();
++	}
++}
++
++WORD SSIManager::findFreeId( const QValueList<WORD>& idList, WORD fromId ) const
++{
++	for ( WORD id = fromId; id < 0x8000; id++ )
++	{
++		if ( idList.contains( id ) == 0 )
++			return id;
++	}
++	
++	return 0xFFFF;
++}
++
+ #include "ssimanager.moc"
+ 
+ //kate: tab-width 4; indent-mode csands;
+Index: kopete/protocols/oscar/oscarcontact.cpp
+===================================================================
+--- kopete/protocols/oscar/oscarcontact.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/oscarcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -79,6 +79,10 @@
+ void OscarContact::setSSIItem( const Oscar::SSI& ssiItem )
+ {
+ 	m_ssiItem = ssiItem;
++
++	if ( !m_ssiItem.alias().isEmpty() )
++		setProperty( Kopete::Global::Properties::self()->nickName(), m_ssiItem.alias() );
++
+ 	emit updatedSSI();
+ }
+ 
+Index: kopete/protocols/oscar/icq/icqcontact.cpp
+===================================================================
+--- kopete/protocols/oscar/icq/icqcontact.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/oscar/icq/icqcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -199,7 +199,7 @@
+ 	if ( ( ( hasProperty( Kopete::Global::Properties::self()->nickName().key() )
+ 	         && nickName() == contactId() )
+ 	     || !hasProperty( Kopete::Global::Properties::self()->nickName().key() ) ) &&
+-	     !m_requestingNickname )
++	     !m_requestingNickname && m_ssiItem.alias().isEmpty() )
+ 	{
+ 		m_requestingNickname = true;
+ 		int time = ( KApplication::random() % 20 ) * 1000;
+@@ -293,7 +293,7 @@
+ 	kdDebug(OSCAR_ICQ_DEBUG) << k_funcinfo << "received long info from engine" << endl;
+ 
+ 	ICQGeneralUserInfo genInfo = mAccount->engine()->getGeneralInfo( contact );
+-	if ( !genInfo.nickname.isEmpty() )
++	if ( m_ssiItem.alias().isEmpty() && !genInfo.nickname.isEmpty() )
+ 		setNickName( genInfo.nickname );
+ 	emit haveBasicInfo( genInfo );
+ 
+@@ -326,7 +326,7 @@
+ 	else
+ 		removeProperty(mProtocol->lastName);
+ 	*/
+-	if ( !shortInfo.nickname.isEmpty() )
++	if ( m_ssiItem.alias().isEmpty() && !shortInfo.nickname.isEmpty() )
+ 	{
+ 		kdDebug(14153) << k_funcinfo <<
+ 			"setting new displayname for former UIN-only Contact" << endl;
+Index: kopete/protocols/irc/ircprotocol.cpp
+===================================================================
+--- kopete/protocols/irc/ircprotocol.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/protocols/irc/ircprotocol.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -935,8 +935,6 @@
+ 
+ void IRCProtocol::slotNewNetwork()
+ {
+-	// create a new network struct
+-	IRCNetwork *net = new IRCNetwork;
+ 	// give it the name of 'New Network' (incrementing number if needed)
+ 	QString netName = QString::fromLatin1( "New Network" );
+ 	if ( m_networks.find( netName ) )
+@@ -949,6 +947,8 @@
+ 		if ( newIdx == 100 ) // pathological case
+ 			return;
+ 	}
++	// create a new network struct
++	IRCNetwork *net = new IRCNetwork;
+ 	net->name = netName;
+ 	// and add it to the networks dict and list
+ 	m_networks.insert( net->name, net );
+@@ -960,8 +960,6 @@
+ 
+ void IRCProtocol::slotNewHost()
+ {
+-	// create a new host
+-	IRCHost *host = new IRCHost;
+ 	// prompt for a name
+ 	bool ok;
+ 	QString name = KInputDialog::getText(
+@@ -976,6 +974,8 @@
+ 			KMessageBox::sorry(netConf, i18n( "A host already exists with that name" ) );
+ 			return;
+ 		}
++		// create a new host
++		IRCHost *host = new IRCHost;
+ 		// set defaults on others
+ 		host->host = name;
+ 		host->port = 6667;
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -18,7 +18,7 @@
- Comment[hu]=Kopete üzenetküldő
- Comment[is]=Kopete samtalsforrit
- Comment[it]=Messaggistica Kopete
--Comment[ja]=Kopete メッセンジャ
-+Comment[ja]=Kopete メッセンジャー
- Comment[km]=កម្មវិធី​ផ្ញើ​សំបុត្រ Kopete
- Comment[lt]=Kopete žinučių klientas
- Comment[mk]=Kopete гласник
-@@ -96,6 +96,7 @@
- Name[xh]=Engenayo
- Name[zh_CN]=收到
- Name[zh_HK]=內送
-+Name[zh_TW]=新訊息
- Comment=An incoming message has been received
- Comment[bg]=Пристигна ново съобщение
- Comment[bn]=একটি অন্তর্মুখী বার্তা গ্রহণ করা হয়েছে
-@@ -142,6 +143,7 @@
- Comment[uz]=Хабар қабул қилинди
- Comment[zh_CN]=收到了消息
- Comment[zh_HK]=收到新訊息
-+Comment[zh_TW]=已收到新訊息
- default_sound=Kopete_Received.ogg
- default_presentation=64
- 
-@@ -198,6 +200,7 @@
- Name[xh]=Ephumayo
- Name[zh_CN]=发出
- Name[zh_HK]=外發
-+Name[zh_TW]=送出訊息
- Comment=An outgoing message has been sent
- Comment[bg]=Изпратено е съобщение
- Comment[bn]=একটি বহির্মুখী বার্তা পাঠান হয়েছে
-@@ -244,6 +247,7 @@
- Comment[uz]=Хабар жўнатилди
- Comment[zh_CN]=送出了消息
- Comment[zh_HK]=訊息已發出
-+Comment[zh_TW]=已送出訊息
- default_sound=Kopete_Sent.ogg
- default_presentation=0
- 
-@@ -293,6 +297,7 @@
- Name[wa]=So les fyis
- Name[zh_CN]=上线
- Name[zh_HK]=上線
-+Name[zh_TW]=上線
- Comment=A contact has come online
- Comment[bg]=Включи се приятел
- Comment[bn]=যোগাযোগ তালিকাভুক্ত একজন অনলাইন হয়েছে
-@@ -336,6 +341,7 @@
- Comment[uk]=Користувач увійшов у мережу
- Comment[zh_CN]=联系人上线
- Comment[zh_HK]=有個聯絡人已上線
-+Comment[zh_TW]=聯絡人已上線
- default_sound=Kopete_User_is_Online.ogg
- default_presentation=16
- 
-@@ -386,6 +392,7 @@
- Name[uz]=Офлайн
- Name[zh_CN]=离线
- Name[zh_HK]=離線
-+Name[zh_TW]=離線
- Comment=A contact has gone offline
- Comment[bg]=Изключи се приятел
- Comment[bn]=যোগাযোগ তালিকাভুক্ত একজন অফলাইন হয়ে গিয়েছে
-@@ -429,6 +436,7 @@
- Comment[uk]=Користувач вийшов з мережі
- Comment[zh_CN]=联系人离线
- Comment[zh_HK]=有個聯絡人已離線
-+Comment[zh_TW]=聯絡人已離線
- default_sound=Kopete_Event.ogg
- default_presentation=0
- 
-@@ -486,6 +494,7 @@
- Name[wa]=Candjmint di statut
- Name[zh_CN]=状态更改
- Name[zh_HK]=狀態改變
-+Name[zh_TW]=狀態改變
- Comment=A contact's online status has changed
- Comment[bg]=Променено състояние на приятел
- Comment[bn]=যোগাযোগ তালিকাভুক্ত একজনের অনলাইন অবস্থার পরিবর্তন হয়েছে
-@@ -529,6 +538,7 @@
- Comment[uk]=Користувач змінив свій стан в мережі
- Comment[zh_CN]=联系人更改了他的在线状态
- Comment[zh_HK]=有個聯絡人的上線狀態改變了
-+Comment[zh_TW]=聯絡人的上線狀態已改變
- default_sound=Kopete_Event.ogg
- default_presentation=0
- 
-@@ -585,6 +595,7 @@
- Name[wa]=E sorbiyance
- Name[zh_CN]=突出显示
- Name[zh_HK]=加強顯示
-+Name[zh_TW]=高亮度
- Comment=A highlighted message has been received
- Comment[bg]=Пристигна специално съобщение
- Comment[bn]=একটি গুরুত্বপূর্ণ বার্তা গ্রহণ করা হয়েছে
-@@ -629,6 +640,7 @@
- Comment[uk]=Отримано виділене повідомлення
- Comment[zh_CN]=收到了突出显示的消息
- Comment[zh_HK]=收到一個加強顯示的訊息
-+Comment[zh_TW]=接收到一個高亮度訊息
- default_sound=Kopete_Received.ogg
- default_presentation=65
- 
-@@ -678,6 +690,7 @@
- Name[uk]=Повідомлення з низьким пріоритетом
- Name[zh_CN]=低优先级消息
- Name[zh_HK]=不太重要的訊息
-+Name[zh_TW]=低優先權訊息
- Comment=A message marked with a low priority has been received
- Comment[bg]=Пристигна съобщение с нисък приоритет
- Comment[bn]=একটি কম গুরুত্বপূর্ণ বার্তা গ্রহণ করা হয়েছে
-@@ -721,6 +734,7 @@
- Comment[uk]=Отримано повідомлення з низьким пріоритетом
- Comment[zh_CN]=收到了标为低优先级的消息
- Comment[zh_HK]=收到一個標示為不太重要的訊息
-+Comment[zh_TW]=接收到一個標記為低優先權的訊息
- default_presentation=0
- 
- 
-@@ -801,6 +815,7 @@
- Comment[uk]=Прийшли нові листи у Вашу скриньку Yahoo
- Comment[zh_CN]=您的 Yahoo 收件箱中有新邮件到达
- Comment[zh_HK]=您的 Yahoo 收件匣有新郵件
-+Comment[zh_TW]=新郵件送達您的 Yahoo 收件匣
- default_presentation=16
- 
- [msn_mail]
-@@ -889,6 +904,7 @@
- Comment[uk]=Прийшли нові листи у Вашу скриньку MSN
- Comment[zh_CN]=您的 MSN 收件箱中有新邮件到达
- Comment[zh_HK]=您的 MSN 收件匣有新郵件
-+Comment[zh_TW]=新郵件送達您的 MSN 收件匣
- default_presentation=16
- 
- [icq_authorization]
-@@ -925,6 +941,7 @@
- Name[pt_BR]=Autorização do ICQ
- Name[ro]=Autorizare ICQ
- Name[ru]=Авторизация ICQ
-+Name[sk]=ICQ overenie
- Name[sl]=Odobritev za ICQ
- Name[sr]=ICQ ауторизација
- Name[sr@Latn]=ICQ autorizacija
-@@ -933,6 +950,7 @@
- Name[uk]=Авторизація ICQ
- Name[zh_CN]=ICQ 身份验证
- Name[zh_HK]=ICQ 授權
-+Name[zh_TW]=ICQ 認證
- Comment=An ICQ user has authorized/declined your authorization request
- Comment[bg]=Потребител на ICQ е приел/отхвърлил Вашата заявка за оторизация
- Comment[bn]=একজন আই-সি-কিউ ব্যবহারকারী আপনার প্রাপ্তাধিকার অনুরোধ অনুমোদন/প্রত্যাখ্যান করেছে
-@@ -953,7 +971,7 @@
- Comment[hu]=Egy ICQ-felhasználó elfogadta vagy elutasította az Ön bejelentkezési kérését
- Comment[is]=ICQ notandi hefur heimilað/hafnað auðkenningabeiðni þinni
- Comment[it]=Un utente ICQ ha autorizzato/declinato la tua richiesta
--Comment[ja]=ICQユーザーはあなたの認可要求を認可/拒絶しました
-+Comment[ja]=ICQユーザはあなたの認可要求を認可/拒絶しました
- Comment[km]=អ្នក​ប្រើ ICQ ម្នាក់​បាន​អនុញ្ញាត ឬ បដិសេធ​សំណើសុំ​សេចក្ដី​អនុញ្ញាត​របស់​អ្នក​ហើយ
- Comment[lt]=ICQ naudotojas priėmė/atmetė jūsų prieigos prašymą
- Comment[nb]=En ICQ-bruker har autorisert eller avvist din forespørsel om autorisering
-@@ -964,6 +982,7 @@
- Comment[pt]=Um utilizador ICQ autorizou/rejeitou o seu pedido de autorização
- Comment[pt_BR]=Um usuário do ICQ aceitou/declinou seu pedido de autorização
- Comment[ru]=Пользователь ICQ авторизовал вас или отклонил ваш запрос
-+Comment[sk]=ICQ užívateľ overil/odmietol Vašu požiadavku na overenie
- Comment[sl]=Uporabnik ICQ-ja je spejel/zavrnil vaš zahtevek za odobritev
- Comment[sr]=ICQ корисник је ауторизовао/одбио ваш захтев за ауторизацију
- Comment[sr@Latn]=ICQ korisnik je autorizovao/odbio vaš zahtev za autorizaciju
-@@ -972,6 +991,7 @@
- Comment[uk]=Користувач ICQ затвердив/відхилив ваш запит на авторизацію
- Comment[zh_CN]=ICQ 用户同意/拒绝了您的身份验证请求
- Comment[zh_HK]=有位 ICQ 用戶批準/拒絕了您的授權要求
-+Comment[zh_TW]=ICQ 使用者已認證/拒絕您的認證要求
- default_presentation=16
- 
- [irc_event]
-@@ -1007,6 +1027,7 @@
- Name[pt_BR]=Evento IRC
- Name[ro]=Eveniment IRC
- Name[ru]=Событие IRC
-+Name[sk]=IRC udalosť
- Name[sl]=Dogodek IRC
- Name[sr]=IRC догађај
- Name[sr@Latn]=IRC događaj
-@@ -1016,6 +1037,7 @@
- Name[uz]=IRC ҳодисаси
- Name[zh_CN]=IRC 事件
- Name[zh_HK]=IRC 事件
-+Name[zh_TW]=IRC 事件
- Comment=An IRC event has occurred
- Comment[bg]=Събитие в клиента за IRC
- Comment[bn]=একটি আই-আর-সি ঘটনা ঘটেছে
-@@ -1046,6 +1068,7 @@
- Comment[pt]=Ocorreu um evento de IRC
- Comment[pt_BR]=Um evento do IRC ocorreu
- Comment[ru]=Произошло событие IRC
-+Comment[sk]=Nastala IRC udalosť
- Comment[sl]=Zgodil se je dogodek na IRC-u
- Comment[sr]=Дошло јо до догађаја на IRC-у
- Comment[sr@Latn]=Došlo jo do događaja na IRC-u
-@@ -1054,6 +1077,7 @@
- Comment[uk]=Сталась подія IRC
- Comment[zh_CN]=发生了 IRC 事件
- Comment[zh_HK]=發生了 IRC 事件
-+Comment[zh_TW]=發生 IRC 事件
- default_presentation=16
- 
- [connection_error]
-@@ -1087,6 +1111,7 @@
- Name[pt]=Erro de Ligação
- Name[pt_BR]=Erro na Conexão
- Name[ru]=Редактор соединений
-+Name[sk]=Chyba spojenia
- Name[sl]=Napaka povezave
- Name[sr]=Грешка везе
- Name[sr@Latn]=Greška veze
-@@ -1096,6 +1121,7 @@
- Name[uz]=Уланиш хатоси
- Name[zh_CN]=连接错误
- Name[zh_HK]=連線錯誤
-+Name[zh_TW]=連線錯誤
- Comment=An error on connection has occurred
- Comment[bg]=Грешка по време на установяване на връзка
- Comment[bn]=সংযোগে একটি ত্রুটি ঘটেছে
-@@ -1124,6 +1150,7 @@
- Comment[pt]=Ocorreu um erro na ligação
- Comment[pt_BR]=Ocorreu um erro na conexão
- Comment[ru]=Возникла ошибка соединения
-+Comment[sk]=Nastala chyba spojenia
- Comment[sl]=Prišlo je do napake pri povezavi
- Comment[sr]=Дошло јо до грешке на вези
- Comment[sr@Latn]=Došlo jo do greške na vezi
-@@ -1133,6 +1160,7 @@
- Comment[uz]=Алоқа ўрнатишда хато рўй берди
- Comment[zh_CN]=发生了连接错误
- Comment[zh_HK]=連線發生錯誤
-+Comment[zh_TW]=發生了連線的錯誤
- default_presentation=2
- 
- [connection_lost]
-@@ -1167,6 +1195,7 @@
- Name[pt]=Perdeu-se a Ligação
- Name[pt_BR]=Conexão Perdida
- Name[ru]=Соединение утеряно
-+Name[sk]=Spojenie stratené
- Name[sl]=Povezava prekinjena
- Name[sr]=Веза изгубљена
- Name[sr@Latn]=Veza izgubljena
-@@ -1176,6 +1205,7 @@
- Name[uz]=Уланиш узилди
- Name[zh_CN]=连接已丢失
- Name[zh_HK]=連線已中斷
-+Name[zh_TW]=連線已中斷
- Comment=The connection has been lost
- Comment[bn]=সংযোগ বিচ্ছিন্ন হয়েছে
- Comment[bs]=Veza na mrežu (Internet) je prekinuta
-@@ -1201,6 +1231,7 @@
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -844,7 +844,7 @@
+ Name[km]=សំបុត្រ MSN
+ Name[lt]=MSN Paštas
+ Name[mk]=MSN-пошта
+-Name[nb]=MSN epost
++Name[nb]=MSN e-post
+ Name[nds]=MSN-Nettpost
+ Name[nn]=MSN-e-post
+ Name[pl]=Poczta MSN
+@@ -1228,6 +1228,7 @@
+ Comment[nb]=Tilkoblingen er tapt
+ Comment[nds]=De Verbinnen is afreten
+ Comment[nl]=De verbinding is verbroken
++Comment[nn]=Sambandet er stengt
  Comment[pl]=Połączenie zostało przerwane
  Comment[pt]=A ligação foi-se abaixo
  Comment[pt_BR]=A ligação foi-se abaixo
-+Comment[sk]=Spojenie sa stratilo
- Comment[sl]=Povezava je bila prekinjena
- Comment[sr]=Веза је изгубљена
- Comment[sr@Latn]=Veza je izgubljena
-@@ -1209,6 +1240,7 @@
- Comment[uz]=Ўрнатилган алоқа узилди
- Comment[zh_CN]=连接已丢失
- Comment[zh_HK]=連線已中斷
-+Comment[zh_TW]=連線已中斷
- default_presentation=16
- 
- [cannot_connect]
-@@ -1242,6 +1274,7 @@
- Name[pt]=Não É Possível Ligar
- Name[pt_BR]=Não foi possível efetuar a conexão
- Name[ru]=Не удаётся соединиться
-+Name[sk]=Nedá sa pripojiť
- Name[sl]=Povezava ni mogoča
- Name[sr]=Повезивање немогуће
- Name[sr@Latn]=Povezivanje nemoguće
-@@ -1251,6 +1284,7 @@
- Name[uz]=Уланиб бўлмади
- Name[zh_CN]=无法连接
- Name[zh_HK]=無法連接
-+Name[zh_TW]=無法連線
- Comment=Kopete can't connect to the service
- Comment[bg]=Установяването на връзка е невъзможно
- Comment[bn]=কপেট সার্ভিসে সংযোগ করতে পারেনি
-@@ -1279,6 +1313,7 @@
- Comment[pt]=O Kopete não se conseguiu ligar ao serviço
- Comment[pt_BR]=O Kopete não pode conectar-se ao serviço
- Comment[ru]=Kopete не удаётся подключиться к службе
-+Comment[sk]=Kopete sa nevie pripojiť na službu
- Comment[sl]=Kopete se ne more povezati s storitvijo
- Comment[sr]=Kopete се не може повезати са сервисом
- Comment[sr@Latn]=Kopete se ne može povezati sa servisom
-@@ -1287,6 +1322,7 @@
- Comment[uz]=Kopete хизмат билан алоқа ўрнатаолмади
- Comment[zh_CN]=Kopete 无法连接到服务
- Comment[zh_HK]=Kopete 無法連接至服務
-+Comment[zh_TW]=Kopete 無法連線到服務
- default_presentation=16
- 
- [network_problems]
-@@ -1320,6 +1356,7 @@
- Name[pt]=Problemas na Rede
- Name[pt_BR]=Problemas na Rede
- Name[ru]=Сбой сети
-+Name[sk]=Sieťové problémy
- Name[sl]=Omrežne težave
- Name[sr]=Проблеми мреже
- Name[sr@Latn]=Problemi mreže
-@@ -1329,6 +1366,7 @@
- Name[uz]=Тармоқ муаммолари
- Name[zh_CN]=网络故障
- Name[zh_HK]=網絡問題
-+Name[zh_TW]=網路問題
- Comment=The network is experiencing problems
- Comment[bg]=Мрежови проблеми
- Comment[bn]=নেটওয়ার্ক সমস্যা অনুভব করছে
-@@ -1357,6 +1395,7 @@
- Comment[pt]=A rede está com problemas
- Comment[pt_BR]=A rede está com problemas
- Comment[ru]=В сети возникли неполадки
-+Comment[sk]=Sieť zakúša problémy
- Comment[sl]=V omrežju se pojavljajo težave
- Comment[sr]=Мрежа има проблема
- Comment[sr@Latn]=Mreža ima problema
-@@ -1364,6 +1403,7 @@
- Comment[uk]=В мережі виникли проблеми
- Comment[zh_CN]=网络遇到问题
- Comment[zh_HK]=網絡發生問題
-+Comment[zh_TW]=網路有問題
- default_presentation=16
- 
- [server_error]
-@@ -1384,7 +1424,7 @@
- Name[hu]=Belső kiszolgálóhiba
- Name[is]=Innri villa í þjóni
- Name[it]=Errore interno del server
--Name[ja]=内部サーバーエラー
-+Name[ja]=内部サーバエラー
- Name[km]=កំហុស​ខាង​ក្នុង​ម៉ាស៊ីន​បម្រើ
- Name[lt]=Serverio vidinė klaida
- Name[nb]=Intern tjenerfeil
-@@ -1395,6 +1435,7 @@
- Name[pt]=Erro Interno do Servidor
- Name[pt_BR]=Erro interno do Servidor
- Name[ru]=Внутренняя ошибка сервера
-+Name[sk]=Interná chyba servera
- Name[sl]=Notranja napaka strežnika
- Name[sr]=Интерна грешка сервера
- Name[sr@Latn]=Interna greška servera
-@@ -1403,6 +1444,7 @@
- Name[uk]=Внутрішня помилка сервера
- Name[zh_CN]=服务器内部错误
- Name[zh_HK]=伺服器內部錯誤
-+Name[zh_TW]=伺服器內部錯誤
- Comment=A service internal error has occurred
- Comment[bn]=একটি সার্ভিস অভ্যন্তরীন ত্রুটি ঘটেছে
- Comment[bs]=Desila se interna greška servisa
-@@ -1427,6 +1469,7 @@
+@@ -1466,6 +1467,7 @@
+ Comment[nb]=Det har oppstått en intern feil ved tjenesten
+ Comment[nds]=Dat hett binnen den Deenst en Fehler geven
+ Comment[nl]=Er deed zich een interne fout op de server voor
++Comment[nn]=Det har skjedd ein feil internt i tenesta
  Comment[pl]=Wystąpił błąd wewnętrzny usługi
  Comment[pt]=Ocorreu um erro interno do serviço
  Comment[pt_BR]=Ocorreu um erro interno do serviço
-+Comment[sk]=Nastala interná chyba servera
- Comment[sl]=Prišlo je do notranje napake pri storitvi
- Comment[sr]=Дошло јо до интерне грешке сервиса
- Comment[sr@Latn]=Došlo jo do interne greške servisa
-@@ -1435,6 +1478,7 @@
- Comment[uz]=Хизматда ички хато рўй берди
- Comment[zh_CN]=发生了服务内部错误
- Comment[zh_HK]=服務發生內部錯誤
-+Comment[zh_TW]=服務發生內部錯誤
- default_presentation=2
- 
- [buzz_nudge]
-@@ -1466,6 +1510,7 @@
- Name[uk]=Гудок/поштовх
- Name[zh_CN]=闪屏振动
- Name[zh_HK]=響聲/提示
-+Name[zh_TW]=呼叫/來電震動
- Comment=A contact has sent you a buzz/nudge.
- Comment[bg]=Контакт Ви изпрати сбутване
- Comment[bn]=যোগাযোগ তালিকাভুক্ত একজন আপনাকে একটি গুঞ্জন/গুঁতো পাঠিয়েছে।
-@@ -1492,6 +1537,7 @@
+@@ -1500,6 +1502,7 @@
+ Name[km]=សន្ទនា​រក ឬ កេះកៀវ
+ Name[lt]=Švilptelėjimas
+ Name[nds]=Anstoot
++Name[nn]=Pirk
+ Name[pl]=Pobudka/kuksaniec
+ Name[pt]=Apitar/Tocar
+ Name[pt_BR]=Pedir Atenção (Buzinar/Tremer)
+@@ -1533,6 +1536,7 @@
+ Comment[nb]=En kontakt har sendt deg en buzz/nudge
+ Comment[nds]=En Bruker will wat vun Di.
+ Comment[nl]=Een contact heeft u een buzz/nudge gestuurd.
++Comment[nn]=Ein kontakt har pirka borti deg.
+ Comment[pl]=Użytkownik wysłał ci pobudkę/kuksańca.
  Comment[pt]=Um contacto enviou-lhe um toque/apito.
  Comment[pt_BR]=Um contato lhe enviou um pedido de atenção.
- Comment[ru]=Вам отправили buzz/nudge.
-+Comment[sk]=Kontakt Vám poslal buzz/nudge.
- Comment[sl]=Uporabnik vam je poslal brnenje/dregnenje.
- Comment[sr]=Контакт вам је послао зврц/гуркање.
- Comment[sr@Latn]=Kontakt vam je poslao zvrc/gurkanje.
-@@ -1499,5 +1545,6 @@
- Comment[uk]=Контакт надіслав вам гудок/поштовх.
- Comment[zh_CN]=联系人向您发送了闪屏振动。
- Comment[zh_HK]=有聯絡人傳了響聲或提示給您。
-+Comment[zh_TW]=聯絡人對您送出呼叫/來電震動
- default_sound=Kopete_Received.ogg
- default_presentation=17
-Index: kopete/kopete/kopete.desktop
+Index: knewsticker/newsscroller.cpp
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -26,7 +26,7 @@
- GenericName[hu]=Internetes csevegő
- GenericName[is]=Spjallforrit
- GenericName[it]=Messaggistica istantanea
--GenericName[ja]=インスタントメッセンジャ
-+GenericName[ja]=インスタントメッセンジャー
- GenericName[km]=កម្មវិធី​ផ្ញើ​សារ​បន្ទាន់
- GenericName[lt]=Momentinių žinučių klientas
- GenericName[mk]=Инстант гласник
-@@ -51,6 +51,7 @@
- GenericName[uz]=Хабар алмашиш воситаси
- GenericName[zh_CN]=即时消息客户程序
- GenericName[zh_HK]=即時通訊程式
-+GenericName[zh_TW]=即時訊息客戶端程式
- Comment=Instant Messenger
- Comment[ar]=المرسال الفوري
- Comment[bg]=Съобщения в реално време
-@@ -72,7 +73,7 @@
- Comment[hu]=Azonnali üzenetküldő
- Comment[is]=Spjallforrit
- Comment[it]=Messaggistica istantanea
--Comment[ja]=インスタントメッセンジャ
-+Comment[ja]=インスタントメッセンジャー
- Comment[km]=កម្មវិធី​ផ្ញើ​សារ​បន្ទាន់
- Comment[lt]=Momentinių žinučių klientas
- Comment[mk]=Инстант гласник
-@@ -97,6 +98,7 @@
- Comment[uz]=Хабар алмашиш воситаси
- Comment[zh_CN]=即时消息客户程序
- Comment[zh_HK]=即時通訊程式
-+Comment[zh_TW]=即時訊息客戶端程式
- Exec=kopete -caption "%c" %i %m %u
- Type=Application
- DocPath=kopete/index.html
-Index: kopete/kopete/x-kopete-emoticons.desktop
-===================================================================
---- kopete/kopete/x-kopete-emoticons.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/x-kopete-emoticons.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -50,3 +50,4 @@
- Comment[uk]=Архів емоційок для Kopete
- Comment[zh_CN]=Kopete 表情存档
- Comment[zh_HK]=Kopete 表情符號集
-+Comment[zh_TW]=Kopete 表情圖示檔
-Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
-===================================================================
---- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -62,6 +62,7 @@
- Name[wa]=Contes
- Name[zh_CN]=账户
- Name[zh_HK]=帳號
-+Name[zh_TW]=帳號
- Comment=Here You Can Manage All Your Accounts
- Comment[ar]=من هنا تستطيع إدارة جميع حساباتك
- Comment[be]=Тут Вы можаце кіраваць усімі Вашымі рахункамі
-@@ -87,7 +88,7 @@
- Comment[hu]=Itt lehet kezelni az azonosítókat
- Comment[is]=Hér geturðu haldið utan um öll þín notandanöfn
- Comment[it]=Qui puoi gestire tutti i tuoi account
--Comment[ja]=全てのアカウントを管理します
-+Comment[ja]=すべてのアカウントを管理します
- Comment[km]=ទីនេះ អ្នក​អាច​គ្រប់គ្រង​គណនី​ទាំងអស់​របស់​អ្នក
- Comment[lt]=Čia galite tvarkyti visas savo paskyras
- Comment[mk]=Тука можете да управувате со сите ваши сметки
-@@ -113,6 +114,7 @@
- Comment[uz]=Бу ерда ҳамма ҳисобларни мослаш мумкин
- Comment[zh_CN]=您可在此管理您全部的账户
- Comment[zh_HK]=在此您可管理您的帳號
-+Comment[zh_TW]=您可以在此管理您的所有帳號
- DocPath=kopete/configure-dialog.html#configuring-accounts
+--- knewsticker/newsscroller.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ knewsticker/newsscroller.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -129,7 +129,7 @@
+ };
  
+ NewsScroller::NewsScroller(QWidget *parent, ConfigAccess *cfg, const char *name)
+-	: QFrame(parent, name),
++	: QFrame(parent, name, WNoAutoErase),
+ 	m_cfg(cfg),
+ 	m_scrollTimer(new QTimer(this)),
+ 	m_activeHeadline(0),
+@@ -258,8 +258,8 @@
+ 	
+ 	if (contentsRect().contains(pt))
+ 		updateActive(pt);
+-	
+-	repaint(false);
++
++	update();
+ }
  
-Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
-===================================================================
---- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -63,6 +63,7 @@
- Name[wa]=Rivnance
- Name[zh_CN]=外观
- Name[zh_HK]=外觀
-+Name[zh_TW]=外觀
- Comment=Here You Can Alter Kopete's Look And Feel
- Comment[ar]=يمكنك تغيير مظهر Kopete
- Comment[bg]=Настройки на външния вид на програмата
-@@ -111,6 +112,7 @@
- Comment[uz]=Бу ерда Kopete кўринишини мослаш мумкин
- Comment[zh_CN]=您可在此更改 Kopete 的观感
- Comment[zh_HK]=在此您可改動 Kopete 的外觀
-+Comment[zh_TW]=您可以在此改變 Kopete 的外觀與感覺
- DocPath=kopete/configure-dialog.html#configuring-appearance
+ void NewsScroller::enterEvent(QEvent *)
+@@ -337,7 +337,7 @@
+ 	}
  
+ 	if (updateActive(e->pos()))
+-		repaint(false);
++		update();
+ }
  
-Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
-===================================================================
---- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -64,6 +64,7 @@
- Name[wa]=Dujhance
- Name[zh_CN]=行为
- Name[zh_HK]=行為
-+Name[zh_TW]=行為
- Comment=Here You Can Personalize Kopete
- Comment[ar]=هنا يمكنك تخصيص Kopete
- Comment[bg]=Настройки на поведението на програмата
-@@ -115,6 +116,7 @@
- Comment[wa]=Chal vos ploz apontyî Kopete a vosse mode
- Comment[zh_CN]=您可在此个性化 Kopete
- Comment[zh_HK]=在此您可設定 Kopete 的個人化資料
-+Comment[zh_TW]=您已經在此將 Kopete 個人化
- DocPath=kopete/configure-dialog.html#configuring-behavior
+ void NewsScroller::wheelEvent(QWheelEvent *e)
+@@ -360,7 +360,7 @@
  
+ 	if (m_activeHeadline) {
+ 		m_activeHeadline = 0;
+-		repaint(false);
++		update();
+ 	}
+ }
  
-Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
-===================================================================
---- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -46,6 +46,7 @@
- Name[pt_BR]=Dispositivos
- Name[ru]=Устройства
- Name[rw]=Apareye
-+Name[sk]=Zariadenia
- Name[sl]=Naprave
- Name[sr]=Уређаји
- Name[sr@Latn]=Uređaji
-@@ -58,6 +59,7 @@
- Name[xh]=Amacebo
- Name[zh_CN]=设备
- Name[zh_HK]=裝置
-+Name[zh_TW]=裝置
- Name[zu]=Amacebo
- Comment=Here You Can Alter Kopete's Video And Audio Devices' Settings
- Comment[bg]=Настройки на видео и аудио устройствата на програмата
-@@ -87,6 +89,7 @@
- Comment[pt]=Aqui Você Pode Alterar a Configuração do Áudio e Vídeo do Kopete
- Comment[pt_BR]=Aqui você pode alterar as configurações dos dispositivos de audio e vídeo do Kopete
- Comment[ru]=Параметры видео- и аудиоустройств для Kopete
-+Comment[sk]=Tu môžete upraviť nastavenia video a audio zariadení pre Kopete
- Comment[sl]=Tukaj lahko spreminjate nastavitve video in zvočnih naprav za Kopete
- Comment[sr]=Овде можете променити поставке Kopete-ових аудио и видео уређаја
- Comment[sr@Latn]=Ovde možete promeniti postavke Kopete-ovih audio i video uređaja
-@@ -96,4 +99,5 @@
- Comment[uz]=Бу ерда видео ва аудио ускуналарини мослаш мумкин
- Comment[zh_CN]=您可在此更改 Kopete 的影音设备设置
- Comment[zh_HK]=在此您可改動 Kopete 視像和音訊裝置的設定
-+Comment[zh_TW]=您可以在此改變 Kopete 的影像與聲音裝置設定
- DocPath=kopete/configure-dialog.html#configuring-avdevice
-Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
-===================================================================
---- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -40,6 +40,7 @@
- Name[pt]=Identidade
- Name[pt_BR]=Identidade
- Name[ru]=Профиль
-+Name[sk]=Identita
- Name[sl]=Identiteta
- Name[sr]=Идентитет
- Name[sr@Latn]=Identitet
-@@ -49,6 +50,7 @@
- Name[uz]=Шахсият
- Name[zh_CN]=身份
- Name[zh_HK]=識別名稱
-+Name[zh_TW]=身份
- Comment=Here You Can Manage Your Global Identity
- Comment[bg]=Настройки на идентификацията
- Comment[bn]=আপনি এখানে আপনার বিশ্ব পরিচয় পরিচালনা করতে পারেন
-@@ -78,6 +80,7 @@
- Comment[pt]=Aqui Você Pode Gerir a Sua Identidade Global
- Comment[pt_BR]=Aqui Você Pode Gerenciar Sua Identidade Global
- Comment[ru]=Настройка глобального профиля пользователя
-+Comment[sk]=Tu môžete spravovať Vašu globálnu identifikáciu
- Comment[sl]=Tukaj lahko upravljate s svojo globalno identiteto
- Comment[sr]=Овде можете управљати вашим општим идентитетом
- Comment[sr@Latn]=Ovde možete upravljati vašim opštim identitetom
-@@ -86,5 +89,6 @@
- Comment[uz]=Бу ерда умумий шахсиятни мослаш мумкин
- Comment[zh_CN]=您可在此管理您的全局身份
- Comment[zh_HK]=在此您可管理 Kopete 的全域識別名稱
-+Comment[zh_TW]=您可以在此管理您的全域身份
+@@ -488,7 +488,7 @@
+ 			m_offset = - scrollHeight();
+ 	}
  
- DocPath=kopete/configure-dialog.html#configuring-identity
-Index: kopete/kopete/chatwindow/chatwindow.desktop
-===================================================================
---- kopete/kopete/chatwindow/chatwindow.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/chatwindow/chatwindow.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -64,6 +64,7 @@
- Name[uk]=Вікно розмови Kopete
- Name[zh_CN]=Kopete 聊天窗口
- Name[zh_HK]=Kopete 聊天視窗
-+Name[zh_TW]=Kopete 聊天視窗
- Comment=The default Kopete chat window
- Comment[ar]=نافذة محادثة Kopete ألافتراضية
- Comment[be]=Акно гутаркі Kopete па ўмаўчаньні
-@@ -114,3 +115,4 @@
- Comment[uk]=Типове вікно розмови Kopete
- Comment[zh_CN]=默认的 Kopete 聊天窗口
- Comment[zh_HK]=Kopete 預設的聊天視窗
-+Comment[zh_TW]=預設 Kopete 聊天視窗
-Index: kopete/kopete/chatwindow/emailwindow.desktop
-===================================================================
---- kopete/kopete/chatwindow/emailwindow.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/kopete/chatwindow/emailwindow.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -46,6 +46,7 @@
- Name[pt_BR]=Janela de Mensagens do Kopete
- Name[ro]=Fereastră de e-mail Kopete
- Name[ru]=Отдельные сообщения
-+Name[sk]=Kopete okno pošty
- Name[sl]=Okno za e-pošto v Kopete
- Name[sr]=Kopete-ов прозор за е-пошту
- Name[sr@Latn]=Kopete-ov prozor za e-poštu
-@@ -54,6 +55,7 @@
- Name[uk]=Вікно ел. пошти Kopete
- Name[zh_CN]=Kopete 电子邮件窗口
- Name[zh_HK]=Kopete 電郵視窗
-+Name[zh_TW]=Kopete 電子郵件視窗
- Comment=The Kopete email window
- Comment[bg]=Прозорец за изпращане на е-поща
- Comment[bn]=কপেট ই-মেইল উইন্ডো
-@@ -87,6 +89,7 @@
- Comment[pt_BR]=A janela de mensagens do Kopete
- Comment[ro]=Fereastra de e-mail Kopete
- Comment[ru]=Отдельные сообщения
-+Comment[sk]=Okno pošty pre Kopete
- Comment[sl]=Okno za e-pošto v Kopete
- Comment[sr]=Подразумевани Kopete-ов прозор за е-пошту
- Comment[sr@Latn]=Podrazumevani Kopete-ov prozor za e-poštu
-@@ -95,3 +98,4 @@
- Comment[uk]=Вікно ел. пошти Kopete
- Comment[zh_CN]=Kopete 电子邮件窗口
- Comment[zh_HK]=Kopete 電郵視窗
-+Comment[zh_TW]=Kopete 電子郵件視窗
-Index: kopete/libkopete/avdevice/videodevicepool.cpp
-===================================================================
---- kopete/libkopete/avdevice/videodevicepool.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/libkopete/avdevice/videodevicepool.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -808,7 +808,7 @@
- 			const QString modelindex = QString::fromLocal8Bit ( "Model %1 Device %2")  .arg ((*vditerator).m_name ) .arg ((*vditerator).m_modelindex);
- 			if(modelindex == currentdevice)
- 			{
--				m_current_device = std::distance (m_videodevice.begin(), vditerator);
-+				m_current_device = vditerator - m_videodevice.begin();
- //				kdDebug() << k_funcinfo << "This place will be used to set " << modelindex << " as the current device ( " << std::distance(m_videodevice.begin(), vditerator ) << " )." << endl;
- 			}
- 			const QString name                = config->readEntry((QString::fromLocal8Bit ( "Model %1 Device %2 Name")  .arg ((*vditerator).m_name ) .arg ((*vditerator).m_modelindex)), (*vditerator).m_model);
-Index: kopete/libkopete/avdevice/videodevice.cpp
-===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -601,8 +601,6 @@
- 				{
- 					struct video_window V4L_videowindow;
+-	repaint(false);
++	update();
+ }
  
--kdDebug() << "------------- width: " << V4L_videowindow.width << " Height: " << V4L_videowindow.height << " Clipcount: " << V4L_videowindow.clipcount << " -----------------" << endl;
--
- 				if (xioctl (VIDIOCGWIN, &V4L_videowindow)== -1)
- 				{
- 					perror ("ioctl VIDIOCGWIN");
-Index: kopete/libkopete/kopeteui.desktop
-===================================================================
---- kopete/libkopete/kopeteui.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/libkopete/kopeteui.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -53,3 +53,4 @@
- Comment[wa]=On tchôke-divins d' eterface grafike po Kopete
- Comment[zh_CN]=Kopete 界面插件
- Comment[zh_HK]=Kopete 用戶界面插件
-+Comment[zh_TW]=Kopete 使用者介面外掛程式
-Index: kopete/libkopete/kopeteprotocol.desktop
-===================================================================
---- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -55,6 +55,7 @@
- Comment[wa]=Tchôke-divins di protocole po Kopete
- Comment[zh_CN]=Kopete 协议插件
- Comment[zh_HK]=Kopete 通訊協定插件
-+Comment[zh_TW]=Kopete 協定外掛程式
- 
- [PropertyDef::X-Kopete-Messaging-Protocol]
- Type=QString
-Index: kopete/libkopete/kopeteplugin.desktop
-===================================================================
---- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -56,6 +56,7 @@
- Comment[wa]=Tchôke-divins po Kopete
- Comment[zh_CN]=Kopete 插件
- Comment[zh_HK]=Kopete 插件
-+Comment[zh_TW]=Kopete 外掛程式
- 
- # The Kopete version for which the plugin is written
- [PropertyDef::X-Kopete-Version]
-Index: knewsticker/knewstickerstub/knewstickerstub.desktop
-===================================================================
---- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -43,6 +43,7 @@
- Name[uk]=Інтерфейс налаштування KNewsTicker
- Name[zh_CN]=KNewsTicker 配置前端
- Name[zh_HK]=KNewsTicker 設定前端
-+Name[zh_TW]=KNewsTicker 設定前端
- Comment=A frontend for the KNewsTicker configuration
- Comment[af]='n voorprogram vir die K-nuustikker opstelling
- Comment[ar]=واجهة لضبط مجدد الأخبار
-Index: knewsticker/eventsrc
-===================================================================
---- knewsticker/eventsrc	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -296,6 +296,7 @@
- Comment[pt_BR]=O arquivo RDF obtido não pôde ser interpretado
- Comment[ro]=Fişierul RDF transferat nu poate fi analizat
- Comment[ru]=Не удалось разобрать загруженный RDF-файл
-+Comment[sk]=Stiahnutý RDF súbor nie je možné analyzovať
- Comment[sl]=Prenesene datoteke RDF ni moč razčleniti
- Comment[sr]=Преузети RDF фајл не може да се рашчлани
- Comment[sr@Latn]=Preuzeti RDF fajl ne može da se raščlani
-@@ -304,4 +305,5 @@
- Comment[uk]=Не вдалось проаналізувати звантажений файл RDF
- Comment[zh_CN]=下载的 RDF 无法分析
- Comment[zh_HK]=下載的 RDF 檔案無法解析
-+Comment[zh_TW]=下載的 RDF 無法分析
- default_presentation=0
-Index: knewsticker/knewsticker.desktop
-===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -35,6 +35,7 @@
- Name[nso]=Seswai sa Ditaba
- Name[pt]=Extractor de Notícias
- Name[pt_BR]=Mostrador de Notícias
-+Name[sk]=Sledovač správ
- Name[sl]=Prikazovalnik novic
- Name[sv]=Nyhetsläsare
- Name[ta]=செய்திகள் அறிவிப்பான்
-@@ -77,6 +78,7 @@
- Comment[pt]=Um extractor de notícias deslizante
- Comment[pt_BR]=Um mini-aplicativo de notícias
- Comment[ru]=Индикатор новостей RDF с прокруткой
-+Comment[sk]=Rolujúci sledovač RDF správ
- Comment[sl]=Prikazovalnik novic v obliki RDF
- Comment[sr]=Клизајући приказивач RDF вести
- Comment[sr@Latn]=Klizajući prikazivač RDF vesti
-@@ -84,4 +86,5 @@
- Comment[uk]=Стрічка новин RDF
- Comment[zh_CN]=滚动的 RDF 新闻播报器
- Comment[zh_HK]=捲軸式 RDF 新聞簡報器
-+Comment[zh_TW]=捲軸的 RDF 新聞簡報
- 
-Index: kget/kget_plug_in/kget_plug_in.desktop
-===================================================================
---- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -54,6 +54,7 @@
- Comment[pt_BR]=Gerenciador de Download
- Comment[ro]=Manager de transferuri FTP
- Comment[ru]=Диспетчер загрузок
-+Comment[sk]=Správca sťahovania
- Comment[sl]=Upravitelj prenosov
- Comment[sr]=Менаџер преузимања
- Comment[sr@Latn]=Menadžer preuzimanja
-@@ -63,5 +64,6 @@
- Comment[uz]=Ёзиб олиш бошқарувчиси
- Comment[zh_CN]=下载管理器
- Comment[zh_HK]=下載管理員
-+Comment[zh_TW]=下載管理員
- Icon=khtml_kget
- 
-Index: kget/kget.desktop
-===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -64,5 +64,6 @@
- GenericName[uz]=Ёзиб олиш бошқарувчиси
- GenericName[zh_CN]=下载管理器
- GenericName[zh_HK]=下載管理員
-+GenericName[zh_TW]=下載管理員
- Categories=Qt;KDE;Network;
- X-DCOP-ServiceType=Unique
-Index: kget/kget_download.desktop
-===================================================================
---- kget/kget_download.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kget/kget_download.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -38,6 +38,7 @@
- Name[pt]=Obter com o KGet
- Name[pt_BR]=Baixar com o KGet
- Name[ru]=Загрузить с помощью KGet
-+Name[sk]=Stiahnuť pomocou KGet
- Name[sl]=Prenos s KGet
- Name[sr]=Преузми са KGet-ом
- Name[sr@Latn]=Preuzmi sa KGet-om
-@@ -46,3 +47,4 @@
- Name[uk]=Звантажити з KGet
- Name[zh_CN]=用 KGet 下载
- Name[zh_HK]=以 KGet 下載
-+Name[zh_TW]=用 KGet 下載
+ int NewsScroller::scrollWidth() const
 Index: kget/eventsrc
 ===================================================================
---- kget/eventsrc	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -25,6 +25,7 @@
- Name[pl]=Dodany transfer
- Name[pt_BR]=TransferênciaAdicionada
- Name[ru]=НовоеЗадание
-+Name[sk]=Pridaný transfer
- Name[sl]=PrenosDodan
- Name[sr]=Пренос додат
- Name[sr@Latn]=Prenos dodat
-@@ -32,6 +33,7 @@
- Name[uk]=Додано перенесення
- Name[zh_CN]=添加了任务
- Name[zh_HK]=傳輸已新增
-+Name[zh_TW]=新增傳輸
- Comment=A new download has been added
- Comment[bg]=Добавен е нов файл за изтегляне
- Comment[bn]=একটি নতুন ডাউনলোড যোগ করা হয়েছে
-@@ -59,6 +61,7 @@
+--- kget/eventsrc	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -57,6 +57,7 @@
+ Comment[nb]=En ny nedlasting er lagt til
+ Comment[nds]=En niege Överdregen wöör toföögt
+ Comment[nl]=Er is een nieuwe download toegevoegd
++Comment[nn]=Ei ny nedlasting er lagd til
+ Comment[pl]=Nowe zlecenie pobrania pliku zostało dodane
  Comment[pt]=Foi adicionada uma nova transferência
  Comment[pt_BR]=Um novo download foi adicionado
- Comment[ru]=Добавлено новое задание загрузки
-+Comment[sk]=Pridané nové sťahovanie
- Comment[sl]=Dodan je bil nov prenos
- Comment[sr]=Ново преузимање је додато
- Comment[sr@Latn]=Novo preuzimanje je dodato
-@@ -68,6 +71,7 @@
- Comment[uz]=Янги ёзиб олиш қўшилди
- Comment[zh_CN]=添加了新下载
- Comment[zh_HK]=已新增新的下載
-+Comment[zh_TW]=已增加新的下載
- default_sound=KGet_Added.ogg
- default_presentation=17
- 
-@@ -95,6 +99,7 @@
+@@ -96,6 +97,7 @@
+ Name[nb]=NedlastingStartet
+ Name[nds]=DaalladenHettStart
+ Name[nl]=DownloadGestart
++Name[nn]=NedlastingStarta
  Name[pl]=Pobieranie rozpoczęte
  Name[pt_BR]=DownloadIniciado
  Name[ru]=ЗапускЗагрузки
-+Name[sk]=Spustené sťahovanie
- Name[sl]=PrenosPričetek
- Name[sr]=Преузимање покренуто
- Name[sr@Latn]=Preuzimanje pokrenuto
-@@ -103,6 +108,7 @@
- Name[uk]=Почато звантаження
- Name[zh_CN]=开始下载
- Name[zh_HK]=下載已開始
-+Name[zh_TW]=開始下載
- Comment=Downloading started
- Comment[bg]=Изтеглянето започна
- Comment[bn]=ডাউনলোড আরম্ভ করল
-@@ -132,6 +138,7 @@
- Comment[pt]=Transferência iniciada
- Comment[pt_BR]=Download iniciado
- Comment[ru]=Загрузка выполняется
-+Comment[sk]=Spustené sťahovanie
- Comment[sl]=Prenašanje se je pričelo
- Comment[sr]=Покренуто је преузимање
- Comment[sr@Latn]=Pokrenuto je preuzimanje
-@@ -141,6 +148,7 @@
- Comment[uz]=Ёзиб олиш бошланди
- Comment[zh_CN]=下载已开始
- Comment[zh_HK]=下載已開始
-+Comment[zh_TW]=開始下載
- default_sound=KGet_Started.ogg
- default_presentation=16
+Index: wifi/interface_wireless_wirelessextensions.cpp
+===================================================================
+--- wifi/interface_wireless_wirelessextensions.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ wifi/interface_wireless_wirelessextensions.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -533,14 +533,17 @@
  
-@@ -169,6 +177,7 @@
- Name[pl]=Pobieranie zakończone
- Name[pt_BR]=DownloadConcluído
- Name[ru]=ЗагрузкаЗавершена
-+Name[sk]=Sťahovanie ukončené
- Name[sl]=PrenosKonec
- Name[sr]=Преузимање завршено
- Name[sr@Latn]=Preuzimanje završeno
-@@ -177,6 +186,7 @@
- Name[uk]=Звантаження завершено
- Name[zh_CN]=下载完成
- Name[zh_HK]=下載已完成
-+Name[zh_TW]=下載完成
- Comment=Downloading finished
- Comment[bg]=Изтеглянето завърши
- Comment[bn]=ডাউনলোড শেষ করল
-@@ -206,6 +216,7 @@
- Comment[pt]=Terminou uma transferência
- Comment[pt_BR]=Download concluído
- Comment[ru]=Загрузка завершена
-+Comment[sk]=Sťahovanie ukončené
- Comment[sl]=Prenašanje se je zaključilo
- Comment[sr]=Завршено је преузимање
- Comment[sr@Latn]=Završeno je preuzimanje
-@@ -215,6 +226,7 @@
- Comment[uz]=Ёзиб олиш тугади
- Comment[zh_CN]=下载已完成
- Comment[zh_HK]=下載已完成
-+Comment[zh_TW]=下載已完成
- default_sound=KGet_Finished.ogg
- default_presentation=16
+     *iwlist << iwlist_bin << interface_name << "scanning";
  
-@@ -239,6 +251,7 @@
- Name[pl]=Wszystkie transfery zakończone
- Name[pt_BR]=AdicionaraosDonwloadsConcluídos
- Name[ru]=ВсеЗагружено
-+Name[sk]=Pridanie sťahovania ukončené
- Name[sl]=VsiPrenosiKonec
- Name[sr]=Додавање преузимања завршено
- Name[sr@Latn]=Dodavanje preuzimanja završeno
-@@ -246,6 +259,7 @@
- Name[uk]=Всі звантаження завершені
- Name[zh_CN]=添加下载完成
- Name[zh_HK]=新增的下載已完成
-+Name[zh_TW]=新增下載完成
- Comment=All downloads finished
- Comment[bg]=Изтеглянето на всичките файлове завърши
- Comment[bn]=সব ডাউনলোড শেষ করল
-@@ -274,6 +288,7 @@
- Comment[pt]=Todas as transferências terminaram
- Comment[pt_BR]=Todos os downloads foram concluídos
- Comment[ru]=Все загрузки выполнены.
-+Comment[sk]=Všetky sťahovania ukončené
- Comment[sl]=Vsi prenosi so se zaključili
- Comment[sr]=Сва преузимања су завршена
- Comment[sr@Latn]=Sva preuzimanja su završena
-@@ -283,5 +298,6 @@
- Comment[uz]=Ҳамма ёзиб олишлар тугади
- Comment[zh_CN]=所有下载都已完成
- Comment[zh_HK]=所有下載已完成
-+Comment[zh_TW]=所有下載皆已完成
- default_sound=KGet_Finished_All.ogg
- default_presentation=16
-Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
-===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -43,6 +43,7 @@
- Comment[pt]=Um módulo para configurar partilhas para o Microsoft Windows
- Comment[pt_BR]=Um módulo para configurar compartilhamentos com o Microsoft Windows
- Comment[ru]=Модуль настройки общих ресурсов для Microsoft Windows
-+Comment[sk]=Modul na konfiguráciu zdielania pre Microsoft Windows
- Comment[sl]=Modul za nastavitev souporabe map za Microsoft Windows
- Comment[sr]=Модул који подешава дељења за Microsoft Windows
- Comment[sr@Latn]=Modul koji podešava deljenja za Microsoft Windows
-@@ -51,6 +52,7 @@
- Comment[uk]=Модуль для налаштування спільних ресурсів для Microsoft Windows
- Comment[zh_CN]=配置 Microsoft Windows 共享的模块
- Comment[zh_HK]=設定 Microsoft Windows 分享資源的模組
-+Comment[zh_TW]=設定 Microsoft Windows 分享的模組
- Keywords=KcmSambaConf,kcmsambaconf,samba,windows,share
- Keywords[bg]=Самба, Уиндоус, мрежа, споделяне, KcmSambaConf, kcmsambaconf, samba, windows, share
- Keywords[ca]=KcmSambaConf,kcmsambaconf,samba,windows,share,recurs compartit
-Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
-===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -43,6 +43,7 @@
- Name[uk]=Сторінка властивостей каталогу для спільного доступу
- Name[zh_CN]=文件共享 Konqueror 目录属性页
- Name[zh_HK]=檔案分享 Konqueror 目錄屬性頁
-+Name[zh_TW]=Konqueror 檔案分享目錄屬性頁
- Comment=Konqueror properties dialog plugin to share a directory with the local network
- Comment[bg]=Настройка на приставката за браузъра Konqueror за споделяна на директории в локалната мрежа
- Comment[bn]=স্থানীয় নেটওয়ার্কের সঙ্গে একটি ডিরেক্টরী ভাগাভাগি করতে কনকরার বৈশিষ্ট্যাবলী ডায়ালগ প্লাগিন
-@@ -85,6 +86,7 @@
- Comment[uk]=Втулок діалогу властивостей Konqueror для дозволу спільного доступу до каталогу з локальної мережі
- Comment[zh_CN]=可将目录与局域网共享的 Konqueror 属性页对话框插件
- Comment[zh_HK]=用於與本地網絡分享目錄的 Konqueror 屬性對話盒插件
-+Comment[zh_TW]=Konqueror 屬性對話框外掛程式，用於在本地端網路上分享目錄
- X-KDE-Library=fileshare_propsdlgplugin
- X-KDE-Protocol=file
- ServiceTypes=KPropsDlg/Plugin,inode/directory
-Index: filesharing/simple/fileshare.desktop
-===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -58,6 +58,7 @@
- Name[uz]=Файл билан бўлишиш
- Name[zh_CN]=文件共享
- Name[zh_HK]=檔案分享
-+Name[zh_TW]=檔案分享
+-    connect ( iwlist, SIGNAL ( readReady ( KProcIO * ) ), this, SLOT ( parseScanData ( KProcIO * ) ) );
++//    connect ( iwlist, SIGNAL ( readReady ( KProcIO * ) ), this, SLOT ( parseScanData ( KProcIO * ) ) );
+ 	    
+    if ( !iwlist->start ( KProcess::Block ) )
+         KMessageBox::sorry ( 0, i18n ( "Unable to perform the scan. Please make sure the executable \"iwlist\" is in your $PATH." ),
+ 				i18n ( "Scanning not possible" ) );
  
- Comment=Enable or disable file sharing
- Comment[bg]=Настройки на споделянето на файлове
-@@ -103,6 +104,7 @@
- Comment[uk]=Ввімкання або вимикання спільного доступу до файлів
- Comment[zh_CN]=启用或禁用文件共享
- Comment[zh_HK]=啟用或停用檔案分享
-+Comment[zh_TW]=開啟或關閉檔案分享
+-    // while (iwlist->isRunning()) sleep ( 1 );
++    // this should never happen. But there was a report about Block not being as blocking as it should, so let's be safe about it
++    while (iwlist->isRunning()) sleep ( 1 );
  
- Keywords=Share
- Keywords[bg]=настройки, локална, мрежа, споделяне, share
-Index: wifi/kwireless/kwireless.desktop
-===================================================================
---- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -49,6 +49,7 @@
- Comment[uz]=Симсиз тармоқ ускуналари ҳақида маълумотни кўрсатиш
- Comment[zh_CN]=显示关于无线网络设备的信息
- Comment[zh_HK]=顯示有關無線網絡裝置的資訊
-+Comment[zh_TW]=顯示無線網路裝置的資訊
- Name=Wireless Network Information
- Name[ar]=معلومات الشبكة الاسلكية
- Name[bg]=Данни за безжична мрежа
-@@ -101,5 +102,6 @@
- Name[wa]=Informåcion sol rantoele sins fyis
- Name[zh_CN]=无线网络信息
- Name[zh_HK]=無線網絡資訊
-+Name[zh_TW]=無線網路資訊
- Icon=kwifimanager
- X-KDE-Library=libkwireless
-Index: wifi/kcmwifi/kcmwifi.desktop
-===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -57,6 +57,7 @@
- Name[uz]=Симсиз тармоқ
- Name[zh_CN]=无线网
- Name[zh_HK]=無線網絡
-+Name[zh_TW]=無線網路
- Comment=Set up your wireless LAN
- Comment[ar]=ركب شبكة LAN الاسلكية الخاصةبك
- Comment[bg]=Настройки на безжична локална мрежа
-@@ -107,6 +108,7 @@
- Comment[uz]=Симсиз тармоқни ўрнатиш
- Comment[zh_CN]=设置您的无线局域网
- Comment[zh_HK]=設定您的無線網絡
-+Comment[zh_TW]=設定您的無線網路
- Keywords=network,orinoco,wireless,wlan,wlan-ng,wifi,Ad-Hoc
- Keywords[bg]=мрежа, безжична, настройки, локална, споделяне, network, orinoco, wireless, wlan, wlan-ng
- Keywords[ca]=xarxa,orinoco,sense fils,wlan,wlan-ng,wifi,Ad-Hoc
-Index: wifi/kwifimanager.desktop
-===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -51,6 +51,7 @@
- Comment[uk]=Монітор з'єднання локальної радіомережі
- Comment[zh_CN]=无线局域网连接监视器
- Comment[zh_HK]=無線網絡連線監視器
-+Comment[zh_TW]=無線網路監視器
- Terminal=false
- Name=KWiFiManager
- Name[ar]=إدارة KWiFi
-@@ -92,7 +93,7 @@
- GenericName[km]=កម្មវិធី​គ្រប់គ្រង​បណ្ដាញ​មូលដ្ឋាន​ឥត​ខ្សែ
- GenericName[lt]=Bevielio ryšio kontrolės centras
- GenericName[mk]=Менаџер на безжичната локална мрежа
--GenericName[nb]=Trådløst nettverksbehandler
-+GenericName[nb]=Håndterer for trådløse nettverk
- GenericName[nds]=Funknettwark-Pleger
- GenericName[nl]=Draadloos netwerkbeheer
- GenericName[nn]=Handsamar for trådlaust nettverk
-@@ -112,4 +113,5 @@
- GenericName[uz]=Симсиз тармоқ бошқарувчиси
- GenericName[zh_CN]=无线局域网管理器
- GenericName[zh_HK]=無線網絡管理員
-+GenericName[zh_TW]=無線網路管理者
- Categories=Qt;KDE;Network;X-KDE-More;
-Index: kfile-plugins/torrent/kfile_torrent.desktop
-===================================================================
---- kfile-plugins/torrent/kfile_torrent.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kfile-plugins/torrent/kfile_torrent.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -32,6 +32,7 @@
- Name[pt_BR]=Informações do Bit Torrent
- Name[ro]=Informaţii Bit Torrent
- Name[ru]=Сведения о BitTorrent
-+Name[sk]=Bit Torrent informácie
- Name[sl]=Podatki o BitTorrentu
- Name[sr]=Bit Torrent информације
- Name[sr@Latn]=Bit Torrent informacije
-@@ -41,6 +42,7 @@
- Name[uk]=Інформація про Bit Torrent
- Name[zh_CN]=BitTorrent 信息
- Name[zh_HK]=Bit Torrent 資訊
-+Name[zh_TW]=Bit Torrent 資訊
- ServiceTypes=KFilePlugin
- X-KDE-Library=kfile_torrent
- # change MimeType here! (example: inode/directory)
-Index: kppp/accounts.cpp
-===================================================================
---- kppp/accounts.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kppp/accounts.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -41,6 +41,8 @@
- #include <kstdguiitem.h>
- #include <qvgroupbox.h>
++    parseScanData ( iwlist );
++   
+     for (int i = 0; i<4; i++ ) networks->adjustColumn(i);
  
-+#include <errno.h>
-+
- #include "pppdata.h"
- #include "accounts.h"
- #include "accounting.h"
-@@ -211,8 +213,12 @@
- 
-     QApplication::flushX();
-     if(fork() == 0) {
--      setgid(getgid());
-+      if (setgid(getgid()) < 0 && errno != EPERM)
-+        _exit(2);
-       setuid(getuid());
-+      if( geteuid() != getuid() )
-+        _exit(1);
-+      // TODO: use execvp
-       system("kppplogview -kppp");
-       _exit(0);
+     return networks;
+@@ -598,17 +601,23 @@
+         }
+       if ( !ignoreRemainingBits && data.contains ( "Encryption key:" ) )
+         {
+-          if ( data.contains ( "on" ) )
++          if ( data.contains ( "off" ) )
++            networks->setText ( cellcount - 1, 3, QString ( "off" ) );
++          else
+             networks->setText ( cellcount - 1, 3, QString ( "on" ) );
+-          else
+-            networks->setText ( cellcount - 1, 3, QString ( "off" ) );
+         }
+       if ( !ignoreRemainingBits && data.contains ( "Quality:" ) )
+         {
+           QString quality = data.mid ( data.find ( ":" ) + 1, data.find ( "/" ) - data.find ( ":" ) - 1 );
+           networks->setText ( cellcount - 1, 2, quality );
+         }
+-
++      
++      if ( !ignoreRemainingBits && data.contains ( "Quality=" ) )
++        {
++          QString quality = data.mid ( data.find ( "=" ) + 1, data.find ( "/" ) - data.find ( "=" ) - 1 );
++          networks->setText ( cellcount - 1, 2, quality );
++        }
++      
+       if ( !ignoreRemainingBits && data.contains ( "wpa_ie" ) )
+ 	{
+ 	  networks->setText ( cellcount - 1, 3, QString ( "WPA" ) );
+Index: ksirc/dccMgrTest.cpp
+===================================================================
+--- ksirc/dccMgrTest.cpp	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ ksirc/dccMgrTest.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -8,12 +8,12 @@
+     Timer( dccManager *view )
+         : m_view( view )
+     {
+-        m_it = m_view->newSendItem("test", "boren", dccItem::dccOffer, 123523);
+-        m_view->newSendItem("test2", "boren", dccItem::dccOffer, 123523);
+-        m_view->newSendItem("test3", "boren", dccItem::dccOffer, 123523);
+-        m_view->newGetItem("test4", "boren", dccItem::dccOffer, 123523);
+-        m_view->newGetItem("test4", "boren", dccItem::dccOffer, 123523);
+-        m_view->newGetItem("test4", "boren", dccItem::dccOffer, 123523);
++        m_it = m_view->newSendItem("test", "boren", dccItem::dccSentOffer, 123523);
++        m_view->newSendItem("test2", "boren", dccItem::dccSentOffer, 123523);
++        m_view->newSendItem("test3", "boren", dccItem::dccSentOffer, 123523);
++        m_view->newGetItem("test4", "boren", dccItem::dccGotOffer, 123523);
++        m_view->newGetItem("test4", "boren", dccItem::dccGotOffer, 123523);
++        m_view->newGetItem("test4", "boren", dccItem::dccGotOffer, 123523);
+         bytes = 0;
+         startTimer( 100 );
      }
-Index: kppp/Kppp.desktop
+Index: ksirc/Makefile.am
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -43,6 +43,7 @@
- GenericName[uk]=Засіб дозвону в Інтернет
- GenericName[zh_CN]=Internet 拨号工具
- GenericName[zh_HK]=互聯網撥號工具
-+GenericName[zh_TW]=Internet 撥號工具
- Name=KPPP
- Name[af]=Kppp
- Name[bn]=কে-পি-পি-পি
-Index: kppp/main.cpp
-===================================================================
---- kppp/main.cpp	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kppp/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -177,8 +177,15 @@
+--- ksirc/Makefile.am	(.../tags/KDE/3.5.4/kdenetwork)	(revision 570934)
++++ ksirc/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 570934)
+@@ -12,11 +12,11 @@
+ check_PROGRAMS = testview dccMgrTest
  
-   // drop setuid status
-   euid = geteuid();
--  setgid(getgid());
-+  if (setgid(getgid()) < 0 && errno != EPERM) {
-+    perror("setgid() failed");
-+    exit(1);
-+  }
-   setuid(getuid());
-+  if (geteuid() != getuid()) {
-+    perror("setuid() failed");
-+    exit(1);
-+  }
+ testview_SOURCES = kstextviewtest.cpp
+-testview_LDADD = kstextview.lo $(LIB_KDEUI)
++testview_LDADD = kstextview.lo dccNew.lo dccNewbase.lo alistbox.lo objFinder.lo ksopts.lo nickColourMaker.lo $(LIB_KUTILS) $(LIB_KDEUI)
+ testview_LDFLAGS = $(all_libraries) $(KDE_RPATH)
  
-   //
-   // end of setuid-dropping block.
-Index: kppp/logview/kppplogview.desktop
-===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -12,9 +12,11 @@
- Name[nb]=KPPP loggviser
- Name[nn]=KPPP-loggvisar
- Name[pl]=Dziennik połączeń KPPP
-+Name[sk]=KPPP prehliadač záznamov
- Name[sl]=Ogled dnevnika KPPP
- Name[sv]=Kppp - Loggvisare
- Name[tr]=KPPP Kayıt Görüntüleyici
-+Name[zh_TW]=KPPP - 紀錄檔檢視器
- GenericName=Internet Dial-Up Tool Log Viewer
- GenericName[bg]=Преглед на журнала на KPPP
- GenericName[bn]=ইন্টারনেট ডায়াল-আপ সরঞ্জাম কার্যবিবরণী প্রদর্শক
-@@ -46,6 +48,7 @@
- GenericName[pt_BR]=Visualizador de Logs do KPPP
- GenericName[ro]=Jurnal conectare Internet
- GenericName[ru]=Просмотр журнала соединения с Интернетом посредством телефонной линии
-+GenericName[sk]=Prehliadač záznamov nástroja pre pripojenie na internet cez modem
- GenericName[sl]=Orodje za ogled dnevnika KPPP
- GenericName[sr]=Приказивач дневника модемске везе са Интернетом
- GenericName[sr@Latn]=Prikazivač dnevnika modemske veze sa Internetom
-@@ -54,6 +57,7 @@
- GenericName[uk]=Переглядач журналу засобу дозвону в Інтернет
- GenericName[zh_CN]=Internet 拨号工具日志查看器
- GenericName[zh_HK]=互聯網撥號工具記錄檢視器
-+GenericName[zh_TW]=Internet 撥號工具紀錄檢視器
- MimeType=
- Exec=kppplogview
- Icon=kppp
-Index: ksirc/eventsrc
-===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -278,6 +278,7 @@
- Name[pt]=Apito recebido
- Name[pt_BR]=Beep recebido
- Name[ru]=Получен сигнал
-+Name[sk]=Prijaté pípnutie
- Name[sl]=Prejet pisk
- Name[sr]=Примљен је бип
- Name[sr@Latn]=Primljen je bip
-@@ -286,6 +287,7 @@
- Name[uk]=Отримано гудок
- Name[zh_CN]=收到了呼叫
- Name[zh_HK]=收到響聲
-+Name[zh_TW]=收到嗶聲
- Comment=A beep has been received from the server
- Comment[bg]=Пристигна звуков сигнал от сървъра
- Comment[bn]=সার্ভার থেকে একটি বিপ গ্রহণ করা হয়েছে
-@@ -314,6 +316,7 @@
- Comment[pt]=Foi recebido um apito do servidor
- Comment[pt_BR]=Um beep foi recebido do servidor
- Comment[ru]=Получен звуковой сигнал с сервера
-+Comment[sk]=Prijalo sa pípnutie zo servera
- Comment[sl]=Od strežnika ste prejeli pisk
- Comment[sr]=Звучни сигнал је примљен са сервера
- Comment[sr@Latn]=Zvučni signal je primljen sa servera
-@@ -321,6 +324,7 @@
- Comment[uk]=Отримано гудок з сервера
- Comment[zh_CN]=收到了服务器的呼叫
- Comment[zh_HK]=從伺服器收到響聲
-+Comment[zh_TW]=從伺服器上收到嗶聲
- default_presentation=1
- default_sound=KDE_Beep.ogg
+ dccMgrTest_SOURCES = dccMgrTest.cpp
+-dccMgrTest_LDADD = dccManager.lo dccManagerbase.lo $(LIB_KDEUI)
++dccMgrTest_LDADD = dccManager.lo dccManagerbase.lo dccNew.lo dccNewbase.lo alistbox.lo objFinder.lo ksopts.lo nickColourMaker.lo $(LIB_KUTILS) $(LIB_KDEUI)
+ dccMgrTest_LDFLAGS = $(all_libraries) $(KDE_RPATH)
  
-Index: dcoprss/rssservice.desktop
-===================================================================
---- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.3/kdenetwork)	(revision 556696)
-+++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 556696)
-@@ -76,3 +76,4 @@
- Comment[uz]=RSS DCOP хизматлари
- Comment[zh_CN]=RSS DCOP 服务
- Comment[zh_HK]=RSS DCOP 服務
-+Comment[zh_TW]=RSS DCOP 服務
+ bin_PROGRAMS =
 
 Property changes on: .
 ___________________________________________________________________
