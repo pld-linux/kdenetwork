@@ -4,7 +4,7 @@
 #
 # Conditional build:
 %bcond_without	xmms
-%bcond_without	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
+%bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
 %bcond_with	skype			# incomplete!
 
 %define		_state		stable
@@ -54,7 +54,6 @@ BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 %{?with_xmms:BuildRequires:	xmms-devel}
-BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -982,7 +981,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-%patch100 -p0
+#%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
