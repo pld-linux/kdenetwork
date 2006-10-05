@@ -34,7 +34,6 @@ Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-libgadu.patch
 Patch3:		%{name}-kopete-qca-tls.patch
-Patch4:		%{name}-bug-14561.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -985,7 +984,6 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-#%patch4 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -1426,14 +1424,11 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
 %{_datadir}/services/kopete_irc.desktop
 %{_datadir}/services/irc.protocol
-#%%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
-#%{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
 %{_libdir}/kde3/kio_jabberdisco.la
 %attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
 %{_datadir}/services/jabberdisco.protocol
@@ -1484,22 +1479,12 @@ fi
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
 %{_datadir}/services/kopete_sms.desktop
 
-#%files kopete-protocol-testbed
-#%defattr(644,root,root,755)
-#%{_libdir}/kde3/kopete_testbed.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/testbed*
-#%{_datadir}/services/kopete_testbed.desktop
-
 %files kopete-protocol-winpopup
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/winpopup*.sh
-#%{_libdir}/kde3/kcm_kopete_wp.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
 %{_libdir}/kde3/kopete*wp*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
-#%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
 %{_datadir}/services/kopete_wp.desktop
 # FIXME: to samba-client instead?
 %dir %attr(777,root,root) /var/lib/winpopup
@@ -1537,7 +1522,6 @@ fi
 %{_libdir}/kde3/kcm_kopete_avdeviceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_avdeviceconfig.so
 %{_datadir}/services/kopete_avdeviceconfig.desktop
-#%{_datadir}/services/kconfiguredialog/kopete_avdeviceconfig.desktop
 
 %files kopete-tool-conectionstatus
 %defattr(644,root,root,755)
@@ -1597,15 +1581,6 @@ fi
 %{_datadir}/services/kopete_history.desktop
 %{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
 
-#%files kopete-tool-motionaway
-#%defattr(644,root,root,755)
-#%{_libdir}/kde3/kcm_kopete_motionaway.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_motionaway.so
-#%{_libdir}/kde3/kopete*motionaway*.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete*motionaway*.so
-#%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
-#%{_datadir}/services/motionaway.desktop
-
 %files kopete-tool-nowlistening
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kcm_kopete_nowlistening.la
@@ -1615,12 +1590,6 @@ fi
 %{_datadir}/config.kcfg/nowlisteningconfig.kcfg
 %{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
 %{_datadir}/services/kopete_nowlistening.desktop
-
-#%%files kopete-tool-spellcheck
-#%%defattr(644,root,root,755)
-#%%{_libdir}/kde3/kopete*spellcheck*.la
-#%%attr(755,root,root) %{_libdir}/kde3/kopete*spellcheck*.so
-#%%{_datadir}/services/spellcheck.desktop
 
 %files kopete-tool-smpppdcs
 %defattr(644,root,root,755)
@@ -1729,16 +1698,6 @@ fi
 %{_datadir}/sounds/ktalkd.wav
 %{_desktopdir}/kde/kcmktalkd.desktop
 %{_iconsdir}/*/*/*/ktalkd.png
-#%files kxmlrpcd -f kxmlrpcd.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kxmlrpcd
-#%{_libdir}/libkdeinit_kxmlrpcd.la
-#%attr(755,root,root) %{_libdir}/libkdeinit_kxmlrpcd.so
-#%{_libdir}/kde3/kxmlrpcd.la
-#%attr(755,root,root) %{_libdir}/kde3/kxmlrpcd.so
-#%{_libdir}/kde3/kcm_xmlrpcd.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
-#%{_datadir}/services/kxmlrpcd.desktop
 
 %files kwifimanager -f kwifimanager.lang
 %defattr(644,root,root,755)
