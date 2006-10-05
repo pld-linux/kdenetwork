@@ -1240,6 +1240,15 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
+%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %dir %{_datadir}/apps/kopete
 %dir %{_datadir}/apps/kopete/icons
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
@@ -1250,24 +1259,15 @@ fi
 %dir %{_datadir}/apps/kopete/icons/hicolor/*/*
 %dir %{_datadir}/apps/kopete/pics
 %dir %{_datadir}/apps/kopeterichtexteditpart
-%{_datadir}/apps/kconf_update/kopete-account-0.10.pl
-%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %{_datadir}/apps/kconf_update/kopete-nameTracking.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 %{_datadir}/apps/kopete/*rc
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
+%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key?.png
 %{_datadir}/apps/kopete/icons/*/*/actions/logging.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete_avdevice.png
 %{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_statistics
@@ -1386,8 +1386,6 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
-# moved to kdelibs; used also by sim
-# %%{_datadir}/mimelnk/application/x-icq.desktop
 %{_datadir}/services/kopete_icq.desktop
 
 %files kopete-protocol-irc
@@ -1496,6 +1494,7 @@ fi
 %{_libdir}/kde3/kcm_kopete_avdeviceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_avdeviceconfig.so
 %{_datadir}/services/kopete_avdeviceconfig.desktop
+%{_datadir}/apps/kopete/icons/*/*/*/kopete_avdevice.png
 
 %files kopete-tool-conectionstatus
 %defattr(644,root,root,755)
