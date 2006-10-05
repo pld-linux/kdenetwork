@@ -1261,22 +1261,10 @@ fi
 %dir %{_datadir}/apps/kopete/icons/hicolor
 %dir %{_datadir}/apps/kopete/icons/hicolor/*
 %dir %{_datadir}/apps/kopete/icons/hicolor/*/*
-#%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.png
-#%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.svgz
-#%{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
-#%{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
-#%{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
 %{_datadir}/apps/kopete/icons/*/*/actions/logging.png
-#%{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
-#%{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
-#%{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete_avdevice.png
 %dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/statistics
