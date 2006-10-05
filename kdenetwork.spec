@@ -1240,6 +1240,16 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
 %{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
+%dir %{_datadir}/apps/kopete
+%dir %{_datadir}/apps/kopete/icons
+%dir %{_datadir}/apps/kopete/icons/crystalsvg
+%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
+%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
+%dir %{_datadir}/apps/kopete/icons/hicolor
+%dir %{_datadir}/apps/kopete/icons/hicolor/*
+%dir %{_datadir}/apps/kopete/icons/hicolor/*/*
+%dir %{_datadir}/apps/kopete/pics
+%dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
@@ -1248,38 +1258,31 @@ fi
 %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %{_datadir}/apps/kconf_update/kopete-nameTracking.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-%dir %{_datadir}/apps/kopete
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 %{_datadir}/apps/kopete/*rc
-%dir %{_datadir}/apps/kopete/icons
-%dir %{_datadir}/apps/kopete/icons/crystalsvg
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-%dir %{_datadir}/apps/kopete/icons/hicolor
-%dir %{_datadir}/apps/kopete/icons/hicolor/*
-%dir %{_datadir}/apps/kopete/icons/hicolor/*/*
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
 %{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
 %{_datadir}/apps/kopete/icons/*/*/actions/logging.png
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/kopete_avdevice.png
-%dir %{_datadir}/apps/kopete/pics
 %{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_statistics
-%dir %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
 %{_datadir}/config.kcfg/kopete.kcfg
 %{_datadir}/config.kcfg/kopeteidentityconfigpreferences.kcfg
+%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
 %{_datadir}/services/chatwindow.desktop
 %{_datadir}/services/emailwindow.desktop
+%{_datadir}/services/invitation.protocol
 %{_datadir}/services/kopete_accountconfig.desktop
 %{_datadir}/services/kopete_addbookmarks.desktop
 %{_datadir}/services/kopete_appearanceconfig.desktop
 %{_datadir}/services/kopete_behaviorconfig.desktop
+%{_datadir}/services/kopete_identityconfig.desktop
 %{_datadir}/services/kopete_statistics.desktop
 %{_datadir}/servicetypes/kopeteplugin.desktop
 %{_datadir}/servicetypes/kopeteprotocol.desktop
@@ -1289,85 +1292,68 @@ fi
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde/kopete.desktop
-%{_iconsdir}/*/*/apps/kopete.png
-%{_iconsdir}/*/*/apps/kopete2.svgz
-%{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
-%{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
-%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
-%{_datadir}/services/invitation.protocol
-%{_datadir}/services/kopete_identityconfig.desktop
-%{_iconsdir}/crystalsvg/*/actions/voicecall.png
-%{_iconsdir}/crystalsvg/*/actions/webcamreceive.png
-%{_iconsdir}/crystalsvg/*/actions/webcamsend.png
 %{_iconsdir}/*/*/actions/account_offline_overlay.png
 %{_iconsdir}/*/*/actions/account_offline_overlay.svgz
-%{_iconsdir}/crystalsvg/*/actions/contact_away_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/contact_busy_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/contact_food_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/contact_invisible_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/contact_phone_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/contact_xa_overlay.png
+%{_iconsdir}/*/*/actions/add_user.png
+%{_iconsdir}/*/*/actions/contact_away_overlay.png
+%{_iconsdir}/*/*/actions/contact_busy_overlay.png
+%{_iconsdir}/*/*/actions/contact_food_overlay.png
+%{_iconsdir}/*/*/actions/contact_invisible_overlay.png
+%{_iconsdir}/*/*/actions/contact_phone_overlay.png
+%{_iconsdir}/*/*/actions/contact_xa_overlay.png
+%{_iconsdir}/*/*/actions/delete_user.png
+%{_iconsdir}/*/*/actions/edit_user.png
+%{_iconsdir}/*/*/actions/emoticon.png
+%{_iconsdir}/*/*/actions/jabber_away.png
+%{_iconsdir}/*/*/actions/jabber_chatty.png
+%{_iconsdir}/*/*/actions/jabber_connecting.mng
+%{_iconsdir}/*/*/actions/jabber_group.png
+%{_iconsdir}/*/*/actions/jabber_invisible.png
+%{_iconsdir}/*/*/actions/jabber_na.png
+%{_iconsdir}/*/*/actions/jabber_offline.png
+%{_iconsdir}/*/*/actions/jabber_online.png
+%{_iconsdir}/*/*/actions/jabber_original.png
+%{_iconsdir}/*/*/actions/jabber_raw.png
+%{_iconsdir}/*/*/actions/jabber_serv_off.png
+%{_iconsdir}/*/*/actions/jabber_serv_on.png
+%{_iconsdir}/*/*/actions/jabber_xa.png
 %{_iconsdir}/*/*/actions/kopeteavailable.png
 %{_iconsdir}/*/*/actions/kopeteaway.png
 %{_iconsdir}/*/*/actions/kopeteeditstatusmessage.png
 %{_iconsdir}/*/*/actions/kopetestatusmessage.png
+%{_iconsdir}/*/*/actions/metacontact_away.png
+%{_iconsdir}/*/*/actions/metacontact_offline.png
+%{_iconsdir}/*/*/actions/metacontact_online.png
+%{_iconsdir}/*/*/actions/metacontact_unknown.png
 %{_iconsdir}/*/*/actions/newmessage.mng
 %{_iconsdir}/*/*/actions/newmsg.png
+%{_iconsdir}/*/*/actions/search_user.png
 %{_iconsdir}/*/*/actions/show_offliners.png
 %{_iconsdir}/*/*/actions/status_unknown.png
 %{_iconsdir}/*/*/actions/status_unknown_overlay.png
-%{_iconsdir}/crystalsvg/*/actions/add_user.png
-%{_iconsdir}/crystalsvg/*/actions/delete_user.png
-%{_iconsdir}/crystalsvg/*/actions/edit_user.png
-%{_iconsdir}/crystalsvg/*/actions/emoticon.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_away.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_chatty.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_connecting.mng
-%{_iconsdir}/crystalsvg/*/actions/jabber_group.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_invisible.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_na.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_offline.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_online.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_original.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_raw.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_serv_off.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_serv_on.png
-%{_iconsdir}/crystalsvg/*/actions/jabber_xa.png
-%{_iconsdir}/crystalsvg/*/actions/metacontact_away.png
-%{_iconsdir}/crystalsvg/*/actions/metacontact_offline.png
-%{_iconsdir}/crystalsvg/*/actions/metacontact_online.png
-%{_iconsdir}/crystalsvg/*/actions/metacontact_unknown.png
-%{_iconsdir}/crystalsvg/*/actions/search_user.png
-%{_iconsdir}/hicolor/*/apps/jabber_protocol.png
-%{_iconsdir}/hicolor/*/actions/jabber_away.png
-%{_iconsdir}/hicolor/*/actions/jabber_chatty.png
-%{_iconsdir}/hicolor/*/actions/jabber_connecting.mng
-%{_iconsdir}/hicolor/*/actions/jabber_group.png
-%{_iconsdir}/hicolor/*/actions/jabber_invisible.png
-%{_iconsdir}/hicolor/*/actions/jabber_na.png
-%{_iconsdir}/hicolor/*/actions/jabber_offline.png
-%{_iconsdir}/hicolor/*/actions/jabber_online.png
-%{_iconsdir}/hicolor/*/actions/jabber_original.png
-%{_iconsdir}/hicolor/*/actions/jabber_raw.png
-%{_iconsdir}/hicolor/*/actions/jabber_serv_off.png
-%{_iconsdir}/hicolor/*/actions/jabber_serv_on.png
-%{_iconsdir}/hicolor/*/actions/jabber_xa.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_aim.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_gadu.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_http/ws.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_icq.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_irc.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_msn.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_qq.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_sms.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_smtp.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_tlen.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_gateway_yahoo.png
-%{_iconsdir}/crystalsvg/*/apps/jabber_protocol.png
-%{_iconsdir}/hicolor/*/actions/emoticon.png
+%{_iconsdir}/*/*/actions/voicecall.png
+%{_iconsdir}/*/*/actions/webcamreceive.png
+%{_iconsdir}/*/*/actions/webcamsend.png
+%{_iconsdir}/*/*/apps/jabber_gateway_aim.png
+%{_iconsdir}/*/*/apps/jabber_gateway_gadu.png
+%{_iconsdir}/*/*/apps/jabber_gateway_http/ws.png
+%{_iconsdir}/*/*/apps/jabber_gateway_icq.png
+%{_iconsdir}/*/*/apps/jabber_gateway_irc.png
+%{_iconsdir}/*/*/apps/jabber_gateway_msn.png
+%{_iconsdir}/*/*/apps/jabber_gateway_qq.png
+%{_iconsdir}/*/*/apps/jabber_gateway_sms.png
+%{_iconsdir}/*/*/apps/jabber_gateway_smtp.png
+%{_iconsdir}/*/*/apps/jabber_gateway_tlen.png
+%{_iconsdir}/*/*/apps/jabber_gateway_yahoo.png
+%{_iconsdir}/*/*/apps/jabber_protocol.png
+%{_iconsdir}/*/*/apps/jabber_protocol.png
+%{_iconsdir}/*/*/apps/kopete.png
+%{_iconsdir}/*/*/apps/kopete2.svgz
+%{_iconsdir}/*/*/apps/kopete_all_away.png
+%{_iconsdir}/*/*/apps/kopete_offline.png
+%{_iconsdir}/*/*/apps/kopete_some_away.png
+%{_iconsdir}/*/*/apps/kopete_some_online.png
+%{_iconsdir}/*/*/mimetypes/kopete_emoticons.png
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
