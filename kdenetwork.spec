@@ -6,6 +6,7 @@
 %bcond_without	xmms
 %bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
 %bcond_with	skype			# incomplete!
+%bcond_with	meanwhile	# Kopete Meanwhile plugin (Lotus Sametime support)
 
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
@@ -45,7 +46,8 @@ BuildRequires:	libiw-devel >= 27
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
-BuildRequires:	meanwhile-devel
+%{?with_meanwhile:BuildRequires:	meanwhile-devel <= 1.1.0}
+%{?with_meanwhile:BuildRequires:	meanwhile-devel >= 1.0.1}
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
@@ -1214,9 +1216,6 @@ fi
 
 %files kopete -f kopete.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
 %attr(755,root,root) %{_bindir}/kopete
 %{_libdir}/kde3/kcm_kopete_addbookmarks.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
@@ -1346,7 +1345,6 @@ fi
 %{_iconsdir}/*/*/apps/jabber_gateway_tlen.png
 %{_iconsdir}/*/*/apps/jabber_gateway_yahoo.png
 %{_iconsdir}/*/*/apps/jabber_protocol.png
-%{_iconsdir}/*/*/apps/jabber_protocol.png
 %{_iconsdir}/*/*/apps/kopete.png
 %{_iconsdir}/*/*/apps/kopete2.svgz
 %{_iconsdir}/*/*/apps/kopete_all_away.png
@@ -1407,12 +1405,14 @@ fi
 %{_datadir}/services/jabberdisco.protocol
 %{_datadir}/services/kopete_jabber.desktop
 
+%if %{with meanwhile}
 %files kopete-protocol-meanwhile
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*meanwhile*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*meanwhile*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/meanwhile*
 %{_datadir}/services/kopete_meanwhile.desktop
+%endif
 
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
