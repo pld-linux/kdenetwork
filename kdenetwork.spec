@@ -1405,9 +1405,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
 %{_libdir}/kde3/kio_jabberdisco.la
 %attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
+%{_datadir}/apps/kopete_jabber
 %{_datadir}/services/jabberdisco.protocol
 %{_datadir}/services/kopete_jabber.desktop
-%{_datadir}/apps/kopete_jabber/jabberchatui.rc
 
 %files kopete-protocol-meanwhile
 %defattr(644,root,root,755)
@@ -1424,9 +1424,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
 %{_libdir}/kde3/kopete_netmeeting.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_netmeeting.so
+%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/apps/kopete_msn
 %{_datadir}/apps/kopete_netmeeting
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 %{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
 %{_datadir}/services/kopete_msn.desktop
