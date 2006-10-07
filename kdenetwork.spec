@@ -1,4 +1,5 @@
 # TODO
+# - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
 # - fix or kill skype support
 # - kill internal libgadu copy
 #
@@ -580,18 +581,17 @@ A highlighter plugin for Kopete.
 Wtyczka Kopete podkre¶laj±ca wybrane teksty.
 
 %package kopete-tool-latex
-Summary:	A latex plugin for Kopete
-Summary(pl):	Wtyczka Kopete renderuj±ca tekst w formacie latexu
+Summary:	A LaTeX plugin for Kopete
+Summary(pl):	Wtyczka Kopete renderuj±ca tekst w formacie LaTeXa
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Conflicts:	%{name}-kopete < 10:3.4.89-1
+Conflicts:	kdenetwork-kopete < 10:3.4.89-1
 
 %description kopete-tool-latex
-A latex plugin for Kopete.
+A LaTeX plugin for Kopete.
 
 %description kopete-tool-latex -l pl
-Wtyczka Kopete renderuj±ca tekst w formacie latexu.
-
+Wtyczka Kopete renderuj±ca tekst w formacie LaTeXa.
 
 %package kopete-tool-history
 Summary:	A history plugin for Kopete
