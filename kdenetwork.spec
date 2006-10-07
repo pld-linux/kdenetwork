@@ -1,5 +1,6 @@
 # TODO
 # - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
+# - what about non-applied libgadu patch?
 # - fix or kill skype support
 # - kill internal libgadu copy
 #
@@ -33,7 +34,7 @@ Source5:	winpopup-install.sh
 Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-libgadu.patch
+#Patch2:		%{name}-libgadu.patch
 Patch3:		%{name}-kopete-qca-tls.patch
 Patch4:		%{name}-bug-14561.patch
 BuildRequires:	autoconf
