@@ -37,6 +37,7 @@ Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 #Patch2:		%{name}-libgadu.patch
 Patch3:		%{name}-kopete-qca-tls.patch
+Patch4:		kde-ac260-lt.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
@@ -988,6 +989,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
