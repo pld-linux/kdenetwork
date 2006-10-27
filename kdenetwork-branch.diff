@@ -1,7 +1,7 @@
 Index: krfb/kinetd/eventsrc
 ===================================================================
---- krfb/kinetd/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ krfb/kinetd/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- krfb/kinetd/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ krfb/kinetd/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -80,7 +80,7 @@
  Comment[es]=Recibida conexión entrante
  Comment[et]=Saadi sissetulev ühendus
@@ -13,8 +13,8 @@ Index: krfb/kinetd/eventsrc
  Comment[gl]=Recibíuse unha conexión entrante
 Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -21,7 +21,6 @@
  Name[es]=Esclavo de LAN KIO
  Name[et]=Kohtvõrgu KIO moodul
@@ -34,8 +34,8 @@ Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
  Comment[ga]=Cumraíocht lan: agus rlan:
 Index: lanbrowsing/kcmlisa/kcmlisa.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmlisa.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ lanbrowsing/kcmlisa/kcmlisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- lanbrowsing/kcmlisa/kcmlisa.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ lanbrowsing/kcmlisa/kcmlisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -9,7 +9,6 @@
  X-KDE-FactoryName=lisa
  
@@ -55,8 +55,8 @@ Index: lanbrowsing/kcmlisa/kcmlisa.desktop
  Comment[ga]=Cumraigh LISa
 Index: kdnssd/kdedmodule/dnssdwatcher.desktop
 ===================================================================
---- kdnssd/kdedmodule/dnssdwatcher.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kdnssd/kdedmodule/dnssdwatcher.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kdnssd/kdedmodule/dnssdwatcher.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kdnssd/kdedmodule/dnssdwatcher.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -51,7 +51,7 @@
  Comment[es]=Vigila los servicios DNS-SD y actualiza los listados de directorio
  Comment[et]=Jälgib DNS-SD teenuseid ja uuendab kataloogide nimekirju
@@ -68,8 +68,8 @@ Index: kdnssd/kdedmodule/dnssdwatcher.desktop
  Comment[gl]=Deixa constancia dos servicios DNS-SD e anova as listaxes de directorios
 Index: kopete/plugins/nowlistening/nowlisteningplugin.cpp
 ===================================================================
---- kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -308,7 +308,7 @@
  				{
  					// Check for the now listening message in parenthesis, 
@@ -95,8 +95,8 @@ Index: kopete/plugins/nowlistening/nowlisteningplugin.cpp
  					else
 Index: kopete/plugins/alias/kopete_alias.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -24,7 +24,7 @@
  Name[cy]=Ffugenw
  Name[el]=Αντιστοιχία
@@ -117,8 +117,8 @@ Index: kopete/plugins/alias/kopete_alias.desktop
  Comment[gl]=Engadir alias persoáis para comandos
 Index: kopete/plugins/alias/kopete_alias_config.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -20,7 +20,7 @@
  Name[cy]=Ffugenw
  Name[el]=Αντιστοιχία
@@ -139,8 +139,8 @@ Index: kopete/plugins/alias/kopete_alias_config.desktop
  Comment[gl]=Engadir alias persoáis para comandos
 Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -78,7 +78,7 @@
  Comment[es]=Cifra mensajes usando PGP
  Comment[et]=Sõnumite krüptimine PGP abil
@@ -152,8 +152,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
  Comment[gl]=Encripta mensaxes con PGP
 Index: kopete/plugins/cryptography/kopete_cryptography.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -82,7 +82,7 @@
  Comment[es]=Cifra y descifra mensajes con GPG
  Comment[et]=Sõnumite krüptimine ja lahtikrüptimine GPG abil
@@ -165,8 +165,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography.desktop
  Comment[gl]=Encriptar e desencriptar mensaxes con GPG
 Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -38,7 +38,7 @@
  Comment[es]=Voz y video con MSN Messenger
  Comment[et]=Audio ja video kasutamine MSN Messengeriga
@@ -178,8 +178,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
  Comment[gl]=Voz e video con MSN Messenger
 Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -42,7 +42,7 @@
  Comment[es]=Voz y video con MSN Messenger
  Comment[et]=Audio ja video kasutamine MSN Messengeriga
@@ -191,8 +191,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
  Comment[gl]=Voz e video con MSN Messenger
 Index: kopete/plugins/texteffect/kopete_texteffect.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -28,7 +28,7 @@
  Name[es]=Efecto de texto
  Name[et]=Tekstiefektid
@@ -204,8 +204,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect.desktop
  Name[ga]=Maisíocht Téacs
 Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -24,7 +24,7 @@
  Name[es]=Efecto de texto
  Name[et]=Tekstiefektid
@@ -217,8 +217,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
  Name[ga]=Maisíocht Téacs
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -91,7 +91,7 @@
  Comment[es]=Plugin de Historia
  Comment[et]=Ajalooplugin
@@ -230,8 +230,8 @@ Index: kopete/plugins/history/kopete_history_config.desktop
  Comment[ga]=Breiseán Staire
 Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
 ===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -70,7 +70,7 @@
  Comment[es]=Anota automáticamente los enlaces de los mensajes entrantes
  Comment[et]=Sissetulevates sõnumites olevate viitade automaatne lisamine järjehoidjatesse
@@ -243,8 +243,8 @@ Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
  Comment[gl]=Marcar automáticamente as ligazóns nas mensaxes entrantes
 Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
 ===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -70,7 +70,7 @@
  Comment[es]=Anota automáticamente los enlaces de los mensajes entrantes
  Comment[et]=Sissetulevates sõnumites olevate viitade automaatne lisamine järjehoidjatesse
@@ -256,8 +256,8 @@ Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
  Comment[gl]=Marcar automáticamente as ligazóns nas mensaxes entrantes
 Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -81,7 +81,7 @@
  Comment[es]=Autoreemplaza texto que puede elegir
  Comment[et]=Asendab automaatselt sinu valitud teksti
@@ -269,8 +269,8 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
  Comment[gl]=Reemplaza automáticamente algún texto que tí podes escoller
 Index: kopete/protocols/yahoo/libkyahoo/webcamtask.cpp
 ===================================================================
---- kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -213,13 +213,11 @@
  	{
  		case ConnectedStage1:
@@ -321,8 +321,8 @@ Index: kopete/protocols/yahoo/libkyahoo/webcamtask.cpp
  		kdDebug(YAHOO_RAW_DEBUG) << k_funcinfo << "Buffer created" << endl;
 Index: kopete/protocols/groupwise/kopete_groupwise.desktop
 ===================================================================
---- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -26,7 +26,7 @@
  Comment[cs]=Novell GroupWise komunikátor
  Comment[de]=Novell GroupWise-Nachrichtendienst
@@ -332,10 +332,58 @@ Index: kopete/protocols/groupwise/kopete_groupwise.desktop
  Comment[fi]=Novell GroupWise -viestijä
  Comment[fr]=Messagerie GroupWise Novell
  Comment[he]=תוכנת המסרים של נובל GroupWise
+Index: kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp
+===================================================================
+--- kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
+@@ -140,10 +140,39 @@
+ 		const Field::FieldListIterator end = fl.end();
+ 		for ( Field::FieldListIterator it = fl.begin(); it != end; ++it )
+ 		{
+-			Field::SingleField * propField = static_cast<Field::SingleField *>( *it );
+-			QString propName = propField->tag();
+-			QString propValue = propField->value().toString();
+-			propMap.insert( propName, propValue );
++			// assumes each property only present once
++			// check in logintask.cpp and if it's a multi field,
++			// get the value of this instance, check if it's already in the property map and append if found.
++			Field::SingleField * propField = dynamic_cast<Field::SingleField *>( *it );
++			if ( propField )
++			{
++				QString propName = propField->tag();
++				QString propValue = propField->value().toString();
++				propMap.insert( propName, propValue );
++			}
++			else
++			{
++				Field::MultiField * propList = dynamic_cast<Field::MultiField*>( *it );
++				if ( propList )
++				{
++					QString parentName = propList->tag();
++					Field::FieldList propFields = propList->fields();
++					const Field::FieldListIterator end = propFields.end();
++					for ( Field::FieldListIterator it = propFields.begin(); it != end; ++it )
++					{
++						propField = dynamic_cast<Field::SingleField *>( *it );
++						if ( propField )
++						{
++							QString propValue = propField->value().toString();
++							QString contents = propMap[ propField->tag() ];
++							if ( !contents.isEmpty() )
++								contents.append( ", " );
++							contents.append( propField->value().toString());
++							propMap.insert( propField->tag(), contents );
++						}
++					}
++				}
++			}
+ 		}
+ 	}
+ 	if ( !propMap.empty() )
 Index: kopete/protocols/jabber/jabbercontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -952,7 +952,7 @@
  	
  	kdDebug ( JABBER_DEBUG_GLOBAL ) << k_funcinfo << contactId () /*<< " - " <<kdBacktrace()*/ << endl;
@@ -347,8 +395,8 @@ Index: kopete/protocols/jabber/jabbercontact.cpp
  		connect(m_syncTimer, SIGNAL(timeout()) , this , SLOT(slotDelayedSync()));
 Index: kopete/protocols/oscar/icq/kopete_icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -33,7 +33,7 @@
  Comment[es]=Protocolo de conexión de ICQ
  Comment[et]=Protokoll ühendumiseks ICQ-ga
@@ -360,8 +408,8 @@ Index: kopete/protocols/oscar/icq/kopete_icq.desktop
  Comment[ga]=Prótacal chun ceangal le ICQ
 Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
 ===================================================================
---- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -23,6 +23,7 @@
  Name[ta]=இடைப்பட்ட பொழுதில்
  Comment=Meanwhile (Lotus Sametime) Protocol
@@ -378,16 +426,35 @@ Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
  Comment[is]="Meanwhile" (Lotus Sametimr) samskipturegla
  Comment[it]=Protocollo Meanwhile (Lotus Sametime)
  Comment[ja]=Meanwhile (Lotus Sametime) プロトコル
-@@ -46,4 +48,5 @@
+@@ -40,10 +42,12 @@
+ Comment[pl]=Protokół Meanwhile (Lotus Sametime)
+ Comment[pt]=Protocolo Meanwhile (Lotus Sametime)
+ Comment[pt_BR]=Protocolo Meanwhile (Lotus Sametime)
++Comment[ru]=Протокол Meanwhile (Lotus Sametime)
+ Comment[sk]=Meanwhile (Lotus Sametime) Protokol
+ Comment[sl]=Protokol Meanwhile (Lotus Sametime)
+ Comment[sr]=Протокол Meanwhile (Lotus Sametime)
  Comment[sr@Latn]=Protokol Meanwhile (Lotus Sametime)
  Comment[sv]=Meanwhile-protokoll (Lotus Sametime)
  Comment[uk]=Протокол Meanwhile (Lotus Sametime)
 +Comment[zh_CN]=Meanwhile (Lotus Sametime) 协议
  Comment[zh_TW]=Meanwhile （Lotus Sametime）協定外掛程式
+
+Property changes on: kopete/protocols/testbed/ui
+___________________________________________________________________
+Name: svn:ignore
+   + .deps
+libkopetetestbedui.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+
 Index: kopete/protocols/msn/kopete_msn.desktop
 ===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -21,7 +21,7 @@
  Name[cy]=Negesydd MSN
  Name[da]=MSN-Messenger
@@ -408,8 +475,8 @@ Index: kopete/protocols/msn/kopete_msn.desktop
  Comment[ga]=Prótacal chun ceangal le MSN Messenger
 Index: kopete/protocols/msn/config/kopete_msn_config.desktop
 ===================================================================
---- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -26,7 +26,7 @@
  Name[es]=Plugin de MSN
  Name[et]=MSN plugin
@@ -421,8 +488,8 @@ Index: kopete/protocols/msn/config/kopete_msn_config.desktop
  Name[ga]=Breiseán MSN
 Index: kopete/kopete/main.cpp
 ===================================================================
---- kopete/kopete/main.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/main.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -64,7 +64,7 @@
  	aboutData.addAuthor ( "Jason Keirstead", I18N_NOOP("Developer"), "jason@keirstead.org", "http://www.keirstead.org");
  	aboutData.addAuthor ( "Matt Rogers", I18N_NOOP("Lead Developer, AIM and ICQ plugin maintainer"), "mattr@kde.org" );
@@ -434,8 +501,8 @@ Index: kopete/kopete/main.cpp
  	aboutData.addAuthor ( "Richard Smith", I18N_NOOP("Developer, UI maintainer"), "kde@metafoo.co.uk" );
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -10,7 +10,7 @@
  Comment[de]=Kopete-Nachrichtendienst
  Comment[el]=Αποστολέας μηνυμάτων Kopete
@@ -479,7 +546,15 @@ Index: kopete/kopete/eventsrc
  Name[is]=Auðkenning
  Name[it]=Autorizzazione
  Name[ja]=許可
-@@ -783,6 +785,7 @@
+@@ -773,6 +775,7 @@
+ Name[pl]=Autoryzacja
+ Name[pt]=Autorização
+ Name[pt_BR]=Autorização
++Name[ru]=Авторизация
+ Name[sk]=Autorizácia
+ Name[sl]=Odobritev
+ Name[sr]=Ауторизација
+@@ -783,6 +786,7 @@
  Name[zh_TW]=認證
  Comment=An user has accepted/declined your authorization request
  Comment[ca]=Un usuari ha autoritzat/declinat la vostra petició d'autorització
@@ -487,7 +562,7 @@ Index: kopete/kopete/eventsrc
  Comment[da]=En bruger har godkendt/afslået din godkendelsesforespørgsel
  Comment[de]=Ein Benutzer hat Ihre Autorisierung erlaubt/abgelehnt
  Comment[el]=Ένας χρήστης έχει πιστοποιήσει/απορρίψει την αίτησή σας για πιστοποίηση
-@@ -792,6 +795,7 @@
+@@ -792,6 +796,7 @@
  Comment[fi]=Käyttäjä on hyväksynyt/hylännyt hyväksymispyyntösi
  Comment[fr]=Un utilisateur a accepté ou refusé votre demande d'autorisation
  Comment[he]=משתמש אישר/דחה את בקשתך לזיהוי
@@ -495,7 +570,15 @@ Index: kopete/kopete/eventsrc
  Comment[is]=Notandi hefur heimilað eða hafnað beiðni þinni um auðkenningu auðkenningabeiðni þinni
  Comment[it]=Un utente ha autorizzato/declinato la tua richiesta
  Comment[ja]=ユーザはあなたの許可要求を承諾/拒絶しました
-@@ -857,7 +861,7 @@
+@@ -801,6 +806,7 @@
+ Comment[pl]=Użytkownik zaakceptował/odrzucił Twoje żądanie autoryzacji
+ Comment[pt]=Um utilizador autorizou/rejeitou o seu pedido de autorização
+ Comment[pt_BR]=Um utilizador autorizou/rejeitou o seu pedido de autorização
++Comment[ru]=Пользователь авторизовал вас или отклонил ваш запрос
+ Comment[sk]=Užívateľ prijal/odmietol vašu požiadavku o autorizáciu
+ Comment[sl]=Uporabnik je spejel/zavrnil vaš zahtevek za odobritev
+ Comment[sr]=Корисник је прихватио/одбио ваш захтев за ауторизацију
+@@ -857,7 +863,7 @@
  Comment[es]=Tiene correo nuevo en la cuenta de Yahoo
  Comment[et]=Saabus uus kiri sinu Yahoo Inboxi
  Comment[eu]=E-posta berri bat jaso da zure Yahoo-ko sarrerako ontzian
@@ -504,7 +587,7 @@ Index: kopete/kopete/eventsrc
  Comment[fi]=Uutta postia saapunut Yahoo-sähköpostilaatikkoon
  Comment[fr]=Un nouveau message est arrivé dans votre boîte aux lettres Yahoo
  Comment[gl]=Unha nova mensaxe chegou ao teu cartafol de entrada de Yahoo
-@@ -895,6 +899,7 @@
+@@ -895,6 +901,7 @@
  [msn_alert]
  Name=MSN Alert
  Name[ca]=Alerta del MSN
@@ -512,7 +595,7 @@ Index: kopete/kopete/eventsrc
  Name[da]=MSN-alarm
  Name[de]=MSN-Warnung
  Name[el]=Ειδοποίηση του MSN
-@@ -904,6 +909,7 @@
+@@ -904,6 +911,7 @@
  Name[fi]=MSN-varoitus
  Name[fr]=Alerte MSN
  Name[he]=אזהרה של MSN
@@ -520,7 +603,15 @@ Index: kopete/kopete/eventsrc
  Name[is]=MSN skeyti
  Name[it]=Avviso MSN
  Name[km]=សេចក្ដី​ជូនដំណឹង MSN
-@@ -922,6 +928,7 @@
+@@ -912,6 +920,7 @@
+ Name[pl]=Alarm MSN
+ Name[pt]=Alerta MSN
+ Name[pt_BR]=Alerta MSN
++Name[ru]=Предупреждение MSN
+ Name[sk]=MSN Upozornenie
+ Name[sl]=Alarm MSN
+ Name[sr]=MSN аларм
+@@ -922,6 +931,7 @@
  Name[zh_TW]=MSN 警告
  Comment=A new alert has been sent to you
  Comment[ca]=Se us ha enviat una nova alerta
@@ -528,7 +619,7 @@ Index: kopete/kopete/eventsrc
  Comment[da]=En ny alarm er sendt til dig
  Comment[de]=Sie haben eine neue Warnung erhalten
  Comment[el]=Σας στάλθηκε μια νέα ειδοποίηση
-@@ -931,6 +938,7 @@
+@@ -931,6 +941,7 @@
  Comment[fi]=Sinulle on lähetetty uusi varoitus
  Comment[fr]=Une nouvelle alerte vous a été envoyée
  Comment[he]=אזהרה חדשה נשלחה אליך
@@ -536,7 +627,15 @@ Index: kopete/kopete/eventsrc
  Comment[is]=Þér hefur verið sent nýtt skeyti
  Comment[it]=Ti è stato inviato un avviso
  Comment[ja]=新しいアラートを受信しました
-@@ -1275,7 +1283,7 @@
+@@ -940,6 +951,7 @@
+ Comment[pl]=Nowy alarm został wysłany do Ciebie
+ Comment[pt]=Foi enviada um novo alerta
+ Comment[pt_BR]=Foi enviada um novo alerta
++Comment[ru]=Вам отправлено предупреждение
+ Comment[sk]=Bolo vám poslané nové upozornenie
+ Comment[sl]=Poslan vam je bil alarm
+ Comment[sr]=Послат вам је нови аларм
+@@ -1275,7 +1287,7 @@
  Comment[es]=Ocurrio un error en la conexión
  Comment[et]=Ühendusega tekkis viga
  Comment[eu]=Errore bat gertatu da konexioan
@@ -545,10 +644,35 @@ Index: kopete/kopete/eventsrc
  Comment[fi]=Yhteydessä tapahtui virhe
  Comment[fr]=Une erreur de connexion est apparue
  Comment[gl]=Ocorreu un erro na conexión
+@@ -1382,6 +1394,7 @@
+ Comment[pl]=Połączenie zostało przerwane
+ Comment[pt]=A ligação foi-se abaixo
+ Comment[pt_BR]=A ligação foi-se abaixo
++Comment[ru]=Разрыв соединения
+ Comment[sk]=Spojenie sa stratilo
+ Comment[sl]=Povezava je bila prekinjena
+ Comment[sr]=Веза је изгубљена
+@@ -1427,7 +1440,7 @@
+ Name[pl]=Nie można się połączyć
+ Name[pt]=Não É Possível Ligar
+ Name[pt_BR]=Não foi possível efetuar a conexão
+-Name[ru]=Не удаётся соединиться
++Name[ru]=Не удаётся подключиться
+ Name[sk]=Nedá sa pripojiť
+ Name[sl]=Povezava ni mogoča
+ Name[sr]=Повезивање немогуће
+@@ -1637,6 +1650,7 @@
+ Comment[pl]=Wystąpił błąd wewnętrzny usługi
+ Comment[pt]=Ocorreu um erro interno do serviço
+ Comment[pt_BR]=Ocorreu um erro interno do serviço
++Comment[ru]=Внутренняя ошибка службы
+ Comment[sk]=Nastala interná chyba servera
+ Comment[sl]=Prišlo je do notranje napake pri storitvi
+ Comment[sr]=Дошло јо до интерне грешке сервиса
 Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -17,7 +17,7 @@
  GenericName[es]=Mensajería instantánea
  GenericName[et]=Kiirsuhtlemisrakendus
@@ -569,8 +693,8 @@ Index: kopete/kopete/kopete.desktop
  Comment[gl]=Mensaxería Instantánea
 Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
 ===================================================================
---- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -76,7 +76,7 @@
  Comment[es]=Aquí­ puede configurar los dispositivos de sonido y audio de Kopete
  Comment[et]=Siin saab muuta Kopete video- ja heliseadmete seadistusi
@@ -582,8 +706,8 @@ Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
  Comment[gl]=Aquí podes modificar as opcións dos dispositivos de video e audio de Kopete
 Index: kopete/kopete/chatwindow/chatmessagepart.cpp
 ===================================================================
---- kopete/kopete/chatwindow/chatmessagepart.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/chatwindow/chatmessagepart.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/chatwindow/chatmessagepart.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/chatwindow/chatmessagepart.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -568,9 +568,23 @@
  {
  	KopetePrefs *p = KopetePrefs::prefs();
@@ -625,8 +749,8 @@ Index: kopete/kopete/chatwindow/chatmessagepart.cpp
  		.arg( p->linkColor().name() );
 Index: kopete/kopete/Makefile.am
 ===================================================================
---- kopete/kopete/Makefile.am	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete/Makefile.am	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -9,6 +9,7 @@
  	-I$(kopete_srcdir)/kopete/addcontactwizard \
  	-I$(kopete_srcdir)/kopete/config/accounts \
@@ -637,8 +761,8 @@ Index: kopete/kopete/Makefile.am
  	-I$(kopete_builddir)/kopete/contactlist \
 Index: kopete/kopete.kdevelop
 ===================================================================
---- kopete/kopete.kdevelop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/kopete.kdevelop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -205,6 +205,14 @@
        <argumentsHintDelay>100</argumentsHintDelay>
        <automaticHeaderCompletion>true</automaticHeaderCompletion>
@@ -656,8 +780,8 @@ Index: kopete/kopete.kdevelop
      <creategettersetter>
 Index: kopete/libkopete/kopetemessagehandler.cpp
 ===================================================================
---- kopete/libkopete/kopetemessagehandler.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/libkopete/kopetemessagehandler.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/libkopete/kopetemessagehandler.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/libkopete/kopetemessagehandler.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -76,7 +76,6 @@
  {
  public:
@@ -683,8 +807,8 @@ Index: kopete/libkopete/kopetemessagehandler.cpp
  
 Index: kopete/libkopete/kopetemetacontact.cpp
 ===================================================================
---- kopete/libkopete/kopetemetacontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kopete/libkopete/kopetemetacontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kopete/libkopete/kopetemetacontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kopete/libkopete/kopetemetacontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -687,7 +687,13 @@
  
  QImage MetaContact::photo() const
@@ -702,8 +826,8 @@ Index: kopete/libkopete/kopetemetacontact.cpp
  Picture &MetaContact::picture() const
 Index: knewsticker/knewstickerstub/knewstickerstub.desktop
 ===================================================================
---- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -12,7 +12,7 @@
  Name[es]=Interfaz de configuración de KNewsTicker
  Name[et]=Uudistejälgija seadistamine
@@ -715,8 +839,8 @@ Index: knewsticker/knewstickerstub/knewstickerstub.desktop
  Name[gl]=Interface de Configuración de KNewsTicker
 Index: knewsticker/eventsrc
 ===================================================================
---- knewsticker/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- knewsticker/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -83,7 +83,7 @@
  Name[es]=Nuevas noticias disponibles
  Name[et]=Uus uudis
@@ -746,9 +870,17 @@ Index: knewsticker/eventsrc
  Comment[ga]=Ní féidir an comhad RDF íosluchtaithe a pharsáil
 Index: knewsticker/knewsticker.desktop
 ===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
-@@ -63,7 +63,7 @@
+--- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
+@@ -36,6 +36,7 @@
+ Name[nso]=Seswai sa Ditaba
+ Name[pt]=Extractor de Notícias
+ Name[pt_BR]=Mostrador de Notícias
++Name[ru]=Монитор новостей
+ Name[sk]=Sledovač správ
+ Name[sl]=Prikazovalnik novic
+ Name[sv]=Nyhetsläsare
+@@ -63,7 +64,7 @@
  Comment[es]=Teletipo de noticias RDF
  Comment[et]=RDF uudiste jälgija
  Comment[eu]=RDF berri-markatzailea
@@ -759,8 +891,8 @@ Index: knewsticker/knewsticker.desktop
  Comment[gl]=Un visor de novas RDF deslizante
 Index: kget/kget_plug_in/kget_plug_in.desktop
 ===================================================================
---- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -28,7 +28,7 @@
  Comment[ca]=Gestor de descàrregues
  Comment[cs]=Správce stahování
@@ -772,8 +904,8 @@ Index: kget/kget_plug_in/kget_plug_in.desktop
  Comment[es]=Gestor de descargas
 Index: kget/kget_plug_in/kget_linkview.cpp
 ===================================================================
---- kget/kget_plug_in/kget_linkview.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kget/kget_plug_in/kget_linkview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kget/kget_plug_in/kget_linkview.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kget/kget_plug_in/kget_linkview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -1,9 +1,12 @@
  #include "kget_linkview.h"
  
@@ -813,8 +945,8 @@ Index: kget/kget_plug_in/kget_linkview.cpp
      toolBar()->setMovingEnabled( false );
 Index: kget/kget.desktop
 ===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kget/kget.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -24,7 +24,7 @@
  GenericName[ca]=Gestor de descàrregues
  GenericName[cs]=Správce stahování
@@ -826,8 +958,8 @@ Index: kget/kget.desktop
  GenericName[es]=Gestor de descargas
 Index: kget/x-kgetlist.desktop
 ===================================================================
---- kget/x-kgetlist.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kget/x-kgetlist.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kget/x-kgetlist.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kget/x-kgetlist.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -10,7 +10,7 @@
  Comment[ca]=Llista de descàrrega del Kget
  Comment[cs]=Seznam stahování KGet
@@ -839,8 +971,8 @@ Index: kget/x-kgetlist.desktop
  Comment[eo]=Kget Deŝutolisto
 Index: kget/eventsrc
 ===================================================================
---- kget/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kget/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -2,7 +2,6 @@
  IconName=kget
  Comment=KGet
@@ -894,8 +1026,8 @@ Index: kget/eventsrc
  Comment[es]=Todas las descargas acabaron
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -63,7 +63,7 @@
  Keywords[de]=KcmSambaConf,kcmsambaconf,samba,windows,freigabe
  Keywords[et]=KcmSambaConf,kcmsambaconf,samba,windows,jagatud ressursid
@@ -907,8 +1039,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
  Keywords[gl]=KcmSambaConf,kcmsambaconf,samba,widows,compartir
 Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -59,7 +59,7 @@
  Comment[es]=Diálogo de propiedades del plugin de Konqueror para compartir un directorio con la red local
  Comment[et]=Konquerori omaduste dialoogi plugin kataloogi jagamiseks kohtvõrgus
@@ -920,8 +1052,8 @@ Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
  Comment[gl]=Diálogo de propiedades do plugin de Konqueror para compartir coa rede local
 Index: filesharing/simple/fileshare.desktop
 ===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -73,7 +73,7 @@
  Comment[es]=Habilitar o deshabilitar el compartir archivos
  Comment[et]=Failide jagamise lubamine või keelamine
@@ -933,8 +1065,8 @@ Index: filesharing/simple/fileshare.desktop
  Comment[gl]=Habilitar ou deshabilitar a compartición de fichieros
 Index: wifi/kwireless/kwireless.desktop
 ===================================================================
---- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -14,7 +14,7 @@
  Comment[es]=Muestra información acerca de los dispositivos de la red inalámbrica
  Comment[et]=Näitab infot traadita võrgu seadmete kohta
@@ -946,8 +1078,8 @@ Index: wifi/kwireless/kwireless.desktop
  Comment[gl]=Información sobre os dispositivos de rede inalámbirca
 Index: wifi/kcmwifi/kcmwifi.desktop
 ===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -74,7 +74,7 @@
  Comment[es]=Configure su red inalámbrica local
  Comment[et]=Traadita võrgu seadistamine
@@ -959,8 +1091,8 @@ Index: wifi/kcmwifi/kcmwifi.desktop
  Comment[gl]=Configura a túa rede inalámbrica
 Index: wifi/kwifimanager.desktop
 ===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -61,7 +61,6 @@
  Name[cy]=KRheolyddDiWi
  Name[de]=KWiFi-Verwaltung
@@ -971,8 +1103,8 @@ Index: wifi/kwifimanager.desktop
  Name[ja]=KWiFiマネージャ
 Index: kppp/accounts.cpp
 ===================================================================
---- kppp/accounts.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kppp/accounts.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kppp/accounts.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kppp/accounts.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -232,12 +232,12 @@
    QueryReset dlg(this);
    int what = dlg.exec();
@@ -990,8 +1122,8 @@ Index: kppp/accounts.cpp
    }
 Index: kppp/Kppp.desktop
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kppp/Kppp.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -12,7 +12,7 @@
  GenericName[es]=Herramienta de conexión telefónica a Internet
  GenericName[et]=Sissehelistamine
@@ -1003,8 +1135,8 @@ Index: kppp/Kppp.desktop
  GenericName[gl]=Ferramenta de Conexión Telefónica a Internet
 Index: kppp/logview/kppplogview.desktop
 ===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -31,7 +31,7 @@
  GenericName[es]=Visor del registro de conexión telefónica a Internet
  GenericName[et]=Interneti sissehelistamise rakenduse logide näitaja
@@ -1016,8 +1148,8 @@ Index: kppp/logview/kppplogview.desktop
  GenericName[gl]=Visor de Rexistros da Ferramenta de Conexión a Internet por Teléfono
 Index: ksirc/eventsrc
 ===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 597702)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 597702)
+--- ksirc/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 599441)
++++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 599441)
 @@ -24,7 +24,7 @@
  Name[es]=Evento de canal
  Name[et]=Kanali sündmus
