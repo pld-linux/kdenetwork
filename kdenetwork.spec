@@ -8,7 +8,6 @@
 %bcond_without	xmms
 %bcond_with	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
 %bcond_with	skype			# incomplete!
-%bcond_with	meanwhile	# Kopete Meanwhile plugin (Lotus Sametime support)
 
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
@@ -20,7 +19,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.5
-Release:	0.4
+Release:	0.7
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -48,8 +47,7 @@ BuildRequires:	libiw-devel >= 27
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
-%{?with_meanwhile:BuildRequires:	meanwhile-devel <= 1.1.0}
-%{?with_meanwhile:BuildRequires:	meanwhile-devel >= 1.0.1}
+BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
@@ -1406,14 +1404,12 @@ fi
 %{_datadir}/services/jabberdisco.protocol
 %{_datadir}/services/kopete_jabber.desktop
 
-%if %{with meanwhile}
 %files kopete-protocol-meanwhile
 %defattr(644,root,root,755)
 %{_libdir}/kde3/kopete*meanwhile*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*meanwhile*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/meanwhile*
 %{_datadir}/services/kopete_meanwhile.desktop
-%endif
 
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
