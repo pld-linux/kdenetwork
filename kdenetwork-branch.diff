@@ -1,7 +1,7 @@
 Index: krfb/kinetd/eventsrc
 ===================================================================
---- krfb/kinetd/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ krfb/kinetd/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- krfb/kinetd/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ krfb/kinetd/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -80,7 +80,7 @@
  Comment[es]=Recibida conexión entrante
  Comment[et]=Saadi sissetulev ühendus
@@ -13,8 +13,8 @@ Index: krfb/kinetd/eventsrc
  Comment[gl]=Recibíuse unha conexión entrante
 Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -21,7 +21,6 @@
  Name[es]=Esclavo de LAN KIO
  Name[et]=Kohtvõrgu KIO moodul
@@ -34,8 +34,8 @@ Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
  Comment[ga]=Cumraíocht lan: agus rlan:
 Index: lanbrowsing/kcmlisa/kcmlisa.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmlisa.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ lanbrowsing/kcmlisa/kcmlisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- lanbrowsing/kcmlisa/kcmlisa.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ lanbrowsing/kcmlisa/kcmlisa.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -9,7 +9,6 @@
  X-KDE-FactoryName=lisa
  
@@ -55,8 +55,8 @@ Index: lanbrowsing/kcmlisa/kcmlisa.desktop
  Comment[ga]=Cumraigh LISa
 Index: kdnssd/kdedmodule/dnssdwatcher.desktop
 ===================================================================
---- kdnssd/kdedmodule/dnssdwatcher.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kdnssd/kdedmodule/dnssdwatcher.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kdnssd/kdedmodule/dnssdwatcher.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kdnssd/kdedmodule/dnssdwatcher.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -51,7 +51,7 @@
  Comment[es]=Vigila los servicios DNS-SD y actualiza los listados de directorio
  Comment[et]=Jälgib DNS-SD teenuseid ja uuendab kataloogide nimekirju
@@ -68,8 +68,8 @@ Index: kdnssd/kdedmodule/dnssdwatcher.desktop
  Comment[gl]=Deixa constancia dos servicios DNS-SD e anova as listaxes de directorios
 Index: kopete/plugins/nowlistening/nowlisteningplugin.cpp
 ===================================================================
---- kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/nowlistening/nowlisteningplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -308,7 +308,7 @@
  				{
  					// Check for the now listening message in parenthesis, 
@@ -95,8 +95,8 @@ Index: kopete/plugins/nowlistening/nowlisteningplugin.cpp
  					else
 Index: kopete/plugins/alias/kopete_alias.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -24,7 +24,7 @@
  Name[cy]=Ffugenw
  Name[el]=Αντιστοιχία
@@ -115,10 +115,45 @@ Index: kopete/plugins/alias/kopete_alias.desktop
  Comment[fi]=Lisää uusia nimiä komennoille
  Comment[fr]=Ajoute des alias personnalisés à des commandes
  Comment[gl]=Engadir alias persoáis para comandos
+Index: kopete/plugins/alias/aliaspreferences.cpp
+===================================================================
+--- kopete/plugins/alias/aliaspreferences.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/alias/aliaspreferences.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -290,6 +290,19 @@
+ 
+ 	aliasMap.insert( alias, new AliasItem( preferencesDialog->aliasList, id, alias, command, p ) );
+ 
++	// count the number of arguments present in 'command'
++	QRegExp rx( "(%\\d+)" );
++	QStringList list;
++	int pos = 0;
++	while ( pos >= 0 ) {
++		pos = rx.search( command, pos );
++		if ( pos > -1 ) {
++			list += rx.cap( 1 );
++			pos  += rx.matchedLength();
++		}
++	}
++	int argc = list.count();
++
+ 	for( ProtocolList::ConstIterator it = p.begin(); it != p.end(); ++it )
+ 	{
+ 		Kopete::CommandHandler::commandHandler()->registerAlias(
+@@ -297,7 +310,9 @@
+ 			alias,
+ 			command,
+ 			QString::fromLatin1("Custom alias for %1").arg(command),
+-			Kopete::CommandHandler::UserAlias
++			Kopete::CommandHandler::UserAlias,
++			0,
++			argc
+ 		);
+ 
+ 		protocolMap.insert( QPair<Kopete::Protocol*,QString>( *it, alias ), true );
 Index: kopete/plugins/alias/kopete_alias_config.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -20,7 +20,7 @@
  Name[cy]=Ffugenw
  Name[el]=Αντιστοιχία
@@ -137,10 +172,38 @@ Index: kopete/plugins/alias/kopete_alias_config.desktop
  Comment[fi]=Lisää uusia nimiä komennoille
  Comment[fr]=Ajoute des alias personnalisés à des commandes
  Comment[gl]=Engadir alias persoáis para comandos
+Index: kopete/plugins/statistics/statisticsdialog.cpp
+===================================================================
+--- kopete/plugins/statistics/statisticsdialog.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/statistics/statisticsdialog.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -54,6 +54,7 @@
+ 	QHBox *hbox = new QHBox(this);
+ 	
+ 	generalHTMLPart = new KHTMLPart(hbox);
++        generalHTMLPart->setOnlyLocalReferences(true);
+ 	connect ( generalHTMLPart->browserExtension(), SIGNAL( openURLRequestDelayed( const KURL &, const KParts::URLArgs & ) ),
+ 			  this, SLOT( slotOpenURLRequest( const KURL &, const KParts::URLArgs & ) ) );
+ 	
+Index: kopete/plugins/cryptography/cryptographyplugin.cpp
+===================================================================
+--- kopete/plugins/cryptography/cryptographyplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/cryptography/cryptographyplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -58,8 +58,9 @@
+ 	if( !pluginStatic_ )
+ 		pluginStatic_=this;
+ 
+-	m_inboundHandler = new Kopete::SimpleMessageHandlerFactory( Kopete::Message::Inbound,
+-		Kopete::MessageHandlerFactory::InStageToSent, this, SLOT( slotIncomingMessage( Kopete::Message& ) ) );
++	m_inboundHandler = 0;
++/*	m_inboundHandler = new Kopete::SimpleMessageHandlerFactory( Kopete::Message::Inbound,
++		Kopete::MessageHandlerFactory::InStageToSent, this, SLOT( slotIncomingMessage( Kopete::Message& ) ) );*/
+ 	connect( Kopete::ChatSessionManager::self(),
+ 		SIGNAL( aboutToSend( Kopete::Message & ) ),
+ 		SLOT( slotOutgoingMessage( Kopete::Message & ) ) );
 Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -78,7 +78,7 @@
  Comment[es]=Cifra mensajes usando PGP
  Comment[et]=Sõnumite krüptimine PGP abil
@@ -152,8 +215,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
  Comment[gl]=Encripta mensaxes con PGP
 Index: kopete/plugins/cryptography/kopete_cryptography.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -82,7 +82,7 @@
  Comment[es]=Cifra y descifra mensajes con GPG
  Comment[et]=Sõnumite krüptimine ja lahtikrüptimine GPG abil
@@ -165,8 +228,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography.desktop
  Comment[gl]=Encriptar e desencriptar mensaxes con GPG
 Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -38,7 +38,7 @@
  Comment[es]=Voz y video con MSN Messenger
  Comment[et]=Audio ja video kasutamine MSN Messengeriga
@@ -178,8 +241,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
  Comment[gl]=Voz e video con MSN Messenger
 Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -42,7 +42,7 @@
  Comment[es]=Voz y video con MSN Messenger
  Comment[et]=Audio ja video kasutamine MSN Messengeriga
@@ -191,8 +254,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
  Comment[gl]=Voz e video con MSN Messenger
 Index: kopete/plugins/texteffect/kopete_texteffect.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -28,7 +28,7 @@
  Name[es]=Efecto de texto
  Name[et]=Tekstiefektid
@@ -204,8 +267,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect.desktop
  Name[ga]=Maisíocht Téacs
 Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -24,7 +24,7 @@
  Name[es]=Efecto de texto
  Name[et]=Tekstiefektid
@@ -215,10 +278,45 @@ Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
  Name[fi]=Tekstitehoste
  Name[fr]=Effets de texte
  Name[ga]=Maisíocht Téacs
+Index: kopete/plugins/history/converter.cpp
+===================================================================
+--- kopete/plugins/history/converter.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/history/converter.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -167,7 +167,7 @@
+ 
+ 								while ( strchr(cbuf, '\n') == NULL && !feof(f) )
+ 								{
+-									fgets( cbuf, 511, f );
++									fgets( cbuf, CBUFLENGTH, f );
+ 									buffer += QString::fromUtf8(cbuf);
+ 								}
+ 								msgBlock.append(buffer);
+Index: kopete/plugins/history/historydialog.cpp
+===================================================================
+--- kopete/plugins/history/historydialog.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/history/historydialog.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -146,6 +146,7 @@
+ 	mHtmlPart->setJavaEnabled(false);
+ 	mHtmlPart->setPluginsEnabled(false);
+ 	mHtmlPart->setMetaRefreshEnabled(false);
++        mHtmlPart->setOnlyLocalReferences(true);
+ 
+ 	mHtmlView = mHtmlPart->view();
+ 	mHtmlView->setMarginWidth(4);
+@@ -557,7 +558,8 @@
+ 			if (mSearch->dateSearchMap[mSearch->item->date()].contains(mSearch->item->metaContact()))
+ 				mSearch->item->setVisible(true);
+ 		}
+-		while(mSearch->item = static_cast<KListViewDateItem *>(mSearch->item->nextSibling()));
++		while((mSearch->item = static_cast<KListViewDateItem
++                            *>(mSearch->item->nextSibling())));
+ 		mMainWidget->searchButton->setText(i18n("&Search"));
+ 
+ 		delete mSearch;
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -91,7 +91,7 @@
  Comment[es]=Plugin de Historia
  Comment[et]=Ajalooplugin
@@ -230,8 +328,8 @@ Index: kopete/plugins/history/kopete_history_config.desktop
  Comment[ga]=Breiseán Staire
 Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
 ===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -70,7 +70,7 @@
  Comment[es]=Anota automáticamente los enlaces de los mensajes entrantes
  Comment[et]=Sissetulevates sõnumites olevate viitade automaatne lisamine järjehoidjatesse
@@ -241,10 +339,250 @@ Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
  Comment[fi]=Lisää saapuvien viestien sisältämät linkit automaattisesti kirjanmerkkeihin
  Comment[fr]=Ajouter automatiquement un signet pour les liens présents dans les messages rentrants
  Comment[gl]=Marcar automáticamente as ligazóns nas mensaxes entrantes
+Index: kopete/plugins/addbookmarks/addbookmarksplugin.cpp
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarksplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarksplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -16,6 +16,7 @@
+ #include <qtextcodec.h>
+ #include <qregexp.h>
+ 
++#include "addbookmarksplugin.moc"
+ #include "addbookmarksplugin.h"
+ #include "kopetecontact.h"
+ #include "kopetechatsessionmanager.h"
+@@ -25,6 +26,19 @@
+ 
+ K_EXPORT_COMPONENT_FACTORY( kopete_addbookmarks, BookmarksPluginFactory( "kopete_addbookmarks" )  )
+ 
++
++static bool isURLInGroup(const KURL& url, const KBookmarkGroup& group)
++{
++	KBookmark bookmark = group.first();
++	
++	for( ; !bookmark.isNull() ; bookmark = group.next(bookmark) ){
++		if( !bookmark.isGroup() && !bookmark.isSeparator() )
++			if( url == bookmark.url() )
++				return true;
++	}
++	return false;
++}
++
+ BookmarksPlugin::BookmarksPlugin(QObject *parent, const char *name, const QStringList &/*args*/)
+  : Kopete::Plugin(BookmarksPluginFactory::instance(), parent, name)
+ {
+@@ -32,15 +46,6 @@
+ 	connect( Kopete::ChatSessionManager::self(), SIGNAL( aboutToDisplay( Kopete::Message & ) ), this, SLOT( slotBookmarkURLsInMessage( Kopete::Message & ) ) );
+ }
+ 
+-
+-BookmarksPlugin::~BookmarksPlugin()
+-{
+-}
+-
+-
+-#include "addbookmarksplugin.moc"
+-
+-
+ /*!
+     \fn BookmarksPlugin::slotBookmarkURLsInMessage(KopeteMessage & msg)
+  */
+@@ -54,14 +59,17 @@
+ 	URLsList = extractURLsFromString( msg.parsedBody() );
+ 	if (!URLsList->empty()) {
+ 		for( it = URLsList->begin() ; it != URLsList->end() ; ++it){
+-			if( msg.from()->metaContact() ) {
+-				addKopeteBookmark(*it, msg.from()->metaContact()->displayName() );
+-				//kdDebug (14501) << "name:" << msg.from()->metaContact()->displayName() << endl;
++			if ( m_settings.addBookmarksFromUnknownContacts() || !msg.from()->metaContact()->isTemporary() )
++			{
++				if ( msg.from()->metaContact() ) {
++					addKopeteBookmark(*it, msg.from()->metaContact()->displayName() );
++					//kdDebug (14501) << "name:" << msg.from()->metaContact()->displayName() << endl;
++				}
++				else {
++					addKopeteBookmark(*it, msg.from()->property(Kopete::Global::Properties::self()->nickName()).value().toString() );
++					//kdDebug (14501) << "name:" << msg.from()->property(Kopete::Global::Properties::self()->nickName()).value().toString() << endl;
++				}
+ 			}
+-			else {
+-				addKopeteBookmark(*it, msg.from()->property(Kopete::Global::Properties::self()->nickName()).value().toString() );
+-				//kdDebug (14501) << "name:" << msg.from()->property(Kopete::Global::Properties::self()->nickName()).value().toString() << endl;
+-			}
+ 		}
+ 	}
+ 	delete URLsList;
+@@ -71,7 +79,8 @@
+ {
+ 	QTextCodec *codec = getPageEncoding( data );
+ 	QString htmlpage = codec->toUnicode( data );
+-	QRegExp rx("<(?:title|TITLE)>([^<]*)</(?:title|TITLE)>");
++	QRegExp rx("<title>([^<]*){1,96}</title>");
++	rx.setCaseSensitive(false);
+ 	int pos = rx.search( htmlpage );
+ 	KBookmarkManager *mgr = KBookmarkManager::userBookmarksManager();
+ 	KBookmarkGroup group = getKopeteFolder();
+@@ -93,7 +102,7 @@
+ 	transfer->kill();
+ }
+ 
+-KURL::List* BookmarksPlugin::extractURLsFromString( QString text )
++KURL::List* BookmarksPlugin::extractURLsFromString( const QString& text )
+ {
+ 	KURL::List *list = new KURL::List;
+ 	QRegExp rx("<a href=\"[^\\s\"]+\"");
+@@ -110,17 +119,20 @@
+ 	return list;
+ }
+ 
+-void BookmarksPlugin::addKopeteBookmark( KURL url, QString sender )
++void BookmarksPlugin::addKopeteBookmark( const KURL& url, const QString& sender )
+ {
+ 	KBookmarkGroup group = getKopeteFolder();
+ 
+ 	if ( m_settings.useSubfolderForContact( sender ) ) {
+ 		group = getFolder( group, sender );
+ 	}
+-	if( !isURLInGroup( url, group ) ){
++	// either restrict to http(s) or to KProtocolInfo::protocolClass() == :internet
++	if( !isURLInGroup( url, group )
++		&& url.isValid() && url.protocol().startsWith("http") ) {
+ 		KIO::TransferJob *transfer;
+ 		// make asynchronous transfer to avoid GUI freezing due to overloaded web servers
+ 		transfer = KIO::get(url, false, false);
++		transfer->setInteractive(false);
+ 		connect ( transfer, SIGNAL ( data( KIO::Job *, const QByteArray & ) ),
+ 		this, SLOT ( slotAddKopeteBookmark( KIO::Job *, const QByteArray & ) ) );
+ 		m_map[transfer].url = url;
+@@ -132,23 +144,11 @@
+ {
+ 	KBookmarkManager *mgr = KBookmarkManager::userBookmarksManager();
+ 
+-	return getFolder( mgr->root(), "kopete" );
++	return getFolder( mgr->root(), QString::fromLatin1("kopete") );
+ }
+ 
+-bool BookmarksPlugin::isURLInGroup(KURL url, KBookmarkGroup group)
++KBookmarkGroup BookmarksPlugin::getFolder( KBookmarkGroup group, const QString& folder )
+ {
+-	KBookmark bookmark = group.first();
+-	
+-	for( ; !bookmark.isNull() ; bookmark = group.next(bookmark) ){
+-		if( !bookmark.isGroup() && !bookmark.isSeparator() )
+-			if( url == bookmark.url() )
+-				return true;
+-	}
+-	return false;
+-}
+-
+-KBookmarkGroup BookmarksPlugin::getFolder( KBookmarkGroup group, QString folder )
+-{
+ 	KBookmark bookmark;
+ 
+ 
+@@ -163,7 +163,7 @@
+ 	return group;
+ }
+ 
+-QTextCodec* BookmarksPlugin::getPageEncoding( QByteArray data )
++QTextCodec* BookmarksPlugin::getPageEncoding( const QByteArray& data )
+ {
+ 	QString temp = QString::fromLatin1(data);
+ 	QRegExp rx("<meta[^>]*(charset|CHARSET)\\s*=\\s*[^>]*>");
+Index: kopete/plugins/addbookmarks/addbookmarksprefssettings.cpp
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarksprefssettings.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarksprefssettings.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -31,6 +31,7 @@
+ 	KConfig * configfile = KGlobal::config();
+ 	m_isfolderforeachcontact = Always;
+ 	m_contactslist.clear();
++	m_addbookmarksfromunknowns = false;
+ 	if( configfile->getConfigState() == KConfigBase::NoAccess ){
+ 		kdDebug( 14501 ) << "load: failed to open config file for reading" << endl;
+ 		return;
+@@ -42,6 +43,7 @@
+ 	configfile->setGroup("Bookmarks Plugin");
+ 	m_isfolderforeachcontact = (UseSubfolders)configfile->readNumEntry( "UseSubfolderForEachContact", 0 );
+ 	m_contactslist = configfile->readListEntry( "ContactsList" );
++	m_addbookmarksfromunknowns = configfile->readBoolEntry( "AddBookmarksFromUnknownContacts" );
+ }
+ 
+ void BookmarksPrefsSettings::save()
+@@ -55,6 +57,7 @@
+ 	configfile->setGroup( "Bookmarks Plugin" );
+ 	configfile->writeEntry( "UseSubfolderForEachContact", (int)m_isfolderforeachcontact );
+ 	configfile->writeEntry( "ContactsList", m_contactslist );
++	configfile->writeEntry( "AddBookmarksFromUnknownContacts", m_addbookmarksfromunknowns );
+ 	configfile->sync();
+ }
+ 
+@@ -76,4 +79,9 @@
+ 	return false;
+ }
+ 
++void BookmarksPrefsSettings::setAddBookmarksFromUnknownContacts( bool addUntrusted )
++{
++    m_addbookmarksfromunknowns = addUntrusted;
++}
++
+ #include "addbookmarksprefssettings.moc"
+Index: kopete/plugins/addbookmarks/addbookmarkspreferences.cpp
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarkspreferences.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarkspreferences.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -15,6 +15,7 @@
+ #include <kgenericfactory.h>
+ #include <kopetepluginmanager.h>
+ #include <kopetecontactlist.h>
++#include <qcheckbox.h>
+ #include <qlayout.h>
+ #include <qbuttongroup.h>
+ #include <qlistbox.h>
+@@ -37,7 +38,9 @@
+ 	connect( p_dialog->onlySelectedButton, SIGNAL( toggled(bool) ), this, SLOT( slotSetStatusChanged() ));
+ 	connect( p_dialog->onlyNotSelectedButton, SIGNAL( toggled(bool) ), this, SLOT( slotSetStatusChanged() ));
+ 	connect( p_dialog->contactList, SIGNAL( selectionChanged() ), this, SLOT( slotSetStatusChanged() ));
+-	connect( this, SIGNAL(PreferencesChanged()), Kopete::PluginManager::self()->plugin("kopete_addbookmarks") , SLOT(slotReloadSettings()));
++	if(Kopete::PluginManager::self()->plugin("kopete_addbookmarks") )
++           connect( this, SIGNAL(PreferencesChanged()), Kopete::PluginManager::self()->plugin("kopete_addbookmarks") , SLOT(slotReloadSettings()));
++	connect( p_dialog->m_addUntrusted, SIGNAL( toggled(bool) ), this, SLOT( slotAddUntrustedChanged() ) );
+ }
+ 
+ 
+@@ -61,6 +64,7 @@
+ 		}
+ 		m_settings.setContactsList( list );
+ 	}
++	m_settings.setAddBookmarksFromUnknownContacts( p_dialog->m_addUntrusted->isChecked() );
+ 	m_settings.save();
+ 	emit PreferencesChanged(); 
+ 	emit KCModule::changed(false);
+@@ -76,6 +80,11 @@
+ 	emit KCModule::changed(true);
+ }
+ 
++void BookmarksPreferences::slotAddUntrustedChanged()
++{
++    emit KCModule::changed(true);
++}
++
+ void BookmarksPreferences::load()
+ {
+ 	QStringList list;
+@@ -84,7 +93,7 @@
+ 	
+ 	m_settings.load();
+ 	p_dialog->buttonGroup1->setButton(m_settings.isFolderForEachContact());
+-
++    p_dialog->m_addUntrusted->setChecked( m_settings.addBookmarksFromUnknownContacts() );
+ 	if( p_dialog->contactList->count() == 0 ){
+ 		QStringList contacts = Kopete::ContactList::self()->contacts();
+ 		contacts.sort();
 Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
 ===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -70,7 +70,7 @@
  Comment[es]=Anota automáticamente los enlaces de los mensajes entrantes
  Comment[et]=Sissetulevates sõnumites olevate viitade automaatne lisamine järjehoidjatesse
@@ -254,10 +592,156 @@ Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
  Comment[fi]=Lisää saapuvien viestien sisältämät linkit automaattisesti kirjanmerkkeihin
  Comment[fr]=Ajouter automatiquement un signet pour les liens présents dans les messages rentrants
  Comment[gl]=Marcar automáticamente as ligazóns nas mensaxes entrantes
+Index: kopete/plugins/addbookmarks/addbookmarksplugin.h
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarksplugin.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarksplugin.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -30,28 +30,23 @@
+ public:
+     BookmarksPlugin(QObject *parent, const char *name, const QStringList &args);
+ 
+-    ~BookmarksPlugin();
+-    
+ private:
+     typedef struct S_URLANDNAME{
+ 		KURL url;
+ 		QString sender;
+     } URLandName;
+     typedef QMap<KIO::TransferJob*,URLandName> JobsToURLsMap;
+-    
+     JobsToURLsMap m_map;
+     BookmarksPrefsSettings m_settings;
+-    
+-    void addKopeteBookmark( KURL url, QString sender );
+-    KURL::List* extractURLsFromString( QString text );
++    void addKopeteBookmark( const KURL& url, const QString& sender );
++    KURL::List* extractURLsFromString( const QString& text );
+     KBookmarkGroup getKopeteFolder();
+-    KBookmarkGroup getFolder( KBookmarkGroup group, QString folder );
+-    bool isURLInGroup( KURL url, KBookmarkGroup group );
+-    QTextCodec* getPageEncoding( QByteArray data );
++    KBookmarkGroup getFolder( KBookmarkGroup group, const QString& folder );
++    QTextCodec* getPageEncoding( const QByteArray& data );
+ public slots:
+     void slotBookmarkURLsInMessage(Kopete::Message & msg);
+     void slotReloadSettings();
+-    
++
+ private slots:
+     void slotAddKopeteBookmark( KIO::Job *transfer, const QByteArray &data );
+ };
+Index: kopete/plugins/addbookmarks/addbookmarksprefssettings.h
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarksprefssettings.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarksprefssettings.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -35,9 +35,12 @@
+     bool useSubfolderForContact( QString nickname );
+     QStringList getContactsList() {return m_contactslist;}
+     void setContactsList(QStringList list) {m_contactslist = list;}
++    bool addBookmarksFromUnknownContacts() { return m_addbookmarksfromunknowns; };
++    void setAddBookmarksFromUnknownContacts( bool );
+     
+ private:
+     bool m_folderPerContact;
++    bool m_addbookmarksfromunknowns;
+     UseSubfolders m_isfolderforeachcontact;
+     QStringList m_contactslist;
+ 
+Index: kopete/plugins/addbookmarks/addbookmarkspreferences.h
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarkspreferences.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarkspreferences.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -39,7 +39,7 @@
+ 
+ private slots:
+     void slotSetStatusChanged();
+-           
++    void slotAddUntrustedChanged();
+ };
+ 
+ #endif
+Index: kopete/plugins/addbookmarks/addbookmarksprefsui.ui
+===================================================================
+--- kopete/plugins/addbookmarks/addbookmarksprefsui.ui	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/addbookmarks/addbookmarksprefsui.ui	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -12,6 +12,9 @@
+             <height>421</height>
+         </rect>
+     </property>
++    <property name="caption">
++        <string>BookmarksPrefsUI</string>
++    </property>
+     <vbox>
+         <property name="name">
+             <cstring>unnamed</cstring>
+@@ -63,7 +66,7 @@
+                         <bool>true</bool>
+                     </property>
+                     <property name="text">
+-                        <string>Only the selected contacts</string>
++                        <string>Onl&amp;y the selected contacts</string>
+                     </property>
+                     <property name="checked">
+                         <bool>false</bool>
+@@ -90,6 +93,14 @@
+                 <cstring>contactList</cstring>
+             </property>
+         </widget>
++        <widget class="QCheckBox">
++            <property name="name">
++                <cstring>m_addUntrusted</cstring>
++            </property>
++            <property name="text">
++                <string>Add Bookmarks from Contacts Not In Your Contact List</string>
++            </property>
++        </widget>
+     </vbox>
+ </widget>
+ <layoutdefaults spacing="6" margin="11"/>
+Index: kopete/plugins/autoreplace/autoreplaceprefs.ui
+===================================================================
+--- kopete/plugins/autoreplace/autoreplaceprefs.ui	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/autoreplace/autoreplaceprefs.ui	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -13,13 +13,16 @@
+             <height>378</height>
+         </rect>
+     </property>
++    <property name="caption">
++        <string>AutoReplacePrefsUI</string>
++    </property>
+     <grid>
+         <property name="name">
+             <cstring>unnamed</cstring>
+         </property>
+         <widget class="QGroupBox" row="0" column="0">
+             <property name="name">
+-                <cstring>groupBox3</cstring>
++                <cstring>gb_sentences</cstring>
+             </property>
+             <property name="title">
+                 <string>Sentence Options</string>
+@@ -80,7 +83,7 @@
+         </widget>
+         <widget class="QGroupBox" row="1" column="0">
+             <property name="name">
+-                <cstring>groupBox4</cstring>
++                <cstring>replacementsGroup</cstring>
+             </property>
+             <property name="title">
+                 <string>Replacements List</string>
+@@ -168,7 +171,7 @@
+                                 <cstring>textLabel1</cstring>
+                             </property>
+                             <property name="text">
+-                                <string>&amp;Text:</string>
++                                <string>Te&amp;xt:</string>
+                             </property>
+                             <property name="buddy" stdset="0">
+                                 <cstring>m_key</cstring>
 Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -81,7 +81,7 @@
  Comment[es]=Autoreemplaza texto que puede elegir
  Comment[et]=Asendab automaatselt sinu valitud teksti
@@ -267,10 +751,174 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
  Comment[fi]=Korvaa valitsemasi tekstit automaattisesti
  Comment[fr]=Remplace automatiquement du texte que vous pouvez choisir
  Comment[gl]=Reemplaza automáticamente algún texto que tí podes escoller
+Index: kopete/plugins/autoreplace/autoreplaceplugin.cpp
+===================================================================
+--- kopete/plugins/autoreplace/autoreplaceplugin.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/autoreplace/autoreplaceplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -20,6 +20,7 @@
+ #include <kopetecontact.h>
+ 
+ #include "kopetechatsessionmanager.h"
++#include "kopetesimplemessagehandler.h"
+ 
+ #include "autoreplaceplugin.h"
+ #include "autoreplaceconfig.h"
+@@ -39,13 +40,19 @@
+ 	connect( Kopete::ChatSessionManager::self(), SIGNAL( aboutToSend( Kopete::Message & ) ),
+ 		this, SLOT( slotAboutToSend( Kopete::Message & ) ) );
+ 
++	// nb this connection causes the slot to be called on in- and outbound
++	// messages which suggests something is broken in the message handler
++	// system!
++	m_inboundHandler = new Kopete::SimpleMessageHandlerFactory( Kopete::Message::Inbound,
++		Kopete::MessageHandlerFactory::InStageToSent, this, SLOT( slotAboutToSend( Kopete::Message& ) ) );
++
+ 	connect( this, SIGNAL( settingsChanged() ), this, SLOT( slotSettingsChanged() ) );
+ }
+ 
+ AutoReplacePlugin::~AutoReplacePlugin()
+ {
+ 	pluginStatic_ = 0L;
+-
++	delete m_inboundHandler;
+ 	delete m_prefs;
+ }
+ 
+@@ -87,30 +94,30 @@
+ 		// the message is now the one with replaced words
+ 		if(isReplaced)
+ 			msg.setBody( replaced_message, Kopete::Message::PlainText );
+-	}
+ 
+-	if( msg.direction() == Kopete::Message::Outbound )
+-	{
+-		if ( m_prefs->dotEndSentence() )
++		if( msg.direction() == Kopete::Message::Outbound )
+ 		{
+-			QString replaced_message = msg.plainBody();
+-			// eventually add . at the end of the lines, sent lines only
+-			replaced_message.replace( QRegExp( "([a-z])$" ), "\\1." );
+-			// replaced_message.replace(QRegExp( "([\\w])$" ), "\\1." );
+-			
+-			// the message is now the one with replaced words
+-			msg.setBody( replaced_message, Kopete::Message::PlainText );
+-		}
++			if ( m_prefs->dotEndSentence() )
++			{
++				QString replaced_message = msg.plainBody();
++				// eventually add . at the end of the lines, sent lines only
++				replaced_message.replace( QRegExp( "([a-z])$" ), "\\1." );
++				// replaced_message.replace(QRegExp( "([\\w])$" ), "\\1." );
+ 
+-		if( m_prefs->capitalizeBeginningSentence() )
+-		{
+-			QString replaced_message = msg.plainBody();
+-			// eventually start each sent line with capital letter
+-			// TODO 	". "	 "? "	 "! " 
+-			replaced_message[ 0 ] = replaced_message.at( 0 ).upper();
+-			
+-			// the message is now the one with replaced words
+-			msg.setBody( replaced_message, Kopete::Message::PlainText );
++				// the message is now the one with replaced words
++				msg.setBody( replaced_message, Kopete::Message::PlainText );
++			}
++
++			if( m_prefs->capitalizeBeginningSentence() )
++			{
++				QString replaced_message = msg.plainBody();
++				// eventually start each sent line with capital letter
++				// TODO 	". "	 "? "	 "! "
++				replaced_message[ 0 ] = replaced_message.at( 0 ).upper();
++
++				// the message is now the one with replaced words
++				msg.setBody( replaced_message, Kopete::Message::PlainText );
++			}
+ 		}
+ 	}
+ }
+Index: kopete/plugins/autoreplace/autoreplacepreferences.cpp
+===================================================================
+--- kopete/plugins/autoreplace/autoreplacepreferences.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/autoreplace/autoreplacepreferences.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -15,6 +15,7 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#include <qcheckbox.h>
+ #include <qlayout.h>
+ #include <qpushbutton.h>
+ #include <qgroupbox.h>
+@@ -60,8 +61,12 @@
+ 
+ 	m_wordListChanged = false;
+ 
+-	setMainWidget( preferencesDialog->gb_options, "AutoReplace Plugin" );
+-
++	// Sentence options and which messages to apply autoreplace to
++	// are managed by KCMAutoConfigModule.  The list of replacements
++	// itself is manually read/written as KCMAutoConfigModule doesn't support it.
++	autoConfig()->ignoreSubWidget( preferencesDialog->replacementsGroup );
++	setMainWidget( preferencesDialog, "AutoReplace Plugin" );
++	
+ 	m_config = new AutoReplaceConfig;
+ 	load();
+ }
+Index: kopete/plugins/autoreplace/autoreplaceplugin.h
+===================================================================
+--- kopete/plugins/autoreplace/autoreplaceplugin.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/plugins/autoreplace/autoreplaceplugin.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -26,9 +26,13 @@
+ #include "kopetemessage.h"
+ #include "kopeteplugin.h"
+ 
+-namespace Kopete { class Message; }
+-namespace Kopete { class MetaContact; }
+-namespace Kopete { class ChatSession; }
++namespace Kopete {
++	class Message;
++	class MetaContact;
++	class ChatSession;
++	class SimpleMessageHandlerFactory;
++}
++
+ class AutoReplaceConfig;
+ 
+ class AutoReplacePlugin : public Kopete::Plugin
+@@ -48,6 +52,7 @@
+ 
+ private:
+ 	static AutoReplacePlugin * pluginStatic_;
++	Kopete::SimpleMessageHandlerFactory *m_inboundHandler;
+ 
+ 	AutoReplaceConfig *m_prefs;
+ };
+Index: kopete/protocols/yahoo/libkyahoo/client.cpp
+===================================================================
+--- kopete/protocols/yahoo/libkyahoo/client.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/yahoo/libkyahoo/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -258,6 +258,9 @@
+ 		setStatus( d->statusOnConnect );
+ 		m_pingTimer->start( 60 * 1000 );
+ 		initTasks();
++	} else {
++		d->active = false;
++		close();
+ 	}
+ 
+ 	kdDebug(YAHOO_RAW_DEBUG) << k_funcinfo << "Emitting loggedIn" << endl;
+@@ -752,7 +755,7 @@
+ 	QObject::connect( d->statusTask, SIGNAL( stealthStatusChanged( const QString&, Yahoo::StealthStatus ) ), 
+ 				SIGNAL( stealthStatusChanged( const QString&, Yahoo::StealthStatus ) ) );
+ 	QObject::connect( d->statusTask, SIGNAL( loginResponse( int, const QString& ) ), 
+-				SIGNAL( loggedIn( int, const QString& ) ) );
++				SLOT( slotLoginResponse( int, const QString& ) ) );
+ 	QObject::connect( d->statusTask, SIGNAL( authorizationRejected( const QString&, const QString& ) ), 
+ 				SIGNAL( authorizationRejected( const QString&, const QString& ) ) );
+ 	QObject::connect( d->statusTask, SIGNAL( authorizationAccepted( const QString& ) ), 
 Index: kopete/protocols/yahoo/libkyahoo/webcamtask.cpp
 ===================================================================
---- kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/yahoo/libkyahoo/webcamtask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -213,13 +213,11 @@
  	{
  		case ConnectedStage1:
@@ -319,10 +967,23 @@ Index: kopete/protocols/yahoo/libkyahoo/webcamtask.cpp
  	if( !info->buffer )
  	{
  		kdDebug(YAHOO_RAW_DEBUG) << k_funcinfo << "Buffer created" << endl;
+Index: kopete/protocols/groupwise/gwprotocol.cpp
+===================================================================
+--- kopete/protocols/groupwise/gwprotocol.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/gwprotocol.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -47,7 +47,7 @@
+ 	  groupwiseOffline ( Kopete::OnlineStatus::Offline,    0,  this, GroupWise::Offline, QString::null, 
+ 			i18n( "Offline" ), i18n( "O&ffline" ), Kopete::OnlineStatusManager::Offline ),
+ 	  groupwiseAvailable  ( Kopete::OnlineStatus::Online,  25, this, GroupWise::Available, QString::null, 
+-			i18n( "Available" ), i18n( "A&vailable" ), Kopete::OnlineStatusManager::Online ),
++			i18n( "Online" ), i18n( "&Online" ), Kopete::OnlineStatusManager::Online ),
+ 	  groupwiseBusy       ( Kopete::OnlineStatus::Away,    18, this, GroupWise::Busy, "contact_busy_overlay", 
+ 			i18n( "Busy" ), i18n( "&Busy" ), Kopete::OnlineStatusManager::Busy, Kopete::OnlineStatusManager::HasAwayMessage ),
+ 	  groupwiseAway       ( Kopete::OnlineStatus::Away,    20, this, GroupWise::Away, "contact_away_overlay", 
 Index: kopete/protocols/groupwise/kopete_groupwise.desktop
 ===================================================================
---- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -26,7 +26,7 @@
  Comment[cs]=Novell GroupWise komunikátor
  Comment[de]=Novell GroupWise-Nachrichtendienst
@@ -334,8 +995,8 @@ Index: kopete/protocols/groupwise/kopete_groupwise.desktop
  Comment[he]=תוכנת המסרים של נובל GroupWise
 Index: kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp
 ===================================================================
---- kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -140,10 +140,39 @@
  		const Field::FieldListIterator end = fl.end();
  		for ( Field::FieldListIterator it = fl.begin(); it != end; ++it )
@@ -380,10 +1041,85 @@ Index: kopete/protocols/groupwise/libgroupwise/tasks/pollsearchresultstask.cpp
  		}
  	}
  	if ( !propMap.empty() )
+Index: kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.cpp
+===================================================================
+--- kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -3,7 +3,8 @@
+     keepalivetask.cpp - Send keepalive pings to the server
+ 
+     Copyright (c) 2004      SUSE Linux AG	 	 http://www.suse.com
+-    
++              (c) 2006      Novell, Inc.
++
+     Based on Iris, Copyright (C) 2003  Justin Karneges
+ 
+     Kopete (c) 2002-2004 by the Kopete developers <kopete-devel@kde.org>
+@@ -30,14 +31,13 @@
+ KeepAliveTask::KeepAliveTask(Task* parent): RequestTask(parent)
+ {
+ 	m_keepAliveTimer = new QTimer( this );
+-	connect( m_keepAliveTimer, SIGNAL( timeout() ), SLOT( slotSendKeepAlive ) );
++	connect( m_keepAliveTimer, SIGNAL( timeout() ), SLOT( slotSendKeepAlive() ) );
+ 	m_keepAliveTimer->start( GW_KEEPALIVE_INTERVAL );
+ }
+ 
+ 
+ KeepAliveTask::~KeepAliveTask()
+ {
+-	m_keepAliveTimer->stop();
+ 	delete m_keepAliveTimer;
+ }
+ 
+Index: kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.h
+===================================================================
+--- kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/libgroupwise/tasks/keepalivetask.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -21,7 +21,7 @@
+ #ifndef KEEPALIVETASK_H
+ #define KEEPALIVETASK_H
+ 
+-#include <requesttask.h>
++#include "requesttask.h"
+ 
+ class QTimer;
+ 
+Index: kopete/protocols/groupwise/libgroupwise/client.cpp
+===================================================================
+--- kopete/protocols/groupwise/libgroupwise/client.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/groupwise/libgroupwise/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -3,7 +3,8 @@
+     client.cpp - The main interface for the Groupwise protocol
+ 
+     Copyright (c) 2004      SUSE Linux AG	 	 http://www.suse.com
+-    
++              (c) 2008      Novell, Inc.
++
+     Based on Iris, Copyright (C) 2003  Justin Karneges
+ 
+     Kopete (c) 2002-2004 by the Kopete developers <kopete-devel@kde.org>
+@@ -31,6 +32,7 @@
+ #include "tasks/getdetailstask.h"
+ #include "tasks/getstatustask.h"
+ #include "tasks/joinconferencetask.h"
++#include "tasks/keepalivetask.h"
+ #include "tasks/leaveconferencetask.h"
+ #include "tasks/logintask.h"
+ #include "tasks/rejectinvitetask.h"
+@@ -317,6 +319,9 @@
+ 		SetStatusTask * sst = new SetStatusTask( d->root );
+ 		sst->status( GroupWise::Available, QString::null, QString::null );
+ 		sst->go( true );
++		// Sends keepalives every minute so the server knows we are still alive
++		KeepAliveTask * kat = new KeepAliveTask( d->root );
++		kat->go( true );
+ 		emit loggedIn();
+ 		// fetch details for any privacy list items that aren't in our contact list.
+ 		// There is a chicken-and-egg case regarding this: We need the privacy before reading the contact list so
 Index: kopete/protocols/jabber/jabbercontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -952,7 +952,7 @@
  	
  	kdDebug ( JABBER_DEBUG_GLOBAL ) << k_funcinfo << contactId () /*<< " - " <<kdBacktrace()*/ << endl;
@@ -393,10 +1129,53 @@ Index: kopete/protocols/jabber/jabbercontact.cpp
  	{
  		m_syncTimer=new QTimer(this);
  		connect(m_syncTimer, SIGNAL(timeout()) , this , SLOT(slotDelayedSync()));
+Index: kopete/protocols/oscar/liboscar/client.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -397,9 +397,12 @@
+ 	d->active = true;
+ 
+ 	if ( isIcq() )
+-	{
+ 		setStatus( d->connectAsStatus, d->connectWithMessage );
+ 
++	d->ownStatusTask->go();
++
++	if ( isIcq() )
++	{
+ 		//retrieve offline messages
+ 		Connection* c = d->connections.connectionForFamily( 0x0015 );
+ 		if ( !c )
+Index: kopete/protocols/oscar/oscaraccount.cpp
+===================================================================
+--- kopete/protocols/oscar/oscaraccount.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/oscar/oscaraccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -560,7 +560,7 @@
+ 	/* We're not even online or connecting
+ 	 * (when getting server contacts), so don't bother
+ 	 */
+-	if ( !myself()->isOnline() )
++	if ( !engine()->isActive() )
+ 	{
+ 		kdDebug(OSCAR_GEN_DEBUG) << k_funcinfo << "Can't add contact, we are offline!" << endl;
+ 		return false;
+Index: kopete/protocols/oscar/aim/aimuserinfo.h
+===================================================================
+--- kopete/protocols/oscar/aim/aimuserinfo.h	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/oscar/aim/aimuserinfo.h	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -26,7 +26,6 @@
+ class OscarAccount;
+ class AIMMyselfContact;
+ class AIMAccount;
+-class KHTMLPart;
+ 
+ class AIMUserInfoDialog : public KDialogBase
+ {
 Index: kopete/protocols/oscar/icq/kopete_icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -33,7 +33,7 @@
  Comment[es]=Protocolo de conexión de ICQ
  Comment[et]=Protokoll ühendumiseks ICQ-ga
@@ -408,8 +1187,8 @@ Index: kopete/protocols/oscar/icq/kopete_icq.desktop
  Comment[ga]=Prótacal chun ceangal le ICQ
 Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
 ===================================================================
---- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -23,6 +23,7 @@
  Name[ta]=இடைப்பட்ட பொழுதில்
  Comment=Meanwhile (Lotus Sametime) Protocol
@@ -418,7 +1197,7 @@ Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
  Comment[da]=Meanwhile-protokol (Lotus Sametime)
  Comment[de]=Meanwhile-Protokoll (Lotus Sametime)
  Comment[el]=Πρρωτόκολλο Meanwhile (Lotus Sametime)
-@@ -31,6 +32,7 @@
+@@ -31,19 +32,23 @@
  Comment[fa]=قرارداد Meanwhile‌ (گاهی لوتوس)
  Comment[fr]=Protocole Meanwhile (Lotus Sametime)
  Comment[he]=פרוטוקול Meanwhile
@@ -426,7 +1205,10 @@ Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
  Comment[is]="Meanwhile" (Lotus Sametimr) samskipturegla
  Comment[it]=Protocollo Meanwhile (Lotus Sametime)
  Comment[ja]=Meanwhile (Lotus Sametime) プロトコル
-@@ -40,10 +42,12 @@
+ Comment[km]=ពីធីការ Meanwhile (Lotus Sametime)
++Comment[nb]=Programtillegg for Meanwhile-protokoll (Lotus Sametime)
+ Comment[nds]=Meanwhile-Protokoll (Lotus Sametime)
+ Comment[nl]=Procotol voor Meanwhile (Lotus Sametime)
  Comment[pl]=Protokół Meanwhile (Lotus Sametime)
  Comment[pt]=Protocolo Meanwhile (Lotus Sametime)
  Comment[pt_BR]=Protocolo Meanwhile (Lotus Sametime)
@@ -453,8 +1235,8 @@ Makefile.in
 
 Index: kopete/protocols/msn/kopete_msn.desktop
 ===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -21,7 +21,7 @@
  Name[cy]=Negesydd MSN
  Name[da]=MSN-Messenger
@@ -473,10 +1255,23 @@ Index: kopete/protocols/msn/kopete_msn.desktop
  Comment[fi]=Yhteyskäytäntö MSN Messanger -verkkoon kytkeytymiseen
  Comment[fr]=Protocole pour se connecter sur MSN Messenger
  Comment[ga]=Prótacal chun ceangal le MSN Messenger
+Index: kopete/protocols/msn/transport.cpp
+===================================================================
+--- kopete/protocols/msn/transport.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/msn/transport.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -332,7 +332,7 @@
+ 
+ QByteArray TcpTransportBridge::Buffer::read(Q_UINT32 length)
+ {
+-	if (length > size()) return QByteArray();
++	if (length >= size()) return QByteArray();
+ 
+ 	QByteArray buffer;
+ 	buffer.duplicate(data(), length);
 Index: kopete/protocols/msn/config/kopete_msn_config.desktop
 ===================================================================
---- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -26,7 +26,7 @@
  Name[es]=Plugin de MSN
  Name[et]=MSN plugin
@@ -488,8 +1283,8 @@ Index: kopete/protocols/msn/config/kopete_msn_config.desktop
  Name[ga]=Breiseán MSN
 Index: kopete/kopete/main.cpp
 ===================================================================
---- kopete/kopete/main.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/main.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -64,7 +64,7 @@
  	aboutData.addAuthor ( "Jason Keirstead", I18N_NOOP("Developer"), "jason@keirstead.org", "http://www.keirstead.org");
  	aboutData.addAuthor ( "Matt Rogers", I18N_NOOP("Lead Developer, AIM and ICQ plugin maintainer"), "mattr@kde.org" );
@@ -501,8 +1296,8 @@ Index: kopete/kopete/main.cpp
  	aboutData.addAuthor ( "Richard Smith", I18N_NOOP("Developer, UI maintainer"), "kde@metafoo.co.uk" );
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -10,7 +10,7 @@
  Comment[de]=Kopete-Nachrichtendienst
  Comment[el]=Αποστολέας μηνυμάτων Kopete
@@ -538,7 +1333,7 @@ Index: kopete/kopete/eventsrc
  Name[da]=Godkendelse
  Name[de]=Autorisierung
  Name[el]=Πιστοποίηση
-@@ -764,6 +765,7 @@
+@@ -764,15 +765,18 @@
  Name[fi]=Hyväksyminen
  Name[fr]=Autorisation
  Name[he]=הזדהות
@@ -546,7 +1341,10 @@ Index: kopete/kopete/eventsrc
  Name[is]=Auðkenning
  Name[it]=Autorizzazione
  Name[ja]=許可
-@@ -773,6 +775,7 @@
+ Name[km]=សេចក្ដី​អនុញ្ញាត
++Name[nb]=Autorisering
+ Name[nds]=Identifikatschoon
+ Name[nl]=Autorisatie
  Name[pl]=Autoryzacja
  Name[pt]=Autorização
  Name[pt_BR]=Autorização
@@ -554,7 +1352,7 @@ Index: kopete/kopete/eventsrc
  Name[sk]=Autorizácia
  Name[sl]=Odobritev
  Name[sr]=Ауторизација
-@@ -783,6 +786,7 @@
+@@ -783,6 +787,7 @@
  Name[zh_TW]=認證
  Comment=An user has accepted/declined your authorization request
  Comment[ca]=Un usuari ha autoritzat/declinat la vostra petició d'autorització
@@ -562,7 +1360,7 @@ Index: kopete/kopete/eventsrc
  Comment[da]=En bruger har godkendt/afslået din godkendelsesforespørgsel
  Comment[de]=Ein Benutzer hat Ihre Autorisierung erlaubt/abgelehnt
  Comment[el]=Ένας χρήστης έχει πιστοποιήσει/απορρίψει την αίτησή σας για πιστοποίηση
-@@ -792,6 +796,7 @@
+@@ -792,15 +797,18 @@
  Comment[fi]=Käyttäjä on hyväksynyt/hylännyt hyväksymispyyntösi
  Comment[fr]=Un utilisateur a accepté ou refusé votre demande d'autorisation
  Comment[he]=משתמש אישר/דחה את בקשתך לזיהוי
@@ -570,7 +1368,10 @@ Index: kopete/kopete/eventsrc
  Comment[is]=Notandi hefur heimilað eða hafnað beiðni þinni um auðkenningu auðkenningabeiðni þinni
  Comment[it]=Un utente ha autorizzato/declinato la tua richiesta
  Comment[ja]=ユーザはあなたの許可要求を承諾/拒絶しました
-@@ -801,6 +806,7 @@
+ Comment[km]=អ្នក​ប្រើ​បានទទួល​យក/បដិសេធ នូវ​សំណើ​សេចក្ដី​អនុញ្ញាត​របស់​អ្នក
++Comment[nb]=En bruker har autorisert eller avvist din forespørsel om autorisering
+ Comment[nds]=En Bruker hett Dien Identifikatschoonanfraag tolaten/afwiest
+ Comment[nl]=Een gebruiker heeft uw autorisatieverzoek geaccepteerd/afgewezen
  Comment[pl]=Użytkownik zaakceptował/odrzucił Twoje żądanie autoryzacji
  Comment[pt]=Um utilizador autorizou/rejeitou o seu pedido de autorização
  Comment[pt_BR]=Um utilizador autorizou/rejeitou o seu pedido de autorização
@@ -578,7 +1379,7 @@ Index: kopete/kopete/eventsrc
  Comment[sk]=Užívateľ prijal/odmietol vašu požiadavku o autorizáciu
  Comment[sl]=Uporabnik je spejel/zavrnil vaš zahtevek za odobritev
  Comment[sr]=Корисник је прихватио/одбио ваш захтев за ауторизацију
-@@ -857,7 +863,7 @@
+@@ -857,7 +865,7 @@
  Comment[es]=Tiene correo nuevo en la cuenta de Yahoo
  Comment[et]=Saabus uus kiri sinu Yahoo Inboxi
  Comment[eu]=E-posta berri bat jaso da zure Yahoo-ko sarrerako ontzian
@@ -587,7 +1388,7 @@ Index: kopete/kopete/eventsrc
  Comment[fi]=Uutta postia saapunut Yahoo-sähköpostilaatikkoon
  Comment[fr]=Un nouveau message est arrivé dans votre boîte aux lettres Yahoo
  Comment[gl]=Unha nova mensaxe chegou ao teu cartafol de entrada de Yahoo
-@@ -895,6 +901,7 @@
+@@ -895,6 +903,7 @@
  [msn_alert]
  Name=MSN Alert
  Name[ca]=Alerta del MSN
@@ -595,7 +1396,7 @@ Index: kopete/kopete/eventsrc
  Name[da]=MSN-alarm
  Name[de]=MSN-Warnung
  Name[el]=Ειδοποίηση του MSN
-@@ -904,6 +911,7 @@
+@@ -904,14 +913,17 @@
  Name[fi]=MSN-varoitus
  Name[fr]=Alerte MSN
  Name[he]=אזהרה של MSN
@@ -603,7 +1404,9 @@ Index: kopete/kopete/eventsrc
  Name[is]=MSN skeyti
  Name[it]=Avviso MSN
  Name[km]=សេចក្ដី​ជូនដំណឹង MSN
-@@ -912,6 +920,7 @@
++Name[nb]=MSN-varsling
+ Name[nds]=MSN-Alarm
+ Name[nl]=MSN-melding
  Name[pl]=Alarm MSN
  Name[pt]=Alerta MSN
  Name[pt_BR]=Alerta MSN
@@ -611,7 +1414,7 @@ Index: kopete/kopete/eventsrc
  Name[sk]=MSN Upozornenie
  Name[sl]=Alarm MSN
  Name[sr]=MSN аларм
-@@ -922,6 +931,7 @@
+@@ -922,6 +934,7 @@
  Name[zh_TW]=MSN 警告
  Comment=A new alert has been sent to you
  Comment[ca]=Se us ha enviat una nova alerta
@@ -619,7 +1422,7 @@ Index: kopete/kopete/eventsrc
  Comment[da]=En ny alarm er sendt til dig
  Comment[de]=Sie haben eine neue Warnung erhalten
  Comment[el]=Σας στάλθηκε μια νέα ειδοποίηση
-@@ -931,6 +941,7 @@
+@@ -931,15 +944,18 @@
  Comment[fi]=Sinulle on lähetetty uusi varoitus
  Comment[fr]=Une nouvelle alerte vous a été envoyée
  Comment[he]=אזהרה חדשה נשלחה אליך
@@ -627,7 +1430,10 @@ Index: kopete/kopete/eventsrc
  Comment[is]=Þér hefur verið sent nýtt skeyti
  Comment[it]=Ti è stato inviato un avviso
  Comment[ja]=新しいアラートを受信しました
-@@ -940,6 +951,7 @@
+ Comment[km]=បានផ្ញើ​សេចក្ដី​ជូន​ដំណឹង​ទៅឲ្យអ្នក
++Comment[nb]=En ny varsling er sendt til deg
+ Comment[nds]=Een hett Di en niegen Alarm sendt
+ Comment[nl]=U hebt een nieuwe melding ontvangen
  Comment[pl]=Nowy alarm został wysłany do Ciebie
  Comment[pt]=Foi enviada um novo alerta
  Comment[pt_BR]=Foi enviada um novo alerta
@@ -635,7 +1441,7 @@ Index: kopete/kopete/eventsrc
  Comment[sk]=Bolo vám poslané nové upozornenie
  Comment[sl]=Poslan vam je bil alarm
  Comment[sr]=Послат вам је нови аларм
-@@ -1275,7 +1287,7 @@
+@@ -1275,7 +1291,7 @@
  Comment[es]=Ocurrio un error en la conexión
  Comment[et]=Ühendusega tekkis viga
  Comment[eu]=Errore bat gertatu da konexioan
@@ -644,7 +1450,7 @@ Index: kopete/kopete/eventsrc
  Comment[fi]=Yhteydessä tapahtui virhe
  Comment[fr]=Une erreur de connexion est apparue
  Comment[gl]=Ocorreu un erro na conexión
-@@ -1382,6 +1394,7 @@
+@@ -1382,6 +1398,7 @@
  Comment[pl]=Połączenie zostało przerwane
  Comment[pt]=A ligação foi-se abaixo
  Comment[pt_BR]=A ligação foi-se abaixo
@@ -652,7 +1458,7 @@ Index: kopete/kopete/eventsrc
  Comment[sk]=Spojenie sa stratilo
  Comment[sl]=Povezava je bila prekinjena
  Comment[sr]=Веза је изгубљена
-@@ -1427,7 +1440,7 @@
+@@ -1427,7 +1444,7 @@
  Name[pl]=Nie można się połączyć
  Name[pt]=Não É Possível Ligar
  Name[pt_BR]=Não foi possível efetuar a conexão
@@ -661,7 +1467,7 @@ Index: kopete/kopete/eventsrc
  Name[sk]=Nedá sa pripojiť
  Name[sl]=Povezava ni mogoča
  Name[sr]=Повезивање немогуће
-@@ -1637,6 +1650,7 @@
+@@ -1637,6 +1654,7 @@
  Comment[pl]=Wystąpił błąd wewnętrzny usługi
  Comment[pt]=Ocorreu um erro interno do serviço
  Comment[pt_BR]=Ocorreu um erro interno do serviço
@@ -671,8 +1477,8 @@ Index: kopete/kopete/eventsrc
  Comment[sr]=Дошло јо до интерне грешке сервиса
 Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -17,7 +17,7 @@
  GenericName[es]=Mensajería instantánea
  GenericName[et]=Kiirsuhtlemisrakendus
@@ -693,8 +1499,8 @@ Index: kopete/kopete/kopete.desktop
  Comment[gl]=Mensaxería Instantánea
 Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
 ===================================================================
---- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -76,7 +76,7 @@
  Comment[es]=Aquí­ puede configurar los dispositivos de sonido y audio de Kopete
  Comment[et]=Siin saab muuta Kopete video- ja heliseadmete seadistusi
@@ -706,8 +1512,17 @@ Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
  Comment[gl]=Aquí podes modificar as opcións dos dispositivos de video e audio de Kopete
 Index: kopete/kopete/chatwindow/chatmessagepart.cpp
 ===================================================================
---- kopete/kopete/chatwindow/chatmessagepart.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/chatwindow/chatmessagepart.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/chatwindow/chatmessagepart.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/chatwindow/chatmessagepart.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -218,7 +218,7 @@
+ 	d->currentChatStyle = ChatWindowStyleManager::self()->getStyleFromPool( kopetePrefs->stylePath() );
+ 
+ 	//Security settings, we don't need this stuff
+-	setJScriptEnabled( true ) ;
++	setJScriptEnabled( false ) ;
+ 	setJavaEnabled( false );
+ 	setPluginsEnabled( false );
+ 	setMetaRefreshEnabled( false );
 @@ -568,9 +568,23 @@
  {
  	KopetePrefs *p = KopetePrefs::prefs();
@@ -747,10 +1562,45 @@ Index: kopete/kopete/chatwindow/chatmessagepart.cpp
  		.arg( p->textColor().name() )
  		.arg( p->linkColor().name() )
  		.arg( p->linkColor().name() );
+Index: kopete/kopete/chatwindow/kopetechatwindowstylemanager.cpp
+===================================================================
+--- kopete/kopete/chatwindow/kopetechatwindowstylemanager.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/chatwindow/kopetechatwindowstylemanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -97,6 +97,10 @@
+ void ChatWindowStyleManager::loadStyles()
+ {
+ 	QStringList chatStyles = KGlobal::dirs()->findDirs( "appdata", QString::fromUtf8( "styles" ) );
++        QString localStyleDir( locateLocal( "appdata", QString::fromUtf8("styles/"),true) );
++        if( !chatStyles.contains(localStyleDir))
++                chatStyles<<localStyleDir;
++
+ 	QStringList::const_iterator it;
+ 	for(it = chatStyles.constBegin(); it != chatStyles.constEnd(); ++it)
+ 	{
+@@ -283,7 +287,9 @@
+ bool ChatWindowStyleManager::removeStyle(const QString &stylePath)
+ {
+ 	// Find for the current style in avaiableStyles map.
+-	StyleList::Iterator foundStyle = d->availableStyles.find(stylePath);
++        KURL urlStyle(stylePath);
++	QString styleName=urlStyle.fileName();
++	StyleList::Iterator foundStyle = d->availableStyles.find(styleName);
+ 	// QMap iterator return end() if it found no item.
+ 	if(foundStyle != d->availableStyles.end())
+ 	{
+@@ -298,7 +304,7 @@
+ 		}
+ 	
+ 		// Do the actual deletion of the directory style.
+-		return KIO::NetAccess::del( KURL(stylePath), 0 );
++		return KIO::NetAccess::del( urlStyle, 0 );
+ 	}
+ 	else
+ 	{
 Index: kopete/kopete/Makefile.am
 ===================================================================
---- kopete/kopete/Makefile.am	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/kopete/Makefile.am	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -9,6 +9,7 @@
  	-I$(kopete_srcdir)/kopete/addcontactwizard \
  	-I$(kopete_srcdir)/kopete/config/accounts \
@@ -761,9 +1611,68 @@ Index: kopete/kopete/Makefile.am
  	-I$(kopete_builddir)/kopete/contactlist \
 Index: kopete/kopete.kdevelop
 ===================================================================
---- kopete/kopete.kdevelop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
-@@ -205,6 +205,14 @@
+--- kopete/kopete.kdevelop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -12,14 +12,13 @@
+     </keywords>
+     <projectdirectory>.</projectdirectory>
+     <absoluteprojectpath>false</absoluteprojectpath>
+-    <description/>
++    <description></description>
+     <ignoreparts>
+       <part>kdevabbrev</part>
+       <part>kdevbookmarks</part>
+       <part>kdevsnippet</part>
+       <part>kdevdebugger</part>
+       <part>kdevdistpart</part>
+-      <part>kdevquickopen</part>
+     </ignoreparts>
+     <secondaryLanguages/>
+     <versioncontrol>kdevsubversion</versioncontrol>
+@@ -36,7 +35,7 @@
+     </groups>
+     <tree>
+       <hidenonprojectfiles>false</hidenonprojectfiles>
+-      <hidepatterns></hidepatterns>
++      <hidepatterns/>
+       <showvcsfields>true</showvcsfields>
+     </tree>
+   </kdevfileview>
+@@ -127,16 +126,17 @@
+       <abortonerror>true</abortonerror>
+       <numberofjobs>1</numberofjobs>
+       <dontact>false</dontact>
+-      <makebin>make</makebin>
++      <makebin>unsermake --compile-jobs=20</makebin>
+       <prio>0</prio>
++      <runmultiplejobs>false</runmultiplejobs>
+     </make>
+     <general>
+       <useconfiguration>default</useconfiguration>
+-      <activetarget>libkopete/avdevice/libkopete_videodevice.la</activetarget>
++      <activetarget>protocols/groupwise/kopete_groupwise.la</activetarget>
+     </general>
+     <run>
+       <mainprogram>kopete/kopete</mainprogram>
+-      <programargs/>
++      <programargs></programargs>
+       <terminal>false</terminal>
+       <envvars/>
+       <directoryradio>build</directoryradio>
+@@ -145,9 +145,9 @@
+     </run>
+     <configurations>
+       <default>
+-        <configargs>--enable-debug=full</configargs>
+-        <builddir/>
+-        <topsourcedir/>
++        <configargs>--enable-debug=full --without-arts --prefix=/space/kde/installs/3_5</configargs>
++        <builddir>/space/kde/builds/3_5/kdenetwork/kopete</builddir>
++        <topsourcedir>/space/kde/sources/3_5/kdenetwork/kopete</topsourcedir>
+         <cppflags/>
+         <ldflags/>
+         <ccompiler>kdevgccoptions</ccompiler>
+@@ -205,10 +205,22 @@
        <argumentsHintDelay>100</argumentsHintDelay>
        <automaticHeaderCompletion>true</automaticHeaderCompletion>
        <headerCompletionDelay>250</headerCompletionDelay>
@@ -776,12 +1685,34 @@ Index: kopete/kopete.kdevelop
 +      <processPrimaryTypes>true</processPrimaryTypes>
 +      <processFunctionArguments>false</processFunctionArguments>
      </codecompletion>
-     <references/>
+-    <references/>
++    <references>
++      <pcs>Qt</pcs>
++      <pcs>libkopete</pcs>
++      <pcs>KDElibs</pcs>
++    </references>
      <creategettersetter>
+-      <prefixGet/>
++      <prefixGet></prefixGet>
+       <prefixSet>set</prefixSet>
+       <prefixVariable>m_,_</prefixVariable>
+       <parameterName>theValue</parameterName>
+@@ -221,6 +233,11 @@
+         <implementation class="dlgChatRoomsList" path="protocols/jabber/ui/dlgchatroomslist.ui" implementationpath="protocols/jabber/ui/dlgchatroomslist.h" />
+       </qtdesigner>
+     </designerintegration>
++    <qt>
++      <used>false</used>
++      <version>3</version>
++      <root>/usr/lib/qt3</root>
++    </qt>
+   </kdevcppsupport>
+   <kdevcvsservice>
+     <recursivewhenupdate>true</recursivewhenupdate>
 Index: kopete/libkopete/kopetemessagehandler.cpp
 ===================================================================
---- kopete/libkopete/kopetemessagehandler.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/libkopete/kopetemessagehandler.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/libkopete/kopetemessagehandler.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/libkopete/kopetemessagehandler.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -76,7 +76,6 @@
  {
  public:
@@ -807,8 +1738,8 @@ Index: kopete/libkopete/kopetemessagehandler.cpp
  
 Index: kopete/libkopete/kopetemetacontact.cpp
 ===================================================================
---- kopete/libkopete/kopetemetacontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kopete/libkopete/kopetemetacontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kopete/libkopete/kopetemetacontact.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/libkopete/kopetemetacontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -687,7 +687,13 @@
  
  QImage MetaContact::photo() const
@@ -824,10 +1755,22 @@ Index: kopete/libkopete/kopetemetacontact.cpp
  }
  
  Picture &MetaContact::picture() const
+Index: kopete/libkopete/ui/userinfodialog.cpp
+===================================================================
+--- kopete/libkopete/ui/userinfodialog.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kopete/libkopete/ui/userinfodialog.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -196,6 +196,7 @@
+ 		text.append( d->info + "</div><br>" );
+ 	}
+ */
++	d->htmlPart->setOnlyLocalReferences( true );
+ 	d->htmlPart->begin();
+ 	d->htmlPart->write( text );
+ 	d->htmlPart->end();
 Index: knewsticker/knewstickerstub/knewstickerstub.desktop
 ===================================================================
---- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -12,7 +12,7 @@
  Name[es]=Interfaz de configuración de KNewsTicker
  Name[et]=Uudistejälgija seadistamine
@@ -839,8 +1782,8 @@ Index: knewsticker/knewstickerstub/knewstickerstub.desktop
  Name[gl]=Interface de Configuración de KNewsTicker
 Index: knewsticker/eventsrc
 ===================================================================
---- knewsticker/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- knewsticker/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -83,7 +83,7 @@
  Name[es]=Nuevas noticias disponibles
  Name[et]=Uus uudis
@@ -870,8 +1813,8 @@ Index: knewsticker/eventsrc
  Comment[ga]=Ní féidir an comhad RDF íosluchtaithe a pharsáil
 Index: knewsticker/knewsticker.desktop
 ===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -36,6 +36,7 @@
  Name[nso]=Seswai sa Ditaba
  Name[pt]=Extractor de Notícias
@@ -891,8 +1834,8 @@ Index: knewsticker/knewsticker.desktop
  Comment[gl]=Un visor de novas RDF deslizante
 Index: kget/kget_plug_in/kget_plug_in.desktop
 ===================================================================
---- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -28,7 +28,7 @@
  Comment[ca]=Gestor de descàrregues
  Comment[cs]=Správce stahování
@@ -904,8 +1847,8 @@ Index: kget/kget_plug_in/kget_plug_in.desktop
  Comment[es]=Gestor de descargas
 Index: kget/kget_plug_in/kget_linkview.cpp
 ===================================================================
---- kget/kget_plug_in/kget_linkview.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kget/kget_plug_in/kget_linkview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kget/kget_plug_in/kget_linkview.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kget/kget_plug_in/kget_linkview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -1,9 +1,12 @@
  #include "kget_linkview.h"
  
@@ -945,8 +1888,8 @@ Index: kget/kget_plug_in/kget_linkview.cpp
      toolBar()->setMovingEnabled( false );
 Index: kget/kget.desktop
 ===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kget/kget.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -24,7 +24,7 @@
  GenericName[ca]=Gestor de descàrregues
  GenericName[cs]=Správce stahování
@@ -958,8 +1901,8 @@ Index: kget/kget.desktop
  GenericName[es]=Gestor de descargas
 Index: kget/x-kgetlist.desktop
 ===================================================================
---- kget/x-kgetlist.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kget/x-kgetlist.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kget/x-kgetlist.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kget/x-kgetlist.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -10,7 +10,7 @@
  Comment[ca]=Llista de descàrrega del Kget
  Comment[cs]=Seznam stahování KGet
@@ -971,8 +1914,8 @@ Index: kget/x-kgetlist.desktop
  Comment[eo]=Kget Deŝutolisto
 Index: kget/eventsrc
 ===================================================================
---- kget/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kget/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -2,7 +2,6 @@
  IconName=kget
  Comment=KGet
@@ -1026,8 +1969,8 @@ Index: kget/eventsrc
  Comment[es]=Todas las descargas acabaron
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -63,7 +63,7 @@
  Keywords[de]=KcmSambaConf,kcmsambaconf,samba,windows,freigabe
  Keywords[et]=KcmSambaConf,kcmsambaconf,samba,windows,jagatud ressursid
@@ -1037,10 +1980,44 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
  Keywords[fi]=KcmSambaConf,kcmsambaconf,samba,windows,jako
  Keywords[fr]=KcmSambaConf,kcmsambaconf,samba,windows,partage
  Keywords[gl]=KcmSambaConf,kcmsambaconf,samba,widows,compartir
+Index: filesharing/advanced/kcm_sambaconf/Makefile.am
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/Makefile.am	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ filesharing/advanced/kcm_sambaconf/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -1,24 +1,24 @@
+ KDE_ICON = AUTO
+ noinst_LTLIBRARIES = libfilesharesamba.la
+-kde_module_LTLIBRARIES = libkcm_kcmsambaconf.la 
++kde_module_LTLIBRARIES = kcm_kcmsambaconf.la 
+ 
+ AM_CPPFLAGS = $(all_includes)
+ METASOURCES=AUTO
+ 
+-libkcm_kcmsambaconf_la_SOURCES = \
++kcm_kcmsambaconf_la_SOURCES = \
+       kcminterface.ui \
+       kcmprinterdlg.ui \
+       printerdlgimpl.cpp \
+       kcmsambaconf.cpp \
+       joindomaindlg.ui 
+-libkcm_kcmsambaconf_la_COMPILE_FIRST = usertab.h share.h
++kcm_kcmsambaconf_la_COMPILE_FIRST = usertab.h share.h
+       
+ 
+-libkcm_kcmsambaconf_la_LIBADD = \
++kcm_kcmsambaconf_la_LIBADD = \
+       -lkdeprint \
+       libfilesharesamba.la
+       
+-libkcm_kcmsambaconf_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
++kcm_kcmsambaconf_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ 
+ libfilesharesamba_la_SOURCES = \
+     sambafile.cpp \
 Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -59,7 +59,7 @@
  Comment[es]=Diálogo de propiedades del plugin de Konqueror para compartir un directorio con la red local
  Comment[et]=Konquerori omaduste dialoogi plugin kataloogi jagamiseks kohtvõrgus
@@ -1052,8 +2029,8 @@ Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
  Comment[gl]=Diálogo de propiedades do plugin de Konqueror para compartir coa rede local
 Index: filesharing/simple/fileshare.desktop
 ===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -73,7 +73,7 @@
  Comment[es]=Habilitar o deshabilitar el compartir archivos
  Comment[et]=Failide jagamise lubamine või keelamine
@@ -1065,8 +2042,8 @@ Index: filesharing/simple/fileshare.desktop
  Comment[gl]=Habilitar ou deshabilitar a compartición de fichieros
 Index: wifi/kwireless/kwireless.desktop
 ===================================================================
---- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -14,7 +14,7 @@
  Comment[es]=Muestra información acerca de los dispositivos de la red inalámbrica
  Comment[et]=Näitab infot traadita võrgu seadmete kohta
@@ -1076,10 +2053,782 @@ Index: wifi/kwireless/kwireless.desktop
  Comment[fi]=Tietoja langattoman verkon laitteista
  Comment[fr]=Affiche des informations sur les périphériques réseau sans fil
  Comment[gl]=Información sobre os dispositivos de rede inalámbirca
+Index: wifi/kcmwifi/ifconfigpagebase.ui
+===================================================================
+--- wifi/kcmwifi/ifconfigpagebase.ui	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ wifi/kcmwifi/ifconfigpagebase.ui	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -8,336 +8,454 @@
+         <rect>
+             <x>0</x>
+             <y>0</y>
+-            <width>631</width>
+-            <height>265</height>
++            <width>626</width>
++            <height>242</height>
+         </rect>
+     </property>
++    <property name="caption">
++        <string>IfConfigPageBase</string>
++    </property>
+     <grid>
+         <property name="name">
+             <cstring>unnamed</cstring>
+         </property>
+-        <widget class="QCheckBox" row="6" column="0" rowspan="1" colspan="3">
++        <widget class="QLayoutWidget" row="0" column="0">
+             <property name="name">
+-                <cstring>cb_useCrypto</cstring>
++                <cstring>layout16</cstring>
+             </property>
+-            <property name="text">
+-                <string>Use encryption</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Enables WEP encryption.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>lb_netName</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Network name:</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>SSID of the network to connect to. "any" means "arbitrary available network".</string>
++                    </property>
++                </widget>
++                <widget class="KLineEdit">
++                    <property name="name">
++                        <cstring>le_networkName</cstring>
++                    </property>
++                </widget>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>lb_ifName</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Interface:</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>SSID of the network to connect to. "any" means "arbitrary available network".</string>
++                    </property>
++                </widget>
++                <widget class="QLineEdit">
++                    <property name="name">
++                        <cstring>le_interface</cstring>
++                    </property>
++                    <property name="enabled">
++                        <bool>false</bool>
++                    </property>
++                </widget>
++                <widget class="QCheckBox">
++                    <property name="name">
++                        <cstring>cb_Autodetect</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Autodetect</string>
++                    </property>
++                    <property name="checked">
++                        <bool>true</bool>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer16</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>226</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <spacer row="6" column="5" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="4" column="0">
+             <property name="name">
+-                <cstring>spacer5</cstring>
++                <cstring>layout13</cstring>
+             </property>
+-            <property name="orientation">
+-                <enum>Horizontal</enum>
+-            </property>
+-            <property name="sizeType">
+-                <enum>Expanding</enum>
+-            </property>
+-            <property name="sizeHint">
+-                <size>
+-                    <width>120</width>
+-                    <height>20</height>
+-                </size>
+-            </property>
+-        </spacer>
+-        <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="3">
+-            <property name="name">
+-                <cstring>cb_pmEnabled</cstring>
+-            </property>
+-            <property name="text">
+-                <string>Enable power management</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Enables advanced power management settings.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>lb_connectScript</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Script:</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Command to perform after the connection is established, e.g. for obtaining a DHCP lease.</string>
++                    </property>
++                </widget>
++                <widget class="KURLRequester">
++                    <property name="name">
++                        <cstring>url_connectScript</cstring>
++                    </property>
++                    <property name="enabled">
++                        <bool>false</bool>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer18</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>196</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <widget class="QPushButton" row="6" column="3" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="5" column="0">
+             <property name="name">
+-                <cstring>pb_setupCrypto</cstring>
++                <cstring>layout11</cstring>
+             </property>
+-            <property name="enabled">
+-                <bool>false</bool>
+-            </property>
+-            <property name="text">
+-                <string>Configure...</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Clicking this button opens the Encryption menu.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QCheckBox">
++                    <property name="name">
++                        <cstring>cb_pmEnabled</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Enable power management</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Enables advanced power management settings.</string>
++                    </property>
++                </widget>
++                <widget class="QPushButton">
++                    <property name="name">
++                        <cstring>pb_setupPower</cstring>
++                    </property>
++                    <property name="enabled">
++                        <bool>false</bool>
++                    </property>
++                    <property name="text">
++                        <string>Configure...</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Clicking this button opens the Power Management menu.</string>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer4</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>285</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <widget class="QPushButton" row="5" column="3" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="2" column="0">
+             <property name="name">
+-                <cstring>pb_setupPower</cstring>
++                <cstring>layout6</cstring>
+             </property>
+-            <property name="enabled">
+-                <bool>false</bool>
+-            </property>
+-            <property name="text">
+-                <string>Configure...</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Clicking this button opens the Power Management menu.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>textLabel2</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Speed:</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Sets the connection speed. Not all cards support this.</string>
++                    </property>
++                </widget>
++                <widget class="QComboBox">
++                    <item>
++                        <property name="text">
++                            <string>Auto</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>1 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>2 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>5.5 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>6 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>9 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>11 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>12 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>18 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>24 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>36 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>48 Mb/s</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>54 Mb/s</string>
++                        </property>
++                    </item>
++                    <property name="name">
++                        <cstring>cmb_speed</cstring>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer6</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>190</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <widget class="QLabel" row="1" column="0" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="1" column="0">
+             <property name="name">
+-                <cstring>lb_opMode</cstring>
++                <cstring>layout5</cstring>
+             </property>
+-            <property name="text">
+-                <string>Operation mode:</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Operation mode of the card. For standard infrastructure networks, "Managed" is appropriate.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>lb_opMode</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Operation mode:</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Operation mode of the card. For standard infrastructure networks, "Managed" is appropriate.</string>
++                    </property>
++                </widget>
++                <widget class="QComboBox">
++                    <item>
++                        <property name="text">
++                            <string>Ad-Hoc</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>Managed</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>Repeater</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>Master</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>Secondary</string>
++                        </property>
++                    </item>
++                    <property name="name">
++                        <cstring>cmb_wifiMode</cstring>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer5_2</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>413</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="3" column="0">
+             <property name="name">
+-                <cstring>textLabel2</cstring>
++                <cstring>layout14</cstring>
+             </property>
+-            <property name="text">
+-                <string>Speed:</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Sets the connection speed. Not all cards support this.</string>
+-            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QCheckBox">
++                    <property name="name">
++                        <cstring>cb_runScript</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Execute script on connect</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Activates a script to perform arbitrary operations after associating with the network.</string>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer19</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>131</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <spacer row="5" column="5" rowspan="1" colspan="2">
++        <widget class="QLayoutWidget" row="6" column="0">
+             <property name="name">
+-                <cstring>spacer4</cstring>
++                <cstring>layout17</cstring>
+             </property>
+-            <property name="orientation">
+-                <enum>Horizontal</enum>
+-            </property>
+-            <property name="sizeType">
+-                <enum>Expanding</enum>
+-            </property>
+-            <property name="sizeHint">
+-                <size>
+-                    <width>110</width>
+-                    <height>20</height>
+-                </size>
+-            </property>
+-        </spacer>
+-        <widget class="QLabel" row="4" column="1">
+-            <property name="name">
+-                <cstring>lb_connectScript</cstring>
+-            </property>
+-            <property name="text">
+-                <string>Script:</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Command to perform after the connection is established, e.g. for obtaining a DHCP lease.</string>
+-            </property>
+-        </widget>
+-        <widget class="QComboBox" row="1" column="2">
+-            <item>
+-                <property name="text">
+-                    <string>Ad-Hoc</string>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
+                 </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>Managed</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>Repeater</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>Master</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>Secondary</string>
+-                </property>
+-            </item>
+-            <property name="name">
+-                <cstring>cmb_wifiMode</cstring>
+-            </property>
++                <widget class="QCheckBox">
++                    <property name="name">
++                        <cstring>cb_useCrypto</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Use encryption</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Enables WEP encryption.</string>
++                    </property>
++                </widget>
++                <widget class="QPushButton">
++                    <property name="name">
++                        <cstring>pb_setupCrypto</cstring>
++                    </property>
++                    <property name="enabled">
++                        <bool>false</bool>
++                    </property>
++                    <property name="text">
++                        <string>Configure...</string>
++                    </property>
++                    <property name="toolTip" stdset="0">
++                        <string>Clicking this button opens the Encryption menu.</string>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer5</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>396</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
+         </widget>
+-        <widget class="QComboBox" row="2" column="2">
+-            <item>
+-                <property name="text">
+-                    <string>Auto</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>1 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>2 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>5.5 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>6 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>9 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>11 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>12 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>18 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>24 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>36 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>48 Mb/s</string>
+-                </property>
+-            </item>
+-            <item>
+-                <property name="text">
+-                    <string>54 Mb/s</string>
+-                </property>
+-            </item>
+-            <property name="name">
+-                <cstring>cmb_speed</cstring>
+-            </property>
+-        </widget>
+-        <widget class="KURLRequester" row="4" column="2" rowspan="1" colspan="5">
+-            <property name="name">
+-                <cstring>url_connectScript</cstring>
+-            </property>
+-            <property name="enabled">
+-                <bool>false</bool>
+-            </property>
+-        </widget>
+-        <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="5">
+-            <property name="name">
+-                <cstring>cb_runScript</cstring>
+-            </property>
+-            <property name="text">
+-                <string>Execute script on connect</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>Activates a script to perform arbitrary operations after associating with the network.</string>
+-            </property>
+-        </widget>
+-        <spacer row="2" column="3" rowspan="1" colspan="4">
+-            <property name="name">
+-                <cstring>spacer6</cstring>
+-            </property>
+-            <property name="orientation">
+-                <enum>Horizontal</enum>
+-            </property>
+-            <property name="sizeType">
+-                <enum>Expanding</enum>
+-            </property>
+-            <property name="sizeHint">
+-                <size>
+-                    <width>190</width>
+-                    <height>20</height>
+-                </size>
+-            </property>
+-        </spacer>
+-        <spacer row="1" column="3" rowspan="1" colspan="4">
+-            <property name="name">
+-                <cstring>spacer5_2</cstring>
+-            </property>
+-            <property name="orientation">
+-                <enum>Horizontal</enum>
+-            </property>
+-            <property name="sizeType">
+-                <enum>Expanding</enum>
+-            </property>
+-            <property name="sizeHint">
+-                <size>
+-                    <width>190</width>
+-                    <height>20</height>
+-                </size>
+-            </property>
+-        </spacer>
+-        <spacer row="4" column="0">
+-            <property name="name">
+-                <cstring>spacer7</cstring>
+-            </property>
+-            <property name="orientation">
+-                <enum>Horizontal</enum>
+-            </property>
+-            <property name="sizeType">
+-                <enum>Preferred</enum>
+-            </property>
+-            <property name="sizeHint">
+-                <size>
+-                    <width>17</width>
+-                    <height>20</height>
+-                </size>
+-            </property>
+-        </spacer>
+-        <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
+-            <property name="name">
+-                <cstring>lb_netName</cstring>
+-            </property>
+-            <property name="text">
+-                <string>Network name:</string>
+-            </property>
+-            <property name="toolTip" stdset="0">
+-                <string>SSID of the network to connect to. "any" means "arbitrary available network".</string>
+-            </property>
+-        </widget>
+-        <widget class="KLineEdit" row="0" column="2" rowspan="1" colspan="2">
+-            <property name="name">
+-                <cstring>le_networkName</cstring>
+-            </property>
+-        </widget>
+-        <widget class="QCheckBox" row="0" column="4" rowspan="1" colspan="2">
+-            <property name="name">
+-                <cstring>cb_Autodetect</cstring>
+-            </property>
+-            <property name="text">
+-                <string>Interface: Autodetect?</string>
+-            </property>
+-            <property name="checked">
+-                <bool>true</bool>
+-            </property>
+-        </widget>
+-        <widget class="QLineEdit" row="0" column="6">
+-            <property name="name">
+-                <cstring>le_interface</cstring>
+-            </property>
+-            <property name="enabled">
+-                <bool>false</bool>
+-            </property>
+-        </widget>
+     </grid>
+ </widget>
+ <connections>
+@@ -377,9 +495,9 @@
+ <layoutdefaults spacing="6" margin="11"/>
+ <layoutfunctions spacing="KDialog::spacingHint" margin="KDialog::marginHint"/>
+ <includehints>
++    <includehint>klineedit.h</includehint>
+     <includehint>kurlrequester.h</includehint>
+     <includehint>klineedit.h</includehint>
+     <includehint>kpushbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+ </includehints>
+ </UI>
 Index: wifi/kcmwifi/kcmwifi.desktop
 ===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -74,7 +74,7 @@
  Comment[es]=Configure su red inalámbrica local
  Comment[et]=Traadita võrgu seadistamine
@@ -1089,10 +2838,22 @@ Index: wifi/kcmwifi/kcmwifi.desktop
  Comment[fi]=Aseta langaton lähiverkko
  Comment[fr]=Configuration de votre réseau sans fil
  Comment[gl]=Configura a túa rede inalámbrica
+Index: wifi/interface_wireless_wirelessextensions.cpp
+===================================================================
+--- wifi/interface_wireless_wirelessextensions.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ wifi/interface_wireless_wirelessextensions.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
+@@ -141,6 +141,7 @@
+   /* Get ESSID */
+   /* prepare NULL-terminated buffer in case the string returned by SIOCGIWESSID is NOT NULL-terminated */
+   memset(wrq.u.essid.pointer, '\0', IW_ESSID_MAX_SIZE + 1);
++  wrq.u.essid.pointer = (caddr_t) WIFI_CONFIG(info,essid);
+   wrq.u.essid.length = IW_ESSID_MAX_SIZE + 1;
+   wrq.u.essid.flags = 0;
+   if (iw_get_ext (skfd, ifname, SIOCGIWESSID, &wrq) >= 0)
 Index: wifi/kwifimanager.desktop
 ===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -61,7 +61,6 @@
  Name[cy]=KRheolyddDiWi
  Name[de]=KWiFi-Verwaltung
@@ -1103,8 +2864,8 @@ Index: wifi/kwifimanager.desktop
  Name[ja]=KWiFiマネージャ
 Index: kppp/accounts.cpp
 ===================================================================
---- kppp/accounts.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kppp/accounts.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kppp/accounts.cpp	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kppp/accounts.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -232,12 +232,12 @@
    QueryReset dlg(this);
    int what = dlg.exec();
@@ -1122,8 +2883,8 @@ Index: kppp/accounts.cpp
    }
 Index: kppp/Kppp.desktop
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kppp/Kppp.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -12,7 +12,7 @@
  GenericName[es]=Herramienta de conexión telefónica a Internet
  GenericName[et]=Sissehelistamine
@@ -1135,8 +2896,8 @@ Index: kppp/Kppp.desktop
  GenericName[gl]=Ferramenta de Conexión Telefónica a Internet
 Index: kppp/logview/kppplogview.desktop
 ===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -31,7 +31,7 @@
  GenericName[es]=Visor del registro de conexión telefónica a Internet
  GenericName[et]=Interneti sissehelistamise rakenduse logide näitaja
@@ -1148,8 +2909,8 @@ Index: kppp/logview/kppplogview.desktop
  GenericName[gl]=Visor de Rexistros da Ferramenta de Conexión a Internet por Teléfono
 Index: ksirc/eventsrc
 ===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 600145)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 600145)
+--- ksirc/eventsrc	(.../tags/KDE/3.5.5/kdenetwork)	(revision 605721)
++++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 605721)
 @@ -24,7 +24,7 @@
  Name[es]=Evento de canal
  Name[et]=Kanali sündmus
