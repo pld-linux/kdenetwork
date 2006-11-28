@@ -19,7 +19,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.5
-Release:	4.2
+Release:	4.3
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -60,6 +60,8 @@ BuildRequires:	sed >= 4.0
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoreq	libtool(.*)
 
 %description
 KDE network applications. Package includes:
