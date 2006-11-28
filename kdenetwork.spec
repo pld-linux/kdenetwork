@@ -1148,8 +1148,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/fileshare_propsdlgplugin.so
 %{_libdir}/kde3/kcm_fileshare.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
-%{_libdir}/kde3/libkcm_kcmsambaconf.la
-%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
+%{_libdir}/kde3/kcm_kcmsambaconf.la
+%attr(755,root,root) %{_libdir}/kde3/kcm_kcmsambaconf.so
 %{_datadir}/services/fileshare_propsdlgplugin.desktop
 %{_desktopdir}/kde/fileshare.desktop
 %{_desktopdir}/kde/kcmsambaconf.desktop
