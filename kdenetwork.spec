@@ -14,8 +14,8 @@ Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://sunsite.icm.edu.pl/pub/unix/kde/unstable/3.80.2/src/%{name}-%{version}.tar.bz2
-##% Source0-md5:	47a8d21ce486426caf56bf6129ce993f
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	07b61b2de9a50a9da59449043d5379a2
 #Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -38,6 +38,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	qt4-qmake
 #BuildRequires:	unsermake >= 040511
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
