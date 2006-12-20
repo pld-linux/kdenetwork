@@ -87,8 +87,8 @@ PPP krn: leitor de notícias
 Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
-Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
+#Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
+#Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 Requires:	kdelibs-devel >= %{_minlibsevr}
 Obsoletes:	kdenetwork-librss-devel
