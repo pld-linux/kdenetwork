@@ -1,33 +1,29 @@
 %bcond_without	xmms
-%define		_state		stable
-%define		_kdever		3.4.89
-%define		_ver		3.4.89
-%define		_snap		050626
-%define		_minlibsevr	9:3.4.89.050624
-%define		_minbaseevr	9:3.4.89.050625
+%define		_state		unstable
+%define		_kdever		3.80.2
+%define		_minlibsevr	9:3.80.2
+%define		_minbaseevr	9:3.80.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	%{_ver}.%{_snap}
+Version:	3.80.2
 Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{_kdever}/src/%{name}-%{version}.tar.bz2
-Source0:        ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
+Source0:	ftp://sunsite.icm.edu.pl/pub/unix/kde/unstable/3.80.2/src/%{name}-%{version}.tar.bz2
 ##% Source0-md5:	47a8d21ce486426caf56bf6129ce993f
-Source1:	%{name}-kopetestyles.tar.bz2
-# Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922	
+#Source1:	%{name}-kopetestyles.tar.bz2
+# Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
-Icon:		kde-network.xpm
-#Patch100:	%{name}-branch.diff
-Patch0:		kde-common-PLD.patch
-Patch1:		%{name}-use_sendmail.patch
+#Patch100: %{name}-branch.diff
+#Patch0: kde-common-PLD.patch
+#Patch1: %{name}-use_sendmail.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -91,10 +87,10 @@ PPP krn: leitor de notícias
 Summary:	kdenetwork header files
 Summary(pl):	Pliki nag³ówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	kdelibs-devel >= %{_minlibsevr}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-devel >= %{_minlibsevr}
 Obsoletes:	kdenetwork-librss-devel
 Obsoletes:	kdenetwork-rss-devel
 
@@ -235,24 +231,10 @@ Miniaplicativo de exibição de notícias para o painel Kicker.
 Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl):	Komunikator obs³uguj±cy wiele protoko³ów
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
+Requires:	kdebase-core >= %{_minbaseevr}
 Obsoletes:	kdenetwork-kit
 Obsoletes:	kopete
-Obsoletes:	kopete-plugin-tools-autoaway
-Obsoletes:	kopete-plugin-tools-autoreplace
-Obsoletes:	kopete-plugin-tools-conectionstatus
-Obsoletes:	kopete-plugin-tools-contactnotes
-Obsoletes:	kopete-plugin-tools-cryptography
-Obsoletes:	kopete-plugin-tools-history
-Obsoletes:	kopete-plugin-tools-highlight
-Obsoletes:	kopete-plugin-tools-importer
-Obsoletes:	kopete-plugin-tools-nowlistening
-Obsoletes:	kopete-plugin-tools-motionaway
-Obsoletes:	kopete-plugin-tools-spellcheck
-Obsoletes:	kopete-plugin-tools-texteffect
-Obsoletes:	kopete-plugin-tools-translator
-Obsoletes:	kopete-plugin-tools-webpresence
 Obsoletes:	kopete-plugin-protocols-aim
 Obsoletes:	kopete-plugin-protocols-gg
 Obsoletes:	kopete-plugin-protocols-icq
@@ -263,6 +245,20 @@ Obsoletes:	kopete-plugin-protocols-oscar
 Obsoletes:	kopete-plugin-protocols-sms
 Obsoletes:	kopete-plugin-protocols-winpopup
 Obsoletes:	kopete-plugin-protocols-yahoo
+Obsoletes:	kopete-plugin-tools-autoaway
+Obsoletes:	kopete-plugin-tools-autoreplace
+Obsoletes:	kopete-plugin-tools-conectionstatus
+Obsoletes:	kopete-plugin-tools-contactnotes
+Obsoletes:	kopete-plugin-tools-cryptography
+Obsoletes:	kopete-plugin-tools-highlight
+Obsoletes:	kopete-plugin-tools-history
+Obsoletes:	kopete-plugin-tools-importer
+Obsoletes:	kopete-plugin-tools-motionaway
+Obsoletes:	kopete-plugin-tools-nowlistening
+Obsoletes:	kopete-plugin-tools-spellcheck
+Obsoletes:	kopete-plugin-tools-texteffect
+Obsoletes:	kopete-plugin-tools-translator
+Obsoletes:	kopete-plugin-tools-webpresence
 
 %description kopete
 Kopete is a flexible and extendable multiple protocol instant
@@ -388,7 +384,7 @@ Kopete plugin which adds SMS contact support.
 Wtyczka Kopete dodaj±ca obs³ugê kontaktów SMS.
 
 %package kopete-protocol-testbed
-Summary:	A sample plugin for kopete.
+Summary:	A sample plugin for kopete
 Summary(pl):	Przyk³adowa wtyczka dla kopete.
 Group:		X11/Development/Libraries
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
@@ -559,8 +555,8 @@ Summary:	Playlist informer for Kopete
 Summary(pl):	Informator o playli¶cie dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-#Requires:	kdemultimedia-noatun >= 3.1
 #Requires:	kdemultimedia-kscd >= 3.1
+#Requires:	kdemultimedia-noatun >= 3.1
 %if %{with xmms}
 Requires:	xmms >= 1.0.0
 %endif
@@ -722,8 +718,8 @@ Summary(pl):	Klient IRC dla KDE
 Summary(pt_BR):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
-Requires:	perl-Socket6 >= 0.11
 Requires:	perl-IO-Socket-SSL
+Requires:	perl-Socket6 >= 0.11
 
 %description ksirc
 KSirc is the default KDE IRC client. It supports scripting with Perl
@@ -740,8 +736,8 @@ Cliente de IRC do KDE.
 Summary:	Virtual Desktops
 Summary(pl):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
+Requires:	kdebase-core >= %{_minbaseevr}
 
 %description krfb
 Remote Desktop Connection is a client application that allows you to
@@ -814,9 +810,9 @@ Demon XmlRpc dla KDE.
 Summary:	KDE LAN Browser
 Summary(pl):	Przegl±darka LAN-u dla KDE
 Group:		X11/Applications
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
+Requires:	rc-scripts
 Provides:	lisa
 Obsoletes:	kdenetwork-lisa
 Obsoletes:	lisa
@@ -894,106 +890,92 @@ RSS parsers used by different applications.
 Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
-#%setup -q
-%setup -q -n %{name}-%{_snap}
-#%patch100 -p1
-%patch0 -p1
-%patch1 -p1
+%setup -q
 
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
-	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	kget/kget.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
-	kppp/logview/kppplogview.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
-	-e 's/Terminal=0/Terminal=false/' \
-	kppp/Kppp.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
-	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	krdc/krdc.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
-	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	krfb/krfb/krfb.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Dictionary;/' \
-	-e 's/Terminal=0/Terminal=false/' \
-	kdict/kdict.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;IRCClient;/' \
-	-e 's/Terminal=0/Terminal=false/' \
-	ksirc/ksirc.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
-	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	kopete/kopete/kopete.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
-	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	wifi/kwifimanager.desktop
-%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;News;/' \
-	-e 's/Terminal=0/Terminal=false/' \
-	knewsticker/knewsticker-standalone.desktop
-%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
-	wifi/kcmwifi/kcmwifi.desktop
-for f in `find . -name \*.desktop`; do
-	if grep -q '^Categories=.*[^;]$' $f; then
-		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
-	fi
-	if grep -q '\[ven\]' $f; then
-		sed -i -e 's/\[ven\]/[ve]/' $f
-	fi
-done
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
+#	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	kget/kget.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+#	kppp/logview/kppplogview.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;Dialup;/' \
+#	-e 's/Terminal=0/Terminal=false/' \
+#	kppp/Kppp.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+#	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	krdc/krdc.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;RemoteAccess;/' \
+#	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	krfb/krfb/krfb.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Dictionary;/' \
+#	-e 's/Terminal=0/Terminal=false/' \
+#	kdict/kdict.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;IRCClient;/' \
+#	-e 's/Terminal=0/Terminal=false/' \
+#	ksirc/ksirc.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;InstantMessaging;/' \
+#	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	kopete/kopete/kopete.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;/' \
+#	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	wifi/kwifimanager.desktop
+#%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;News;/' \
+#	-e 's/Terminal=0/Terminal=false/' \
+#	knewsticker/knewsticker-standalone.desktop
+#%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+#	wifi/kcmwifi/kcmwifi.desktop
+#for f in `find . -name \*.desktop`; do
+#	if grep -q '^Categories=.*[^;]$' $f; then
+#		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
+#	fi
+#	if grep -q '\[ven\]' $f; then
+#		sed -i -e 's/\[ven\]/[ve]/' $f
+#	fi
+#done
 
-echo "KDE_OPTIONS = nofinal" >> kopete/protocols/yahoo/libyahoo2/Makefile.am
+#echo "KDE_OPTIONS = nofinal" >> kopete/protocols/yahoo/libyahoo2/Makefile.am
 
 %build
-cp %{_datadir}/automake/config.sub admin
-
-#export UNSERMAKE=%{_datadir}/unsermake/unsermake
-
-%{__make} -f admin/Makefile.common cvs
-
-%configure \
-	--disable-rpath \
-	--enable-final \
-	--with-qt-libraries=%{_libdir} \
-%if "%{_lib}" == "lib64"
-	--enable-libsuffix=64 \
-%endif
-	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full}
-
+mkdir build
+cd build
+%cmake \
+		-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+		../
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
-install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
-install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
-%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
+#install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+#install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+#install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
+#%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
 
-mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
+#mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 
-%find_lang kdict		--with-kde
-%find_lang kget			--with-kde
-%find_lang knewsticker		--with-kde
-%find_lang kopete		--with-kde
-grep -v /kdenetwork-apidocs/ kopete.lang > kopete.lang.
-mv kopete.lang. kopete.lang
-%find_lang kpf			--with-kde
-%find_lang kppp			--with-kde
-%find_lang krdc			--with-kde
-%find_lang krfb			--with-kde
-cat krdc.lang >> krfb.lang
-%find_lang ksirc		--with-kde
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-cat kcmtalkd.lang >> ktalkd.lang
-%find_lang kwifimanager		--with-kde
-%find_lang lisa			--with-kde
-%find_lang lanbrowser		--with-kde
-cat lanbrowser.lang >> lisa.lang
+#%find_lang kdict		--with-kde
+#%find_lang kget			--with-kde
+##%find_lang knewsticker		--with-kde
+#%find_lang kopete		--with-kde
+#grep -v /kdenetwork-apidocs/ kopete.lang > kopete.lang.
+#mv kopete.lang. kopete.lang
+#%find_lang kpf			--with-kde
+#%find_lang kppp			--with-kde
+#%find_lang krdc			--with-kde
+#%find_lang krfb			--with-kde
+#cat krdc.lang >> krfb.lang
+#%find_lang ksirc		--with-kde
+#%find_lang ktalkd		--with-kde
+#%find_lang kcmtalkd		--with-kde
+#cat kcmtalkd.lang >> ktalkd.lang
+#%find_lang kwifimanager		--with-kde
+#%find_lang lisa			--with-kde
+#%find_lang lanbrowser		--with-kde
+#cat lanbrowser.lang >> lisa.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1014,462 +996,470 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del lisa
 fi
 
-%post	libkopete	-p /sbin/ldconfig
-%postun	libkopete	-p /sbin/ldconfig
+#%post	libkopete	-p /sbin/ldconfig
+#%postun	libkopete	-p /sbin/ldconfig
 
-%post	libkopete_msn	-p /sbin/ldconfig
-%postun	libkopete_msn	-p /sbin/ldconfig
+#%post	libkopete_msn	-p /sbin/ldconfig
+#%postun	libkopete_msn	-p /sbin/ldconfig
 
-%post	libkopete_oscar	-p /sbin/ldconfig
-%postun	libkopete_oscar	-p /sbin/ldconfig
+#%post	libkopete_oscar	-p /sbin/ldconfig
+#%postun	libkopete_oscar	-p /sbin/ldconfig
 
 %post	librss		-p /sbin/ldconfig
 %postun	librss		-p /sbin/ldconfig
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete.so
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so
+#%attr(755,root,root) %{_libdir}/libkopete.so
+#%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
+#%attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/librss.so
-%{_includedir}/kopete
+#%{_includedir}/kopete
 %{_includedir}/rss
 
-%files filesharing
-%defattr(644,root,root,755)
-%{_libdir}/kde3/fileshare_propsdlgplugin.la
-%attr(755,root,root) %{_libdir}/kde3/fileshare_propsdlgplugin.so
-%{_libdir}/kde3/kcm_fileshare.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
-%{_libdir}/kde3/libkcm_kcmsambaconf.la
-%attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
-%{_datadir}/services/fileshare_propsdlgplugin.desktop
-%{_desktopdir}/kde/fileshare.desktop
-%{_desktopdir}/kde/kcmsambaconf.desktop
-%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
+#%files filesharing
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/fileshare_propsdlgplugin.la
+#%attr(755,root,root) %{_libdir}/kde4/fileshare_propsdlgplugin.so
+#%{_libdir}/kde4/kcm_fileshare.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_fileshare.so
+#%{_libdir}/kde4/libkcm_kcmsambaconf.la
+#%attr(755,root,root) %{_libdir}/kde4/libkcm_kcmsambaconf.so
+#%{_datadir}/services/fileshare_propsdlgplugin.desktop
+#%{_desktopdir}/kde/fileshare.desktop
+#%{_desktopdir}/kde/kcmsambaconf.desktop
+#%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
 
-%files kdict -f kdict.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kdict
-%{_libdir}/kde3/kdict.la
-%attr(755,root,root) %{_libdir}/kde3/kdict.so
-%{_libdir}/kde3/kdict_panelapplet.la
-%attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
-%{_libdir}/libkdeinit_kdict.la
-%attr(755,root,root) %{_libdir}/libkdeinit_kdict.so
-%{_datadir}/apps/kdict
-%{_datadir}/apps/kicker/applets/kdictapplet.desktop
-%{_desktopdir}/kde/kdict.desktop
-%{_iconsdir}/*/*/*/kdict*
+#%files kdict
+# -f kdict.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kdict
+#%{_libdir}/kde4/kdict.la
+#%attr(755,root,root) %{_libdir}/kde4/kdict.so
+#%{_libdir}/kde4/kdict_panelapplet.la
+#%attr(755,root,root) %{_libdir}/kde4/kdict_panelapplet.so
+#%{_libdir}/libkdeinit_kdict.la
+#%attr(755,root,root) %{_libdir}/libkdeinit_kdict.so
+##%{_datadir}/apps/kdict
+##%{_datadir}/apps/kicker/applets/kdictapplet.desktop
+#%{_desktopdir}/kde/kdict.desktop
+#%{_iconsdir}/*/*/*/kdict*
 
 %files kdnssd
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kded_dnssdwatcher.la
-%attr(755,root,root) %{_libdir}/kde3/kded_dnssdwatcher.so
-%{_libdir}/kde3/kio_zeroconf.la
-%attr(755,root,root) %{_libdir}/kde3/kio_zeroconf.so
-%{_datadir}/apps/remoteview/zeroconf.desktop
-%{_datadir}/apps/zeroconf
-%{_datadir}/services/kded/dnssdwatcher.desktop
+%{_prefix}/lib/kde4/kded_dnssdwatcher.la
+%attr(755,root,root) %{_prefix}/lib/kde4/kded_dnssdwatcher.so
+%{_prefix}/lib/kde4/kio_zeroconf.la
+%attr(755,root,root) %{_prefix}/lib/kde4/kio_zeroconf.so
 %{_datadir}/services/zeroconf.protocol
+%{_datadir}/services/invitation.protocol
+%{_datadir}/apps/zeroconf
+%{_datadir}/apps/remoteview/zeroconf.desktop
+%{_datadir}/services/kded/dnssdwatcher.desktop
 
-%files kfile-torrent
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kfile_torrent.la
-%attr(755,root,root) %{_libdir}/kde3/kfile_torrent.so
-%{_datadir}/services/kfile_torrent.desktop
+#%files kfile-torrent
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kfile_torrent.la
+#%attr(755,root,root) %{_libdir}/kde4/kfile_torrent.so
+##%{_datadir}/services/kfile_torrent.desktop
 
-%files kget -f kget.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kget
-%{_libdir}/kde3/khtml_kget.la
-%attr(755,root,root) %{_libdir}/kde3/khtml_kget.so
-%{_datadir}/apps/kget
-%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
-%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
-%{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
-%{_datadir}/mimelnk/application/x-kgetlist.desktop
-%{_desktopdir}/kde/kget.desktop
-%{_iconsdir}/*/*/*/*kget*
+#%files kget
+# -f kget.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kget
+#%{_libdir}/kde4/khtml_kget.la
+#%attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
+##%{_datadir}/apps/kget
+##%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
+##%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
+##%{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
+##%{_datadir}/mimelnk/application/x-kgetlist.desktop
+#%{_desktopdir}/kde/kget.desktop
+#%{_iconsdir}/*/*/*/*kget*
 
-%files kinetd
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kded_kinetd.la
-%attr(755,root,root) %{_libdir}/kde3/kded_kinetd.so
-%{_datadir}/apps/kinetd
-%{_datadir}/services/kded/kinetd.desktop
-%{_datadir}/servicetypes/kinetdmodule.desktop
+#%files kinetd
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kded_kinetd.la
+#%attr(755,root,root) %{_libdir}/kde4/kded_kinetd.so
+##%{_datadir}/apps/kinetd
+##%{_datadir}/services/kded/kinetd.desktop
+##%{_datadir}/servicetypes/kinetdmodule.desktop
 
-%files knewsticker -f knewsticker.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/knewstickerstub
-%{_libdir}/kde3/knewsticker_panelapplet.la
-%attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
-%{_datadir}/apps/knewsticker
-%{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_datadir}/apps/kconf_update/kn*
-%{_datadir}/applnk/.hidden/knewstickerstub.desktop
-%{_desktopdir}/kde/knewsticker*.desktop
-%{_iconsdir}/*/*/*/knewsticker.png
+#%files knewsticker
+# -f knewsticker.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/knewstickerstub
+#%{_libdir}/kde4/knewsticker_panelapplet.la
+#%attr(755,root,root) %{_libdir}/kde4/knewsticker_panelapplet.so
+##%{_datadir}/apps/knewsticker
+##%{_datadir}/apps/kicker/applets/knewsticker.desktop
+##%{_datadir}/apps/kconf_update/kn*
+##%{_datadir}/applnk/.hidden/knewstickerstub.desktop
+#%{_desktopdir}/kde/knewsticker*.desktop
+#%{_iconsdir}/*/*/*/knewsticker.png
 
-%files kopete -f kopete.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
-%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
-%attr(755,root,root) %{_bindir}/kopete
-%{_libdir}/kde3/kcm_kopete_addbookmarks.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
-%{_libdir}/kde3/kcm_kopete_accountconfig.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
-%{_libdir}/kde3/kcm_kopete_appearanceconfig.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
-%{_libdir}/kde3/kcm_kopete_behaviorconfig.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/kcm_kopete_netmeeting.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
-%{_libdir}/kde3/kopete_addbookmarks.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
-%{_libdir}/kde3/kopete_chatwindow.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
-%{_libdir}/kde3/kopete_emailwindow.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_emailwindow.so
-%{_libdir}/kde3/kopete_statistics.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
-%{_libdir}/kde3/libkrichtexteditpart.la
-%attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
-%{_datadir}/apps/kconf_update/kopete-account-0.10.pl
-%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
-%{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
-%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
-%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
-%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
-%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
-%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
-%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-%dir %{_datadir}/apps/kopete
-%{_datadir}/apps/kopete/*rc
-%dir %{_datadir}/apps/kopete/icons
-%dir %{_datadir}/apps/kopete/icons/crystalsvg
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
-%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.png
-%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.svgz
-%{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
-%{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
-%{_datadir}/apps/kopete/icons/*/*/actions/logging.png
-%{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
-%{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
-%{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
-%dir %{_datadir}/apps/kopete/pics
-%{_datadir}/apps/kopete/pics/statistics
-%{_datadir}/apps/kopete/styles
-%{_datadir}/apps/kopete_statistics
-%dir %{_datadir}/apps/kopeterichtexteditpart
-%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
-%{_datadir}/config.kcfg/kopete.kcfg
-%{_datadir}/services/chatwindow.desktop
-%{_datadir}/services/emailwindow.desktop
-%{_datadir}/services/kopete_accountconfig.desktop
-%{_datadir}/services/kopete_addbookmarks.desktop
-%{_datadir}/services/kopete_appearanceconfig.desktop
-%{_datadir}/services/kopete_behaviorconfig.desktop
-%{_datadir}/services/kopete_statistics.desktop
-%{_datadir}/servicetypes/kopeteplugin.desktop
-%{_datadir}/servicetypes/kopeteprotocol.desktop
-%{_datadir}/servicetypes/kopeteui.desktop
-%{_datadir}/sounds/Kopete_Event.ogg
-%{_datadir}/sounds/Kopete_Received.ogg
-%{_datadir}/sounds/Kopete_Sent.ogg
-%{_datadir}/sounds/Kopete_User_is_Online.ogg
-%{_desktopdir}/kde/kopete.desktop
-%{_iconsdir}/*/*/apps/kopete.png
-%{_iconsdir}/*/*/apps/kopete2.svgz
-%{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
-%{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
-%{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
-%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
+#%files kopete
+# -f kopete.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-account-kconf_update
+#%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-nameTracking-kconf_update
+#%attr(755,root,root) %{_libdir}/kconf_update_bin/kopete-pluginloader2-kconf_update
+#%attr(755,root,root) %{_bindir}/kopete
+#%{_libdir}/kde4/kcm_kopete_addbookmarks.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_addbookmarks.so
+#%{_libdir}/kde4/kcm_kopete_accountconfig.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_accountconfig.so
+#%{_libdir}/kde4/kcm_kopete_appearanceconfig.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_appearanceconfig.so
+#%{_libdir}/kde4/kcm_kopete_behaviorconfig.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_behaviorconfig.so
+#%{_libdir}/kde4/kcm_kopete_netmeeting.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_netmeeting.so
+#%{_libdir}/kde4/kopete_addbookmarks.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_addbookmarks.so
+#%{_libdir}/kde4/kopete_chatwindow.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_chatwindow.so
+#%{_libdir}/kde4/kopete_emailwindow.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_emailwindow.so
+#%{_libdir}/kde4/kopete_statistics.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_statistics.so
+#%{_libdir}/kde4/libkrichtexteditpart.la
+#%attr(755,root,root) %{_libdir}/kde4/libkrichtexteditpart.so
+##%{_datadir}/apps/kconf_update/kopete-account-0.10.pl
+##%{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
+##%{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
+##%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+##%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
+##%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
+##%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
+##%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
+##%{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
+##%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+##%{_datadir}/apps/kconf_update/kopete-pluginloader.pl
+##%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
+#%dir ##%{_datadir}/apps/kopete
+##%{_datadir}/apps/kopete/*rc
+#%dir %{_datadir}/apps/kopete/icons
+#%dir %{_datadir}/apps/kopete/icons/crystalsvg
+#%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
+#%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
+##%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/account_offline_overlay.svgz
+##%{_datadir}/apps/kopete/icons/*/*/actions/emoticon.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key1.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key2.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/kgpg_key3.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/kopeteavailable.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/kopeteaway.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/logging.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/newmessage.mng
+##%{_datadir}/apps/kopete/icons/*/*/actions/newmsg.png
+##%{_datadir}/apps/kopete/icons/*/*/actions/status_unknown.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_away.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_offline.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_online.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/metacontact_unknown.png
+#%dir %{_datadir}/apps/kopete/pics
+##%{_datadir}/apps/kopete/pics/statistics
+##%{_datadir}/apps/kopete/styles
+##%{_datadir}/apps/kopete_statistics
+#%dir %{_datadir}/apps/kopeterichtexteditpart
+##%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
+##%{_datadir}/config.kcfg/kopete.kcfg
+##%{_datadir}/services/chatwindow.desktop
+##%{_datadir}/services/emailwindow.desktop
+##%{_datadir}/services/kopete_accountconfig.desktop
+##%{_datadir}/services/kopete_addbookmarks.desktop
+##%{_datadir}/services/kopete_appearanceconfig.desktop
+##%{_datadir}/services/kopete_behaviorconfig.desktop
+##%{_datadir}/services/kopete_statistics.desktop
+##%{_datadir}/servicetypes/kopeteplugin.desktop
+##%{_datadir}/servicetypes/kopeteprotocol.desktop
+##%{_datadir}/servicetypes/kopeteui.desktop
+##%{_datadir}/sounds/Kopete_Event.ogg
+##%{_datadir}/sounds/Kopete_Received.ogg
+##%{_datadir}/sounds/Kopete_Sent.ogg
+##%{_datadir}/sounds/Kopete_User_is_Online.ogg
+#%{_desktopdir}/kde/kopete.desktop
+#%{_iconsdir}/*/*/apps/kopete.png
+#%{_iconsdir}/*/*/apps/kopete2.svgz
+#%{_iconsdir}/crystalsvg/*/apps/kopete_all_away.png
+#%{_iconsdir}/crystalsvg/*/apps/kopete_offline.png
+#%{_iconsdir}/crystalsvg/*/apps/kopete_some_away.png
+#%{_iconsdir}/crystalsvg/*/apps/kopete_some_online.png
+#%{_iconsdir}/crystalsvg/*/mimetypes/kopete_emoticons.png
+##%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
 
 # TODO (separate?)
-%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
-%{_libdir}/kde3/kcm_kopete_latex.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
-%{_libdir}/kde3/kopete_latex.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
-%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
-%{_datadir}/apps/kopete_latex/latexchatui.rc
-%{_datadir}/config.kcfg/latexconfig.kcfg
-%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
-%{_datadir}/services/kopete_latex.desktop
+#%attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
+#%{_libdir}/kde4/kcm_kopete_latex.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_latex.so
+#%{_libdir}/kde4/kopete_latex.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_latex.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
+##%{_datadir}/apps/kopete_latex/latexchatui.rc
+##%{_datadir}/config.kcfg/latexconfig.kcfg
+##%{_datadir}/services/kconfiguredialog/kopete_latex_config.desktop
+##%{_datadir}/services/kopete_latex.desktop
 
-%{_libdir}/kde3/kcm_kopete_identityconfig.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_identityconfig.so
-%{_datadir}/services/kopete_identityconfig.desktop
+#%{_libdir}/kde4/kcm_kopete_identityconfig.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_identityconfig.so
+##%{_datadir}/services/kopete_identityconfig.desktop
 
-%{_libdir}/kde3/kio_jabberdisco.la
-%attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
-%{_datadir}/services/jabberdisco.protocol
+#%{_libdir}/kde4/kio_jabberdisco.la
+#%attr(755,root,root) %{_libdir}/kde4/kio_jabberdisco.so
+##%{_datadir}/services/jabberdisco.protocol
 
-%{_libdir}/kde3/kopete_testbed.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/apps/testbed_protocol.png
-%{_datadir}/services/kopete_testbed.desktop
+#%{_libdir}/kde4/kopete_testbed.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/apps/testbed_protocol.png
+##%{_datadir}/services/kopete_testbed.desktop
 # New icons
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_away_overlay.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_busy_overlay.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_food_overlay.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_invisible_overlay.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_phone_overlay.png
-%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_xa_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_away_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_busy_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_food_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_invisible_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_phone_overlay.png
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/actions/contact_xa_overlay.png
 # New one
-%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
-%{_datadir}/services/invitation.protocol
+##%{_datadir}/services/kconfiguredialog/kopete_addbookmarks_config.desktop
+##%{_datadir}/services/invitation.protocol
 
-%files kopete-protocol-aim
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*aim*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
-%{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
-%{_datadir}/services/aim.protocol
-%{_datadir}/services/kopete_aim.desktop
+#%files kopete-protocol-aim
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*aim*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*aim*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
+##%{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
+##%{_datadir}/services/aim.protocol
+##%{_datadir}/services/kopete_aim.desktop
 
-%files kopete-protocol-gg
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*gadu*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*gadu*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
-%{_datadir}/services/kopete_gadu.desktop
+#%files kopete-protocol-gg
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*gadu*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*gadu*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
+##%{_datadir}/services/kopete_gadu.desktop
 
-%files kopete-protocol-groupwise
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*groupwise*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*groupwise*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/groupwise*
-%{_datadir}/apps/kopete_groupwise
-%{_datadir}/services/kopete_groupwise.desktop
+#%files kopete-protocol-groupwise
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*groupwise*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*groupwise*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/groupwise*
+##%{_datadir}/apps/kopete_groupwise
+##%{_datadir}/services/kopete_groupwise.desktop
 
-%files kopete-protocol-icq
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*icq*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
-%{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
+#%files kopete-protocol-icq
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*icq*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*icq*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
+##%{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
 # moved to kdelibs; used also by sim
-%{_datadir}/mimelnk/application/x-icq.desktop
-%{_datadir}/services/kopete_icq.desktop
+##%{_datadir}/mimelnk/application/x-icq.desktop
+##%{_datadir}/services/kopete_icq.desktop
 
-%files kopete-protocol-irc
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*irc*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
-%{_datadir}/apps/kopete/ircnetworks.xml
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
-%{_datadir}/services/kopete_irc.desktop
-%{_datadir}/services/irc.protocol
-#%%{_datadir}/apps/kopete/pics/irc_connecting.mng
+#%files kopete-protocol-irc
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*irc*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*irc*.so
+##%{_datadir}/apps/kopete/ircnetworks.xml
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
+##%{_datadir}/services/kopete_irc.desktop
+##%{_datadir}/services/irc.protocol
+#%##%{_datadir}/apps/kopete/pics/irc_connecting.mng
 
-%files kopete-protocol-jabber
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*jabber*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
-%{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
-%{_datadir}/services/kopete_jabber.desktop
+#%files kopete-protocol-jabber
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*jabber*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/jabber*
+##%{_datadir}/apps/kopete/icons/hicolor/*/*/*jabber*
+##%{_datadir}/services/kopete_jabber.desktop
 
-%files kopete-protocol-msn
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_msn.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
-%{_libdir}/kde3/kopete*msn*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
-%{_libdir}/kde3/kopete_netmeeting.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_netmeeting.so
-%{_datadir}/apps/kopete_msn
-%{_datadir}/apps/kopete_netmeeting
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
-%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
-%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
-%{_datadir}/services/kopete_msn.desktop
-%{_datadir}/services/kopete_netmeeting.desktop
+#%files kopete-protocol-msn
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_msn.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_msn.so
+#%{_libdir}/kde4/kopete*msn*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*msn*.so
+#%{_libdir}/kde4/kopete_netmeeting.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_netmeeting.so
+##%{_datadir}/apps/kopete_msn
+##%{_datadir}/apps/kopete_netmeeting
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
+##%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
+##%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
+##%{_datadir}/services/kopete_msn.desktop
+##%{_datadir}/services/kopete_netmeeting.desktop
 
-%files kopete-protocol-sms
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*sms*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*sms*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
-%{_datadir}/services/kopete_sms.desktop
+#%files kopete-protocol-sms
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*sms*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*sms*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
+##%{_datadir}/services/kopete_sms.desktop
 
 #%files kopete-protocol-testbed
 #%defattr(644,root,root,755)
-#%{_libdir}/kde3/kopete_testbed.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete_testbed.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/testbed*
-#%{_datadir}/services/kopete_testbed.desktop
+#%{_libdir}/kde4/kopete_testbed.la
+##%attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
+###%{_datadir}/apps/kopete/icons/crystalsvg/*/*/testbed*
+###%{_datadir}/services/kopete_testbed.desktop
 
 #%files kopete-protocol-winpopup
 #%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/winpopup*.sh
-#%{_libdir}/kde3/kcm_kopete_wp.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_wp.so
-#%{_libdir}/kde3/kopete*wp*.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
-#%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
-#%{_datadir}/services/kopete_wp.desktop
+##%attr(755,root,root) %{_bindir}/winpopup*.sh
+#%{_libdir}/kde4/kcm_kopete_wp.la
+##%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_wp.so
+#%{_libdir}/kde4/kopete*wp*.la
+##%attr(755,root,root) %{_libdir}/kde4/kopete*wp*.so
+###%{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
+###%{_datadir}/services/kconfiguredialog/kopete_wp_config.desktop
+###%{_datadir}/services/kopete_wp.desktop
 
-%files kopete-protocol-yahoo
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete_yahoo.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
-%{_datadir}/apps/kopete/icons/*/*/*/yahoo*
-%{_datadir}/apps/kopete_yahoo/yahoochatui.rc
-%{_datadir}/services/kopete_yahoo.desktop
+#%files kopete-protocol-yahoo
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete_yahoo.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_yahoo.so
+##%{_datadir}/apps/kopete/icons/*/*/*/yahoo*
+##%{_datadir}/apps/kopete_yahoo/yahoochatui.rc
+##%{_datadir}/services/kopete_yahoo.desktop
 
-%files kopete-tool-alias
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_alias.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
-%{_libdir}/kde3/kopete_alias.la
-%attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
-%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
-%{_datadir}/services/kopete_alias.desktop
+#%files kopete-tool-alias
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_alias.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_alias.so
+#%{_libdir}/kde4/kopete_alias.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete_alias.so
+##%{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
+##%{_datadir}/services/kopete_alias.desktop
 
-%files kopete-tool-autoreplace
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_autoreplace.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
-%{_libdir}/kde3/kopete*autoreplace*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*autoreplace*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
-%{_datadir}/services/kopete_autoreplace.desktop
-%{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
+#%files kopete-tool-autoreplace
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_autoreplace.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_autoreplace.so
+#%{_libdir}/kde4/kopete*autoreplace*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*autoreplace*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
+##%{_datadir}/services/kopete_autoreplace.desktop
+##%{_datadir}/services/kconfiguredialog/kopete_autoreplace_config.desktop
 
-%files kopete-tool-conectionstatus
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*connectionstatus*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*connectionstatus*.so
-%{_datadir}/services/kopete_connectionstatus.desktop
+#%files kopete-tool-conectionstatus
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*connectionstatus*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*connectionstatus*.so
+##%{_datadir}/services/kopete_connectionstatus.desktop
 
-%files kopete-tool-contactnotes
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*contactnotes*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*contactnotes*.so
-%{_datadir}/apps/kopete_contactnotes
-%{_datadir}/services/kopete_contactnotes.desktop
+#%files kopete-tool-contactnotes
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kopete*contactnotes*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*contactnotes*.so
+##%{_datadir}/apps/kopete_contactnotes
+##%{_datadir}/services/kopete_contactnotes.desktop
 
-%files kopete-tool-cryptography
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_cryptography.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_cryptography.so
-%{_libdir}/kde3/kopete*cryptography*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*cryptography*.so
-%{_datadir}/apps/kopete_cryptography
-%{_datadir}/services/kopete_cryptography.desktop
-%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
+#%files kopete-tool-cryptography
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_cryptography.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_cryptography.so
+#%{_libdir}/kde4/kopete*cryptography*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*cryptography*.so
+##%{_datadir}/apps/kopete_cryptography
+##%{_datadir}/services/kopete_cryptography.desktop
+##%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
 
-%files kopete-tool-highlight
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_highlight.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_highlight.so
-%{_libdir}/kde3/kopete*highlight*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*highlight*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/highlight.png
-%{_datadir}/services/kopete_highlight.desktop
-%{_datadir}/services/kconfiguredialog/kopete_highlight_config.desktop
+#%files kopete-tool-highlight
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_highlight.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_highlight.so
+#%{_libdir}/kde4/kopete*highlight*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*highlight*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/highlight.png
+##%{_datadir}/services/kopete_highlight.desktop
+##%{_datadir}/services/kconfiguredialog/kopete_highlight_config.desktop
 
-%files kopete-tool-history
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_history.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_history.so
-%{_libdir}/kde3/kopete*history*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*history*.so
-%{_datadir}/apps/kopete_history
-%{_datadir}/config.kcfg/historyconfig.kcfg
-%{_datadir}/services/kopete_history.desktop
-%{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
+#%files kopete-tool-history
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_history.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_history.so
+#%{_libdir}/kde4/kopete*history*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*history*.so
+##%{_datadir}/apps/kopete_history
+##%{_datadir}/config.kcfg/historyconfig.kcfg
+##%{_datadir}/services/kopete_history.desktop
+##%{_datadir}/services/kconfiguredialog/kopete_history_config.desktop
 
 #%files kopete-tool-motionaway
 #%defattr(644,root,root,755)
-#%{_libdir}/kde3/kcm_kopete_motionaway.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_motionaway.so
-#%{_libdir}/kde3/kopete*motionaway*.la
-#%attr(755,root,root) %{_libdir}/kde3/kopete*motionaway*.so
-#%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
-#%{_datadir}/services/motionaway.desktop
+#%{_libdir}/kde4/kcm_kopete_motionaway.la
+##%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_motionaway.so
+#%{_libdir}/kde4/kopete*motionaway*.la
+##%attr(755,root,root) %{_libdir}/kde4/kopete*motionaway*.so
+###%{_datadir}/services/kconfiguredialog/kopete_motionaway_config.desktop
+###%{_datadir}/services/motionaway.desktop
 
-%files kopete-tool-nowlistening
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_nowlistening.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
-%{_libdir}/kde3/kopete*nowlistening*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*nowlistening*.so
-%{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
-%{_datadir}/services/kopete_nowlistening.desktop
+#%files kopete-tool-nowlistening
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_nowlistening.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_nowlistening.so
+#%{_libdir}/kde4/kopete*nowlistening*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*nowlistening*.so
+##%{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
+##%{_datadir}/services/kopete_nowlistening.desktop
 
 #%%files kopete-tool-spellcheck
 #%%defattr(644,root,root,755)
-#%%{_libdir}/kde3/kopete*spellcheck*.la
-#%%attr(755,root,root) %{_libdir}/kde3/kopete*spellcheck*.so
-#%%{_datadir}/services/spellcheck.desktop
+#%%{_libdir}/kde4/kopete*spellcheck*.la
+#%#%attr(755,root,root) %{_libdir}/kde4/kopete*spellcheck*.so
+#%##%{_datadir}/services/spellcheck.desktop
 
-%files kopete-tool-texteffect
+#%files kopete-tool-texteffect
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_texteffect.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_texteffect.so
+#%{_libdir}/kde4/kopete*texteffect*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*texteffect*.so
+##%{_datadir}/apps/kopete/icons/crystalsvg/*/*/texteffect.png
+##%{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
+##%{_datadir}/services/kopete_texteffect.desktop
+
+#%files kopete-tool-translator
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_translator.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_translator.so
+#%{_libdir}/kde4/kopete*translator*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*translator*.so
+##%{_datadir}/apps/kopete_translator
+##%{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
+##%{_datadir}/services/kopete_translator.desktop
+
+#%files kopete-tool-webpresence
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kcm_kopete_webpresence.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_webpresence.so
+#%{_libdir}/kde4/kopete*webpresence*.la
+#%attr(755,root,root) %{_libdir}/kde4/kopete*webpresence*.so
+#%dir %{_datadir}/apps/kopete/webpresence
+##%{_datadir}/apps/kopete/webpresence/webpresencedefault.xsl
+##%{_datadir}/apps/kopete/webpresence/wpimages.xsl
+##%{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
+##%{_datadir}/services/kopete_webpresence.desktop
+
+#%files kpf
+# -f kpf.lang
+#%defattr(644,root,root,755)
+#%{_libdir}/kde4/kpf_panelapplet.la
+#%attr(755,root,root) %{_libdir}/kde4/kpf_panelapplet.so
+#%{_libdir}/kde4/kpfpropertiesdialog.la
+#%attr(755,root,root) %{_libdir}/kde4/kpfpropertiesdialog.so
+##%{_datadir}/apps/kicker/applets/kpfapplet.desktop
+##%{_datadir}/services/kpfpropertiesdialogplugin.desktop
+#%{_iconsdir}/*/*/*/kpf*
+
+%files kppp
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_texteffect.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_texteffect.so
-%{_libdir}/kde3/kopete*texteffect*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*texteffect*.so
-%{_datadir}/apps/kopete/icons/crystalsvg/*/*/texteffect.png
-%{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
-%{_datadir}/services/kopete_texteffect.desktop
-
-%files kopete-tool-translator
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_translator.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
-%{_libdir}/kde3/kopete*translator*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*translator*.so
-%{_datadir}/apps/kopete_translator
-%{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
-%{_datadir}/services/kopete_translator.desktop
-
-%files kopete-tool-webpresence
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_webpresence.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
-%{_libdir}/kde3/kopete*webpresence*.la
-%attr(755,root,root) %{_libdir}/kde3/kopete*webpresence*.so
-%dir %{_datadir}/apps/kopete/webpresence
-%{_datadir}/apps/kopete/webpresence/webpresencedefault.xsl
-%{_datadir}/apps/kopete/webpresence/wpimages.xsl
-%{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
-%{_datadir}/services/kopete_webpresence.desktop
-
-%files kpf -f kpf.lang
-%defattr(644,root,root,755)
-%{_libdir}/kde3/kpf_panelapplet.la
-%attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
-%{_libdir}/kde3/kpfpropertiesdialog.la
-%attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
-%{_datadir}/apps/kicker/applets/kpfapplet.desktop
-%{_datadir}/services/kpfpropertiesdialogplugin.desktop
-%{_iconsdir}/*/*/*/kpf*
-
-%files kppp -f kppp.lang
+# -f kppp.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
@@ -1478,122 +1468,130 @@ fi
 %{_desktopdir}/kde/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
 
-%files krfb -f krfb.lang
+%files krfb
+%defattr(644,root,root,755)
+# -f krfb.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
-%attr(755,root,root) %{_bindir}/krfb
-%attr(755,root,root) %{_bindir}/krfb_httpd
-%{_libdir}/kde3/kcm_krfb.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_krfb.so
-%{_datadir}/apps/krdc
-%{_datadir}/apps/krfb
-%{_datadir}/services/kinetd_krfb.desktop
-%{_datadir}/services/kinetd_krfb_httpd.desktop
-%{_datadir}/services/rdp.protocol
-%{_datadir}/services/vnc.protocol
-%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
-%{_desktopdir}/kde/kcmkrfb.desktop
-%{_desktopdir}/kde/krfb.desktop
 %{_desktopdir}/kde/krdc.desktop
-%{_iconsdir}/*/*/*/krdc*
-%{_iconsdir}/[!l]*/*/*/krfb*
+%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
+%{_datadir}/apps/krdc
+%{_datadir}/services/vnc.protocol
+%{_datadir}/services/rdp.protocol
+%{_datadir}/apps/zeroconf/_rfb._tcp
+%{_iconsdir}/*/*/*/krdc.png
 
-%files ksirc -f ksirc.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ksirc
-%attr(755,root,root) %{_bindir}/dsirc
-%{_libdir}/libkdeinit_ksirc.la
-%attr(755,root,root) %{_libdir}/libkdeinit_ksirc.so
-%{_libdir}/kde3/ksirc.la
-%attr(755,root,root) %{_libdir}/kde3/ksirc.so
-%{_libdir}/kde3/libkntsrcfilepropsdlg.la
-%attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
-%{_datadir}/config/ksircrc
-%{_datadir}/apps/ksirc
-%{_datadir}/services/kntsrcfilepropsdlg.desktop
-%{_desktopdir}/kde/ksirc.desktop
-%{_iconsdir}/[!l]*/*/*/ksirc*
+#%attr(755,root,root) %{_bindir}/krfb
+#%attr(755,root,root) %{_bindir}/krfb_httpd
+#%{_libdir}/kde4/kcm_krfb.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_krfb.so
+##%{_datadir}/apps/krfb
+##%{_datadir}/services/kinetd_krfb.desktop
+##%{_datadir}/services/kinetd_krfb_httpd.desktop
+#%{_desktopdir}/kde/kcmkrfb.desktop
+#%{_desktopdir}/kde/krfb.desktop
+#%{_iconsdir}/[!l]*/*/*/krfb*
 
-%files ktalkd -f ktalkd.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ktalkd
-%attr(755,root,root) %{_bindir}/ktalkdlg
-%attr(755,root,root) %{_bindir}/mail.local
-%{_libdir}/kde3/kcm_ktalkd.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
-%{_datadir}/config/ktalkdrc
-%{_datadir}/sounds/ktalkd.wav
-%{_desktopdir}/kde/kcmktalkd.desktop
-%{_iconsdir}/*/*/*/ktalkd.png
+#%files ksirc
+# -f ksirc.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/ksirc
+#%attr(755,root,root) %{_bindir}/dsirc
+#%{_libdir}/libkdeinit_ksirc.la
+#%attr(755,root,root) %{_libdir}/libkdeinit_ksirc.so
+#%{_libdir}/kde4/ksirc.la
+#%attr(755,root,root) %{_libdir}/kde4/ksirc.so
+#%{_libdir}/kde4/libkntsrcfilepropsdlg.la
+#%attr(755,root,root) %{_libdir}/kde4/libkntsrcfilepropsdlg.so
+##%{_datadir}/config/ksircrc
+##%{_datadir}/apps/ksirc
+##%{_datadir}/services/kntsrcfilepropsdlg.desktop
+#%{_desktopdir}/kde/ksirc.desktop
+#%{_iconsdir}/[!l]*/*/*/ksirc*
+
+#%files ktalkd
+# -f ktalkd.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/ktalkd
+#%attr(755,root,root) %{_bindir}/ktalkdlg
+#%attr(755,root,root) %{_bindir}/mail.local
+#%{_libdir}/kde4/kcm_ktalkd.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_ktalkd.so
+##%{_datadir}/config/ktalkdrc
+##%{_datadir}/sounds/ktalkd.wav
+#%{_desktopdir}/kde/kcmktalkd.desktop
+#%{_iconsdir}/*/*/*/ktalkd.png
 #%files kxmlrpcd -f kxmlrpcd.lang
 #%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kxmlrpcd
+##%attr(755,root,root) %{_bindir}/kxmlrpcd
 #%{_libdir}/libkdeinit_kxmlrpcd.la
-#%attr(755,root,root) %{_libdir}/libkdeinit_kxmlrpcd.so
-#%{_libdir}/kde3/kxmlrpcd.la
-#%attr(755,root,root) %{_libdir}/kde3/kxmlrpcd.so
-#%{_libdir}/kde3/kcm_xmlrpcd.la
-#%attr(755,root,root) %{_libdir}/kde3/kcm_xmlrpcd.so
-#%{_datadir}/services/kxmlrpcd.desktop
+##%attr(755,root,root) %{_libdir}/libkdeinit_kxmlrpcd.so
+#%{_libdir}/kde4/kxmlrpcd.la
+##%attr(755,root,root) %{_libdir}/kde4/kxmlrpcd.so
+#%{_libdir}/kde4/kcm_xmlrpcd.la
+##%attr(755,root,root) %{_libdir}/kde4/kcm_xmlrpcd.so
+###%{_datadir}/services/kxmlrpcd.desktop
 
-%files kwifimanager -f kwifimanager.lang
+%files kwifimanager
+%defattr(644,root,root,755)
+# -f kwifimanager.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kwifimanager
-%{_libdir}/libkwireless.la
-%attr(755,root,root) %{_libdir}/libkwireless.so
-%{_libdir}/kde3/kcm_wifi.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
-%{_datadir}/apps/kicker/applets/kwireless.desktop
+%{_desktopdir}/kde/kwifimanager.desktop
+%{_datadir}/apps/kwifimanager/kwifimanagerui.rc
+%{_datadir}/config.kcfg/kwifimanager.kcfg
+%{_iconsdir}/*/*/*/kwifimanager.*
 %{_datadir}/apps/kwifimanager
-%{_datadir}/applications/kde/kcmwifi.desktop
-%{_datadir}/applications/kde/kwifimanager.desktop
-%{_iconsdir}/*/*/apps/kwifimanager.*
+#%{_libdir}/libkwireless.la
+#%attr(755,root,root) %{_libdir}/libkwireless.so
+#%{_libdir}/kde4/kcm_wifi.la
+#%attr(755,root,root) %{_libdir}/kde4/kcm_wifi.so
 
-%files lanbrowser -f lisa.lang
+%files lanbrowser
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
-%attr(754,root,root) /etc/rc.d/init.d/lisa
-%attr(755,root,root) %{_bindir}/reslisa
+# -f lisa.lang
+%defattr(644,root,root,755)
+#%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lisarc
+#%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/lisa
 %attr(755,root,root) %{_bindir}/lisa
-%{_libdir}/kde3/kio_lan.la
-%attr(755,root,root) %{_libdir}/kde3/kio_lan.so
-%{_libdir}/kde3/kcm_lanbrowser.la
-%attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.so
-%{_datadir}/apps/lisa
+%attr(755,root,root) %{_bindir}/reslisa
+%{_prefix}/lib/kde4/kcm_lanbrowser.la
+%attr(755,root,root) %{_prefix}/lib/kde4/kcm_lanbrowser.so
+%{_datadir}/services/kcmkiolan.desktop
+%{_datadir}/services/kcmlisa.desktop
+%{_datadir}/services/kcmreslisa.desktop
+%{_prefix}/lib/kde4/kio_lan.la
+%attr(755,root,root) %{_prefix}/lib/kde4/kio_lan.so
 %{_datadir}/apps/remoteview/lan.desktop
-%{_datadir}/services/rlan.protocol
-%{_datadir}/services/lan.protocol
-# Messing one!
-# %{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 %{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
-%{_datadir}/applnk/.hidden/kcmkiolan.desktop
-%{_datadir}/applnk/.hidden/kcmlisa.desktop
-%{_datadir}/applnk/.hidden/kcmreslisa.desktop
+%{_datadir}/services/lan.protocol
+%{_datadir}/services/rlan.protocol
+%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+#%attr(754,root,root) /etc/rc.d/init.d/lisa
+%{_datadir}/apps/lisa
 
-%files libkopete
-%defattr(644,root,root,755)
-%{_libdir}/libkopete.la
-%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+#%files libkopete
+#%defattr(644,root,root,755)
+#%{_libdir}/libkopete.la
+#%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 
-%files libkopete_msn
-%defattr(644,root,root,755)
-%{_libdir}/libkopete_msn_shared.la
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+#%files libkopete_msn
+#%defattr(644,root,root,755)
+#%{_libdir}/libkopete_msn_shared.la
+#%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
 
-%files libkopete_oscar
-%defattr(644,root,root,755)
-%{_libdir}/libkopete_oscar.la
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+#%files libkopete_oscar
+#%defattr(644,root,root,755)
+#%{_libdir}/libkopete_oscar.la
+#%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
 
 %files librss
 %defattr(644,root,root,755)
-%{_libdir}/librss.la
-%attr(755,root,root) %{_libdir}/librss.so.*.*.*
+%attr(755,root,root) %{_libdir}/librss.so.*
 
-%files rss
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/feedbrowser
-%attr(755,root,root) %{_bindir}/rssclient
-%attr(755,root,root) %{_bindir}/rssservice
-%{_datadir}/services/rssservice.desktop
+#%files rss
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/feedbrowser
+#%attr(755,root,root) %{_bindir}/rssclient
+#%attr(755,root,root) %{_bindir}/rssservice
+##%{_datadir}/services/rssservice.desktop
