@@ -34,7 +34,7 @@ Source5:	winpopup-install.sh
 Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-#Patch2:		%{name}-libgadu.patch
+Patch2:		%{name}-meanwhile.patch
 Patch3:		%{name}-kopete-qca-tls.patch
 Patch4:		kde-ac260-lt.patch
 Patch5:		kde-am.patch
@@ -990,6 +990,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch100 -p0
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
