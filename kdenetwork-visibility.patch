@@ -1,0 +1,16 @@
+--- kdenetwork-3.5.5/kopete/libkopete/connectionmanager.h.orig	2005-09-10 10:20:28.000000000 +0200
++++ kdenetwork-3.5.5/kopete/libkopete/connectionmanager.h	2007-01-09 22:57:28.831535000 +0100
+@@ -18,11 +18,12 @@
+ 
+ #include <dcopobject.h>
+ 
++#include "kopete_export.h"
+ #include "networkstatuscommon.h"
+ 
+ class ConnectionManagerPrivate;
+ 
+-class ConnectionManager : public QObject, virtual public DCOPObject
++class KOPETE_EXPORT ConnectionManager : public QObject, virtual public DCOPObject
+ {
+ 	Q_OBJECT
+ 	K_DCOP
