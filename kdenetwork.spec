@@ -19,7 +19,7 @@ Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.5
-Release:	4.3
+Release:	5
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -39,10 +39,13 @@ Patch3:		%{name}-kopete-qca-tls.patch
 Patch4:		kde-ac260-lt.patch
 Patch5:		kde-am.patch
 Patch6:		kopete-icqconn.patch
+Patch7:		%{name}-visibility.patch
+BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
 BuildRequires:	gettext-devel
+BuildRequires:	gsmlib-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
@@ -53,6 +56,7 @@ BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -60,8 +64,6 @@ BuildRequires:	sed >= 4.0
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_noautoreq	libtool(.*)
 
 %description
 KDE network applications. Package includes:
@@ -995,6 +997,7 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p0
+%patch7 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -1090,6 +1093,8 @@ rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
 rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
 rm $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/kde3/*.la
+
 %find_lang kdict		--with-kde
 %find_lang kget			--with-kde
 %find_lang knewsticker		--with-kde
@@ -1137,21 +1142,23 @@ fi
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libkopete.la
 %attr(755,root,root) %{_libdir}/libkopete.so
+%{_libdir}/libkopete_msn_shared.la
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
+%{_libdir}/libkopete_oscar.la
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
+%{_libdir}/libkopete_videodevice.la
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
+%{_libdir}/librss.la
 %attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/kopete
 %{_includedir}/rss
 
 %files filesharing
 %defattr(644,root,root,755)
-%{_libdir}/kde3/fileshare_propsdlgplugin.la
 %attr(755,root,root) %{_libdir}/kde3/fileshare_propsdlgplugin.so
-%{_libdir}/kde3/kcm_fileshare.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_fileshare.so
-%{_libdir}/kde3/kcm_kcmsambaconf.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kcmsambaconf.so
 %{_datadir}/services/fileshare_propsdlgplugin.desktop
 %{_desktopdir}/kde/fileshare.desktop
@@ -1161,11 +1168,8 @@ fi
 %files kdict -f kdict.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kdict
-%{_libdir}/kde3/kdict_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kdict_panelapplet.so
-%{_libdir}/kde3/kdict.la
 %attr(755,root,root) %{_libdir}/kde3/kdict.so
-%{_libdir}/libkdeinit_kdict.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kdict.so
 %{_datadir}/apps/kdict
 %{_datadir}/apps/kicker/applets/kdictapplet.desktop
@@ -1174,9 +1178,7 @@ fi
 
 %files kdnssd
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kded_dnssdwatcher.la
 %attr(755,root,root) %{_libdir}/kde3/kded_dnssdwatcher.so
-%{_libdir}/kde3/kio_zeroconf.la
 %attr(755,root,root) %{_libdir}/kde3/kio_zeroconf.so
 %{_datadir}/apps/remoteview/zeroconf.desktop
 %{_datadir}/apps/zeroconf
@@ -1185,14 +1187,12 @@ fi
 
 %files kfile-torrent
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kfile_torrent.la
 %attr(755,root,root) %{_libdir}/kde3/kfile_torrent.so
 %{_datadir}/services/kfile_torrent.desktop
 
 %files kget -f kget.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
-%{_libdir}/kde3/khtml_kget.la
 %attr(755,root,root) %{_libdir}/kde3/khtml_kget.so
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
@@ -1205,7 +1205,6 @@ fi
 
 %files kinetd
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kded_kinetd.la
 %attr(755,root,root) %{_libdir}/kde3/kded_kinetd.so
 %{_datadir}/apps/kinetd
 %{_datadir}/services/kded/kinetd.desktop
@@ -1214,7 +1213,6 @@ fi
 %files knewsticker -f knewsticker.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/knewstickerstub
-%{_libdir}/kde3/knewsticker_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
@@ -1226,27 +1224,16 @@ fi
 %files kopete -f kopete.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kopete
-%{_libdir}/kde3/kcm_kopete_addbookmarks.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_addbookmarks.so
-%{_libdir}/kde3/kcm_kopete_accountconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_accountconfig.so
-%{_libdir}/kde3/kcm_kopete_appearanceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_appearanceconfig.so
-%{_libdir}/kde3/kcm_kopete_behaviorconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_behaviorconfig.so
-%{_libdir}/kde3/kcm_kopete_netmeeting.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_netmeeting.so
-%{_libdir}/kde3/kcm_kopete_identityconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_identityconfig.so
-%{_libdir}/kde3/kopete_addbookmarks.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_addbookmarks.so
-%{_libdir}/kde3/kopete_chatwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_chatwindow.so
-%{_libdir}/kde3/kopete_emailwindow.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_emailwindow.so
-%{_libdir}/kde3/kopete_statistics.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_statistics.so
-%{_libdir}/kde3/libkrichtexteditpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkrichtexteditpart.so
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -1364,7 +1351,6 @@ fi
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*aim*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*aim*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*aim*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*aim*
@@ -1373,7 +1359,6 @@ fi
 
 %files kopete-protocol-gg
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*gadu*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*gadu*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gadu*
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/gg*
@@ -1381,7 +1366,6 @@ fi
 
 %files kopete-protocol-groupwise
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*groupwise*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*groupwise*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/groupwise*
 %{_datadir}/apps/kopete_groupwise
@@ -1389,7 +1373,6 @@ fi
 
 %files kopete-protocol-icq
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*icq*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*icq*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/*icq*
 %{_datadir}/apps/kopete/icons/hicolor/*/*/*icq*
@@ -1397,7 +1380,6 @@ fi
 
 %files kopete-protocol-irc
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*irc*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*irc*.so
 %{_datadir}/apps/kopete/ircnetworks.xml
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
@@ -1406,9 +1388,7 @@ fi
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*jabber*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*jabber*.so
-%{_libdir}/kde3/kio_jabberdisco.la
 %attr(755,root,root) %{_libdir}/kde3/kio_jabberdisco.so
 %{_datadir}/apps/kopete_jabber
 %{_datadir}/services/jabberdisco.protocol
@@ -1416,18 +1396,14 @@ fi
 
 %files kopete-protocol-meanwhile
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*meanwhile*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*meanwhile*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/meanwhile*
 %{_datadir}/services/kopete_meanwhile.desktop
 
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_msn.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_msn.so
-%{_libdir}/kde3/kopete*msn*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*msn*.so
-%{_libdir}/kde3/kopete_netmeeting.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_netmeeting.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/apps/kopete_msn
@@ -1440,7 +1416,6 @@ fi
 %if %{with skype}
 %files kopete-protocol-skype
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*skype*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*skype*.so
 %{_datadir}/apps/kopete/icons/*/*/*/call.png
 %{_datadir}/apps/kopete/icons/*/*/*/contact_ffc_overlay.png
@@ -1453,7 +1428,6 @@ fi
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*sms*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*sms*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/sms*
 %{_datadir}/services/kopete_sms.desktop
@@ -1461,7 +1435,6 @@ fi
 %files kopete-protocol-winpopup
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/winpopup*.sh
-%{_libdir}/kde3/kopete*wp*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*wp*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/wp*
 %{_datadir}/services/kopete_wp.desktop
@@ -1471,7 +1444,6 @@ fi
 
 %files kopete-protocol-yahoo
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete_yahoo.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_yahoo.so
 %{_datadir}/apps/kopete_yahoo
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
@@ -1479,18 +1451,14 @@ fi
 
 %files kopete-tool-alias
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_alias.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_alias.so
-%{_libdir}/kde3/kopete_alias.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_alias.so
 %{_datadir}/services/kconfiguredialog/kopete_alias_config.desktop
 %{_datadir}/services/kopete_alias.desktop
 
 %files kopete-tool-autoreplace
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_autoreplace.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_autoreplace.so
-%{_libdir}/kde3/kopete*autoreplace*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*autoreplace*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
 %{_datadir}/services/kopete_autoreplace.desktop
@@ -1498,29 +1466,24 @@ fi
 
 %files kopete-tool-avdeviceconfig
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_avdeviceconfig.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_avdeviceconfig.so
 %{_datadir}/services/kopete_avdeviceconfig.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/kopete_avdevice.png
 
 %files kopete-tool-conectionstatus
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*connectionstatus*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*connectionstatus*.so
 %{_datadir}/services/kopete_connectionstatus.desktop
 
 %files kopete-tool-contactnotes
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kopete*contactnotes*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*contactnotes*.so
 %{_datadir}/apps/kopete_contactnotes
 %{_datadir}/services/kopete_contactnotes.desktop
 
 %files kopete-tool-cryptography
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_cryptography.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_cryptography.so
-%{_libdir}/kde3/kopete*cryptography*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*cryptography*.so
 %{_datadir}/apps/kopete_cryptography
 %{_datadir}/services/kopete_cryptography.desktop
@@ -1529,9 +1492,7 @@ fi
 %files kopete-tool-latex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kopete_latexconvert.sh
-%{_libdir}/kde3/kcm_kopete_latex.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_latex.so
-%{_libdir}/kde3/kopete_latex.la
 %attr(755,root,root) %{_libdir}/kde3/kopete_latex.so
 %{_datadir}/apps/kopete/icons/crystalsvg/32x32/apps/latex.png
 %{_datadir}/config.kcfg/latexconfig.kcfg
@@ -1542,9 +1503,7 @@ fi
 
 %files kopete-tool-highlight
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_highlight.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_highlight.so
-%{_libdir}/kde3/kopete*highlight*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*highlight*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/highlight.png
 %{_datadir}/services/kopete_highlight.desktop
@@ -1552,9 +1511,7 @@ fi
 
 %files kopete-tool-history
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_history.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_history.so
-%{_libdir}/kde3/kopete*history*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*history*.so
 %{_datadir}/apps/kopete_history
 %{_datadir}/config.kcfg/historyconfig.kcfg
@@ -1563,9 +1520,7 @@ fi
 
 %files kopete-tool-nowlistening
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_nowlistening.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_nowlistening.so
-%{_libdir}/kde3/kopete*nowlistening*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*nowlistening*.so
 %{_datadir}/config.kcfg/nowlisteningconfig.kcfg
 %{_datadir}/services/kconfiguredialog/kopete_nowlistening_config.desktop
@@ -1573,9 +1528,7 @@ fi
 
 %files kopete-tool-smpppdcs
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_smpppdcs.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_smpppdcs.so
-%{_libdir}/kde3/kopete*smpppdcs*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*smpppdcs*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/smpppdcs.png
 %{_datadir}/config.kcfg/smpppdcs.kcfg
@@ -1584,9 +1537,7 @@ fi
 
 %files kopete-tool-texteffect
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_texteffect.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_texteffect.so
-%{_libdir}/kde3/kopete*texteffect*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*texteffect*.so
 %{_datadir}/apps/kopete/icons/crystalsvg/*/*/texteffect.png
 %{_datadir}/services/kconfiguredialog/kopete_texteffect_config.desktop
@@ -1594,9 +1545,7 @@ fi
 
 %files kopete-tool-translator
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_translator.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_translator.so
-%{_libdir}/kde3/kopete*translator*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*translator*.so
 %{_datadir}/apps/kopete_translator
 %{_datadir}/services/kconfiguredialog/kopete_translator_config.desktop
@@ -1604,9 +1553,7 @@ fi
 
 %files kopete-tool-webpresence
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kcm_kopete_webpresence.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_kopete_webpresence.so
-%{_libdir}/kde3/kopete*webpresence*.la
 %attr(755,root,root) %{_libdir}/kde3/kopete*webpresence*.so
 %{_datadir}/apps/kopete/webpresence
 %{_datadir}/services/kconfiguredialog/kopete_webpresence_config.desktop
@@ -1614,9 +1561,7 @@ fi
 
 %files kpf -f kpf.lang
 %defattr(644,root,root,755)
-%{_libdir}/kde3/kpf_panelapplet.la
 %attr(755,root,root) %{_libdir}/kde3/kpf_panelapplet.so
-%{_libdir}/kde3/kpfpropertiesdialog.la
 %attr(755,root,root) %{_libdir}/kde3/kpfpropertiesdialog.so
 %{_datadir}/apps/kicker/applets/kpfapplet.desktop
 %{_datadir}/services/kpfpropertiesdialogplugin.desktop
@@ -1636,7 +1581,6 @@ fi
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %{_bindir}/krfb_httpd
-%{_libdir}/kde3/kcm_krfb.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_krfb.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
@@ -1655,11 +1599,8 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ksirc
 %attr(755,root,root) %{_bindir}/dsirc
-%{_libdir}/libkdeinit_ksirc.la
 %attr(755,root,root) %{_libdir}/libkdeinit_ksirc.so
-%{_libdir}/kde3/ksirc.la
 %attr(755,root,root) %{_libdir}/kde3/ksirc.so
-%{_libdir}/kde3/libkntsrcfilepropsdlg.la
 %attr(755,root,root) %{_libdir}/kde3/libkntsrcfilepropsdlg.so
 %{_datadir}/config/ksircrc
 %{_datadir}/apps/ksirc
@@ -1672,7 +1613,6 @@ fi
 %attr(755,root,root) %{_bindir}/ktalkd
 %attr(755,root,root) %{_bindir}/ktalkdlg
 %attr(755,root,root) %{_bindir}/mail.local
-%{_libdir}/kde3/kcm_ktalkd.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_ktalkd.so
 %{_datadir}/config/ktalkdrc
 %{_datadir}/sounds/ktalkd.wav
@@ -1682,9 +1622,7 @@ fi
 %files kwifimanager -f kwifimanager.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kwifimanager
-%{_libdir}/libkwireless.la
 %attr(755,root,root) %{_libdir}/libkwireless.so
-%{_libdir}/kde3/kcm_wifi.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_wifi.so
 %{_datadir}/apps/kicker/applets/kwireless.desktop
 %{_datadir}/apps/kwifimanager
@@ -1699,9 +1637,7 @@ fi
 %attr(754,root,root) /etc/rc.d/init.d/lisa
 %attr(755,root,root) %{_bindir}/reslisa
 %attr(755,root,root) %{_bindir}/lisa
-%{_libdir}/kde3/kio_lan.la
 %attr(755,root,root) %{_libdir}/kde3/kio_lan.so
-%{_libdir}/kde3/kcm_lanbrowser.la
 %attr(755,root,root) %{_libdir}/kde3/kcm_lanbrowser.so
 %{_datadir}/apps/lisa
 %{_datadir}/apps/remoteview/lan.desktop
@@ -1714,27 +1650,22 @@ fi
 
 %files libkopete
 %defattr(644,root,root,755)
-%{_libdir}/libkopete.la
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 
 %files libkopete_videodevice
 %defattr(644,root,root,755)
-%{_libdir}/libkopete_videodevice.la
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
 
 %files libkopete_msn
 %defattr(644,root,root,755)
-%{_libdir}/libkopete_msn_shared.la
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
-%{_libdir}/libkopete_oscar.la
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
 
 %files librss
 %defattr(644,root,root,755)
-%{_libdir}/librss.la
 %attr(755,root,root) %{_libdir}/librss.so.*.*.*
 
 %files rss
