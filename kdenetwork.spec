@@ -18,13 +18,13 @@ Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.5.5
-Release:	6
+Version:	3.5.6
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	a6e642c070cbd50d4a817f6588bf8e46
+# Source0-md5:	0f428cccc4ea16aa53c427530874c591
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -34,11 +34,9 @@ Source5:	winpopup-install.sh
 Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
-Patch2:		%{name}-visibility.patch
-Patch3:		%{name}-kopete-qca-tls.patch
-Patch4:		kde-ac260-lt.patch
-Patch5:		kde-am.patch
-Patch6:		kopete-icqconn.patch
+Patch2:		%{name}-kopete-qca-tls.patch
+Patch3:		kde-ac260-lt.patch
+Patch4:		kopete-icqconn.patch
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -988,14 +986,12 @@ Programy parsuj±ce nag³ówki RSS u¿ywane przez ró¿ne aplikacje.
 
 %prep
 %setup -q
-%patch100 -p0
+#%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p0
+%patch4 -p0
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
