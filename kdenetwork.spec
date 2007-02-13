@@ -14,9 +14,9 @@
 %define		_minbaseevr	9:%{version}
 #
 Summary:	K Desktop Environment - network applications
-Summary(es.UTF-8):   K Desktop Environment - aplicaciones de red
-Summary(pl.UTF-8):   K Desktop Environment - aplikacje sieciowe
-Summary(pt_BR.UTF-8):   K Desktop Environment - aplicações de rede
+Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
+Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
+Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.6
 Release:	1
@@ -98,12 +98,12 @@ Aplicações de Rede para o KDE.
 Incluídos neste pacote:
 
 kmail: leitor de correio knu: utilitários de rede korn: ferramenta de
-monitoração da caixa de correio kppp: configuração fácil para conexão
-PPP krn: leitor de notícias
+monitoração da caixa de correio kppp: configuração fácil para
+conexão PPP krn: leitor de notícias
 
 %package devel
 Summary:	kdenetwork header files
-Summary(pl.UTF-8):   Pliki nagłówkowe kdenetwork
+Summary(pl.UTF-8):	Pliki nagłówkowe kdenetwork
 Group:		X11/Development/Libraries
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
@@ -120,12 +120,12 @@ kdenetwork header files.
 Pliki nagłówkowe kdenetwork.
 
 %description devel -l pt_BR.UTF-8
-Arquivos de inclusão para compilar aplicações que usem as bibliotecas
-do kdenetwork.
+Arquivos de inclusão para compilar aplicações que usem as
+bibliotecas do kdenetwork.
 
 %package filesharing
 Summary:	File sharing plugins
-Summary(pl.UTF-8):   Wtyczki obsługujące współdzielenie plików
+Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minlibsevr}
 Obsoletes:	kcm_sambaconf
@@ -138,7 +138,7 @@ Wtyczki obsługujące współdzielenie plików.
 
 %package kdict
 Summary:	A DICT protocol client
-Summary(pl.UTF-8):   Klient protokołu DICT
+Summary(pl.UTF-8):	Klient protokołu DICT
 License:	Artistic
 Group:		X11/Applications
 Provides:	kdict
@@ -152,12 +152,13 @@ separate list offers a convenient way to deal with the enormous number
 of matching words that a advanced query can return.
 
 %description kdict -l pl.UTF-8
-Graficzny klient dla protokołu DICT używanego przez kilka słowników
-online (jak np. dict.org). Pozwala przeszukiwać słownikowe bazy danych
-pod kątem słów lub zwrotów, a następnie wyświetlać pasujące definicje.
-KDict próbuje ułatwić podstawowe i zaawansowane zapytania. Oddzielna
-lista oferuje wygodny sposób radzenia sobie z dużą liczbą pasujących
-słów, którą może zwrócić zaawansowane zapytanie.
+Graficzny klient dla protokołu DICT używanego przez kilka
+słowników online (jak np. dict.org). Pozwala przeszukiwać
+słownikowe bazy danych pod kątem słów lub zwrotów, a następnie
+wyświetlać pasujące definicje. KDict próbuje ułatwić podstawowe
+i zaawansowane zapytania. Oddzielna lista oferuje wygodny sposób
+radzenia sobie z dużą liczbą pasujących słów, którą może
+zwrócić zaawansowane zapytanie.
 
 %description kdict -l pt_BR.UTF-8
 kdict é um utilitário de dicionário que usa servidores dictd da
@@ -165,7 +166,7 @@ Internet.
 
 %package kdnssd
 Summary:	DNS-SD Services Watcher
-Summary(pl.UTF-8):   Nadzorowanie usług DNS-SD
+Summary(pl.UTF-8):	Nadzorowanie usług DNS-SD
 License:	Artistic
 Group:		X11/Applications
 
@@ -177,7 +178,7 @@ Nadzorowanie usług DNS-SD.
 
 %package kinetd
 Summary:	KDE Internet Daemon
-Summary(pl.UTF-8):   Demon internetowy KDE
+Summary(pl.UTF-8):	Demon internetowy KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-krfb < 9:3.1-6
@@ -192,7 +193,7 @@ połączeniu klienta. Jest konfigurowalny przy użyciu DCOP.
 
 %package kfile-torrent
 Summary:	Meta information plugin for BitTorrent files (*.torrent)
-Summary(pl.UTF-8):   Wtyczka pobierająca metainformacje z plików BitTorrenta (*.torrent)
+Summary(pl.UTF-8):	Wtyczka pobierająca metainformacje z plików BitTorrenta (*.torrent)
 Group:		X11/Applications
 Requires:	konqueror >= %{_minbaseevr}
 
@@ -210,7 +211,7 @@ bibliotek.
 
 %package kget
 Summary:	File downloand manager
-Summary(pl.UTF-8):   Zarządca ściągania plików
+Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 
@@ -219,13 +220,13 @@ A GetRight-like file download manager with resuming support and
 Konqueror/Mozilla integration.
 
 %description kget -l pl.UTF-8
-Zarządca ściągania plików podobny do GetRighta z obsługą wznawiania
-oraz integracją z Konquerorem/Mozillą.
+Zarządca ściągania plików podobny do GetRighta z obsługą
+wznawiania oraz integracją z Konquerorem/Mozillą.
 
 %package knewsticker
 Summary:	KDE News Ticker
-Summary(pl.UTF-8):   News Ticker dla KDE
-Summary(pt_BR.UTF-8):   Miniaplicativo de exibição de notícias para o painel Kicker
+Summary(pl.UTF-8):	News Ticker dla KDE
+Summary(pt_BR.UTF-8):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
 Requires:	kdebase-desktop >= %{_minbaseevr}
 
@@ -238,17 +239,17 @@ RSS/RDF feeds.
 
 %description knewsticker -l pl.UTF-8
 KNewsTicker to aplet dla panelu KDE (znanego także jako Kicker)
-dostarczający łatwy i wygodny sposób dostępu do nowinek ogłaszanych
-przez wiele serwisów z nowościami (takimi jak Slashdot, Linux Weekly
-News czy Freshmeat). Może być używany z właściwie każdą stroną
-udostępniającą feedy RSS/RDF.
+dostarczający łatwy i wygodny sposób dostępu do nowinek
+ogłaszanych przez wiele serwisów z nowościami (takimi jak Slashdot,
+Linux Weekly News czy Freshmeat). Może być używany z właściwie
+każdą stroną udostępniającą feedy RSS/RDF.
 
 %description knewsticker -l pt_BR.UTF-8
 Miniaplicativo de exibição de notícias para o painel Kicker.
 
 %package kopete
 Summary:	Multi-protocol plugin-based instant messenger
-Summary(pl.UTF-8):   Komunikator obsługujący wiele protokołów
+Summary(pl.UTF-8):	Komunikator obsługujący wiele protokołów
 Group:		X11/Applications
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= %{_minbaseevr}
@@ -292,20 +293,21 @@ team provides a handful of plugins that most users can use, in
 addition to templates for new developers to base a plugin off of.
 
 %description kopete -l pl.UTF-8
-Kopete to rozszerzalny i rozbudowywalny komunikator obsługujący wiele
-protokołów, zaprojektowany w oparciu o wtyczki. Wszystkie protokoły są
-wtyczkami, co pozwala na modularną instalację, konfigurację i używanie
-bez potrzeby obsługi ładowanych wtyczek w głównej aplikacji. Celem
-Kopete jest wyposażenie użytkowników w standardowy i łatwy w użyciu
-interfejs pomiędzy wszystkimi systemami komunikatorów, a jednocześnie
-zapewnienie programistom łatwości pisania wtyczek obsługujących nowe
-protokoły. Załoga programistów Kopete udostępnia podręczny zestaw
-wtyczek używanych przez większość użytkowników oraz szablony dla
-nowych programistów, na których można opierać nowe wtyczki.
+Kopete to rozszerzalny i rozbudowywalny komunikator obsługujący
+wiele protokołów, zaprojektowany w oparciu o wtyczki. Wszystkie
+protokoły są wtyczkami, co pozwala na modularną instalację,
+konfigurację i używanie bez potrzeby obsługi ładowanych wtyczek w
+głównej aplikacji. Celem Kopete jest wyposażenie użytkowników w
+standardowy i łatwy w użyciu interfejs pomiędzy wszystkimi
+systemami komunikatorów, a jednocześnie zapewnienie programistom
+łatwości pisania wtyczek obsługujących nowe protokoły. Załoga
+programistów Kopete udostępnia podręczny zestaw wtyczek używanych
+przez większość użytkowników oraz szablony dla nowych
+programistów, na których można opierać nowe wtyczki.
 
 %package kopete-protocol-aim
 Summary:	Kopete plugin which adds AIM protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu AIM
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu AIM
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
@@ -318,7 +320,7 @@ Wtyczka Kopete dodająca obsługę protokołu AIM.
 
 %package kopete-protocol-gg
 Summary:	Kopete plugin which adds GaduGadu protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu GaduGadu
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu GaduGadu
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -330,7 +332,7 @@ Wtyczka Kopete dodająca obsługę protokołu GaduGadu.
 
 %package kopete-protocol-groupwise
 Summary:	Kopete plugin which adds Groupwise protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu Groupwise
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Groupwise
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 #Suggests:	qt-plugin-qca-tls
@@ -343,7 +345,7 @@ Wtyczka Kopete dodająca obsługę protokołu Groupwise.
 
 %package kopete-protocol-icq
 Summary:	Kopete plugin which adds ICQ protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu ICQ
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu ICQ
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
@@ -356,7 +358,7 @@ Wtyczka Kopete dodająca obsługę protokołu ICQ.
 
 %package kopete-protocol-irc
 Summary:	Kopete plugin which adds IRC support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę IRC-a
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę IRC-a
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -368,7 +370,7 @@ Wtyczka Kopete dodająca obsługę IRC-a.
 
 %package kopete-protocol-jabber
 Summary:	Kopete plugin which adds Jabber protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu Jabber
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Jabber
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 #Suggests:	qt-plugin-qca-tls
@@ -381,7 +383,7 @@ Wtyczka Kopete dodająca obsługę protokołu Jabber.
 
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu MSN
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu MSN
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
@@ -394,7 +396,7 @@ Wtyczka Kopete dodająca obsługę protokołu MSN.
 
 %package kopete-protocol-meanwhile
 Summary:	Kopete plugin which adds Lotus Sametime protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu Lotus Sametime
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Lotus Sametime
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -406,7 +408,7 @@ Wtyczka Kopete dodająca obsługę protokołu Lotus Sametime.
 
 %package kopete-protocol-skype
 Summary:	Kopete plugin which adds Skype protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu Skype
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Skype
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	skype
@@ -419,7 +421,7 @@ Wtyczka Kopete dodająca obsługę protokołu Skype.
 
 %package kopete-protocol-sms
 Summary:	Kopete plugin which adds SMS contact support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę kontaktów SMS
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę kontaktów SMS
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -431,7 +433,7 @@ Wtyczka Kopete dodająca obsługę kontaktów SMS.
 
 %package kopete-protocol-testbed
 Summary:	A sample plugin for kopete
-Summary(pl.UTF-8):   Przykładowa wtyczka dla kopete.
+Summary(pl.UTF-8):	Przykładowa wtyczka dla kopete.
 Group:		X11/Development/Libraries
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -440,12 +442,12 @@ A sample plugin for kopete, which allows developers to learn the
 kopete programming interface.
 
 %description kopete-protocol-testbed -l pl.UTF-8
-Przykładowa wtyczka do kopete, ułatwiająca developerom zapoznanie się
-z interfejsem programowania biblioteki kopete.
+Przykładowa wtyczka do kopete, ułatwiająca developerom zapoznanie
+się z interfejsem programowania biblioteki kopete.
 
 %package kopete-protocol-winpopup
 Summary:	Kopete plugin which adds WinPopUp messaging support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę komunikacji przez WinPopUp
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę komunikacji przez WinPopUp
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -457,7 +459,7 @@ Wtyczka Kopete dodająca obsługę komunikacji przez WinPopUp.
 
 %package kopete-protocol-yahoo
 Summary:	Kopete plugin which adds Yahoo protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca obsługę protokołu Yahoo
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Yahoo
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -469,7 +471,7 @@ Wtyczka Kopete dodająca obsługę protokołu Yahoo.
 
 %package kopete-tool-autoaway
 Summary:	Kopete autoaway plugin
-Summary(pl.UTF-8):   Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
+Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -478,12 +480,12 @@ Kopete plugin which automatically changes status to away. Conditions
 are configurable.
 
 %description kopete-tool-autoaway -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki, po
-zaistnieniu których ma nastąpić, są konfigurowalne.
+Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
+po zaistnieniu których ma nastąpić, są konfigurowalne.
 
 %package kopete-tool-alias
 Summary:	Kopete plugin to add custom aliases for commands
-Summary(pl.UTF-8):   Wtyczka Kopete do dodawania własnych aliasów dla poleceń
+Summary(pl.UTF-8):	Wtyczka Kopete do dodawania własnych aliasów dla poleceń
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Conflicts:	kdenetwork-kopete < 10:3.2.90.040312-1
@@ -496,7 +498,7 @@ Wtyczka Kopete do dodawania własnych aliasów dla poleceń.
 
 %package kopete-tool-avdeviceconfig
 Summary:	Kopete avdeviceconfig plugin
-Summary(pl.UTF-8):   Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
+Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -505,12 +507,12 @@ Kopete plugin which automatically changes status to away. Conditions
 are configurable.
 
 %description kopete-tool-avdeviceconfig -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki, po
-zaistnieniu których ma nastąpić, są konfigurowalne.
+Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
+po zaistnieniu których ma nastąpić, są konfigurowalne.
 
 %package kopete-tool-smpppdcs
 Summary:	Kopete smpppdcs plugin
-Summary(pl.UTF-8):   Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
+Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -519,12 +521,12 @@ Kopete plugin which automatically changes status to away. Conditions
 are configurable.
 
 %description kopete-tool-smpppdcs -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki, po
-zaistnieniu których ma nastąpić, są konfigurowalne.
+Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
+po zaistnieniu których ma nastąpić, są konfigurowalne.
 
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
-Summary(pl.UTF-8):   Wtyczka Kopete do automatycznej zamiany tekstu
+Summary(pl.UTF-8):	Wtyczka Kopete do automatycznej zamiany tekstu
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -536,11 +538,11 @@ Wtyczka Kopete do automatycznej zamiany tekstu.
 
 %package kopete-tool-connectionstatus
 Summary:	Kopete Internet connection detector
-Summary(pl.UTF-8):   Wykrywacz połączeń internetowych dla Kopete
+Summary(pl.UTF-8):	Wykrywacz połączeń internetowych dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes: kopete-tool-conectionstatus
-Provides: kopete-tool-conectionstatus
+Provides:	kopete-tool-conectionstatus
+Obsoletes:	kopete-tool-conectionstatus
 
 %description kopete-tool-connectionstatus
 Kopete tool which automatically detects whether the internet
@@ -552,7 +554,7 @@ połączenie do Internetu.
 
 %package kopete-tool-contactnotes
 Summary:	Kopete tool which adds personal notes to your contacts
-Summary(pl.UTF-8):   Narzędzie Kopete do dodawania notatek do kontaktów
+Summary(pl.UTF-8):	Narzędzie Kopete do dodawania notatek do kontaktów
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -564,7 +566,7 @@ Narzędzie Kopete umożliwiające dodawanie notatek do kontaktów.
 
 %package kopete-tool-cryptography
 Summary:	Kopete messages encryptor
-Summary(pl.UTF-8):   Program do szyfrowania wiadomości dla Kopete
+Summary(pl.UTF-8):	Program do szyfrowania wiadomości dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -576,7 +578,7 @@ Program dla Kopete do szyfrowania wiadomości przy pomocy OpenPGP.
 
 %package kopete-tool-highlight
 Summary:	A highlighter plugin for Kopete
-Summary(pl.UTF-8):   Wtyczka Kopete podkreślająca wybrane teksty
+Summary(pl.UTF-8):	Wtyczka Kopete podkreślająca wybrane teksty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -588,7 +590,7 @@ Wtyczka Kopete podkreślająca wybrane teksty.
 
 %package kopete-tool-latex
 Summary:	A LaTeX plugin for Kopete
-Summary(pl.UTF-8):   Wtyczka Kopete renderująca tekst w formacie LaTeXa
+Summary(pl.UTF-8):	Wtyczka Kopete renderująca tekst w formacie LaTeXa
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Conflicts:	kdenetwork-kopete < 10:3.4.89-1
@@ -601,7 +603,7 @@ Wtyczka Kopete renderująca tekst w formacie LaTeXa.
 
 %package kopete-tool-history
 Summary:	A history plugin for Kopete
-Summary(pl.UTF-8):   Wtyczka Kopete obsługująca historię rozmów
+Summary(pl.UTF-8):	Wtyczka Kopete obsługująca historię rozmów
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -613,7 +615,7 @@ Wtyczka Kopete obsługująca historię rozmów.
 
 %package kopete-tool-importer
 Summary:	Contact importer for Kopete
-Summary(pl.UTF-8):   Importer kontaktów dla Kopete
+Summary(pl.UTF-8):	Importer kontaktów dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -627,7 +629,7 @@ komunikatorów.
 
 %package kopete-tool-motionaway
 Summary:	Kopete plugin which sets away status when not detecting movement near the computer
-Summary(pl.UTF-8):   Wtyczka Kopete zmieniająca status na zajęty jeśli nie wykrywa ruchu wokół komputera
+Summary(pl.UTF-8):	Wtyczka Kopete zmieniająca status na zajęty jeśli nie wykrywa ruchu wokół komputera
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -641,7 +643,7 @@ wokół komputera.
 
 %package kopete-tool-nowlistening
 Summary:	Playlist informer for Kopete
-Summary(pl.UTF-8):   Informator o playliście dla Kopete
+Summary(pl.UTF-8):	Informator o playliście dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -655,7 +657,7 @@ słuchanej piosenki w xmms/kscd/noatun.
 
 %package kopete-tool-spellcheck
 Summary:	A spell checking plugin for Kopete
-Summary(pl.UTF-8):   Wtyczka Kopete sprawdzająca pisownie
+Summary(pl.UTF-8):	Wtyczka Kopete sprawdzająca pisownie
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -667,7 +669,7 @@ Wtyczka Kopete sprawdzająca pisownie.
 
 %package kopete-tool-texteffect
 Summary:	Kopete plugin that adds nice effects to your messages
-Summary(pl.UTF-8):   Wtyczka Kopete dodająca ładne efekty do wiadomości
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca ładne efekty do wiadomości
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -679,7 +681,7 @@ Wtyczka Kopete dodająca ładne efekty do wiadomości.
 
 %package kopete-tool-translator
 Summary:	Kopete plugin which uses babelfish to translate messages
-Summary(pl.UTF-8):   Wtyczka Kopete wykorzystująca babelfish do tłumaczenia wiadomości
+Summary(pl.UTF-8):	Wtyczka Kopete wykorzystująca babelfish do tłumaczenia wiadomości
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 
@@ -692,7 +694,7 @@ Ta wtyczka Kopete wykorzystuje babelfish do tłumaczenia wiadomości.
 
 %package kopete-tool-webpresence
 Summary:	Web contactlist presenter for Kopete
-Summary(pl.UTF-8):   Wyświetlacz listy kontaktów na WWW dla Kopete
+Summary(pl.UTF-8):	Wyświetlacz listy kontaktów na WWW dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	libxml2 >= 2.4.8
@@ -702,12 +704,12 @@ Requires:	libxslt >= 1.0.7
 This Kopete plugin shows the status of your IM accounts on a webpage.
 
 %description kopete-tool-webpresence -l pl.UTF-8
-Ta wtyczka Kopete pokazuje status (całej lub części) listy kontaktów
-na stronie WWW.
+Ta wtyczka Kopete pokazuje status (całej lub części) listy
+kontaktów na stronie WWW.
 
 %package kpf
 Summary:	Public fileserver applet
-Summary(pl.UTF-8):   Applet publicznego serwera plików
+Summary(pl.UTF-8):	Applet publicznego serwera plików
 Group:		X11/Applications
 Requires:	kdebase-desktop >= %{_minbaseevr}
 
@@ -732,29 +734,29 @@ listening that your file is available at
 http://www.mymachine.net:8001/thefile .
 
 %description kpf -l pl.UTF-8
-kpf umożliwia proste uwspólnianie plików przy użyciu protokołu HTTP
-(Hyper Text Transfer Protocol), tego samego, który jest używany dla
-stron WWW, aby dostarczyć dane do przeglądarki. Ściślej mówiąc kpf
-jest publicznym serwerem plików, co oznacza, że nie ma ograniczeń
-dostępu do współdzielonych plików. Wszystko co wybierze się do
-dzielenia, jest dostępne dla każdego.
+kpf umożliwia proste uwspólnianie plików przy użyciu protokołu
+HTTP (Hyper Text Transfer Protocol), tego samego, który jest używany
+dla stron WWW, aby dostarczyć dane do przeglądarki. Ściślej
+mówiąc kpf jest publicznym serwerem plików, co oznacza, że nie ma
+ograniczeń dostępu do współdzielonych plików. Wszystko co
+wybierze się do dzielenia, jest dostępne dla każdego.
 
-kpf jest zaprojektowany w celu dzielenia plików z przyjaciółmi, a nie
-działania jako pełnoprawny serwer WWW, taki jak Apache. kpf był
-początkowo rozwijany głównie jako prosty sposób współdzielenia plików
-z innymi podczas rozmawiania przez IRC.
+kpf jest zaprojektowany w celu dzielenia plików z przyjaciółmi, a
+nie działania jako pełnoprawny serwer WWW, taki jak Apache. kpf był
+początkowo rozwijany głównie jako prosty sposób współdzielenia
+plików z innymi podczas rozmawiania przez IRC.
 
-Typowy przypadek użycia: kpf jest konfigurowany do serwowania plików z
-podkatalogu public_html w katalogu domowym. Chcemy uczynić plik
-dostępnym dla ludzi, z którymi akurat rozmawiamy. Zamiast wysyłać plik
-pocztą jako załącznik (niektórzy mogą nawet nie być zainteresowani),
-kopiujemy plik do katalogu public_html i ogłaszamy, że plik jest
-dostępny jako http://www.mojkomputer.net:8001/plik .
+Typowy przypadek użycia: kpf jest konfigurowany do serwowania plików
+z podkatalogu public_html w katalogu domowym. Chcemy uczynić plik
+dostępnym dla ludzi, z którymi akurat rozmawiamy. Zamiast wysyłać
+plik pocztą jako załącznik (niektórzy mogą nawet nie być
+zainteresowani), kopiujemy plik do katalogu public_html i ogłaszamy,
+że plik jest dostępny jako http://www.mojkomputer.net:8001/plik .
 
 %package kppp
 Summary:	KDE PPP dialer
-Summary(pl.UTF-8):   Program do połączeń modemowych dla KDE
-Summary(pt_BR.UTF-8):   O discador para Internet
+Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
+Summary(pt_BR.UTF-8):	O discador para Internet
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	ppp
@@ -782,24 +784,24 @@ pppd. Pozwala na interaktywne generowanie skryptów i konfiguracji
 sieci. Automatyzuje proces dzwonienia do swojego ISP umożliwiając
 jednocześnie wygodne monitorowanie całego procesu.
 
-Po połączeniu KPPP udostępnia bogate statystyki i śledzi czas spędzony
-online.
+Po połączeniu KPPP udostępnia bogate statystyki i śledzi czas
+spędzony online.
 
 Wbudowany terminal i generator skryptów umożliwia łatwe
 skonfigurowanie połączenia. Nie trzeba już dodatkowego programu
 terminalowego, takiego jak seyon czy minicom, do testowania i
 ustawiania połączenia.
 
-KPPP ma wypracowane naliczanie kosztów telefonów, pozwalające łatwo
-śledzić koszt czasu online.
+KPPP ma wypracowane naliczanie kosztów telefonów, pozwalające
+łatwo śledzić koszt czasu online.
 
 %description kppp -l pt_BR.UTF-8
 O discador para Internet.
 
 %package ksirc
 Summary:	KDE IRC client
-Summary(pl.UTF-8):   Klient IRC dla KDE
-Summary(pt_BR.UTF-8):   Cliente de IRC do KDE
+Summary(pl.UTF-8):	Klient IRC dla KDE
+Summary(pt_BR.UTF-8):	Cliente de IRC do KDE
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 Requires:	perl-IO-Socket-SSL
@@ -810,15 +812,15 @@ KSirc is the default KDE IRC client. It supports scripting with Perl
 and has a lot of compatibility with mIrc for general use.
 
 %description ksirc -l pl.UTF-8
-KSirc to domyślny klient IRC dla KDE. Obsługuje skrypty perlowe i jest
-w dużym stopniu kompatybilny z mIrcem przy ogólnym używaniu.
+KSirc to domyślny klient IRC dla KDE. Obsługuje skrypty perlowe i
+jest w dużym stopniu kompatybilny z mIrcem przy ogólnym używaniu.
 
 %description ksirc -l pt_BR.UTF-8
 Cliente de IRC do KDE.
 
 %package krfb
 Summary:	Virtual Desktops
-Summary(pl.UTF-8):   Wirtualne biurka
+Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= %{_minbaseevr}
@@ -835,13 +837,13 @@ features of Remote Desktop Connection.
 Remote Desktop Connection to aplikacja kliencka umożliwiająca
 oglądanie a nawet sterowanie sesją na innej maszynie z działającym
 kompatybilnym serwerem (VNC). Zwykle używa się Remote Desktop
-Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu" (także
-dostarczanego przez ten pakiet), jako że najlepiej pasuje do
+Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
+(także dostarczanego przez ten pakiet), jako że najlepiej pasuje do
 specjalnych możliwości Remote Desktop Connection.
 
 %package ktalkd
 Summary:	Talk daemon
-Summary(pl.UTF-8):   Daemon talk
+Summary(pl.UTF-8):	Daemon talk
 Group:		X11/Applications
 Requires:	kdebase-core >= %{_minbaseevr}
 
@@ -852,11 +854,12 @@ messages.
 
 %description ktalkd -l pl.UTF-8
 Zamiennik demona talk. Obsługuje protokół talk i ma automatyczną
-sekretarkę oraz możliwość informowania o przychodzących wiadomościach.
+sekretarkę oraz możliwość informowania o przychodzących
+wiadomościach.
 
 %package kwifimanager
 Summary:	Wireless LAN
-Summary(pl.UTF-8):   Bezprzewodowy LAN
+Summary(pl.UTF-8):	Bezprzewodowy LAN
 Group:		X11/Applications
 Requires:	kdelibs >= %{_minlibsevr}
 Requires:	wireless-tools
@@ -874,13 +877,13 @@ uses the wireless extensions interface.
 Oprogramowanie KWiFiManager to zbiór narzędzi umożliwiających
 zarządzanie bezprzewodową kartą LAN w środowisku KDE. Dostarcza
 informacje o bieżącym połączeniu oraz pozwala ustawić do czterech
-niezależnych konfiguracji, które mogą być ładowane automatycznie przy
-starcie KDE. KWiFiManager obsługuje wszystkie bezprzewodowe karty LAN
-używające interfejsu rozszerzeń bezprzewodowych.
+niezależnych konfiguracji, które mogą być ładowane automatycznie
+przy starcie KDE. KWiFiManager obsługuje wszystkie bezprzewodowe
+karty LAN używające interfejsu rozszerzeń bezprzewodowych.
 
 %package kxmlrpcd
 Summary:	KDE XmlRpc Daemon
-Summary(pl.UTF-8):   Deamon XmlRpc dla KDE
+Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
 Requires:	kdelibs >= %{_minlibsevr}
 
@@ -892,7 +895,7 @@ Demon XmlRpc dla KDE.
 
 %package lanbrowser
 Summary:	KDE LAN Browser
-Summary(pl.UTF-8):   Przeglądarka LAN-u dla KDE
+Summary(pl.UTF-8):	Przeglądarka LAN-u dla KDE
 Group:		X11/Applications
 Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
@@ -910,7 +913,7 @@ Przeglądarka dla udziałów Samby w sieci lokalnej.
 
 %package libkopete
 Summary:	kopete library
-Summary(pl.UTF-8):   Biblioteka kopete
+Summary(pl.UTF-8):	Biblioteka kopete
 Group:		X11/Libraries
 Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
@@ -923,7 +926,7 @@ Biblioteka kopete.
 
 %package libkopete_msn
 Summary:	MSN protocol shared library
-Summary(pl.UTF-8):   Biblioteka współdzielona dla protokołu MSN
+Summary(pl.UTF-8):	Biblioteka współdzielona dla protokołu MSN
 Group:		X11/Libraries
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kdenetwork-kopete-protocol-msn < 10:3.1.93.031114-3
@@ -936,7 +939,7 @@ Biblioteka współdzielona dla protokołu MSN.
 
 %package libkopete_videodevice
 Summary:	Video input device support library for kopete
-Summary(pl.UTF-8):   Biblioteka z obsługą urządzeń wejścia video dla kopete
+Summary(pl.UTF-8):	Biblioteka z obsługą urządzeń wejścia video dla kopete
 Group:		X11/Libraries
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 
@@ -948,7 +951,7 @@ Biblioteka z obsługą urządzeń wejścia video dla kopete.
 
 %package libkopete_oscar
 Summary:	Shared library which adds OSCAR protocol support
-Summary(pl.UTF-8):   Biblioteka dodająca obsługę protokołu OSCAR
+Summary(pl.UTF-8):	Biblioteka dodająca obsługę protokołu OSCAR
 Group:		X11/Applications/Networking
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kdenetwork-kopete-protocol-oscar < 10:3.1.93.031114-3
@@ -958,12 +961,12 @@ A shared library which adds OSCAR protocol support needed eg. by AIM
 and ICQ.
 
 %description libkopete_oscar -l pl.UTF-8
-Biblioteka dodająca obsługę protokołu OSCAR, używanego między innymi
-przez AIM i ICQ.
+Biblioteka dodająca obsługę protokołu OSCAR, używanego między
+innymi przez AIM i ICQ.
 
 %package librss
 Summary:	RSS library
-Summary(pl.UTF-8):   Biblioteka RSS
+Summary(pl.UTF-8):	Biblioteka RSS
 Group:		X11/Libraries
 Requires:	kdelibs >= %{_minlibsevr}
 Obsoletes:	kdenetwork-rss < 10:3.1.93.031114-3
@@ -976,7 +979,7 @@ Biblioteka dla parserów RSS/RDF/XML w KDE.
 
 %package rss
 Summary:	RSS parsers used by different applications
-Summary(pl.UTF-8):   Programy parsujące nagłówki RSS używane przez różne aplikacje
+Summary(pl.UTF-8):	Programy parsujące nagłówki RSS używane przez różne aplikacje
 Group:		X11/Applications
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 
