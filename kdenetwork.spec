@@ -541,8 +541,8 @@ Summary:	Kopete Internet connection detector
 Summary(pl.UTF-8):	Wykrywacz połączeń internetowych dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Provides:	kopete-tool-conectionstatus
-Obsoletes:	kopete-tool-conectionstatus
+Provides:	kdenetwork-kopete-tool-conectionstatus
+Obsoletes:	kdenetwork-kopete-tool-conectionstatus
 
 %description kopete-tool-connectionstatus
 Kopete tool which automatically detects whether the internet
