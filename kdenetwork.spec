@@ -534,17 +534,19 @@ Kopete plugin which autoreplaces some text you can choose.
 %description kopete-tool-autoreplace -l pl.UTF-8
 Wtyczka Kopete do automatycznej zamiany tekstu.
 
-%package kopete-tool-conectionstatus
+%package kopete-tool-connectionstatus
 Summary:	Kopete Internet connection detector
 Summary(pl.UTF-8):   Wykrywacz połączeń internetowych dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
+Obsoletes: kopete-tool-conectionstatus
+Provides: kopete-tool-conectionstatus
 
-%description kopete-tool-conectionstatus
+%description kopete-tool-connectionstatus
 Kopete tool which automatically detects whether the internet
 connection is available or not.
 
-%description kopete-tool-conectionstatus -l pl.UTF-8
+%description kopete-tool-connectionstatus -l pl.UTF-8
 Narzędzie Kopete automatycznie sprawdzające, czy dostępne jest
 połączenie do Internetu.
 
@@ -1464,7 +1466,7 @@ fi
 %{_datadir}/services/kopete_avdeviceconfig.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/kopete_avdevice.png
 
-%files kopete-tool-conectionstatus
+%files kopete-tool-connectionstatus
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde3/kopete*connectionstatus*.so
 %{_datadir}/services/kopete_connectionstatus.desktop
