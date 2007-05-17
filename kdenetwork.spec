@@ -1359,6 +1359,7 @@ fi
 %{_iconsdir}/*/*/actions/webcamsend.png
 %{_iconsdir}/*/*/apps/jabber_gateway_aim.png
 %{_iconsdir}/*/*/apps/jabber_gateway_gadu.png
+%dir %{_iconsdir}/*/*/apps/jabber_gateway_http
 %{_iconsdir}/*/*/apps/jabber_gateway_http/ws.png
 %{_iconsdir}/*/*/apps/jabber_gateway_icq.png
 %{_iconsdir}/*/*/apps/jabber_gateway_irc.png
