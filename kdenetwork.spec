@@ -18,13 +18,13 @@ Summary(es):	K Desktop Environment - aplicaciones de red
 Summary(pl):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.5.6
-Release:	2
+Version:	3.5.7
+Release:	0.1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f428cccc4ea16aa53c427530874c591
+# Source0-md5:	f2c261b5d4dc467ca5f467d0181675c7
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -37,10 +37,12 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kopete-qca-tls.patch
 Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
+BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
 BuildRequires:	gettext-devel
+BuildRequires:	gsmlib-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
@@ -51,6 +53,7 @@ BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -1368,6 +1371,7 @@ fi
 %{_iconsdir}/*/*/actions/webcamsend.png
 %{_iconsdir}/*/*/apps/jabber_gateway_aim.png
 %{_iconsdir}/*/*/apps/jabber_gateway_gadu.png
+%dir %{_iconsdir}/*/*/apps/jabber_gateway_http
 %{_iconsdir}/*/*/apps/jabber_gateway_http/ws.png
 %{_iconsdir}/*/*/apps/jabber_gateway_icq.png
 %{_iconsdir}/*/*/apps/jabber_gateway_irc.png
