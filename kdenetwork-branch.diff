@@ -1,7 +1,7 @@
 Index: kpf/kpfpropertiesdialogplugin.desktop
 ===================================================================
---- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -28,7 +28,7 @@
  Name[mk]=Страна за својства на именик од KPF
  Name[nb]=KPF-side med katalogegenskaper
@@ -13,8 +13,8 @@ Index: kpf/kpfpropertiesdialogplugin.desktop
  Name[pa]=KPF ਡਾਇਰੈਕਟਰੀ ਵਿਸ਼ੇਸ਼ਤਾ ਸਫ਼ਾ
 Index: krdc/krdc.desktop
 ===================================================================
---- krdc/krdc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- krdc/krdc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -58,4 +58,4 @@
  GenericName[zh_HK]=遠端桌面連線
  GenericName[zh_TW]=連接遠端桌面
@@ -23,8 +23,8 @@ Index: krdc/krdc.desktop
 +Categories=Qt;KDE;Network;RemoteAccess;
 Index: krfb/krfb/krfb.desktop
 ===================================================================
---- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -59,4 +59,4 @@
  GenericName[zh_CN]=桌面共享
  GenericName[zh_HK]=桌面分享
@@ -33,8 +33,8 @@ Index: krfb/krfb/krfb.desktop
 +Categories=Qt;KDE;System;RemoteAccess;Network;
 Index: krfb/krfb/eventsrc
 ===================================================================
---- krfb/krfb/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ krfb/krfb/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- krfb/krfb/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ krfb/krfb/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -120,7 +120,7 @@
  Name[tg]=Корванд Пайвастшавиро Қабул мекунад
  Name[th]=ผู้ใช้ยอมรับการเชื่อมต่อ
@@ -55,8 +55,8 @@ Index: krfb/krfb/eventsrc
  Comment[fa]=اتصال غیرمنتظره پذیرفته شد، ساقط شد
 Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
 ===================================================================
---- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -90,7 +90,7 @@
  Comment[ta]=krfb க்கான நுண்ணிய http அது VNC சேவையை குறுப்பயன் பார்வையாளர்.
  Comment[tg]=Азозили micro http барои krfb, ки хидматрасони VNC апплети хидматрасон мебошад.
@@ -68,8 +68,8 @@ Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
  Comment[zh_TW]=服務 VNC 的小型網頁伺服器
 Index: krfb/kcm_krfb/kcmkrfb.desktop
 ===================================================================
---- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -186,4 +186,4 @@
  Keywords[zh_CN]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,桌面共享,共享,远程桌面连接,邀请,端口,未邀请
  Keywords[zh_TW]=desktop sharing,krfb,vnc,sharing,rdp,krdc,remote desktop connection,rdp,桌面分享,分享,遠端桌面連線,invitation,port,slp,uninvited
@@ -78,8 +78,8 @@ Index: krfb/kcm_krfb/kcmkrfb.desktop
 +Categories=Qt;KDE;X-KDE-settings-network;Settings;
 Index: lanbrowsing/kio_lan/lan.desktop
 ===================================================================
---- lanbrowsing/kio_lan/lan.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ lanbrowsing/kio_lan/lan.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- lanbrowsing/kio_lan/lan.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ lanbrowsing/kio_lan/lan.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -47,7 +47,7 @@
  Name[mt]=Network Lokali
  Name[nb]=Lokalt nettverk
@@ -91,8 +91,8 @@ Index: lanbrowsing/kio_lan/lan.desktop
  Name[nso]=Kgokagano Selegae
 Index: kdnssd/ioslave/zeroconf.protocol
 ===================================================================
---- kdnssd/ioslave/zeroconf.protocol	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kdnssd/ioslave/zeroconf.protocol	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kdnssd/ioslave/zeroconf.protocol	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kdnssd/ioslave/zeroconf.protocol	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -22,7 +22,7 @@
  Description[da]=En kioslave for Zeroconf
  Description[de]=Ein Ein-/Ausgabemodul für ZeroConf
@@ -104,8 +104,8 @@ Index: kdnssd/ioslave/zeroconf.protocol
  Description[fa]=یک kioslave برای ZeroConf
 Index: kopete/kopete.kdevelop
 ===================================================================
---- kopete/kopete.kdevelop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete.kdevelop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete.kdevelop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1,265 +0,0 @@
 -<!DOCTYPE kdevelop>
 -<kdevelop>
@@ -374,8 +374,8 @@ Index: kopete/kopete.kdevelop
 -</kdevelop>
 Index: kopete/plugins/motionautoaway/kopete_motionaway.desktop
 ===================================================================
---- kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/motionautoaway/kopete_motionaway.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -19,12 +19,12 @@
  Name[bn]=চলাচল স্বয়ংক্রীয়-অনুপস্থিতি
  Name[bs]=Auto-odsutnost na osnovu kretanja
@@ -408,8 +408,8 @@ Index: kopete/plugins/motionautoaway/kopete_motionaway.desktop
  Comment[fa]=اگر هیچ حرکتی نزدیک رایانۀ شما آشکار نشود، وضعیت را کنار می‌گذارد
 Index: kopete/plugins/motionautoaway/kopete_motionaway_config.desktop
 ===================================================================
---- kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/motionautoaway/kopete_motionaway_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -15,12 +15,12 @@
  Name[bn]=চলাচল স্বয়ংক্রীয়-অনুপস্থিতি
  Name[bs]=Auto-odsutnost na osnovu kretanja
@@ -442,8 +442,8 @@ Index: kopete/plugins/motionautoaway/kopete_motionaway_config.desktop
  Comment[fa]=اگر هیچ حرکتی نزدیک رایانۀ شما آشکار نشود، وضعیت را کنار می‌گذارد
 Index: kopete/plugins/smpppdcs/kopete_smpppdcs.desktop
 ===================================================================
---- kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/smpppdcs/kopete_smpppdcs.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -38,7 +38,7 @@
  Name[lt]=SUSE smpppd ryšio būklė (SMPPPD)
  Name[nb]=Tilstand for SMPPPD - SUSE smpppd-forbindelse
@@ -464,8 +464,8 @@ Index: kopete/plugins/smpppdcs/kopete_smpppdcs.desktop
  Comment[fa]=بسته به قابلیت دسترسی اتصال اینترنت،  Kopete به طور خودکار وصل/قطع ارتباط می‌کند
 Index: kopete/plugins/statistics/kopete_statistics.desktop
 ===================================================================
---- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -26,7 +26,7 @@
  Name[da]=Statistik
  Name[de]=Statistiken
@@ -477,8 +477,8 @@ Index: kopete/plugins/statistics/kopete_statistics.desktop
  Name[fa]=آمار
 Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -98,7 +98,7 @@
  Comment[mk]=Криптирајте пораки употребувајќи PGP
  Comment[nb]=Krypterer meldinger med PGP
@@ -490,8 +490,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
  Comment[pl]=Szyfruje wiadomości za pomocą PGP
 Index: kopete/plugins/cryptography/kopete_cryptography.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -102,7 +102,7 @@
  Comment[mk]=Криптирајте и декриптирајте пораки со GPG
  Comment[nb]=Krypter / dekrypter meldinger med GPG
@@ -503,8 +503,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography.desktop
  Comment[pl]=Szyfruje i odszyfrowuje wiadomości za pomocą GPG
 Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -22,7 +22,7 @@
  Name[km]=ប្រជុំ​លើ​បណ្ដាញ
  Name[lt]=Bendravimas tinkle
@@ -534,8 +534,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
  Comment[pl]=Głos i wideo za pomocą MSN Messenger
 Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -26,7 +26,7 @@
  Name[km]=ប្រជុំ​លើ​បណ្ដាញ
  Name[lt]=Bendravimas tinkle
@@ -565,8 +565,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
  Comment[pl]=Głos i wideo za pomocą MSN Messenger
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -91,7 +91,7 @@
  Comment[da]=Historik-plugin
  Comment[de]=Verlaufsmodul
@@ -578,8 +578,8 @@ Index: kopete/plugins/history/kopete_history_config.desktop
  Comment[fa]=وصلۀ تاریخچه
 Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
 ===================================================================
---- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -82,7 +82,7 @@
  Comment[da]=Forbinder/afbryder Kopete automatisk afhængig af om der er en internet-forbindelse
  Comment[de]=Verbindet/trennt Kopete automatisch abhängig von der Verfügbarkeit einer Internetverbindung
@@ -591,8 +591,8 @@ Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
  Comment[fa]=بسته به قابلیت دسترسی اتصال اینترنت،  Kopete به طور خودکار وصل/قطع ارتباط می‌کند
 Index: kopete/plugins/latex/kopete_latex.desktop
 ===================================================================
---- kopete/plugins/latex/kopete_latex.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/plugins/latex/kopete_latex.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/plugins/latex/kopete_latex.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/plugins/latex/kopete_latex.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -29,7 +29,7 @@
  Comment[da]=Viser Latex-formler i chat-vinduet
  Comment[de]=Latex-Formeln in einem Chat-Fenster anzeigen
@@ -604,8 +604,8 @@ Index: kopete/plugins/latex/kopete_latex.desktop
  Comment[fa]=نمایش فرمولهای Latex در پنجرۀ گفتگو
 Index: kopete/protocols/yahoo/libkyahoo/client.cpp
 ===================================================================
---- kopete/protocols/yahoo/libkyahoo/client.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/yahoo/libkyahoo/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/yahoo/libkyahoo/client.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/yahoo/libkyahoo/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -183,8 +183,10 @@
  	if( d->tasksInitialized)
  		deleteTasks();	
@@ -620,8 +620,8 @@ Index: kopete/protocols/yahoo/libkyahoo/client.cpp
  		m_connector->deleteLater();
 Index: kopete/protocols/yahoo/yahooaccount.cpp
 ===================================================================
---- kopete/protocols/yahoo/yahooaccount.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/yahoo/yahooaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/yahoo/yahooaccount.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/yahoo/yahooaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -675,6 +675,7 @@
  		setBuddyIcon( myself()->property( Kopete::Global::Properties::self()->photo() ).value().toString() );
  		m_session->getYABEntries( m_YABLastMerge, m_YABLastRemoteRevision );
@@ -632,8 +632,8 @@ Index: kopete/protocols/yahoo/yahooaccount.cpp
  	else if(succ == Yahoo::LoginPasswd)
 Index: kopete/protocols/sms/kopete_sms.desktop
 ===================================================================
---- kopete/protocols/sms/kopete_sms.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/sms/kopete_sms.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/sms/kopete_sms.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/sms/kopete_sms.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -35,7 +35,7 @@
  Comment[da]=Protokol til at sende SMS-beskeder
  Comment[de]=Protokoll zur Versendung von SMS-Nachrichten
@@ -645,8 +645,8 @@ Index: kopete/protocols/sms/kopete_sms.desktop
  Comment[fa]=قرارداد برای ارسال پیامهای کوتاه
 Index: kopete/protocols/groupwise/gwcontact.h
 ===================================================================
---- kopete/protocols/groupwise/gwcontact.h	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/groupwise/gwcontact.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/groupwise/gwcontact.h	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/groupwise/gwcontact.h	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -130,6 +130,15 @@
  	 * Mark this contact as being deleted
  	 */
@@ -673,8 +673,8 @@ Index: kopete/protocols/groupwise/gwcontact.h
  #endif
 Index: kopete/protocols/groupwise/gwcontact.cpp
 ===================================================================
---- kopete/protocols/groupwise/gwcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/groupwise/gwcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/groupwise/gwcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/groupwise/gwcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -50,7 +50,7 @@
  			Kopete::MetaContact *parent, 
  			const int objectId, const int parentId, const int sequence )
@@ -721,8 +721,8 @@ Index: kopete/protocols/groupwise/gwcontact.cpp
  // vim: set noet ts=4 sts=4 sw=4:
 Index: kopete/protocols/groupwise/gwaccount.cpp
 ===================================================================
---- kopete/protocols/groupwise/gwaccount.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/groupwise/gwaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/groupwise/gwaccount.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/groupwise/gwaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -790,6 +790,13 @@
  	if ( !sender )
  		sender = createTemporaryContact( message.user );
@@ -751,8 +751,8 @@ Index: kopete/protocols/groupwise/gwaccount.cpp
  void GroupWiseAccount::slotSetAutoReply()
 Index: kopete/protocols/jabber/jabbergroupcontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbergroupcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/jabber/jabbergroupcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/jabber/jabbergroupcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/jabber/jabbergroupcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -181,7 +181,7 @@
  		if ( !subContact )
  		{
@@ -764,8 +764,8 @@ Index: kopete/protocols/jabber/jabbergroupcontact.cpp
  			 * that it originated from a history backlog or something similar and
 Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
 ===================================================================
---- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -18,7 +18,7 @@
  Description[da]=En kioslave til at opdage jabber service
  Description[de]=Ein Ein-/Ausgabemodul zum Auffinden von Jabber-Diensten
@@ -777,8 +777,8 @@ Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
  Description[fa]=یک پیرو KIO برای خدمت اکتشافی Jabber
 Index: kopete/protocols/oscar/aim/kopete_aim.desktop
 ===================================================================
---- kopete/protocols/oscar/aim/kopete_aim.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/oscar/aim/kopete_aim.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/oscar/aim/kopete_aim.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/oscar/aim/kopete_aim.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -18,7 +18,7 @@
  Name=AIM
  Name[bn]=এ-আই-এম
@@ -799,8 +799,8 @@ Index: kopete/protocols/oscar/aim/kopete_aim.desktop
  Comment[pl]=Protokół połączenia z serwerem AIM
 Index: kopete/protocols/oscar/aim/aimcontact.cpp
 ===================================================================
---- kopete/protocols/oscar/aim/aimcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/oscar/aim/aimcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/oscar/aim/aimcontact.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/oscar/aim/aimcontact.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -440,6 +440,9 @@
  
  	s.replace ( QRegExp ( QString::fromLatin1("<br[ /]*>")), QString::fromLatin1("<br>") );
@@ -813,8 +813,8 @@ Index: kopete/protocols/oscar/aim/aimcontact.cpp
  
 Index: kopete/protocols/oscar/icq/x-icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -33,7 +33,7 @@
  Comment[mk]=Контакт на ICQ 
  Comment[nb]=ICQ kontakt
@@ -826,8 +826,8 @@ Index: kopete/protocols/oscar/icq/x-icq.desktop
  Comment[pl]=Kontakt ICQ
 Index: kopete/protocols/oscar/icq/kopete_icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/oscar/icq/kopete_icq.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/oscar/icq/kopete_icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -18,7 +18,7 @@
  Name=ICQ
  Name[bn]=আই-সি-কিউ
@@ -848,8 +848,8 @@ Index: kopete/protocols/oscar/icq/kopete_icq.desktop
  Comment[pl]=Protokół połączenia z serwerem ICQ
 Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
 ===================================================================
---- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/meanwhile/kopete_meanwhile.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -42,7 +42,7 @@
  Comment[lt]=Meanwhile (Lotus Sametime) protokolas
  Comment[nb]=Programtillegg for Meanwhile-protokoll (Lotus Sametime)
@@ -869,8 +869,8 @@ Index: kopete/protocols/meanwhile/kopete_meanwhile.desktop
  Comment[zh_TW]=Meanwhile （Lotus Sametime）協定外掛程式
 Index: kopete/protocols/testbed/kopete_testbed.desktop
 ===================================================================
---- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -51,7 +51,7 @@
  Comment[da]=Kopete test-protokol
  Comment[de]=Kopete Testprotokoll
@@ -882,8 +882,8 @@ Index: kopete/protocols/testbed/kopete_testbed.desktop
  Comment[fa]=Kopete قرارداد را آزمایش می‌کند
 Index: kopete/protocols/irc/kopete_irc.desktop
 ===================================================================
---- kopete/protocols/irc/kopete_irc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/irc/kopete_irc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/irc/kopete_irc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/irc/kopete_irc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -18,7 +18,7 @@
  Name=IRC
  Name[bn]=আই-আর-সি
@@ -904,8 +904,8 @@ Index: kopete/protocols/irc/kopete_irc.desktop
  Comment[pl]=Protokół połączenia z serwerem IRC
 Index: kopete/protocols/msn/kopete_msn.desktop
 ===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -29,7 +29,7 @@
  Name[lt]=MSN žinučių klientas
  Name[mk]=Гласник за MSN 
@@ -926,8 +926,8 @@ Index: kopete/protocols/msn/kopete_msn.desktop
  Comment[pl]=Protokół połączenia z serwerem MSN Messenger
 Index: kopete/protocols/msn/config/kopete_msn_config.desktop
 ===================================================================
---- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/protocols/msn/config/kopete_msn_config.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/protocols/msn/config/kopete_msn_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -23,7 +23,7 @@
  Name[da]=MSN-Plugin
  Name[de]=MSN-Modul
@@ -948,8 +948,8 @@ Index: kopete/protocols/msn/config/kopete_msn_config.desktop
  Name[pa]=MSN ਪਲੱਗਇਨ
 Index: kopete/kopete/contactlist/kopetecontactlistview.cpp
 ===================================================================
---- kopete/kopete/contactlist/kopetecontactlistview.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/contactlist/kopetecontactlistview.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/contactlist/kopetecontactlistview.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/contactlist/kopetecontactlistview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -783,25 +783,6 @@
  		setTreeStepSize( 0 );
  	}
@@ -978,8 +978,8 @@ Index: kopete/kopete/contactlist/kopetecontactlistview.cpp
  	                                        KopetePrefs::prefs()->contactListFading(),
 Index: kopete/kopete/systemtray.cpp
 ===================================================================
---- kopete/kopete/systemtray.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/systemtray.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/systemtray.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/systemtray.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -302,7 +302,7 @@
  
  			m_balloon = new KopeteBalloon(
@@ -991,8 +991,8 @@ Index: kopete/kopete/systemtray.cpp
  			connect(m_balloon, SIGNAL(signalIgnoreButtonClicked()), mBalloonEventList.first() , SLOT(ignore()));
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -194,7 +194,7 @@
  Name[mk]=Појдовни
  Name[nb]=Utgående
@@ -1156,8 +1156,8 @@ Index: kopete/kopete/eventsrc
  Comment[zh_HK]=有聯絡人傳了響聲或提示給您。
 Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Encoding=UTF-8
@@ -1177,8 +1177,8 @@ Index: kopete/kopete/kopete.desktop
  ServiceTypes=DCOP/InstantMessenger
 Index: kopete/kopete/config/appearance/appearanceconfig.cpp
 ===================================================================
---- kopete/kopete/config/appearance/appearanceconfig.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/config/appearance/appearanceconfig.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/config/appearance/appearanceconfig.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/config/appearance/appearanceconfig.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -256,8 +256,6 @@
  		this, SLOT(slotEditTooltips()));
  	connect(d->mPrfsContactList->mIndentContacts, SIGNAL(toggled(bool)),
@@ -1231,8 +1231,8 @@ Index: kopete/kopete/config/appearance/appearanceconfig.cpp
  	// "Colors & Fonts" TAB =====================================================
 Index: kopete/kopete/config/appearance/appearanceconfig_contactlist.ui
 ===================================================================
---- kopete/kopete/config/appearance/appearanceconfig_contactlist.ui	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/config/appearance/appearanceconfig_contactlist.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/config/appearance/appearanceconfig_contactlist.ui	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/config/appearance/appearanceconfig_contactlist.ui	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -8,7 +8,7 @@
          <rect>
              <x>0</x>
@@ -1403,8 +1403,8 @@ Index: kopete/kopete/config/appearance/appearanceconfig_contactlist.ui
  </UI>
 Index: kopete/kopete/config/behavior/behaviorconfig.cpp
 ===================================================================
---- kopete/kopete/config/behavior/behaviorconfig.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/config/behavior/behaviorconfig.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/config/behavior/behaviorconfig.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/config/behavior/behaviorconfig.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -229,6 +229,7 @@
  	// "General" TAB ============================================================
  	mPrfsGeneral->mShowTrayChk->setChecked( p->showTray() );
@@ -1415,8 +1415,8 @@ Index: kopete/kopete/config/behavior/behaviorconfig.cpp
  	mPrfsGeneral->mQueueUnreadMessagesChk->setChecked ( p->queueUnreadMessages() );
 Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
 ===================================================================
---- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -68,7 +68,7 @@
  Comment[da]=Her kan du håndtere din globale identitet
  Comment[de]=Hier können Sie Ihre globale Identität verwalten
@@ -1436,8 +1436,8 @@ Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
  Comment[zh_CN]=您可在此管理您的全局身份
 Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
 ===================================================================
---- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -216,6 +216,8 @@
  
  	KGlobal::config()->setGroup( QString::fromLatin1("ChatWindowSettings") );
@@ -1503,8 +1503,8 @@ Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
  
 Index: kopete/kopete/chatwindow/kopetechatwindow.h
 ===================================================================
---- kopete/kopete/chatwindow/kopetechatwindow.h	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/kopete/chatwindow/kopetechatwindow.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/kopete/chatwindow/kopetechatwindow.h	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/kopete/chatwindow/kopetechatwindow.h	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -127,6 +127,8 @@
  	ChatView *m_activeView;
  	ChatView *m_popupView;
@@ -1524,8 +1524,8 @@ Index: kopete/kopete/chatwindow/kopetechatwindow.h
  	void slotConfToolbar();
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1604,7 +1604,8 @@
  				case VIDEO_PALETTE_RGB32	: return PIXELFORMAT_RGB32;	break;
  				case VIDEO_PALETTE_YUYV		: return PIXELFORMAT_YUYV;	break;
@@ -1548,8 +1548,8 @@ Index: kopete/libkopete/avdevice/videodevice.cpp
  			break;
 Index: kopete/libkopete/kopeteui.desktop
 ===================================================================
---- kopete/libkopete/kopeteui.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteui.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteui.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteui.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -15,7 +15,7 @@
  Comment[da]=En Kopete UI-plugin
  Comment[de]=Ein Kopete Benutzeroberflächenmodul
@@ -1561,8 +1561,8 @@ Index: kopete/libkopete/kopeteui.desktop
  Comment[fa]=یک وصلۀ شناسۀ کاربر Kopete
 Index: kopete/libkopete/kopeteprotocol.desktop
 ===================================================================
---- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -16,7 +16,7 @@
  Comment[da]=Kopete-protokol-plugin
  Comment[de]=Kopete Protokoll-Modul
@@ -1574,8 +1574,8 @@ Index: kopete/libkopete/kopeteprotocol.desktop
  Comment[fa]=وصلۀ قرارداد Kopete
 Index: kopete/libkopete/kopeteprefs.h
 ===================================================================
---- kopete/libkopete/kopeteprefs.h	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteprefs.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteprefs.h	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteprefs.h	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -112,7 +112,6 @@
  	///
  	enum IconDisplayMode { IconPic, PhotoPic, IconDefault = IconPic };
@@ -1626,8 +1626,8 @@ Index: kopete/libkopete/kopeteprefs.h
  	bool mReconnectOnDisconnect;
 Index: kopete/libkopete/kopeteversion.h
 ===================================================================
---- kopete/libkopete/kopeteversion.h	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteversion.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteversion.h	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteversion.h	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -14,10 +14,10 @@
  #ifndef _KOPETE_VERSION_H_
  #define _KOPETE_VERSION_H_
@@ -1643,8 +1643,8 @@ Index: kopete/libkopete/kopeteversion.h
  #define KOPETE_VERSION \
 Index: kopete/libkopete/kopeteprefs.cpp
 ===================================================================
---- kopete/libkopete/kopeteprefs.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteprefs.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteprefs.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteprefs.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -135,7 +135,6 @@
                                    QString::fromLatin1("IconDefault"));
  	mContactListIconMode = (IconDisplayMode) metaObject()->property( n )->keyToValue( value.latin1() );
@@ -1705,8 +1705,8 @@ Index: kopete/libkopete/kopeteprefs.cpp
  	if( n != mContactListAutoHideTimeout ) mContactListAppearanceChanged = true;
 Index: kopete/libkopete/Makefile.am
 ===================================================================
---- kopete/libkopete/Makefile.am	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/Makefile.am	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -63,7 +63,8 @@
  	kopeteonlinestatus.h kopeteonlinestatusmanager.h kopetepasswordedaccount.h \
  	kopetepassword.h kopeteplugin.h kopeteprotocol.h kopetesimplemessagehandler.h kopetetask.h \
@@ -1719,8 +1719,8 @@ Index: kopete/libkopete/Makefile.am
  
 Index: kopete/libkopete/ui/kopetelistview.cpp
 ===================================================================
---- kopete/libkopete/ui/kopetelistview.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/ui/kopetelistview.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/ui/kopetelistview.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/ui/kopetelistview.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -98,95 +98,8 @@
  {
  	QTimer sortTimer;
@@ -2262,8 +2262,8 @@ Index: kopete/libkopete/ui/kopetelistview.cpp
  } // END namespace Kopete
 Index: kopete/libkopete/ui/kopetelistview.h
 ===================================================================
---- kopete/libkopete/ui/kopetelistview.h	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/ui/kopetelistview.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/ui/kopetelistview.h	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/ui/kopetelistview.h	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -50,79 +50,6 @@
  	 */
  	void setShowTreeLines( bool bShowAsTree );
@@ -2376,8 +2376,8 @@ Index: kopete/libkopete/ui/kopetelistview.h
  	Private *d;
 Index: kopete/libkopete/kopeteplugin.desktop
 ===================================================================
---- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -16,7 +16,7 @@
  Comment[da]=Kopete-plugin
  Comment[de]=Kopete-Modul
@@ -2389,8 +2389,8 @@ Index: kopete/libkopete/kopeteplugin.desktop
  Comment[fa]=Kopete وصلۀ
 Index: knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop
 ===================================================================
---- knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -39,7 +39,7 @@
  Name[mt]=Paġna ta' Propjetajiet Fajl ta' Sors KNewsticker
  Name[nb]=Egenskaper for kildefiler til KNewsticker
@@ -2402,8 +2402,8 @@ Index: knewsticker/kntsrcfilepropsdlg/kntsrcfilepropsdlg.desktop
  Name[nso]=Letlakala la Dithoto tsa Faele ya Mothopo wa seswai sa KDitaba
 Index: knewsticker/knewsticker-standalone.desktop
 ===================================================================
---- knewsticker/knewsticker-standalone.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ knewsticker/knewsticker-standalone.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- knewsticker/knewsticker-standalone.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ knewsticker/knewsticker-standalone.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -92,4 +92,4 @@
  Terminal=false
  X-KDE-StartupNotify=true
@@ -2412,8 +2412,8 @@ Index: knewsticker/knewsticker-standalone.desktop
 +Categories=Qt;KDE;Network;X-KDE-More;News;
 Index: knewsticker/knewsticker.desktop
 ===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -94,6 +94,7 @@
  Comment[sr]=Клизајући приказивач RDF вести
  Comment[sr@Latn]=Klizajući prikazivač RDF vesti
@@ -2424,8 +2424,8 @@ Index: knewsticker/knewsticker.desktop
  Comment[zh_HK]=捲軸式 RDF 新聞簡報器
 Index: kget/kget.desktop
 ===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kget/kget.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -71,5 +71,5 @@
  GenericName[zh_CN]=下载管理器
  GenericName[zh_HK]=下載管理員
@@ -2435,8 +2435,8 @@ Index: kget/kget.desktop
  X-DCOP-ServiceType=Unique
 Index: kget/eventsrc
 ===================================================================
---- kget/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kget/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kget/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -36,6 +36,7 @@
  Name[sr]=Пренос додат
  Name[sr@Latn]=Prenos dodat
@@ -2455,8 +2455,8 @@ Index: kget/eventsrc
  Name[zh_HK]=新增的下載已完成
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1104,7 +1104,7 @@
        KMessageBox::sorry(0,i18n("Joining the domain %1 failed.").arg(dlg->domainEdit->text()));
      }
@@ -2468,8 +2468,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
  
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -12,7 +12,7 @@
  X-KDE-HasReadOnlyMode=true
  X-KDE-RootOnly=true
@@ -2490,8 +2490,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
  Comment[fa]=یک پیمانه جهت پیکربندی مشترکات برای میکروسافت ویندوز
 Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -29,7 +29,7 @@
  Name[mk]=Страница со параметри за делен именик во Konqueror
  Name[nb]=Fildeler - Side i Konquerors mappegenskaper
@@ -2521,8 +2521,8 @@ Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
  Comment[pl]=Wtyczka właściwości dla Konquerora umożliwiająca współdzielenie katalogu w sieci lokalnej
 Index: filesharing/advanced/propsdlgplugin/propertiespage.cpp
 ===================================================================
---- filesharing/advanced/propsdlgplugin/propertiespage.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ filesharing/advanced/propsdlgplugin/propertiespage.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- filesharing/advanced/propsdlgplugin/propertiespage.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/advanced/propsdlgplugin/propertiespage.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -433,6 +433,7 @@
      m_nfsChanged = true;
      emit changed();    
@@ -2531,10 +2531,23 @@ Index: filesharing/advanced/propsdlgplugin/propertiespage.cpp
  }
  
  bool PropertiesPage::loadSamba() {
+Index: filesharing/advanced/propsdlgplugin/propsdlgshareplugin.cpp
+===================================================================
+--- filesharing/advanced/propsdlgplugin/propsdlgshareplugin.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/advanced/propsdlgplugin/propsdlgshareplugin.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
+@@ -101,7 +101,7 @@
+ void PropsDlgSharePlugin::slotConfigureFileSharing()
+ {
+     KProcess proc;
+-    proc << KStandardDirs::findExe("kdesu") << "kcmshell" << "fileshare";
++    proc << KStandardDirs::findExe("kdesu") << locate("exe", "kcmshell") << "fileshare";
+     proc.start( KProcess::DontCare );
+ }
+ 
 Index: filesharing/simple/fileshare.desktop
 ===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -160,4 +160,4 @@
  Keywords[uk]=Спільний ресурс
  Keywords[zh_CN]=Share,共享
@@ -2543,8 +2556,8 @@ Index: filesharing/simple/fileshare.desktop
 +Categories=Qt;KDE;X-KDE-settings-network;Settings;
 Index: kdict/kdict.desktop
 ===================================================================
---- kdict/kdict.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kdict/kdict.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kdict/kdict.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kdict/kdict.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -90,7 +90,7 @@
  GenericName[de]=Online-Lexikon
  GenericName[el]=Διαδικτυακό λεξικό
@@ -2560,10 +2573,23 @@ Index: kdict/kdict.desktop
  DocPath=kdict/index.html
 -Categories=Qt;KDE;Network;X-KDE-More;
 +Categories=Qt;KDE;Network;X-KDE-More;Office;Dictionary;
+Index: wifi/kwifimanager.cpp
+===================================================================
+--- wifi/kwifimanager.cpp	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ wifi/kwifimanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
+@@ -558,7 +558,7 @@
+ KWiFiManagerApp::slotStartConfigEditor ()
+ {
+   KProcess startConf;
+-  startConf << "kdesu" << "kcmshell" << "kcmwifi";
++  startConf << "kdesu" << locate("exe", "kcmshell") << "kcmwifi";
+   startConf.start (KProcess::DontCare);
+ }
+ 
 Index: wifi/kcmwifi/kcmwifi.desktop
 ===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -154,4 +154,4 @@
  Keywords[uz]=тармоқ,orinoco,симсиз,wlan,wlan-ng,симсиз тармоқ,wifi,Ad-Hoc
  Keywords[zh_CN]=network,orinoco,wireless,wlan,wlan-ng,wifi,Ad-Hoc,网络,无线,无线网络
@@ -2572,8 +2598,8 @@ Index: wifi/kcmwifi/kcmwifi.desktop
 +Categories=Qt;KDE;X-KDE-settings-network;Settings;
 Index: wifi/kwifimanager.desktop
 ===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -126,4 +126,4 @@
  GenericName[zh_CN]=无线局域网管理器
  GenericName[zh_HK]=無線網絡管理員
@@ -2582,8 +2608,8 @@ Index: wifi/kwifimanager.desktop
 +Categories=Qt;KDE;Network;X-KDE-More;System;Monitor;
 Index: kppp/DB/Provider/Norway/.directory
 ===================================================================
---- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,11 +3,8 @@
  Name[af]=Noorweë
  Name[ar]=النرويج
@@ -2652,8 +2678,8 @@ Index: kppp/DB/Provider/Norway/.directory
  Name[zu]=I-Noweyi
 Index: kppp/DB/Provider/Slovenia/.directory
 ===================================================================
---- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -2,49 +2,34 @@
  Name=Slovenia
  Name[ar]=سلوفينيا
@@ -2711,8 +2737,8 @@ Index: kppp/DB/Provider/Slovenia/.directory
  
 Index: kppp/DB/Provider/Denmark/.directory
 ===================================================================
---- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,11 +3,8 @@
  Name[af]=Denemarke
  Name[ar]=الدنمارك
@@ -2780,8 +2806,8 @@ Index: kppp/DB/Provider/Denmark/.directory
  Name[zu]=Isi-Denimaki
 Index: kppp/DB/Provider/Czech_Republic/.directory
 ===================================================================
---- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,11 +3,8 @@
  Name[af]=Czechië
  Name[ar]=التشيك
@@ -2850,8 +2876,8 @@ Index: kppp/DB/Provider/Czech_Republic/.directory
  
 Index: kppp/DB/Provider/Taiwan/.directory
 ===================================================================
---- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -2,39 +2,28 @@
  Name=Taiwan
  Name[ar]=تايوان
@@ -2898,8 +2924,8 @@ Index: kppp/DB/Provider/Taiwan/.directory
  Name[zu]=I-Tayiwani
 Index: kppp/DB/Provider/Yugoslavia/.directory
 ===================================================================
---- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1,47 +1,29 @@
  [Desktop Entry]
  Name=Yugoslavia
@@ -2955,8 +2981,8 @@ Index: kppp/DB/Provider/Yugoslavia/.directory
 +Name[zh_TW]=南斯拉夫
 Index: kppp/DB/Provider/Sweden/.directory
 ===================================================================
---- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,61 +3,38 @@
  Name[af]=Swede
  Name[ar]=السويد
@@ -3024,8 +3050,8 @@ Index: kppp/DB/Provider/Sweden/.directory
  Name[zu]=Isi-Swideni
 Index: kppp/DB/Provider/New_Zealand/.directory
 ===================================================================
---- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,56 +3,37 @@
  Name[af]=Nuwe Seeland
  Name[ar]=نيوزيلاندا
@@ -3089,8 +3115,8 @@ Index: kppp/DB/Provider/New_Zealand/.directory
  Name[zu]=I-New Zealand
 Index: kppp/DB/Provider/Portugal/.directory
 ===================================================================
---- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -2,40 +2,26 @@
  Name=Portugal
  Name[ar]=البرتغال
@@ -3136,8 +3162,8 @@ Index: kppp/DB/Provider/Portugal/.directory
  Name[zu]=I-Phothugali
 Index: kppp/DB/Provider/Belarus/.directory
 ===================================================================
---- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1,50 +1,33 @@
  [Desktop Entry]
  Name=Belarus
@@ -3200,8 +3226,8 @@ Index: kppp/DB/Provider/Belarus/.directory
  Name[zu]=I Bhelarusi
 Index: kppp/DB/Provider/France/.directory
 ===================================================================
---- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -2,11 +2,8 @@
  Name=France
  Name[ar]=فرنسا
@@ -3265,8 +3291,8 @@ Index: kppp/DB/Provider/France/.directory
  Name[zu]=Isi Frentshi
 Index: kppp/DB/Provider/Ukraine/.directory
 ===================================================================
---- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,59 +3,37 @@
  Name[af]=Ukraïne
  Name[ar]=أوكرانيا
@@ -3331,8 +3357,8 @@ Index: kppp/DB/Provider/Ukraine/.directory
  Region=easteurope
 Index: kppp/DB/Provider/United_Kingdom/.directory
 ===================================================================
---- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,64 +3,41 @@
  Name[af]=Vereenigde Koninkryk
  Name[ar]=المملكة المتحدة
@@ -3409,8 +3435,8 @@ Index: kppp/DB/Provider/United_Kingdom/.directory
  Name[zu]=United Kingdom (Ubukhosi obuhlangeneyo)
 Index: kppp/DB/Provider/Germany/.directory
 ===================================================================
---- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,11 +3,8 @@
  Name[af]=Duitsland
  Name[ar]=ألمانيا
@@ -3480,8 +3506,8 @@ Index: kppp/DB/Provider/Germany/.directory
  Name[zu]=Isi-Jalimani
 Index: kppp/DB/Provider/Switzerland/.directory
 ===================================================================
---- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -2,58 +2,36 @@
  Name=Switzerland
  Name[ar]=سويسرا
@@ -3547,8 +3573,8 @@ Index: kppp/DB/Provider/Switzerland/.directory
  Name[zu]=I-Switzerland
 Index: kppp/DB/Provider/Netherlands/.directory
 ===================================================================
---- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,62 +3,40 @@
  Name[af]=Nederland
  Name[ar]=هولندا
@@ -3619,8 +3645,8 @@ Index: kppp/DB/Provider/Netherlands/.directory
  Name[zu]=I-Netherlands
 Index: kppp/DB/Provider/Austria/.directory
 ===================================================================
---- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -3,56 +3,40 @@
  Name[af]=Oostenryk
  Name[ar]=النمسا
@@ -3683,8 +3709,8 @@ Index: kppp/DB/Provider/Austria/.directory
  Name[zu]=I-Austriyiya
 Index: kppp/DB/Provider/Ireland/.directory
 ===================================================================
---- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -1,51 +1,31 @@
  [Desktop Entry]
  Name=Ireland
@@ -3743,8 +3769,8 @@ Index: kppp/DB/Provider/Ireland/.directory
 +Name[zh_TW]=愛爾蘭
 Index: kppp/Kppp.desktop
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/Kppp.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -45,7 +45,7 @@
  GenericName[sv]=Uppringningsverktyg för Internet
  GenericName[ta]=இணைய அழைப்புக் கருவி
@@ -3762,8 +3788,8 @@ Index: kppp/Kppp.desktop
 +Categories=Qt;KDE;Network;Dialup;
 Index: kppp/logview/kppplogview.desktop
 ===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -73,4 +73,4 @@
  Type=Application
  Terminal=false
@@ -3772,8 +3798,8 @@ Index: kppp/logview/kppplogview.desktop
 +Categories=Qt;KDE;Network;X-KDE-More;Dialup;
 Index: ktalkd/kcmktalkd/kcmktalkd.desktop
 ===================================================================
---- ktalkd/kcmktalkd/kcmktalkd.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ ktalkd/kcmktalkd/kcmktalkd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- ktalkd/kcmktalkd/kcmktalkd.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ ktalkd/kcmktalkd/kcmktalkd.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -46,7 +46,7 @@
  Name[ms]=Borak Jaringan Setempat
  Name[nb]=Lokalt nettverksprat
@@ -3791,8 +3817,8 @@ Index: ktalkd/kcmktalkd/kcmktalkd.desktop
 +Categories=Qt;KDE;X-KDE-settings-network;Settings;
 Index: ksirc/ksirc.desktop
 ===================================================================
---- ksirc/ksirc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ ksirc/ksirc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- ksirc/ksirc.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ ksirc/ksirc.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -39,7 +39,7 @@
  GenericName[mt]=Klijent IRC
  GenericName[nb]=IRC-klient
@@ -3810,8 +3836,8 @@ Index: ksirc/ksirc.desktop
 +Categories=Qt;KDE;Network;IRCClient;
 Index: ksirc/eventsrc
 ===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- ksirc/eventsrc	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -106,7 +106,7 @@
  Comment[mt]=Avveniment ta' kanal tal-IRC
  Comment[nb]=IRC-kanalhendelse
@@ -3840,8 +3866,8 @@ Index: ksirc/eventsrc
  Comment[zh_HK]=從伺服器收到響聲
 Index: dcoprss/rssservice.desktop
 ===================================================================
---- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(wersja 686795)
-+++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 686795)
+--- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.7/kdenetwork)	(revision 690475)
++++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(revision 690475)
 @@ -21,6 +21,7 @@
  Name[ro]=Serviciu RSS
  Name[sv]=RSS-tjänst
@@ -3868,9 +3894,9 @@ Index: dcoprss/rssservice.desktop
  Comment[uk]=Служби RSS DCOP
  Comment[uz]=RSS DCOP хизматлари
 
-Zmiany atrybutów dla: .
+Property changes on: .
 ___________________________________________________________________
-Nazwa: svn:externals
+Name: svn:externals
    + admin https://svn.kde.org/home/kde/branches/KDE/3.5/kde-common/admin
 
 
