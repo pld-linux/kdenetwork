@@ -853,6 +853,7 @@ Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= %{_minbaseevr}
+Suggests:	rdesktop
 
 %description krfb
 Remote Desktop Connection is a client application that allows you to
