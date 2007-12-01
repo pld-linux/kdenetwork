@@ -19,7 +19,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.8
-Release:	3
+Release:	4
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -37,6 +37,7 @@ Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kopete-qca-tls.patch
 Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
+Patch5:		%{name}-filesharing-msdfs_proxy.patch
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -1027,6 +1028,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p0
+%patch5 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
