@@ -1,7 +1,7 @@
 Index: kpf/kpfpropertiesdialogplugin.desktop
 ===================================================================
---- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -10,6 +10,7 @@
  Name[da]=KPF-mappes egenskabsside
  Name[de]=KPF Ordner-Eigenschaftenseite
@@ -12,8 +12,8 @@ Index: kpf/kpfpropertiesdialogplugin.desktop
  Name[eu]=KPF direktorio propietaten orria
 Index: krdc/krdc.desktop
 ===================================================================
---- krdc/krdc.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krdc/krdc.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -20,6 +20,7 @@
  GenericName[da]=Ekstern desktopforbindelse
  GenericName[de]=Verbindung zu Fremdrechner
@@ -24,8 +24,8 @@ Index: krdc/krdc.desktop
  GenericName[eu]=Urruneko mahaigain konexioa
 Index: krfb/krfb/krfb.desktop
 ===================================================================
---- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -21,6 +21,7 @@
  GenericName[da]=Desktopdeling
  GenericName[de]=Arbeitsfläche freigeben
@@ -34,10 +34,22 @@ Index: krfb/krfb/krfb.desktop
  GenericName[es]=Escritorio compartido
  GenericName[et]=Töölaua jagamine
  GenericName[eu]=Mahaigain partekatzea
+Index: krfb/krfb/main.cpp
+===================================================================
+--- krfb/krfb/main.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/krfb/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -39,6 +39,7 @@
+ 
+ #include <signal.h>
+ 
++#undef VERSION
+ #define VERSION "1.0"
+ 
+ static const char description[] = I18N_NOOP("VNC-compatible server to share "
 Index: krfb/libvncserver/main.c
 ===================================================================
---- krfb/libvncserver/main.c	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krfb/libvncserver/main.c	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krfb/libvncserver/main.c	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/libvncserver/main.c	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -260,6 +260,7 @@
  	    UNLOCK(cl->updateMutex);
  
@@ -48,8 +60,8 @@ Index: krfb/libvncserver/main.c
  		if (!haveUpdate)
 Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
 ===================================================================
---- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -54,7 +54,7 @@
  Comment[cy]=Meicro-daemon http sy'n gwasanaethu'r rhaglennig gwelydd VNC
  Comment[da]=En mikro http-dæmon for krfb der betjener VNC visningsappletten.
@@ -68,10 +80,22 @@ Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
  Comment[sk]=Mikro http démon pre krfb ktorý ovláda prehliadací applet VNC.
  Comment[sl]=Mikro http strežnik za krfb, ki streže ogledovalnikom VNC.
  Comment[sr]=Микро http демон за krfb који опслужује аплет VNC приказивача.
+Index: krfb/kcm_krfb/kcm_krfb.cpp
+===================================================================
+--- krfb/kcm_krfb/kcm_krfb.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/kcm_krfb/kcm_krfb.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -38,6 +38,7 @@
+ #include <kdebug.h>
+ #include <dcopclient.h>
+ 
++#undef VERSION
+ #define VERSION "0.7"
+ 
+ 
 Index: krfb/kcm_krfb/kcmkrfb.desktop
 ===================================================================
---- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -150,6 +150,7 @@
  Keywords[da]=desktopdeling,krfb,vnc,deling,krdc,ekstern desktopforbindelse,invitation,port,slp,ikke inviteret
  Keywords[de]=Arbeitsfläche freigeben,krfb,VNC,freigeben,krdc,Entfernte Arbeitsfläche,Einladung,Port,slp,uneingeladen
@@ -90,8 +114,8 @@ Index: krfb/kcm_krfb/kcmkrfb.desktop
  Keywords[sr]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,радна површина,дељење,позив,порт,непозван,удаљено
 Index: krfb/kinetd/kinetd.desktop
 ===================================================================
---- krfb/kinetd/kinetd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- krfb/kinetd/kinetd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -43,7 +43,7 @@
  Name[mn]=KDE Интернет-демон
  Name[ms]=Daemon Internet KDE
@@ -112,8 +136,8 @@ Index: krfb/kinetd/kinetd.desktop
  Comment[nl]=Een internetdaemon die netwerkdiensten op afroep start
 Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -120,6 +120,7 @@
  Keywords[bg]=настройки, локална, мрежа, lan
  Keywords[bn]=ল্যান
@@ -124,8 +148,8 @@ Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
  Keywords[gl]=lan,redes locáis
 Index: kdnssd/ioslave/zeroconf.desktop
 ===================================================================
---- kdnssd/ioslave/zeroconf.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kdnssd/ioslave/zeroconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kdnssd/ioslave/zeroconf.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kdnssd/ioslave/zeroconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -12,6 +12,7 @@
  Name[da]=Netværkstjenester
  Name[de]=Netzwerkdienste
@@ -136,8 +160,8 @@ Index: kdnssd/ioslave/zeroconf.desktop
  Name[eu]=Sare zerbitzuak
 Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Lytter nu
  Name[de]=Im Hintergrund läuft
@@ -146,10 +170,19 @@ Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
  Name[es]=Escuchando
  Name[et]=Praegu kuulan
  Name[eu]=Orain entzuten
+@@ -88,7 +89,7 @@
+ Comment[hr]=Govori vašim prijateljima što trenutno slušate
+ Comment[hu]=A partnerek értesítése arról, hogy Ön mit hallgat
+ Comment[is]=Segir vinum þínum á hvað þú ert að hlusta
+-Comment[it]=Di' ai tuoi amici stai ascoltando
++Comment[it]=Di' ai tuoi amici cosa stai ascoltando
+ Comment[ja]=何を聴いているかを仲間に伝える
+ Comment[kk]=Достарыңызға тыңдап тұрғаныңыз туралы хабарлайды
+ Comment[km]=ប្រាប់​សម្លាញ់​អ្នក​ថា អ្នក​កំពុង​ស្ដាប់​អ្វី
 Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Lytter nu
  Name[de]=Im Hintergrund läuft
@@ -158,10 +191,19 @@ Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
  Name[es]=Escuchando
  Name[et]=Praegu kuulan
  Name[eu]=Orain entzuten
+@@ -92,7 +93,7 @@
+ Comment[hr]=Govori vašim prijateljima što trenutno slušate
+ Comment[hu]=A partnerek értesítése arról, hogy Ön mit hallgat
+ Comment[is]=Segir vinum þínum á hvað þú ert að hlusta
+-Comment[it]=Di' ai tuoi amici stai ascoltando
++Comment[it]=Di' ai tuoi amici cosa stai ascoltando
+ Comment[ja]=何を聴いているかを仲間に伝える
+ Comment[kk]=Достарыңызға тыңдап тұрғаныңыз туралы хабарлайды
+ Comment[km]=ប្រាប់​សម្លាញ់​អ្នក​ថា អ្នក​កំពុង​ស្ដាប់​អ្វី
 Index: kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop
 ===================================================================
---- kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -66,6 +66,7 @@
  Comment[da]=SMPPPDCS-Plugin
  Comment[de]=SMPPPDCS-Modul
@@ -172,8 +214,8 @@ Index: kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop
  Comment[eu]=SMPPPDCS plugin-a
 Index: kopete/plugins/alias/kopete_alias.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -23,6 +23,7 @@
  Name[ca]=Àlies
  Name[cy]=Ffugenw
@@ -184,8 +226,8 @@ Index: kopete/plugins/alias/kopete_alias.desktop
  Name[fi]=Uusi nimi
 Index: kopete/plugins/alias/kopete_alias_config.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,6 +19,7 @@
  Name[ca]=Àlies
  Name[cy]=Ffugenw
@@ -196,8 +238,8 @@ Index: kopete/plugins/alias/kopete_alias_config.desktop
  Name[fi]=Uusi nimi
 Index: kopete/plugins/translator/kopete_translator.desktop
 ===================================================================
---- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -27,6 +27,7 @@
  Name[da]=Oversætter
  Name[de]=Übersetzer
@@ -208,8 +250,8 @@ Index: kopete/plugins/translator/kopete_translator.desktop
  Name[eu]=Itzultzailea
 Index: kopete/plugins/translator/kopete_translator_config.desktop
 ===================================================================
---- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -23,6 +23,7 @@
  Name[da]=Oversætter
  Name[de]=Übersetzer
@@ -220,8 +262,8 @@ Index: kopete/plugins/translator/kopete_translator_config.desktop
  Name[eu]=Itzultzailea
 Index: kopete/plugins/statistics/kopete_statistics.desktop
 ===================================================================
---- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Statistik
  Name[de]=Statistiken
@@ -232,8 +274,8 @@ Index: kopete/plugins/statistics/kopete_statistics.desktop
  Name[eu]=Estatistikak
 Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Kryptografi
  Name[de]=Kryptographie
@@ -244,8 +286,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
  Name[eu]=Kriptografia
 Index: kopete/plugins/cryptography/kopete_cryptography.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Kryptografi
  Name[de]=Kryptographie
@@ -256,8 +298,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography.desktop
  Name[eu]=Kriptografia
 Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -15,6 +15,7 @@
  Name[bg]=Видео чат
  Name[bn]=নেট মিটিং
@@ -268,8 +310,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
  Name[hi]=नेटमीटिंग
 Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,6 +19,7 @@
  Name[bg]=Видео чат
  Name[bn]=নেট মিটিং
@@ -280,8 +322,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
  Name[hi]=नेटमीटिंग
 Index: kopete/plugins/texteffect/kopete_texteffect.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Teksteffekt
  Name[de]=Texteffekte
@@ -300,8 +342,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect.desktop
  Comment[eu]=Gehitu efektu atseginak zure mezuei
 Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Teksteffekt
  Name[de]=Texteffekte
@@ -312,8 +354,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
  Name[eu]=Testuaren efektua
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -91,6 +91,7 @@
  Comment[da]=Historik-plugin
  Comment[de]=Verlaufsmodul
@@ -324,8 +366,8 @@ Index: kopete/plugins/history/kopete_history_config.desktop
  Comment[eu]=Historia plugin-a
 Index: kopete/plugins/webpresence/kopete_webpresence.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -77,6 +77,7 @@
  Name[da]=WWW-nærvær
  Name[de]=Web-Präsenz
@@ -336,8 +378,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence.desktop
  Name[fa]=حضور وب
 Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -73,6 +73,7 @@
  Name[da]=WWW-nærvær
  Name[de]=Web-Präsenz
@@ -348,8 +390,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
  Name[fa]=حضور وب
 Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
 ===================================================================
---- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -25,6 +25,7 @@
  Name[da]=Forbindelsesstatus
  Name[de]=Verbindungsstatus
@@ -360,8 +402,8 @@ Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
  Name[eu]=Konexioaren egoera
 Index: kopete/plugins/contactnotes/kopete_contactnotes.desktop
 ===================================================================
---- kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -27,6 +27,7 @@
  Name[da]=Kontaktnoter
  Name[de]=Kontakt-Notizen
@@ -380,8 +422,8 @@ Index: kopete/plugins/contactnotes/kopete_contactnotes.desktop
  Comment[eu]=Gehitu ohar pertsonalak zure kontaktuei
 Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Auto-erstat
  Name[de]=Automatische Ersetzung
@@ -392,8 +434,8 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
  Name[eu]=Auto ordezkatu
 Index: kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Auto-erstat
  Name[de]=Automatische Ersetzung
@@ -404,8 +446,8 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
  Name[eu]=Auto ordezkatu
 Index: kopete/plugins/highlight/kopete_highlight.desktop
 ===================================================================
---- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -26,6 +26,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -424,8 +466,8 @@ Index: kopete/plugins/highlight/kopete_highlight.desktop
  Comment[eu]=Nabarmendu mezuak
 Index: kopete/plugins/highlight/kopete_highlight_config.desktop
 ===================================================================
---- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -436,8 +478,8 @@ Index: kopete/plugins/highlight/kopete_highlight_config.desktop
  Name[eu]=Nabarmendu
 Index: kopete/plugins/latex/kopete_latex_config.desktop
 ===================================================================
---- kopete/plugins/latex/kopete_latex_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/plugins/latex/kopete_latex_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/plugins/latex/kopete_latex_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/plugins/latex/kopete_latex_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -446,10 +488,31 @@ Index: kopete/plugins/latex/kopete_latex_config.desktop
  Name[es]=Resaltar
  Name[et]=Esiletõstmine
  Name[eu]=Nabarmendu
+Index: kopete/protocols/groupwise/kopete_groupwise.desktop
+===================================================================
+--- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -18,7 +18,6 @@
+ Name=GroupWise
+ Name[bn]=গ্রুপ-ওয়াইজ
+ Name[fa]=گروه هوشیار
+-Name[it]=Per gruppi
+ Name[ne]=समूहगत
+ Name[ta]=குழு படி
+ Name[tr]=Akıllı Gruplama
+@@ -32,7 +31,7 @@
+ Comment[fr]=Messagerie GroupWise Novell
+ Comment[he]=תוכנת המסרים של נובל GroupWise
+ Comment[is]=Novell GroupWise skilaboðaþjónustan
+-Comment[it]=Messaggistica per gruppi di Novell
++Comment[it]=Messaggistica per GroupWise di Novell
+ Comment[ja]=Novell GroupWise メッセンジャー
+ Comment[kk]=Novell GroupWise хабарласуы
+ Comment[km]=កម្មវិធី​ផ្ញើ​សារ​របស់​ណូវែល - GroupWise
 Index: kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp
 ===================================================================
---- kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -75,30 +75,28 @@
  	// CREATE CONTACT LIST
  	// locate contact list
@@ -501,10 +564,23 @@ Index: kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp
  
  	extractKeepalivePeriod( loginResponseFields );
  
+Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
+===================================================================
+--- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -26,7 +26,7 @@
+ Description[gl]=Un KIO slave para Jabber Service Discovery
+ Description[hu]=KDE-protokoll a Jabber szolgáltatáskereső használatához
+ Description[is]=kioslave fyrir Jabber þjónustu uppgötvun
+-Description[it]=Un KIO slave per il servizio di discovery per jabber
++Description[it]=Un KIO slave per il servizio di discovery per Jabber
+ Description[ja]=Jabber Service Discovery の KIO スレーブ
+ Description[kk]=Jabber қызметін байқау KIO slave қызметі
+ Description[km]=KIO slave មួយ​សម្រាប់​របក​គំហើញ​សេវា Jabber
 Index: kopete/protocols/oscar/liboscar/client.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -564,6 +564,10 @@
  	}
  	else if ( ! msg.hasProperty( Oscar::Message::AutoResponse ) )
@@ -518,8 +594,8 @@ Index: kopete/protocols/oscar/liboscar/client.cpp
  		emit messageReceived( msg );
 Index: kopete/protocols/oscar/icq/x-icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -13,6 +13,7 @@
  Comment[da]=ICQ-Kontakt
  Comment[de]=ICQ-Kontakt
@@ -530,8 +606,8 @@ Index: kopete/protocols/oscar/icq/x-icq.desktop
  Comment[eu]=ICQ kontaktua
 Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,6 +19,7 @@
  #include <qcheckbox.h>
  #include <qpushbutton.h>
@@ -653,8 +729,8 @@ Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp
  #include "meanwhileeditaccountwidget.moc"
 Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -43,6 +43,9 @@
      void slotSetServer2Default();
  protected:
@@ -667,8 +743,8 @@ Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.h
  #endif
 Index: kopete/protocols/meanwhile/meanwhilesession.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhilesession.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhilesession.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhilesession.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhilesession.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -48,6 +48,32 @@
  
  #define get_protocol() (static_cast<MeanwhileProtocol *>(account->protocol()))
@@ -793,8 +869,8 @@ Index: kopete/protocols/meanwhile/meanwhilesession.cpp
          (struct mwConference *conf, struct mwLoginInfo *inviter,
 Index: kopete/protocols/meanwhile/meanwhilesession.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhilesession.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhilesession.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhilesession.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhilesession.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -25,6 +25,11 @@
  #include <mw_srvc_im.h>
  #include <mw_srvc_resolve.h>
@@ -829,8 +905,8 @@ Index: kopete/protocols/meanwhile/meanwhilesession.h
       * Emitted when the status of the connection changes
 Index: kopete/protocols/meanwhile/meanwhileaccount.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -107,9 +107,7 @@
      }
  
@@ -883,8 +959,8 @@ Index: kopete/protocols/meanwhile/meanwhileaccount.cpp
      KMessageBox::queuedMessageBox(0, KMessageBox::Error , mesg,
 Index: kopete/protocols/meanwhile/meanwhileaccount.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileaccount.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/meanwhileaccount.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/meanwhileaccount.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/meanwhileaccount.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -64,6 +64,15 @@
      /** Provide an information plugin for this account */
      void    setPlugin(MeanwhilePlugin *plugin);
@@ -903,8 +979,8 @@ Index: kopete/protocols/meanwhile/meanwhileaccount.h
      /**
 Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
 ===================================================================
---- kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,12 +19,6 @@
          <property name="name">
              <cstring>unnamed</cstring>
@@ -918,17 +994,7 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
          <widget class="QTabWidget">
              <property name="name">
                  <cstring>tabWidget11</cstring>
-@@ -101,6 +95,9 @@
-                                 <property name="text">
-                                     <string>E&amp;xclude from connect all</string>
-                                 </property>
-+                                <property name="accel">
-+                                    <string>Alt+X</string>
-+                                </property>
-                                 <property name="whatsThis" stdset="0">
-                                     <string>Check to disable automatic connection.  If checked, you may connect to this account manually using the icon in the bottom of the main Kopete window</string>
-                                 </property>
-@@ -133,7 +130,7 @@
+@@ -133,7 +127,7 @@
                              </property>
                              <widget class="QLayoutWidget">
                                  <property name="name">
@@ -937,7 +1003,7 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
                                  </property>
                                  <hbox>
                                      <property name="name">
-@@ -224,41 +221,157 @@
+@@ -224,41 +218,154 @@
                                              </widget>
                                          </hbox>
                                      </widget>
@@ -1072,9 +1138,6 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
 +                                <property name="text">
 +                                    <string>Restore &amp;Defaults</string>
 +                                </property>
-+                                <property name="accel">
-+                                    <string>Alt+D</string>
-+                                </property>
 +                                <property name="toolTip" stdset="0">
 +                                    <string>Restore the server and port values to their defaults.</string>
 +                                </property>
@@ -1121,7 +1184,7 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
                  </vbox>
              </widget>
          </widget>
-@@ -288,8 +401,43 @@
+@@ -288,8 +395,43 @@
          <data format="PNG" length="866">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000032949444154388db59531681b6714c77f32373c8186ef0305eea005093258900eca26d30e3174a8a807d1c9ee940e5d4a276f09a414e22974ee609a4c75a0857a70a20c199ce93424e43414aee0c26910dc8105f7410df706413a7c915551db049a3e38b87bf7bedffddfc7ff7d578be398456c6c6cbce13d441cc7b5da02fcf4e8e99bde7a8f899b501515d959f64e10e71cd949c6e8d508e6cb7cb050fae49727444d87ed08a566dc0cea545a621b96725e62c522f312c4929ff9e7725e6203439282ec0bc72f74150c30c927d89690163f539619a044564973a1980ae54c01c136a1db518a0024808942780dead16a27e7e0ca55949a81668023b242fcd2901c394663072cd408ad75e18b6d43a7076143710aa1b9049ccd326e064a5979e8f0191cfc5878544368af1b24807caa4cfe507ef8aea0bf6dd8b92de7f00bc1562c95e64416e297f216aadcfa3ca43f10da1f8243112286871507fb05c3c7059d568bde96c5885b01af2d6e4a2db10dc8ff128e0fdd39f4cbaf8576dbe170702afcf6b86467bbce57df8680f0d3230767e0e62bdc55c5e53c476742fabbc318437f209886c3cd41d4b0f74049c78ef21476ef5846cf7ded2831848d55f0aa62816caade11adb7ed2fa0f71ce9d8619ac2e627824a45a72b00e413c5a95c0cf63e052bbe2014bfa738c3de3d251dfb0f8a80fda04e6480600113cc558a11a0e10b93a9225886cff04a8d10868662eab87f37271e59f2136f85a855bfda15f9594eb7a3b4ae0b933f95e161c5ceed88f254e97f2ad49b75eedf8562e2d8fb264355314da1dbada866abe47fedb106d01f78b71fec170c8f7276ef58da3de8f64a76bf6f634283730e9d2b9b8390ce0dae565c6a8e04b0710b746678f8a8e0e18382d173a1d7151c909fe4e84ccf57be3e76245b115143584ee73f27afc8e80b4c667e4c37b7054c8be1afde0de978a9c63485fea0457cec70aa089015ab9297e0938c240573cdb7651a4a7f20f43feb304a72aac2e73bd723da1fe5746ec0682bc26070f38c345905d7e238f6077c00dd8f85280211fcd91af84b02ef94a50c004502c1394813252f14575ca09839242f9484cb42df31e763edd237ff31d6c0ffa3fe17f0fb86c7715cfb1ba8bd86cc8d2decd30000000049454e44ae426082</data>
      </image>
  </images>
@@ -1167,8 +1230,8 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
  </UI>
 Index: kopete/protocols/testbed/kopete_testbed.desktop
 ===================================================================
---- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,6 +19,7 @@
  Name[ar]=مكان اختبار
  Name[bn]=পরীক্ষাস্থল
@@ -1179,8 +1242,8 @@ Index: kopete/protocols/testbed/kopete_testbed.desktop
  Name[gl]=testbed
 Index: kopete/protocols/msn/kopete_msn.desktop
 ===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -21,6 +21,7 @@
  Name[cy]=Negesydd MSN
  Name[da]=MSN-Messenger
@@ -1191,8 +1254,8 @@ Index: kopete/protocols/msn/kopete_msn.desktop
  Name[hi]=एमएसएन मैसेंजर
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -10,6 +10,7 @@
  Comment[cy]=Negesydd Kopete
  Comment[de]=Kopete-Nachrichtendienst
@@ -1363,8 +1426,8 @@ Index: kopete/kopete/eventsrc
  Name[eu]=Zerbitzariaren barne-errorea
 Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -17,6 +17,7 @@
  GenericName[cs]=Komunikátor
  GenericName[cy]=Negesydd Chwim
@@ -1383,8 +1446,8 @@ Index: kopete/kopete/kopete.desktop
  Comment[eu]=Berehalako mezularitza
 Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
 ===================================================================
---- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -23,6 +23,7 @@
  Name[da]=Konti
  Name[de]=Zugänge
@@ -1395,8 +1458,8 @@ Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
  Name[eu]=Kontuak
 Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
 ===================================================================
---- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -23,6 +23,7 @@
  Name[da]=Udseende
  Name[de]=Erscheinungsbild
@@ -1407,8 +1470,8 @@ Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
  Name[eu]=Itxura
 Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
 ===================================================================
---- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -24,6 +24,7 @@
  Name[de]=Verhalten
  Name[el]=Συμπεριφορά
@@ -1419,8 +1482,8 @@ Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
  Name[eu]=Portaera
 Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
 ===================================================================
---- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -22,6 +22,7 @@
  Name[da]=Identitet
  Name[de]=Identität
@@ -1431,8 +1494,8 @@ Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
  Name[eu]=Identitatea
 Index: kopete/libkopete/kopetepluginmanager.cpp
 ===================================================================
---- kopete/libkopete/kopetepluginmanager.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/libkopete/kopetepluginmanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/libkopete/kopetepluginmanager.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/libkopete/kopetepluginmanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -261,30 +261,37 @@
  	KConfig *config = KGlobal::config();
  	if ( config->hasGroup( QString::fromLatin1( "Plugins" ) ) )
@@ -1487,10 +1550,23 @@ Index: kopete/libkopete/kopetepluginmanager.cpp
  		}
  	}
  	else
+Index: kopete/libkopete/avdevice/videodevicepool.cpp
+===================================================================
+--- kopete/libkopete/avdevice/videodevicepool.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/libkopete/avdevice/videodevicepool.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -919,7 +919,7 @@
+ 				config->writeEntry( brightness,             (*vditerator).m_input[input].getBrightness());
+ 				config->writeEntry( contrast,               (*vditerator).m_input[input].getContrast());
+ 				config->writeEntry( saturation,             (*vditerator).m_input[input].getSaturation());
+-				config->writeEntry( saturation,             (*vditerator).m_input[input].getWhiteness());
++				config->writeEntry( whiteness,              (*vditerator).m_input[input].getWhiteness());
+ 				config->writeEntry( hue,                    (*vditerator).m_input[input].getHue());
+ 				config->writeEntry( autobrightnesscontrast, (*vditerator).m_input[input].getAutoBrightnessContrast());
+ 				config->writeEntry( autocolorcorrection,    (*vditerator).m_input[input].getAutoColorCorrection());
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -39,6 +39,10 @@
  	m_streambuffers  = 0;
  	m_current_input = 0;
@@ -1504,8 +1580,8 @@ Index: kopete/libkopete/avdevice/videodevice.cpp
  
 Index: kopete/libkopete/kopeteprotocol.desktop
 ===================================================================
---- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Comment[da]=Kopete-protokol-plugin
  Comment[de]=Kopete Protokoll-Modul
@@ -1516,8 +1592,8 @@ Index: kopete/libkopete/kopeteprotocol.desktop
  Comment[eu]=Kopete protocolo plugin-a
 Index: kopete/libkopete/kopeteplugin.desktop
 ===================================================================
---- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Comment[da]=Kopete-plugin
  Comment[de]=Kopete-Modul
@@ -1528,8 +1604,8 @@ Index: kopete/libkopete/kopeteplugin.desktop
  Comment[eu]=Kopete plugin-a
 Index: knewsticker/knewstickerstub/knewstickerstub.desktop
 ===================================================================
---- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -10,6 +10,7 @@
  Name[da]=KNewsTicker config-grænseflade
  Name[de]=Newsticker-Einrichtung
@@ -1540,8 +1616,8 @@ Index: knewsticker/knewstickerstub/knewstickerstub.desktop
  Name[eu]=KNewsTicker konfigurazio interfazea
 Index: knewsticker/eventsrc
 ===================================================================
---- knewsticker/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- knewsticker/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -290,6 +290,7 @@
  Comment[da]=Den hentede RDF-fil kunne ikke fortolkes
  Comment[de]=Die heruntergeladene RDF-Datei kann nicht eingelesen werden
@@ -1552,8 +1628,8 @@ Index: knewsticker/eventsrc
  Comment[eu]=Deskargatutako RDF fitxategia ezin izan da aztertu
 Index: knewsticker/knewsticker.desktop
 ===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -65,6 +65,7 @@
  Comment[da]=En rullende RDF nyhedstelegraf
  Comment[de]=Ein durchlaufender RDF-Newsticker
@@ -1564,8 +1640,8 @@ Index: knewsticker/knewsticker.desktop
  Comment[eu]=RDF berri-markatzailea
 Index: kget/kget_plug_in/kget_plug_in.desktop
 ===================================================================
---- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -33,6 +33,7 @@
  Comment[da]=Håndtering af download
  Comment[de]=Herunterladen von Dateien
@@ -1576,8 +1652,8 @@ Index: kget/kget_plug_in/kget_plug_in.desktop
  Comment[eu]=Deskarga kudeatzailea
 Index: kget/kget.desktop
 ===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kget/kget.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -29,6 +29,7 @@
  GenericName[da]=Håndtering af download
  GenericName[de]=Datentransfer-Verwaltung
@@ -1586,10 +1662,1614 @@ Index: kget/kget.desktop
  GenericName[es]=Gestor de descargas
  GenericName[et]=Allalaadimiste haldur
  GenericName[eu]=Deskarga kudeatzailea
+Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -615,6 +615,7 @@
+   if ( s == "ads" ) i = 4;
+ 
+   _interface->securityLevelBtnGrp->setButton(i);
++  _interface->updateSecurityLevelHelpLbl();
+ 
+ }
+ 
+Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -1,4 +1,4 @@
+-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
++<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+ <class>KcmInterface</class>
+ <comment>
+ /******************************************************************************
+@@ -29,7 +29,7 @@
+         <rect>
+             <x>0</x>
+             <y>0</y>
+-            <width>634</width>
++            <width>714</width>
+             <height>578</height>
+         </rect>
+     </property>
+@@ -283,7 +283,7 @@
+                                             <string>Share</string>
+                                         </property>
+                                         <property name="accel">
+-                                            <string>Alt+</string>
++                                            <string>Alt+ </string>
+                                         </property>
+                                         <property name="checked">
+                                             <bool>true</bool>
+@@ -301,7 +301,7 @@
+                                             <string>User</string>
+                                         </property>
+                                         <property name="accel">
+-                                            <string>Alt+</string>
++                                            <string>Alt+ </string>
+                                         </property>
+                                     </widget>
+                                     <widget class="QRadioButton">
+@@ -316,7 +316,7 @@
+                                             <string>Server</string>
+                                         </property>
+                                         <property name="accel">
+-                                            <string>Alt+</string>
++                                            <string>Alt+ </string>
+                                         </property>
+                                     </widget>
+                                     <widget class="QRadioButton">
+@@ -343,7 +343,7 @@
+                                             <string>ADS</string>
+                                         </property>
+                                         <property name="accel">
+-                                            <string>Alt+</string>
++                                            <string>Alt+ </string>
+                                         </property>
+                                     </widget>
+                                 </vbox>
+@@ -775,7 +775,7 @@
+                                     <string>Edit Share...</string>
+                                 </property>
+                                 <property name="accel">
+-                                    <string>Alt+</string>
++                                    <string>Alt+ </string>
+                                 </property>
+                             </widget>
+                             <widget class="QPushButton">
+@@ -1449,7 +1449,7 @@
+                                                             <string>Obey PAM restrictions</string>
+                                                         </property>
+                                                         <property name="accel">
+-                                                            <string>Alt+</string>
++                                                            <string>Alt+ </string>
+                                                         </property>
+                                                     </widget>
+                                                     <widget class="QCheckBox">
+@@ -1464,7 +1464,7 @@
+                                                             <string>PAM password change</string>
+                                                         </property>
+                                                         <property name="accel">
+-                                                            <string>Alt+</string>
++                                                            <string>Alt+ </string>
+                                                         </property>
+                                                     </widget>
+                                                 </vbox>
+@@ -1506,7 +1506,7 @@
+                                                             <string>Paranoid server security</string>
+                                                         </property>
+                                                         <property name="accel">
+-                                                            <string>Alt+</string>
++                                                            <string>Alt+ </string>
+                                                         </property>
+                                                     </widget>
+                                                 </vbox>
+@@ -1600,7 +1600,7 @@
+                                                             <string>Bind interfaces only</string>
+                                                         </property>
+                                                         <property name="accel">
+-                                                            <string>Alt+</string>
++                                                            <string>Alt+ </string>
+                                                         </property>
+                                                     </widget>
+                                                     <widget class="QComboBox" row="0" column="1">
+@@ -6094,7 +6094,7 @@
+                                                 <string>UNIX extensions</string>
+                                             </property>
+                                             <property name="accel">
+-                                                <string>Alt+</string>
++                                                <string>Alt+ </string>
+                                             </property>
+                                         </widget>
+                                         <widget class="QCheckBox">
+@@ -7853,6 +7853,8 @@
+         </widget>
+     </vbox>
+ </widget>
++<customwidgets>
++</customwidgets>
+ <connections>
+     <connection>
+         <sender>shareListView</sender>
+@@ -7957,31 +7959,13 @@
+         <slot>changedSlot()</slot>
+     </connection>
+     <connection>
+-        <sender>shareRadio</sender>
+-        <signal>clicked()</signal>
+-        <receiver>KcmInterface</receiver>
+-        <slot>shareRadio_clicked()</slot>
+-    </connection>
+-    <connection>
+         <sender>userRadio</sender>
+         <signal>stateChanged(int)</signal>
+         <receiver>KcmInterface</receiver>
+         <slot>changedSlot()</slot>
+     </connection>
+     <connection>
+-        <sender>userRadio</sender>
+-        <signal>clicked()</signal>
+-        <receiver>KcmInterface</receiver>
+-        <slot>userRadio_clicked()</slot>
+-    </connection>
+-    <connection>
+         <sender>serverRadio</sender>
+-        <signal>clicked()</signal>
+-        <receiver>KcmInterface</receiver>
+-        <slot>serverRadio_clicked()</slot>
+-    </connection>
+-    <connection>
+-        <sender>serverRadio</sender>
+         <signal>stateChanged(int)</signal>
+         <receiver>KcmInterface</receiver>
+         <slot>changedSlot()</slot>
+@@ -7993,12 +7977,6 @@
+         <slot>changedSlot()</slot>
+     </connection>
+     <connection>
+-        <sender>domainRadio</sender>
+-        <signal>clicked()</signal>
+-        <receiver>KcmInterface</receiver>
+-        <slot>domainRadio_clicked()</slot>
+-    </connection>
+-    <connection>
+         <sender>passwordServerEdit</sender>
+         <signal>textChanged(const QString&amp;)</signal>
+         <receiver>KcmInterface</receiver>
+@@ -8148,12 +8126,6 @@
+         <receiver>winsHookLbl</receiver>
+         <slot>setEnabled(bool)</slot>
+     </connection>
+-    <connection>
+-        <sender>adsRadio</sender>
+-        <signal>clicked()</signal>
+-        <receiver>KcmInterface</receiver>
+-        <slot>adsRadioClicked()</slot>
+-    </connection>
+ </connections>
+ <tabstops>
+     <tabstop>ntStatusSupportChk</tabstop>
+@@ -8430,15 +8402,106 @@
+     <slot>init()</slot>
+     <slot>changedSlot()</slot>
+     <slot>securityLevelCombo_activated( int i )</slot>
+-    <slot>shareRadio_clicked()</slot>
+-    <slot>userRadio_clicked()</slot>
+-    <slot>serverRadio_clicked()</slot>
+-    <slot>domainRadio_clicked()</slot>
+-    <slot>adsRadioClicked()</slot>
+     <slot>KURLLabel1_leftClickedURL()</slot>
+     <slot>lmAnnounceCombo_activated( int i )</slot>
+     <slot>allowGuestLoginsChk_toggled( bool b )</slot>
+     <slot>mapToGuestCombo_activated( int i )</slot>
++    <slot>updateSecurityLevelHelpLbl()</slot>
+ </slots>
+ <layoutdefaults spacing="6" margin="11"/>
++<includehints>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kurllabel.h</includehint>
++    <includehint>klistview.h</includehint>
++    <includehint>klistview.h</includehint>
++    <includehint>klistview.h</includehint>
++    <includehint>klistview.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++</includehints>
+ </UI>
+Index: filesharing/advanced/kcm_sambaconf/share.ui
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/share.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/kcm_sambaconf/share.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -1,4 +1,4 @@
+-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
++<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+ <class>KcmShareDlg</class>
+ <comment>
+ /******************************************************************************
+@@ -1827,125 +1827,162 @@
+                             <attribute name="title">
+                                 <string>Filenames</string>
+                             </attribute>
+-                            <grid>
++                            <widget class="QLayoutWidget">
+                                 <property name="name">
+-                                    <cstring>unnamed</cstring>
++                                    <cstring>Layout54</cstring>
+                                 </property>
+-                                <property name="margin">
+-                                    <number>0</number>
++                                <property name="geometry">
++                                    <rect>
++                                        <x>330</x>
++                                        <y>1</y>
++                                        <width>323</width>
++                                        <height>270</height>
++                                    </rect>
+                                 </property>
+-                                <property name="spacing">
+-                                    <number>6</number>
+-                                </property>
+-                                <widget class="QLayoutWidget" row="0" column="1">
++                                <vbox>
+                                     <property name="name">
+-                                        <cstring>Layout54</cstring>
++                                        <cstring>unnamed</cstring>
+                                     </property>
+-                                    <vbox>
++                                    <property name="margin">
++                                        <number>0</number>
++                                    </property>
++                                    <property name="spacing">
++                                        <number>6</number>
++                                    </property>
++                                    <widget class="QGroupBox">
+                                         <property name="name">
+-                                            <cstring>unnamed</cstring>
++                                            <cstring>GroupBox9</cstring>
+                                         </property>
+-                                        <property name="margin">
+-                                            <number>0</number>
++                                        <property name="sizePolicy">
++                                            <sizepolicy>
++                                                <hsizetype>7</hsizetype>
++                                                <vsizetype>5</vsizetype>
++                                                <horstretch>0</horstretch>
++                                                <verstretch>0</verstretch>
++                                            </sizepolicy>
+                                         </property>
+-                                        <property name="spacing">
+-                                            <number>6</number>
++                                        <property name="title">
++                                            <string>Other Options</string>
+                                         </property>
+-                                        <widget class="QGroupBox">
++                                        <vbox>
+                                             <property name="name">
+-                                                <cstring>GroupBox9</cstring>
++                                                <cstring>unnamed</cstring>
+                                             </property>
+-                                            <property name="sizePolicy">
+-                                                <sizepolicy>
+-                                                    <hsizetype>7</hsizetype>
+-                                                    <vsizetype>5</vsizetype>
+-                                                    <horstretch>0</horstretch>
+-                                                    <verstretch>0</verstretch>
+-                                                </sizepolicy>
+-                                            </property>
+-                                            <property name="title">
+-                                                <string>Other Options</string>
+-                                            </property>
+-                                            <vbox>
++                                            <widget class="QCheckBox">
+                                                 <property name="name">
+-                                                    <cstring>unnamed</cstring>
++                                                    <cstring>hideTrailingDotChk</cstring>
+                                                 </property>
+-                                                <widget class="QCheckBox">
+-                                                    <property name="name">
+-                                                        <cstring>hideTrailingDotChk</cstring>
+-                                                    </property>
+-                                                    <property name="text">
+-                                                        <string>Hide traili&amp;ng dot</string>
+-                                                    </property>
+-                                                </widget>
+-                                            </vbox>
+-                                        </widget>
+-                                        <widget class="QGroupBox">
++                                                <property name="text">
++                                                    <string>Hide traili&amp;ng dot</string>
++                                                </property>
++                                            </widget>
++                                        </vbox>
++                                    </widget>
++                                    <widget class="QGroupBox">
++                                        <property name="name">
++                                            <cstring>GroupBox15</cstring>
++                                        </property>
++                                        <property name="title">
++                                            <string>DOS</string>
++                                        </property>
++                                        <vbox>
+                                             <property name="name">
+-                                                <cstring>GroupBox15</cstring>
++                                                <cstring>unnamed</cstring>
+                                             </property>
+-                                            <property name="title">
+-                                                <string>DOS</string>
++                                            <property name="margin">
++                                                <number>11</number>
+                                             </property>
+-                                            <vbox>
++                                            <property name="spacing">
++                                                <number>6</number>
++                                            </property>
++                                            <widget class="QCheckBox">
+                                                 <property name="name">
+-                                                    <cstring>unnamed</cstring>
++                                                    <cstring>dosFilemodeChk</cstring>
+                                                 </property>
+-                                                <property name="margin">
+-                                                    <number>11</number>
++                                                <property name="text">
++                                                    <string>&amp;DOS file mode</string>
+                                                 </property>
+-                                                <property name="spacing">
+-                                                    <number>6</number>
++                                            </widget>
++                                            <widget class="QCheckBox">
++                                                <property name="name">
++                                                    <cstring>dosFiletimesChk</cstring>
+                                                 </property>
+-                                                <widget class="QCheckBox">
+-                                                    <property name="name">
+-                                                        <cstring>dosFilemodeChk</cstring>
+-                                                    </property>
+-                                                    <property name="text">
+-                                                        <string>&amp;DOS file mode</string>
+-                                                    </property>
+-                                                </widget>
+-                                                <widget class="QCheckBox">
+-                                                    <property name="name">
+-                                                        <cstring>dosFiletimesChk</cstring>
+-                                                    </property>
+-                                                    <property name="text">
+-                                                        <string>DOS f&amp;ile times</string>
+-                                                    </property>
+-                                                </widget>
+-                                                <widget class="QCheckBox">
+-                                                    <property name="name">
+-                                                        <cstring>dosFiletimeResolutionChk</cstring>
+-                                                    </property>
+-                                                    <property name="text">
+-                                                        <string>DOS file time resolution</string>
+-                                                    </property>
+-                                                </widget>
+-                                            </vbox>
+-                                        </widget>
+-                                    </vbox>
+-                                </widget>
+-                                <spacer row="1" column="0">
++                                                <property name="text">
++                                                    <string>DOS f&amp;ile times</string>
++                                                </property>
++                                            </widget>
++                                            <widget class="QCheckBox">
++                                                <property name="name">
++                                                    <cstring>dosFiletimeResolutionChk</cstring>
++                                                </property>
++                                                <property name="text">
++                                                    <string>DOS file time resolution</string>
++                                                </property>
++                                            </widget>
++                                        </vbox>
++                                    </widget>
++                                </vbox>
++                            </widget>
++                            <spacer>
++                                <property name="name">
++                                    <cstring>Spacer61</cstring>
++                                </property>
++                                <property name="orientation">
++                                    <enum>Vertical</enum>
++                                </property>
++                                <property name="sizeType">
++                                    <enum>Expanding</enum>
++                                </property>
++                                <property name="sizeHint">
++                                    <size>
++                                        <width>20</width>
++                                        <height>30</height>
++                                    </size>
++                                </property>
++                                <property name="geometry">
++                                    <rect>
++                                        <x>152</x>
++                                        <y>277</y>
++                                        <width>20</width>
++                                        <height>119</height>
++                                    </rect>
++                                </property>
++                            </spacer>
++                            <widget class="QGroupBox">
++                                <property name="name">
++                                    <cstring>GroupBox5</cstring>
++                                </property>
++                                <property name="geometry">
++                                    <rect>
++                                        <x>1</x>
++                                        <y>1</y>
++                                        <width>323</width>
++                                        <height>270</height>
++                                    </rect>
++                                </property>
++                                <property name="sizePolicy">
++                                    <sizepolicy>
++                                        <hsizetype>5</hsizetype>
++                                        <vsizetype>5</vsizetype>
++                                        <horstretch>0</horstretch>
++                                        <verstretch>0</verstretch>
++                                    </sizepolicy>
++                                </property>
++                                <property name="title">
++                                    <string>Name Mangling</string>
++                                </property>
++                                <widget class="QLabel">
+                                     <property name="name">
+-                                        <cstring>Spacer61</cstring>
++                                        <cstring>TextLabel3_2_2</cstring>
+                                     </property>
+-                                    <property name="orientation">
+-                                        <enum>Vertical</enum>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>11</x>
++                                            <y>179</y>
++                                            <width>168</width>
++                                            <height>24</height>
++                                        </rect>
+                                     </property>
+-                                    <property name="sizeType">
+-                                        <enum>Expanding</enum>
+-                                    </property>
+-                                    <property name="sizeHint">
+-                                        <size>
+-                                            <width>20</width>
+-                                            <height>30</height>
+-                                        </size>
+-                                    </property>
+-                                </spacer>
+-                                <widget class="QGroupBox" row="0" column="0">
+-                                    <property name="name">
+-                                        <cstring>GroupBox5</cstring>
+-                                    </property>
+                                     <property name="sizePolicy">
+                                         <sizepolicy>
+                                             <hsizetype>5</hsizetype>
+@@ -1954,204 +1991,312 @@
+                                             <verstretch>0</verstretch>
+                                         </sizepolicy>
+                                     </property>
+-                                    <property name="title">
+-                                        <string>Name Mangling</string>
++                                    <property name="text">
++                                        <string>Mangling cha&amp;r:</string>
+                                     </property>
+-                                    <grid>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>manglingCharEdit</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QLayoutWidget">
++                                    <property name="name">
++                                        <cstring>Layout14</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>185</x>
++                                            <y>179</y>
++                                            <width>127</width>
++                                            <height>24</height>
++                                        </rect>
++                                    </property>
++                                    <hbox>
+                                         <property name="name">
+                                             <cstring>unnamed</cstring>
+                                         </property>
+                                         <property name="margin">
+-                                            <number>11</number>
++                                            <number>0</number>
+                                         </property>
+                                         <property name="spacing">
+                                             <number>6</number>
+                                         </property>
+-                                        <widget class="QLabel" row="6" column="0">
++                                        <widget class="QLineEdit">
+                                             <property name="name">
+-                                                <cstring>TextLabel3_2_2</cstring>
+-                                            </property>
+-                                            <property name="sizePolicy">
+-                                                <sizepolicy>
+-                                                    <hsizetype>5</hsizetype>
+-                                                    <vsizetype>5</vsizetype>
+-                                                    <horstretch>0</horstretch>
+-                                                    <verstretch>0</verstretch>
+-                                                </sizepolicy>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Mangling cha&amp;r:</string>
+-                                            </property>
+-                                            <property name="buddy" stdset="0">
+                                                 <cstring>manglingCharEdit</cstring>
+                                             </property>
+-                                        </widget>
+-                                        <widget class="QLayoutWidget" row="6" column="1">
+-                                            <property name="name">
+-                                                <cstring>Layout14</cstring>
++                                            <property name="maximumSize">
++                                                <size>
++                                                    <width>40</width>
++                                                    <height>32767</height>
++                                                </size>
+                                             </property>
+-                                            <hbox>
+-                                                <property name="name">
+-                                                    <cstring>unnamed</cstring>
+-                                                </property>
+-                                                <property name="margin">
+-                                                    <number>0</number>
+-                                                </property>
+-                                                <property name="spacing">
+-                                                    <number>6</number>
+-                                                </property>
+-                                                <widget class="QLineEdit">
+-                                                    <property name="name">
+-                                                        <cstring>manglingCharEdit</cstring>
+-                                                    </property>
+-                                                    <property name="maximumSize">
+-                                                        <size>
+-                                                            <width>40</width>
+-                                                            <height>32767</height>
+-                                                        </size>
+-                                                    </property>
+-                                                </widget>
+-                                                <spacer>
+-                                                    <property name="name">
+-                                                        <cstring>Spacer40_2</cstring>
+-                                                    </property>
+-                                                    <property name="orientation">
+-                                                        <enum>Horizontal</enum>
+-                                                    </property>
+-                                                    <property name="sizeType">
+-                                                        <enum>Expanding</enum>
+-                                                    </property>
+-                                                    <property name="sizeHint">
+-                                                        <size>
+-                                                            <width>20</width>
+-                                                            <height>0</height>
+-                                                        </size>
+-                                                    </property>
+-                                                </spacer>
+-                                            </hbox>
+                                         </widget>
+-                                        <widget class="QLabel" row="7" column="0">
++                                        <spacer>
+                                             <property name="name">
+-                                                <cstring>TextLabel1_5</cstring>
++                                                <cstring>Spacer40_2</cstring>
+                                             </property>
+-                                            <property name="text">
+-                                                <string>Mangled ma&amp;p:</string>
++                                            <property name="orientation">
++                                                <enum>Horizontal</enum>
+                                             </property>
+-                                            <property name="buddy" stdset="0">
+-                                                <cstring>mangledMapEdit</cstring>
++                                            <property name="sizeType">
++                                                <enum>Expanding</enum>
+                                             </property>
+-                                        </widget>
+-                                        <widget class="QLineEdit" row="7" column="1">
+-                                            <property name="name">
+-                                                <cstring>mangledMapEdit</cstring>
++                                            <property name="sizeHint">
++                                                <size>
++                                                    <width>20</width>
++                                                    <height>0</height>
++                                                </size>
+                                             </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox" row="0" column="0">
+-                                            <property name="name">
+-                                                <cstring>mangledNamesChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Enable na&amp;me mangling</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox" row="1" column="0">
+-                                            <property name="name">
+-                                                <cstring>mangleCaseChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Man&amp;gle case</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox" row="2" column="0">
+-                                            <property name="name">
+-                                                <cstring>caseSensitiveChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Case sensi&amp;tive</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox" row="3" column="0">
+-                                            <property name="name">
+-                                                <cstring>preserveCaseChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Preser&amp;ve case</string>
+-                                            </property>
+-                                            <property name="checked">
+-                                                <bool>true</bool>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox" row="4" column="0">
+-                                            <property name="name">
+-                                                <cstring>shortPreserveCaseChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Short pr&amp;eserve case</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QLabel" row="5" column="0">
+-                                            <property name="name">
+-                                                <cstring>TextLabel2_3</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Defau&amp;lt case:</string>
+-                                            </property>
+-                                            <property name="buddy" stdset="0">
+-                                                <cstring>defaultCaseCombo</cstring>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QComboBox" row="5" column="1">
+-                                            <item>
+-                                                <property name="text">
+-                                                    <string>Lower</string>
+-                                                </property>
+-                                            </item>
+-                                            <item>
+-                                                <property name="text">
+-                                                    <string>Upper</string>
+-                                                </property>
+-                                            </item>
+-                                            <property name="name">
+-                                                <cstring>defaultCaseCombo</cstring>
+-                                            </property>
+-                                            <property name="sizePolicy">
+-                                                <sizepolicy>
+-                                                    <hsizetype>1</hsizetype>
+-                                                    <vsizetype>0</vsizetype>
+-                                                    <horstretch>0</horstretch>
+-                                                    <verstretch>0</verstretch>
+-                                                </sizepolicy>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QLabel" row="8" column="0">
+-                                            <property name="name">
+-                                                <cstring>textLabel2</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Mangling method:</string>
+-                                            </property>
+-                                            <property name="buddy" stdset="0">
+-                                                <cstring>manglingMethodCombo</cstring>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QComboBox" row="8" column="1">
+-                                            <item>
+-                                                <property name="text">
+-                                                    <string>hash</string>
+-                                                </property>
+-                                            </item>
+-                                            <item>
+-                                                <property name="text">
+-                                                    <string>hash2</string>
+-                                                </property>
+-                                            </item>
+-                                            <property name="name">
+-                                                <cstring>manglingMethodCombo</cstring>
+-                                            </property>
+-                                        </widget>
+-                                    </grid>
++                                        </spacer>
++                                    </hbox>
+                                 </widget>
+-                            </grid>
++                                <widget class="QLabel">
++                                    <property name="name">
++                                        <cstring>TextLabel1_5</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>11</x>
++                                            <y>209</y>
++                                            <width>168</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Mangled ma&amp;p:</string>
++                                    </property>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>mangledMapEdit</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QLineEdit">
++                                    <property name="name">
++                                        <cstring>mangledMapEdit</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>185</x>
++                                            <y>209</y>
++                                            <width>127</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                </widget>
++                                <widget class="QCheckBox">
++                                    <property name="name">
++                                        <cstring>mangledNamesChk</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>11</x>
++                                            <y>21</y>
++                                            <width>168</width>
++                                            <height>20</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Enable na&amp;me mangling</string>
++                                    </property>
++                                </widget>
++                                <widget class="QCheckBox">
++                                    <property name="name">
++                                        <cstring>mangleCaseChk</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>11</x>
++                                            <y>47</y>
++                                            <width>168</width>
++                                            <height>20</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Man&amp;gle case</string>
++                                    </property>
++                                </widget>
++                                <widget class="QLabel">
++                                    <property name="name">
++                                        <cstring>textLabel2</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>11</x>
++                                            <y>237</y>
++                                            <width>168</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Mangling method:</string>
++                                    </property>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>manglingMethodCombo</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QComboBox">
++                                    <item>
++                                        <property name="text">
++                                            <string>hash</string>
++                                        </property>
++                                    </item>
++                                    <item>
++                                        <property name="text">
++                                            <string>hash2</string>
++                                        </property>
++                                    </item>
++                                    <property name="name">
++                                        <cstring>manglingMethodCombo</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>185</x>
++                                            <y>237</y>
++                                            <width>127</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                </widget>
++                                <widget class="QCheckBox">
++                                    <property name="name">
++                                        <cstring>preserveCaseChk</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>10</x>
++                                            <y>70</y>
++                                            <width>168</width>
++                                            <height>20</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Preser&amp;ve case</string>
++                                    </property>
++                                    <property name="checked">
++                                        <bool>true</bool>
++                                    </property>
++                                </widget>
++                                <widget class="QCheckBox">
++                                    <property name="name">
++                                        <cstring>shortPreserveCaseChk</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>10</x>
++                                            <y>90</y>
++                                            <width>168</width>
++                                            <height>20</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Short pr&amp;eserve case</string>
++                                    </property>
++                                </widget>
++                                <widget class="QLabel">
++                                    <property name="name">
++                                        <cstring>TextLabel2_3</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>10</x>
++                                            <y>150</y>
++                                            <width>168</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Defau&amp;lt case:</string>
++                                    </property>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>defaultCaseCombo</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QComboBox">
++                                    <item>
++                                        <property name="text">
++                                            <string>Lower</string>
++                                        </property>
++                                    </item>
++                                    <item>
++                                        <property name="text">
++                                            <string>Upper</string>
++                                        </property>
++                                    </item>
++                                    <property name="name">
++                                        <cstring>defaultCaseCombo</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>185</x>
++                                            <y>151</y>
++                                            <width>127</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="sizePolicy">
++                                        <sizepolicy>
++                                            <hsizetype>1</hsizetype>
++                                            <vsizetype>0</vsizetype>
++                                            <horstretch>0</horstretch>
++                                            <verstretch>0</verstretch>
++                                        </sizepolicy>
++                                    </property>
++                                </widget>
++                                <widget class="QComboBox">
++                                    <item>
++                                        <property name="text">
++                                            <string>Automatic</string>
++                                        </property>
++                                    </item>
++                                    <item>
++                                        <property name="text">
++                                            <string>Yes</string>
++                                        </property>
++                                    </item>
++                                    <item>
++                                        <property name="text">
++                                            <string>No</string>
++                                        </property>
++                                    </item>
++                                    <property name="name">
++                                        <cstring>caseSensitiveCombo</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>185</x>
++                                            <y>121</y>
++                                            <width>127</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="sizePolicy">
++                                        <sizepolicy>
++                                            <hsizetype>1</hsizetype>
++                                            <vsizetype>0</vsizetype>
++                                            <horstretch>0</horstretch>
++                                            <verstretch>0</verstretch>
++                                        </sizepolicy>
++                                    </property>
++                                </widget>
++                                <widget class="QLabel">
++                                    <property name="name">
++                                        <cstring>TextLabel2_3_3</cstring>
++                                    </property>
++                                    <property name="geometry">
++                                        <rect>
++                                            <x>10</x>
++                                            <y>120</y>
++                                            <width>168</width>
++                                            <height>22</height>
++                                        </rect>
++                                    </property>
++                                    <property name="text">
++                                        <string>Case sensi&amp;tive:</string>
++                                    </property>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>caseSensitiveCombo</cstring>
++                                    </property>
++                                </widget>
++                            </widget>
+                         </widget>
+                         <widget class="QWidget">
+                             <property name="name">
+@@ -2160,22 +2305,31 @@
+                             <attribute name="title">
+                                 <string>Locking</string>
+                             </attribute>
+-                            <vbox>
++                            <grid>
+                                 <property name="name">
+                                     <cstring>unnamed</cstring>
+                                 </property>
+                                 <property name="margin">
+                                     <number>0</number>
+                                 </property>
+-                                <widget class="QCheckBox">
++                                <spacer row="2" column="0">
+                                     <property name="name">
+-                                        <cstring>lockingChk</cstring>
++                                        <cstring>Spacer51</cstring>
+                                     </property>
+-                                    <property name="text">
+-                                        <string>Enable lock&amp;ing</string>
++                                    <property name="orientation">
++                                        <enum>Vertical</enum>
+                                     </property>
+-                                </widget>
+-                                <widget class="QGroupBox">
++                                    <property name="sizeType">
++                                        <enum>Expanding</enum>
++                                    </property>
++                                    <property name="sizeHint">
++                                        <size>
++                                            <width>20</width>
++                                            <height>20</height>
++                                        </size>
++                                    </property>
++                                </spacer>
++                                <widget class="QGroupBox" row="1" column="0">
+                                     <property name="name">
+                                         <cstring>groupBox47</cstring>
+                                     </property>
+@@ -2188,7 +2342,7 @@
+                                     <property name="title">
+                                         <string>Locki&amp;ng</string>
+                                     </property>
+-                                    <vbox>
++                                    <grid>
+                                         <property name="name">
+                                             <cstring>unnamed</cstring>
+                                         </property>
+@@ -2198,47 +2352,15 @@
+                                         <property name="spacing">
+                                             <number>6</number>
+                                         </property>
+-                                        <widget class="QCheckBox">
++                                        <widget class="QCheckBox" row="4" column="0">
+                                             <property name="name">
+-                                                <cstring>blockingLocksChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Blockin&amp;g locks</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox">
+-                                            <property name="name">
+-                                                <cstring>posixLockingChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Posi&amp;x locking</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox">
+-                                            <property name="name">
+-                                                <cstring>strictLockingChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>S&amp;trict locking</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox">
+-                                            <property name="name">
+-                                                <cstring>shareModesChk</cstring>
+-                                            </property>
+-                                            <property name="text">
+-                                                <string>Share mo&amp;des</string>
+-                                            </property>
+-                                        </widget>
+-                                        <widget class="QCheckBox">
+-                                            <property name="name">
+                                                 <cstring>oplocksChk</cstring>
+                                             </property>
+                                             <property name="text">
+                                                 <string>Issue oppo&amp;rtunistic locks (oplocks) </string>
+                                             </property>
+                                         </widget>
+-                                        <widget class="QGroupBox">
++                                        <widget class="QGroupBox" row="5" column="0">
+                                             <property name="name">
+                                                 <cstring>groupBox59</cstring>
+                                             </property>
+@@ -2302,7 +2424,7 @@
+                                                 </widget>
+                                             </grid>
+                                         </widget>
+-                                        <widget class="QCheckBox">
++                                        <widget class="QCheckBox" row="6" column="0">
+                                             <property name="name">
+                                                 <cstring>fakeOplocksChk</cstring>
+                                             </property>
+@@ -2313,26 +2435,107 @@
+                                                 <bool>true</bool>
+                                             </property>
+                                         </widget>
+-                                    </vbox>
++                                        <widget class="QCheckBox" row="3" column="0">
++                                            <property name="name">
++                                                <cstring>shareModesChk</cstring>
++                                            </property>
++                                            <property name="text">
++                                                <string>Share mo&amp;des</string>
++                                            </property>
++                                        </widget>
++                                        <widget class="QCheckBox" row="2" column="0">
++                                            <property name="name">
++                                                <cstring>posixLockingChk</cstring>
++                                            </property>
++                                            <property name="text">
++                                                <string>Posi&amp;x locking</string>
++                                            </property>
++                                        </widget>
++                                        <widget class="QLayoutWidget" row="0" column="0">
++                                            <property name="name">
++                                                <cstring>layout9</cstring>
++                                            </property>
++                                            <hbox>
++                                                <property name="name">
++                                                    <cstring>unnamed</cstring>
++                                                </property>
++                                                <widget class="QLabel">
++                                                    <property name="name">
++                                                        <cstring>TextLabel2_3_2</cstring>
++                                                    </property>
++                                                    <property name="text">
++                                                        <string>S&amp;trict locking:</string>
++                                                    </property>
++                                                    <property name="buddy" stdset="0">
++                                                        <cstring>strictLockingCombo</cstring>
++                                                    </property>
++                                                </widget>
++                                                <widget class="QComboBox">
++                                                    <item>
++                                                        <property name="text">
++                                                            <string>Automatic</string>
++                                                        </property>
++                                                    </item>
++                                                    <item>
++                                                        <property name="text">
++                                                            <string>Yes</string>
++                                                        </property>
++                                                    </item>
++                                                    <item>
++                                                        <property name="text">
++                                                            <string>No</string>
++                                                        </property>
++                                                    </item>
++                                                    <property name="name">
++                                                        <cstring>strictLockingCombo</cstring>
++                                                    </property>
++                                                    <property name="sizePolicy">
++                                                        <sizepolicy>
++                                                            <hsizetype>1</hsizetype>
++                                                            <vsizetype>0</vsizetype>
++                                                            <horstretch>0</horstretch>
++                                                            <verstretch>0</verstretch>
++                                                        </sizepolicy>
++                                                    </property>
++                                                </widget>
++                                                <spacer>
++                                                    <property name="name">
++                                                        <cstring>spacer15</cstring>
++                                                    </property>
++                                                    <property name="orientation">
++                                                        <enum>Horizontal</enum>
++                                                    </property>
++                                                    <property name="sizeType">
++                                                        <enum>Expanding</enum>
++                                                    </property>
++                                                    <property name="sizeHint">
++                                                        <size>
++                                                            <width>40</width>
++                                                            <height>20</height>
++                                                        </size>
++                                                    </property>
++                                                </spacer>
++                                            </hbox>
++                                        </widget>
++                                        <widget class="QCheckBox" row="1" column="0">
++                                            <property name="name">
++                                                <cstring>blockingLocksChk</cstring>
++                                            </property>
++                                            <property name="text">
++                                                <string>Blockin&amp;g locks</string>
++                                            </property>
++                                        </widget>
++                                    </grid>
+                                 </widget>
+-                                <spacer>
++                                <widget class="QCheckBox" row="0" column="0">
+                                     <property name="name">
+-                                        <cstring>Spacer51</cstring>
++                                        <cstring>lockingChk</cstring>
+                                     </property>
+-                                    <property name="orientation">
+-                                        <enum>Vertical</enum>
++                                    <property name="text">
++                                        <string>Enable lock&amp;ing</string>
+                                     </property>
+-                                    <property name="sizeType">
+-                                        <enum>Expanding</enum>
+-                                    </property>
+-                                    <property name="sizeHint">
+-                                        <size>
+-                                            <width>20</width>
+-                                            <height>20</height>
+-                                        </size>
+-                                    </property>
+-                                </spacer>
+-                            </vbox>
++                                </widget>
++                            </grid>
+                         </widget>
+                         <widget class="QWidget">
+                             <property name="name">
+@@ -2532,41 +2735,6 @@
+                                 <property name="margin">
+                                     <number>0</number>
+                                 </property>
+-                                <property name="spacing">
+-                                    <number>6</number>
+-                                </property>
+-                                <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="2">
+-                                    <property name="name">
+-                                        <cstring>setDirectoryChk</cstring>
+-                                    </property>
+-                                    <property name="text">
+-                                        <string>Setdir command allo&amp;wed</string>
+-                                    </property>
+-                                </widget>
+-                                <widget class="QCheckBox" row="6" column="0" rowspan="1" colspan="2">
+-                                    <property name="name">
+-                                        <cstring>fakeDirectoryCreateTimesChk</cstring>
+-                                    </property>
+-                                    <property name="text">
+-                                        <string>Fa&amp;ke directory create times</string>
+-                                    </property>
+-                                </widget>
+-                                <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
+-                                    <property name="name">
+-                                        <cstring>msdfsRootChk</cstring>
+-                                    </property>
+-                                    <property name="text">
+-                                        <string>Ms&amp;dfs root</string>
+-                                    </property>
+-                                </widget>
+-                                <widget class="QCheckBox" row="8" column="0" rowspan="1" colspan="2">
+-                                    <property name="name">
+-                                        <cstring>msdfsProxyChk</cstring>
+-                                    </property>
+-                                    <property name="text">
+-                                        <string>Msdfs pro&amp;xy</string>
+-                                    </property>
+-                                </widget>
+                                 <spacer row="9" column="1">
+                                     <property name="name">
+                                         <cstring>Spacer15</cstring>
+@@ -2616,11 +2784,6 @@
+                                         <cstring>magicScriptEdit</cstring>
+                                     </property>
+                                 </widget>
+-                                <widget class="QLineEdit" row="0" column="1">
+-                                    <property name="name">
+-                                        <cstring>volumeEdit</cstring>
+-                                    </property>
+-                                </widget>
+                                 <widget class="QLabel" row="0" column="0">
+                                     <property name="name">
+                                         <cstring>TextLabel6_2</cstring>
+@@ -2648,11 +2811,30 @@
+                                         <cstring>magicOutputEdit</cstring>
+                                     </property>
+                                 </widget>
+-                                <widget class="QLineEdit" row="4" column="1">
++                                <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
+                                     <property name="name">
+-                                        <cstring>dontDescendEdit</cstring>
++                                        <cstring>fakeDirectoryCreateTimesChk</cstring>
+                                     </property>
++                                    <property name="text">
++                                        <string>Fa&amp;ke directory create times</string>
++                                    </property>
+                                 </widget>
++                                <widget class="QCheckBox" row="8" column="0" rowspan="1" colspan="2">
++                                    <property name="name">
++                                        <cstring>msdfsRootChk</cstring>
++                                    </property>
++                                    <property name="text">
++                                        <string>Ms&amp;dfs root</string>
++                                    </property>
++                                </widget>
++                                <widget class="QCheckBox" row="6" column="0" rowspan="1" colspan="2">
++                                    <property name="name">
++                                        <cstring>setDirectoryChk</cstring>
++                                    </property>
++                                    <property name="text">
++                                        <string>Setdir command allo&amp;wed</string>
++                                    </property>
++                                </widget>
+                                 <widget class="QLabel" row="4" column="0">
+                                     <property name="name">
+                                         <cstring>TextLabel6_2_3_2</cstring>
+@@ -2664,6 +2846,32 @@
+                                         <cstring>dontDescendEdit</cstring>
+                                     </property>
+                                 </widget>
++                                <widget class="QLineEdit" row="4" column="1">
++                                    <property name="name">
++                                        <cstring>dontDescendEdit</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QLabel" row="5" column="0">
++                                    <property name="name">
++                                        <cstring>TextLabel6_2_3_2_2</cstring>
++                                    </property>
++                                    <property name="text">
++                                        <string>Msdfs pro&amp;xy:</string>
++                                    </property>
++                                    <property name="buddy" stdset="0">
++                                        <cstring>msdfsProxyEdit</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QLineEdit" row="5" column="1">
++                                    <property name="name">
++                                        <cstring>msdfsProxyEdit</cstring>
++                                    </property>
++                                </widget>
++                                <widget class="QLineEdit" row="0" column="1">
++                                    <property name="name">
++                                        <cstring>volumeEdit</cstring>
++                                    </property>
++                                </widget>
+                             </grid>
+                         </widget>
+                     </widget>
+@@ -2953,7 +3161,6 @@
+     <tabstop>setDirectoryChk</tabstop>
+     <tabstop>fakeDirectoryCreateTimesChk</tabstop>
+     <tabstop>msdfsRootChk</tabstop>
+-    <tabstop>msdfsProxyChk</tabstop>
+     <tabstop>preexecEdit</tabstop>
+     <tabstop>rootPreexecEdit</tabstop>
+     <tabstop>postexecEdit</tabstop>
+@@ -2963,7 +3170,6 @@
+     <tabstop>lockingChk</tabstop>
+     <tabstop>blockingLocksChk</tabstop>
+     <tabstop>posixLockingChk</tabstop>
+-    <tabstop>strictLockingChk</tabstop>
+     <tabstop>shareModesChk</tabstop>
+     <tabstop>oplocksChk</tabstop>
+     <tabstop>level2OplocksChk</tabstop>
+@@ -2971,7 +3177,6 @@
+     <tabstop>fakeOplocksChk</tabstop>
+     <tabstop>mangledNamesChk</tabstop>
+     <tabstop>mangleCaseChk</tabstop>
+-    <tabstop>caseSensitiveChk</tabstop>
+     <tabstop>preserveCaseChk</tabstop>
+     <tabstop>shortPreserveCaseChk</tabstop>
+     <tabstop>defaultCaseCombo</tabstop>
+@@ -3071,4 +3276,25 @@
+     <slot>buttonHelp_clicked()</slot>
+ </slots>
+ <layoutdefaults spacing="6" margin="11"/>
++<includehints>
++    <includehint>kurlrequester.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>kpushbutton.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klineedit.h</includehint>
++    <includehint>klistview.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>krestrictedline.h</includehint>
++    <includehint>knuminput.h</includehint>
++    <includehint>knuminput.h</includehint>
++    <includehint>knuminput.h</includehint>
++    <includehint>knuminput.h</includehint>
++</includehints>
+ </UI>
+Index: filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -126,7 +126,8 @@
+ 
+   // Filename settings
+ 
+-  _dictMngr->add("case sensitive",caseSensitiveChk);
++  _dictMngr->add("case sensitive",caseSensitiveCombo,
++		 new QStringList(QStringList() << "auto" << "yes" << "no"));
+   _dictMngr->add("preserve case",preserveCaseChk);
+   _dictMngr->add("short preserve case",shortPreserveCaseChk);
+   _dictMngr->add("mangled names",mangledNamesChk);
+@@ -200,7 +201,8 @@
+   _dictMngr->add("locking",lockingChk);
+   _dictMngr->add("level2 oplocks",level2OplocksChk);
+   _dictMngr->add("posix locking",posixLockingChk);
+-  _dictMngr->add("strict locking",strictLockingChk);
++  _dictMngr->add("strict locking",strictLockingCombo,
++   		  new QStringList(QStringList() << "Auto" << "yes" << "no"));
+   _dictMngr->add("share modes",shareModesChk);
+   _dictMngr->add("oplocks",oplocksChk);
+   
+@@ -249,7 +251,7 @@
+   _dictMngr->add("fake directory create times",fakeDirectoryCreateTimesChk);
+     
+   _dictMngr->add("msdfs root",msdfsRootChk);
+-  _dictMngr->add("msdfs proxy",msdfsProxyChk);
++  _dictMngr->add("msdfs proxy",msdfsProxyEdit);
+   
+   _dictMngr->load( _share );
+   
+Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui.h
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
+@@ -39,6 +39,7 @@
+     editDefaultPrinterBtn->setIconSet(SmallIconSet("print_class"));
+ 
+     advancedWarningPixLbl->setPixmap(SmallIcon("messagebox_warning"));
++    
+ }
+ 
+ 
+@@ -49,62 +50,13 @@
+ }
+ 
+ 
+-
+-
+-
+-
+-
+-
+ void KcmInterface::securityLevelCombo_activated( int i )
+ {
+    passwordServerEdit->setDisabled(i<2);
+    allowGuestLoginsChk->setDisabled(i==0);
+-   
+-    
++   updateSecurityLevelHelpLbl();
+ }
+ 
+-
+-void KcmInterface::shareRadio_clicked()
+-{
+-    securityLevelHelpLbl->setText(i18n("Use the <i>share</i> security level if you have a home network "
+-			         "or a small office network.<br> It allows everyone to read the list "
+-		                     "of all your shared directories and printers before a login is required."));
+-}
+-
+-
+-void KcmInterface::userRadio_clicked()
+-{
+-    securityLevelHelpLbl->setText(i18n("Use the <i>user</i> security level if you have a bigger network "
+-			         "and you do not want to allow everyone to read your list of shared "
+-		                     "directories and printers without a login.<p>"
+-			"If you want to run your Samba server as a <b>Primary Domain controller</b> (PDC) "
+-			"you also have to set this option."));
+-}
+-
+-void KcmInterface::serverRadio_clicked()
+-{
+-    securityLevelHelpLbl->setText(i18n("Use the <i>server</i> security level if you have a big network "
+-			         "and the samba server should validate the username/password "
+-			         "by passing it to another SMB server, such as an NT box."));
+-}
+-
+-
+-void KcmInterface::domainRadio_clicked()
+-{
+- securityLevelHelpLbl->setText(i18n("Use the <i>domain</i> security level if you have a big network "
+-			      "and the samba server should validate the username/password "
+-			      "by passing it to a Windows NT Primary or Backup Domain Controller."));
+-}
+-			      
+-void KcmInterface::adsRadioClicked()
+-{
+- securityLevelHelpLbl->setText(i18n("Use the <i>ADS</i> security level if you have a big network "
+-			      "and the samba server should act as a domain member in an ADS realm."));
+-}
+-			
+-
+-
+-
+ void KcmInterface::KURLLabel1_leftClickedURL()
+ {
+     KProcess* p = new KProcess();
+@@ -143,7 +95,30 @@
+     allowGuestLoginsChk->setChecked(i>0);
+ }
+ 
++void KcmInterface::updateSecurityLevelHelpLbl()
++{
++    if (shareRadio->isChecked()) {
++	securityLevelHelpLbl->setText(i18n("Use the <i>share</i> security level if you have a home network "
++			         "or a small office network.<br> It allows everyone to read the list "
++		                     "of all your shared directories and printers before a login is required."));
+ 
+-
+-
+-
++    } else if (userRadio->isChecked()) {
++    securityLevelHelpLbl->setText(i18n("Use the <i>user</i> security level if you have a bigger network "
++			         "and you do not want to allow everyone to read your list of shared "
++		                     "directories and printers without a login.<p>"
++			"If you want to run your Samba server as a <b>Primary Domain controller</b> (PDC) "
++			"you also have to set this option."));
++} else if (serverRadio->isChecked()) {
++        securityLevelHelpLbl->setText(i18n("Use the <i>server</i> security level if you have a big network "
++			         "and the samba server should validate the username/password "
++			         "by passing it to another SMB server, such as an NT box."));
++    } else if (domainRadio->isChecked()) {
++	 securityLevelHelpLbl->setText(i18n("Use the <i>domain</i> security level if you have a big network "
++			      "and the samba server should validate the username/password "
++			      "by passing it to a Windows NT Primary or Backup Domain Controller."));
++     } else if (adsRadio->isChecked()) {
++	  securityLevelHelpLbl->setText(i18n("Use the <i>ADS</i> security level if you have a big network "
++			      "and the samba server should act as a domain member in an ADS realm."));
++     }
++       
++}
 Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -11,6 +11,7 @@
  Name[da]=Fileshare Konqueror-mappens side med egenskaber
  Name[de]=Dateifreigabe Konqueror Ordner-Eigenschaftenseite
@@ -1600,8 +3280,8 @@ Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
  Name[eu]=Fitxategiak partekatzeko Konqueror direktorio propietateen orria 
 Index: filesharing/simple/fileshare.desktop
 ===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -21,6 +21,7 @@
  Name[da]=Fildeling
  Name[de]=Dateifreigabe
@@ -1628,8 +3308,8 @@ Index: filesharing/simple/fileshare.desktop
  Keywords[fa]=مشترک
 Index: wifi/kwireless/kwireless.desktop
 ===================================================================
---- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -65,6 +65,7 @@
  Name[da]=Information om trådløst netværk
  Name[de]=Informationen über drahtlose Netzwerke
@@ -1640,8 +3320,8 @@ Index: wifi/kwireless/kwireless.desktop
  Name[eu]=Kablerik gabeko sarearen informazioa
 Index: wifi/kcmwifi/kcmwifi.desktop
 ===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -19,6 +19,7 @@
  Name[da]=Trådløst netværk
  Name[de]=Drahtloses Netzwerk
@@ -1652,8 +3332,8 @@ Index: wifi/kcmwifi/kcmwifi.desktop
  Name[eu]=Kablerik gabeko sarea
 Index: wifi/kwifimanager.desktop
 ===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -34,6 +34,7 @@
  Comment[km]=កម្មវិធី​ត្រួតពិនិត្យ​ការ​តភ្ជាប់​បណ្ដាញ​មូលដ្ឋាន​ឥតខ្សែ
  Comment[lt]=Bevielio tinklo ryšio stebėjimas
@@ -1680,8 +3360,8 @@ Index: wifi/kwifimanager.desktop
  GenericName[ne]=तारविहिन LAN प्रबन्धक
 Index: kppp/DB/Provider/Norway/.directory
 ===================================================================
---- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -18,6 +18,7 @@
  Name[ga]=An Iorua
  Name[hi]=नार्वे
@@ -1700,8 +3380,8 @@ Index: kppp/DB/Provider/Norway/.directory
  Name[sl]=Norveška
 Index: kppp/DB/Provider/Slovenia/.directory
 ===================================================================
---- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -15,6 +15,7 @@
  Name[ga]=An tSlóivéin
  Name[hi]=स्लोवेनिया
@@ -1720,8 +3400,8 @@ Index: kppp/DB/Provider/Slovenia/.directory
  Name[sr]=Словенија
 Index: kppp/DB/Provider/Denmark/.directory
 ===================================================================
---- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -18,6 +18,7 @@
  Name[ga]=An Danmhairg
  Name[hi]=डेनमार्क
@@ -1740,8 +3420,8 @@ Index: kppp/DB/Provider/Denmark/.directory
  Name[sl]=Danska
 Index: kppp/DB/Provider/Czech_Republic/.directory
 ===================================================================
---- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -17,6 +17,7 @@
  Name[ga]=Poblacht na Seice
  Name[hi]=चेक
@@ -1760,8 +3440,8 @@ Index: kppp/DB/Provider/Czech_Republic/.directory
  Name[sl]=Češka
 Index: kppp/DB/Provider/Taiwan/.directory
 ===================================================================
---- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -9,6 +9,7 @@
  Name[ga]=An Téaváin
  Name[hi]=ताईवान
@@ -1780,8 +3460,8 @@ Index: kppp/DB/Provider/Taiwan/.directory
  Name[sr]=Тајван
 Index: kppp/DB/Provider/Yugoslavia/.directory
 ===================================================================
---- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -9,10 +9,12 @@
  Name[da]=Jugoslavien
  Name[de]=Jugoslawien
@@ -1805,8 +3485,8 @@ Index: kppp/DB/Provider/Yugoslavia/.directory
  Name[sl]=Jugoslavija
 Index: kppp/DB/Provider/Sweden/.directory
 ===================================================================
---- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Name[ga]=An tSualainn
  Name[hi]=स्वीडन
@@ -1825,8 +3505,8 @@ Index: kppp/DB/Provider/Sweden/.directory
  Name[sl]=Švedska
 Index: kppp/DB/Provider/New_Zealand/.directory
 ===================================================================
---- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Name[ga]=An Nua-Shéalainn
  Name[hi]=न्यूजीलैंड
@@ -1845,8 +3525,8 @@ Index: kppp/DB/Provider/New_Zealand/.directory
  Name[sl]=Nova Zelandija
 Index: kppp/DB/Provider/Portugal/.directory
 ===================================================================
---- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -9,6 +9,7 @@
  Name[eo]=Portugalo
  Name[ga]=An Phortaingéil
@@ -1865,8 +3545,8 @@ Index: kppp/DB/Provider/Portugal/.directory
  Name[sr]=Португал
 Index: kppp/DB/Provider/Belarus/.directory
 ===================================================================
---- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -14,6 +14,7 @@
  Name[ga]=An Bhealarúis
  Name[hi]=बेलारूस
@@ -1885,8 +3565,8 @@ Index: kppp/DB/Provider/Belarus/.directory
  Name[sl]=Belorusija
 Index: kppp/DB/Provider/France/.directory
 ===================================================================
---- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Name[ga]=An Fhrainc
  Name[hi]=फ्रांस
@@ -1905,8 +3585,8 @@ Index: kppp/DB/Provider/France/.directory
  Name[sl]=Francija
 Index: kppp/DB/Provider/Ukraine/.directory
 ===================================================================
---- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -15,6 +15,7 @@
  Name[ga]=An Úcráin
  Name[hi]=उक्रेन
@@ -1925,8 +3605,8 @@ Index: kppp/DB/Provider/Ukraine/.directory
  Name[sl]=Ukrajina
 Index: kppp/DB/Provider/United_Kingdom/.directory
 ===================================================================
---- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -17,6 +17,7 @@
  Name[ga]=An Ríocht Aontaithe
  Name[hi]=यूनाइटेड किंगडम
@@ -1945,8 +3625,8 @@ Index: kppp/DB/Provider/United_Kingdom/.directory
  Name[sl]=Združeno Kraljestvo
 Index: kppp/DB/Provider/Germany/.directory
 ===================================================================
---- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -18,6 +18,7 @@
  Name[ga]=An Ghearmáin
  Name[hi]=जर्मनी
@@ -1965,8 +3645,8 @@ Index: kppp/DB/Provider/Germany/.directory
  Name[sl]=Nemčija
 Index: kppp/DB/Provider/Switzerland/.directory
 ===================================================================
---- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Name[ga]=An Eilvéis
  Name[hi]=स्विट्जरलैंड
@@ -1985,8 +3665,8 @@ Index: kppp/DB/Provider/Switzerland/.directory
  Name[sl]=Švica
 Index: kppp/DB/Provider/Netherlands/.directory
 ===================================================================
---- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -18,6 +18,7 @@
  Name[ga]=An Ísiltír
  Name[hi]=नीदरलैंड्स
@@ -2005,8 +3685,8 @@ Index: kppp/DB/Provider/Netherlands/.directory
  Name[sl]=Nizozemska
 Index: kppp/DB/Provider/Austria/.directory
 ===================================================================
---- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -16,6 +16,7 @@
  Name[ga]=An Ostair
  Name[hi]=आस्ट्रिया
@@ -2025,8 +3705,8 @@ Index: kppp/DB/Provider/Austria/.directory
  Name[sl]=Avstrija
 Index: kppp/DB/Provider/Ireland/.directory
 ===================================================================
---- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -9,11 +9,13 @@
  Name[da]=Irland
  Name[de]=Irland
@@ -2051,8 +3731,8 @@ Index: kppp/DB/Provider/Ireland/.directory
  Name[sl]=Irska
 Index: kppp/Kppp.desktop
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/Kppp.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -10,6 +10,7 @@
  GenericName[da]=Internet-opkaldsværktøj
  GenericName[de]=Einwahl ins Internet
@@ -2071,8 +3751,8 @@ Index: kppp/Kppp.desktop
  Name[sv]=Kppp
 Index: kppp/logview/kppplogview.desktop
 ===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -5,6 +5,7 @@
  Name[bs]=Preglednik Kppp dnevnika
  Name[de]=KPPP-Protokoll-Betrachter
@@ -2083,8 +3763,8 @@ Index: kppp/logview/kppplogview.desktop
  Name[is]=KPPP annálaskoðari
 Index: ksirc/eventsrc
 ===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- ksirc/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -275,6 +275,7 @@
  Name[da]=Lydsignal modtaget
  Name[de]=Signalton empfangen
@@ -2095,8 +3775,8 @@ Index: ksirc/eventsrc
  Name[eu]=Bip-a jaso da
 Index: dcoprss/rssservice.desktop
 ===================================================================
---- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 751485)
-+++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 751485)
+--- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 759908)
++++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 759908)
 @@ -38,6 +38,7 @@
  Comment[da]=RSS DCOP-tjenester
  Comment[de]=RSS DCOP-Dienste
