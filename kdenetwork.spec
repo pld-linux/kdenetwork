@@ -5,9 +5,9 @@
 # - kill internal libgadu copy
 #
 # Conditional build:
-%bcond_without	xmms
-%bcond_without	hidden_visibility	# pass '--fvisibility=hidden' & '--fvisibility-inlines-hidden' to g++
-%bcond_with	skype			# incomplete!
+%bcond_without	xmms			# without xmms support
+%bcond_without	hidden_visibility	# no gcc hidden visibility
+%bcond_with	skype			# with skype support (incomplete!)
 
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
@@ -38,6 +38,7 @@ Patch2:		%{name}-kopete-qca-tls.patch
 Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
 Patch5:		%{name}-filesharing-msdfs_proxy.patch
+URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
