@@ -1,7 +1,7 @@
 Index: kpf/kpfpropertiesdialogplugin.desktop
 ===================================================================
---- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kpf/kpfpropertiesdialogplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kpf/kpfpropertiesdialogplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -10,6 +10,7 @@
  Name[da]=KPF-mappes egenskabsside
  Name[de]=KPF Ordner-Eigenschaftenseite
@@ -12,8 +12,8 @@ Index: kpf/kpfpropertiesdialogplugin.desktop
  Name[eu]=KPF direktorio propietaten orria
 Index: krdc/krdc.desktop
 ===================================================================
---- krdc/krdc.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krdc/krdc.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krdc/krdc.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -20,6 +20,7 @@
  GenericName[da]=Ekstern desktopforbindelse
  GenericName[de]=Verbindung zu Fremdrechner
@@ -24,8 +24,8 @@ Index: krdc/krdc.desktop
  GenericName[eu]=Urruneko mahaigain konexioa
 Index: krfb/krfb/krfb.desktop
 ===================================================================
---- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/krfb/krfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/krfb/krfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -21,6 +21,7 @@
  GenericName[da]=Desktopdeling
  GenericName[de]=Arbeitsfläche freigeben
@@ -36,8 +36,8 @@ Index: krfb/krfb/krfb.desktop
  GenericName[eu]=Mahaigain partekatzea
 Index: krfb/krfb/main.cpp
 ===================================================================
---- krfb/krfb/main.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/krfb/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/krfb/main.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/krfb/main.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -39,6 +39,7 @@
  
  #include <signal.h>
@@ -48,8 +48,8 @@ Index: krfb/krfb/main.cpp
  static const char description[] = I18N_NOOP("VNC-compatible server to share "
 Index: krfb/libvncserver/main.c
 ===================================================================
---- krfb/libvncserver/main.c	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/libvncserver/main.c	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/libvncserver/main.c	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/libvncserver/main.c	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -260,6 +260,7 @@
  	    UNLOCK(cl->updateMutex);
  
@@ -60,8 +60,8 @@ Index: krfb/libvncserver/main.c
  		if (!haveUpdate)
 Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
 ===================================================================
---- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/krfb_httpd/kinetd_krfb_httpd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -54,7 +54,7 @@
  Comment[cy]=Meicro-daemon http sy'n gwasanaethu'r rhaglennig gwelydd VNC
  Comment[da]=En mikro http-dæmon for krfb der betjener VNC visningsappletten.
@@ -82,8 +82,8 @@ Index: krfb/krfb_httpd/kinetd_krfb_httpd.desktop
  Comment[sr]=Микро http демон за krfb који опслужује аплет VNC приказивача.
 Index: krfb/kcm_krfb/kcm_krfb.cpp
 ===================================================================
---- krfb/kcm_krfb/kcm_krfb.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/kcm_krfb/kcm_krfb.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/kcm_krfb/kcm_krfb.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/kcm_krfb/kcm_krfb.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -38,6 +38,7 @@
  #include <kdebug.h>
  #include <dcopclient.h>
@@ -94,8 +94,8 @@ Index: krfb/kcm_krfb/kcm_krfb.cpp
  
 Index: krfb/kcm_krfb/kcmkrfb.desktop
 ===================================================================
---- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -150,6 +150,7 @@
  Keywords[da]=desktopdeling,krfb,vnc,deling,krdc,ekstern desktopforbindelse,invitation,port,slp,ikke inviteret
  Keywords[de]=Arbeitsfläche freigeben,krfb,VNC,freigeben,krdc,Entfernte Arbeitsfläche,Einladung,Port,slp,uneingeladen
@@ -114,8 +114,8 @@ Index: krfb/kcm_krfb/kcmkrfb.desktop
  Keywords[sr]=desktop sharing,krfb,vnc,sharing,krdc,remote desktop connection,invitation,port,slp,uninvited,радна површина,дељење,позив,порт,непозван,удаљено
 Index: krfb/kinetd/kinetd.desktop
 ===================================================================
---- krfb/kinetd/kinetd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- krfb/kinetd/kinetd.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -43,7 +43,7 @@
  Name[mn]=KDE Интернет-демон
  Name[ms]=Daemon Internet KDE
@@ -136,8 +136,8 @@ Index: krfb/kinetd/kinetd.desktop
  Comment[nl]=Een internetdaemon die netwerkdiensten op afroep start
 Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
 ===================================================================
---- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ lanbrowsing/kcmlisa/kcmkiolan.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -120,6 +120,7 @@
  Keywords[bg]=настройки, локална, мрежа, lan
  Keywords[bn]=ল্যান
@@ -148,8 +148,8 @@ Index: lanbrowsing/kcmlisa/kcmkiolan.desktop
  Keywords[gl]=lan,redes locáis
 Index: kdnssd/ioslave/zeroconf.desktop
 ===================================================================
---- kdnssd/ioslave/zeroconf.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kdnssd/ioslave/zeroconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kdnssd/ioslave/zeroconf.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kdnssd/ioslave/zeroconf.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -12,6 +12,7 @@
  Name[da]=Netværkstjenester
  Name[de]=Netzwerkdienste
@@ -160,8 +160,8 @@ Index: kdnssd/ioslave/zeroconf.desktop
  Name[eu]=Sare zerbitzuak
 Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Lytter nu
  Name[de]=Im Hintergrund läuft
@@ -181,8 +181,8 @@ Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
  Comment[km]=ប្រាប់​សម្លាញ់​អ្នក​ថា អ្នក​កំពុង​ស្ដាប់​អ្វី
 Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Lytter nu
  Name[de]=Im Hintergrund läuft
@@ -202,8 +202,8 @@ Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
  Comment[km]=ប្រាប់​សម្លាញ់​អ្នក​ថា អ្នក​កំពុង​ស្ដាប់​អ្វី
 Index: kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop
 ===================================================================
---- kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -66,6 +66,7 @@
  Comment[da]=SMPPPDCS-Plugin
  Comment[de]=SMPPPDCS-Modul
@@ -214,8 +214,8 @@ Index: kopete/plugins/smpppdcs/kopete_smpppdcs_config.desktop
  Comment[eu]=SMPPPDCS plugin-a
 Index: kopete/plugins/alias/kopete_alias.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -23,6 +23,7 @@
  Name[ca]=Àlies
  Name[cy]=Ffugenw
@@ -226,8 +226,8 @@ Index: kopete/plugins/alias/kopete_alias.desktop
  Name[fi]=Uusi nimi
 Index: kopete/plugins/alias/kopete_alias_config.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,6 +19,7 @@
  Name[ca]=Àlies
  Name[cy]=Ffugenw
@@ -238,8 +238,8 @@ Index: kopete/plugins/alias/kopete_alias_config.desktop
  Name[fi]=Uusi nimi
 Index: kopete/plugins/translator/kopete_translator.desktop
 ===================================================================
---- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -27,6 +27,7 @@
  Name[da]=Oversætter
  Name[de]=Übersetzer
@@ -250,8 +250,8 @@ Index: kopete/plugins/translator/kopete_translator.desktop
  Name[eu]=Itzultzailea
 Index: kopete/plugins/translator/kopete_translator_config.desktop
 ===================================================================
---- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -23,6 +23,7 @@
  Name[da]=Oversætter
  Name[de]=Übersetzer
@@ -262,8 +262,8 @@ Index: kopete/plugins/translator/kopete_translator_config.desktop
  Name[eu]=Itzultzailea
 Index: kopete/plugins/statistics/kopete_statistics.desktop
 ===================================================================
---- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Statistik
  Name[de]=Statistiken
@@ -274,8 +274,8 @@ Index: kopete/plugins/statistics/kopete_statistics.desktop
  Name[eu]=Estatistikak
 Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/cryptography/kopete_cryptography_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Kryptografi
  Name[de]=Kryptographie
@@ -286,8 +286,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography_config.desktop
  Name[eu]=Kriptografia
 Index: kopete/plugins/cryptography/kopete_cryptography.desktop
 ===================================================================
---- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/cryptography/kopete_cryptography.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/cryptography/kopete_cryptography.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Kryptografi
  Name[de]=Kryptographie
@@ -298,8 +298,8 @@ Index: kopete/plugins/cryptography/kopete_cryptography.desktop
  Name[eu]=Kriptografia
 Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/netmeeting/kopete_netmeeting_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -15,6 +15,7 @@
  Name[bg]=Видео чат
  Name[bn]=নেট মিটিং
@@ -310,8 +310,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting_config.desktop
  Name[hi]=नेटमीटिंग
 Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
 ===================================================================
---- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/netmeeting/kopete_netmeeting.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,6 +19,7 @@
  Name[bg]=Видео чат
  Name[bn]=নেট মিটিং
@@ -322,8 +322,8 @@ Index: kopete/plugins/netmeeting/kopete_netmeeting.desktop
  Name[hi]=नेटमीटिंग
 Index: kopete/plugins/texteffect/kopete_texteffect.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/texteffect/kopete_texteffect.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/texteffect/kopete_texteffect.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Teksteffekt
  Name[de]=Texteffekte
@@ -342,8 +342,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect.desktop
  Comment[eu]=Gehitu efektu atseginak zure mezuei
 Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
 ===================================================================
---- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/texteffect/kopete_texteffect_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Teksteffekt
  Name[de]=Texteffekte
@@ -354,8 +354,8 @@ Index: kopete/plugins/texteffect/kopete_texteffect_config.desktop
  Name[eu]=Testuaren efektua
 Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -91,6 +91,7 @@
  Comment[da]=Historik-plugin
  Comment[de]=Verlaufsmodul
@@ -366,8 +366,8 @@ Index: kopete/plugins/history/kopete_history_config.desktop
  Comment[eu]=Historia plugin-a
 Index: kopete/plugins/webpresence/kopete_webpresence.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -77,6 +77,7 @@
  Name[da]=WWW-nærvær
  Name[de]=Web-Präsenz
@@ -378,8 +378,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence.desktop
  Name[fa]=حضور وب
 Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -73,6 +73,7 @@
  Name[da]=WWW-nærvær
  Name[de]=Web-Präsenz
@@ -390,8 +390,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
  Name[fa]=حضور وب
 Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
 ===================================================================
---- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/connectionstatus/kopete_connectionstatus.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -25,6 +25,7 @@
  Name[da]=Forbindelsesstatus
  Name[de]=Verbindungsstatus
@@ -402,8 +402,8 @@ Index: kopete/plugins/connectionstatus/kopete_connectionstatus.desktop
  Name[eu]=Konexioaren egoera
 Index: kopete/plugins/contactnotes/kopete_contactnotes.desktop
 ===================================================================
---- kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/contactnotes/kopete_contactnotes.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -27,6 +27,7 @@
  Name[da]=Kontaktnoter
  Name[de]=Kontakt-Notizen
@@ -422,8 +422,8 @@ Index: kopete/plugins/contactnotes/kopete_contactnotes.desktop
  Comment[eu]=Gehitu ohar pertsonalak zure kontaktuei
 Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/autoreplace/kopete_autoreplace.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Auto-erstat
  Name[de]=Automatische Ersetzung
@@ -434,8 +434,8 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace.desktop
  Name[eu]=Auto ordezkatu
 Index: kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
 ===================================================================
---- kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/autoreplace/kopete_autoreplace_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Auto-erstat
  Name[de]=Automatische Ersetzung
@@ -446,8 +446,8 @@ Index: kopete/plugins/autoreplace/kopete_autoreplace_config.desktop
  Name[eu]=Auto ordezkatu
 Index: kopete/plugins/highlight/kopete_highlight.desktop
 ===================================================================
---- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,6 +26,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -466,8 +466,8 @@ Index: kopete/plugins/highlight/kopete_highlight.desktop
  Comment[eu]=Nabarmendu mezuak
 Index: kopete/plugins/highlight/kopete_highlight_config.desktop
 ===================================================================
---- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -478,8 +478,8 @@ Index: kopete/plugins/highlight/kopete_highlight_config.desktop
  Name[eu]=Nabarmendu
 Index: kopete/plugins/latex/kopete_latex_config.desktop
 ===================================================================
---- kopete/plugins/latex/kopete_latex_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/plugins/latex/kopete_latex_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/plugins/latex/kopete_latex_config.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/plugins/latex/kopete_latex_config.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Fremhæv
  Name[de]=Hervorhebung
@@ -490,8 +490,8 @@ Index: kopete/plugins/latex/kopete_latex_config.desktop
  Name[eu]=Nabarmendu
 Index: kopete/protocols/groupwise/kopete_groupwise.desktop
 ===================================================================
---- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/groupwise/kopete_groupwise.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/groupwise/kopete_groupwise.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -18,7 +18,6 @@
  Name=GroupWise
  Name[bn]=গ্রুপ-ওয়াইজ
@@ -511,8 +511,8 @@ Index: kopete/protocols/groupwise/kopete_groupwise.desktop
  Comment[km]=កម្មវិធី​ផ្ញើ​សារ​របស់​ណូវែល - GroupWise
 Index: kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp
 ===================================================================
---- kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -75,30 +75,28 @@
  	// CREATE CONTACT LIST
  	// locate contact list
@@ -566,8 +566,8 @@ Index: kopete/protocols/groupwise/libgroupwise/tasks/logintask.cpp
  
 Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
 ===================================================================
---- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/jabber/kioslave/jabberdisco.protocol	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -26,7 +26,7 @@
  Description[gl]=Un KIO slave para Jabber Service Discovery
  Description[hu]=KDE-protokoll a Jabber szolgáltatáskereső használatához
@@ -577,10 +577,284 @@ Index: kopete/protocols/jabber/kioslave/jabberdisco.protocol
  Description[ja]=Jabber Service Discovery の KIO スレーブ
  Description[kk]=Jabber қызметін байқау KIO slave қызметі
  Description[km]=KIO slave មួយ​សម្រាប់​របក​គំហើញ​សេវា Jabber
+Index: kopete/protocols/oscar/liboscar/localcontactlisttask.h
+===================================================================
+--- kopete/protocols/oscar/liboscar/localcontactlisttask.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/localcontactlisttask.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -1,39 +0,0 @@
+-/*
+-  Kopete Oscar Protocol
+-
+-  Copyright (c) 2005 Jan Ritzerfeld <kde@bugs.jan.ritzerfeld.net>
+-  Copyright (c) 2004-2005 Matt Rogers <mattr@kde.org>
+-
+-  Kopete (c) 2002-2005 by the Kopete developers <kopete-devel@kde.org>
+-
+-  *************************************************************************
+-  *                                                                       *
+-  * This library is free software; you can redistribute it and/or         *
+-  * modify it under the terms of the GNU Lesser General Public            *
+-  * License as published by the Free Software Foundation; either          *
+-  * version 2 of the License, or (at your option) any later version.      *
+-  *                                                                       *
+-  *************************************************************************
+-*/
+-#ifndef LOCALCONTACTLISTTASK_H
+-#define LOCALCONTACTLISTTASK_H
+-
+-#include "task.h"
+-
+-/**
+-Fire and forget task to let the server think we're using a local contact list
+-This will show status of "waiting for authorization" contacts
+-
+-@author Jan Ritzerfeld
+-*/
+-class LocalContactListTask : public Task
+-{
+-public:
+-	LocalContactListTask( Task* parent );
+-	~LocalContactListTask();
+-	virtual void onGo();
+-};
+-
+-#endif
+-
+-//kate: tab-width 4; indent-mode csands;
+Index: kopete/protocols/oscar/liboscar/localcontactlisttask.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/localcontactlisttask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/localcontactlisttask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -1,89 +0,0 @@
+-/*
+-   Kopete Oscar Protocol
+-   fakelocalcontactlisttask.cpp
+-
+-   Copyright (c) 2005 Jan Ritzerfeld <kde@bugs.jan.ritzerfeld.net>
+-   Copyright (c) 2004 Matt Rogers <mattr@kde.org>
+-
+-   Kopete (c) 2002-2005 by the Kopete developers <kopete-devel@kde.org>
+-
+-   *************************************************************************
+-   *                                                                       *
+-   * This library is free software; you can redistribute it and/or         *
+-   * modify it under the terms of the GNU Lesser General Public            *
+-   * License as published by the Free Software Foundation; either          *
+-   * version 2 of the License, or (at your option) any later version.      *
+-   *                                                                       *
+-   *************************************************************************
+-*/
+-#include "localcontactlisttask.h"
+-
+-#include <kdebug.h>
+-#include "buffer.h"
+-#include "connection.h"
+-#include "ssimanager.h"
+-#include "oscarsettings.h"
+-#include "oscartypes.h"
+-#include "oscarutils.h"
+-#include "transfer.h"
+-
+-using namespace Oscar;
+-
+-#define PACKET_SIZE_LIMIT 8000
+-
+-LocalContactListTask::LocalContactListTask(Task* parent): Task(parent)
+-{
+-}
+-
+-
+-LocalContactListTask::~LocalContactListTask()
+-{
+-}
+-
+-
+-void LocalContactListTask::onGo()
+-{
+-	if( !client()->settings()->respectRequireAuth() )
+-	{
+-		QValueList<Oscar::SSI> contactList = client()->ssiManager()->contactList();
+-		
+-		if ( contactList.isEmpty() )
+-		{
+-			setSuccess( 0, QString::null );
+-			return;
+-		}
+-		
+-		FLAP f = { 0x02, 0, 0 };
+-		SNAC s = { 0x0003, 0x0004, 0x0000, client()->snacSequence() };
+-		Buffer* buffer = new Buffer();
+-		
+-		kdDebug( OSCAR_RAW_DEBUG ) << k_funcinfo << "Sending contact list" << endl;
+-		QValueList<Oscar::SSI>::const_iterator cEnd = contactList.constEnd();
+-		for ( QValueList<Oscar::SSI>::const_iterator it = contactList.constBegin(); it != cEnd; ++it )
+-		{
+-			if ( ( buffer->length() + ( *it ).name().length() ) 
+-				< PACKET_SIZE_LIMIT )
+-			{
+-				kdDebug( OSCAR_RAW_DEBUG ) << "Adding contact " << ( *it ).name() << " to CLI_BUDDYLIST_ADD packet" << endl;
+-				buffer->addBUIN( ( *it ).name().latin1() );
+-			}
+-			else
+-			{
+-				kdDebug( OSCAR_RAW_DEBUG ) << "CLI_BUDDYLIST_ADD packet is full. Transmitting the packet" << endl;
+-				Transfer* t = createTransfer( f, s, buffer );
+-				send( t );
+-
+-				buffer = new Buffer();
+-				kdDebug( OSCAR_RAW_DEBUG ) << "Adding contact " << ( *it ).name() << " to CLI_BUDDYLIST_ADD packet" << endl;
+-				buffer->addBUIN( ( *it ).name().latin1() );
+-			}
+-		}
+-	
+-		Transfer* t = createTransfer( f, s, buffer );
+-		send( t );
+-	}
+-	
+-	setSuccess( 0, QString::null );
+-}
+-
+-//kate: tab-width 4; indent-mode csands;
+Index: kopete/protocols/oscar/liboscar/userdetails.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/userdetails.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/userdetails.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -124,7 +124,11 @@
+ 
+ QString UserDetails::clientName() const
+ {
+-	return (m_clientName + m_clientVersion);
++	if ( !m_clientVersion.isEmpty() )
++		return i18n("Translators: client-name client-version",
++	                "%1 %2").arg(m_clientName, m_clientVersion);
++	else
++		return m_clientName;
+ }
+ 
+ void UserDetails::fill( Buffer * buffer )
+@@ -196,10 +200,10 @@
+ 				m_dcInsideIp = KNetwork::KIpAddress( ntohl( b.getDWord() ) );
+ 				m_dcPort = b.getDWord();
+ #ifdef OSCAR_USERINFO_DEBUG
+-    			kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Internal IP address is " << m_dcInsideIp.toString() << endl;
+-    			kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Port number is " << m_dcPort << endl;
++				kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Internal IP address is " << m_dcInsideIp.toString() << endl;
++				kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Port number is " << m_dcPort << endl;
+ #endif
+-    			m_dcType = b.getByte();
++				m_dcType = b.getByte();
+ 				m_dcProtoVersion = b.getWord();
+ 				m_dcAuthCookie = b.getDWord();
+ 				m_dcWebFrontPort = b.getDWord();
+@@ -216,6 +220,9 @@
+ 			case 0x000D: //capability info
+ 				m_capabilities = Oscar::parseCapabilities( b, m_clientVersion );
+ 				m_capabilitiesSpecified = true;
++#ifdef OSCAR_USERINFO_DEBUG
++				kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "Got capability info" << endl;
++#endif
+ 				break;
+ 			case 0x0010:
+ 			case 0x000F: //online time
+@@ -306,7 +313,7 @@
+ 	 * Thanks a lot for all the tests you guys must have made
+ 	 * without sim-icq I would have only checked for the capabilities
+ 	 */
+-	 /*
++	 
+ 	bool clientMatched = false;
+ 	if (m_capabilities != 0)
+ 	{
+@@ -345,9 +352,9 @@
+ 				m_clientName=i18n("Licq");
+ 
+ 			if (ver % 10)
+-				m_clientVersion.sprintf("%d%d%u", ver/1000, (ver/10)%100, ver%10);
++				m_clientVersion.sprintf("%d.%d.%u", ver/1000, (ver/10)%100, ver%10);
+ 			else
+-				m_clientVersion.sprintf("%d%u", ver/1000, (ver/10)%100);
++				m_clientVersion.sprintf("%d.%u", ver/1000, (ver/10)%100);
+ 			return;
+ 		}
+ 		else // some client we could not detect using capabilities
+@@ -425,6 +432,9 @@
+ 			case 9:
+ 				m_clientName=QString::fromLatin1("ICQ Lite");
+ 				break;
++			case 8:
++				m_clientName=QString::fromLatin1("Miranda");
++				break;
+ 			default:
+ 				m_clientName=QString::fromLatin1("ICQ2go");
+ 			}
+@@ -464,7 +474,7 @@
+ 
+ 	kdDebug(OSCAR_RAW_DEBUG) << k_funcinfo << "detected client as: " << m_clientName
+ 		<< " " << m_clientVersion << endl;
+-	*/
++	
+ }
+ 
+ bool UserDetails::hasCap( int capNumber ) const
+Index: kopete/protocols/oscar/liboscar/oscarsettings.h
+===================================================================
+--- kopete/protocols/oscar/liboscar/oscarsettings.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/oscarsettings.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -42,8 +42,6 @@
+ 	/* Authorization settings */
+ 	void setRequireAuth( bool require );
+ 	bool requireAuth() const;
+-	void setRespectRequireAuth( bool require );
+-	bool respectRequireAuth() const;
+ 	
+ 	/* Hide IP Settings */
+ 	void setHideIP( bool hide );
+@@ -53,7 +51,6 @@
+ 	
+ 	bool m_webAware;
+ 	bool m_requireAuth;
+-	bool m_respectRequireAuth;
+ 	bool m_hideIP;
+ };
+ 
+Index: kopete/protocols/oscar/liboscar/Makefile.am
+===================================================================
+--- kopete/protocols/oscar/liboscar/Makefile.am	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -19,7 +19,7 @@
+ 	offlinemessagestask.cpp ssiauthtask.cpp userinfotask.cpp icquserinfo.cpp icquserinfotask.cpp \
+ 	usersearchtask.cpp warningtask.cpp changevisibilitytask.cpp typingnotifytask.cpp \
+ 	buddyicontask.cpp serverredirecttask.cpp oscarsettings.cpp \
+-	localcontactlisttask.cpp chatnavservicetask.cpp connectionhandler.cpp chatservicetask.cpp
++	chatnavservicetask.cpp connectionhandler.cpp chatservicetask.cpp
+ 
+ liboscar_la_LDFLAGS = -no-undefined $(all_libraries)
+ liboscar_la_LIBADD = $(LIB_QT) $(LIB_KDECORE)
+Index: kopete/protocols/oscar/liboscar/oscarsettings.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/oscarsettings.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/oscarsettings.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -49,16 +49,6 @@
+ 	return m_requireAuth;
+ }
+ 
+-void Settings::setRespectRequireAuth( bool respect )
+-{
+-	m_respectRequireAuth = respect;
+-}
+-
+-bool Settings::respectRequireAuth() const
+-{
+-	return m_respectRequireAuth;
+-}
+-
+ void Settings::setHideIP( bool hide )
+ {
+ 	m_hideIP = hide;
 Index: kopete/protocols/oscar/liboscar/client.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -564,6 +564,10 @@
  	}
  	else if ( ! msg.hasProperty( Oscar::Message::AutoResponse ) )
@@ -592,10 +866,46 @@ Index: kopete/protocols/oscar/liboscar/client.cpp
  		// let application handle it
  		kdDebug( OSCAR_RAW_DEBUG ) << k_funcinfo << "Emitting receivedMessage" << endl;
  		emit messageReceived( msg );
+Index: kopete/protocols/oscar/liboscar/servicesetuptask.cpp
+===================================================================
+--- kopete/protocols/oscar/liboscar/servicesetuptask.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/liboscar/servicesetuptask.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -21,7 +21,6 @@
+ #include "blmlimitstask.h"
+ #include "connection.h"
+ #include "clientreadytask.h"
+-#include "localcontactlisttask.h"
+ #include "icbmparamstask.h"
+ #include "locationrightstask.h"
+ #include "ownuserinfotask.h"
+@@ -110,8 +109,6 @@
+ 		crt->setFamilies( familyList );
+ 		sitt->go( true );
+ 		crt->go( true ); //autodelete
+-		LocalContactListTask* lclt = new LocalContactListTask( client()->rootTask() );
+-		lclt->go( true );
+ 	}
+ 	
+ 	if ( m_finishedTaskCount == 8 )
+Index: kopete/protocols/oscar/icq/icqpresence.h
+===================================================================
+--- kopete/protocols/oscar/icq/icqpresence.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/icq/icqpresence.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -96,8 +96,8 @@
+ 	/**
+ 	 * Friendly types this status can be
+ 	 */
+-	enum Type { Offline, DoNotDisturb, Occupied, NotAvailable, Away, FreeForChat, Online };
+-	enum { TypeCount = Online + 1 };
++	enum Type { Offline, DoNotDisturb, Occupied, NotAvailable, Away, Online, FreeForChat };
++	enum { TypeCount = FreeForChat + 1 };
+ 	
+ 	enum Visibility { Invisible, Visible };
+ 	
 Index: kopete/protocols/oscar/icq/x-icq.desktop
 ===================================================================
---- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/oscar/icq/x-icq.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/icq/x-icq.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -13,6 +13,7 @@
  Comment[da]=ICQ-Kontakt
  Comment[de]=ICQ-Kontakt
@@ -604,10 +914,75 @@ Index: kopete/protocols/oscar/icq/x-icq.desktop
  Comment[es]=Contacto de ICQ
  Comment[et]=ICQ kontakt
  Comment[eu]=ICQ kontaktua
+Index: kopete/protocols/oscar/icq/icqaccount.cpp
+===================================================================
+--- kopete/protocols/oscar/icq/icqaccount.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/icq/icqaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -172,8 +172,6 @@
+ 		Oscar::Settings* oscarSettings = engine()->clientSettings();
+ 		oscarSettings->setWebAware( configGroup()->readBoolEntry( "WebAware", false ) );
+ 		oscarSettings->setHideIP( configGroup()->readBoolEntry( "HideIP", true ) );
+-		oscarSettings->setRequireAuth( configGroup()->readBoolEntry( "RequireAuth", false ) );
+-		oscarSettings->setRespectRequireAuth( configGroup()->readBoolEntry( "RespectRequireAuth", true ) );
+ 		//FIXME: also needed for the other call to setStatus (in setPresenceTarget)
+ 		DWORD status = pres.toOscarStatus();
+ 
+Index: kopete/protocols/oscar/icq/ui/icqeditaccountwidget.cpp
+===================================================================
+--- kopete/protocols/oscar/icq/ui/icqeditaccountwidget.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/icq/ui/icqeditaccountwidget.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -78,9 +78,6 @@
+         bool configValue = mAccount->configGroup()->readBoolEntry( "RequireAuth", false );
+ 		mAccountSettings->chkRequireAuth->setChecked( configValue );
+ 
+-        configValue = mAccount->configGroup()->readBoolEntry( "RespectRequireAuth", true );
+-		mAccountSettings->chkRespectRequireAuth->setChecked( configValue );
+-
+         configValue = mAccount->configGroup()->readBoolEntry( "HideIP", true );
+ 		mAccountSettings->chkHideIP->setChecked( configValue );
+ 
+@@ -130,9 +127,6 @@
+     bool configValue = mAccountSettings->chkRequireAuth->isChecked();
+ 	mAccount->configGroup()->writeEntry( "RequireAuth", configValue );
+ 
+-    configValue = mAccountSettings->chkRespectRequireAuth->isChecked();
+-	mAccount->configGroup()->writeEntry( "RespectRequireAuth", configValue );
+-
+     configValue = mAccountSettings->chkHideIP->isChecked();
+ 	mAccount->configGroup()->writeEntry( "HideIP", configValue );
+ 
+Index: kopete/protocols/oscar/icq/ui/icqeditaccountui.ui
+===================================================================
+--- kopete/protocols/oscar/icq/ui/icqeditaccountui.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/oscar/icq/ui/icqeditaccountui.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -331,14 +331,6 @@
+                             </widget>
+                             <widget class="QCheckBox" row="1" column="0">
+                                 <property name="name">
+-                                    <cstring>chkRespectRequireAuth</cstring>
+-                                </property>
+-                                <property name="text">
+-                                    <string>Respect other contacts' &amp;wish to require authorization</string>
+-                                </property>
+-                            </widget>
+-                            <widget class="QCheckBox" row="2" column="0">
+-                                <property name="name">
+                                     <cstring>chkHideIP</cstring>
+                                 </property>
+                                 <property name="text">
+@@ -351,7 +343,7 @@
+                                     <string>Checking this box will not allow people to see what your IP address if they view your ICQ user details such as name, address, or age.</string>
+                                 </property>
+                             </widget>
+-                            <widget class="QCheckBox" row="3" column="0">
++                            <widget class="QCheckBox" row="2" column="0">
+                                 <property name="name">
+                                     <cstring>chkWebAware</cstring>
+                                 </property>
 Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,6 +19,7 @@
  #include <qcheckbox.h>
  #include <qpushbutton.h>
@@ -729,8 +1104,8 @@ Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.cpp
  #include "meanwhileeditaccountwidget.moc"
 Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhileeditaccountwidget.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -43,6 +43,9 @@
      void slotSetServer2Default();
  protected:
@@ -743,8 +1118,8 @@ Index: kopete/protocols/meanwhile/meanwhileeditaccountwidget.h
  #endif
 Index: kopete/protocols/meanwhile/meanwhilesession.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhilesession.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhilesession.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhilesession.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhilesession.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -48,6 +48,32 @@
  
  #define get_protocol() (static_cast<MeanwhileProtocol *>(account->protocol()))
@@ -869,8 +1244,8 @@ Index: kopete/protocols/meanwhile/meanwhilesession.cpp
          (struct mwConference *conf, struct mwLoginInfo *inviter,
 Index: kopete/protocols/meanwhile/meanwhilesession.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhilesession.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhilesession.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhilesession.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhilesession.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -25,6 +25,11 @@
  #include <mw_srvc_im.h>
  #include <mw_srvc_resolve.h>
@@ -905,8 +1280,8 @@ Index: kopete/protocols/meanwhile/meanwhilesession.h
       * Emitted when the status of the connection changes
 Index: kopete/protocols/meanwhile/meanwhileaccount.cpp
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhileaccount.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -107,9 +107,7 @@
      }
  
@@ -959,8 +1334,8 @@ Index: kopete/protocols/meanwhile/meanwhileaccount.cpp
      KMessageBox::queuedMessageBox(0, KMessageBox::Error , mesg,
 Index: kopete/protocols/meanwhile/meanwhileaccount.h
 ===================================================================
---- kopete/protocols/meanwhile/meanwhileaccount.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/meanwhileaccount.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/meanwhileaccount.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/meanwhileaccount.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -64,6 +64,15 @@
      /** Provide an information plugin for this account */
      void    setPlugin(MeanwhilePlugin *plugin);
@@ -979,8 +1354,8 @@ Index: kopete/protocols/meanwhile/meanwhileaccount.h
      /**
 Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
 ===================================================================
---- kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,12 +19,6 @@
          <property name="name">
              <cstring>unnamed</cstring>
@@ -1230,8 +1605,8 @@ Index: kopete/protocols/meanwhile/ui/meanwhileeditaccountbase.ui
  </UI>
 Index: kopete/protocols/testbed/kopete_testbed.desktop
 ===================================================================
---- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/testbed/kopete_testbed.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/testbed/kopete_testbed.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,6 +19,7 @@
  Name[ar]=مكان اختبار
  Name[bn]=পরীক্ষাস্থল
@@ -1242,8 +1617,8 @@ Index: kopete/protocols/testbed/kopete_testbed.desktop
  Name[gl]=testbed
 Index: kopete/protocols/msn/kopete_msn.desktop
 ===================================================================
---- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/protocols/msn/kopete_msn.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/protocols/msn/kopete_msn.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -21,6 +21,7 @@
  Name[cy]=Negesydd MSN
  Name[da]=MSN-Messenger
@@ -1254,8 +1629,8 @@ Index: kopete/protocols/msn/kopete_msn.desktop
  Name[hi]=एमएसएन मैसेंजर
 Index: kopete/kopete/eventsrc
 ===================================================================
---- kopete/kopete/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -10,6 +10,7 @@
  Comment[cy]=Negesydd Kopete
  Comment[de]=Kopete-Nachrichtendienst
@@ -1426,8 +1801,8 @@ Index: kopete/kopete/eventsrc
  Name[eu]=Zerbitzariaren barne-errorea
 Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -17,6 +17,7 @@
  GenericName[cs]=Komunikátor
  GenericName[cy]=Negesydd Chwim
@@ -1446,8 +1821,8 @@ Index: kopete/kopete/kopete.desktop
  Comment[eu]=Berehalako mezularitza
 Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
 ===================================================================
---- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -23,6 +23,7 @@
  Name[da]=Konti
  Name[de]=Zugänge
@@ -1458,8 +1833,8 @@ Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
  Name[eu]=Kontuak
 Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
 ===================================================================
---- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -23,6 +23,7 @@
  Name[da]=Udseende
  Name[de]=Erscheinungsbild
@@ -1470,8 +1845,8 @@ Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
  Name[eu]=Itxura
 Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
 ===================================================================
---- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -24,6 +24,7 @@
  Name[de]=Verhalten
  Name[el]=Συμπεριφορά
@@ -1480,10 +1855,128 @@ Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
  Name[es]=Comportamiento
  Name[et]=Käitumine
  Name[eu]=Portaera
+Index: kopete/kopete/config/avdevice/avdeviceconfig.h
+===================================================================
+--- kopete/kopete/config/avdevice/avdeviceconfig.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/avdevice/avdeviceconfig.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -61,8 +61,6 @@
+ 	void slotImageAutoBrightnessContrastChanged(bool);
+ 	void slotImageAutoColorCorrectionChanged(bool);
+ 	void slotImageAsMirrorChanged(bool);
+-	void slotDeviceDisableMMapChanged(bool);
+-	void slotDeviceWorkaroundBrokenDriverChanged(bool);
+ 	void slotUpdateImage();
+ private:
+ 	QTabWidget* mAVDeviceTabCtl;
+Index: kopete/kopete/config/avdevice/avdeviceconfig_videoconfig.ui
+===================================================================
+--- kopete/kopete/config/avdevice/avdeviceconfig_videoconfig.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/avdevice/avdeviceconfig_videoconfig.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -529,59 +529,6 @@
+                                     </widget>
+                                 </vbox>
+                             </widget>
+-                            <widget class="QButtonGroup">
+-                                <property name="name">
+-                                    <cstring>deviceOptions</cstring>
+-                                </property>
+-                                <property name="sizePolicy">
+-                                    <sizepolicy>
+-                                        <hsizetype>5</hsizetype>
+-                                        <vsizetype>1</vsizetype>
+-                                        <horstretch>0</horstretch>
+-                                        <verstretch>0</verstretch>
+-                                    </sizepolicy>
+-                                </property>
+-                                <property name="title">
+-                                    <string>Device options</string>
+-                                </property>
+-                                <grid>
+-                                    <property name="name">
+-                                        <cstring>unnamed</cstring>
+-                                    </property>
+-                                    <widget class="QCheckBox" row="1" column="0">
+-                                        <property name="name">
+-                                            <cstring>mDeviceWorkaroundBrokenDriver</cstring>
+-                                        </property>
+-                                        <property name="sizePolicy">
+-                                            <sizepolicy>
+-                                                <hsizetype>3</hsizetype>
+-                                                <vsizetype>1</vsizetype>
+-                                                <horstretch>0</horstretch>
+-                                                <verstretch>0</verstretch>
+-                                            </sizepolicy>
+-                                        </property>
+-                                        <property name="text">
+-                                            <string>&amp;Workaround broken driver</string>
+-                                        </property>
+-                                    </widget>
+-                                    <widget class="QCheckBox" row="0" column="0">
+-                                        <property name="name">
+-                                            <cstring>mDeviceDisableMMap</cstring>
+-                                        </property>
+-                                        <property name="sizePolicy">
+-                                            <sizepolicy>
+-                                                <hsizetype>3</hsizetype>
+-                                                <vsizetype>1</vsizetype>
+-                                                <horstretch>0</horstretch>
+-                                                <verstretch>0</verstretch>
+-                                            </sizepolicy>
+-                                        </property>
+-                                        <property name="text">
+-                                            <string>Disable memor&amp;y mapping</string>
+-                                        </property>
+-                                    </widget>
+-                                </grid>
+-                            </widget>
+                         </vbox>
+                     </widget>
+                 </grid>
+Index: kopete/kopete/config/avdevice/avdeviceconfig.cpp
+===================================================================
+--- kopete/kopete/config/avdevice/avdeviceconfig.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/avdevice/avdeviceconfig.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -63,8 +63,6 @@
+ 	connect(mPrfsVideoDevice->mImageAutoBrightnessContrast,  SIGNAL(toggled(bool)),     this, SLOT(slotImageAutoBrightnessContrastChanged(bool)));
+ 	connect(mPrfsVideoDevice->mImageAutoColorCorrection,     SIGNAL(toggled(bool)),     this, SLOT(slotImageAutoColorCorrectionChanged(bool)));
+ 	connect(mPrfsVideoDevice->mImageAsMirror,                SIGNAL(toggled(bool)),     this, SLOT(slotImageAsMirrorChanged(bool)));
+-	connect(mPrfsVideoDevice->mDeviceDisableMMap,            SIGNAL(toggled(bool)),     this, SLOT(slotDeviceDisableMMapChanged(bool)));
+-	connect(mPrfsVideoDevice->mDeviceWorkaroundBrokenDriver, SIGNAL(toggled(bool)),     this, SLOT(slotDeviceWorkaroundBrokenDriverChanged(bool)));
+ 
+ 	// why is this here?
+ 	// mPrfsVideoDevice->mVideoImageLabel->setPixmap(qpixmap);
+@@ -135,8 +133,6 @@
+ 		mPrfsVideoDevice->mImageAutoBrightnessContrast->setChecked(mVideoDevicePool->getAutoBrightnessContrast());
+ 		mPrfsVideoDevice->mImageAutoColorCorrection->setChecked(mVideoDevicePool->getAutoColorCorrection());
+ 		mPrfsVideoDevice->mImageAsMirror->setChecked(mVideoDevicePool->getImageAsMirror());
+-		mPrfsVideoDevice->mDeviceDisableMMap->setChecked(mVideoDevicePool->getDisableMMap());
+-		mPrfsVideoDevice->mDeviceWorkaroundBrokenDriver->setChecked(mVideoDevicePool->getWorkaroundBrokenDriver());
+ 	}
+ }
+ 
+@@ -224,18 +220,6 @@
+ 	emit changed( true );
+ }
+ 
+-void AVDeviceConfig::slotDeviceWorkaroundBrokenDriverChanged(bool){
+-	kdDebug() << "kopete:config (avdevice): slotDeviceWorkaroundBrokenDriverChanged(" << mPrfsVideoDevice->mDeviceWorkaroundBrokenDriver->isChecked() << ") called. " << endl;
+-	mVideoDevicePool->setWorkaroundBrokenDriver(mPrfsVideoDevice->mDeviceWorkaroundBrokenDriver->isChecked());
+-	emit changed( true );
+-}
+-
+-void AVDeviceConfig::slotDeviceDisableMMapChanged(bool){
+-	kdDebug() << "kopete:config (avdevice): slotDeviceDisableMMapChanged(" << mPrfsVideoDevice->mDeviceDisableMMap->isChecked() << ") called. " << endl;
+-	mVideoDevicePool->setDisableMMap(mPrfsVideoDevice->mDeviceDisableMMap->isChecked());
+-	emit changed( true );
+-}
+-
+ void AVDeviceConfig::slotUpdateImage()
+ {
+ 	mVideoDevicePool->getFrame();
 Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
 ===================================================================
---- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/kopete/config/identity/kopete_identityconfig.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -22,6 +22,7 @@
  Name[da]=Identitet
  Name[de]=Identität
@@ -1494,8 +1987,8 @@ Index: kopete/kopete/config/identity/kopete_identityconfig.desktop
  Name[eu]=Identitatea
 Index: kopete/libkopete/kopetepluginmanager.cpp
 ===================================================================
---- kopete/libkopete/kopetepluginmanager.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/libkopete/kopetepluginmanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/libkopete/kopetepluginmanager.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/kopetepluginmanager.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -261,30 +261,37 @@
  	KConfig *config = KGlobal::config();
  	if ( config->hasGroup( QString::fromLatin1( "Plugins" ) ) )
@@ -1550,11 +2043,441 @@ Index: kopete/libkopete/kopetepluginmanager.cpp
  		}
  	}
  	else
+Index: kopete/libkopete/avdevice/bayer.cpp
+===================================================================
+--- kopete/libkopete/avdevice/bayer.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 0)
++++ kopete/libkopete/avdevice/bayer.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -0,0 +1,118 @@
++/*
++ * BAYER2RGB24 ROUTINE TAKEN FROM:
++ *
++ * Sonix SN9C101 based webcam basic I/F routines
++ * Copyright (C) 2004 Takafumi Mizuno <taka-qce@ls-a.jp>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++void bayer2rgb24(unsigned char *dst, unsigned char *src, long int WIDTH, long int HEIGHT)
++{
++	long int i;
++	unsigned char *rawpt, *scanpt;
++	long int size;
++
++	rawpt = src;
++	scanpt = dst;
++	size = WIDTH*HEIGHT;
++
++	for ( i = 0; i < size; i++ )
++	{
++		if ( (i/WIDTH) % 2 == 0 )
++		{
++			if ( (i % 2) == 0 )
++			{
++				// B
++				if ( (i > WIDTH) && ((i % WIDTH) > 0) )
++				{
++					*scanpt++ = (*(rawpt-WIDTH-1)+*(rawpt-WIDTH+1)+*(rawpt+WIDTH-1)+*(rawpt+WIDTH+1))/4;	// R
++					*scanpt++ = (*(rawpt-1)+*(rawpt+1)+*(rawpt+WIDTH)+*(rawpt-WIDTH))/4;			// G
++					*scanpt++ = *rawpt;									// B
++				}
++				else
++				{
++					// first line or left column
++					*scanpt++ = *(rawpt+WIDTH+1);			// R
++					*scanpt++ = (*(rawpt+1)+*(rawpt+WIDTH))/2;	// G
++					*scanpt++ = *rawpt;				// B
++				}
++			}
++			else
++			{
++				// (B)G
++				if ( (i > WIDTH) && ((i % WIDTH) < (WIDTH-1)) )
++				{
++					*scanpt++ = (*(rawpt+WIDTH)+*(rawpt-WIDTH))/2;	// R
++					*scanpt++ = *rawpt;				// G
++					*scanpt++ = (*(rawpt-1)+*(rawpt+1))/2;		// B
++				}
++				else
++				{
++					// first line or right column
++					*scanpt++ = *(rawpt+WIDTH);	// R
++					*scanpt++ = *rawpt;		// G
++					*scanpt++ = *(rawpt-1);		// B
++				}
++			}
++		}
++		else
++		{
++			if ( (i % 2) == 0 )
++			{
++				// G(R)
++				if ( (i < (WIDTH*(HEIGHT-1))) && ((i % WIDTH) > 0) )
++				{
++					*scanpt++ = (*(rawpt-1)+*(rawpt+1))/2;		// R
++					*scanpt++ = *rawpt;				// G
++					*scanpt++ = (*(rawpt+WIDTH)+*(rawpt-WIDTH))/2;	// B
++				}
++				else
++				{
++					// bottom line or left column
++					*scanpt++ = *(rawpt+1);		/* R */
++					*scanpt++ = *rawpt;			/* G */
++					*scanpt++ = *(rawpt-WIDTH);		/* B */
++				}
++			}
++			else
++			{
++				// R
++				if ( i < (WIDTH*(HEIGHT-1)) && ((i % WIDTH) < (WIDTH-1)) )
++				{
++					*scanpt++ = *rawpt;									// R
++					*scanpt++ = (*(rawpt-1)+*(rawpt+1)+*(rawpt-WIDTH)+*(rawpt+WIDTH))/4;			// G
++					*scanpt++ = (*(rawpt-WIDTH-1)+*(rawpt-WIDTH+1)+*(rawpt+WIDTH-1)+*(rawpt+WIDTH+1))/4;	// B
++				}
++				else
++				{
++					// bottom line or right column
++					*scanpt++ = *rawpt;				/* R */
++					*scanpt++ = (*(rawpt-1)+*(rawpt-WIDTH))/2;	/* G */
++					*scanpt++ = *(rawpt-WIDTH-1);		/* B */
++				}
++			}
++		}
++		rawpt++;
++	}
++}
++
+Index: kopete/libkopete/avdevice/bayer.h
+===================================================================
+--- kopete/libkopete/avdevice/bayer.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 0)
++++ kopete/libkopete/avdevice/bayer.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -0,0 +1,30 @@
++/*
++ * BAYER2RGB24 ROUTINE TAKEN FROM:
++ *
++ * Sonix SN9C101 based webcam basic I/F routines
++ * Copyright (C) 2004 Takafumi Mizuno <taka-qce@ls-a.jp>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++
++void bayer2rgb24 (unsigned char *dst, unsigned char *src, long int WIDTH, long int HEIGHT);
+Index: kopete/libkopete/avdevice/sonix_compress.cpp
+===================================================================
+--- kopete/libkopete/avdevice/sonix_compress.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 0)
++++ kopete/libkopete/avdevice/sonix_compress.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -0,0 +1,180 @@
++#include "sonix_compress.h"
++
++#define CLAMP(x)	((x)<0?0:((x)>255)?255:(x))
++
++typedef struct {
++	int is_abs;
++	int len;
++	int val;
++	int unk;
++} code_table_t;
++
++
++/* local storage */
++static code_table_t table[256];
++static int init_done = 0;
++
++/* global variable */
++int sonix_unknown = 0;
++
++/*
++	sonix_decompress_init
++	=====================
++		pre-calculates a locally stored table for efficient huffman-decoding.
++
++	Each entry at index x in the table represents the codeword
++	present at the MSB of byte x.
++
++*/
++void sonix_decompress_init(void)
++{
++	int i;
++	int is_abs, val, len, unk;
++
++	for (i = 0; i < 256; i++) {
++		is_abs = 0;
++		val = 0;
++		len = 0;
++		unk = 0;
++		if ((i & 0x80) == 0) {
++			/* code 0 */
++			val = 0;
++			len = 1;
++		}
++		else if ((i & 0xE0) == 0x80) {
++			/* code 100 */
++			val = +4;
++			len = 3;
++		}
++		else if ((i & 0xE0) == 0xA0) {
++			/* code 101 */
++			val = -4;
++			len = 3;
++		}
++		else if ((i & 0xF0) == 0xD0) {
++			/* code 1101 */
++			val = +11;
++			len = 4;
++		}
++		else if ((i & 0xF0) == 0xF0) {
++			/* code 1111 */
++			val = -11;
++			len = 4;
++		}
++		else if ((i & 0xF8) == 0xC8) {
++			/* code 11001 */
++			val = +20;
++			len = 5;
++		}
++		else if ((i & 0xFC) == 0xC0) {
++			/* code 110000 */
++			val = -20;
++			len = 6;
++		}
++		else if ((i & 0xFC) == 0xC4) {
++			/* code 110001xx: unknown */
++			val = 0;
++			len = 8;
++			unk = 1;
++		}
++		else if ((i & 0xF0) == 0xE0) {
++			/* code 1110xxxx */
++			is_abs = 1;
++			val = (i & 0x0F) << 4;
++			len = 8;
++		}
++		table[i].is_abs = is_abs;
++		table[i].val = val;
++		table[i].len = len;
++		table[i].unk = unk;
++	}
++
++	sonix_unknown = 0;
++	init_done = 1;
++}
++
++
++/*
++	sonix_decompress
++	================
++		decompresses an image encoded by a SN9C101 camera controller chip.
++
++	IN	width
++		height
++		inp		pointer to compressed frame (with header already stripped)
++	OUT	outp	pointer to decompressed frame
++
++	Returns 0 if the operation was successful.
++	Returns <0 if operation failed.
++
++*/
++int sonix_decompress(int width, int height, unsigned char *inp, unsigned char *outp)
++{
++	int row, col;
++	int val;
++	int bitpos;
++	unsigned char code;
++	unsigned char *addr;
++
++	if (!init_done) {
++		/* do sonix_decompress_init first! */
++		return -1;
++	}
++
++	bitpos = 0;
++	for (row = 0; row < height; row++) {
++
++		col = 0;
++
++		/* first two pixels in first two rows are stored as raw 8-bit */
++		if (row < 2) {
++			addr = inp + (bitpos >> 3);
++			code = (addr[0] << (bitpos & 7)) | (addr[1] >> (8 - (bitpos & 7)));
++			bitpos += 8;
++			*outp++ = code;
++
++			addr = inp + (bitpos >> 3);
++			code = (addr[0] << (bitpos & 7)) | (addr[1] >> (8 - (bitpos & 7)));
++			bitpos += 8;
++			*outp++ = code;
++
++			col += 2;
++		}
++
++		while (col < width) {
++			/* get bitcode from bitstream */
++			addr = inp + (bitpos >> 3);
++			code = (addr[0] << (bitpos & 7)) | (addr[1] >> (8 - (bitpos & 7)));
++
++			/* update bit position */
++			bitpos += table[code].len;
++
++			/* update code statistics */
++			sonix_unknown += table[code].unk;
++
++			/* calculate pixel value */
++			val = table[code].val;
++			if (!table[code].is_abs) {
++				/* value is relative to top and left pixel */
++				if (col < 2) {
++					/* left column: relative to top pixel */
++					val += outp[-2*width];
++				}
++				else if (row < 2) {
++					/* top row: relative to left pixel */
++					val += outp[-2];
++				}
++				else {
++					/* main area: average of left pixel and top pixel */
++					val += (outp[-2] + outp[-2*width]) / 2;
++				}
++			}
++
++			/* store pixel */
++			*outp++ = CLAMP(val);
++			col++;
++		}
++	}
++
++	return 0;
++}
+Index: kopete/libkopete/avdevice/sonix_compress.h
+===================================================================
+--- kopete/libkopete/avdevice/sonix_compress.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 0)
++++ kopete/libkopete/avdevice/sonix_compress.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -0,0 +1,8 @@
++// Call this function first (just once is needed), before calling sonix_decompress
++void sonix_decompress_init(void);
++
++// decompresses data at inp until a full image of widthxheight has been written to outp
++int sonix_decompress(int width, int height, unsigned char *inp, unsigned char *outp);
++
++// counter to detect presence of currently unknown huffman codes
++extern int sonix_unknown;
 Index: kopete/libkopete/avdevice/videodevicepool.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevicepool.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/libkopete/avdevice/videodevicepool.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
-@@ -919,7 +919,7 @@
+--- kopete/libkopete/avdevice/videodevicepool.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/avdevice/videodevicepool.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -392,48 +392,6 @@
+ }
+ 
+ /*!
+-    \fn VideoDevicePool::getDisableMMap()
+- */
+-bool VideoDevicePool::getDisableMMap()
+-{
+-	if(m_videodevice.size())
+-		return m_videodevice[currentDevice()].getDisableMMap();
+-	return false;
+-}
+-
+-/*!
+-    \fn VideoDevicePool::setDisableMMap(bool disablemmap)
+- */
+-bool VideoDevicePool::setDisableMMap(bool disablemmap)
+-{
+-	kdDebug(14010) <<  k_funcinfo << "VideoDevicePool::setDisableMMap(" << disablemmap << ") called." << endl;
+-	if(m_videodevice.size())
+-		return m_videodevice[currentDevice()].setDisableMMap(disablemmap);
+-	return false;
+-}
+-
+-/*!
+-    \fn VideoDevicePool::getWorkaroundBrokenDriver()
+- */
+-bool VideoDevicePool::getWorkaroundBrokenDriver()
+-{
+-	if(m_videodevice.size())
+-		return m_videodevice[currentDevice()].getWorkaroundBrokenDriver();
+-	return false;
+-}
+-
+-/*!
+-    \fn VideoDevicePool::setWorkaroundBrokenDriver(bool workaroundbrokendriver)
+- */
+-bool VideoDevicePool::setWorkaroundBrokenDriver(bool workaroundbrokendriver)
+-{
+-	kdDebug(14010) <<  k_funcinfo << "VideoDevicePool::setWorkaroundBrokenDriver(" << workaroundbrokendriver << ") called." << endl;
+-	if(m_videodevice.size())
+-		return m_videodevice[currentDevice()].setWorkaroundBrokenDriver(workaroundbrokendriver);
+-	return false;
+-}
+-
+-/*!
+     \fn VideoDevicePool::getFrame()
+  */
+ int VideoDevicePool::getFrame()
+@@ -818,11 +776,8 @@
+ 			}
+ 			const QString name                = config->readEntry((QString::fromLocal8Bit ( "Model %1 Device %2 Name")  .arg ((*vditerator).m_name ) .arg ((*vditerator).m_modelindex)), (*vditerator).m_model);
+ 			const int currentinput            = config->readNumEntry((QString::fromLocal8Bit ( "Model %1 Device %2 Current input")  .arg ((*vditerator).m_name ) .arg ((*vditerator).m_modelindex)), 0);
+-			const bool disablemmap            = config->readBoolEntry((QString::fromLocal8Bit ( "Model %1 Device %2 DisableMMap")  .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex)), false );
+-			const bool workaroundbrokendriver = config->readBoolEntry((QString::fromLocal8Bit ( "Model %1 Device %2 WorkaroundBrokenDriver")  .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex)), false );
+ 			kdDebug(14010) << k_funcinfo << "Device name: " << name << endl;
+ 			kdDebug(14010) << k_funcinfo << "Device current input: " << currentinput << endl;
+-			(*vditerator).setWorkaroundBrokenDriver(workaroundbrokendriver);
+ 			(*vditerator).selectInput(currentinput);
+ 
+ 			for (size_t input = 0 ; input < (*vditerator).m_input.size(); input++)
+@@ -890,12 +845,8 @@
+ // Stores current input for the given video device
+ 			const QString name                   = QString::fromLocal8Bit ( "Model %1 Device %2 Name")  .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex);
+ 			const QString currentinput           = QString::fromLocal8Bit ( "Model %1 Device %2 Current input")  .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex);
+-			const QString disablemmap            = QString::fromLocal8Bit ( "Model %1 Device %2 DisableMMap") .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex);
+-			const QString workaroundbrokendriver = QString::fromLocal8Bit ( "Model %1 Device %2 WorkaroundBrokenDriver") .arg ((*vditerator).m_model ) .arg ((*vditerator).m_modelindex);
+ 			config->writeEntry( name,                   (*vditerator).m_name);
+ 			config->writeEntry( currentinput,           (*vditerator).currentInput());
+-			config->writeEntry( disablemmap,            (*vditerator).getDisableMMap());
+-			config->writeEntry( workaroundbrokendriver, (*vditerator).getWorkaroundBrokenDriver());
+ 
+ 			for (size_t input = 0 ; input < (*vditerator).m_input.size(); input++)
+ 			{
+@@ -919,7 +870,7 @@
  				config->writeEntry( brightness,             (*vditerator).m_input[input].getBrightness());
  				config->writeEntry( contrast,               (*vditerator).m_input[input].getContrast());
  				config->writeEntry( saturation,             (*vditerator).m_input[input].getSaturation());
@@ -1563,11 +2486,37 @@ Index: kopete/libkopete/avdevice/videodevicepool.cpp
  				config->writeEntry( hue,                    (*vditerator).m_input[input].getHue());
  				config->writeEntry( autobrightnesscontrast, (*vditerator).m_input[input].getAutoBrightnessContrast());
  				config->writeEntry( autocolorcorrection,    (*vditerator).m_input[input].getAutoColorCorrection());
+Index: kopete/libkopete/avdevice/videodevicepool.h
+===================================================================
+--- kopete/libkopete/avdevice/videodevicepool.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/avdevice/videodevicepool.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -102,11 +102,6 @@
+ 	bool getImageAsMirror();
+ 	bool setImageAsMirror(bool imageasmirror);
+ 
+-	bool getDisableMMap();
+-	bool setDisableMMap(bool disablemmap);
+-	bool getWorkaroundBrokenDriver();
+-	bool setWorkaroundBrokenDriver(bool workaroundbrokendriver);
+-
+ 	void loadConfig(); // Load configuration parameters;
+ 	void saveConfig(); // Save configuretion parameters;
+ 
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
-@@ -39,6 +39,10 @@
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -26,6 +26,9 @@
+ #include "videoinput.h"
+ #include "videodevice.h"
+ 
++#include "bayer.h"
++#include "sonix_compress.h"
++
+ #define CLEAR(x) memset (&(x), 0, sizeof (x))
+ 
+ namespace Kopete {
+@@ -39,6 +42,10 @@
  	m_streambuffers  = 0;
  	m_current_input = 0;
  //	kdDebug(14010) << "libkopete (avdevice): VideoDevice() exited successfuly" << endl;
@@ -1578,10 +2527,857 @@ Index: kopete/libkopete/avdevice/videodevice.cpp
  }
  
  
+@@ -280,7 +287,6 @@
+ // http://www.linuxtv.org/downloads/video4linux/API/V4L2_API/spec/x519.htm fails because of this behavior with a bttv card.
+ 
+ int currentid = V4L2_CID_BASE;
+-int resultado = 0;
+ 
+ kdDebug(14010) <<  k_funcinfo << "Checking CID controls" << endl;
+ 
+@@ -420,38 +426,9 @@
+ 		}
+ #endif
+ 		m_name=m_model; // Take care about changing the name to be different from the model itself...
+-// TODO: THis thing can be used to detec what pixel formats are supported in a API-independent way, but V4L2 has VIDIOC_ENUM_PIXFMT.
+-// The correct thing to do is to isolate these calls and do a proper implementation for V4L and another for V4L2 when this thing will be migrated to a plugin architecture.
+-		kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << "Supported pixel formats:" << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_GREY))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_GREY) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB332))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB332) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB555))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB555) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB555X))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB555X) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB565))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB565) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB565X))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB565X) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB24))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB24) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_BGR24))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_BGR24) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB32))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_RGB32) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_BGR32))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_BGR32) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUYV))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_YUYV) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_UYVY))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_UYVY) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUV422P))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_YUV422P) << endl;
+-		if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUV420P))
+-			kdDebug(14010) <<  k_funcinfo << "checkDevice(): " << pixelFormatName(PIXELFORMAT_YUV420P) << endl;
+ 
++		detectPixelFormats();
++
+ // TODO: Now we must execute the proper initialization according to the type of the driver.
+ 		kdDebug(14010) <<  k_funcinfo << "checkDevice() exited successfuly." << endl;
+ 		return EXIT_SUCCESS;
+@@ -670,7 +647,15 @@
+ 								{
+ 									kdDebug(14010) <<  k_funcinfo << "Card doesn't seem to support RGB32 format. Trying BGR32." << endl;
+ 									if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_BGR32))
+-										kdDebug(14010) <<  k_funcinfo << "Card doesn't seem to support BGR32 format. Fallback to it is not yet implemented." << endl;
++									{
++										kdDebug(14010) <<  k_funcinfo << "Card doesn't seem to support BGR32 format. Trying SN9C10X." << endl;
++										if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SN9C10X))
++										{
++											kdDebug(14010) <<  k_funcinfo << "Card doesn't seem to support SN9C10X format. Trying Bayer RGB." << endl;
++											if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SBGGR8))
++												kdDebug(14010) <<  k_funcinfo << "Card doesn't seem to support SBGGR8 format. Fallback from it is not yet implemented." << endl;
++										}
++									}
+ 								}
+ 							}
+ 						}
+@@ -812,8 +797,11 @@
+ 			}
+ 			else
+ 			{
+-				m_pixelformat = newformat;
+-				ret = m_pixelformat;
++				if (fmt.fmt.pix.pixelformat == pixelFormatCode(newformat))
++				{
++					m_pixelformat = newformat;
++					ret = m_pixelformat;
++				}
+ 			}
+ 			break;
+ #endif
+@@ -1132,7 +1120,7 @@
+ 				break;
+ 		}
+ 
+-// Automatic color correction. Now it just swaps R and B channels in RGB24/BGR24 modes.
++/* Automatic color correction. Now it just swaps R and B channels in RGB24/BGR24 modes.
+ 		if(m_input[m_current_input].getAutoColorCorrection())
+ 		{
+ 			switch(m_currentbuffer.pixelformat)
+@@ -1173,7 +1161,7 @@
+ 				case PIXELFORMAT_YUV420P: break;
+ 				case PIXELFORMAT_YUV422P: break;
+ 			}
+-		}
++		}*/
+ //kdDebug(14010) <<  k_funcinfo << "10 Using IO_METHOD_READ.File descriptor: " << descriptor << " Buffer address: " << &m_currentbuffer.data[0] << " Size: " << m_currentbuffer.data.size() << endl;
+ 
+ 
+@@ -1208,16 +1196,20 @@
+ {
+     /// @todo implement me
+ 
+-	qimage->create(width(), height(),32, QImage::IgnoreEndian);
++	// do NOT delete qimage here, as it is received as a parameter
++	if (qimage->width() != width() || qimage->height() != height()) 
++		qimage->create(width(), height(),32, QImage::IgnoreEndian);
++
+ 	uchar *bits=qimage->bits();
+-//kdDebug(14010) <<  k_funcinfo << "Capturing in " << pixelFormatName(m_currentbuffer.pixelformat) << endl;
++// kDebug() << "Capturing in " << pixelFormatName(m_currentbuffer.pixelformat);
+ 	switch(m_currentbuffer.pixelformat)
+ 	{
+ 		case PIXELFORMAT_NONE	: break;
+-		case PIXELFORMAT_GREY	: break;
++
++// Packed RGB formats
+ 		case PIXELFORMAT_RGB332	: break;
++		case PIXELFORMAT_RGB444	: break;
+ 		case PIXELFORMAT_RGB555	: break;
+-		case PIXELFORMAT_RGB555X: break;
+ 		case PIXELFORMAT_RGB565	:
+ 			{
+ 				int step=0;
+@@ -1231,41 +1223,62 @@
+ 				}
+ 			}
+ 			break;
++		case PIXELFORMAT_RGB555X: break;
+ 		case PIXELFORMAT_RGB565X: break;
+-		case PIXELFORMAT_RGB24	:
++		case PIXELFORMAT_BGR24	:
+ 			{
+ 				int step=0;
+ 				for(int loop=0;loop < qimage->numBytes();loop+=4)
+ 				{
+-					bits[loop]   = m_currentbuffer.data[step];
++					bits[loop]   = m_currentbuffer.data[step+2];
+ 					bits[loop+1] = m_currentbuffer.data[step+1];
+-					bits[loop+2] = m_currentbuffer.data[step+2];
++					bits[loop+2] = m_currentbuffer.data[step];
+ 					bits[loop+3] = 255;
+ 					step+=3;
+ 				}
+ 			}
+ 			break;
+-		case PIXELFORMAT_BGR24	: break;
++		case PIXELFORMAT_RGB24	:
+ 			{
+ 				int step=0;
+ 				for(int loop=0;loop < qimage->numBytes();loop+=4)
+ 				{
+-					bits[loop]   = m_currentbuffer.data[step+2];
++					bits[loop]   = m_currentbuffer.data[step];
+ 					bits[loop+1] = m_currentbuffer.data[step+1];
+-					bits[loop+2] = m_currentbuffer.data[step];
++					bits[loop+2] = m_currentbuffer.data[step+2];
+ 					bits[loop+3] = 255;
+ 					step+=3;
+ 				}
+ 			}
+ 			break;
++		case PIXELFORMAT_BGR32	: break;
+ 		case PIXELFORMAT_RGB32	: memcpy(bits,&m_currentbuffer.data[0], m_currentbuffer.data.size());
+ 			break;
+-		case PIXELFORMAT_BGR32	: break;
+-	
++
++// Bayer RGB format
++		case PIXELFORMAT_SBGGR8	:
++		{
++			unsigned char *d = (unsigned char *) malloc (width() * height() * 3);
++			bayer2rgb24(d, &m_currentbuffer.data.first(), width(), height());
++			int step=0;
++			for(int loop=0;loop < qimage->numBytes();loop+=4)
++			{
++				bits[loop]   = d[step+2];
++				bits[loop+1] = d[step+1];
++				bits[loop+2] = d[step];
++				bits[loop+3] = 255;
++				step+=3;
++			}
++			free(d);
++		}
++		break;
++
++// YUV formats
++		case PIXELFORMAT_GREY	: break;
+ 		case PIXELFORMAT_YUYV:
+ 		case PIXELFORMAT_UYVY:
++		case PIXELFORMAT_YUV420P:
+ 		case PIXELFORMAT_YUV422P:
+-		case PIXELFORMAT_YUV420P:
+ 		{
+ 			uchar *yptr, *cbptr, *crptr;
+ 			bool halfheight=false;
+@@ -1345,8 +1358,42 @@
+ 			}
+ 		}
+ 		break;
++
++// Compressed formats
++		case PIXELFORMAT_JPEG	: break;
++		case PIXELFORMAT_MPEG	: break;
++
++// Reserved formats
++		case PIXELFORMAT_DV	: break;
++		case PIXELFORMAT_ET61X251:break;
++		case PIXELFORMAT_HI240	: break;
++		case PIXELFORMAT_HM12	: break;
++		case PIXELFORMAT_MJPEG	: break;
++		case PIXELFORMAT_PWC1	: break;
++		case PIXELFORMAT_PWC2	: break;
++		case PIXELFORMAT_SN9C10X:
++		{
++			unsigned char *s = new unsigned char [width() * height()];
++			unsigned char *d = new unsigned char [width() * height() * 3];
++			sonix_decompress_init();
++			sonix_decompress(width(), height(), &m_currentbuffer.data.first(), s);
++			bayer2rgb24(d, s, width(), height());
++			int step=0;
++			for(int loop=0;loop < qimage->numBytes();loop+=4)
++			{
++				bits[loop]   = d[step+2];
++				bits[loop+1] = d[step+1];
++				bits[loop+2] = d[step];
++				bits[loop+3] = 255;
++				step+=3;
++			}
++			delete[] s;
++			delete[] d;
++		}
++		break;
++		case PIXELFORMAT_WNVA	: break;
++		case PIXELFORMAT_YYUV	: break;
+ 	}
+-
+ 	return EXIT_SUCCESS;
+ }
+ 
+@@ -1455,7 +1502,7 @@
+ 				{
+ 					CLEAR (control);
+ 					control.id = V4L2_CID_BRIGHTNESS;
+-					control.value = (queryctrl.maximum - queryctrl.minimum)*getBrightness();
++					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getBrightness());
+ 
+ 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+ 					{
+@@ -1470,7 +1517,7 @@
+ 				struct video_picture V4L_picture;
+ 				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "VIDIOCGPICT failed (" << errno << ")." << endl;
+-				V4L_picture.brightness   = (65535*getBrightness());
++				V4L_picture.brightness   = uint(65535*getBrightness());
+ 				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "Card seems to not support adjusting image brightness. Fallback to it is not yet implemented." << endl;
+ 			}
+@@ -1525,7 +1572,7 @@
+ 				{
+ 					CLEAR (control);
+ 					control.id = V4L2_CID_CONTRAST;
+-					control.value = (queryctrl.maximum - queryctrl.minimum)*getContrast();
++					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getContrast());
+ 
+ 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+ 					{
+@@ -1540,7 +1587,7 @@
+ 				struct video_picture V4L_picture;
+ 				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "VIDIOCGPICT failed (" << errno << ")." << endl;
+-				V4L_picture.contrast   = (65535*getContrast());
++				V4L_picture.contrast   = uint(65535*getContrast());
+ 				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "Card seems to not support adjusting image contrast. Fallback to it is not yet implemented." << endl;
+ 			}
+@@ -1595,7 +1642,7 @@
+ 				{
+ 					CLEAR (control);
+ 					control.id = V4L2_CID_SATURATION;
+-					control.value = (queryctrl.maximum - queryctrl.minimum)*getSaturation();
++					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getSaturation());
+ 
+ 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+ 					{
+@@ -1610,7 +1657,7 @@
+ 				struct video_picture V4L_picture;
+ 				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "VIDIOCGPICT failed (" << errno << ")." << endl;
+-				V4L_picture.colour   = (65535*getSaturation());
++				V4L_picture.colour   = uint(65535*getSaturation());
+ 				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "Card seems to not support adjusting image saturation. Fallback to it is not yet implemented." << endl;
+ 			}
+@@ -1665,7 +1712,7 @@
+ 				{
+ 					CLEAR (control);
+ 					control.id = V4L2_CID_WHITENESS;
+-					control.value = (queryctrl.maximum - queryctrl.minimum)*getWhiteness();
++					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getWhiteness());
+ 
+ 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+ 					{
+@@ -1680,7 +1727,7 @@
+ 				struct video_picture V4L_picture;
+ 				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "VIDIOCGPICT failed (" << errno << ")." << endl;
+-				V4L_picture.whiteness   = (65535*getWhiteness());
++				V4L_picture.whiteness   = uint(65535*getWhiteness());
+ 				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "Card seems to not support adjusting white level. Fallback to it is not yet implemented." << endl;
+ 			}
+@@ -1735,7 +1782,7 @@
+ 				{
+ 					CLEAR (control);
+ 					control.id = V4L2_CID_HUE;
+-					control.value = (queryctrl.maximum - queryctrl.minimum)*getHue();
++					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getHue());
+ 
+ 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+ 					{
+@@ -1750,7 +1797,7 @@
+ 				struct video_picture V4L_picture;
+ 				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "VIDIOCGPICT failed (" << errno << ")." << endl;
+-				V4L_picture.hue   = (65535*getHue());
++				V4L_picture.hue   = uint(65535*getHue());
+ 				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+ 					kdDebug(14010) <<  k_funcinfo << "Card seems to not support adjusting image hue. Fallback to it is not yet implemented." << endl;
+ 			}
+@@ -1825,30 +1872,6 @@
+ 	  return false;
+ }
+ 
+-bool VideoDevice::getDisableMMap()
+-{
+-	return m_disablemmap;
+-}
+-
+-bool VideoDevice::setDisableMMap(bool disablemmap)
+-{
+-	kdDebug(14010) <<  k_funcinfo << "VideoDevice::setDisableMMap(" << disablemmap << ") called." << endl;
+-	m_disablemmap = disablemmap;
+-	return m_disablemmap;
+-}
+-
+-bool VideoDevice::getWorkaroundBrokenDriver()
+-{
+-	return m_workaroundbrokendriver;
+-}
+-
+-bool VideoDevice::setWorkaroundBrokenDriver(bool workaroundbrokendriver)
+-{
+-	kdDebug(14010) <<  k_funcinfo << "VideoDevice::setWorkaroundBrokenDriver(" << workaroundbrokendriver << ") called." << endl;
+-	m_workaroundbrokendriver = workaroundbrokendriver;
+-	return m_workaroundbrokendriver;
+-}
+-
+ pixel_format VideoDevice::pixelFormatForPalette( int palette )
+ {
+ 	switch(m_driver)
+@@ -1859,20 +1882,44 @@
+ 			switch(palette)
+ 			{
+ 				case 0 				: return PIXELFORMAT_NONE;	break;
+-				case V4L2_PIX_FMT_GREY		: return PIXELFORMAT_GREY;	break;
++
++// Packed RGB formats
+ 				case V4L2_PIX_FMT_RGB332	: return PIXELFORMAT_RGB332;	break;
++				case V4L2_PIX_FMT_RGB444	: return PIXELFORMAT_RGB444;	break;
+ 				case V4L2_PIX_FMT_RGB555	: return PIXELFORMAT_RGB555;	break;
++				case V4L2_PIX_FMT_RGB565	: return PIXELFORMAT_RGB565;	break;
+ 				case V4L2_PIX_FMT_RGB555X	: return PIXELFORMAT_RGB555X;	break;
+-				case V4L2_PIX_FMT_RGB565	: return PIXELFORMAT_RGB565;	break;
+ 				case V4L2_PIX_FMT_RGB565X	: return PIXELFORMAT_RGB565X;	break;
++				case V4L2_PIX_FMT_BGR24		: return PIXELFORMAT_BGR24;	break;
+ 				case V4L2_PIX_FMT_RGB24		: return PIXELFORMAT_RGB24;	break;
+-				case V4L2_PIX_FMT_BGR24		: return PIXELFORMAT_BGR24;	break;
++				case V4L2_PIX_FMT_BGR32		: return PIXELFORMAT_BGR32;	break;
+ 				case V4L2_PIX_FMT_RGB32		: return PIXELFORMAT_RGB32;	break;
+-				case V4L2_PIX_FMT_BGR32		: return PIXELFORMAT_BGR32;	break;
++
++// Bayer RGB format
++				case V4L2_PIX_FMT_SBGGR8	: return PIXELFORMAT_SBGGR8;	break;
++
++// YUV formats
++				case V4L2_PIX_FMT_GREY		: return PIXELFORMAT_GREY;	break;
+ 				case V4L2_PIX_FMT_YUYV		: return PIXELFORMAT_YUYV;	break;
+ 				case V4L2_PIX_FMT_UYVY		: return PIXELFORMAT_UYVY;	break;
+ 				case V4L2_PIX_FMT_YUV420	: return PIXELFORMAT_YUV420P;	break;
+ 				case V4L2_PIX_FMT_YUV422P	: return PIXELFORMAT_YUV422P;	break;
++
++// Compressed formats
++				case V4L2_PIX_FMT_JPEG		: return PIXELFORMAT_JPEG;	break;
++				case V4L2_PIX_FMT_MPEG		: return PIXELFORMAT_MPEG;	break;
++
++// Reserved formats
++				case V4L2_PIX_FMT_DV		: return PIXELFORMAT_DV;	break;
++				case V4L2_PIX_FMT_ET61X251	: return PIXELFORMAT_ET61X251;	break;
++				case V4L2_PIX_FMT_HI240		: return PIXELFORMAT_HI240;	break;
++				case V4L2_PIX_FMT_HM12		: return PIXELFORMAT_HM12;	break;
++				case V4L2_PIX_FMT_MJPEG		: return PIXELFORMAT_MJPEG;	break;
++				case V4L2_PIX_FMT_PWC1		: return PIXELFORMAT_PWC1;	break;
++				case V4L2_PIX_FMT_PWC2		: return PIXELFORMAT_PWC2;	break;
++				case V4L2_PIX_FMT_SN9C10X	: return PIXELFORMAT_SN9C10X;	break;
++				case V4L2_PIX_FMT_WNVA		: return PIXELFORMAT_WNVA;	break;
++				case V4L2_PIX_FMT_YYUV		: return PIXELFORMAT_YYUV;	break;
+ 			}
+ 			break;
+ #endif
+@@ -1911,20 +1958,44 @@
+ 			switch(pixelformat)
+ 			{
+ 				case PIXELFORMAT_NONE	: return 0;			break;
+-				case PIXELFORMAT_GREY	: return V4L2_PIX_FMT_GREY;	break;
++
++// Packed RGB formats
+ 				case PIXELFORMAT_RGB332	: return V4L2_PIX_FMT_RGB332;	break;
++				case PIXELFORMAT_RGB444	: return V4L2_PIX_FMT_RGB444;	break;
+ 				case PIXELFORMAT_RGB555	: return V4L2_PIX_FMT_RGB555;	break;
++				case PIXELFORMAT_RGB565	: return V4L2_PIX_FMT_RGB565;	break;
+ 				case PIXELFORMAT_RGB555X: return V4L2_PIX_FMT_RGB555X;	break;
+-				case PIXELFORMAT_RGB565	: return V4L2_PIX_FMT_RGB565;	break;
+ 				case PIXELFORMAT_RGB565X: return V4L2_PIX_FMT_RGB565X;	break;
++				case PIXELFORMAT_BGR24	: return V4L2_PIX_FMT_BGR24;	break;
+ 				case PIXELFORMAT_RGB24	: return V4L2_PIX_FMT_RGB24;	break;
+-				case PIXELFORMAT_BGR24	: return V4L2_PIX_FMT_BGR24;	break;
++				case PIXELFORMAT_BGR32	: return V4L2_PIX_FMT_BGR32;	break;
+ 				case PIXELFORMAT_RGB32	: return V4L2_PIX_FMT_RGB32;	break;
+-				case PIXELFORMAT_BGR32	: return V4L2_PIX_FMT_BGR32;	break;
++
++// Bayer RGB format
++				case PIXELFORMAT_SBGGR8	: return V4L2_PIX_FMT_SBGGR8;	break;
++
++// YUV formats
++				case PIXELFORMAT_GREY	: return V4L2_PIX_FMT_GREY;	break;
+ 				case PIXELFORMAT_YUYV	: return V4L2_PIX_FMT_YUYV;	break;
+ 				case PIXELFORMAT_UYVY	: return V4L2_PIX_FMT_UYVY;	break;
+ 				case PIXELFORMAT_YUV420P: return V4L2_PIX_FMT_YUV420;	break;
+ 				case PIXELFORMAT_YUV422P: return V4L2_PIX_FMT_YUV422P;	break;
++
++// Compressed formats
++				case PIXELFORMAT_JPEG	: return V4L2_PIX_FMT_JPEG;	break;
++				case PIXELFORMAT_MPEG	: return V4L2_PIX_FMT_MPEG;	break;
++
++// Reserved formats
++				case PIXELFORMAT_DV	: return V4L2_PIX_FMT_DV;	break;
++				case PIXELFORMAT_ET61X251:return V4L2_PIX_FMT_ET61X251;break;
++				case PIXELFORMAT_HI240	: return V4L2_PIX_FMT_HI240;	break;
++				case PIXELFORMAT_HM12	: return V4L2_PIX_FMT_HM12;	break;
++				case PIXELFORMAT_MJPEG	: return V4L2_PIX_FMT_MJPEG;	break;
++				case PIXELFORMAT_PWC1	: return V4L2_PIX_FMT_PWC1;	break;
++				case PIXELFORMAT_PWC2	: return V4L2_PIX_FMT_PWC2;	break;
++				case PIXELFORMAT_SN9C10X: return V4L2_PIX_FMT_SN9C10X;	break;
++				case PIXELFORMAT_WNVA	: return V4L2_PIX_FMT_WNVA;	break;
++				case PIXELFORMAT_YYUV	: return V4L2_PIX_FMT_YYUV;	break;
+ 			}
+ 			break;
+ #endif
+@@ -1932,20 +2003,44 @@
+ 			switch(pixelformat)
+ 			{
+ 				case PIXELFORMAT_NONE	: return 0;			break;
+-				case PIXELFORMAT_GREY	: return VIDEO_PALETTE_GREY;	break;
++
++// Packed RGB formats
+ 				case PIXELFORMAT_RGB332	: return VIDEO_PALETTE_HI240;	break;
++				case PIXELFORMAT_RGB444	: return 0;			break;
+ 				case PIXELFORMAT_RGB555	: return VIDEO_PALETTE_RGB555;	break;
+-				case PIXELFORMAT_RGB555X: return PIXELFORMAT_NONE;	break;
+ 				case PIXELFORMAT_RGB565	: return VIDEO_PALETTE_RGB565;	break;
+-				case PIXELFORMAT_RGB565X: return PIXELFORMAT_NONE;	break;
++				case PIXELFORMAT_RGB555X: return 0;			break;
++				case PIXELFORMAT_RGB565X: return 0;			break;
++				case PIXELFORMAT_BGR24	: return 0;			break;
+ 				case PIXELFORMAT_RGB24	: return VIDEO_PALETTE_RGB24;	break;
+-				case PIXELFORMAT_BGR24	: return PIXELFORMAT_NONE;	break;
++				case PIXELFORMAT_BGR32	: return 0;			break;
+ 				case PIXELFORMAT_RGB32	: return VIDEO_PALETTE_RGB32;	break;
+-				case PIXELFORMAT_BGR32	: return PIXELFORMAT_NONE;	break;
++
++// Bayer RGB format
++				case PIXELFORMAT_SBGGR8	: return 0;			break;
++
++// YUV formats
++				case PIXELFORMAT_GREY	: return VIDEO_PALETTE_GREY;	break;
+ 				case PIXELFORMAT_YUYV	: return VIDEO_PALETTE_YUYV;	break;
+ 				case PIXELFORMAT_UYVY	: return VIDEO_PALETTE_UYVY;	break;
+ 				case PIXELFORMAT_YUV420P: return VIDEO_PALETTE_YUV420;	break;
+ 				case PIXELFORMAT_YUV422P: return VIDEO_PALETTE_YUV422P;	break;
++
++// Compressed formats
++				case PIXELFORMAT_JPEG	: return 0;			break;
++				case PIXELFORMAT_MPEG	: return 0;			break;
++
++// Reserved formats
++				case PIXELFORMAT_DV	: return 0;			break;
++				case PIXELFORMAT_ET61X251:return 0;			break;
++				case PIXELFORMAT_HI240	: return VIDEO_PALETTE_HI240;	break;
++				case PIXELFORMAT_HM12	: return 0;			break;
++				case PIXELFORMAT_MJPEG	: return 0;			break;
++				case PIXELFORMAT_PWC1	: return 0;			break;
++				case PIXELFORMAT_PWC2	: return 0;			break;
++				case PIXELFORMAT_SN9C10X: return 0;			break;
++				case PIXELFORMAT_WNVA	: return 0;			break;
++				case PIXELFORMAT_YYUV	: return 0;			break;
+ 			}
+ 			break;
+ #endif
+@@ -1961,20 +2056,44 @@
+ 	switch(pixelformat)
+ 	{
+ 		case PIXELFORMAT_NONE	: return 0;	break;
+-		case PIXELFORMAT_GREY	: return 8;	break;
++
++// Packed RGB formats
+ 		case PIXELFORMAT_RGB332	: return 8;	break;
++		case PIXELFORMAT_RGB444	: return 16;	break;
+ 		case PIXELFORMAT_RGB555	: return 16;	break;
++		case PIXELFORMAT_RGB565	: return 16;	break;
+ 		case PIXELFORMAT_RGB555X: return 16;	break;
+-		case PIXELFORMAT_RGB565	: return 16;	break;
+ 		case PIXELFORMAT_RGB565X: return 16;	break;
++		case PIXELFORMAT_BGR24	: return 24;	break;
+ 		case PIXELFORMAT_RGB24	: return 24;	break;
+-		case PIXELFORMAT_BGR24	: return 24;	break;
++		case PIXELFORMAT_BGR32	: return 32;	break;
+ 		case PIXELFORMAT_RGB32	: return 32;	break;
+-		case PIXELFORMAT_BGR32	: return 32;	break;
++
++// Bayer RGB format
++		case PIXELFORMAT_SBGGR8	: return 0;	break;
++
++// YUV formats
++		case PIXELFORMAT_GREY	: return 8;	break;
+ 		case PIXELFORMAT_YUYV	: return 16;	break;
+ 		case PIXELFORMAT_UYVY	: return 16;	break;
+ 		case PIXELFORMAT_YUV420P: return 16;	break;
+ 		case PIXELFORMAT_YUV422P: return 16;	break;
++
++// Compressed formats
++		case PIXELFORMAT_JPEG	: return 0;	break;
++		case PIXELFORMAT_MPEG	: return 0;	break;
++
++// Reserved formats
++		case PIXELFORMAT_DV	: return 0;	break;
++		case PIXELFORMAT_ET61X251:return 0;	break;
++		case PIXELFORMAT_HI240	: return 8;	break;
++		case PIXELFORMAT_HM12	: return 0;	break;
++		case PIXELFORMAT_MJPEG	: return 0;	break;
++		case PIXELFORMAT_PWC1	: return 0;	break;
++		case PIXELFORMAT_PWC2	: return 0;	break;
++		case PIXELFORMAT_SN9C10X: return 0;	break;
++		case PIXELFORMAT_WNVA	: return 0;	break;
++		case PIXELFORMAT_YYUV	: return 0;	break;
+ 	}
+ 	return 0;
+ }
+@@ -1986,20 +2105,45 @@
+ 	switch(pixelformat)
+ 	{
+ 		case PIXELFORMAT_NONE	: returnvalue = "None";			break;
+-		case PIXELFORMAT_GREY	: returnvalue = "8-bit Grayscale";	break;
++
++// Packed RGB formats
+ 		case PIXELFORMAT_RGB332	: returnvalue = "8-bit RGB332";		break;
++		case PIXELFORMAT_RGB444	: returnvalue = "8-bit RGB444";		break;
+ 		case PIXELFORMAT_RGB555	: returnvalue = "16-bit RGB555";	break;
++		case PIXELFORMAT_RGB565	: returnvalue = "16-bit RGB565";	break;
+ 		case PIXELFORMAT_RGB555X: returnvalue = "16-bit RGB555X";	break;
+-		case PIXELFORMAT_RGB565	: returnvalue = "16-bit RGB565";	break;
+ 		case PIXELFORMAT_RGB565X: returnvalue = "16-bit RGB565X";	break;
++		case PIXELFORMAT_BGR24	: returnvalue = "24-bit BGR24";		break;
+ 		case PIXELFORMAT_RGB24	: returnvalue = "24-bit RGB24";		break;
+-		case PIXELFORMAT_BGR24	: returnvalue = "24-bit BGR24";		break;
++		case PIXELFORMAT_BGR32	: returnvalue = "32-bit BGR32";		break;
+ 		case PIXELFORMAT_RGB32	: returnvalue = "32-bit RGB32";		break;
+-		case PIXELFORMAT_BGR32	: returnvalue = "32-bit BGR32";		break;
++
++// Bayer RGB format
++		case PIXELFORMAT_SBGGR8	: returnvalue = "Bayer RGB format";	break;
++
++// YUV formats
++		case PIXELFORMAT_GREY	: returnvalue = "8-bit Grayscale";	break;
+ 		case PIXELFORMAT_YUYV	: returnvalue = "Packed YUV 4:2:2";	break;
+ 		case PIXELFORMAT_UYVY	: returnvalue = "Packed YVU 4:2:2";	break;
+ 		case PIXELFORMAT_YUV420P: returnvalue = "Planar YUV 4:2:0";	break;
+ 		case PIXELFORMAT_YUV422P: returnvalue = "Planar YUV 4:2:2";	break;
++
++
++// Compressed formats
++		case PIXELFORMAT_JPEG	: returnvalue = "JPEG image";		break;
++		case PIXELFORMAT_MPEG	: returnvalue = "MPEG stream";		break;
++
++// Reserved formats
++		case PIXELFORMAT_DV	: returnvalue = "DV (unknown)";		break;
++		case PIXELFORMAT_ET61X251:returnvalue = "ET61X251";		break;
++		case PIXELFORMAT_HI240	: returnvalue = "8-bit HI240 (RGB332)";	break;
++		case PIXELFORMAT_HM12	: returnvalue = "Packed YUV 4:2:2";	break;
++		case PIXELFORMAT_MJPEG	: returnvalue = "8-bit Grayscale";	break;
++		case PIXELFORMAT_PWC1	: returnvalue = "PWC1";			break;
++		case PIXELFORMAT_PWC2	: returnvalue = "PWC2";			break;
++		case PIXELFORMAT_SN9C10X: returnvalue = "SN9C102";		break;
++		case PIXELFORMAT_WNVA	: returnvalue = "Winnov Videum";	break;
++		case PIXELFORMAT_YYUV	: returnvalue = "YYUV (unknown)";	break;
+ 	}
+ 	return returnvalue;
+ }
+@@ -2015,20 +2159,45 @@
+ 		case VIDEODEV_DRIVER_V4L2:
+ 			switch(pixelformat)
+ 			{
+-				case V4L2_PIX_FMT_GREY		: returnvalue = pixelFormatName(PIXELFORMAT_GREY);	break;
++				case 0				: returnvalue = pixelFormatName(PIXELFORMAT_NONE);	break;
++
++// Packed RGB formats
+ 				case V4L2_PIX_FMT_RGB332	: returnvalue = pixelFormatName(PIXELFORMAT_RGB332);	break;
++				case V4L2_PIX_FMT_RGB444	: returnvalue = pixelFormatName(PIXELFORMAT_RGB444);	break;
+ 				case V4L2_PIX_FMT_RGB555	: returnvalue = pixelFormatName(PIXELFORMAT_RGB555);	break;
++				case V4L2_PIX_FMT_RGB565	: returnvalue = pixelFormatName(PIXELFORMAT_RGB565);	break;
+ 				case V4L2_PIX_FMT_RGB555X	: returnvalue = pixelFormatName(PIXELFORMAT_RGB555X);	break;
+-				case V4L2_PIX_FMT_RGB565	: returnvalue = pixelFormatName(PIXELFORMAT_RGB565);	break;
+ 				case V4L2_PIX_FMT_RGB565X	: returnvalue = pixelFormatName(PIXELFORMAT_RGB565X);	break;
++				case V4L2_PIX_FMT_BGR24		: returnvalue = pixelFormatName(PIXELFORMAT_BGR24);	break;
+ 				case V4L2_PIX_FMT_RGB24		: returnvalue = pixelFormatName(PIXELFORMAT_RGB24);	break;
+-				case V4L2_PIX_FMT_BGR24		: returnvalue = pixelFormatName(PIXELFORMAT_BGR24);	break;
++				case V4L2_PIX_FMT_BGR32		: returnvalue = pixelFormatName(PIXELFORMAT_BGR32);	break;
+ 				case V4L2_PIX_FMT_RGB32		: returnvalue = pixelFormatName(PIXELFORMAT_RGB32);	break;
+-				case V4L2_PIX_FMT_BGR32		: returnvalue = pixelFormatName(PIXELFORMAT_BGR32);	break;
++
++// Bayer RGB format
++				case V4L2_PIX_FMT_SBGGR8	: returnvalue = pixelFormatName(PIXELFORMAT_SBGGR8);	break;
++
++// YUV formats
++				case V4L2_PIX_FMT_GREY		: returnvalue = pixelFormatName(PIXELFORMAT_GREY);	break;
+ 				case V4L2_PIX_FMT_YUYV		: returnvalue = pixelFormatName(PIXELFORMAT_YUYV);	break;
+ 				case V4L2_PIX_FMT_UYVY		: returnvalue = pixelFormatName(PIXELFORMAT_UYVY);	break;
+ 				case V4L2_PIX_FMT_YUV420	: returnvalue = pixelFormatName(PIXELFORMAT_YUV420P);	break;
+ 				case V4L2_PIX_FMT_YUV422P	: returnvalue = pixelFormatName(PIXELFORMAT_YUV422P);	break;
++
++// Compressed formats
++				case V4L2_PIX_FMT_JPEG		: returnvalue = pixelFormatName(PIXELFORMAT_JPEG);	break;
++				case V4L2_PIX_FMT_MPEG		: returnvalue = pixelFormatName(PIXELFORMAT_MPEG);	break;
++
++// Reserved formats
++				case V4L2_PIX_FMT_DV		: returnvalue = pixelFormatName(PIXELFORMAT_DV);	break;
++				case V4L2_PIX_FMT_ET61X251	: returnvalue = pixelFormatName(PIXELFORMAT_ET61X251);	break;
++				case V4L2_PIX_FMT_HI240		: returnvalue = pixelFormatName(PIXELFORMAT_HI240);	break;
++				case V4L2_PIX_FMT_HM12		: returnvalue = pixelFormatName(PIXELFORMAT_HM12);	break;
++				case V4L2_PIX_FMT_MJPEG		: returnvalue = pixelFormatName(PIXELFORMAT_MJPEG);	break;
++				case V4L2_PIX_FMT_PWC1		: returnvalue = pixelFormatName(PIXELFORMAT_PWC1);	break;
++				case V4L2_PIX_FMT_PWC2		: returnvalue = pixelFormatName(PIXELFORMAT_PWC2);	break;
++				case V4L2_PIX_FMT_SN9C10X	: returnvalue = pixelFormatName(PIXELFORMAT_SN9C10X);	break;
++				case V4L2_PIX_FMT_WNVA		: returnvalue = pixelFormatName(PIXELFORMAT_WNVA);	break;
++				case V4L2_PIX_FMT_YYUV		: returnvalue = pixelFormatName(PIXELFORMAT_YYUV);	break;
+ 			}
+ 			break;
+ #endif
+@@ -2056,6 +2225,84 @@
+ 	return returnvalue;
+ }
+ 
++int VideoDevice::detectPixelFormats()
++{
++			int err = 0;
++	switch(m_driver)
++	{
++#if defined(__linux__) && defined(ENABLE_AV)
++#ifdef V4L2_CAP_VIDEO_CAPTURE
++		case VIDEODEV_DRIVER_V4L2:
++			fmtdesc.index = 0;
++			fmtdesc.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
++
++			while ( err == 0 )
++			{
++				if (-1 == xioctl (VIDIOC_ENUM_FMT, &fmtdesc))
++//				if (ioctl(fd, VIDIOC_ENUM_FMT, &fmtdesc) < 0 )
++				{
++					perror("VIDIOC_ENUM_FMT");
++					err = errno;
++				}
++				else
++				{	
++					kdDebug(14010) <<  k_funcinfo << fmtdesc.pixelformat << "  " << pixelFormatName(fmtdesc.pixelformat) << endl; // Need a cleanup. PixelFormatForPalette is a really bad name
++					fmtdesc.index++;
++				}
++			}
++//			break;
++#endif
++		case VIDEODEV_DRIVER_V4L:
++// TODO: THis thing can be used to detec what pixel formats are supported in a API-independent way, but V4L2 has VIDIOC_ENUM_PIXFMT.
++// The correct thing to do is to isolate these calls and do a proper implementation for V4L and another for V4L2 when this thing will be migrated to a plugin architecture.
++
++// Packed RGB formats
++			kdDebug(14010) <<  k_funcinfo << "Supported pixel formats:" << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB332))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB332) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB444))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB444) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB555))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB555) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB565))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB565) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB555X))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB555X) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB565X))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB565X) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_BGR24))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_BGR24) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB24))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB24) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_BGR32))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_BGR32) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_RGB32))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_RGB32) << endl;
++
++// Bayer RGB format
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_SBGGR8))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_SBGGR8) << endl;
++
++// YUV formats
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_GREY))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_GREY) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUYV))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_YUYV) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_UYVY))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_UYVY) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUV420P))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_YUV420P) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YUV422P))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_YUV422P) << endl;
++
++// Compressed formats
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_JPEG))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_JPEG) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_MPEG))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_MPEG) << endl;
++
++// Reserved formats
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_DV))		kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_DV) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_ET61X251))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_ET61X251) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_HI240))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_HI240) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_HM12))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_HM12) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_MJPEG))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_MJPEG) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_PWC1))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_PWC1) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_PWC2))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_PWC2) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_SN9C10X))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_SN9C10X) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_WNVA))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_WNVA) << endl;
++			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YYUV))	kdDebug(14010) <<  k_funcinfo << pixelFormatName(PIXELFORMAT_YYUV) << endl;
++			break;
++#endif
++		case VIDEODEV_DRIVER_NONE:
++		default:
++			return PIXELFORMAT_NONE;	break;
++	}
++	return PIXELFORMAT_NONE;
++}
++
+ __u64 VideoDevice::signalStandardCode(signal_standard standard)
+ {
+ 	switch(m_driver)
+Index: kopete/libkopete/avdevice/Makefile.am
+===================================================================
+--- kopete/libkopete/avdevice/Makefile.am	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/avdevice/Makefile.am	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -8,9 +8,11 @@
+ libkopete_videodevice_la_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+ 
+ noinst_HEADERS = kxv.h qvideo.h qvideostream.h videocontrol.h videodevice.h \
+-	videodevicemodelpool.h videodevicepool.h videoinput.h
++	videodevicemodelpool.h videodevicepool.h videoinput.h \
++	sonix_compress.h bayer.h
+ libkopete_videodevice_la_SOURCES = videocontrol.cpp videodevice.cpp \
+-	videodevicemodelpool.cpp videodevicepool.cpp videoinput.cpp
++	videodevicemodelpool.cpp videodevicepool.cpp videoinput.cpp \
++	sonix_compress.cpp bayer.cpp
+ libkvideoio_la_LDFLAGS = -no-undefined $(all_libraries) -version-info 1:0:0
+ libkvideoio_la_SOURCES = kxv.cpp qvideo.cpp qvideostream.cpp
+ libkvideoio_la_LIBADD = $(LIB_QT) $(LIB_KDECORE) $(GLLIB)
+Index: kopete/libkopete/avdevice/videodevice.h
+===================================================================
+--- kopete/libkopete/avdevice/videodevice.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/avdevice/videodevice.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -92,21 +92,45 @@
+ 
+ typedef enum
+ {
++// Packed RGB formats
+ 	PIXELFORMAT_NONE	= 0,
+ 	PIXELFORMAT_GREY	= (1 << 0),
+ 	PIXELFORMAT_RGB332	= (1 << 1),
+-	PIXELFORMAT_RGB555	= (1 << 2),
+-	PIXELFORMAT_RGB555X	= (1 << 3),
++	PIXELFORMAT_RGB444	= (1 << 2),
++	PIXELFORMAT_RGB555	= (1 << 3),
+ 	PIXELFORMAT_RGB565	= (1 << 4),
+-	PIXELFORMAT_RGB565X	= (1 << 5),
+-	PIXELFORMAT_RGB24	= (1 << 6),
++	PIXELFORMAT_RGB555X	= (1 << 5),
++	PIXELFORMAT_RGB565X	= (1 << 6),
+ 	PIXELFORMAT_BGR24	= (1 << 7),
+-	PIXELFORMAT_RGB32	= (1 << 8),
++	PIXELFORMAT_RGB24	= (1 << 8),
+ 	PIXELFORMAT_BGR32	= (1 << 9),
+-	PIXELFORMAT_YUYV	= (1 << 10),
+-	PIXELFORMAT_UYVY	= (1 << 11),
+-	PIXELFORMAT_YUV420P	= (1 << 12),
+-	PIXELFORMAT_YUV422P	= (1 << 13)
++	PIXELFORMAT_RGB32	= (1 << 10),
++
++// Bayer RGB format
++	PIXELFORMAT_SBGGR8	= (1 << 11),
++
++// YUV formats
++	PIXELFORMAT_YUYV	= (1 << 12),
++	PIXELFORMAT_UYVY	= (1 << 13),
++	PIXELFORMAT_YUV420P	= (1 << 14),
++	PIXELFORMAT_YUV422P	= (1 << 15),
++
++// Compressed formats
++	PIXELFORMAT_JPEG	= (1 << 16),
++	PIXELFORMAT_MPEG	= (1 << 17),
++
++// Reserved formats
++	PIXELFORMAT_DV		= (1 << 18),
++	PIXELFORMAT_ET61X251	= (1 << 19),
++	PIXELFORMAT_HI240	= (1 << 20),
++	PIXELFORMAT_HM12	= (1 << 21),
++	PIXELFORMAT_MJPEG	= (1 << 22),
++	PIXELFORMAT_PWC1	= (1 << 23),
++	PIXELFORMAT_PWC2	= (1 << 24),
++	PIXELFORMAT_SN9C10X	= (1 << 25),
++	PIXELFORMAT_WNVA	= (1 << 26),
++	PIXELFORMAT_YYUV	= (1 << 27)
++
+ //	PIXELFORMAT_ALL		= 0x00003FFF
+ } pixel_format;
+ 
+@@ -201,6 +225,7 @@
+ 	int pixelFormatDepth(pixel_format pixelformat);
+ 	QString pixelFormatName(pixel_format pixelformat);
+ 	QString pixelFormatName(int pixelformat);
++	int detectPixelFormats();
+ 
+ 	__u64 signalStandardCode(signal_standard standard);
+ 	QString signalStandardName(signal_standard standard);
+@@ -235,11 +260,6 @@
+ 	bool getImageAsMirror();
+ 	bool setImageAsMirror(bool imageasmirror);
+ 
+-	bool getDisableMMap();
+-	bool setDisableMMap(bool disablemmap);
+-	bool getWorkaroundBrokenDriver();
+-	bool setWorkaroundBrokenDriver(bool workaroundbrokendriver);
+-
+ 	bool canCapture();
+ 	bool canChromakey();
+ 	bool canScale();
+@@ -262,6 +282,7 @@
+ 	struct v4l2_cropcap cropcap;
+ 	struct v4l2_crop crop;
+ 	struct v4l2_format fmt;
++	struct v4l2_fmtdesc fmtdesc; // Not sure if it must be here or inside detectPixelFormats(). Should inve
+ //	struct v4l2_input m_input;
+ 	struct v4l2_queryctrl queryctrl;
+ 	struct v4l2_querymenu querymenu;
 Index: kopete/libkopete/kopeteprotocol.desktop
 ===================================================================
---- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Comment[da]=Kopete-protokol-plugin
  Comment[de]=Kopete Protokoll-Modul
@@ -1592,8 +3388,8 @@ Index: kopete/libkopete/kopeteprotocol.desktop
  Comment[eu]=Kopete protocolo plugin-a
 Index: kopete/libkopete/kopeteplugin.desktop
 ===================================================================
---- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Comment[da]=Kopete-plugin
  Comment[de]=Kopete-Modul
@@ -1604,8 +3400,8 @@ Index: kopete/libkopete/kopeteplugin.desktop
  Comment[eu]=Kopete plugin-a
 Index: knewsticker/knewstickerstub/knewstickerstub.desktop
 ===================================================================
---- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- knewsticker/knewstickerstub/knewstickerstub.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ knewsticker/knewstickerstub/knewstickerstub.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -10,6 +10,7 @@
  Name[da]=KNewsTicker config-grænseflade
  Name[de]=Newsticker-Einrichtung
@@ -1616,8 +3412,8 @@ Index: knewsticker/knewstickerstub/knewstickerstub.desktop
  Name[eu]=KNewsTicker konfigurazio interfazea
 Index: knewsticker/eventsrc
 ===================================================================
---- knewsticker/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- knewsticker/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ knewsticker/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -290,6 +290,7 @@
  Comment[da]=Den hentede RDF-fil kunne ikke fortolkes
  Comment[de]=Die heruntergeladene RDF-Datei kann nicht eingelesen werden
@@ -1628,8 +3424,8 @@ Index: knewsticker/eventsrc
  Comment[eu]=Deskargatutako RDF fitxategia ezin izan da aztertu
 Index: knewsticker/knewsticker.desktop
 ===================================================================
---- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- knewsticker/knewsticker.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ knewsticker/knewsticker.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -65,6 +65,7 @@
  Comment[da]=En rullende RDF nyhedstelegraf
  Comment[de]=Ein durchlaufender RDF-Newsticker
@@ -1640,8 +3436,8 @@ Index: knewsticker/knewsticker.desktop
  Comment[eu]=RDF berri-markatzailea
 Index: kget/kget_plug_in/kget_plug_in.desktop
 ===================================================================
---- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kget/kget_plug_in/kget_plug_in.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kget/kget_plug_in/kget_plug_in.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -33,6 +33,7 @@
  Comment[da]=Håndtering af download
  Comment[de]=Herunterladen von Dateien
@@ -1652,8 +3448,8 @@ Index: kget/kget_plug_in/kget_plug_in.desktop
  Comment[eu]=Deskarga kudeatzailea
 Index: kget/kget.desktop
 ===================================================================
---- kget/kget.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kget/kget.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kget/kget.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -29,6 +29,7 @@
  GenericName[da]=Håndtering af download
  GenericName[de]=Datentransfer-Verwaltung
@@ -1664,8 +3460,8 @@ Index: kget/kget.desktop
  GenericName[eu]=Deskarga kudeatzailea
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -615,6 +615,7 @@
    if ( s == "ads" ) i = 4;
  
@@ -1676,8 +3472,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
  
 Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/kcm_sambaconf/kcminterface.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -1,4 +1,4 @@
 -<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 +<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
@@ -1964,8 +3760,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui
  </UI>
 Index: filesharing/advanced/kcm_sambaconf/share.ui
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/share.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/kcm_sambaconf/share.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/kcm_sambaconf/share.ui	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/kcm_sambaconf/share.ui	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -1,4 +1,4 @@
 -<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 +<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
@@ -3125,8 +4921,8 @@ Index: filesharing/advanced/kcm_sambaconf/share.ui
  </UI>
 Index: filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -126,7 +126,8 @@
  
    // Filename settings
@@ -3158,8 +4954,8 @@ Index: filesharing/advanced/kcm_sambaconf/sharedlgimpl.cpp
    
 Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui.h
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/kcm_sambaconf/kcminterface.ui.h	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -39,6 +39,7 @@
      editDefaultPrinterBtn->setIconSet(SmallIconSet("print_class"));
  
@@ -3268,8 +5064,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcminterface.ui.h
 +}
 Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -11,6 +11,7 @@
  Name[da]=Fileshare Konqueror-mappens side med egenskaber
  Name[de]=Dateifreigabe Konqueror Ordner-Eigenschaftenseite
@@ -3280,8 +5076,8 @@ Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
  Name[eu]=Fitxategiak partekatzeko Konqueror direktorio propietateen orria 
 Index: filesharing/simple/fileshare.desktop
 ===================================================================
---- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- filesharing/simple/fileshare.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ filesharing/simple/fileshare.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -21,6 +21,7 @@
  Name[da]=Fildeling
  Name[de]=Dateifreigabe
@@ -3308,8 +5104,8 @@ Index: filesharing/simple/fileshare.desktop
  Keywords[fa]=مشترک
 Index: wifi/kwireless/kwireless.desktop
 ===================================================================
---- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- wifi/kwireless/kwireless.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ wifi/kwireless/kwireless.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -65,6 +65,7 @@
  Name[da]=Information om trådløst netværk
  Name[de]=Informationen über drahtlose Netzwerke
@@ -3320,8 +5116,8 @@ Index: wifi/kwireless/kwireless.desktop
  Name[eu]=Kablerik gabeko sarearen informazioa
 Index: wifi/kcmwifi/kcmwifi.desktop
 ===================================================================
---- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- wifi/kcmwifi/kcmwifi.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ wifi/kcmwifi/kcmwifi.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -19,6 +19,7 @@
  Name[da]=Trådløst netværk
  Name[de]=Drahtloses Netzwerk
@@ -3332,8 +5128,8 @@ Index: wifi/kcmwifi/kcmwifi.desktop
  Name[eu]=Kablerik gabeko sarea
 Index: wifi/kwifimanager.desktop
 ===================================================================
---- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- wifi/kwifimanager.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ wifi/kwifimanager.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -34,6 +34,7 @@
  Comment[km]=កម្មវិធី​ត្រួតពិនិត្យ​ការ​តភ្ជាប់​បណ្ដាញ​មូលដ្ឋាន​ឥតខ្សែ
  Comment[lt]=Bevielio tinklo ryšio stebėjimas
@@ -3360,8 +5156,8 @@ Index: wifi/kwifimanager.desktop
  GenericName[ne]=तारविहिन LAN प्रबन्धक
 Index: kppp/DB/Provider/Norway/.directory
 ===================================================================
---- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -18,6 +18,7 @@
  Name[ga]=An Iorua
  Name[hi]=नार्वे
@@ -3380,8 +5176,8 @@ Index: kppp/DB/Provider/Norway/.directory
  Name[sl]=Norveška
 Index: kppp/DB/Provider/Slovenia/.directory
 ===================================================================
---- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -15,6 +15,7 @@
  Name[ga]=An tSlóivéin
  Name[hi]=स्लोवेनिया
@@ -3400,8 +5196,8 @@ Index: kppp/DB/Provider/Slovenia/.directory
  Name[sr]=Словенија
 Index: kppp/DB/Provider/Denmark/.directory
 ===================================================================
---- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -18,6 +18,7 @@
  Name[ga]=An Danmhairg
  Name[hi]=डेनमार्क
@@ -3420,8 +5216,8 @@ Index: kppp/DB/Provider/Denmark/.directory
  Name[sl]=Danska
 Index: kppp/DB/Provider/Czech_Republic/.directory
 ===================================================================
---- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Czech_Republic/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Czech_Republic/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -17,6 +17,7 @@
  Name[ga]=Poblacht na Seice
  Name[hi]=चेक
@@ -3440,8 +5236,8 @@ Index: kppp/DB/Provider/Czech_Republic/.directory
  Name[sl]=Češka
 Index: kppp/DB/Provider/Taiwan/.directory
 ===================================================================
---- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -9,6 +9,7 @@
  Name[ga]=An Téaváin
  Name[hi]=ताईवान
@@ -3460,8 +5256,8 @@ Index: kppp/DB/Provider/Taiwan/.directory
  Name[sr]=Тајван
 Index: kppp/DB/Provider/Yugoslavia/.directory
 ===================================================================
---- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -9,10 +9,12 @@
  Name[da]=Jugoslavien
  Name[de]=Jugoslawien
@@ -3485,8 +5281,8 @@ Index: kppp/DB/Provider/Yugoslavia/.directory
  Name[sl]=Jugoslavija
 Index: kppp/DB/Provider/Sweden/.directory
 ===================================================================
---- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Name[ga]=An tSualainn
  Name[hi]=स्वीडन
@@ -3505,8 +5301,8 @@ Index: kppp/DB/Provider/Sweden/.directory
  Name[sl]=Švedska
 Index: kppp/DB/Provider/New_Zealand/.directory
 ===================================================================
---- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Name[ga]=An Nua-Shéalainn
  Name[hi]=न्यूजीलैंड
@@ -3525,8 +5321,8 @@ Index: kppp/DB/Provider/New_Zealand/.directory
  Name[sl]=Nova Zelandija
 Index: kppp/DB/Provider/Portugal/.directory
 ===================================================================
---- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -9,6 +9,7 @@
  Name[eo]=Portugalo
  Name[ga]=An Phortaingéil
@@ -3545,8 +5341,8 @@ Index: kppp/DB/Provider/Portugal/.directory
  Name[sr]=Португал
 Index: kppp/DB/Provider/Belarus/.directory
 ===================================================================
---- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -14,6 +14,7 @@
  Name[ga]=An Bhealarúis
  Name[hi]=बेलारूस
@@ -3565,8 +5361,8 @@ Index: kppp/DB/Provider/Belarus/.directory
  Name[sl]=Belorusija
 Index: kppp/DB/Provider/France/.directory
 ===================================================================
---- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/France/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/France/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Name[ga]=An Fhrainc
  Name[hi]=फ्रांस
@@ -3585,8 +5381,8 @@ Index: kppp/DB/Provider/France/.directory
  Name[sl]=Francija
 Index: kppp/DB/Provider/Ukraine/.directory
 ===================================================================
---- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -15,6 +15,7 @@
  Name[ga]=An Úcráin
  Name[hi]=उक्रेन
@@ -3605,8 +5401,8 @@ Index: kppp/DB/Provider/Ukraine/.directory
  Name[sl]=Ukrajina
 Index: kppp/DB/Provider/United_Kingdom/.directory
 ===================================================================
---- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -17,6 +17,7 @@
  Name[ga]=An Ríocht Aontaithe
  Name[hi]=यूनाइटेड किंगडम
@@ -3625,8 +5421,8 @@ Index: kppp/DB/Provider/United_Kingdom/.directory
  Name[sl]=Združeno Kraljestvo
 Index: kppp/DB/Provider/Germany/.directory
 ===================================================================
---- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -18,6 +18,7 @@
  Name[ga]=An Ghearmáin
  Name[hi]=जर्मनी
@@ -3645,8 +5441,8 @@ Index: kppp/DB/Provider/Germany/.directory
  Name[sl]=Nemčija
 Index: kppp/DB/Provider/Switzerland/.directory
 ===================================================================
---- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Name[ga]=An Eilvéis
  Name[hi]=स्विट्जरलैंड
@@ -3665,8 +5461,8 @@ Index: kppp/DB/Provider/Switzerland/.directory
  Name[sl]=Švica
 Index: kppp/DB/Provider/Netherlands/.directory
 ===================================================================
---- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -18,6 +18,7 @@
  Name[ga]=An Ísiltír
  Name[hi]=नीदरलैंड्स
@@ -3685,8 +5481,8 @@ Index: kppp/DB/Provider/Netherlands/.directory
  Name[sl]=Nizozemska
 Index: kppp/DB/Provider/Austria/.directory
 ===================================================================
---- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -16,6 +16,7 @@
  Name[ga]=An Ostair
  Name[hi]=आस्ट्रिया
@@ -3705,8 +5501,8 @@ Index: kppp/DB/Provider/Austria/.directory
  Name[sl]=Avstrija
 Index: kppp/DB/Provider/Ireland/.directory
 ===================================================================
---- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -9,11 +9,13 @@
  Name[da]=Irland
  Name[de]=Irland
@@ -3729,10 +5525,36 @@ Index: kppp/DB/Provider/Ireland/.directory
  Name[se]=Irlánda
  Name[sk]=Írsko
  Name[sl]=Irska
+Index: kppp/pppstats.cpp
+===================================================================
+--- kppp/pppstats.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/pppstats.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -54,7 +54,11 @@
+ #include <arpa/inet.h>
+ #include <unistd.h>
+ #include <netinet/in.h>
++#ifdef __DragonFly__
++#include <net/ppp_layer/ppp_defs.h>
++#else
+ #include <net/ppp_defs.h>
++#endif
+ 
+ #include "config.h"
+ #include "pppstats.h"
+@@ -70,6 +74,9 @@
+   #ifdef HAVE_LINUX_IF_PPP_H
+    #include <linux/if.h>
+    #include <linux/if_ppp.h>
++  #elif defined(__DragonFly__)
++   #include <net/if.h>
++   #include <net/ppp/if_ppp.h>
+   #endif
+  #else
+   #include <net/if.h>
 Index: kppp/Kppp.desktop
 ===================================================================
---- kppp/Kppp.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/Kppp.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/Kppp.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -10,6 +10,7 @@
  GenericName[da]=Internet-opkaldsværktøj
  GenericName[de]=Einwahl ins Internet
@@ -3749,10 +5571,52 @@ Index: kppp/Kppp.desktop
  Name[hi]=केपीपीपी
  Name[ne]=के पी पी पी
  Name[sv]=Kppp
+Index: kppp/opener.cpp
+===================================================================
+--- kppp/opener.cpp	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/opener.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -68,7 +68,11 @@
+ #endif
+ 
+ #ifndef HAVE_NET_IF_PPP_H
+-#  ifdef HAVE_LINUX_IF_PPP_H
++#  if defined(__DragonFly__)
++#    include <net/ppp_layer/ppp_defs.h>
++#    include <net/if.h>
++#    include <net/ppp/if_ppp.h>
++#  elif defined HAVE_LINUX_IF_PPP_H
+ #    include <linux/if_ppp.h>
+ #  endif
+ #else
+Index: kppp/configure.in.in
+===================================================================
+--- kppp/configure.in.in	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/configure.in.in	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
+@@ -11,7 +11,11 @@
+ #endif
+ #include <unistd.h>
+ #include <arpa/inet.h>
++#ifdef __DragonFly__
++#include <net/ppp_layer/ppp_defs.h>
++#else
+ #include <net/ppp_defs.h>
++#endif
+ #include <netinet/in.h>
+ 
+ #ifdef __svr4__
+@@ -27,6 +31,8 @@
+ 
+     #if defined(linux)
+       #include <linux/if_ppp.h>
++    #elif defined(__DragonFly__)
++      #include <net/ppp/if_ppp.h>
+     #else
+       #include <net/if_ppp.h>                /* BSD, NeXT, etc. */
+     #endif
 Index: kppp/logview/kppplogview.desktop
 ===================================================================
---- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- kppp/logview/kppplogview.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ kppp/logview/kppplogview.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -5,6 +5,7 @@
  Name[bs]=Preglednik Kppp dnevnika
  Name[de]=KPPP-Protokoll-Betrachter
@@ -3763,8 +5627,8 @@ Index: kppp/logview/kppplogview.desktop
  Name[is]=KPPP annálaskoðari
 Index: ksirc/eventsrc
 ===================================================================
---- ksirc/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- ksirc/eventsrc	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ ksirc/eventsrc	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -275,6 +275,7 @@
  Name[da]=Lydsignal modtaget
  Name[de]=Signalton empfangen
@@ -3775,8 +5639,8 @@ Index: ksirc/eventsrc
  Name[eu]=Bip-a jaso da
 Index: dcoprss/rssservice.desktop
 ===================================================================
---- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 762253)
-+++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 762253)
+--- dcoprss/rssservice.desktop	(.../tags/KDE/3.5.8/kdenetwork)	(wersja 767770)
++++ dcoprss/rssservice.desktop	(.../branches/KDE/3.5/kdenetwork)	(wersja 767770)
 @@ -38,6 +38,7 @@
  Comment[da]=RSS DCOP-tjenester
  Comment[de]=RSS DCOP-Dienste
