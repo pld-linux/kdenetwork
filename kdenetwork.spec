@@ -3,15 +3,6 @@
 # - what about non-applied libgadu patch?
 # - fix or kill skype support
 # - kill internal libgadu copy
-# - unpackaged:
-#   /usr/lib/libkdeinit_kdict.la
-#   /usr/lib/libkdeinit_ksirc.la
-#   /usr/lib/libkopete.so.1
-#   /usr/lib/libkopete_msn_shared.so.0
-#   /usr/lib/libkopete_oscar.so.2
-#   /usr/lib/libkopete_videodevice.so.0
-#   /usr/lib/libkwireless.la
-#   /usr/lib/librss.so.1
 #
 # Conditional build:
 %bcond_without	xmms			# without xmms support
@@ -28,7 +19,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.9
-Release:	0.1
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -1134,6 +1125,10 @@ if [ ! -f installed.stamp ]; then
 	%{__rm} $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
 	rm -f $RPM_BUILD_ROOT%{_libdir}/kde3/*.la
+	# apparently not needed after library_loader patch
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_kdict.la
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_ksirc.la
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkwireless.la
 	touch installed.stamp
 fi
 
@@ -1254,7 +1249,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_datadir}/apps/kconf_update/kn*
+%{_datadir}/apps/kconf_update/knewsticker.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/knt-0.1-0.2.pl
 %{_datadir}/applnk/.hidden/knewstickerstub.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
@@ -1690,22 +1686,27 @@ fi
 %files libkopete
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete.so.1
 
 %files libkopete_videodevice
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_videodevice.so.0
 
 %files libkopete_msn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.0
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.2
 
 %files librss
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/librss.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librss.so.1
 
 %files rss
 %defattr(644,root,root,755)
