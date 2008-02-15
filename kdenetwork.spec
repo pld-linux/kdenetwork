@@ -18,26 +18,25 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.5.8
-Release:	4
+Version:	3.5.9
+Release:	2
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	0e79374d1109d937b0c9bdd3a75e7476
+# Source0-md5:	0ec1d4ccd550510821a622eb91b893e8
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
 Source3:	%{name}-lisa.sysconfig
 Source4:	%{name}-lisarc
 Source5:	winpopup-install.sh
-Patch100:	%{name}-branch.diff
+#Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-use_sendmail.patch
 Patch2:		%{name}-kopete-qca-tls.patch
 Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
-Patch5:		%{name}-filesharing-msdfs_proxy.patch
 URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -58,6 +57,7 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
+BuildRequires:	rpmbuild(find_lang) >= 1.32
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 %{?with_xmms:BuildRequires:	xmms-devel}
@@ -1026,7 +1026,6 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p0
-%patch5 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
@@ -1091,58 +1090,68 @@ cp %{_datadir}/automake/config.sub admin
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+if [ ! -f makeinstall.stamp -o ! -d $RPM_BUILD_ROOT ]; then
+	rm -rf makeinstall.stamp installed.stamp $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
-%{__make} -C kopete/protocols/winpopup install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
+	%{__make} install \
+		DESTDIR=$RPM_BUILD_ROOT \
+		kde_htmldir=%{_kdedocdir}
+	%{__make} -C kopete/protocols/winpopup install \
+		DESTDIR=$RPM_BUILD_ROOT \
+		kde_htmldir=%{_kdedocdir}
+	touch makeinstall.stamp
+fi
 
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
-install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
-install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
-install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
-%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
+if [ ! -f installed.stamp ]; then
+	install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
+	install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/lisa
+	install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/lisa
+	install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/lisarc
+	%{__tar} xfj %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/apps/kopete/styles
 
-mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
+	mv $RPM_BUILD_ROOT%{_iconsdir}/{locolor,crystalsvg}/16x16/apps/krfb.png
 
-# for kdenetwork-kopete-protocol-winpopup
-install -d $RPM_BUILD_ROOT{/var/lib/winpopup,/etc/samba}
-# TODO: add inclusion of winpopup.conf in post script?
-cat > $RPM_BUILD_ROOT/etc/samba/winpopup.conf <<'EOF'
-[global]
-message command = %{_bindir}/winpopup-send.sh %s %m &
-EOF
-install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
+	# for kdenetwork-kopete-protocol-winpopup
+	install -d $RPM_BUILD_ROOT{/var/lib/winpopup,/etc/samba}
+	# TODO: add inclusion of winpopup.conf in post script?
+	cat > $RPM_BUILD_ROOT/etc/samba/winpopup.conf <<-'EOF'
+	[global]
+	message command = %{_bindir}/winpopup-send.sh %s %m &
+	EOF
+	install %{SOURCE5} $RPM_BUILD_ROOT%{_bindir}/winpopup-install.sh
 
-# Messing ones
-rm $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
-rm $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
-rm $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
+	# Messing ones
+	%{__rm} $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
+	%{__rm} $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/kde3/*.la
+	rm -f $RPM_BUILD_ROOT%{_libdir}/kde3/*.la
+	# apparently not needed after library_loader patch
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_kdict.la
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_ksirc.la
+	rm -f $RPM_BUILD_ROOT%{_libdir}/libkwireless.la
 
-%find_lang kdict		--with-kde
-%find_lang kget			--with-kde
-%find_lang knewsticker		--with-kde
-%find_lang kopete		--with-kde
-grep -v /kdenetwork-apidocs/ kopete.lang > kopete.lang.
-mv kopete.lang. kopete.lang
-%find_lang kpf			--with-kde
-%find_lang kppp			--with-kde
-%find_lang krdc			--with-kde
-%find_lang krfb			--with-kde
-cat krdc.lang >> krfb.lang
-%find_lang ksirc		--with-kde
-%find_lang ktalkd		--with-kde
-%find_lang kcmtalkd		--with-kde
-cat kcmtalkd.lang >> ktalkd.lang
-%find_lang kwifimanager		--with-kde
-%find_lang lisa			--with-kde
-%find_lang lanbrowser		--with-kde
-cat lanbrowser.lang >> lisa.lang
+	# unsupported
+	rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
+
+	touch installed.stamp
+fi
+
+%find_lang kdict --with-kde
+%find_lang kget --with-kde
+%find_lang knewsticker --with-kde
+%find_lang kopete --with-kde
+%find_lang kpf --with-kde
+%find_lang kppp --with-kde
+%find_lang krfb --with-kde
+%find_lang krdc --with-kde -a krfb.lang
+%find_lang ksirc --with-kde
+%find_lang ktalkd --with-kde
+%find_lang kwifimanager --with-kde
+%find_lang lisa --with-kde
+%find_lang kcontrol/kcmtalkd --with-kde -a ktalkd.lang
+%find_lang kcontrol/lanbrowser --with-kde -a lisa.lang
+
+%{__sed} -i -e '/kdenetwork-apidocs/d' kopete.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1245,7 +1254,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde3/knewsticker_panelapplet.so
 %{_datadir}/apps/knewsticker
 %{_datadir}/apps/kicker/applets/knewsticker.desktop
-%{_datadir}/apps/kconf_update/kn*
+%{_datadir}/apps/kconf_update/knewsticker.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/knt-0.1-0.2.pl
 %{_datadir}/applnk/.hidden/knewstickerstub.desktop
 %{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
@@ -1623,7 +1633,7 @@ fi
 %{_desktopdir}/kde/krfb.desktop
 %{_desktopdir}/kde/krdc.desktop
 %{_iconsdir}/*/*/*/krdc*
-%{_iconsdir}/[!l]*/*/*/krfb*
+%{_iconsdir}/crystalsvg/*/*/krfb.png
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -1636,7 +1646,7 @@ fi
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_desktopdir}/kde/ksirc.desktop
-%{_iconsdir}/[!l]*/*/*/ksirc*
+%{_iconsdir}/hicolor/*/*/ksirc.png
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
@@ -1681,22 +1691,27 @@ fi
 %files libkopete
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete.so.1
 
 %files libkopete_videodevice
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_videodevice.so.0
 
 %files libkopete_msn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.0
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.2
 
 %files librss
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/librss.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librss.so.1
 
 %files rss
 %defattr(644,root,root,755)
