@@ -1121,7 +1121,6 @@ if [ ! -f installed.stamp ]; then
 
 	# Messing ones
 	%{__rm} $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/x-icq.desktop
-	%{__rm} $RPM_BUILD_ROOT%{_iconsdir}/locolor/32x32/apps/krfb.png
 	%{__rm} $RPM_BUILD_ROOT%{_datadir}/apps/konqueror/dirtree/remote/lan.desktop
 
 	rm -f $RPM_BUILD_ROOT%{_libdir}/kde3/*.la
@@ -1129,6 +1128,10 @@ if [ ! -f installed.stamp ]; then
 	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_kdict.la
 	rm -f $RPM_BUILD_ROOT%{_libdir}/libkdeinit_ksirc.la
 	rm -f $RPM_BUILD_ROOT%{_libdir}/libkwireless.la
+
+	# unsupported
+	rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
+
 	touch installed.stamp
 fi
 
@@ -1136,7 +1139,6 @@ fi
 %find_lang kget --with-kde
 %find_lang knewsticker --with-kde
 %find_lang kopete --with-kde
-%{__sed} -i -e '/kdenetwork-apidocs/d' kopete.lang
 %find_lang kpf --with-kde
 %find_lang kppp --with-kde
 %find_lang krfb --with-kde
@@ -1147,6 +1149,8 @@ fi
 %find_lang lisa --with-kde
 %find_lang kcontrol/kcmtalkd --with-kde -a ktalkd.lang
 %find_lang kcontrol/lanbrowser --with-kde -a lisa.lang
+
+%{__sed} -i -e '/kdenetwork-apidocs/d' kopete.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1628,7 +1632,7 @@ fi
 %{_desktopdir}/kde/krfb.desktop
 %{_desktopdir}/kde/krdc.desktop
 %{_iconsdir}/*/*/*/krdc*
-%{_iconsdir}/[!l]*/*/*/krfb*
+%{_iconsdir}/crystalsvg/*/*/krfb.png
 
 %files ksirc -f ksirc.lang
 %defattr(644,root,root,755)
@@ -1641,7 +1645,7 @@ fi
 %{_datadir}/apps/ksirc
 %{_datadir}/services/kntsrcfilepropsdlg.desktop
 %{_desktopdir}/kde/ksirc.desktop
-%{_iconsdir}/[!l]*/*/*/ksirc*
+%{_iconsdir}/hicolor/*/*/ksirc.png
 
 %files ktalkd -f ktalkd.lang
 %defattr(644,root,root,755)
