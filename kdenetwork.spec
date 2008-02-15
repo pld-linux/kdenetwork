@@ -66,7 +66,7 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 %{?with_hidden_visibility:BuildRequires:	qt-devel >= 6:3.3.5.051113-1}
-BuildRequires:	rpmbuild(find_lang) >= 1.30
+BuildRequires:	rpmbuild(find_lang) >= 1.32
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 %{?with_xmms:BuildRequires:	xmms-devel}
