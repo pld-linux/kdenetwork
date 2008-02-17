@@ -1072,9 +1072,13 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
+mv -f configure{,.dist}
+
 %build
 cp %{_datadir}/automake/config.sub admin
-%{__make} -f admin/Makefile.common cvs
+if [ ! -f configure ]; then
+	%{__make} -f admin/Makefile.common cvs
+fi
 
 %configure \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
