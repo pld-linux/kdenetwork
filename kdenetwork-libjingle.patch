@@ -1,0 +1,115 @@
+--- kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/session/phone/linphonemediaengine.cc.org	2008-02-17 21:14:23.558068010 +0100
++++ kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/session/phone/linphonemediaengine.cc	2008-02-17 21:18:09.288937135 +0100
+@@ -139,7 +139,7 @@
+  
+ #ifdef HAVE_SPEEX
+   ms_speex_codec_init();
+-  rtp_profile_set_payload(&av_profile, 110, &speex_wb);
++  rtp_profile_set_payload(&av_profile, 110, &payload_type_speex_wb);
+   codecs_.push_back(Codec(110, "speex", 8));
+ #endif
+ 
+@@ -149,7 +149,7 @@
+   codecs_.push_back(Codec(102, "iLBC", 4));
+ #endif
+ 
+-  rtp_profile_set_payload(&av_profile, 0, &pcmu8000);
++  rtp_profile_set_payload(&av_profile, 0, &payload_type_pcmu8000);
+   codecs_.push_back(Codec(0, "PCMU", 2));
+   
+ return true;
+diff -ur kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/audiostream.c kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/audiostream.c
+--- kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/audiostream.c	2008-02-17 21:33:23.542960000 +0100
++++ kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/audiostream.c	2008-02-17 21:33:37.213618816 +0100
+@@ -112,7 +112,7 @@
+ 			RtpSession **recvsend){
+ 	RtpSession *rtpr;
+ 	rtpr=rtp_session_new(RTP_SESSION_SENDRECV);
+-	rtp_session_max_buf_size_set(rtpr,MAX_RTP_SIZE);
++	rtp_session_set_recv_buf_size(rtpr,MAX_RTP_SIZE);
+ 	rtp_session_set_profile(rtpr,profile);
+ 	rtp_session_set_local_addr(rtpr,get_local_addr_for(remip),locport);
+ 	if (remport>0) rtp_session_set_remote_addr(rtpr,remip,remport);
+@@ -133,7 +133,7 @@
+ 	/* creates two rtp filters to recv send streams (remote part)*/
+ 	
+ 	rtps=rtp_session_new(RTP_SESSION_SENDONLY);
+-	rtp_session_max_buf_size_set(rtps,MAX_RTP_SIZE);
++	rtp_session_set_recv_buf_size(rtps,MAX_RTP_SIZE);
+ 	rtp_session_set_profile(rtps,profile);
+ #ifdef INET6
+ 	rtp_session_set_local_addr(rtps,"::",locport+2);
+@@ -147,7 +147,7 @@
+ 	rtp_session_set_jitter_compensation(rtps,jitt_comp);
+ 	
+ 	rtpr=rtp_session_new(RTP_SESSION_RECVONLY);
+-	rtp_session_max_buf_size_set(rtpr,MAX_RTP_SIZE);
++	rtp_session_set_recv_buf_size(rtpr,MAX_RTP_SIZE);
+ 	rtp_session_set_profile(rtpr,profile);
+ #ifdef INET6
+ 	rtp_session_set_local_addr(rtpr,"::",locport);
+@@ -217,8 +217,8 @@
+ 	ms_filter_set_property(stream->decoder,MS_FILTER_PROPERTY_FREQ,&pt->clock_rate);
+ 	ms_filter_set_property(stream->decoder,MS_FILTER_PROPERTY_BITRATE,&pt->normal_bitrate);
+ 	
+-	ms_filter_set_property(stream->encoder,MS_FILTER_PROPERTY_FMTP, (void*)pt->fmtp);
+-	ms_filter_set_property(stream->decoder,MS_FILTER_PROPERTY_FMTP,(void*)pt->fmtp);
++	ms_filter_set_property(stream->encoder,MS_FILTER_PROPERTY_FMTP, (void*)pt->send_fmtp);
++	ms_filter_set_property(stream->decoder,MS_FILTER_PROPERTY_FMTP,(void*)pt->recv_fmtp);
+ 	/* create the synchronisation source */
+ 	stream->timer=ms_timer_new();
+ 	
+diff -ur kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/msrtprecv.c kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/msrtprecv.c
+--- kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/msrtprecv.c	2008-02-17 21:33:23.549627000 +0100
++++ kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/msrtprecv.c	2008-02-17 21:33:37.220285803 +0100
+@@ -26,7 +26,7 @@
+ MSMessage *msgb_2_ms_message(mblk_t* mp){
+ 	MSMessage *msg;
+ 	MSBuffer *msbuf;
+-	if (mp->b_datap->ref_count!=1) return NULL; /* cannot handle properly non-unique buffers*/
++	if (mp->b_datap->db_ref!=1) return NULL; /* cannot handle properly non-unique buffers*/
+ 	/* create a MSBuffer using the mblk_t buffer */
+ 	msg=ms_message_alloc();
+ 	msbuf=ms_buffer_alloc(0);
+@@ -120,7 +120,7 @@
+ 		gint got=0;
+ 		/* we are connected with queues (surely for video)*/
+ 		/* use the sync system time to compute a timestamp */
+-		PayloadType *pt=rtp_profile_get_payload(r->rtpsession->profile,r->rtpsession->payload_type);
++		PayloadType *pt=rtp_profile_get_payload(rtp_session_get_recv_profile(r->rtpsession),rtp_session_get_recv_payload_type(r->rtpsession));
+ 		if (pt==NULL) {
+ 			ms_warning("ms_rtp_recv_process(): NULL RtpPayload- skipping.");
+ 			return;
+diff -ur kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/msrtpsend.c kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/msrtpsend.c
+--- kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party.org/mediastreamer/msrtpsend.c	2008-02-17 21:33:23.562961000 +0100
++++ kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/third_party/mediastreamer/msrtpsend.c	2008-02-17 21:33:37.226952794 +0100
+@@ -85,7 +85,7 @@
+ {
+ 	guint32 clockts;
+ 	/* use the sync system time to compute a timestamp */
+-	PayloadType *pt=rtp_profile_get_payload(r->rtpsession->profile,r->rtpsession->payload_type);
++	PayloadType *pt=rtp_profile_get_payload(rtp_session_get_send_profile(r->rtpsession),rtp_session_get_send_payload_type(r->rtpsession));
+ 	g_return_val_if_fail(pt!=NULL,0);
+ 	clockts=(guint32)(((double)synctime * (double)pt->clock_rate)/1000.0);
+ 	ms_trace("ms_rtp_send_process: sync->time=%i clock=%i",synctime,clockts);
+--- kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/base/criticalsection.h.org	2008-02-17 21:46:59.568915654 +0100
++++ kdenetwork-3.5.9/kopete/protocols/jabber/jingle/libjingle/talk/base/criticalsection.h	2008-02-17 21:47:02.862407333 +0100
+@@ -83,6 +83,7 @@
+ public:
+   CriticalSection() {
+     pthread_mutexattr_t mutex_attribute;
++    pthread_mutexattr_init(&mutex_attribute);
+     pthread_mutexattr_settype(&mutex_attribute, PTHREAD_MUTEX_RECURSIVE);
+     pthread_mutex_init(&mutex_, &mutex_attribute);
+   }
+--- kdenetwork-3.5.9/kopete/protocols/configure.in.in.org	2008-02-17 21:51:53.996404693 +0100
++++ kdenetwork-3.5.9/kopete/protocols/configure.in.in	2008-02-17 21:52:11.077225927 +0100
+@@ -184,7 +184,7 @@
+ AC_ARG_ENABLE(testbed, [  --disable-testbed     disable kopete testbed protocol compilation ],  with_testbed=$enableval, with_testbed=yes)
+ AM_CONDITIONAL(include_testbed, test "$with_testbed" = "yes")
+ 
+-PKG_CHECK_MODULES(GLIB, glib-2.0 gmodule-2.0, have_glib=yes, have_glib=no)
++PKG_CHECK_MODULES(GLIB, glib-2.0 gmodule-2.0 gthread-2.0, have_glib=yes, have_glib=no)
+ if test x$have_glib = xno; then
+ 	AC_MSG_WARN([GLib 2.0 is required for MSN webcam and Jabber Jingle. You can get it from http://www.gtk.org/])
+ else
