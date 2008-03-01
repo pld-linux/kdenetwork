@@ -1,7 +1,7 @@
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.9/kdenetwork)	(wersja 780364)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 780364)
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.9/kdenetwork)	(wersja 781012)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 781012)
 @@ -1965,7 +1965,7 @@
  
  // Packed RGB formats
