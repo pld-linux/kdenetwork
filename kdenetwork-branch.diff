@@ -1,7 +1,7 @@
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.9/kdenetwork)	(wersja 781012)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 781012)
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/3.5.9/kdenetwork)	(wersja 793728)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 793728)
 @@ -1965,7 +1965,7 @@
  
  // Packed RGB formats
@@ -11,6 +11,21 @@ Index: kopete/libkopete/avdevice/videodevice.cpp
  				case PIXELFORMAT_RGB444	: return V4L2_PIX_FMT_RGB444;	break;
  #endif
  				case PIXELFORMAT_RGB555	: return V4L2_PIX_FMT_RGB555;	break;
+Index: knewsticker/common/configaccess.cpp
+===================================================================
+--- knewsticker/common/configaccess.cpp	(.../tags/KDE/3.5.9/kdenetwork)	(wersja 793728)
++++ knewsticker/common/configaccess.cpp	(.../branches/KDE/3.5/kdenetwork)	(wersja 793728)
+@@ -222,8 +222,8 @@
+ 		QString::fromLatin1("http://www.amiga-news.de/favicon.ico"),
+ 		NewsSourceBase::Computers, 10, false, false),
+ 		NewsSourceBase::Data(
+-		QString::fromLatin1("Linux4Us (sowie RadioTux & Magazin42)"),
+-		QString::fromLatin1("http://www.linux4us.de/newsticker.fd"),
++		QString::fromLatin1("RadioTux)"),
++		QString::fromLatin1("http://blog.radiotux.de/feed/"),
+ 		QString::null,
+ 		NewsSourceBase::Computers, 10, false, false, QString::fromLatin1("de")),
+ 		NewsSourceBase::Data(
 
 Zmiany atrybutów dla: .
 ___________________________________________________________________
