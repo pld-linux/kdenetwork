@@ -18,13 +18,13 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
-Version:	3.5.9
-Release:	3
+Version:	3.5.10
+Release:	1
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	0ec1d4ccd550510821a622eb91b893e8
+# Source0-md5:	634b2e914661faebae79d95dcc6c5bfa
 Source1:	%{name}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{name}-lisa.init
@@ -38,6 +38,7 @@ Patch2:		%{name}-kopete-qca-tls.patch
 Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
 Patch5:		%{name}-libjingle.patch
+Patch6:		%{name}-gcc.patch
 URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -1024,13 +1025,14 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 
 %prep
 %setup -q
-%patch100 -p0
+#%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p0
 %patch5 -p1
+%patch6 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
