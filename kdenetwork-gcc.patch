@@ -1,0 +1,283 @@
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/messagequeue.h~	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/messagequeue.h	2008-08-20 22:36:58.540470690 +0200
+@@ -32,6 +32,7 @@
+ #include "talk/base/criticalsection.h"
+ #include "talk/base/socketserver.h"
+ #include "talk/base/jtime.h"
++#include <cstring>
+ #include <vector>
+ #include <queue>
+ #include <algorithm>
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/asynctcpsocket.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/asynctcpsocket.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/asynctcpsocket.cc	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/asynctcpsocket.cc	2008-08-20 22:45:54.369792556 +0200
+@@ -32,12 +32,11 @@
+ #include "talk/base/byteorder.h"
+ #include "talk/base/common.h"
+ #include "talk/base/logging.h"
++#include <string.h>
+ 
+-#if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+   using ::strerror;
+ }
+-#endif
+ 
+ #ifdef POSIX
+ extern "C" {
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/bytebuffer.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/bytebuffer.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/bytebuffer.cc	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/bytebuffer.cc	2008-08-20 22:45:54.369792556 +0200
+@@ -30,6 +30,7 @@
+ #include "talk/base/byteorder.h"
+ #include <algorithm>
+ #include <cassert>
++#include <string.h>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/host.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/host.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/host.cc	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/host.cc	2008-08-20 22:45:54.369792556 +0200
+@@ -33,6 +33,7 @@
+ #include <iostream>
+ #include <cassert>
+ #include <errno.h>
++#include <cstdlib>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/messagequeue.h kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/messagequeue.h
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/messagequeue.h	2008-08-20 22:36:58.540470000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/messagequeue.h	2008-08-20 22:46:07.263124684 +0200
+@@ -36,6 +36,7 @@
+ #include <vector>
+ #include <queue>
+ #include <algorithm>
++#include <string.h>
+ 
+ namespace cricket {
+ 
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/physicalsocketserver.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/physicalsocketserver.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/physicalsocketserver.cc	2008-08-20 22:41:05.990445000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/physicalsocketserver.cc	2008-08-20 22:46:07.263124684 +0200
+@@ -30,6 +30,8 @@
+ #endif
+ 
+ #include <cassert>
++#include <string.h>
++#include <algorithm>
+ 
+ #ifdef POSIX
+ extern "C" {
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/socketadapters.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/socketadapters.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/socketadapters.cc	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/socketadapters.cc	2008-08-20 22:46:14.799790401 +0200
+@@ -132,7 +132,7 @@
+   int len = socket_->Recv(buffer_ + data_len_, buffer_size_ - data_len_);
+   if (len < 0) {
+     // TODO: Do something better like forwarding the error to the user.
+-    LOG(INFO) << "Recv: " << errno << " " <<  std::strerror(errno);
++    LOG(INFO) << "Recv: " << errno << " " <<  strerror(errno);
+     return;
+   }
+ 
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/stringutils.h kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/stringutils.h
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/base/stringutils.h	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/base/stringutils.h	2008-08-20 22:46:20.303123373 +0200
+@@ -36,6 +36,7 @@
+ #endif  // WIN32
+ 
+ #include <string>
++#include <string.h>
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ // Rename a bunch of common string functions so they are consistent across
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/port.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/port.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/port.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/port.cc	2008-08-20 22:46:34.393121851 +0200
+@@ -280,7 +280,7 @@
+ 
+   if (stun_msg->type() == STUN_BINDING_REQUEST) {
+     if ((remote_frag_len < 0)
+-        || (std::memcmp(username_attr->bytes(),
++        || (::memcmp(username_attr->bytes(),
+                         username_frag_.c_str(), username_frag_.size()) != 0)) {
+       LOG(LERROR) << "Received STUN request with bad username";
+       SendBindingErrorResponse(stun_msg.get(), addr, STUN_ERROR_BAD_REQUEST,
+@@ -293,7 +293,7 @@
+   } else if ((stun_msg->type() == STUN_BINDING_RESPONSE)
+       || (stun_msg->type() == STUN_BINDING_ERROR_RESPONSE)) {
+     if ((remote_frag_len < 0)
+-        || (std::memcmp(username_attr->bytes() + remote_frag_len,
++        || (::memcmp(username_attr->bytes() + remote_frag_len,
+                         username_frag_.c_str(), username_frag_.size()) != 0)) {
+       LOG(LERROR) << "Received STUN response with bad username";
+       // Do not send error response to a response
+@@ -736,7 +736,7 @@
+   if (valid) {
+     std::string username_fragment = port_->username_fragment();
+     int offset = (int)(username_attr->length() - username_fragment.size());
+-    if (std::memcmp(username_attr->bytes() + offset,
++    if (::memcmp(username_attr->bytes() + offset,
+         username_fragment.c_str(), username_fragment.size()) != 0) {
+       LOG(LERROR) << "Received STUN response with bad username";
+       valid = false;
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/relayport.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/relayport.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/relayport.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/relayport.cc	2008-08-20 22:46:42.199788104 +0200
+@@ -37,6 +37,7 @@
+ #ifdef OSX
+ #include <errno.h>
+ #endif
++#include <string.h>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+@@ -212,7 +213,7 @@
+   if (size < 24 + magic_cookie_.size()) {
+     return false;
+   } else {
+-    return 0 == std::memcmp(data + 24,
++    return 0 == ::memcmp(data + 24,
+                             magic_cookie_.c_str(),
+                             magic_cookie_.size());
+   }
+@@ -375,7 +376,7 @@
+ 
+   socket_->SignalReadPacket.connect(this, &RelayEntry::OnReadPacket);
+   if (socket_->Bind(local_addr_) < 0)
+-    LOG(INFO) << "bind: " << std::strerror(socket_->GetError());
++    LOG(INFO) << "bind: " << ::strerror(socket_->GetError());
+ 
+   for (unsigned i = 0; i < port_->options().size(); ++i)
+     socket_->SetOption(port_->options()[i].first, port_->options()[i].second);
+@@ -565,7 +566,7 @@
+   }
+   int sent = socket_->SendTo(data, size, ra->address);
+   if (sent <= 0) {
+-    LOG(LS_VERBOSE) << "sendto: " << std::strerror(socket_->GetError());
++    LOG(LS_VERBOSE) << "sendto: " << ::strerror(socket_->GetError());
+     assert(sent < 0);
+   }
+   return sent;
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/relayserver_main.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/relayserver_main.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/relayserver_main.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/relayserver_main.cc	2008-08-20 22:46:42.199788104 +0200
+@@ -53,13 +53,13 @@
+   
+   AsyncUDPSocket* int_socket = CreateAsyncUDPSocket(pthMain->socketserver());
+   if (int_socket->Bind(int_addr) < 0) {
+-    std::cerr << "bind: " << std::strerror(errno) << std::endl;
++    std::cerr << "bind: " << ::strerror(errno) << std::endl;
+     return 1;
+   }
+ 
+   AsyncUDPSocket* ext_socket = CreateAsyncUDPSocket(pthMain->socketserver());
+   if (ext_socket->Bind(ext_addr) < 0) {
+-    std::cerr << "bind: " << std::strerror(errno) << std::endl;
++    std::cerr << "bind: " << ::strerror(errno) << std::endl;
+     return 1;
+   }
+ 
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stun.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stun.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stun.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stun.cc	2008-08-20 22:46:42.203120745 +0200
+@@ -29,6 +29,7 @@
+ #include "talk/p2p/base/stun.h"
+ #include <iostream>
+ #include <cassert>
++#include <string.h>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+@@ -384,7 +385,7 @@
+ 
+ void StunByteStringAttribute::CopyBytes(const void* bytes, uint16 length) {
+   char* new_bytes = new char[length];
+-  std::memcpy(new_bytes, bytes, length);
++  memcpy(new_bytes, bytes, length);
+   SetBytes(new_bytes, length);
+ }
+ 
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stunserver.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stunserver.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stunserver.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stunserver.cc	2008-08-20 22:46:42.203120745 +0200
+@@ -28,6 +28,7 @@
+ #include "talk/base/bytebuffer.h"
+ #include "talk/p2p/base/stunserver.h"
+ #include <iostream>
++#include <string.h>
+ 
+ #ifdef POSIX
+ extern "C" {
+@@ -154,7 +155,7 @@
+   // TODO: Allow response addr attribute if sent from another stun server.
+ 
+   if (socket_->SendTo(buf.Data(), buf.Length(), addr) < 0)
+-    std::cerr << "sendto: " << std::strerror(errno) << std::endl;
++    std::cerr << "sendto: " << ::strerror(errno) << std::endl;
+ }
+ 
+ } // namespace cricket
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stunserver_main.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stunserver_main.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/stunserver_main.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/stunserver_main.cc	2008-08-20 22:46:42.203120745 +0200
+@@ -50,7 +50,7 @@
+   
+   AsyncUDPSocket* server_socket = CreateAsyncUDPSocket(pthMain->socketserver());
+   if (server_socket->Bind(server_addr) < 0) {
+-    std::cerr << "bind: " << std::strerror(errno) << std::endl;
++    std::cerr << "bind: " << ::strerror(errno) << std::endl;
+     return 1;
+   }
+ 
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/tcpport.cc kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/tcpport.cc
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/p2p/base/tcpport.cc	2006-10-01 19:26:44.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/p2p/base/tcpport.cc	2008-08-20 22:46:42.203120745 +0200
+@@ -35,6 +35,7 @@
+ #endif // WIN32
+ #include <iostream>
+ #include <cassert>
++#include <string.h>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1300
+ namespace std {
+@@ -61,7 +62,7 @@
+   socket_ = thread->socketserver()->CreateAsyncSocket(SOCK_STREAM);
+   socket_->SignalReadEvent.connect(this, &TCPPort::OnAcceptEvent);
+   if (socket_->Bind(address) < 0)
+-    LOG(INFO) << "bind: " << std::strerror(socket_->GetError());
++    LOG(INFO) << "bind: " << ::strerror(socket_->GetError());
+ }
+ 
+ TCPPort::~TCPPort() {
+@@ -111,7 +112,7 @@
+ #endif // WIN32
+   if (allow_listen) {
+     if (socket_->Listen(5) < 0)
+-      LOG(INFO) << "listen: " << std::strerror(socket_->GetError());
++      LOG(INFO) << "listen: " << ::strerror(socket_->GetError());
+   } else {
+     LOG(INFO) << "not listening due to firewall restrictions";
+   }
+@@ -157,7 +158,7 @@
+   AsyncSocket * newsocket = static_cast<AsyncSocket *>(socket->Accept(&incoming.addr));
+   if (!newsocket) {
+     // TODO: Do something better like forwarding the error to the user.
+-    LOG(INFO) << "accept: " << socket_->GetError() << " " <<  std::strerror(socket_->GetError());
++    LOG(INFO) << "accept: " << socket_->GetError() << " " <<  ::strerror(socket_->GetError());
+     return;
+   }
+   incoming.socket = new AsyncTCPSocket(newsocket);
+diff -x .deps -ur kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/xmpp/xmpppassword.h kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/xmpp/xmpppassword.h
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle.org/talk/xmpp/xmpppassword.h	2006-10-01 19:26:45.000000000 +0200
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/xmpp/xmpppassword.h	2008-08-20 22:46:34.393121851 +0200
+@@ -30,6 +30,7 @@
+ 
+ #include "talk/base/linked_ptr.h"
+ #include "talk/base/scoped_ptr.h"
++#include <string.h>
+ 
+ namespace buzz {
+ 
