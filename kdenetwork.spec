@@ -19,7 +19,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.10
-Release:	4
+Release:	5
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -1025,7 +1025,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 
 %prep
 %setup -q
-#%patch100 -p0
+%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
