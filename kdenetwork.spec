@@ -39,6 +39,7 @@ Patch3:		kde-ac260-lt.patch
 Patch4:		kopete-icqconn.patch
 Patch5:		%{name}-libjingle.patch
 Patch6:		%{name}-gcc.patch
+Patch7:		kde-am.patch
 URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -64,8 +65,8 @@ BuildRequires:	pcre-devel
 BuildRequires:	rpmbuild(find_lang) >= 1.32
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
-%{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	speex-devel >= 1.1.6
+%{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -1033,6 +1034,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 %patch4 -p0
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
