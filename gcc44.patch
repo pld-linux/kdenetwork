@@ -42,3 +42,14 @@
          unsigned size;
          if (pp != NULL)
             size = (pp - str);
+--- kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/session/phone/phonesessionclient.cc~	2009-08-25 00:01:57.000000000 +0300
++++ kdenetwork-3.5.10/kopete/protocols/jabber/jingle/libjingle/talk/session/phone/phonesessionclient.cc	2009-08-25 00:02:05.219439061 +0300
+@@ -29,6 +29,8 @@
+ #include "talk/session/receiver.h"
+ #include "talk/session/phone/phonesessionclient.h"
+ #include "talk/xmllite/qname.h"
++#include <stdio.h>
++
+ namespace {
+ 
+ const std::string NS_PHONE("http://www.google.com/session/phone");
