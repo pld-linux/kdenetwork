@@ -1,0 +1,22 @@
+--- kdenetwork-3.5.10/kopete/protocols/groupwise/libgroupwise/rtf.ll~	2009-08-24 22:36:11.000000000 +0300
++++ kdenetwork-3.5.10/kopete/protocols/groupwise/libgroupwise/rtf.ll	2009-08-24 22:36:12.436257872 +0300
+@@ -570,7 +570,7 @@
+ 
+         FontDef& def = p->fonts[m_nFont-1];
+ 
+-        char *pp = strchr(str, ';');
++        const char *pp = strchr(str, ';');
+         unsigned size;
+         if (pp != NULL)
+            size = (pp - str);
+--- kdenetwork-3.5.10/kopete/protocols/groupwise/libgroupwise/rtf.cc~	2005-09-10 11:20:20.000000000 +0300
++++ kdenetwork-3.5.10/kopete/protocols/groupwise/libgroupwise/rtf.cc	2009-08-24 22:36:34.696012692 +0300
+@@ -2235,7 +2235,7 @@
+ 
+         FontDef& def = p->fonts[m_nFont-1];
+ 
+-        char *pp = strchr(str, ';');
++        const char *pp = strchr(str, ';');
+         unsigned size;
+         if (pp != NULL)
+            size = (pp - str);

@@ -40,6 +40,7 @@ Patch4:		kopete-icqconn.patch
 Patch5:		%{name}-libjingle.patch
 Patch6:		%{name}-gcc.patch
 Patch7:		kde-am.patch
+Patch8:		gcc44.patch
 URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -1035,6 +1036,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
