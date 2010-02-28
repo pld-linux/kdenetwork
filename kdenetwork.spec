@@ -12,14 +12,13 @@
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
 %define		_minbaseevr	9:%{version}
-#
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.10
-Release:	7
+Release:	8
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
