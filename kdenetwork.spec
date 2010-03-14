@@ -3,6 +3,8 @@
 # - what about non-applied libgadu patch?
 # - fix or kill skype support
 # - kill internal libgadu copy
+#   /usr/bin/relayserver
+#   /usr/bin/stunserver
 #
 # Conditional build:
 %bcond_without	xmms			# without xmms support
@@ -1105,6 +1107,7 @@ fi
 	--enable-jingle
 
 %{__make}
+rm -f makeinstall.stamp
 
 %install
 if [ ! -f makeinstall.stamp -o ! -d $RPM_BUILD_ROOT ]; then
