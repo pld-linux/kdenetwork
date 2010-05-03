@@ -10,6 +10,7 @@
 %bcond_without	xmms			# without xmms support
 %bcond_without	hidden_visibility	# no gcc hidden visibility
 %bcond_with	skype			# with skype support (incomplete!)
+%bcond_with	arts			# build with aRts support
 
 %define		_state		stable
 %define		_minlibsevr	9:%{version}
@@ -1103,6 +1104,7 @@ fi
 	--with-distribution="PLD Linux Distribution" \
 	--with-qt-libraries=%{_libdir} \
 	--with-wifi \
+	--with%{!?with_arts:out}-arts \
 	--with%{!?with_xmms:out}-xmms \
 	--enable-jingle
 
