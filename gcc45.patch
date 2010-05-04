@@ -1,10 +1,10 @@
---- kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp~	2010-05-04 14:44:01.750546670 +0300
-+++ kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp	2010-05-04 14:44:08.283859567 +0300
+--- kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp~	2005-09-10 11:20:25.000000000 +0300
++++ kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp	2010-05-04 18:35:52.225813306 +0300
 @@ -169,7 +169,7 @@
  	// the sorting itself is rather slow. Therefore we call delayedSort, which tries
  	// to group multiple sort requests into one.
  	using namespace Kopete::UI::ListView;
--	if ( ListView::ListView *lv = dynamic_cast<ListView *>( listView() ) )
+-	if ( ListView::ListView *lv = dynamic_cast<ListView::ListView *>( listView() ) )
 +	if ( ListView *lv = dynamic_cast<ListView *>( listView() ) )
  		lv->delayedSort();
  	else
