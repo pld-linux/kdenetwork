@@ -74,6 +74,9 @@ BuildRequires:	speex-devel >= 1.1.6
 BuildRequires:	xorg-lib-libXtst-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# build broken with spaces in CC
+%undefine	with_ccache
+
 %description
 KDE network applications. Package includes:
 - KDict - Online dictionary client
