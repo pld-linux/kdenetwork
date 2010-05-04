@@ -1,0 +1,22 @@
+--- kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp~	2010-05-04 14:44:01.750546670 +0300
++++ kdenetwork-3.5.10/kopete/kopete/contactlist/kopetegroupviewitem.cpp	2010-05-04 14:44:08.283859567 +0300
+@@ -169,7 +169,7 @@
+ 	// the sorting itself is rather slow. Therefore we call delayedSort, which tries
+ 	// to group multiple sort requests into one.
+ 	using namespace Kopete::UI::ListView;
+-	if ( ListView::ListView *lv = dynamic_cast<ListView *>( listView() ) )
++	if ( ListView *lv = dynamic_cast<ListView *>( listView() ) )
+ 		lv->delayedSort();
+ 	else
+ 		listView()->sort();
+--- kdenetwork-3.5.10/kopete/kopete/chatwindow/krichtexteditpart.cpp~	2006-10-01 20:27:05.000000000 +0300
++++ kdenetwork-3.5.10/kopete/kopete/chatwindow/krichtexteditpart.cpp	2010-05-04 14:46:12.173861717 +0300
+@@ -38,7 +38,7 @@
+ KopeteRichTextEditPart::KopeteRichTextEditPart( QWidget *wparent, const char *wname, QObject*, const char*, const QStringList& )
+ 	: KParts::ReadOnlyPart( wparent, wname ? wname : "rich_text_part" )
+ {
+-	KopeteRichTextEditPart::KopeteRichTextEditPart( wparent, wname, false );
++	KopeteRichTextEditPart( wparent, wname, false );
+ }
+ 
+ KopeteRichTextEditPart::KopeteRichTextEditPart( QWidget *parent, const char *name, int capabilities )

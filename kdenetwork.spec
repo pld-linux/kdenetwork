@@ -21,7 +21,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.10
-Release:	8
+Release:	9
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
@@ -44,6 +44,7 @@ Patch6:		%{name}-gcc.patch
 Patch7:		kde-am.patch
 Patch8:		gcc44.patch
 Patch9:		ac264.patch
+Patch10:	gcc45.patch
 URL:		http://www.kde.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -1044,6 +1045,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Network;FileTransfer;/' \
 	-e 's/Terminal=0/Terminal=false/' -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
