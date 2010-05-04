@@ -21,7 +21,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kdenetwork
 Version:	3.5.10
-Release:	9
+Release:	10
 Epoch:		10
 License:	GPL
 Group:		X11/Libraries
