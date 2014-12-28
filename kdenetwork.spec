@@ -51,7 +51,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	expat-devel
 %{?with_hidden_visibility:BuildRequires:	gcc-c++ >= 5:4.1.0-0.20051206r108118.1}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel
 BuildRequires:	gsmlib-devel
 BuildRequires:	kdelibs-devel >= %{_minlibsevr}
